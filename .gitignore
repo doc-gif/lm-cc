@@ -1,6 +1,6 @@
 output/
 models*
-lm_cc*
+lm_cc.egg*
 build
 
 cc.json
