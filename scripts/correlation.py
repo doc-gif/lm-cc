@@ -5,6 +5,7 @@ import pingouin as pg
 import argparse
 import os
 import json
+from tqdm import tqdm
 from utils.metrics import get_code_cc, get_code_loc, get_code_cog, get_code_mi, get_code_hc_difficulty, get_lmcc
 from utils.utils import get_depth_sum, get_total_branch, get_max_depth, get_max_width, get_avg_children, get_avg_depth
 
@@ -245,7 +246,7 @@ def read_mi(file_path, block_trees, calculate=True):
 def read_hc_difficulty(file_path, block_trees, calculate=True):
     id2hc_difficulty = {}
     if calculate or not os.path.exists(file_path):
-        for treeinfo in block_trees:
+        for treeinfo in tqdm(block_trees):
             task_id = f"{treeinfo['task_id']}"
             id2hc_difficulty[task_id] = get_code_hc_difficulty(treeinfo["code"])
         with open(file_path, 'w') as f:
@@ -443,10 +444,11 @@ if __name__ == "__main__":
     # parser.add_argument("--dataset", type=str, default='xcodeeval-apr', help="select one from [xcodeeval-apr, xcodeeval-ct, humaneval-ier]")
     parser.add_argument("--task", type=str, default='program_repair', help="select one from [program_repair, code_translation, execution_reasoning]")
     parser.add_argument("--output-dir", type=str, default="../output")
-    parser.add_argument("--calculate", action='store_true')
+    parser.add_argument("--cache", action='store_true')
     args = parser.parse_args()
 
     task = args.task
     output_dir = args.output_dir
-    calculate = args.calculate
+
+    calculate = not args.cache
     main(task, output_dir, calculate)

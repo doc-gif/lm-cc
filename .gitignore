@@ -1,2 +1,12 @@
 output/
-ouroutput/
+models*
+lm_cc*
+build
+
+cc.json
+loc.json
+cog.json
+mi.json
+hc_difficulty.json
+lmcc.json
+*.pyc
