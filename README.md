@@ -12,12 +12,13 @@ To install all the dependencies, run the following command:
 git clone
 cd lm_cc
 pip install .
+pip install ./dependency/promptsource
 ```
 
 ### Usage
 Default: Download the model from Hugging Face and load it in full precision.
 
-``` python
+``` 
 from lm_cc import get_code_lmcc
 cc = get_code_lmcc(code)
 print("LM-CC:", cc)
@@ -25,7 +26,7 @@ print("LM-CC:", cc)
 
 For custom parameters (e.g., loading the model in half precision), follow the steps below:
 
-``` python
+``` 
 from lm_cc import get_code_lmcc, CodeBlockProcessor, TokenEntropyCalculator
 processor = CodeBlockProcessor()
 calculator = TokenEntropyCalculator(
@@ -47,22 +48,23 @@ cd scripts
 
 #### correlations
 
-Use our token entropy file to calculate metrics and correlation coefficients:
+Perform task execution, performance evaluation and token entropy calculation:
+```
+bash program_repair.sh
+# bash code_translation.sh
+# bash execution_reasoning.sh
+```
+Calculate metrics and correlation coefficients:
+```
+python correlation.py --task [program_repair/code_translation/execution_reasoning]
+```
+Or skip the task execution steps and use our results and token entropy files for direct calculation:
 
 ```
 python correlation.py --output-dir ouroutput --task [program_repair/code_translation/execution_reasoning] 
 ```
-
-<!-- Or start with calculating token entropy:
-
-```
-python correlation.py --task [program_repair/code_translation/execution_reasoning]
-``` -->
-
 Cached metric files can be used to speed up repeated runs:
 ```
 python correlation.py --task program_repair --cache
 ```
-
-
 #### code rewriting
