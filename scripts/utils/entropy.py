@@ -5,13 +5,15 @@ from lm_cc.lm_cc import TokenEntropyCalculator, CodeBlockProcessor, get_code_wit
 from .utils import remove_comments_and_docstrings, format_python_code
 from tqdm import tqdm
 import json
+import torch
 
-def entropy(dataset, data_path, entropy_output_path, block_tree_output_path):
+def entropy(dataset, data_path, entropy_output_path, block_tree_output_path, float_type = torch.float32):
     if not os.path.exists(os.path.dirname(entropy_output_path)):
         os.makedirs(os.path.dirname(entropy_output_path), exist_ok=True)
     calculator = TokenEntropyCalculator(
         model_name="codellama/CodeLlama-7b-hf",
         cache_dir=cache_dir,
+        float_type=float_type,
     )
     entropy_contents = []
     if dataset == "humaneval-ier":
@@ -144,7 +146,7 @@ def entropy(dataset, data_path, entropy_output_path, block_tree_output_path):
             json.dump(file_contents, f, indent=2)
 
 
-def main(output_dir, task, cache_dir=""):
+def main(output_dir, task, cache_dir="", float_type = torch.float32):
     THRESHOLD = 0.67
     model_name = "CodeLlama-7b-hf"
     TEMPERATURE = 1.0
@@ -174,17 +176,23 @@ def main(output_dir, task, cache_dir=""):
         # results_file_path = os.path.join(dataset_output_dir, "results_score.json")
 
     block_tree_output_path = os.path.join(dataset_output_dir, "entropy", block_tree_filename)
-    entropy(dataset, data_path, entropy_output_path, block_tree_output_path)
+    entropy(dataset, data_path, entropy_output_path, block_tree_output_path, float_type=float_type)
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Run entropy pipeline for Avatar dataset.")
     parser.add_argument("--task", type=str, default='program_repair', help="select one from [program_repair, code_translation, execution_reasoning]")
     parser.add_argument("--output-dir", type=str, default="../output")
     parser.add_argument("--model-cache",  type=str, default="", help="model cache directory")
+    parser.add_argument("--float-type", type=str, default="float32", help="float16 or float32")
     
     args = parser.parse_args()
 
     task = args.task
     cache_dir = args.model_cache
     output_dir = args.output_dir
-    main(output_dir, task)
+    float_type_str = args.float_type
+    if float_type_str == "float16":
+        float_type = torch.float16
+    else:
+        float_type = torch.float32
+    main(output_dir, task, cache_dir=cache_dir, float_type=float_type)

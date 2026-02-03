@@ -120,15 +120,12 @@ def grouped_partial_corr(score, metric, loc=None, min_cnt = 10):
                 "mean_loc": z,
             })
 
-            # 优先使用 pingouin（常用包），若不可用则回退到残差法
             try:
                 spearman = pg.partial_corr(data=df, x='mean_metric', y='mean_score', covar='mean_loc', method='spearman')
                 spearman_r = float(spearman['r'].iloc[0])
                 spearman_p = float(spearman['p-val'].iloc[0])
             except Exception:
-                # 回退实现：对 z 回归，取残差后计算相关（并返回 r 与 p）
                 def partial_by_residuals_rp(xv, yv, zv, method='spearman'):
-                    # 如果计算 spearman，则先秩变换
                     if method == 'spearman':
                         xv = stats.rankdata(xv)
                         yv = stats.rankdata(yv)
