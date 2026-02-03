@@ -47,18 +47,7 @@ cd scripts
 ```
 
 #### correlations
-
-Perform task execution, performance evaluation and token entropy calculation:
-```
-bash program_repair.sh
-# bash code_translation.sh
-# bash execution_reasoning.sh
-```
 Calculate metrics and correlation coefficients:
-```
-python correlation.py --task [program_repair/code_translation/execution_reasoning]
-```
-Or skip the task execution steps and use our results and token entropy files for direct calculation:
 
 ```
 python correlation.py --output-dir ouroutput --task [program_repair/code_translation/execution_reasoning] 
