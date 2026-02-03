@@ -40,20 +40,22 @@ print("LM-CC:", cc)
 ```
 
 
-### Reproduce Results
+### Experiment
 
 ```
 cd scripts
 ```
 
 #### correlations
-Calculate metrics and correlation coefficients:
+* To reproduce our results:
+```
+bash correlations.sh
+```
+* Start with task execution:
+```
+bash program_repair.sh
+bash code_translation.sh
+```
 
-```
-python correlation.py --output-dir ouroutput --task [program_repair/code_translation/execution_reasoning] 
-```
-Cached metric files can be used to speed up repeated runs:
-```
-python correlation.py --task program_repair --cache
-```
+
 #### code rewriting

@@ -1,7 +1,8 @@
 import argparse
 import os
+import sys
 from lm_cc.lm_cc import TokenEntropyCalculator, CodeBlockProcessor, get_code_with_boundaries
-from utils.utils import remove_comments_and_docstrings, format_python_code
+from .utils import remove_comments_and_docstrings, format_python_code
 from tqdm import tqdm
 import json
 
@@ -186,5 +187,4 @@ if __name__ == "__main__":
     task = args.task
     cache_dir = args.model_cache
     output_dir = args.output_dir
-
     main(output_dir, task)
