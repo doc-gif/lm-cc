@@ -1,0 +1,87 @@
+{
+    "oai_response": {
+        "prompt": "Here is code in Python 3 programming lanaguge. Translate the following code from Python 3 to C programming lanaguge. Do not output any extra description or tokens other than the translated code. \n\nimport math\nlog2=lambda x:math.log(x)/math.log(2)\nn,k=map(int,input().split())\nm=2**int(log2(n))\nres=0\nans=m^(m-1)\nif k >= 2:\n    print(n if ans >2*n else ans)\nelse:\n    print(n)||END-of-SRC||",
+        "response": {
+            "id": "multi-call-as-n1mh6ssejk",
+            "model": "deepseek-v3",
+            "created": 1767068187,
+            "choices": [
+                {
+                    "index": 0,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <math.h>\n\ndouble log2(double x) {\n    return log(x) / log(2);\n}\n\nint main() {\n    int n, k;\n    scanf(\"%d %d\", &n, &k);\n    int m = pow(2, (int)log2(n));\n    int res = 0;\n    int ans = m ^ (m - 1);\n    if (k >= 2) {\n        printf(\"%d\\n\", (ans > 2 * n) ? n : ans);\n    } else {\n        printf(\"%d\\n\", n);\n    }\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 1,
+                    "message": {
+                        "role": "assistant",
+                        "content": "Here's the translated code in C:\n\n```c\n#include <stdio.h>\n#include <math.h>\n\nint main() {\n    int n, k;\n    scanf(\"%d %d\", &n, &k);\n    int m = pow(2, (int)(log(n) / log(2)));\n    int res = 0;\n    int ans = m ^ (m - 1);\n    if (k >= 2) {\n        printf(\"%d\\n\", (ans > 2 * n) ? n : ans);\n    } else {\n        printf(\"%d\\n\", n);\n    }\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 2,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <math.h>\n\ndouble log2(double x) {\n    return log(x) / log(2);\n}\n\nint main() {\n    int n, k;\n    scanf(\"%d %d\", &n, &k);\n    int m = pow(2, (int)log2(n));\n    int res = 0;\n    int ans = m ^ (m - 1);\n    if (k >= 2) {\n        printf(\"%d\\n\", (ans > 2 * n) ? n : ans);\n    } else {\n        printf(\"%d\\n\", n);\n    }\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 3,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <math.h>\n\nint main() {\n    int n, k;\n    scanf(\"%d %d\", &n, &k);\n    int m = pow(2, (int)(log(n) / log(2)));\n    int res = 0;\n    int ans = m ^ (m - 1);\n    if (k >= 2) {\n        printf(\"%d\\n\", (ans > 2 * n) ? n : ans);\n    } else {\n        printf(\"%d\\n\", n);\n    }\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 4,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <math.h>\n\ndouble log2(double x) {\n    return log(x) / log(2);\n}\n\nint main() {\n    int n, k;\n    scanf(\"%d %d\", &n, &k);\n    int m = pow(2, (int)log2(n));\n    int res = 0;\n    int ans = m ^ (m - 1);\n    if (k >= 2) {\n        printf(\"%d\\n\", (ans > 2 * n) ? n : ans);\n    } else {\n        printf(\"%d\\n\", n);\n    }\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                }
+            ],
+            "usage": {
+                "prompt_tokens": 600,
+                "completion_tokens": 669,
+                "total_tokens": 1269
+            }
+        }
+    },
+    "source_data": {
+        "code_uid": "94e0c39ff2bf65bee371457a233d0446",
+        "prob_desc_output_to": "standard output",
+        "prob_desc_notes": "NoteIn the first sample case, one optimal answer is 1, 2 and 4, giving the xor-sum of 7.In the second sample case, one can, for example, take all six candies and obtain the xor-sum of 7.",
+        "lang_cluster": "Python",
+        "prob_desc_time_limit": "1 second",
+        "prob_desc_input_spec": "The sole string contains two integers n and k (1\u2009\u2264\u2009k\u2009\u2264\u2009n\u2009\u2264\u20091018).",
+        "source_code": "import math\nlog2=lambda x:math.log(x)/math.log(2)\nn,k=map(int,input().split())\nm=2**int(log2(n))\nres=0\nans=m^(m-1)\nif k >= 2:\n    print(n if ans >2*n else ans)\nelse:\n    print(n)",
+        "prob_desc_sample_inputs": [
+            "4 3",
+            "6 6"
+        ],
+        "prob_desc_memory_limit": "256 megabytes",
+        "exec_outcome": "PASSED",
+        "prob_desc_output_spec": "Output one number\u00a0\u2014 the largest possible xor-sum.",
+        "src_uid": "16bc089f5ef6b68bebe8eda6ead2eab9",
+        "prob_desc_input_from": "standard input",
+        "lang": "Python 3",
+        "prob_desc_sample_outputs": [
+            "7",
+            "7"
+        ],
+        "file_name": "d7021504500d5ca7c2b02df8100a574d159e6e67e20ec8071b75800b1267370a",
+        "prob_desc_description": "Since Grisha behaved well last year, at New Year's Eve he was visited by Ded Moroz who brought an enormous bag of gifts with him! The bag contains n sweet candies from the good ol' bakery, each labeled from 1 to n corresponding to its tastiness. No two candies have the same tastiness.The choice of candies has a direct effect on Grisha's happiness. One can assume that he should take the tastiest ones\u00a0\u2014 but no, the holiday magic turns things upside down. It is the xor-sum of tastinesses that matters, not the ordinary sum!A xor-sum of a sequence of integers a1,\u2009a2,\u2009...,\u2009am is defined as the bitwise XOR of all its elements: , here  denotes the bitwise XOR operation; more about bitwise XOR can be found here.Ded Moroz warned Grisha he has more houses to visit, so Grisha can take no more than k candies from the bag. Help Grisha determine the largest xor-sum (largest xor-sum means maximum happiness!) he can obtain.",
+        "prob_desc_created_at": "1515162900",
+        "difficulty": 1300.0,
+        "hidden_unit_tests": "[{\"input\": \"4 3\\r\\n\", \"output\": [\"7\"]}, {\"input\": \"6 6\\r\\n\", \"output\": [\"7\"]}, {\"input\": \"2 2\\r\\n\", \"output\": [\"3\"]}, {\"input\": \"1022 10\\r\\n\", \"output\": [\"1023\"]}, {\"input\": \"415853337373441 52\\r\\n\", \"output\": [\"562949953421311\"]}, {\"input\": \"75 12\\r\\n\", \"output\": [\"127\"]}, {\"input\": \"1000000000000000000 1000000000000000000\\r\\n\", \"output\": [\"1152921504606846975\"]}, {\"input\": \"1 1\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"1000000000000000000 2\\r\\n\", \"output\": [\"1152921504606846975\"]}, {\"input\": \"49194939 22\\r\\n\", \"output\": [\"67108863\"]}, {\"input\": \"228104606 17\\r\\n\", \"output\": [\"268435455\"]}, {\"input\": \"817034381 7\\r\\n\", \"output\": [\"1073741823\"]}, {\"input\": \"700976748 4\\r\\n\", \"output\": [\"1073741823\"]}, {\"input\": \"879886415 9\\r\\n\", \"output\": [\"1073741823\"]}, {\"input\": \"18007336 10353515\\r\\n\", \"output\": [\"33554431\"]}, {\"input\": \"196917003 154783328\\r\\n\", \"output\": [\"268435455\"]}, {\"input\": \"785846777 496205300\\r\\n\", \"output\": [\"1073741823\"]}, {\"input\": \"964756444 503568330\\r\\n\", \"output\": [\"1073741823\"]}, {\"input\": \"848698811 317703059\\r\\n\", \"output\": [\"1073741823\"]}, {\"input\": \"676400020444788 1\\r\\n\", \"output\": [\"676400020444788\"]}, {\"input\": \"502643198528213 1\\r\\n\", \"output\": [\"502643198528213\"]}, {\"input\": \"815936580997298686 684083143940282566\\r\\n\", \"output\": [\"1152921504606846975\"]}, {\"input\": \"816762824175382110 752185261508428780\\r\\n\", \"output\": [\"1152921504606846975\"]}, {\"input\": \"327942415253132295 222598158321260499\\r\\n\", \"output\": [\"576460752303423487\"]}, {\"input\": \"328768654136248423 284493129147496637\\r\\n\", \"output\": [\"576460752303423487\"]}, {\"input\": \"329594893019364551 25055600080496801\\r\\n\", \"output\": [\"576460752303423487\"]}, {\"input\": \"921874985256864012 297786684518764536\\r\\n\", \"output\": [\"1152921504606846975\"]}, {\"input\": \"922701224139980141 573634416190460758\\r\\n\", \"output\": [\"1152921504606846975\"]}, {\"input\": \"433880815217730325 45629641110945892\\r\\n\", \"output\": [\"576460752303423487\"]}, {\"input\": \"434707058395813749 215729375494216481\\r\\n\", \"output\": [\"576460752303423487\"]}, {\"input\": \"435533301573897173 34078453236225189\\r\\n\", \"output\": [\"576460752303423487\"]}, {\"input\": \"436359544751980597 199220719961060641\\r\\n\", \"output\": [\"576460752303423487\"]}, {\"input\": \"437185783635096725 370972992240105630\\r\\n\", \"output\": [\"576460752303423487\"]}, {\"input\": \"438012026813180149 111323110116193830\\r\\n\", \"output\": [\"576460752303423487\"]}, {\"input\": \"438838269991263573 295468957052046146\\r\\n\", \"output\": [\"576460752303423487\"]}, {\"input\": \"439664513169346997 46560240538186155\\r\\n\", \"output\": [\"576460752303423487\"]}, {\"input\": \"440490752052463125 216165966013438147\\r\\n\", \"output\": [\"576460752303423487\"]}, {\"input\": \"441316995230546549 401964286420555423\\r\\n\", \"output\": [\"576460752303423487\"]}, {\"input\": \"952496582013329437 673506882352402278\\r\\n\", \"output\": [\"1152921504606846975\"]}, {\"input\": \"1000000000000000000 1\\r\\n\", \"output\": [\"1000000000000000000\"]}, {\"input\": \"2147483647 1\\r\\n\", \"output\": [\"2147483647\"]}, {\"input\": \"2147483647 2\\r\\n\", \"output\": [\"2147483647\"]}, {\"input\": \"2147483647 31\\r\\n\", \"output\": [\"2147483647\"]}, {\"input\": \"8 2\\r\\n\", \"output\": [\"15\"]}, {\"input\": \"3 3\\r\\n\", \"output\": [\"3\"]}, {\"input\": \"4 1\\r\\n\", \"output\": [\"4\"]}, {\"input\": \"10 2\\r\\n\", \"output\": [\"15\"]}, {\"input\": \"288230376151711743 2\\r\\n\", \"output\": [\"288230376151711743\"]}, {\"input\": \"5 2\\r\\n\", \"output\": [\"7\"]}, {\"input\": \"576460752303423487 2\\r\\n\", \"output\": [\"576460752303423487\"]}, {\"input\": \"36028797018963967 123\\r\\n\", \"output\": [\"36028797018963967\"]}, {\"input\": \"1125899906842623 2\\r\\n\", \"output\": [\"1125899906842623\"]}, {\"input\": \"576460752303423489 5\\r\\n\", \"output\": [\"1152921504606846975\"]}, {\"input\": \"288230376151711743 3\\r\\n\", \"output\": [\"288230376151711743\"]}, {\"input\": \"36028797018963967 345\\r\\n\", \"output\": [\"36028797018963967\"]}, {\"input\": \"18014398509481984 30\\r\\n\", \"output\": [\"36028797018963967\"]}, {\"input\": \"8 8\\r\\n\", \"output\": [\"15\"]}, {\"input\": \"8 1\\r\\n\", \"output\": [\"8\"]}]",
+        "source_lang": "Python 3",
+        "target_lang": "C"
+    }
+}

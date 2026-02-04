@@ -1,0 +1,89 @@
+{
+    "oai_response": {
+        "prompt": "Here is code in Python 3 programming lanaguge. Translate the following code from Python 3 to C programming lanaguge. Do not output any extra description or tokens other than the translated code. \n\na, b = input().split()\na = int(a)\nb = int(b)\nc = b\nd = ''\nt = ''\n\nn = [a]\nwhile a != c:\n    if (c % 2 == 0) and (a <= c):\n        c = c / 2\n        d = d + '1'\n    elif (c - 1) % 10 == 0 and (a <= c):\n        c = (c - 1) / 10\n        d = d + '2'\n    else:\n        break\nif a == c:\n    print('YES')\n    t = d[::-1]\n    f = len(t)\n    print(len(t) + 1)\n    for i in range (1, f + 1):\n        if t[i-1:i] == '1':\n            a = a * 2\n            n.append(a)\n        else:\n            a = (a * 10) + 1\n            n.append(a)\n    for i in range(0, f + 1):\n        print(n[i], end = ' ')\nelif c != a:\n    print('NO')\n\n\n||END-of-SRC||",
+        "response": {
+            "id": "multi-call-as-rmh1jk24x5",
+            "model": "deepseek-v3",
+            "created": 1767067482,
+            "choices": [
+                {
+                    "index": 0,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <string.h>\n\nint main() {\n    int a, b;\n    scanf(\"%d %d\", &a, &b);\n    int c = b;\n    char d[100] = \"\";\n    char t[100] = \"\";\n    \n    int n[100];\n    n[0] = a;\n    int count = 1;\n    \n    while (a != c) {\n        if ((c % 2 == 0) && (a <= c)) {\n            c = c / 2;\n            strcat(d, \"1\");\n        } else if ((c - 1) % 10 == 0 && (a <= c)) {\n            c = (c - 1) / 10;\n            strcat(d, \"2\");\n        } else {\n            break;\n        }\n    }\n    \n    if (a == c) {\n        printf(\"YES\\n\");\n        int len = strlen(d);\n        for (int i = 0; i < len; i++) {\n            t[i] = d[len - 1 - i];\n        }\n        t[len] = '\\0';\n        printf(\"%d\\n\", len + 1);\n        \n        int current = a;\n        for (int i = 0; i < len; i++) {\n            if (t[i] == '1') {\n                current = current * 2;\n                n[count++] = current;\n            } else {\n                current = (current * 10) + 1;\n                n[count++] = current;\n            }\n        }\n        \n        for (int i = 0; i < count; i++) {\n            printf(\"%d \", n[i]);\n        }\n    } else {\n        printf(\"NO\\n\");\n    }\n    \n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 1,
+                    "message": {
+                        "role": "assistant",
+                        "content": "Here's the translated code in C:\n\n```c\n#include <stdio.h>\n#include <string.h>\n\nint main() {\n    int a, b;\n    scanf(\"%d %d\", &a, &b);\n    int c = b;\n    char d[100] = \"\";\n    char t[100] = \"\";\n    \n    int n[100];\n    n[0] = a;\n    int count = 1;\n    \n    while (a != c) {\n        if ((c % 2 == 0) && (a <= c)) {\n            c = c / 2;\n            strcat(d, \"1\");\n        } else if ((c - 1) % 10 == 0 && (a <= c)) {\n            c = (c - 1) / 10;\n            strcat(d, \"2\");\n        } else {\n            break;\n        }\n    }\n    \n    if (a == c) {\n        printf(\"YES\\n\");\n        int len = strlen(d);\n        for (int i = 0; i < len; i++) {\n            t[i] = d[len - 1 - i];\n        }\n        t[len] = '\\0';\n        printf(\"%d\\n\", len + 1);\n        \n        for (int i = 1; i <= len; i++) {\n            if (t[i-1] == '1') {\n                a = a * 2;\n                n[count++] = a;\n            } else {\n                a = (a * 10) + 1;\n                n[count++] = a;\n            }\n        }\n        \n        for (int i = 0; i < count; i++) {\n            printf(\"%d \", n[i]);\n        }\n    } else {\n        printf(\"NO\");\n    }\n    \n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 2,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <string.h>\n\nint main() {\n    int a, b;\n    scanf(\"%d %d\", &a, &b);\n    int c = b;\n    char d[100] = \"\";\n    char t[100] = \"\";\n    int n[100];\n    n[0] = a;\n    \n    while (a != c) {\n        if ((c % 2 == 0) && (a <= c)) {\n            c = c / 2;\n            strcat(d, \"1\");\n        } else if ((c - 1) % 10 == 0 && (a <= c)) {\n            c = (c - 1) / 10;\n            strcat(d, \"2\");\n        } else {\n            break;\n        }\n    }\n    \n    if (a == c) {\n        printf(\"YES\\n\");\n        int len = strlen(d);\n        for (int i = 0; i < len; i++) {\n            t[i] = d[len - 1 - i];\n        }\n        t[len] = '\\0';\n        printf(\"%d\\n\", len + 1);\n        for (int i = 1; i <= len; i++) {\n            if (t[i-1] == '1') {\n                a = a * 2;\n                n[i] = a;\n            } else {\n                a = (a * 10) + 1;\n                n[i] = a;\n            }\n        }\n        for (int i = 0; i <= len; i++) {\n            printf(\"%d \", n[i]);\n        }\n    } else {\n        printf(\"NO\");\n    }\n    \n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 3,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <string.h>\n\nint main() {\n    int a, b;\n    scanf(\"%d %d\", &a, &b);\n    int c = b;\n    char d[100] = \"\";\n    char t[100] = \"\";\n    int n[100];\n    n[0] = a;\n    \n    while (a != c) {\n        if ((c % 2 == 0) && (a <= c)) {\n            c = c / 2;\n            strcat(d, \"1\");\n        } else if ((c - 1) % 10 == 0 && (a <= c)) {\n            c = (c - 1) / 10;\n            strcat(d, \"2\");\n        } else {\n            break;\n        }\n    }\n    \n    if (a == c) {\n        printf(\"YES\\n\");\n        int len = strlen(d);\n        for (int i = 0; i < len; i++) {\n            t[i] = d[len - 1 - i];\n        }\n        t[len] = '\\0';\n        printf(\"%d\\n\", len + 1);\n        for (int i = 1; i <= len; i++) {\n            if (t[i-1] == '1') {\n                a = a * 2;\n                n[i] = a;\n            } else {\n                a = (a * 10) + 1;\n                n[i] = a;\n            }\n        }\n        for (int i = 0; i <= len; i++) {\n            printf(\"%d \", n[i]);\n        }\n    } else {\n        printf(\"NO\");\n    }\n    \n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 4,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <string.h>\n\nint main() {\n    int a, b;\n    scanf(\"%d %d\", &a, &b);\n    int c = b;\n    char d[100] = \"\";\n    char t[100] = \"\";\n    \n    int n[100];\n    n[0] = a;\n    int count = 1;\n    \n    while (a != c) {\n        if ((c % 2 == 0) && (a <= c)) {\n            c = c / 2;\n            strcat(d, \"1\");\n        } else if ((c - 1) % 10 == 0 && (a <= c)) {\n            c = (c - 1) / 10;\n            strcat(d, \"2\");\n        } else {\n            break;\n        }\n    }\n    \n    if (a == c) {\n        printf(\"YES\\n\");\n        int len = strlen(d);\n        for (int i = 0; i < len; i++) {\n            t[i] = d[len - 1 - i];\n        }\n        t[len] = '\\0';\n        printf(\"%d\\n\", len + 1);\n        \n        int current = a;\n        for (int i = 0; i < len; i++) {\n            if (t[i] == '1') {\n                current = current * 2;\n                n[count++] = current;\n            } else {\n                current = (current * 10) + 1;\n                n[count++] = current;\n            }\n        }\n        \n        for (int i = 0; i < count; i++) {\n            printf(\"%d \", n[i]);\n        }\n    } else {\n        printf(\"NO\\n\");\n    }\n    \n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                }
+            ],
+            "usage": {
+                "prompt_tokens": 1465,
+                "completion_tokens": 1853,
+                "total_tokens": 3318
+            }
+        }
+    },
+    "source_data": {
+        "code_uid": "a1a0dcc4f5205c620d2432150fc57019",
+        "prob_desc_output_to": "standard output",
+        "prob_desc_notes": null,
+        "lang_cluster": "Python",
+        "prob_desc_time_limit": "1 second",
+        "prob_desc_input_spec": "The first line contains two positive integers a and b (1\u2009\u2264\u2009a\u2009&lt;\u2009b\u2009\u2264\u2009109)\u00a0\u2014 the number which Vasily has and the number he wants to have.",
+        "source_code": "a, b = input().split()\na = int(a)\nb = int(b)\nc = b\nd = ''\nt = ''\n\nn = [a]\nwhile a != c:\n    if (c % 2 == 0) and (a <= c):\n        c = c / 2\n        d = d + '1'\n    elif (c - 1) % 10 == 0 and (a <= c):\n        c = (c - 1) / 10\n        d = d + '2'\n    else:\n        break\nif a == c:\n    print('YES')\n    t = d[::-1]\n    f = len(t)\n    print(len(t) + 1)\n    for i in range (1, f + 1):\n        if t[i-1:i] == '1':\n            a = a * 2\n            n.append(a)\n        else:\n            a = (a * 10) + 1\n            n.append(a)\n    for i in range(0, f + 1):\n        print(n[i], end = ' ')\nelif c != a:\n    print('NO')\n\n\n",
+        "prob_desc_sample_inputs": [
+            "2 162",
+            "4 42",
+            "100 40021"
+        ],
+        "prob_desc_memory_limit": "256 megabytes",
+        "exec_outcome": "PASSED",
+        "prob_desc_output_spec": "If there is no way to get b from a, print \"NO\" (without quotes). Otherwise print three lines. On the first line print \"YES\" (without quotes). The second line should contain single integer k\u00a0\u2014 the length of the transformation sequence. On the third line print the sequence of transformations x1,\u2009x2,\u2009...,\u2009xk, where:   x1 should be equal to a,  xk should be equal to b,  xi should be obtained from xi\u2009-\u20091 using any of two described operations (1\u2009&lt;\u2009i\u2009\u2264\u2009k).  If there are multiple answers, print any of them.",
+        "src_uid": "fc3adb1a9a7f1122b567b4d8afd7b3f3",
+        "prob_desc_input_from": "standard input",
+        "lang": "Python 3",
+        "prob_desc_sample_outputs": [
+            "YES\n5\n2 4 8 81 162",
+            "NO",
+            "YES\n5\n100 200 2001 4002 40021"
+        ],
+        "file_name": "d7021504500d5ca7c2b02df8100a574d159e6e67e20ec8071b75800b1267370a",
+        "prob_desc_description": "Vasily has a number a, which he wants to turn into a number b. For this purpose, he can do two types of operations:  multiply the current number by 2 (that is, replace the number x by 2\u00b7x);  append the digit 1 to the right of current number (that is, replace the number x by 10\u00b7x\u2009+\u20091). You need to help Vasily to transform the number a into the number b using only the operations described above, or find that it is impossible.Note that in this task you are not required to minimize the number of operations. It suffices to find any way to transform a into b.",
+        "prob_desc_created_at": "1476522300",
+        "difficulty": 1000.0,
+        "hidden_unit_tests": "[{\"input\": \"2 162\\r\\n\", \"output\": [\"YES\\r\\n5\\r\\n2 4 8 81 162\"]}, {\"input\": \"4 42\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"100 40021\\r\\n\", \"output\": [\"YES\\r\\n5\\r\\n100 200 2001 4002 40021\"]}, {\"input\": \"1 111111111\\r\\n\", \"output\": [\"YES\\r\\n9\\r\\n1 11 111 1111 11111 111111 1111111 11111111 111111111\"]}, {\"input\": \"1 1000000000\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"999999999 1000000000\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"1 2\\r\\n\", \"output\": [\"YES\\r\\n2\\r\\n1 2\"]}, {\"input\": \"1 536870912\\r\\n\", \"output\": [\"YES\\r\\n30\\r\\n1 2 4 8 16 32 64 128 256 512 1024 2048 4096 8192 16384 32768 65536 131072 262144 524288 1048576 2097152 4194304 8388608 16777216 33554432 67108864 134217728 268435456 536870912\"]}, {\"input\": \"11111 11111111\\r\\n\", \"output\": [\"YES\\r\\n4\\r\\n11111 111111 1111111 11111111\"]}, {\"input\": \"59139 946224\\r\\n\", \"output\": [\"YES\\r\\n5\\r\\n59139 118278 236556 473112 946224\"]}, {\"input\": \"9859 19718\\r\\n\", \"output\": [\"YES\\r\\n2\\r\\n9859 19718\"]}, {\"input\": \"25987 51974222\\r\\n\", \"output\": [\"YES\\r\\n5\\r\\n25987 259871 2598711 25987111 51974222\"]}, {\"input\": \"9411 188222222\\r\\n\", \"output\": [\"YES\\r\\n6\\r\\n9411 94111 941111 9411111 94111111 188222222\"]}, {\"input\": \"25539 510782222\\r\\n\", \"output\": [\"YES\\r\\n6\\r\\n25539 255391 2553911 25539111 255391111 510782222\"]}, {\"input\": \"76259 610072\\r\\n\", \"output\": [\"YES\\r\\n4\\r\\n76259 152518 305036 610072\"]}, {\"input\": \"92387 184774\\r\\n\", \"output\": [\"YES\\r\\n2\\r\\n92387 184774\"]}, {\"input\": \"8515 85151111\\r\\n\", \"output\": [\"YES\\r\\n5\\r\\n8515 85151 851511 8515111 85151111\"]}, {\"input\": \"91939 9193911\\r\\n\", \"output\": [\"YES\\r\\n3\\r\\n91939 919391 9193911\"]}, {\"input\": \"30518 610361\\r\\n\", \"output\": [\"YES\\r\\n3\\r\\n30518 61036 610361\"]}, {\"input\": \"46646 373168844\\r\\n\", \"output\": [\"YES\\r\\n7\\r\\n46646 466461 932922 9329221 93292211 186584422 373168844\"]}, {\"input\": \"30070 300701\\r\\n\", \"output\": [\"YES\\r\\n2\\r\\n30070 300701\"]}, {\"input\": \"13494 1079528\\r\\n\", \"output\": [\"YES\\r\\n5\\r\\n13494 134941 269882 539764 1079528\"]}, {\"input\": \"96918 775344422\\r\\n\", \"output\": [\"YES\\r\\n7\\r\\n96918 193836 1938361 3876722 38767221 387672211 775344422\"]}, {\"input\": \"13046 260921\\r\\n\", \"output\": [\"YES\\r\\n3\\r\\n13046 26092 260921\"]}, {\"input\": \"29174 5834811\\r\\n\", \"output\": [\"YES\\r\\n4\\r\\n29174 58348 583481 5834811\"]}, {\"input\": \"79894 319576421\\r\\n\", \"output\": [\"YES\\r\\n6\\r\\n79894 798941 1597882 15978821 31957642 319576421\"]}, {\"input\": \"96022 1920442\\r\\n\", \"output\": [\"YES\\r\\n3\\r\\n96022 960221 1920442\"]}, {\"input\": \"79446 6355681\\r\\n\", \"output\": [\"YES\\r\\n5\\r\\n79446 158892 317784 635568 6355681\"]}, {\"input\": \"5440 27853056\\r\\n\", \"output\": [\"YES\\r\\n11\\r\\n5440 10880 108801 217602 435204 870408 1740816 3481632 6963264 13926528 27853056\"]}, {\"input\": \"250000000 705032705\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"17 35\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"1 3\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"2 11\\r\\n\", \"output\": [\"NO\"]}]",
+        "source_lang": "Python 3",
+        "target_lang": "C"
+    }
+}

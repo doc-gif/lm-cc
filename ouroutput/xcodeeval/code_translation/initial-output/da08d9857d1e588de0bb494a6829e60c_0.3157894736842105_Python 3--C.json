@@ -1,0 +1,87 @@
+{
+    "oai_response": {
+        "prompt": "Here is code in Python 3 programming lanaguge. Translate the following code from Python 3 to C programming lanaguge. Do not output any extra description or tokens other than the translated code. \n\ndef bintodec(s):\n    num=0\n    mod=1000003\n    p=2\n    k=0\n    for i in range(len(s)-1,-1,-1):\n        num+= int(s[i])*(p**k)\n        k+=1\n        num=num%mod\n    return num%mod\n    \n\ndic={'>':'1000' , '<' : '1001' , '+' : '1010' , '-' :'1011' , '.':'1100' ,',':'1101','[':'1110',']':'1111'}\ns= input()\nans=''\nmod=1000003\nfor i in range(len(s)):\n    ans+=dic[s[i]]\nprint(bintodec(ans))||END-of-SRC||",
+        "response": {
+            "id": "multi-call-as-j7u9r9gihr",
+            "model": "deepseek-v3",
+            "created": 1767066361,
+            "choices": [
+                {
+                    "index": 0,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <string.h>\n#include <math.h>\n\nint bintodec(char* s) {\n    int num = 0;\n    int mod = 1000003;\n    int p = 2;\n    int k = 0;\n    for (int i = strlen(s) - 1; i >= 0; i--) {\n        num += (s[i] - '0') * (int)pow(p, k);\n        k++;\n        num = num % mod;\n    }\n    return num % mod;\n}\n\nint main() {\n    char* dic[256] = {0};\n    dic['>'] = \"1000\";\n    dic['<'] = \"1001\";\n    dic['+'] = \"1010\";\n    dic['-'] = \"1011\";\n    dic['.'] = \"1100\";\n    dic[','] = \"1101\";\n    dic['['] = \"1110\";\n    dic[']'] = \"1111\";\n    \n    char s[1000];\n    scanf(\"%s\", s);\n    char ans[4000] = \"\";\n    int mod = 1000003;\n    for (int i = 0; i < strlen(s); i++) {\n        strcat(ans, dic[(int)s[i]]);\n    }\n    printf(\"%d\\n\", bintodec(ans));\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 1,
+                    "message": {
+                        "role": "assistant",
+                        "content": "Here's the translated code in C:\n\n```c\n#include <stdio.h>\n#include <string.h>\n\nint bintodec(char* s) {\n    int num = 0;\n    int mod = 1000003;\n    int p = 2;\n    int k = 0;\n    for (int i = strlen(s) - 1; i >= 0; i--) {\n        num += (s[i] - '0') * (1 << k);\n        k++;\n        num %= mod;\n    }\n    return num % mod;\n}\n\nint main() {\n    char dic[256][5] = {\n        ['>'] = \"1000\",\n        ['<'] = \"1001\",\n        ['+'] = \"1010\",\n        ['-'] = \"1011\",\n        ['.'] = \"1100\",\n        [','] = \"1101\",\n        ['['] = \"1110\",\n        [']'] = \"1111\"\n    };\n    \n    char s[1000];\n    scanf(\"%s\", s);\n    char ans[4000] = \"\";\n    \n    for (int i = 0; i < strlen(s); i++) {\n        strcat(ans, dic[(int)s[i]]);\n    }\n    \n    printf(\"%d\\n\", bintodec(ans));\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 2,
+                    "message": {
+                        "role": "assistant",
+                        "content": "Here's the translated code in C:\n\n```c\n#include <stdio.h>\n#include <string.h>\n\nint bintodec(char* s) {\n    int num = 0;\n    int mod = 1000003;\n    int p = 2;\n    int k = 0;\n    for (int i = strlen(s) - 1; i >= 0; i--) {\n        num += (s[i] - '0') * (1 << k);\n        k++;\n        num %= mod;\n    }\n    return num % mod;\n}\n\nint main() {\n    char dic[256][5] = {\n        ['>'] = \"1000\",\n        ['<'] = \"1001\",\n        ['+'] = \"1010\",\n        ['-'] = \"1011\",\n        ['.'] = \"1100\",\n        [','] = \"1101\",\n        ['['] = \"1110\",\n        [']'] = \"1111\"\n    };\n    \n    char s[1000];\n    scanf(\"%s\", s);\n    char ans[4000] = \"\";\n    \n    for (int i = 0; i < strlen(s); i++) {\n        strcat(ans, dic[(int)s[i]]);\n    }\n    \n    printf(\"%d\\n\", bintodec(ans));\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 3,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <string.h>\n#include <math.h>\n\nint bintodec(char* s) {\n    int num = 0;\n    int mod = 1000003;\n    int p = 2;\n    int k = 0;\n    for (int i = strlen(s) - 1; i >= 0; i--) {\n        num += (s[i] - '0') * (int)pow(p, k);\n        k++;\n        num = num % mod;\n    }\n    return num % mod;\n}\n\nint main() {\n    char* dic[256] = {0};\n    dic['>'] = \"1000\";\n    dic['<'] = \"1001\";\n    dic['+'] = \"1010\";\n    dic['-'] = \"1011\";\n    dic['.'] = \"1100\";\n    dic[','] = \"1101\";\n    dic['['] = \"1110\";\n    dic[']'] = \"1111\";\n    \n    char s[1000];\n    scanf(\"%s\", s);\n    char ans[4000] = \"\";\n    int mod = 1000003;\n    for (int i = 0; i < strlen(s); i++) {\n        strcat(ans, dic[(int)s[i]]);\n    }\n    printf(\"%d\\n\", bintodec(ans));\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 4,
+                    "message": {
+                        "role": "assistant",
+                        "content": "Here's the translated code in C:\n\n```c\n#include <stdio.h>\n#include <string.h>\n\nint bintodec(char *s) {\n    int num = 0;\n    int mod = 1000003;\n    int p = 2;\n    int k = 0;\n    for (int i = strlen(s) - 1; i >= 0; i--) {\n        num += (s[i] - '0') * (1 << k);\n        k++;\n        num %= mod;\n    }\n    return num % mod;\n}\n\nint main() {\n    char dic[256][5] = {\n        ['>'] = \"1000\",\n        ['<'] = \"1001\",\n        ['+'] = \"1010\",\n        ['-'] = \"1011\",\n        ['.'] = \"1100\",\n        [','] = \"1101\",\n        ['['] = \"1110\",\n        [']'] = \"1111\"\n    };\n    \n    char s[1000];\n    scanf(\"%s\", s);\n    \n    char ans[4000] = \"\";\n    for (int i = 0; i < strlen(s); i++) {\n        strcat(ans, dic[(int)s[i]]);\n    }\n    \n    printf(\"%d\\n\", bintodec(ans));\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                }
+            ],
+            "usage": {
+                "prompt_tokens": 1050,
+                "completion_tokens": 1440,
+                "total_tokens": 2490
+            }
+        }
+    },
+    "source_data": {
+        "code_uid": "da08d9857d1e588de0bb494a6829e60c",
+        "prob_desc_output_to": "standard output",
+        "prob_desc_notes": "NoteTo write a number n in unary numeral system, one simply has to write 1 n times. For example, 5 written in unary system will be 11111.In the first example replacing Brainfuck commands with binary code will give us 1101 1100. After we concatenate the codes, we'll get 11011100 in binary system, or 220 in decimal. That's exactly the number of tokens in the equivalent Unary program.",
+        "lang_cluster": "Python",
+        "prob_desc_time_limit": "2 seconds",
+        "prob_desc_input_spec": "The input will consist of a single line p which gives a Brainfuck program. String p will contain between 1 and 100 characters, inclusive. Each character of p will be \"+\", \"-\", \"[\", \"]\", \"&lt;\", \"&gt;\", \".\" or \",\".",
+        "source_code": "def bintodec(s):\n    num=0\n    mod=1000003\n    p=2\n    k=0\n    for i in range(len(s)-1,-1,-1):\n        num+= int(s[i])*(p**k)\n        k+=1\n        num=num%mod\n    return num%mod\n    \n\ndic={'>':'1000' , '<' : '1001' , '+' : '1010' , '-' :'1011' , '.':'1100' ,',':'1101','[':'1110',']':'1111'}\ns= input()\nans=''\nmod=1000003\nfor i in range(len(s)):\n    ans+=dic[s[i]]\nprint(bintodec(ans))",
+        "prob_desc_sample_inputs": [
+            ",.",
+            "++++[&gt;,.&lt;-]"
+        ],
+        "prob_desc_memory_limit": "256 megabytes",
+        "exec_outcome": "PASSED",
+        "prob_desc_output_spec": "Output the size of the equivalent Unary program modulo 1000003 (106\u2009+\u20093).",
+        "src_uid": "04fc8dfb856056f35d296402ad1b2da1",
+        "prob_desc_input_from": "standard input",
+        "lang": "Python 3",
+        "prob_desc_sample_outputs": [
+            "220",
+            "61425"
+        ],
+        "file_name": "d7021504500d5ca7c2b02df8100a574d159e6e67e20ec8071b75800b1267370a",
+        "prob_desc_description": "Unary is a minimalistic Brainfuck dialect in which programs are written using only one token. Brainfuck programs use 8 commands: \"+\", \"-\", \"[\", \"]\", \"&lt;\", \"&gt;\", \".\" and \",\" (their meaning is not important for the purposes of this problem). Unary programs are created from Brainfuck programs using the following algorithm. First, replace each command with a corresponding binary code, using the following conversion table:   \"&gt;\" \u2009\u2192\u2009 1000,  \"&lt;\" \u2009\u2192\u2009 1001,  \"+\" \u2009\u2192\u2009 1010,  \"-\" \u2009\u2192\u2009 1011,  \".\" \u2009\u2192\u2009 1100,  \",\" \u2009\u2192\u2009 1101,  \"[\" \u2009\u2192\u2009 1110,  \"]\" \u2009\u2192\u2009 1111. Next, concatenate the resulting binary codes into one binary number in the same order as in the program. Finally, write this number using unary numeral system \u2014 this is the Unary program equivalent to the original Brainfuck one.You are given a Brainfuck program. Your task is to calculate the size of the equivalent Unary program, and print it modulo 1000003 (106\u2009+\u20093).",
+        "prob_desc_created_at": "1322924400",
+        "difficulty": 1200.0,
+        "hidden_unit_tests": "[{\"input\": \",.\\r\\n\", \"output\": [\"220\"]}, {\"input\": \"++++[>,.<-]\\r\\n\", \"output\": [\"61425\"]}, {\"input\": \"[-],<],<<,<[,>,+>[[<>.,[>-[-[<><>><<<<]>,.-].>-[[>+,>,[,-,.-,-[[]>..<>,<[+,-<]-++.<+.]<,[[.<<-><<<],\\r\\n\", \"output\": [\"43789\"]}, {\"input\": \"+\\r\\n\", \"output\": [\"10\"]}, {\"input\": \"-\\r\\n\", \"output\": [\"11\"]}, {\"input\": \"<\\r\\n\", \"output\": [\"9\"]}, {\"input\": \">\\r\\n\", \"output\": [\"8\"]}, {\"input\": \".\\r\\n\", \"output\": [\"12\"]}, {\"input\": \",\\r\\n\", \"output\": [\"13\"]}, {\"input\": \"[\\r\\n\", \"output\": [\"14\"]}, {\"input\": \"]\\r\\n\", \"output\": [\"15\"]}, {\"input\": \",]+>.],,+->+>-[]][><,-]><]++<.,-[.>.<+.[.<,[-,,[<]+>]->>]>]-+-+<][].,.]+][[<,-.+][+<<-+.],,,<,.]-].-\\r\\n\", \"output\": [\"859903\"]}, {\"input\": \"][-+>,>[,<[<+-,[+[-.<+,<[.,<+<,>+],.]><+<,+<..[[[>,[<>+-<<[>,[>-->[>+[<+<[-<]]]<>.+-,.+++-+++-+>-.]+\\r\\n\", \"output\": [\"235230\"]}, {\"input\": \"+]+<-]-<,>[,]<[][+<[+]>[[,\\r\\n\", \"output\": [\"221907\"]}, {\"input\": \".>]+,>->,.>[+>+<-.-+<<>-,..+-<.,>]>.<<,+-[].,],<,..-<[-\\r\\n\", \"output\": [\"223676\"]}, {\"input\": \">.><]..>,,<<-[.,]]+,+,>[<>>+]+++--,>.[+,,+,+[><+,+[<,-]<-,..[,,.[[><]]<[<.-++][.[]][<\\r\\n\", \"output\": [\"916864\"]}, {\"input\": \"]+<+[,.[,]-,.][]..[.<[<-]]]+.<[]]>>]-+]-+-.>-.].,[+[]><-.[[]++<\\r\\n\", \"output\": [\"86015\"]}, {\"input\": \"-[.<>].[,>,]>++<+].>,<<],,,]++<[<+,,,,[.]<[-[,,]-..+<++].----]++><,+.,>+,+[,-[<.]-+++][-]<+.<\\r\\n\", \"output\": [\"170107\"]}, {\"input\": \"<.,+.><[,.+<[,.,<-,[>,\\r\\n\", \"output\": [\"982288\"]}, {\"input\": \"[,+.-.<],,]-]-[[,[]+,[.]][>],,]<[>,<+<<>>].>]>][->+>\\r\\n\", \"output\": [\"411338\"]}, {\"input\": \"+]]],,>],][],<+.[->,>..<-+]][>><.+>[][.]<,>-..-,..-]>-]+>,><+<<.+>.,++]<]],],<+-<.\\r\\n\", \"output\": [\"113966\"]}, {\"input\": \".<>.+]>],>><\\r\\n\", \"output\": [\"228058\"]}, {\"input\": \"-[.<++]-,-]-,[<<+[,-+]+[[...,[-...,<>+[]>][+.],[-[>>-->---+-+]>>><-++]]-++>][,],<[[,+],++<---<[\\r\\n\", \"output\": [\"709697\"]}, {\"input\": \"]<><]>,>]-]],[,>+[->,,[<-+,.][[++[,+.<[,[-][[>.]<.].+-,,]]+[->]]-][>[].,>.,],,>,]-]]<+[,>>-]+]\\r\\n\", \"output\": [\"283602\"]}, {\"input\": \"<-[>[,.+>-]<-[[]+[.]--<-[[]->[.<<,,.,+[.][].,<<]],,+[.>+.>+-<.-+[-,-<][+,[>[.,.+,[+[]+<-.>-<>\\r\\n\", \"output\": [\"204479\"]}, {\"input\": \"+,+><[>..,]-.[.++[>-<<-,-.>,.>]+,<,]]<[>,-+,.-[+,[.[<.-[].+>[,>-.>>]-[-][+,>>-,+<-,<.+-.+[.,\\r\\n\", \"output\": [\"537427\"]}, {\"input\": \">]-[.-+[,,]].]+,][[>>[+][,<+,>.<[],.>+[]-[,[[+],..>..<[>.,,,+]]<+++<][[>..>>+-]+][--],]<[]\\r\\n\", \"output\": [\"952413\"]}, {\"input\": \",><[-]-,],+<<]>.][]][+]>.[-]]>++-.+[.<[,.-,<,[,,>,],,>-<+],>->-[<<.,>>,<][,<-->+-..+.,>>.\\r\\n\", \"output\": [\"11994\"]}, {\"input\": \"[.[[+.<<>,+,>],<][+-],>.]<+]>><<][+-,][.>[-,.>--][-[]>]-<>,+<<>+,]][.>>.<,>.<..]>]<][-.[\\r\\n\", \"output\": [\"386152\"]}, {\"input\": \"-,]]]+[]-,+]>][>[[->,..-.,[[.<,,.,+[].[[[-.][.<.,.<.>[.,+.,<[-]-[--<,>+-,.,.[.,]+.>>--,\\r\\n\", \"output\": [\"533116\"]}, {\"input\": \"]+,]>>+-+++<[].][[.]->,+]]>>,<>>+<+,>]\\r\\n\", \"output\": [\"694915\"]}, {\"input\": \".[.+<,->[++,]]++[[<-.]][.<.<]<-,>]]>.\\r\\n\", \"output\": [\"626679\"]}, {\"input\": \"+<.[[<,]<-<[<[-]<<.>]]]<--.<,-++<<<[,<.>+<+[>-,.->,<[>-><<>-<[.,+<][+],>,],],<[[,+.],<,.-,-\\r\\n\", \"output\": [\"7032\"]}, {\"input\": \".,,>-,<-+,-<[,<>\\r\\n\", \"output\": [\"900168\"]}, {\"input\": \">[[<][[><]+.+.[..],.<,<[],]<[>]-.-+<+->]],\\r\\n\", \"output\": [\"419600\"]}, {\"input\": \"].<.<.,++[>--[++[><\\r\\n\", \"output\": [\"983198\"]}, {\"input\": \",]--++..<>.+.,-[-.],,<++.+<<-+[<,,.,++],>[+>\\r\\n\", \"output\": [\"647820\"]}, {\"input\": \".<],>>[[+.+]><<<>,,+][.,-+-+<>-[,+><].+-+<[],+-+]<].>]<+-.][,,+>],[,[+\\r\\n\", \"output\": [\"898085\"]}, {\"input\": \">,>+,-,+<-[[]][-,[<][]>.+]+<].>]+][]][,...<,-,]\\r\\n\", \"output\": [\"586457\"]}, {\"input\": \"+[-][]..+,<<+,++<<][<,]<[][+,+,++[+-],->],-.--<-[.]+]-+]<][,.>.+[<+]<+<>-\\r\\n\", \"output\": [\"240679\"]}, {\"input\": \"-.+[.<[[<],.-<-[+-->.-->>[<<.[>,]>->[<.[-++>..,.[.\\r\\n\", \"output\": [\"185396\"]}, {\"input\": \"<+[[],+,+[]-<]<<.+><,.<[.[-+>.+-]><+[]<]>[>]<<[<>.+[-><>]->>>,>.[[.>-+>]+],\\r\\n\", \"output\": [\"915891\"]}, {\"input\": \"[-.].+<<]---+[+-+-[,[[[,]-<[-[[><>]\\r\\n\", \"output\": [\"765140\"]}, {\"input\": \"[[>>[>[],+>-..]<]>-<-]<>].-[,,,.[+.-].-\\r\\n\", \"output\": [\"416600\"]}, {\"input\": \"[,[.+-,,.>+-[+[][,[][,.-+>+]]<.,,.]<+><.[<,\\r\\n\", \"output\": [\"96775\"]}, {\"input\": \"[>+,.+<<>..-+[>,><.-,--[+[>+>+[].[-[,][..<<[<,-<+-,<][][,>]++]+-<,,]++>.].[-[-[[,<[>><->]->+[+-\\r\\n\", \"output\": [\"89776\"]}, {\"input\": \">+,][>]]]+[-..<<<+]>>.+-++.+<.,>>-[+-,+.+>]<.>-[<>]<<+[>].[++[].[++++,<[+-<<[+<[]-+][>[-+.,,],<<,>+\\r\\n\", \"output\": [\"701493\"]}, {\"input\": \"><\\r\\n\", \"output\": [\"137\"]}, {\"input\": \">]<-.+>>..<-,[-+.]+<<>[-,.],,,[,-+>>>>>.-]>,+<.+[,<>><\\r\\n\", \"output\": [\"481849\"]}, {\"input\": \">-[+>[++[,]-<<,.-->]+[<[-<>-]<,]<.+][]].]++]]+<,...>-[><,-\\r\\n\", \"output\": [\"739433\"]}, {\"input\": \">[][+...+[.-[,,>,[,-.].--[..>+<>[]<,],,<<,<>[<<.+>-[]+><]+,[+[\\r\\n\", \"output\": [\"356953\"]}, {\"input\": \"<,+<-+[[-<[-,]\\r\\n\", \"output\": [\"570514\"]}, {\"input\": \"<+.,,<[+-.+[<>[>.]+<[[<]<,<].-<-\\r\\n\", \"output\": [\"975622\"]}, {\"input\": \",-,[,,,.-]+]]>-<[+[.]]][[>-<[.[<->+.>[++[.><[+<].],]>,.,<+.--[\\r\\n\", \"output\": [\"243567\"]}, {\"input\": \"]<[--]>[-.,,.[[.,-<.]+->+++,+<+]]<>>+].]>[>].[+,><->>++,[,><,,.<-]-+-+<].][-[<].<-->-+>]<]>,\\r\\n\", \"output\": [\"589486\"]}, {\"input\": \"<].]->+,.],-][--<.--++\\r\\n\", \"output\": [\"425408\"]}, {\"input\": \"-,,....<.<-<.[[,]<+-,,+.>].<>[<>,.+]>,,>.>[<>.+<,><,>\\r\\n\", \"output\": [\"474184\"]}, {\"input\": \"].[+.,]].+->][.+-[[,--.-+.,,+]>+[-[,+.><-+[[--<[.->]<>+-]<.,]]>.<>-+,<.+[]>>[<+.][[\\r\\n\", \"output\": [\"9085\"]}, {\"input\": \">>.<<[-,.<.].\\r\\n\", \"output\": [\"518117\"]}, {\"input\": \"-],,<<><.,.+][.[++-+..,,>-><>+,[,,,.[>.-+]]\\r\\n\", \"output\": [\"670018\"]}, {\"input\": \"],[>>-,].><-.[]>.-+]<<<+]>-,+,.,[+[<+[],]-+>+>+--+]+<,]-+],><>+,>.-,+]-,,\\r\\n\", \"output\": [\"965603\"]}, {\"input\": \">..-\\r\\n\", \"output\": [\"36043\"]}, {\"input\": \"-[..[]+>>.>,]>.+]>.]>[.>+,>+\\r\\n\", \"output\": [\"860720\"]}, {\"input\": \"]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]\\r\\n\", \"output\": [\"266644\"]}, {\"input\": \"[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]\\r\\n\", \"output\": [\"47113\"]}, {\"input\": \"[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]\\r\\n\", \"output\": [\"889131\"]}, {\"input\": \">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>\\r\\n\", \"output\": [\"208877\"]}]",
+        "source_lang": "Python 3",
+        "target_lang": "C"
+    }
+}

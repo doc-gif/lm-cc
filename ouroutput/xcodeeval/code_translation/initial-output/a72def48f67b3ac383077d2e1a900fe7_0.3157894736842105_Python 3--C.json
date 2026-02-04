@@ -1,0 +1,87 @@
+{
+    "oai_response": {
+        "prompt": "Here is code in Python 3 programming lanaguge. Translate the following code from Python 3 to C programming lanaguge. Do not output any extra description or tokens other than the translated code. \n\nx=int(input())\ndi=[0,3,1,2]\ndi2=['D','A','C','B']\nre=di[x%4]\nimax=0\nfor i in range(1,3):\n    if re<di[(x+i)%4]:\n        imax=i\n        re=di[(x+i)%4]\nprint(imax,di2[di.index(re)])\n||END-of-SRC||",
+        "response": {
+            "id": "multi-call-as-8yx03ye3ke",
+            "model": "deepseek-v3",
+            "created": 1767067057,
+            "choices": [
+                {
+                    "index": 0,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n\nint main() {\n    int x;\n    scanf(\"%d\", &x);\n    int di[] = {0, 3, 1, 2};\n    char di2[] = {'D', 'A', 'C', 'B'};\n    int re = di[x % 4];\n    int imax = 0;\n    for (int i = 1; i < 3; i++) {\n        if (re < di[(x + i) % 4]) {\n            imax = i;\n            re = di[(x + i) % 4];\n        }\n    }\n    int index = 0;\n    for (int i = 0; i < 4; i++) {\n        if (di[i] == re) {\n            index = i;\n            break;\n        }\n    }\n    printf(\"%d %c\", imax, di2[index]);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 1,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n\nint main() {\n    int x;\n    scanf(\"%d\", &x);\n    int di[] = {0, 3, 1, 2};\n    char di2[] = {'D', 'A', 'C', 'B'};\n    int re = di[x % 4];\n    int imax = 0;\n    for (int i = 1; i < 3; i++) {\n        if (re < di[(x + i) % 4]) {\n            imax = i;\n            re = di[(x + i) % 4];\n        }\n    }\n    int index = 0;\n    for (int i = 0; i < 4; i++) {\n        if (di[i] == re) {\n            index = i;\n            break;\n        }\n    }\n    printf(\"%d %c\\n\", imax, di2[index]);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 2,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n\nint main() {\n    int x;\n    scanf(\"%d\", &x);\n    int di[] = {0, 3, 1, 2};\n    char di2[] = {'D', 'A', 'C', 'B'};\n    int re = di[x % 4];\n    int imax = 0;\n    for (int i = 1; i < 3; i++) {\n        if (re < di[(x + i) % 4]) {\n            imax = i;\n            re = di[(x + i) % 4];\n        }\n    }\n    int index = 0;\n    for (int i = 0; i < 4; i++) {\n        if (di[i] == re) {\n            index = i;\n            break;\n        }\n    }\n    printf(\"%d %c\\n\", imax, di2[index]);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 3,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n\nint main() {\n    int x;\n    scanf(\"%d\", &x);\n    int di[] = {0, 3, 1, 2};\n    char di2[] = {'D', 'A', 'C', 'B'};\n    int re = di[x % 4];\n    int imax = 0;\n    for (int i = 1; i < 3; i++) {\n        if (re < di[(x + i) % 4]) {\n            imax = i;\n            re = di[(x + i) % 4];\n        }\n    }\n    int index = 0;\n    for (int i = 0; i < 4; i++) {\n        if (di[i] == re) {\n            index = i;\n            break;\n        }\n    }\n    printf(\"%d %c\", imax, di2[index]);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 4,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n\nint main() {\n    int x;\n    scanf(\"%d\", &x);\n    int di[] = {0, 3, 1, 2};\n    char di2[] = {'D', 'A', 'C', 'B'};\n    int re = di[x % 4];\n    int imax = 0;\n    for (int i = 1; i < 3; i++) {\n        if (re < di[(x + i) % 4]) {\n            imax = i;\n            re = di[(x + i) % 4];\n        }\n    }\n    int index = 0;\n    for (int i = 0; i < 4; i++) {\n        if (di[i] == re) {\n            index = i;\n            break;\n        }\n    }\n    printf(\"%d %c\", imax, di2[index]);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                }
+            ],
+            "usage": {
+                "prompt_tokens": 675,
+                "completion_tokens": 1011,
+                "total_tokens": 1686
+            }
+        }
+    },
+    "source_data": {
+        "code_uid": "a72def48f67b3ac383077d2e1a900fe7",
+        "prob_desc_output_to": "standard output",
+        "prob_desc_notes": "NoteFor the first example, the category of Tokitsukaze's HP is already $$$A$$$, so you don't need to enhance her ability.For the second example:  If you don't increase her HP, its value is still $$$98$$$, which equals to $$$(4 \\times 24 + 2)$$$, and its category is $$$C$$$.  If you increase her HP by $$$1$$$, its value becomes $$$99$$$, which equals to $$$(4 \\times 24 + 3)$$$, and its category becomes $$$B$$$.  If you increase her HP by $$$2$$$, its value becomes $$$100$$$, which equals to $$$(4 \\times 25)$$$, and its category becomes $$$D$$$. Therefore, the best way is to increase her HP by $$$1$$$ so that the category of her HP becomes $$$B$$$.",
+        "lang_cluster": "Python",
+        "prob_desc_time_limit": "1 second",
+        "prob_desc_input_spec": "The only line contains a single integer $$$x$$$ ($$$30 \\leq x \\leq 100$$$)\u00a0\u2014 the value Tokitsukaze's HP currently.",
+        "source_code": "x=int(input())\ndi=[0,3,1,2]\ndi2=['D','A','C','B']\nre=di[x%4]\nimax=0\nfor i in range(1,3):\n    if re<di[(x+i)%4]:\n        imax=i\n        re=di[(x+i)%4]\nprint(imax,di2[di.index(re)])\n",
+        "prob_desc_sample_inputs": [
+            "33",
+            "98"
+        ],
+        "prob_desc_memory_limit": "256 megabytes",
+        "exec_outcome": "PASSED",
+        "prob_desc_output_spec": "Print an integer $$$a$$$ ($$$0 \\leq a \\leq 2$$$) and an uppercase letter $$$b$$$ ($$$b \\in \\lbrace A, B, C, D \\rbrace$$$), representing that the best way is to increase her HP by $$$a$$$, and then the category becomes $$$b$$$. Note that the output characters are case-sensitive.",
+        "src_uid": "488e809bd0c55531b0b47f577996627e",
+        "prob_desc_input_from": "standard input",
+        "lang": "Python 3",
+        "prob_desc_sample_outputs": [
+            "0 A",
+            "1 B"
+        ],
+        "file_name": "d7021504500d5ca7c2b02df8100a574d159e6e67e20ec8071b75800b1267370a",
+        "prob_desc_description": "Tokitsukaze is one of the characters in the game \"Kantai Collection\". In this game, every character has a common attribute\u00a0\u2014 health points, shortened to HP.In general, different values of HP are grouped into $$$4$$$ categories:  Category $$$A$$$ if HP is in the form of $$$(4 n + 1)$$$, that is, when divided by $$$4$$$, the remainder is $$$1$$$;  Category $$$B$$$ if HP is in the form of $$$(4 n + 3)$$$, that is, when divided by $$$4$$$, the remainder is $$$3$$$;  Category $$$C$$$ if HP is in the form of $$$(4 n + 2)$$$, that is, when divided by $$$4$$$, the remainder is $$$2$$$;  Category $$$D$$$ if HP is in the form of $$$4 n$$$, that is, when divided by $$$4$$$, the remainder is $$$0$$$. The above-mentioned $$$n$$$ can be any integer.These $$$4$$$ categories ordered from highest to lowest as $$$A &gt; B &gt; C &gt; D$$$, which means category $$$A$$$ is the highest and category $$$D$$$ is the lowest.While playing the game, players can increase the HP of the character. Now, Tokitsukaze wants you to increase her HP by at most $$$2$$$ (that is, either by $$$0$$$, $$$1$$$ or $$$2$$$). How much should she increase her HP so that it has the highest possible category?",
+        "prob_desc_created_at": "1562942100",
+        "difficulty": 800.0,
+        "hidden_unit_tests": "[{\"input\": \"33\\r\\n\", \"output\": [\"0  A\", \"0 A\"]}, {\"input\": \"98\\r\\n\", \"output\": [\"1 B\", \"1  B\"]}, {\"input\": \"100\\r\\n\", \"output\": [\"1 A\", \"1  A\"]}, {\"input\": \"30\\r\\n\", \"output\": [\"1 B\", \"1  B\"]}, {\"input\": \"43\\r\\n\", \"output\": [\"2 A\", \"2   A\"]}, {\"input\": \"85\\r\\n\", \"output\": [\"0  A\", \"0 A\"]}, {\"input\": \"91\\r\\n\", \"output\": [\"2 A\", \"2   A\"]}, {\"input\": \"50\\r\\n\", \"output\": [\"1 B\", \"1  B\"]}, {\"input\": \"67\\r\\n\", \"output\": [\"2 A\", \"2   A\"]}, {\"input\": \"95\\r\\n\", \"output\": [\"2 A\", \"2   A\"]}, {\"input\": \"32\\r\\n\", \"output\": [\"1 A\", \"1  A\"]}, {\"input\": \"60\\r\\n\", \"output\": [\"1 A\", \"1  A\"]}, {\"input\": \"88\\r\\n\", \"output\": [\"1 A\", \"1  A\"]}, {\"input\": \"36\\r\\n\", \"output\": [\"1 A\", \"1  A\"]}, {\"input\": \"83\\r\\n\", \"output\": [\"2 A\", \"2   A\"]}, {\"input\": \"42\\r\\n\", \"output\": [\"1 B\", \"1  B\"]}, {\"input\": \"59\\r\\n\", \"output\": [\"2 A\", \"2   A\"]}, {\"input\": \"76\\r\\n\", \"output\": [\"1 A\", \"1  A\"]}, {\"input\": \"93\\r\\n\", \"output\": [\"0  A\", \"0 A\"]}, {\"input\": \"52\\r\\n\", \"output\": [\"1 A\", \"1  A\"]}, {\"input\": \"99\\r\\n\", \"output\": [\"2 A\", \"2   A\"]}]",
+        "source_lang": "Python 3",
+        "target_lang": "C"
+    }
+}

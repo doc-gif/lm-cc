@@ -1,0 +1,89 @@
+{
+    "oai_response": {
+        "prompt": "Here is code in Python 3 programming lanaguge. Translate the following code from Python 3 to C programming lanaguge. Do not output any extra description or tokens other than the translated code. \n\ndef getMax(num):\n    arr = list(num)\n    prod = 1\n    for a in arr:\n        prod = prod*int(a)\n    return prod\n\nn = input()\nnum = list(n)\n\ni = len(n)-1\nmaxP = getMax(n)\n\nif len(n) > 1:\n    while i>0:\n        num[i] = '9'\n        while int(num[i-1]) == 0:\n            num[i-1] = '9'\n            i = i - 1\n        if int(num[i-1]) > 1:\n            num[i-1] = str(int(num[i-1]) - 1)\n\n        #print(num)\n        maxP = max(getMax(''.join(num)),maxP)\n        i = i-1\n    print(maxP)\nelse:\n    print(n)\n\"\"\"\n\n\n\n\nminNum = num[:]\nminNum[0]  = int(minNum[0]) - 1\nminNum[0] = str(minNum[0])\nfor i in range(1,len(minNum)):\n    minNum[i] = '9'\n\nminN = ''.join(minNum)\nminN = int(minN)\nn = int(n)\n\nmaxP = 0\nfor a in range(minN,n+1):\n    maxP = max(getMax(str(a)),maxP)\nprint(maxP)\n\n\"\"\"||END-of-SRC||",
+        "response": {
+            "id": "multi-call-as-bc1kz4hny3",
+            "model": "deepseek-v3",
+            "created": 1767067381,
+            "choices": [
+                {
+                    "index": 0,
+                    "message": {
+                        "role": "assistant",
+                        "content": "Here's the translated code in C:\n\n```c\n#include <stdio.h>\n#include <string.h>\n#include <stdlib.h>\n\nint getMax(char* num) {\n    int prod = 1;\n    for (int i = 0; num[i] != '\\0'; i++) {\n        prod *= (num[i] - '0');\n    }\n    return prod;\n}\n\nint main() {\n    char n[20];\n    scanf(\"%s\", n);\n    char num[20];\n    strcpy(num, n);\n    \n    int i = strlen(n) - 1;\n    int maxP = getMax(n);\n    \n    if (strlen(n) > 1) {\n        while (i > 0) {\n            num[i] = '9';\n            while (num[i-1] == '0') {\n                num[i-1] = '9';\n                i = i - 1;\n            }\n            if (num[i-1] > '1') {\n                num[i-1] = num[i-1] - 1;\n            }\n            \n            int current = getMax(num);\n            if (current > maxP) {\n                maxP = current;\n            }\n            i = i - 1;\n        }\n        printf(\"%d\\n\", maxP);\n    } else {\n        printf(\"%s\\n\", n);\n    }\n    \n    char minNum[20];\n    strcpy(minNum, num);\n    minNum[0] = minNum[0] - 1;\n    for (int i = 1; minNum[i] != '\\0'; i++) {\n        minNum[i] = '9';\n    }\n    \n    int minN = atoi(minNum);\n    int N = atoi(n);\n    \n    maxP = 0;\n    for (int a = minN; a <= N; a++) {\n        char temp[20];\n        sprintf(temp, \"%d\", a);\n        int current = getMax(temp);\n        if (current > maxP) {\n            maxP = current;\n        }\n    }\n    printf(\"%d\\n\", maxP);\n    \n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 1,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <string.h>\n#include <stdlib.h>\n\nint getMax(char* num) {\n    int prod = 1;\n    for (int i = 0; num[i] != '\\0'; i++) {\n        prod *= (num[i] - '0');\n    }\n    return prod;\n}\n\nint main() {\n    char n[20];\n    scanf(\"%s\", n);\n    char num[20];\n    strcpy(num, n);\n\n    int len = strlen(n);\n    int i = len - 1;\n    int maxP = getMax(n);\n\n    if (len > 1) {\n        while (i > 0) {\n            num[i] = '9';\n            while (num[i-1] == '0') {\n                num[i-1] = '9';\n                i--;\n            }\n            if (num[i-1] > '1') {\n                num[i-1]--;\n            }\n            maxP = (getMax(num) > maxP) ? getMax(num) : maxP;\n            i--;\n        }\n        printf(\"%d\\n\", maxP);\n    } else {\n        printf(\"%s\\n\", n);\n    }\n\n    char minNum[20];\n    strcpy(minNum, n);\n    minNum[0]--;\n    for (int i = 1; i < strlen(minNum); i++) {\n        minNum[i] = '9';\n    }\n\n    int minN = atoi(minNum);\n    int N = atoi(n);\n    maxP = 0;\n    for (int a = minN; a <= N; a++) {\n        char temp[20];\n        sprintf(temp, \"%d\", a);\n        int current = getMax(temp);\n        if (current > maxP) {\n            maxP = current;\n        }\n    }\n    printf(\"%d\\n\", maxP);\n\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 2,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <string.h>\n#include <stdlib.h>\n\nint getMax(char* num) {\n    int prod = 1;\n    for (int i = 0; num[i] != '\\0'; i++) {\n        prod *= (num[i] - '0');\n    }\n    return prod;\n}\n\nint main() {\n    char n[100];\n    scanf(\"%s\", n);\n    char num[100];\n    strcpy(num, n);\n\n    int i = strlen(n) - 1;\n    int maxP = getMax(n);\n\n    if (strlen(n) > 1) {\n        while (i > 0) {\n            num[i] = '9';\n            while (num[i-1] == '0') {\n                num[i-1] = '9';\n                i = i - 1;\n            }\n            if (num[i-1] > '1') {\n                num[i-1] = num[i-1] - 1;\n            }\n\n            maxP = (getMax(num) > maxP) ? getMax(num) : maxP;\n            i = i - 1;\n        }\n        printf(\"%d\\n\", maxP);\n    } else {\n        printf(\"%s\\n\", n);\n    }\n\n    char minNum[100];\n    strcpy(minNum, num);\n    minNum[0] = minNum[0] - 1;\n    for (int i = 1; minNum[i] != '\\0'; i++) {\n        minNum[i] = '9';\n    }\n\n    int minN = atoi(minNum);\n    int n_int = atoi(n);\n\n    maxP = 0;\n    for (int a = minN; a <= n_int; a++) {\n        char temp[100];\n        sprintf(temp, \"%d\", a);\n        int current = getMax(temp);\n        maxP = (current > maxP) ? current : maxP;\n    }\n    printf(\"%d\\n\", maxP);\n\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 3,
+                    "message": {
+                        "role": "assistant",
+                        "content": "Here's the translated code in C:\n\n```c\n#include <stdio.h>\n#include <string.h>\n#include <stdlib.h>\n\nint getMax(char* num) {\n    int prod = 1;\n    for (int i = 0; num[i] != '\\0'; i++) {\n        prod *= (num[i] - '0');\n    }\n    return prod;\n}\n\nint main() {\n    char n[20];\n    scanf(\"%s\", n);\n    char num[20];\n    strcpy(num, n);\n    \n    int i = strlen(n) - 1;\n    int maxP = getMax(n);\n    \n    if (strlen(n) > 1) {\n        while (i > 0) {\n            num[i] = '9';\n            while (num[i-1] == '0') {\n                num[i-1] = '9';\n                i = i - 1;\n            }\n            if (num[i-1] > '1') {\n                num[i-1] = num[i-1] - 1;\n            }\n            \n            int current = getMax(num);\n            if (current > maxP) {\n                maxP = current;\n            }\n            i = i - 1;\n        }\n        printf(\"%d\\n\", maxP);\n    } else {\n        printf(\"%s\\n\", n);\n    }\n    \n    char minNum[20];\n    strcpy(minNum, num);\n    minNum[0] = minNum[0] - 1;\n    for (int i = 1; minNum[i] != '\\0'; i++) {\n        minNum[i] = '9';\n    }\n    \n    int minN = atoi(minNum);\n    int N = atoi(n);\n    \n    maxP = 0;\n    for (int a = minN; a <= N; a++) {\n        char temp[20];\n        sprintf(temp, \"%d\", a);\n        int current = getMax(temp);\n        if (current > maxP) {\n            maxP = current;\n        }\n    }\n    printf(\"%d\\n\", maxP);\n    \n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 4,
+                    "message": {
+                        "role": "assistant",
+                        "content": "Here's the translated code in C:\n\n```c\n#include <stdio.h>\n#include <string.h>\n#include <stdlib.h>\n\nint getMax(char* num) {\n    int prod = 1;\n    for (int i = 0; num[i] != '\\0'; i++) {\n        prod *= (num[i] - '0');\n    }\n    return prod;\n}\n\nint main() {\n    char n[20];\n    scanf(\"%s\", n);\n    char num[20];\n    strcpy(num, n);\n    \n    int i = strlen(n) - 1;\n    int maxP = getMax(n);\n\n    if (strlen(n) > 1) {\n        while (i > 0) {\n            num[i] = '9';\n            while (num[i-1] == '0') {\n                num[i-1] = '9';\n                i = i - 1;\n            }\n            if (num[i-1] > '1') {\n                num[i-1] = num[i-1] - 1;\n            }\n\n            maxP = (getMax(num) > maxP) ? getMax(num) : maxP;\n            i = i - 1;\n        }\n        printf(\"%d\\n\", maxP);\n    } else {\n        printf(\"%s\\n\", n);\n    }\n\n    char minNum[20];\n    strcpy(minNum, num);\n    minNum[0] = minNum[0] - 1;\n    for (int i = 1; minNum[i] != '\\0'; i++) {\n        minNum[i] = '9';\n    }\n\n    int minN = atoi(minNum);\n    int N = atoi(n);\n\n    maxP = 0;\n    for (int a = minN; a <= N; a++) {\n        char temp[20];\n        sprintf(temp, \"%d\", a);\n        int current = getMax(temp);\n        maxP = (current > maxP) ? current : maxP;\n    }\n    printf(\"%d\\n\", maxP);\n\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                }
+            ],
+            "usage": {
+                "prompt_tokens": 1695,
+                "completion_tokens": 2165,
+                "total_tokens": 3860
+            }
+        }
+    },
+    "source_data": {
+        "code_uid": "65dfca28344f0447b39c3dc04b7b60d4",
+        "prob_desc_output_to": "standard output",
+        "prob_desc_notes": "NoteIn the first example the maximum product is achieved for $$$389$$$ (the product of digits is $$$3\\cdot8\\cdot9=216$$$).In the second example the maximum product is achieved for $$$7$$$ (the product of digits is $$$7$$$).In the third example the maximum product is achieved for $$$999999999$$$ (the product of digits is $$$9^9=387420489$$$).",
+        "lang_cluster": "Python",
+        "prob_desc_time_limit": "1 second",
+        "prob_desc_input_spec": "The only input line contains the integer $$$n$$$ ($$$1 \\le n \\le 2\\cdot10^9$$$).",
+        "source_code": "def getMax(num):\n    arr = list(num)\n    prod = 1\n    for a in arr:\n        prod = prod*int(a)\n    return prod\n\nn = input()\nnum = list(n)\n\ni = len(n)-1\nmaxP = getMax(n)\n\nif len(n) > 1:\n    while i>0:\n        num[i] = '9'\n        while int(num[i-1]) == 0:\n            num[i-1] = '9'\n            i = i - 1\n        if int(num[i-1]) > 1:\n            num[i-1] = str(int(num[i-1]) - 1)\n\n        #print(num)\n        maxP = max(getMax(''.join(num)),maxP)\n        i = i-1\n    print(maxP)\nelse:\n    print(n)\n\"\"\"\n\n\n\n\nminNum = num[:]\nminNum[0]  = int(minNum[0]) - 1\nminNum[0] = str(minNum[0])\nfor i in range(1,len(minNum)):\n    minNum[i] = '9'\n\nminN = ''.join(minNum)\nminN = int(minN)\nn = int(n)\n\nmaxP = 0\nfor a in range(minN,n+1):\n    maxP = max(getMax(str(a)),maxP)\nprint(maxP)\n\n\"\"\"",
+        "prob_desc_sample_inputs": [
+            "390",
+            "7",
+            "1000000000"
+        ],
+        "prob_desc_memory_limit": "256 megabytes",
+        "exec_outcome": "PASSED",
+        "prob_desc_output_spec": "Print the maximum product of digits among all integers from $$$1$$$ to $$$n$$$.",
+        "src_uid": "38690bd32e7d0b314f701f138ce19dfb",
+        "prob_desc_input_from": "standard input",
+        "lang": "Python 3",
+        "prob_desc_sample_outputs": [
+            "216",
+            "7",
+            "387420489"
+        ],
+        "file_name": "d7021504500d5ca7c2b02df8100a574d159e6e67e20ec8071b75800b1267370a",
+        "prob_desc_description": "Kurt reaches nirvana when he finds the product of all the digits of some positive integer. Greater value of the product makes the nirvana deeper.Help Kurt find the maximum possible product of digits among all integers from $$$1$$$ to $$$n$$$.",
+        "prob_desc_created_at": "1553965800",
+        "difficulty": 1200.0,
+        "hidden_unit_tests": "[{\"input\": \"390\\r\\n\", \"output\": [\"216\"]}, {\"input\": \"7\\r\\n\", \"output\": [\"7\"]}, {\"input\": \"1000000000\\r\\n\", \"output\": [\"387420489\"]}, {\"input\": \"1\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"9\\r\\n\", \"output\": [\"9\"]}, {\"input\": \"2000000000\\r\\n\", \"output\": [\"387420489\"]}, {\"input\": \"4876\\r\\n\", \"output\": [\"2268\"]}, {\"input\": \"889878787\\r\\n\", \"output\": [\"301327047\"]}, {\"input\": \"1382011913\\r\\n\", \"output\": [\"387420489\"]}, {\"input\": \"999999999\\r\\n\", \"output\": [\"387420489\"]}, {\"input\": \"396579088\\r\\n\", \"output\": [\"114791256\"]}, {\"input\": \"890133136\\r\\n\", \"output\": [\"306110016\"]}, {\"input\": \"485908655\\r\\n\", \"output\": [\"133923132\"]}, {\"input\": \"261560170\\r\\n\", \"output\": [\"47829690\"]}, {\"input\": \"391789744\\r\\n\", \"output\": [\"114791256\"]}, {\"input\": \"480330141\\r\\n\", \"output\": [\"133923132\"]}, {\"input\": \"691993260\\r\\n\", \"output\": [\"229582512\"]}, {\"input\": \"483212601\\r\\n\", \"output\": [\"133923132\"]}, {\"input\": \"892295273\\r\\n\", \"output\": [\"306110016\"]}, {\"input\": \"389041744\\r\\n\", \"output\": [\"102036672\"]}, {\"input\": \"282587478\\r\\n\", \"output\": [\"66961566\"]}, {\"input\": \"791812587\\r\\n\", \"output\": [\"267846264\"]}, {\"input\": \"2\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"3\\r\\n\", \"output\": [\"3\"]}, {\"input\": \"4\\r\\n\", \"output\": [\"4\"]}, {\"input\": \"10\\r\\n\", \"output\": [\"9\"]}, {\"input\": \"11\\r\\n\", \"output\": [\"9\"]}, {\"input\": \"12\\r\\n\", \"output\": [\"9\"]}, {\"input\": \"19\\r\\n\", \"output\": [\"9\"]}, {\"input\": \"20\\r\\n\", \"output\": [\"9\"]}, {\"input\": \"98\\r\\n\", \"output\": [\"72\"]}, {\"input\": \"99\\r\\n\", \"output\": [\"81\"]}, {\"input\": \"100\\r\\n\", \"output\": [\"81\"]}, {\"input\": \"101\\r\\n\", \"output\": [\"81\"]}, {\"input\": \"997\\r\\n\", \"output\": [\"648\"]}, {\"input\": \"998\\r\\n\", \"output\": [\"648\"]}, {\"input\": \"999\\r\\n\", \"output\": [\"729\"]}, {\"input\": \"1000\\r\\n\", \"output\": [\"729\"]}, {\"input\": \"1001\\r\\n\", \"output\": [\"729\"]}, {\"input\": \"25\\r\\n\", \"output\": [\"10\"]}, {\"input\": \"278\\r\\n\", \"output\": [\"112\"]}, {\"input\": \"1999999999\\r\\n\", \"output\": [\"387420489\"]}, {\"input\": \"2690\\r\\n\", \"output\": [\"864\"]}, {\"input\": \"268\\r\\n\", \"output\": [\"96\"]}, {\"input\": \"289664200\\r\\n\", \"output\": [\"68024448\"]}, {\"input\": \"288\\r\\n\", \"output\": [\"128\"]}, {\"input\": \"1999999998\\r\\n\", \"output\": [\"387420489\"]}]",
+        "source_lang": "Python 3",
+        "target_lang": "C"
+    }
+}

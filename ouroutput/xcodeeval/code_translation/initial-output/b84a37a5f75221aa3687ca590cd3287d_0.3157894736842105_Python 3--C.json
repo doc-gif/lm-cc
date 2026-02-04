@@ -1,0 +1,91 @@
+{
+    "oai_response": {
+        "prompt": "Here is code in Python 3 programming lanaguge. Translate the following code from Python 3 to C programming lanaguge. Do not output any extra description or tokens other than the translated code. \n\na = input()\nans = 0\ni = 0\nwhile i < len(a):\n    j = i + 1\n    while j < len(a) and a[j] == a[i] and j - i < 5: j+=1\n    ans+=1\n    i = j\nprint(ans)||END-of-SRC||",
+        "response": {
+            "id": "multi-call-as-x5cab2s947",
+            "model": "deepseek-v3",
+            "created": 1767068655,
+            "choices": [
+                {
+                    "index": 0,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <string.h>\n\nint main() {\n    char a[1000];\n    scanf(\"%s\", a);\n    int ans = 0;\n    int i = 0;\n    while (i < strlen(a)) {\n        int j = i + 1;\n        while (j < strlen(a) && a[j] == a[i] && j - i < 5) {\n            j++;\n        }\n        ans++;\n        i = j;\n    }\n    printf(\"%d\\n\", ans);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 1,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <string.h>\n\nint main() {\n    char a[1000];\n    scanf(\"%s\", a);\n    int ans = 0;\n    int i = 0;\n    while (i < strlen(a)) {\n        int j = i + 1;\n        while (j < strlen(a) && a[j] == a[i] && j - i < 5) {\n            j++;\n        }\n        ans++;\n        i = j;\n    }\n    printf(\"%d\\n\", ans);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 2,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <string.h>\n\nint main() {\n    char a[1000];\n    scanf(\"%s\", a);\n    int ans = 0;\n    int i = 0;\n    while (i < strlen(a)) {\n        int j = i + 1;\n        while (j < strlen(a) && a[j] == a[i] && j - i < 5) {\n            j++;\n        }\n        ans++;\n        i = j;\n    }\n    printf(\"%d\\n\", ans);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 3,
+                    "message": {
+                        "role": "assistant",
+                        "content": "Here's the equivalent C code:\n\n```c\n#include <stdio.h>\n#include <string.h>\n\nint main() {\n    char a[1000];\n    scanf(\"%s\", a);\n    int ans = 0;\n    int i = 0;\n    while (i < strlen(a)) {\n        int j = i + 1;\n        while (j < strlen(a) && a[j] == a[i] && j - i < 5) j++;\n        ans++;\n        i = j;\n    }\n    printf(\"%d\\n\", ans);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 4,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <string.h>\n\nint main() {\n    char a[1000];\n    scanf(\"%s\", a);\n    int ans = 0;\n    int i = 0;\n    while (i < strlen(a)) {\n        int j = i + 1;\n        while (j < strlen(a) && a[j] == a[i] && j - i < 5) {\n            j++;\n        }\n        ans++;\n        i = j;\n    }\n    printf(\"%d\\n\", ans);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                }
+            ],
+            "usage": {
+                "prompt_tokens": 595,
+                "completion_tokens": 598,
+                "total_tokens": 1193
+            }
+        }
+    },
+    "source_data": {
+        "code_uid": "b84a37a5f75221aa3687ca590cd3287d",
+        "prob_desc_output_to": "standard output",
+        "prob_desc_notes": "NoteIn the first sample Polycarpus needs to take one item to the closet 7 times.In the second sample Polycarpus can first take 3 postcards to the closet; then 3 more. He can take the 6 photos that are left in the similar way, going to the closet twice.In the third sample Polycarpus can visit the closet twice, both times carrying 3 postcards. Then he can take there 2 photos at once, then one postcard and finally, he can carry the last 10 photos if he visits the closet twice.In the fourth sample Polycarpus can visit the closet twice and take there all 10 postcards (5 items during each go).",
+        "lang_cluster": "Python",
+        "prob_desc_time_limit": "2 seconds",
+        "prob_desc_input_spec": "The only line of the input data contains a non-empty string consisting of letters \"\u0421\" and \"P\" whose length does not exceed 100 characters. If the i-th character in the string is the letter \"\u0421\", that means that the i-th object (the numbering goes from the left to the right) on Polycarpus' wall is a postcard. And if the i-th character is the letter \"P\", than the i-th object on the wall is a photo.",
+        "source_code": "a = input()\nans = 0\ni = 0\nwhile i < len(a):\n    j = i + 1\n    while j < len(a) and a[j] == a[i] and j - i < 5: j+=1\n    ans+=1\n    i = j\nprint(ans)",
+        "prob_desc_sample_inputs": [
+            "CPCPCPC",
+            "CCCCCCPPPPPP",
+            "CCCCCCPPCPPPPPPPPPP",
+            "CCCCCCCCCC"
+        ],
+        "prob_desc_memory_limit": "256 megabytes",
+        "exec_outcome": "PASSED",
+        "prob_desc_output_spec": "Print the only number \u2014 the minimum number of times Polycarpus has to visit the closet.",
+        "src_uid": "5257f6b50f5a610a17c35a47b3a0da11",
+        "prob_desc_input_from": "standard input",
+        "lang": "Python 3",
+        "prob_desc_sample_outputs": [
+            "7",
+            "4",
+            "6",
+            "2"
+        ],
+        "file_name": "d7021504500d5ca7c2b02df8100a574d159e6e67e20ec8071b75800b1267370a",
+        "prob_desc_description": "Polycarpus has postcards and photos hung in a row on the wall. He decided to put them away to the closet and hang on the wall a famous painter's picture. Polycarpus does it like that: he goes from the left to the right and removes the objects consecutively. As Polycarpus doesn't want any mix-ups to happen, he will not carry in his hands objects of two different types. In other words, Polycarpus can't carry both postcards and photos simultaneously. Sometimes he goes to the closet and puts the objects there, thus leaving his hands free. Polycarpus must put all the postcards and photos to the closet. He cannot skip objects. What minimum number of times he should visit the closet if he cannot carry more than 5 items?",
+        "prob_desc_created_at": "1324015200",
+        "difficulty": 900.0,
+        "hidden_unit_tests": "[{\"input\": \"CPCPCPC\\r\\n\", \"output\": [\"7\"]}, {\"input\": \"CCCCCCPPPPPP\\r\\n\", \"output\": [\"4\"]}, {\"input\": \"CCCCCCPPCPPPPPPPPPP\\r\\n\", \"output\": [\"6\"]}, {\"input\": \"CCCCCCCCCC\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC\\r\\n\", \"output\": [\"20\"]}, {\"input\": \"CPCPCPCPCPCPCPCPCPCPCPCPCPCPCPCPCPCPCPCPCPCPCPCPCPCPCPCPCPCPCPCPCPCPCPCPCPCPCPCPCPCPCPCPCPCPCPCPCPCP\\r\\n\", \"output\": [\"100\"]}, {\"input\": \"CCCCCCPPPPPPCCCCCCPPPPPPCCCCCCPPPPPPCCCCCCPPPPPPCCCCCCPPPPPPCCCCCCPPPPPPCCCCCCPPPPPP\\r\\n\", \"output\": [\"28\"]}, {\"input\": \"P\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"C\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"PC\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"PPPPP\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"PPPP\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"CP\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"CPCCPCPPPC\\r\\n\", \"output\": [\"7\"]}, {\"input\": \"PPCPCCPCPPCCPPPPPPCP\\r\\n\", \"output\": [\"12\"]}, {\"input\": \"PCPCCPCPPCCPCPCCPPPPPCPCPCPCCC\\r\\n\", \"output\": [\"20\"]}, {\"input\": \"CCPPPPPCPCCPPPCCPPCPCCPCPPCPPCCCPPCPPPCC\\r\\n\", \"output\": [\"21\"]}, {\"input\": \"CPPCCCCCCPCCCCPCCPCPPPCPCCCCCCCPCCPPCCCPCCCCCPPCCC\\r\\n\", \"output\": [\"23\"]}, {\"input\": \"PPCCCCPPCCPPPCCCCPPPPPCPPPCPPPCCCPCCCPCPPPCPCCCPCCPPCCPPPPPC\\r\\n\", \"output\": [\"26\"]}, {\"input\": \"PPCPPCCCCCPCCCPCCPCCCCPPPCCCCPCPCCPCPCPCPPPPCCPPPPPPPCPCPPPCPCPCPCPPPC\\r\\n\", \"output\": [\"39\"]}, {\"input\": \"CCPCPPPPCPPPPCCCCPCCPCPCCPPCPCCCPPCCCCPCCCPCPCCPPPCPPPCPCPPPPPCPCCPCCPPCCCPCPPPC\\r\\n\", \"output\": [\"43\"]}, {\"input\": \"CCPPCPCPCPPCCCPCPPPCCCCCPCPPCCCPPCPCPPPPCPPCPPPPCCCPCCPCPPPCPCPPCCCPCCCCCCPCCCCPCCPPPPCCPP\\r\\n\", \"output\": [\"47\"]}, {\"input\": \"PPCPPPPCCCCPPPPCPPPPPPPPCPCPPCCPPPPPPPPCPPPPCCCCPPPPCPPCPCPPPCCPPCPPCCCPCPPCCCCCCPCPCPCPPCPCPCPPPCCC\\r\\n\", \"output\": [\"49\"]}, {\"input\": \"CCPCCCPPCPPCPCCCPCPPCPPCPPCCCCCCCPCPPCPCCPCCPCPCPCCCPCCCPPPCCPCCPPCCCCCPPPPCPCPPCPCPCCPCPPP\\r\\n\", \"output\": [\"53\"]}, {\"input\": \"PCPCPPPPCPCPPPCPPCCCPCPCPCPPCPPPPCCPPPCPPPCPPPPCCPPCCCPCCPCCCCPCCPCPPCPCCCPCPPCP\\r\\n\", \"output\": [\"47\"]}, {\"input\": \"PCCPPCCCPPCPPCC\\r\\n\", \"output\": [\"8\"]}, {\"input\": \"CCCPPPPPPCCCCPCCPCCCCCCPCCCPPPCPC\\r\\n\", \"output\": [\"15\"]}, {\"input\": \"CPPCCPPCCPPPCCCPPPPCPPPPPPPCCPCPCCPPPPCCCPPCCPCCPPCCCPCCPCPPPPCCPP\\r\\n\", \"output\": [\"31\"]}, {\"input\": \"CCCCCPPPCCPCPCCPPPPCPCCCPCPPCPCPPPPPCCPCPCPC\\r\\n\", \"output\": [\"25\"]}, {\"input\": \"PPPPPPPPPCPCP\\r\\n\", \"output\": [\"6\"]}, {\"input\": \"PPPCPCPCCCPPCPCCPPPPCCCPCCP\\r\\n\", \"output\": [\"15\"]}, {\"input\": \"PCPCCPCPPPPPPCPCCPCPCPCCPPPCPCPCPPCPPCCPCPCCCPCCCPPCPCPCCPCPPPPCCCCCCPPCCPCCCCCPCCCCPPPCPCCCCCPCPCP\\r\\n\", \"output\": [\"59\"]}, {\"input\": \"PCCPCPPCCCCCPCCCPCCCPPCCCCCPPPCCPPPPPPPPCPPPCCPPCPPCPCP\\r\\n\", \"output\": [\"26\"]}, {\"input\": \"CPCPCCPPPPCCPPCPPCPPCCCCCCPCCPPPCPPCPCCCCCCPCPCCCCCPCCCCCCPCCPPCCP\\r\\n\", \"output\": [\"35\"]}, {\"input\": \"PPCCCCCCPP\\r\\n\", \"output\": [\"4\"]}, {\"input\": \"CCCCCCCCCCCCPPCCCCPP\\r\\n\", \"output\": [\"6\"]}, {\"input\": \"PPPPPPPPPPPCCCCCCCCCCCCCCCCCCP\\r\\n\", \"output\": [\"8\"]}, {\"input\": \"PPPPPPPPPPPPPPPPPPPPPCCCCCCCCCCCPPPPCCCC\\r\\n\", \"output\": [\"10\"]}, {\"input\": \"PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPCCCCCCCCCPPPC\\r\\n\", \"output\": [\"12\"]}, {\"input\": \"CCCCCCCCCPPPPPPPPPPPPPPPPPPPPCCCCCCCCCCCCCCCCCCCCCCCCPPPPPCC\\r\\n\", \"output\": [\"13\"]}, {\"input\": \"CCCCCCCCCCCCCCCCCCCCCCCCCPPPCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC\\r\\n\", \"output\": [\"15\"]}, {\"input\": \"CCCCCPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPCCCCCCCCCCCCCPPPPPPPCCPPP\\r\\n\", \"output\": [\"18\"]}, {\"input\": \"PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPCCCCCCCCCCCCCCCCCCCCCCCCCCCPPPPPPPPPPPPPPPPPPP\\r\\n\", \"output\": [\"19\"]}, {\"input\": \"PPPPPPPPPPPPPPPPPPPPPPPCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCPPPPPCCCPPPPCCCCCPCC\\r\\n\", \"output\": [\"23\"]}]",
+        "source_lang": "Python 3",
+        "target_lang": "C"
+    }
+}

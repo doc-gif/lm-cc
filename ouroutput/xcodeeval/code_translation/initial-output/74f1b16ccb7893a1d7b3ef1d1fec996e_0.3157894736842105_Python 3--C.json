@@ -1,0 +1,87 @@
+{
+    "oai_response": {
+        "prompt": "Here is code in Python 3 programming lanaguge. Translate the following code from Python 3 to C programming lanaguge. Do not output any extra description or tokens other than the translated code. \n\nimport sys\n\ndef digitsNum(x, base):\n    ret = 0\n    while x>0:\n        ret += 1\n        x //= base\n    return ret\n\nn, m= sys.stdin.read().split()\n\nbase = int(max(max(n), max(m)))+1\nn = int(n, base)\nm = int(m, base)\n\nprint(digitsNum(n+m, base))||END-of-SRC||",
+        "response": {
+            "id": "multi-call-as-sikrcnbmnm",
+            "model": "deepseek-v3",
+            "created": 1767067651,
+            "choices": [
+                {
+                    "index": 0,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <string.h>\n#include <ctype.h>\n\nint digitsNum(int x, int base) {\n    int ret = 0;\n    while (x > 0) {\n        ret += 1;\n        x /= base;\n    }\n    return ret;\n}\n\nint maxDigit(const char *s) {\n    int max = 0;\n    for (int i = 0; s[i]; i++) {\n        int d = isdigit(s[i]) ? s[i] - '0' : toupper(s[i]) - 'A' + 10;\n        if (d > max) max = d;\n    }\n    return max;\n}\n\nint strToInt(const char *s, int base) {\n    int res = 0;\n    for (int i = 0; s[i]; i++) {\n        res = res * base + (isdigit(s[i]) ? s[i] - '0' : toupper(s[i]) - 'A' + 10);\n    }\n    return res;\n}\n\nint main() {\n    char n[100], m[100];\n    scanf(\"%s %s\", n, m);\n    \n    int base_n = maxDigit(n);\n    int base_m = maxDigit(m);\n    int base = (base_n > base_m ? base_n : base_m) + 1;\n    \n    int num_n = strToInt(n, base);\n    int num_m = strToInt(m, base);\n    \n    printf(\"%d\\n\", digitsNum(num_n + num_m, base));\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 1,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <string.h>\n#include <ctype.h>\n\nint digitsNum(int x, int base) {\n    int ret = 0;\n    while (x > 0) {\n        ret++;\n        x /= base;\n    }\n    return ret;\n}\n\nint maxDigit(const char *s) {\n    int max = 0;\n    for (int i = 0; s[i]; i++) {\n        int d = isdigit(s[i]) ? s[i] - '0' : toupper(s[i]) - 'A' + 10;\n        if (d > max) max = d;\n    }\n    return max;\n}\n\nint strToInt(const char *s, int base) {\n    int res = 0;\n    for (int i = 0; s[i]; i++) {\n        res = res * base + (isdigit(s[i]) ? s[i] - '0' : toupper(s[i]) - 'A' + 10);\n    }\n    return res;\n}\n\nint main() {\n    char n[100], m[100];\n    scanf(\"%s %s\", n, m);\n    \n    int base = (maxDigit(n) > maxDigit(m) ? maxDigit(n) : maxDigit(m)) + 1;\n    int n_int = strToInt(n, base);\n    int m_int = strToInt(m, base);\n    \n    printf(\"%d\", digitsNum(n_int + m_int, base));\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 2,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <string.h>\n#include <ctype.h>\n\nint digitsNum(int x, int base) {\n    int ret = 0;\n    while (x > 0) {\n        ret += 1;\n        x /= base;\n    }\n    return ret;\n}\n\nint maxDigit(const char *s) {\n    int max = 0;\n    for (int i = 0; s[i]; i++) {\n        int d = isdigit(s[i]) ? s[i] - '0' : toupper(s[i]) - 'A' + 10;\n        if (d > max) max = d;\n    }\n    return max;\n}\n\nint strToInt(const char *s, int base) {\n    int res = 0;\n    for (int i = 0; s[i]; i++) {\n        int d = isdigit(s[i]) ? s[i] - '0' : toupper(s[i]) - 'A' + 10;\n        res = res * base + d;\n    }\n    return res;\n}\n\nint main() {\n    char n[100], m[100];\n    scanf(\"%s %s\", n, m);\n    \n    int base = (maxDigit(n) > maxDigit(m) ? maxDigit(n) : maxDigit(m)) + 1;\n    int n_int = strToInt(n, base);\n    int m_int = strToInt(m, base);\n    \n    printf(\"%d\\n\", digitsNum(n_int + m_int, base));\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 3,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <string.h>\n#include <ctype.h>\n\nint digitsNum(int x, int base) {\n    int ret = 0;\n    while (x > 0) {\n        ret += 1;\n        x /= base;\n    }\n    return ret;\n}\n\nint maxDigit(const char *s) {\n    int max = 0;\n    for (int i = 0; s[i]; i++) {\n        int d = isdigit(s[i]) ? s[i] - '0' : toupper(s[i]) - 'A' + 10;\n        if (d > max) max = d;\n    }\n    return max;\n}\n\nint strToInt(const char *s, int base) {\n    int res = 0;\n    for (int i = 0; s[i]; i++) {\n        int d = isdigit(s[i]) ? s[i] - '0' : toupper(s[i]) - 'A' + 10;\n        res = res * base + d;\n    }\n    return res;\n}\n\nint main() {\n    char n[100], m[100];\n    scanf(\"%s %s\", n, m);\n    \n    int base = (maxDigit(n) > maxDigit(m) ? maxDigit(n) : maxDigit(m)) + 1;\n    int n_int = strToInt(n, base);\n    int m_int = strToInt(m, base);\n    \n    printf(\"%d\\n\", digitsNum(n_int + m_int, base));\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 4,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <string.h>\n#include <ctype.h>\n\nint digitsNum(int x, int base) {\n    int ret = 0;\n    while (x > 0) {\n        ret++;\n        x /= base;\n    }\n    return ret;\n}\n\nint maxDigit(const char *s) {\n    int max = 0;\n    for (int i = 0; s[i]; i++) {\n        int d = isdigit(s[i]) ? s[i] - '0' : toupper(s[i]) - 'A' + 10;\n        if (d > max) max = d;\n    }\n    return max;\n}\n\nint strToInt(const char *s, int base) {\n    int res = 0;\n    for (int i = 0; s[i]; i++) {\n        res = res * base + (isdigit(s[i]) ? s[i] - '0' : toupper(s[i]) - 'A' + 10);\n    }\n    return res;\n}\n\nint main() {\n    char n[100], m[100];\n    scanf(\"%s %s\", n, m);\n    \n    int base_n = maxDigit(n);\n    int base_m = maxDigit(m);\n    int base = (base_n > base_m ? base_n : base_m) + 1;\n    \n    int num_n = strToInt(n, base);\n    int num_m = strToInt(m, base);\n    \n    printf(\"%d\", digitsNum(num_n + num_m, base));\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                }
+            ],
+            "usage": {
+                "prompt_tokens": 675,
+                "completion_tokens": 1638,
+                "total_tokens": 2313
+            }
+        }
+    },
+    "source_data": {
+        "code_uid": "74f1b16ccb7893a1d7b3ef1d1fec996e",
+        "prob_desc_output_to": "standard output",
+        "prob_desc_notes": null,
+        "lang_cluster": "Python",
+        "prob_desc_time_limit": "2 seconds",
+        "prob_desc_input_spec": "The first letter contains two space-separated numbers a and b (1\u2009\u2264\u2009a,\u2009b\u2009\u2264\u20091000) which represent the given summands.",
+        "source_code": "import sys\n\ndef digitsNum(x, base):\n    ret = 0\n    while x>0:\n        ret += 1\n        x //= base\n    return ret\n\nn, m= sys.stdin.read().split()\n\nbase = int(max(max(n), max(m)))+1\nn = int(n, base)\nm = int(m, base)\n\nprint(digitsNum(n+m, base))",
+        "prob_desc_sample_inputs": [
+            "78 87",
+            "1 1"
+        ],
+        "prob_desc_memory_limit": "256 megabytes",
+        "exec_outcome": "PASSED",
+        "prob_desc_output_spec": "Print a single number \u2014 the length of the longest answer.",
+        "src_uid": "8ccfb9b1fef6a992177cc49bd56fab7b",
+        "prob_desc_input_from": "standard input",
+        "lang": "Python 3",
+        "prob_desc_sample_outputs": [
+            "3",
+            "2"
+        ],
+        "file_name": "d7021504500d5ca7c2b02df8100a574d159e6e67e20ec8071b75800b1267370a",
+        "prob_desc_description": "Vasya studies positional numeral systems. Unfortunately, he often forgets to write the base of notation in which the expression is written. Once he saw a note in his notebook saying a\u2009+\u2009b\u2009=\u2009?, and that the base of the positional notation wasn\u2019t written anywhere. Now Vasya has to choose a base p and regard the expression as written in the base p positional notation. Vasya understood that he can get different results with different bases, and some bases are even invalid. For example, expression 78\u2009+\u200987 in the base 16 positional notation is equal to FF16, in the base 15 positional notation it is equal to 11015, in the base 10 one \u2014 to 16510, in the base 9 one \u2014 to 1769, and in the base 8 or lesser-based positional notations the expression is invalid as all the numbers should be strictly less than the positional notation base. Vasya got interested in what is the length of the longest possible expression value. Help him to find this length.The length of a number should be understood as the number of numeric characters in it. For example, the length of the longest answer for 78\u2009+\u200987\u2009=\u2009? is 3. It is calculated like that in the base 15 (11015), base 10 (16510), base 9 (1769) positional notations, for example, and in some other ones.",
+        "prob_desc_created_at": "1292601600",
+        "difficulty": 1500.0,
+        "hidden_unit_tests": "[{\"input\": \"78 87\\r\\n\", \"output\": [\"3\"]}, {\"input\": \"1 1\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"9 7\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"11 11\\r\\n\", \"output\": [\"3\"]}, {\"input\": \"43 21\\r\\n\", \"output\": [\"3\"]}, {\"input\": \"84 89\\r\\n\", \"output\": [\"3\"]}, {\"input\": \"12 34\\r\\n\", \"output\": [\"3\"]}, {\"input\": \"99 11\\r\\n\", \"output\": [\"3\"]}, {\"input\": \"11 99\\r\\n\", \"output\": [\"3\"]}, {\"input\": \"99 99\\r\\n\", \"output\": [\"3\"]}, {\"input\": \"1 2\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"1 3\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"2 1\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"2 2\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"2 3\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"3 1\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"3 2\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"3 3\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"1 466\\r\\n\", \"output\": [\"3\"]}, {\"input\": \"1 1000\\r\\n\", \"output\": [\"4\"]}, {\"input\": \"1 999\\r\\n\", \"output\": [\"4\"]}, {\"input\": \"149 1\\r\\n\", \"output\": [\"3\"]}, {\"input\": \"999 1\\r\\n\", \"output\": [\"4\"]}, {\"input\": \"1000 1\\r\\n\", \"output\": [\"4\"]}, {\"input\": \"998 998\\r\\n\", \"output\": [\"4\"]}, {\"input\": \"998 999\\r\\n\", \"output\": [\"4\"]}, {\"input\": \"998 1000\\r\\n\", \"output\": [\"4\"]}, {\"input\": \"999 998\\r\\n\", \"output\": [\"4\"]}, {\"input\": \"999 999\\r\\n\", \"output\": [\"4\"]}, {\"input\": \"999 1000\\r\\n\", \"output\": [\"4\"]}, {\"input\": \"1000 998\\r\\n\", \"output\": [\"4\"]}, {\"input\": \"1000 999\\r\\n\", \"output\": [\"4\"]}, {\"input\": \"1000 1000\\r\\n\", \"output\": [\"5\"]}, {\"input\": \"1000 539\\r\\n\", \"output\": [\"4\"]}, {\"input\": \"999 619\\r\\n\", \"output\": [\"4\"]}, {\"input\": \"2 511\\r\\n\", \"output\": [\"3\"]}, {\"input\": \"877 2\\r\\n\", \"output\": [\"3\"]}, {\"input\": \"379 999\\r\\n\", \"output\": [\"4\"]}, {\"input\": \"247 1000\\r\\n\", \"output\": [\"4\"]}, {\"input\": \"555 555\\r\\n\", \"output\": [\"4\"]}, {\"input\": \"208 997\\r\\n\", \"output\": [\"4\"]}, {\"input\": \"633 581\\r\\n\", \"output\": [\"4\"]}, {\"input\": \"411 517\\r\\n\", \"output\": [\"4\"]}, {\"input\": \"836 101\\r\\n\", \"output\": [\"4\"]}, {\"input\": \"262 685\\r\\n\", \"output\": [\"4\"]}, {\"input\": \"39 269\\r\\n\", \"output\": [\"3\"]}, {\"input\": \"464 205\\r\\n\", \"output\": [\"4\"]}, {\"input\": \"890 789\\r\\n\", \"output\": [\"4\"]}, {\"input\": \"667 373\\r\\n\", \"output\": [\"4\"]}, {\"input\": \"840 975\\r\\n\", \"output\": [\"4\"]}, {\"input\": \"810 413\\r\\n\", \"output\": [\"4\"]}, {\"input\": \"133 851\\r\\n\", \"output\": [\"4\"]}, {\"input\": \"104 938\\r\\n\", \"output\": [\"4\"]}, {\"input\": \"427 376\\r\\n\", \"output\": [\"4\"]}, {\"input\": \"398 815\\r\\n\", \"output\": [\"4\"]}, {\"input\": \"721 253\\r\\n\", \"output\": [\"4\"]}, {\"input\": \"692 339\\r\\n\", \"output\": [\"4\"]}, {\"input\": \"15 778\\r\\n\", \"output\": [\"3\"]}, {\"input\": \"986 216\\r\\n\", \"output\": [\"4\"]}, {\"input\": \"450 277\\r\\n\", \"output\": [\"3\"]}, {\"input\": \"333 1\\r\\n\", \"output\": [\"4\"]}, {\"input\": \"499 499\\r\\n\", \"output\": [\"3\"]}, {\"input\": \"79 1\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"87 1\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"47 8\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"87 8\\r\\n\", \"output\": [\"3\"]}, {\"input\": \"1 11\\r\\n\", \"output\": [\"3\"]}]",
+        "source_lang": "Python 3",
+        "target_lang": "C"
+    }
+}

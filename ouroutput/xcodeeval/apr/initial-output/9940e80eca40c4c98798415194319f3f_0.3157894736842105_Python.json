@@ -1,0 +1,101 @@
+{
+    "oai_response": {
+        "prompt": "Fix a buggy program written in Python language to solve the following programming problem:\nDescription: You've got a rectangular parallelepiped with integer edge lengths. You know the areas of its three faces that have a common vertex. Your task is to find the sum of lengths of all 12 edges of this parallelepiped.\nInput Specification: The first and the single line contains three space-separated integers \u2014 the areas of the parallelepiped's faces. The area's values are positive (\u2009&gt;\u20090) and do not exceed 104. It is guaranteed that there exists at least one parallelepiped that satisfies the problem statement.\nOutput Specification: Print a single number \u2014 the sum of all edges of the parallelepiped.\n\nSample Input:\n1 1 1\nSample Output:\n12\n\nSample Input:\n4 6 6\nSample Output:\n28\n\nNotes: NoteIn the first sample the parallelepiped has sizes 1\u2009\u00d7\u20091\u2009\u00d7\u20091, in the second one\u00a0\u2014 2\u2009\u00d7\u20092\u2009\u00d7\u20093.\nTake input from standard input and output to standard output\n\nHere is the code with a bug of TIME_LIMIT_EXCEEDED:\n\ndef div(num):\n    div=[]\n    for i in range (1,num+1):\n        if num%i==0:\n            div.append(i)\n    return div\ndef cdiv(n1,n2):\n    cd=[]\n    for i in range(max(n1,n2)):\n        if i in div(n1) and i in div(n2) and i not in cd:\n            cd.append(i)\n    return cd\nwh,lh,lw=map(int,input().split())\nph=cdiv(wh,lh)\npw=cdiv(wh,lw)\npl=cdiv(lh,lw)\nl , w ,h =1,1,1\nwhile 1:\n    if wh==w*h and lh==l*h and lw==l*w:\n        break\n    for i in ph:\n        for j in pw:\n            for k in pl:\n                if wh==i*j and lh==k*i and lw==k*j:\n                    h=i\n                    w=j\n                    l=k\n                    break\n            if wh==w*h and lh==l*h and lw==l*w:\n                break\n        if wh==w*h and lh==l*h and lw==l*w:\n                break\n    \nprint((l+h+w)*4)\n\n\nProvide the fixed Python code without any description or extra tokens.\n\nFixed source code:\n ||END-of-SRC||",
+        "response": {
+            "id": "multi-call-as-7z6bvede05",
+            "model": "deepseek-v3",
+            "created": 1760423187,
+            "choices": [
+                {
+                    "index": 0,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```python\nimport math\n\ndef compute_edges(a, b, c):\n    l = math.isqrt((a * c) // b)\n    w = math.isqrt((a * b) // c)\n    h = math.isqrt((b * c) // a)\n    return 4 * (l + w + h)\n\nwh, lh, lw = map(int, input().split())\nprint(compute_edges(wh, lh, lw))\n``` ||END-of-SRC||"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 1,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```python\nimport math\n\ndef compute_edges(a, b, c):\n    l = math.isqrt((a * c) // b)\n    w = math.isqrt((a * b) // c)\n    h = math.isqrt((b * c) // a)\n    return 4 * (l + w + h)\n\nwh, lh, lw = map(int, input().split())\nprint(compute_edges(wh, lh, lw))\n``` ||END-of-SRC||"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 2,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```python\nimport math\n\ndef find_dimensions(wh, lh, lw):\n    # Calculate the product of the three areas\n    product = wh * lh * lw\n    # The product is (w*h)*(l*h)*(l*w) = l^2 * w^2 * h^2\n    # So sqrt(product) = l * w * h\n    lwh = math.isqrt(product)\n    # Now, l = sqrt((lh * lw) / wh)\n    l = math.isqrt((lh * lw) // wh)\n    w = math.isqrt((wh * lw) // lh)\n    h = math.isqrt((wh * lh) // lw)\n    return l, w, h\n\nwh, lh, lw = map(int, input().split())\nl, w, h = find_dimensions(wh, lh, lw)\nprint(4 * (l + w + h))\n``` ||END-of-SRC||"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 3,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```python\nimport math\n\ndef compute_edges(a, b, c):\n    l = math.isqrt((a * c) // b)\n    w = math.isqrt((a * b) // c)\n    h = math.isqrt((b * c) // a)\n    return 4 * (l + w + h)\n\nwh, lh, lw = map(int, input().split())\nprint(compute_edges(wh, lh, lw))\n``` ||END-of-SRC||"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 4,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```python\nimport math\n\ndef compute_edges(a, b, c):\n    l = math.isqrt((a * c) // b)\n    w = math.isqrt((a * b) // c)\n    h = math.isqrt((b * c) // a)\n    return 4 * (l + w + h)\n\nwh, lh, lw = map(int, input().split())\nprint(compute_edges(wh, lh, lw))\n``` ||END-of-SRC||"
+                    },
+                    "finish_reason": "stop"
+                }
+            ],
+            "usage": {
+                "prompt_tokens": 2680,
+                "completion_tokens": 641,
+                "total_tokens": 3321
+            }
+        }
+    },
+    "source_data": {
+        "prob_desc_memory_limit": "256 megabytes",
+        "tags": [
+            "geometry",
+            "math",
+            "brute force"
+        ],
+        "prob_desc_created_at": "1347809400",
+        "fix_source_code": "",
+        "prob_desc_input_spec": "The first and the single line contains three space-separated integers \u2014 the areas of the parallelepiped's faces. The area's values are positive (\u2009&gt;\u20090) and do not exceed 104. It is guaranteed that there exists at least one parallelepiped that satisfies the problem statement.",
+        "prob_desc_sample_outputs": [
+            "12",
+            "28"
+        ],
+        "src_uid": "c0a3290be3b87f3a232ec19d4639fefc",
+        "prob_desc_time_limit": "2 seconds",
+        "fix_exec_outcome": "",
+        "delete_cnt": 0,
+        "apr_id": "468c64a3c00ac3b7bb68a3b6ed918f56",
+        "fix_code_uid": "",
+        "lang_cluster": "Python",
+        "prob_desc_sample_inputs": [
+            "1 1 1",
+            "4 6 6"
+        ],
+        "prob_desc_output_to": "standard output",
+        "file_name": "Python.jsonl",
+        "equal_cnt": 8,
+        "lang": "Python 3",
+        "prob_desc_output_spec": "Print a single number \u2014 the sum of all edges of the parallelepiped.",
+        "bug_exec_outcome": "TIME_LIMIT_EXCEEDED",
+        "prob_desc_notes": "NoteIn the first sample the parallelepiped has sizes 1\u2009\u00d7\u20091\u2009\u00d7\u20091, in the second one\u00a0\u2014 2\u2009\u00d7\u20092\u2009\u00d7\u20093.",
+        "difficulty": 1100.0,
+        "similarity_score": 0.8631333709,
+        "prob_desc_description": "You've got a rectangular parallelepiped with integer edge lengths. You know the areas of its three faces that have a common vertex. Your task is to find the sum of lengths of all 12 edges of this parallelepiped.",
+        "potential_dominant_fix_op": "insert",
+        "bug_source_code": "def div(num):\n    div=[]\n    for i in range (1,num+1):\n        if num%i==0:\n            div.append(i)\n    return div\ndef cdiv(n1,n2):\n    cd=[]\n    for i in range(max(n1,n2)):\n        if i in div(n1) and i in div(n2) and i not in cd:\n            cd.append(i)\n    return cd\nwh,lh,lw=map(int,input().split())\nph=cdiv(wh,lh)\npw=cdiv(wh,lw)\npl=cdiv(lh,lw)\nl , w ,h =1,1,1\nwhile 1:\n    if wh==w*h and lh==l*h and lw==l*w:\n        break\n    for i in ph:\n        for j in pw:\n            for k in pl:\n                if wh==i*j and lh==k*i and lw==k*j:\n                    h=i\n                    w=j\n                    l=k\n                    break\n            if wh==w*h and lh==l*h and lw==l*w:\n                break\n        if wh==w*h and lh==l*h and lw==l*w:\n                break\n    \nprint((l+h+w)*4)\n",
+        "replace_cnt": 3,
+        "prob_desc_input_from": "standard input",
+        "bug_code_uid": "9940e80eca40c4c98798415194319f3f",
+        "insert_cnt": 4,
+        "fix_ops_cnt": 7,
+        "hidden_unit_tests": "[{\"input\": \"1 1 1\\r\\n\", \"output\": [\"12\"]}, {\"input\": \"4 6 6\\r\\n\", \"output\": [\"28\"]}, {\"input\": \"20 10 50\\r\\n\", \"output\": [\"68\"]}, {\"input\": \"9 4 36\\r\\n\", \"output\": [\"56\"]}, {\"input\": \"324 9 36\\r\\n\", \"output\": [\"184\"]}, {\"input\": \"1333 93 129\\r\\n\", \"output\": [\"308\"]}, {\"input\": \"1022 584 112\\r\\n\", \"output\": [\"380\"]}, {\"input\": \"66 174 319\\r\\n\", \"output\": [\"184\"]}, {\"input\": \"912 276 1748\\r\\n\", \"output\": [\"444\"]}, {\"input\": \"65 156 60\\r\\n\", \"output\": [\"120\"]}, {\"input\": \"1 10000 10000\\r\\n\", \"output\": [\"40008\"]}, {\"input\": \"1485 55 27\\r\\n\", \"output\": [\"332\"]}, {\"input\": \"152 108 4104\\r\\n\", \"output\": [\"528\"]}, {\"input\": \"1656 6900 1350\\r\\n\", \"output\": [\"740\"]}, {\"input\": \"12 14 42\\r\\n\", \"output\": [\"60\"]}, {\"input\": \"615 18 1230\\r\\n\", \"output\": [\"856\"]}, {\"input\": \"680 60 408\\r\\n\", \"output\": [\"336\"]}, {\"input\": \"644 966 6\\r\\n\", \"output\": [\"1308\"]}, {\"input\": \"1 432 432\\r\\n\", \"output\": [\"1736\"]}, {\"input\": \"2239 2239 1\\r\\n\", \"output\": [\"8964\"]}, {\"input\": \"4106 8212 2\\r\\n\", \"output\": [\"16436\"]}, {\"input\": \"10000 10000 10000\\r\\n\", \"output\": [\"1200\"]}, {\"input\": \"3623 3623 1\\r\\n\", \"output\": [\"14500\"]}, {\"input\": \"9801 9801 9801\\r\\n\", \"output\": [\"1188\"]}, {\"input\": \"10000 1 10000\\r\\n\", \"output\": [\"40008\"]}, {\"input\": \"9 9 9\\r\\n\", \"output\": [\"36\"]}, {\"input\": \"9801 9702 9702\\r\\n\", \"output\": [\"1184\"]}]"
+    }
+}

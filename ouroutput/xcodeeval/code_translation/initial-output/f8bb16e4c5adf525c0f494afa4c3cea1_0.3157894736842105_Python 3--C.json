@@ -1,0 +1,87 @@
+{
+    "oai_response": {
+        "prompt": "Here is code in Python 3 programming lanaguge. Translate the following code from Python 3 to C programming lanaguge. Do not output any extra description or tokens other than the translated code. \n\nn,m,s=[int(s) for s in input().split()]\na=(n % s)\nb=(m % s)\nif a==0 and n>=s:a=s\nif b==0 and m>=s:b=s\nunit=(a*b)\n\nprint(((n-1)//s+1)*((m-1)//s+1)*unit)\n||END-of-SRC||",
+        "response": {
+            "id": "multi-call-as-xjk7rx4uby",
+            "model": "deepseek-v3",
+            "created": 1767068837,
+            "choices": [
+                {
+                    "index": 0,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n\nint main() {\n    int n, m, s;\n    scanf(\"%d %d %d\", &n, &m, &s);\n    int a = (n % s);\n    int b = (m % s);\n    if (a == 0 && n >= s) a = s;\n    if (b == 0 && m >= s) b = s;\n    int unit = (a * b);\n    printf(\"%d\\n\", ((n - 1) / s + 1) * ((m - 1) / s + 1) * unit);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 1,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n\nint main() {\n    int n, m, s;\n    scanf(\"%d %d %d\", &n, &m, &s);\n    int a = (n % s);\n    int b = (m % s);\n    if (a == 0 && n >= s) a = s;\n    if (b == 0 && m >= s) b = s;\n    int unit = (a * b);\n    printf(\"%d\\n\", ((n - 1) / s + 1) * ((m - 1) / s + 1) * unit);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 2,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n\nint main() {\n    int n, m, s;\n    scanf(\"%d %d %d\", &n, &m, &s);\n    int a = (n % s);\n    int b = (m % s);\n    if (a == 0 && n >= s) a = s;\n    if (b == 0 && m >= s) b = s;\n    int unit = (a * b);\n    printf(\"%d\\n\", ((n - 1) / s + 1) * ((m - 1) / s + 1) * unit);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 3,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n\nint main() {\n    int n, m, s;\n    scanf(\"%d %d %d\", &n, &m, &s);\n    int a = (n % s);\n    int b = (m % s);\n    if (a == 0 && n >= s) a = s;\n    if (b == 0 && m >= s) b = s;\n    int unit = (a * b);\n    printf(\"%d\\n\", ((n - 1) / s + 1) * ((m - 1) / s + 1) * unit);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 4,
+                    "message": {
+                        "role": "assistant",
+                        "content": "Here's the translated code in C:\n\n```c\n#include <stdio.h>\n\nint main() {\n    int n, m, s;\n    scanf(\"%d %d %d\", &n, &m, &s);\n    int a = n % s;\n    int b = m % s;\n    if (a == 0 && n >= s) a = s;\n    if (b == 0 && m >= s) b = s;\n    int unit = a * b;\n    printf(\"%d\\n\", ((n - 1) / s + 1) * ((m - 1) / s + 1) * unit);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                }
+            ],
+            "usage": {
+                "prompt_tokens": 625,
+                "completion_tokens": 701,
+                "total_tokens": 1326
+            }
+        }
+    },
+    "source_data": {
+        "code_uid": "f8bb16e4c5adf525c0f494afa4c3cea1",
+        "prob_desc_output_to": "standard output",
+        "prob_desc_notes": null,
+        "lang_cluster": "Python",
+        "prob_desc_time_limit": "2 seconds",
+        "prob_desc_input_spec": "The first line contains three integers n, m, s (1\u2009\u2264\u2009n,\u2009m,\u2009s\u2009\u2264\u2009106) \u2014 length of the board, width of the board and length of the flea's jump.",
+        "source_code": "n,m,s=[int(s) for s in input().split()]\na=(n % s)\nb=(m % s)\nif a==0 and n>=s:a=s\nif b==0 and m>=s:b=s\nunit=(a*b)\n\nprint(((n-1)//s+1)*((m-1)//s+1)*unit)\n",
+        "prob_desc_sample_inputs": [
+            "2 3 1000000",
+            "3 3 2"
+        ],
+        "prob_desc_memory_limit": "256 megabytes",
+        "exec_outcome": "PASSED",
+        "prob_desc_output_spec": "Output the only integer \u2014 the number of the required starting positions of the flea.",
+        "src_uid": "e853733fb2ed87c56623ff9a5ac09c36",
+        "prob_desc_input_from": "standard input",
+        "lang": "Python 3",
+        "prob_desc_sample_outputs": [
+            "6",
+            "4"
+        ],
+        "file_name": "d7021504500d5ca7c2b02df8100a574d159e6e67e20ec8071b75800b1267370a",
+        "prob_desc_description": "It is known that fleas in Berland can jump only vertically and horizontally, and the length of the jump is always equal to s centimeters. A flea has found herself at the center of some cell of the checked board of the size n\u2009\u00d7\u2009m centimeters (each cell is 1\u2009\u00d7\u20091 centimeters). She can jump as she wishes for an arbitrary number of times, she can even visit a cell more than once. The only restriction is that she cannot jump out of the board.The flea can count the amount of cells that she can reach from the starting position (x,\u2009y). Let's denote this amount by dx,\u2009y. Your task is to find the number of such starting positions (x,\u2009y), which have the maximum possible value of dx,\u2009y.",
+        "prob_desc_created_at": "1286002800",
+        "difficulty": 1700.0,
+        "hidden_unit_tests": "[{\"input\": \"2 3 1000000\\r\\n\", \"output\": [\"6\"]}, {\"input\": \"3 3 2\\r\\n\", \"output\": [\"4\"]}, {\"input\": \"1 2 3\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"4 5 6\\r\\n\", \"output\": [\"20\"]}, {\"input\": \"9 8 7\\r\\n\", \"output\": [\"8\"]}, {\"input\": \"1000 1000 1000\\r\\n\", \"output\": [\"1000000\"]}, {\"input\": \"1 1 1\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"1 1 2\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"1 1 1000000\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"1000000 1000000 1\\r\\n\", \"output\": [\"1000000000000\"]}, {\"input\": \"1000000 1000000 2\\r\\n\", \"output\": [\"1000000000000\"]}, {\"input\": \"1000000 1000000 999999\\r\\n\", \"output\": [\"4\"]}, {\"input\": \"1000000 1000000 12345\\r\\n\", \"output\": [\"20340100\"]}, {\"input\": \"1000000 1000000 123456\\r\\n\", \"output\": [\"12358324224\"]}, {\"input\": \"43496 179847 327622\\r\\n\", \"output\": [\"7822625112\"]}, {\"input\": \"105126 379125 460772\\r\\n\", \"output\": [\"39855894750\"]}, {\"input\": \"999463 261665 981183\\r\\n\", \"output\": [\"9566472400\"]}, {\"input\": \"836832 336228 50\\r\\n\", \"output\": [\"100850467200\"]}, {\"input\": \"303307 400683 999941\\r\\n\", \"output\": [\"121529958681\"]}, {\"input\": \"40224 890892 54\\r\\n\", \"output\": [\"31858297920\"]}, {\"input\": \"109785 447109 990618\\r\\n\", \"output\": [\"49085861565\"]}, {\"input\": \"228385 744978 699604\\r\\n\", \"output\": [\"20725481980\"]}, {\"input\": \"694117 431924 737\\r\\n\", \"output\": [\"13934440800\"]}, {\"input\": \"923179 799988 998430\\r\\n\", \"output\": [\"738532121852\"]}, {\"input\": \"61043 55049 998379\\r\\n\", \"output\": [\"3360356107\"]}, {\"input\": \"402841 635488 997633\\r\\n\", \"output\": [\"256000621408\"]}, {\"input\": \"213927 672636 865\\r\\n\", \"output\": [\"27867287808\"]}, {\"input\": \"391814 220151 3756\\r\\n\", \"output\": [\"16977831150\"]}, {\"input\": \"313667 778854 999813\\r\\n\", \"output\": [\"244300797618\"]}, {\"input\": \"933241 558702 1\\r\\n\", \"output\": [\"521403613182\"]}, {\"input\": \"38614 941895 999986\\r\\n\", \"output\": [\"36370333530\"]}, {\"input\": \"242366 216591 4\\r\\n\", \"output\": [\"19685613696\"]}, {\"input\": \"282798 941695 999998\\r\\n\", \"output\": [\"266309462610\"]}, {\"input\": \"43054 191 1\\r\\n\", \"output\": [\"8223314\"]}]",
+        "source_lang": "Python 3",
+        "target_lang": "C"
+    }
+}

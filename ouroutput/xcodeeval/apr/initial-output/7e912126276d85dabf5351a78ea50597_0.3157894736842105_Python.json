@@ -1,0 +1,101 @@
+{
+    "oai_response": {
+        "prompt": "Fix a buggy program written in Python language to solve the following programming problem:\nDescription: Reziba has many magic gems. Each magic gem can be split into $$$M$$$ normal gems. The amount of space each magic (and normal) gem takes is $$$1$$$ unit. A normal gem cannot be split.Reziba wants to choose a set of magic gems and split some of them, so the total space occupied by the resulting set of gems is $$$N$$$ units. If a magic gem is chosen and split, it takes $$$M$$$ units of space (since it is split into $$$M$$$ gems); if a magic gem is not split, it takes $$$1$$$ unit.How many different configurations of the resulting set of gems can Reziba have, such that the total amount of space taken is $$$N$$$ units? Print the answer modulo $$$1000000007$$$ ($$$10^9+7$$$). Two configurations are considered different if the number of magic gems Reziba takes to form them differs, or the indices of gems Reziba has to split differ.\nInput Specification: The input contains a single line consisting of $$$2$$$ integers $$$N$$$ and $$$M$$$ ($$$1 \\le N \\le 10^{18}$$$, $$$2 \\le M \\le 100$$$).\nOutput Specification: Print one integer, the total number of configurations of the resulting set of gems, given that the total amount of space taken is $$$N$$$ units. Print the answer modulo $$$1000000007$$$ ($$$10^9+7$$$).\n\nSample Input:\n4 2\nSample Output:\n5\n\nSample Input:\n3 2\nSample Output:\n3\n\nNotes: NoteIn the first example each magic gem can split into $$$2$$$ normal gems, and we know that the total amount of gems are $$$4$$$.Let $$$1$$$ denote a magic gem, and $$$0$$$ denote a normal gem.The total configurations you can have is:   $$$1 1 1 1$$$ (None of the gems split);  $$$0 0 1 1$$$ (First magic gem splits into $$$2$$$ normal gems);  $$$1 0 0 1$$$ (Second magic gem splits into $$$2$$$ normal gems);  $$$1 1 0 0$$$ (Third magic gem splits into $$$2$$$ normal gems);  $$$0 0 0 0$$$ (First and second magic gems split into total $$$4$$$ normal gems). Hence, answer is $$$5$$$.\nTake input from standard input and output to standard output\n\nHere is the code with a bug of TIME_LIMIT_EXCEEDED:\n\nimport sys\nrange = xrange\ninput = raw_input\n\nMOD = 10**9+7\ndef mult(A,B):\n    n = len(A)\n    C = [[0]*n for _ in range(n)]\n    for x in range(n):\n        for y in range(n):\n            for z in range(n):\n                C[x][y] += A[z][y]*B[x][z]\n            C[x][y]%=MOD\n    return C\n\ndef vecmult(A,B):\n    n = len(A)\n    C = [0]*n\n    for y in range(n):\n        C[y] = sum(A[x][y]*B[x] for x in range(n))%MOD\n    return C\n\nn,m = [int(x) for x in input().split()]\n\n\n#def DP(n):\n#    if n<=0:\n#        return 1 if n==0 else 0\n#    else:\n#        return DP(n-m) + DP(n-1)\n\n\nmapper = [[0]*m for _ in range(m)]\n\nmapper[0][0] = 1\nmapper[-1][0] = 1\nfor i in range(m-1):\n    mapper[i][i+1] = 1\n\ndef power(A,B,m):\n    n = len(A)\n    if m == 0:\n        return B\n    while m>1:\n        if m%2==1:\n            B = vecmult(A,B)\n        A = mult(A,A)\n        m//=2\n    return vecmult(A,B)\n\nvec = [1]*m\nvec = power(mapper,vec,n)\nprint(vec[-1]%MOD)\n\n\nProvide the fixed Python code without any description or extra tokens.\n\nFixed source code:\n ||END-of-SRC||",
+        "response": {
+            "id": "multi-call-as-2693b4bkbp",
+            "model": "deepseek-v3",
+            "created": 1760421451,
+            "choices": [
+                {
+                    "index": 0,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```python\nimport sys\n\nMOD = 10**9 + 7\n\ndef matrix_mult(A, B):\n    n = len(A)\n    result = [[0] * n for _ in range(n)]\n    for i in range(n):\n        for k in range(n):\n            if A[i][k] == 0:\n                continue\n            for j in range(n):\n                result[i][j] = (result[i][j] + A[i][k] * B[k][j]) % MOD\n    return result\n\ndef matrix_pow(mat, power):\n    n = len(mat)\n    result = [[0] * n for _ in range(n)]\n    for i in range(n):\n        result[i][i] = 1\n    while power > 0:\n        if power % 2 == 1:\n            result = matrix_mult(result, mat)\n        mat = matrix_mult(mat, mat)\n        power //= 2\n    return result\n\ndef main():\n    N, M = map(int, sys.stdin.readline().split())\n    if M == 1:\n        print(1 % MOD)\n        return\n    mat = [[0] * M for _ in range(M)]\n    mat[0][0] = 1\n    mat[M-1][0] = 1\n    for i in range(M-1):\n        mat[i][i+1] = 1\n    mat_pow = matrix_pow(mat, N)\n    res = mat_pow[M-1][0] % MOD\n    print(res)\n\nif __name__ == \"__main__\":\n    main()\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 1,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```python\nimport sys\n\nMOD = 10**9 + 7\n\ndef matrix_mult(A, B):\n    n = len(A)\n    C = [[0] * n for _ in range(n)]\n    for i in range(n):\n        for k in range(n):\n            if A[i][k] == 0:\n                continue\n            for j in range(n):\n                C[i][j] = (C[i][j] + A[i][k] * B[k][j]) % MOD\n    return C\n\ndef matrix_pow(mat, power):\n    n = len(mat)\n    result = [[0] * n for _ in range(n)]\n    for i in range(n):\n        result[i][i] = 1  # Identity matrix\n    \n    while power > 0:\n        if power % 2 == 1:\n            result = matrix_mult(result, mat)\n        mat = matrix_mult(mat, mat)\n        power //= 2\n    return result\n\ndef main():\n    N, M = map(int, sys.stdin.readline().split())\n    \n    mat = [[0] * M for _ in range(M)]\n    mat[0][0] = 1\n    mat[0][M-1] = 1\n    for i in range(1, M):\n        mat[i][i-1] = 1\n    \n    mat_pow = matrix_pow(mat, N)\n    res = mat_pow[0][0]\n    print(res % MOD)\n\nif __name__ == \"__main__\":\n    main()\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 2,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```python\nimport sys\n\nMOD = 10**9 + 7\n\ndef matrix_mult(A, B):\n    n = len(A)\n    C = [[0] * n for _ in range(n)]\n    for i in range(n):\n        for k in range(n):\n            if A[i][k] == 0:\n                continue\n            for j in range(n):\n                C[i][j] = (C[i][j] + A[i][k] * B[k][j]) % MOD\n    return C\n\ndef matrix_pow(mat, power):\n    n = len(mat)\n    result = [[0] * n for _ in range(n)]\n    for i in range(n):\n        result[i][i] = 1  # Identity matrix\n    \n    while power > 0:\n        if power % 2 == 1:\n            result = matrix_mult(result, mat)\n        mat = matrix_mult(mat, mat)\n        power //= 2\n    return result\n\ndef main():\n    N, M = map(int, sys.stdin.readline().split())\n    \n    mat = [[0] * M for _ in range(M)]\n    mat[0][0] = 1\n    mat[M-1][0] = 1\n    for i in range(M-1):\n        mat[i][i+1] = 1\n    \n    mat_pow = matrix_pow(mat, N)\n    res = mat_pow[0][0] + mat_pow[M-1][0]\n    res %= MOD\n    print(res)\n\nif __name__ == \"__main__\":\n    main()\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 3,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```python\nimport sys\n\nMOD = 10**9 + 7\n\ndef matrix_mult(A, B):\n    n = len(A)\n    result = [[0] * n for _ in range(n)]\n    for i in range(n):\n        for k in range(n):\n            if A[i][k] == 0:\n                continue\n            for j in range(n):\n                result[i][j] = (result[i][j] + A[i][k] * B[k][j]) % MOD\n    return result\n\ndef matrix_pow(mat, power):\n    n = len(mat)\n    result = [[0] * n for _ in range(n)]\n    for i in range(n):\n        result[i][i] = 1  # Identity matrix\n    \n    while power > 0:\n        if power % 2 == 1:\n            result = matrix_mult(result, mat)\n        mat = matrix_mult(mat, mat)\n        power //= 2\n    return result\n\ndef main():\n    N, M = map(int, sys.stdin.readline().split())\n    \n    if M == 1:\n        print(1 % MOD)\n        return\n    \n    mat = [[0] * M for _ in range(M)]\n    mat[0][0] = 1\n    mat[M-1][0] = 1\n    for i in range(M-1):\n        mat[i][i+1] = 1\n    \n    mat_pow = matrix_pow(mat, N)\n    res = mat_pow[0][0] + mat_pow[M-1][0]\n    res %= MOD\n    print(res)\n\nif __name__ == \"__main__\":\n    main()\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 4,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```python\nimport sys\n\nMOD = 10**9 + 7\n\ndef matrix_mult(A, B):\n    n = len(A)\n    result = [[0] * n for _ in range(n)]\n    for i in range(n):\n        for k in range(n):\n            if A[i][k] == 0:\n                continue\n            for j in range(n):\n                result[i][j] = (result[i][j] + A[i][k] * B[k][j]) % MOD\n    return result\n\ndef matrix_pow(mat, power):\n    n = len(mat)\n    result = [[0] * n for _ in range(n)]\n    for i in range(n):\n        result[i][i] = 1  # Identity matrix\n    \n    while power > 0:\n        if power % 2 == 1:\n            result = matrix_mult(result, mat)\n        mat = matrix_mult(mat, mat)\n        power //= 2\n    return result\n\ndef main():\n    N, M = map(int, sys.stdin.readline().split())\n    \n    mat = [[0] * M for _ in range(M)]\n    mat[0][0] = 1\n    mat[M-1][0] = 1\n    for i in range(M-1):\n        mat[i][i+1] = 1\n    \n    mat_pow = matrix_pow(mat, N)\n    res = mat_pow[M-1][0] % MOD\n    print(res)\n\nif __name__ == \"__main__\":\n    main()\n```"
+                    },
+                    "finish_reason": "stop"
+                }
+            ],
+            "usage": {
+                "prompt_tokens": 4760,
+                "completion_tokens": 1678,
+                "total_tokens": 6438
+            }
+        }
+    },
+    "source_data": {
+        "prob_desc_memory_limit": "256 megabytes",
+        "tags": [
+            "matrices",
+            "dp",
+            "math"
+        ],
+        "prob_desc_created_at": "1550504400",
+        "fix_source_code": "",
+        "prob_desc_input_spec": "The input contains a single line consisting of $$$2$$$ integers $$$N$$$ and $$$M$$$ ($$$1 \\le N \\le 10^{18}$$$, $$$2 \\le M \\le 100$$$).",
+        "prob_desc_sample_outputs": [
+            "5",
+            "3"
+        ],
+        "src_uid": "e7b9eec21d950f5d963ff50619c6f119",
+        "prob_desc_time_limit": "3 seconds",
+        "fix_exec_outcome": "",
+        "delete_cnt": 0,
+        "apr_id": "4c29ebdd1b97bb82c45fbd9381b3a8dd",
+        "fix_code_uid": "",
+        "lang_cluster": "Python",
+        "prob_desc_sample_inputs": [
+            "4 2",
+            "3 2"
+        ],
+        "prob_desc_output_to": "standard output",
+        "file_name": "Python.jsonl",
+        "equal_cnt": 5,
+        "lang": "PyPy 2",
+        "prob_desc_output_spec": "Print one integer, the total number of configurations of the resulting set of gems, given that the total amount of space taken is $$$N$$$ units. Print the answer modulo $$$1000000007$$$ ($$$10^9+7$$$).",
+        "bug_exec_outcome": "TIME_LIMIT_EXCEEDED",
+        "prob_desc_notes": "NoteIn the first example each magic gem can split into $$$2$$$ normal gems, and we know that the total amount of gems are $$$4$$$.Let $$$1$$$ denote a magic gem, and $$$0$$$ denote a normal gem.The total configurations you can have is:   $$$1 1 1 1$$$ (None of the gems split);  $$$0 0 1 1$$$ (First magic gem splits into $$$2$$$ normal gems);  $$$1 0 0 1$$$ (Second magic gem splits into $$$2$$$ normal gems);  $$$1 1 0 0$$$ (Third magic gem splits into $$$2$$$ normal gems);  $$$0 0 0 0$$$ (First and second magic gems split into total $$$4$$$ normal gems). Hence, answer is $$$5$$$.",
+        "difficulty": 2100.0,
+        "similarity_score": 0.8544176817,
+        "prob_desc_description": "Reziba has many magic gems. Each magic gem can be split into $$$M$$$ normal gems. The amount of space each magic (and normal) gem takes is $$$1$$$ unit. A normal gem cannot be split.Reziba wants to choose a set of magic gems and split some of them, so the total space occupied by the resulting set of gems is $$$N$$$ units. If a magic gem is chosen and split, it takes $$$M$$$ units of space (since it is split into $$$M$$$ gems); if a magic gem is not split, it takes $$$1$$$ unit.How many different configurations of the resulting set of gems can Reziba have, such that the total amount of space taken is $$$N$$$ units? Print the answer modulo $$$1000000007$$$ ($$$10^9+7$$$). Two configurations are considered different if the number of magic gems Reziba takes to form them differs, or the indices of gems Reziba has to split differ.",
+        "potential_dominant_fix_op": "replace",
+        "bug_source_code": "import sys\nrange = xrange\ninput = raw_input\n\nMOD = 10**9+7\ndef mult(A,B):\n    n = len(A)\n    C = [[0]*n for _ in range(n)]\n    for x in range(n):\n        for y in range(n):\n            for z in range(n):\n                C[x][y] += A[z][y]*B[x][z]\n            C[x][y]%=MOD\n    return C\n\ndef vecmult(A,B):\n    n = len(A)\n    C = [0]*n\n    for y in range(n):\n        C[y] = sum(A[x][y]*B[x] for x in range(n))%MOD\n    return C\n\nn,m = [int(x) for x in input().split()]\n\n\n#def DP(n):\n#    if n<=0:\n#        return 1 if n==0 else 0\n#    else:\n#        return DP(n-m) + DP(n-1)\n\n\nmapper = [[0]*m for _ in range(m)]\n\nmapper[0][0] = 1\nmapper[-1][0] = 1\nfor i in range(m-1):\n    mapper[i][i+1] = 1\n\ndef power(A,B,m):\n    n = len(A)\n    if m == 0:\n        return B\n    while m>1:\n        if m%2==1:\n            B = vecmult(A,B)\n        A = mult(A,A)\n        m//=2\n    return vecmult(A,B)\n\nvec = [1]*m\nvec = power(mapper,vec,n)\nprint(vec[-1]%MOD)\n",
+        "replace_cnt": 3,
+        "prob_desc_input_from": "standard input",
+        "bug_code_uid": "7e912126276d85dabf5351a78ea50597",
+        "insert_cnt": 1,
+        "fix_ops_cnt": 4,
+        "hidden_unit_tests": "[{\"input\": \"4 2\\r\\n\", \"output\": [\"5\"]}, {\"input\": \"3 2\\r\\n\", \"output\": [\"3\"]}, {\"input\": \"1000000000000000000 2\\r\\n\", \"output\": [\"680057396\"]}, {\"input\": \"1000000000000000000 3\\r\\n\", \"output\": [\"615472476\"]}, {\"input\": \"1000000000000000000 5\\r\\n\", \"output\": [\"285726867\"]}, {\"input\": \"1000000000000000000 42\\r\\n\", \"output\": [\"683499162\"]}, {\"input\": \"1000000000000000000 69\\r\\n\", \"output\": [\"864131130\"]}, {\"input\": \"1000000000000000000 99\\r\\n\", \"output\": [\"847914677\"]}, {\"input\": \"1000000000000000000 100\\r\\n\", \"output\": [\"161502719\"]}, {\"input\": \"1 2\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"1 3\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"1 4\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"1 5\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"2 2\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"2 3\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"2 4\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"2 5\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"5 2\\r\\n\", \"output\": [\"8\"]}, {\"input\": \"5 3\\r\\n\", \"output\": [\"4\"]}, {\"input\": \"5 4\\r\\n\", \"output\": [\"3\"]}, {\"input\": \"5 5\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"6 2\\r\\n\", \"output\": [\"13\"]}, {\"input\": \"6 3\\r\\n\", \"output\": [\"6\"]}, {\"input\": \"6 4\\r\\n\", \"output\": [\"4\"]}, {\"input\": \"6 5\\r\\n\", \"output\": [\"3\"]}, {\"input\": \"7 2\\r\\n\", \"output\": [\"21\"]}, {\"input\": \"7 3\\r\\n\", \"output\": [\"9\"]}, {\"input\": \"7 4\\r\\n\", \"output\": [\"5\"]}, {\"input\": \"7 5\\r\\n\", \"output\": [\"4\"]}, {\"input\": \"99 100\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"99 99\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"69 30\\r\\n\", \"output\": [\"96\"]}, {\"input\": \"69 2\\r\\n\", \"output\": [\"489376391\"]}, {\"input\": \"25 2\\r\\n\", \"output\": [\"121393\"]}, {\"input\": \"576460752303423487 100\\r\\n\", \"output\": [\"163029191\"]}, {\"input\": \"144115188075855871 100\\r\\n\", \"output\": [\"156647062\"]}, {\"input\": \"288230376151711743 100\\r\\n\", \"output\": [\"626842151\"]}]"
+    }
+}

@@ -1,0 +1,87 @@
+{
+    "oai_response": {
+        "prompt": "Here is code in Python 3 programming lanaguge. Translate the following code from Python 3 to C programming lanaguge. Do not output any extra description or tokens other than the translated code. \n\nfrom collections import Counter\n\ndef primes(n):\n    primfac = []\n    cnt = Counter()\n    d = 2\n    while d * d <= n:\n        while (n % d) == 0:\n            cnt[d] += 1\n            # primfac.append(d)\n            n //= d\n        d += 1\n    if n > 1:\n        cnt[n] += 1\n        # primfac.append(n)\n\n\n    return list(cnt.values())\n\n\ndef run():\n    b = int(input())\n    occ = primes(b)\n    res = 1\n    for e in occ:\n        res *= e + 1\n\n    print(res)\n\n\nif __name__ == '__main__':\n    run()\n||END-of-SRC||",
+        "response": {
+            "id": "multi-call-as-39br46wz2u",
+            "model": "deepseek-v3",
+            "created": 1767067898,
+            "choices": [
+                {
+                    "index": 0,
+                    "message": {
+                        "role": "assistant",
+                        "content": "Here's the translated code in C:\n\n```c\n#include <stdio.h>\n#include <stdlib.h>\n\nint* primes(int n, int* size) {\n    int* cnt = calloc(n + 1, sizeof(int));\n    int d = 2;\n    while (d * d <= n) {\n        while (n % d == 0) {\n            cnt[d]++;\n            n /= d;\n        }\n        d++;\n    }\n    if (n > 1) {\n        cnt[n]++;\n    }\n    \n    int count = 0;\n    for (int i = 0; i <= n; i++) {\n        if (cnt[i] > 0) {\n            count++;\n        }\n    }\n    \n    int* result = malloc(count * sizeof(int));\n    int index = 0;\n    for (int i = 0; i <= n; i++) {\n        if (cnt[i] > 0) {\n            result[index++] = cnt[i];\n        }\n    }\n    \n    *size = count;\n    free(cnt);\n    return result;\n}\n\nvoid run() {\n    int b;\n    scanf(\"%d\", &b);\n    int size;\n    int* occ = primes(b, &size);\n    int res = 1;\n    for (int i = 0; i < size; i++) {\n        res *= occ[i] + 1;\n    }\n    printf(\"%d\\n\", res);\n    free(occ);\n}\n\nint main() {\n    run();\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 1,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <stdlib.h>\n\ntypedef struct {\n    int key;\n    int value;\n} Pair;\n\nPair* counter = NULL;\nint counter_size = 0;\n\nvoid increment_counter(int key) {\n    for (int i = 0; i < counter_size; i++) {\n        if (counter[i].key == key) {\n            counter[i].value++;\n            return;\n        }\n    }\n    counter_size++;\n    counter = realloc(counter, counter_size * sizeof(Pair));\n    counter[counter_size - 1].key = key;\n    counter[counter_size - 1].value = 1;\n}\n\nint* primes(int n) {\n    counter = NULL;\n    counter_size = 0;\n    int d = 2;\n    while (d * d <= n) {\n        while (n % d == 0) {\n            increment_counter(d);\n            n /= d;\n        }\n        d++;\n    }\n    if (n > 1) {\n        increment_counter(n);\n    }\n    int* result = malloc(counter_size * sizeof(int));\n    for (int i = 0; i < counter_size; i++) {\n        result[i] = counter[i].value;\n    }\n    free(counter);\n    return result;\n}\n\nvoid run() {\n    int b;\n    scanf(\"%d\", &b);\n    int* occ = primes(b);\n    int res = 1;\n    for (int i = 0; i < counter_size; i++) {\n        res *= occ[i] + 1;\n    }\n    printf(\"%d\\n\", res);\n    free(occ);\n}\n\nint main() {\n    run();\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 2,
+                    "message": {
+                        "role": "assistant",
+                        "content": "Here's the translated code in C:\n\n```c\n#include <stdio.h>\n#include <stdlib.h>\n\nint* primes(int n, int* size) {\n    int* cnt = calloc(n + 1, sizeof(int));\n    int d = 2;\n    while (d * d <= n) {\n        while (n % d == 0) {\n            cnt[d]++;\n            n /= d;\n        }\n        d++;\n    }\n    if (n > 1) {\n        cnt[n]++;\n    }\n    \n    int count = 0;\n    for (int i = 0; i <= n; i++) {\n        if (cnt[i] > 0) {\n            count++;\n        }\n    }\n    \n    int* result = malloc(count * sizeof(int));\n    int index = 0;\n    for (int i = 0; i <= n; i++) {\n        if (cnt[i] > 0) {\n            result[index++] = cnt[i];\n        }\n    }\n    \n    *size = count;\n    free(cnt);\n    return result;\n}\n\nvoid run() {\n    int b;\n    scanf(\"%d\", &b);\n    int size;\n    int* occ = primes(b, &size);\n    int res = 1;\n    for (int i = 0; i < size; i++) {\n        res *= occ[i] + 1;\n    }\n    printf(\"%d\\n\", res);\n    free(occ);\n}\n\nint main() {\n    run();\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 3,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <stdlib.h>\n\ntypedef struct {\n    int key;\n    int value;\n} Pair;\n\nPair* counter = NULL;\nint counter_size = 0;\n\nvoid increment_counter(int key) {\n    for (int i = 0; i < counter_size; i++) {\n        if (counter[i].key == key) {\n            counter[i].value++;\n            return;\n        }\n    }\n    counter_size++;\n    counter = realloc(counter, counter_size * sizeof(Pair));\n    counter[counter_size - 1].key = key;\n    counter[counter_size - 1].value = 1;\n}\n\nint* primes(int n) {\n    counter = NULL;\n    counter_size = 0;\n    int d = 2;\n    while (d * d <= n) {\n        while (n % d == 0) {\n            increment_counter(d);\n            n /= d;\n        }\n        d++;\n    }\n    if (n > 1) {\n        increment_counter(n);\n    }\n    int* result = malloc(counter_size * sizeof(int));\n    for (int i = 0; i < counter_size; i++) {\n        result[i] = counter[i].value;\n    }\n    free(counter);\n    return result;\n}\n\nvoid run() {\n    int b;\n    scanf(\"%d\", &b);\n    int* occ = primes(b);\n    int res = 1;\n    for (int i = 0; i < counter_size; i++) {\n        res *= occ[i] + 1;\n    }\n    printf(\"%d\\n\", res);\n    free(occ);\n}\n\nint main() {\n    run();\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 4,
+                    "message": {
+                        "role": "assistant",
+                        "content": "Here's the translated code in C:\n\n```c\n#include <stdio.h>\n#include <stdlib.h>\n\nvoid primes(int n, int* cnt, int* size) {\n    int d = 2;\n    *size = 0;\n    while (d * d <= n) {\n        while (n % d == 0) {\n            cnt[*size] = d;\n            (*size)++;\n            n /= d;\n        }\n        d++;\n    }\n    if (n > 1) {\n        cnt[*size] = n;\n        (*size)++;\n    }\n}\n\nint main() {\n    int b;\n    scanf(\"%d\", &b);\n    int* cnt = (int*)malloc(b * sizeof(int));\n    int size = 0;\n    primes(b, cnt, &size);\n    \n    int res = 1;\n    int current = cnt[0];\n    int count = 1;\n    for (int i = 1; i < size; i++) {\n        if (cnt[i] == current) {\n            count++;\n        } else {\n            res *= (count + 1);\n            current = cnt[i];\n            count = 1;\n        }\n    }\n    res *= (count + 1);\n    \n    printf(\"%d\\n\", res);\n    free(cnt);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                }
+            ],
+            "usage": {
+                "prompt_tokens": 1005,
+                "completion_tokens": 1622,
+                "total_tokens": 2627
+            }
+        }
+    },
+    "source_data": {
+        "code_uid": "b1804fab5fca213fef024760ab105e1b",
+        "prob_desc_output_to": "standard output",
+        "prob_desc_notes": "NoteIn the first example $$$[a, \\,\\, 1] = a$$$, therefore $$$\\frac{[a, \\,\\, b]}{a}$$$ is always equal to $$$1$$$.In the second example $$$[a, \\,\\, 2]$$$ can be equal to $$$a$$$ or $$$2 \\cdot a$$$ depending on parity of $$$a$$$. $$$\\frac{[a, \\,\\, b]}{a}$$$ can be equal to $$$1$$$ and $$$2$$$.",
+        "lang_cluster": "Python",
+        "prob_desc_time_limit": "1 second",
+        "prob_desc_input_spec": "The only line contains one integer\u00a0\u2014 $$$b$$$ $$$(1 \\le b \\le 10^{10})$$$.",
+        "source_code": "from collections import Counter\n\ndef primes(n):\n    primfac = []\n    cnt = Counter()\n    d = 2\n    while d * d <= n:\n        while (n % d) == 0:\n            cnt[d] += 1\n            # primfac.append(d)\n            n //= d\n        d += 1\n    if n > 1:\n        cnt[n] += 1\n        # primfac.append(n)\n\n\n    return list(cnt.values())\n\n\ndef run():\n    b = int(input())\n    occ = primes(b)\n    res = 1\n    for e in occ:\n        res *= e + 1\n\n    print(res)\n\n\nif __name__ == '__main__':\n    run()\n",
+        "prob_desc_sample_inputs": [
+            "1",
+            "2"
+        ],
+        "prob_desc_memory_limit": "256 megabytes",
+        "exec_outcome": "PASSED",
+        "prob_desc_output_spec": "Print one number\u00a0\u2014 answer for the problem.",
+        "src_uid": "7fc9e7d7e25ab97d8ebc10ed8ae38fd1",
+        "prob_desc_input_from": "standard input",
+        "lang": "Python 3",
+        "prob_desc_sample_outputs": [
+            "1",
+            "2"
+        ],
+        "file_name": "d7021504500d5ca7c2b02df8100a574d159e6e67e20ec8071b75800b1267370a",
+        "prob_desc_description": "Ivan has number $$$b$$$. He is sorting through the numbers $$$a$$$ from $$$1$$$ to $$$10^{18}$$$, and for every $$$a$$$ writes $$$\\frac{[a, \\,\\, b]}{a}$$$ on blackboard. Here $$$[a, \\,\\, b]$$$ stands for least common multiple of $$$a$$$ and $$$b$$$. Ivan is very lazy, that's why this task bored him soon. But he is interested in how many different numbers he would write on the board if he would finish the task. Help him to find the quantity of different numbers he would write on the board.",
+        "prob_desc_created_at": "1540398900",
+        "difficulty": 1200.0,
+        "hidden_unit_tests": "[{\"input\": \"1\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"2\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"16\\r\\n\", \"output\": [\"5\"]}, {\"input\": \"433494437\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"10000000000\\r\\n\", \"output\": [\"121\"]}, {\"input\": \"169\\r\\n\", \"output\": [\"3\"]}, {\"input\": \"244078129\\r\\n\", \"output\": [\"9\"]}, {\"input\": \"7169516929\\r\\n\", \"output\": [\"3\"]}, {\"input\": \"2147483647\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"2971215073\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"3\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"14\\r\\n\", \"output\": [\"4\"]}, {\"input\": \"999393068\\r\\n\", \"output\": [\"24\"]}, {\"input\": \"9749081567\\r\\n\", \"output\": [\"4\"]}, {\"input\": \"1024\\r\\n\", \"output\": [\"11\"]}, {\"input\": \"48932\\r\\n\", \"output\": [\"12\"]}, {\"input\": \"179\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"58697100\\r\\n\", \"output\": [\"324\"]}, {\"input\": \"603979776\\r\\n\", \"output\": [\"81\"]}, {\"input\": \"1048576\\r\\n\", \"output\": [\"21\"]}, {\"input\": \"963837006\\r\\n\", \"output\": [\"32\"]}, {\"input\": \"196729490\\r\\n\", \"output\": [\"8\"]}, {\"input\": \"5760838\\r\\n\", \"output\": [\"24\"]}, {\"input\": \"6508183\\r\\n\", \"output\": [\"4\"]}, {\"input\": \"999152231\\r\\n\", \"output\": [\"16\"]}, {\"input\": \"1073676287\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"2162160\\r\\n\", \"output\": [\"320\"]}, {\"input\": \"4324320\\r\\n\", \"output\": [\"384\"]}, {\"input\": \"13693680\\r\\n\", \"output\": [\"480\"]}, {\"input\": \"985944960\\r\\n\", \"output\": [\"1280\"]}, {\"input\": \"898781184\\r\\n\", \"output\": [\"364\"]}, {\"input\": \"9133684560\\r\\n\", \"output\": [\"1920\"]}, {\"input\": \"8872504640\\r\\n\", \"output\": [\"56\"]}, {\"input\": \"9886593024\\r\\n\", \"output\": [\"728\"]}, {\"input\": \"6983776800\\r\\n\", \"output\": [\"2304\"]}, {\"input\": \"5587021440\\r\\n\", \"output\": [\"2048\"]}, {\"input\": \"4655851200\\r\\n\", \"output\": [\"2016\"]}, {\"input\": \"3491888400\\r\\n\", \"output\": [\"1920\"]}, {\"input\": \"2793510720\\r\\n\", \"output\": [\"1792\"]}, {\"input\": \"2327925600\\r\\n\", \"output\": [\"1728\"]}, {\"input\": \"2205403200\\r\\n\", \"output\": [\"1680\"]}, {\"input\": \"2095133040\\r\\n\", \"output\": [\"1600\"]}, {\"input\": \"1396755360\\r\\n\", \"output\": [\"1536\"]}, {\"input\": \"1102701600\\r\\n\", \"output\": [\"1440\"]}, {\"input\": \"10\\r\\n\", \"output\": [\"4\"]}, {\"input\": \"6\\r\\n\", \"output\": [\"4\"]}, {\"input\": \"5\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"8\\r\\n\", \"output\": [\"4\"]}, {\"input\": \"2000000014\\r\\n\", \"output\": [\"4\"]}, {\"input\": \"51\\r\\n\", \"output\": [\"4\"]}, {\"input\": \"45\\r\\n\", \"output\": [\"6\"]}, {\"input\": \"4000000028\\r\\n\", \"output\": [\"6\"]}]",
+        "source_lang": "Python 3",
+        "target_lang": "C"
+    }
+}

@@ -1,0 +1,87 @@
+{
+    "oai_response": {
+        "prompt": "Here is code in Python 3 programming lanaguge. Translate the following code from Python 3 to C programming lanaguge. Do not output any extra description or tokens other than the translated code. \n\na,b,c,m=1,2,4,10**9+9\nn=int(input())\nfor i in range(1,n//2):\n\tc=c*a%m\n\tb=(b+c)%m\n\ta=(2*a+3)%m\nprint((b*b+1)*2%m)||END-of-SRC||",
+        "response": {
+            "id": "multi-call-as-pdc8e618dr",
+            "model": "deepseek-v3",
+            "created": 1767070350,
+            "choices": [
+                {
+                    "index": 0,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n\nint main() {\n    long long a = 1, b = 2, c = 4, m = 1000000009;\n    int n;\n    scanf(\"%d\", &n);\n    for (int i = 1; i < n / 2; i++) {\n        c = c * a % m;\n        b = (b + c) % m;\n        a = (2 * a + 3) % m;\n    }\n    printf(\"%lld\\n\", (b * b + 1) * 2 % m);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 1,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n\nint main() {\n    long long a = 1, b = 2, c = 4, m = 1000000009;\n    int n;\n    scanf(\"%d\", &n);\n    for (int i = 1; i < n / 2; i++) {\n        c = c * a % m;\n        b = (b + c) % m;\n        a = (2 * a + 3) % m;\n    }\n    printf(\"%lld\\n\", (b * b + 1) * 2 % m);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 2,
+                    "message": {
+                        "role": "assistant",
+                        "content": "Here's the translated code in C:\n\n```c\n#include <stdio.h>\n\nint main() {\n    int a = 1, b = 2, c = 4, m = 1000000009;\n    int n;\n    scanf(\"%d\", &n);\n    for (int i = 1; i < n / 2; i++) {\n        c = (long long)c * a % m;\n        b = (b + c) % m;\n        a = (2 * a + 3) % m;\n    }\n    printf(\"%d\\n\", (int)(((long long)b * b + 1) * 2 % m));\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 3,
+                    "message": {
+                        "role": "assistant",
+                        "content": "Here's the translated code in C:\n\n```c\n#include <stdio.h>\n\nint main() {\n    int a = 1, b = 2, c = 4, m = 1000000009;\n    int n;\n    scanf(\"%d\", &n);\n    for (int i = 1; i < n / 2; i++) {\n        c = (long long)c * a % m;\n        b = (b + c) % m;\n        a = (2 * a + 3) % m;\n    }\n    printf(\"%d\\n\", (int)(((long long)b * b + 1) * 2 % m));\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 4,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n\nint main() {\n    long long a = 1, b = 2, c = 4, m = 1000000009;\n    int n;\n    scanf(\"%d\", &n);\n    for (int i = 1; i < n / 2; i++) {\n        c = c * a % m;\n        b = (b + c) % m;\n        a = (2 * a + 3) % m;\n    }\n    printf(\"%lld\\n\", (b * b + 1) * 2 % m);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                }
+            ],
+            "usage": {
+                "prompt_tokens": 575,
+                "completion_tokens": 692,
+                "total_tokens": 1267
+            }
+        }
+    },
+    "source_data": {
+        "code_uid": "b135a9c29bf44124df17fc95faeca6ae",
+        "prob_desc_output_to": "standard output",
+        "prob_desc_notes": null,
+        "lang_cluster": "Python",
+        "prob_desc_time_limit": "1 second",
+        "prob_desc_input_spec": "The input data contain the only even integer n (2\u2009\u2264\u2009n\u2009\u2264\u2009106).",
+        "source_code": "a,b,c,m=1,2,4,10**9+9\nn=int(input())\nfor i in range(1,n//2):\n\tc=c*a%m\n\tb=(b+c)%m\n\ta=(2*a+3)%m\nprint((b*b+1)*2%m)",
+        "prob_desc_sample_inputs": [
+            "2",
+            "4"
+        ],
+        "prob_desc_memory_limit": "64 megabytes",
+        "exec_outcome": "PASSED",
+        "prob_desc_output_spec": "Output the only number \u2014 the amount of Peter's routes modulo 1000000009.",
+        "src_uid": "dbcb1077e7421554ba5d69b64d22c937",
+        "prob_desc_input_from": "standard input",
+        "lang": "Python 3",
+        "prob_desc_sample_outputs": [
+            "10",
+            "74"
+        ],
+        "file_name": "d7021504500d5ca7c2b02df8100a574d159e6e67e20ec8071b75800b1267370a",
+        "prob_desc_description": "Last summer Peter was at his granny's in the country, when a wolf attacked sheep in the nearby forest. Now he fears to walk through the forest, to walk round the forest, even to get out of the house. He explains this not by the fear of the wolf, but by a strange, in his opinion, pattern of the forest that has n levels, where n is an even number.In the local council you were given an area map, where the granny's house is marked by point H, parts of dense forest are marked grey (see the picture to understand better).After a long time at home Peter decided to yield to his granny's persuasions and step out for a breath of fresh air. Being prudent, Peter plans the route beforehand. The route, that Peter considers the most suitable, has the following characteristics:   it starts and ends in the same place \u2014 the granny's house;  the route goes along the forest paths only (these are the segments marked black in the picture);  the route has positive length (to step out for a breath of fresh air Peter has to cover some distance anyway);  the route cannot cross itself;  there shouldn't be any part of dense forest within the part marked out by this route; You should find the amount of such suitable oriented routes modulo 1000000009.  The example of the area map for n\u2009=\u200912 is given in the picture. Since the map has a regular structure, you can construct it for other n by analogy using the example.",
+        "prob_desc_created_at": "1275145200",
+        "difficulty": 2600.0,
+        "hidden_unit_tests": "[{\"input\": \"2\\r\\n\", \"output\": [\"10\"]}, {\"input\": \"4\\r\\n\", \"output\": [\"74\"]}, {\"input\": \"6\\r\\n\", \"output\": [\"1354\"]}, {\"input\": \"8\\r\\n\", \"output\": [\"163594\"]}, {\"input\": \"10\\r\\n\", \"output\": [\"122492554\"]}, {\"input\": \"966\\r\\n\", \"output\": [\"154440215\"]}, {\"input\": \"9158\\r\\n\", \"output\": [\"481655864\"]}, {\"input\": \"95576\\r\\n\", \"output\": [\"52134285\"]}, {\"input\": \"804974\\r\\n\", \"output\": [\"830331886\"]}, {\"input\": \"635758\\r\\n\", \"output\": [\"524558133\"]}, {\"input\": \"982894\\r\\n\", \"output\": [\"610514474\"]}, {\"input\": \"813678\\r\\n\", \"output\": [\"195839973\"]}, {\"input\": \"524288\\r\\n\", \"output\": [\"858669864\"]}, {\"input\": \"908550\\r\\n\", \"output\": [\"307673807\"]}, {\"input\": \"988794\\r\\n\", \"output\": [\"57571447\"]}, {\"input\": \"939636\\r\\n\", \"output\": [\"402023314\"]}, {\"input\": \"956022\\r\\n\", \"output\": [\"864671299\"]}, {\"input\": \"972408\\r\\n\", \"output\": [\"377259665\"]}, {\"input\": \"905180\\r\\n\", \"output\": [\"247958166\"]}, {\"input\": \"921566\\r\\n\", \"output\": [\"838186871\"]}, {\"input\": \"975778\\r\\n\", \"output\": [\"995284797\"]}, {\"input\": \"992164\\r\\n\", \"output\": [\"184482083\"]}, {\"input\": \"924936\\r\\n\", \"output\": [\"867859567\"]}, {\"input\": \"906864\\r\\n\", \"output\": [\"748483990\"]}, {\"input\": \"974094\\r\\n\", \"output\": [\"9604500\"]}, {\"input\": \"38\\r\\n\", \"output\": [\"913760132\"]}, {\"input\": \"94\\r\\n\", \"output\": [\"45354328\"]}, {\"input\": \"48\\r\\n\", \"output\": [\"980993190\"]}, {\"input\": \"54\\r\\n\", \"output\": [\"111356740\"]}, {\"input\": \"14\\r\\n\", \"output\": [\"809112458\"]}, {\"input\": \"68\\r\\n\", \"output\": [\"940618832\"]}, {\"input\": \"24\\r\\n\", \"output\": [\"697629445\"]}, {\"input\": \"30\\r\\n\", \"output\": [\"698593821\"]}, {\"input\": \"84\\r\\n\", \"output\": [\"222712293\"]}, {\"input\": \"941322\\r\\n\", \"output\": [\"359985814\"]}, {\"input\": \"923250\\r\\n\", \"output\": [\"463682665\"]}, {\"input\": \"999994\\r\\n\", \"output\": [\"381170049\"]}, {\"input\": \"999996\\r\\n\", \"output\": [\"629260868\"]}, {\"input\": \"999998\\r\\n\", \"output\": [\"336683304\"]}, {\"input\": \"1000000\\r\\n\", \"output\": [\"958220352\"]}, {\"input\": \"140\\r\\n\", \"output\": [\"256406051\"]}, {\"input\": \"168\\r\\n\", \"output\": [\"816814227\"]}, {\"input\": \"160\\r\\n\", \"output\": [\"176472603\"]}, {\"input\": \"188\\r\\n\", \"output\": [\"249468441\"]}, {\"input\": \"180\\r\\n\", \"output\": [\"320858917\"]}, {\"input\": \"448\\r\\n\", \"output\": [\"511315133\"]}, {\"input\": \"410\\r\\n\", \"output\": [\"485353876\"]}, {\"input\": \"372\\r\\n\", \"output\": [\"993326044\"]}, {\"input\": \"726\\r\\n\", \"output\": [\"827884602\"]}, {\"input\": \"716\\r\\n\", \"output\": [\"687598196\"]}]",
+        "source_lang": "Python 3",
+        "target_lang": "C"
+    }
+}

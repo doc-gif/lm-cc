@@ -1,0 +1,93 @@
+{
+    "oai_response": {
+        "prompt": "Here is code in Python 3 programming lanaguge. Translate the following code from Python 3 to C programming lanaguge. Do not output any extra description or tokens other than the translated code. \n\nmod=10**9+7\nn,k=map(int,input().split())\n\nA=[0]*(n+1)\nB=[0]*(n+1)\nC=[0]*(n+1)\nF=[0]*(n+1)\nG=[0]*(n+1)\n\nF[0]=G[0]=1\nfor i in range(1,n+1):\n\tG[i]=F[i]=F[i-1]*i%mod\n\tG[i]=pow(F[i],(mod-2),mod)\n\nfor i in range(0,n):\n\tif i*2>n:\n\t\tbreak\n\tB[i]=(F[n-i]*G[i]*G[n-i*2])%mod\nfor i in range(0,n//2+1):\n\tfor j in range(0,n//2+1):\n\t\tA[i+j]=(A[i+j]+B[i]*B[j])%mod\nfor i in range(0,n+1):\n\tA[i]=A[i]*F[n-i]%mod\nfor i in range(0,n+1):\n\tfor j in range(0,i+1):\n\t\tC[j]=(C[j]+A[i]*F[i]*G[j]*G[i-j]*(1-(i-j)%2*2))%mod\nprint(C[k]%mod)\n\n||END-of-SRC||",
+        "response": {
+            "id": "multi-call-as-pzq0xm4wia",
+            "model": "deepseek-v3",
+            "created": 1767070185,
+            "choices": [
+                {
+                    "index": 0,
+                    "message": {
+                        "role": "assistant",
+                        "content": "Here's the translated code in C:\n\n```c\n#include <stdio.h>\n#include <stdlib.h>\n#include <math.h>\n\n#define MOD 1000000007\n\nlong long power(long long x, long long y, long long p) {\n    long long res = 1;\n    x = x % p;\n    while (y > 0) {\n        if (y & 1)\n            res = (res * x) % p;\n        y = y >> 1;\n        x = (x * x) % p;\n    }\n    return res;\n}\n\nint main() {\n    int n, k;\n    scanf(\"%d %d\", &n, &k);\n    \n    long long *F = (long long *)malloc((n+1) * sizeof(long long));\n    long long *G = (long long *)malloc((n+1) * sizeof(long long));\n    long long *A = (long long *)calloc((n+1), sizeof(long long));\n    long long *B = (long long *)calloc((n+1), sizeof(long long));\n    long long *C = (long long *)calloc((n+1), sizeof(long long));\n    \n    F[0] = G[0] = 1;\n    for (int i = 1; i <= n; i++) {\n        F[i] = F[i-1] * i % MOD;\n        G[i] = power(F[i], MOD-2, MOD);\n    }\n    \n    for (int i = 0; i <= n; i++) {\n        if (i * 2 > n) break;\n        B[i] = (F[n-i] * G[i] % MOD) * G[n-i*2] % MOD;\n    }\n    \n    for (int i = 0; i <= n/2; i++) {\n        for (int j = 0; j <= n/2; j++) {\n            A[i+j] = (A[i+j] + B[i] * B[j]) % MOD;\n        }\n    }\n    \n    for (int i = 0; i <= n; i++) {\n        A[i] = A[i] * F[n-i] % MOD;\n    }\n    \n    for (int i = 0; i <= n; i++) {\n        for (int j = 0; j <= i; j++) {\n            C[j] = (C[j] + A[i] * F[i] % MOD * G[j] % MOD * G[i-j] % MOD * (1 - (i-j) % 2 * 2)) % MOD;\n        }\n    }\n    \n    printf(\"%lld\\n\", (C[k] % MOD + MOD) % MOD);\n    \n    free(F);\n    free(G);\n    free(A);\n    free(B);\n    free(C);\n    \n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 1,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <stdlib.h>\n#include <math.h>\n\n#define MOD 1000000007\n\nlong long mod_pow(long long base, long long exp, long long mod) {\n    long long result = 1;\n    while (exp > 0) {\n        if (exp % 2 == 1) {\n            result = (result * base) % mod;\n        }\n        base = (base * base) % mod;\n        exp /= 2;\n    }\n    return result;\n}\n\nint main() {\n    int n, k;\n    scanf(\"%d %d\", &n, &k);\n\n    long long *F = (long long *)malloc((n + 1) * sizeof(long long));\n    long long *G = (long long *)malloc((n + 1) * sizeof(long long));\n    long long *A = (long long *)calloc((n + 1), sizeof(long long));\n    long long *B = (long long *)calloc((n + 1), sizeof(long long));\n    long long *C = (long long *)calloc((n + 1), sizeof(long long));\n\n    F[0] = G[0] = 1;\n    for (int i = 1; i <= n; i++) {\n        F[i] = (F[i - 1] * i) % MOD;\n        G[i] = mod_pow(F[i], MOD - 2, MOD);\n    }\n\n    for (int i = 0; i <= n; i++) {\n        if (i * 2 > n) break;\n        B[i] = (F[n - i] * G[i] % MOD) * G[n - 2 * i] % MOD;\n    }\n\n    for (int i = 0; i <= n / 2; i++) {\n        for (int j = 0; j <= n / 2; j++) {\n            A[i + j] = (A[i + j] + B[i] * B[j]) % MOD;\n        }\n    }\n\n    for (int i = 0; i <= n; i++) {\n        A[i] = A[i] * F[n - i] % MOD;\n    }\n\n    for (int i = 0; i <= n; i++) {\n        for (int j = 0; j <= i; j++) {\n            long long term = (A[i] * F[i] % MOD) * G[j] % MOD;\n            term = term * G[i - j] % MOD;\n            term = term * (1 - (i - j) % 2 * 2) % MOD;\n            C[j] = (C[j] + term) % MOD;\n        }\n    }\n\n    printf(\"%lld\\n\", (C[k] % MOD + MOD) % MOD);\n\n    free(F);\n    free(G);\n    free(A);\n    free(B);\n    free(C);\n\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 2,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <stdlib.h>\n#include <math.h>\n\n#define MOD 1000000007\n\nlong long mod_pow(long long base, long long exp, long long mod) {\n    long long result = 1;\n    while (exp > 0) {\n        if (exp % 2 == 1) {\n            result = (result * base) % mod;\n        }\n        base = (base * base) % mod;\n        exp /= 2;\n    }\n    return result;\n}\n\nint main() {\n    int n, k;\n    scanf(\"%d %d\", &n, &k);\n\n    long long *A = calloc(n + 1, sizeof(long long));\n    long long *B = calloc(n + 1, sizeof(long long));\n    long long *C = calloc(n + 1, sizeof(long long));\n    long long *F = calloc(n + 1, sizeof(long long));\n    long long *G = calloc(n + 1, sizeof(long long));\n\n    F[0] = G[0] = 1;\n    for (int i = 1; i <= n; i++) {\n        F[i] = (F[i - 1] * i) % MOD;\n        G[i] = mod_pow(F[i], MOD - 2, MOD);\n    }\n\n    for (int i = 0; i < n; i++) {\n        if (i * 2 > n) break;\n        B[i] = (F[n - i] * G[i] % MOD) * G[n - i * 2] % MOD;\n    }\n\n    for (int i = 0; i <= n / 2; i++) {\n        for (int j = 0; j <= n / 2; j++) {\n            A[i + j] = (A[i + j] + B[i] * B[j]) % MOD;\n        }\n    }\n\n    for (int i = 0; i <= n; i++) {\n        A[i] = A[i] * F[n - i] % MOD;\n    }\n\n    for (int i = 0; i <= n; i++) {\n        for (int j = 0; j <= i; j++) {\n            long long term = (A[i] * F[i] % MOD) * G[j] % MOD;\n            term = term * G[i - j] % MOD;\n            term = term * (1 - (i - j) % 2 * 2) % MOD;\n            C[j] = (C[j] + term) % MOD;\n        }\n    }\n\n    printf(\"%lld\\n\", (C[k] % MOD + MOD) % MOD);\n\n    free(A);\n    free(B);\n    free(C);\n    free(F);\n    free(G);\n\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 3,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <stdlib.h>\n#include <math.h>\n\n#define MOD 1000000007\n#define MAX_N 1000\n\nlong long F[MAX_N + 1], G[MAX_N + 1];\nlong long A[MAX_N + 1], B[MAX_N + 1], C[MAX_N + 1];\n\nlong long pow_mod(long long base, long long exp, long long mod) {\n    long long result = 1;\n    while (exp > 0) {\n        if (exp % 2 == 1) {\n            result = (result * base) % mod;\n        }\n        base = (base * base) % mod;\n        exp /= 2;\n    }\n    return result;\n}\n\nint main() {\n    int n, k;\n    scanf(\"%d %d\", &n, &k);\n\n    F[0] = G[0] = 1;\n    for (int i = 1; i <= n; i++) {\n        F[i] = (F[i - 1] * i) % MOD;\n        G[i] = pow_mod(F[i], MOD - 2, MOD);\n    }\n\n    for (int i = 0; i <= n; i++) {\n        if (i * 2 > n) break;\n        B[i] = (F[n - i] * G[i] % MOD) * G[n - i * 2] % MOD;\n    }\n\n    for (int i = 0; i <= n / 2; i++) {\n        for (int j = 0; j <= n / 2; j++) {\n            A[i + j] = (A[i + j] + B[i] * B[j]) % MOD;\n        }\n    }\n\n    for (int i = 0; i <= n; i++) {\n        A[i] = A[i] * F[n - i] % MOD;\n    }\n\n    for (int i = 0; i <= n; i++) {\n        for (int j = 0; j <= i; j++) {\n            long long term = (A[i] * F[i] % MOD) * (G[j] * G[i - j] % MOD) % MOD;\n            term = term * (1 - (i - j) % 2 * 2) % MOD;\n            C[j] = (C[j] + term) % MOD;\n            if (C[j] < 0) C[j] += MOD;\n        }\n    }\n\n    printf(\"%lld\\n\", C[k] % MOD);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 4,
+                    "message": {
+                        "role": "assistant",
+                        "content": "Here's the translated code in C:\n\n```c\n#include <stdio.h>\n#include <stdlib.h>\n#include <math.h>\n\n#define MOD 1000000007\n\nlong long power(long long x, long long y, long long p) {\n    long long res = 1;\n    x = x % p;\n    while (y > 0) {\n        if (y & 1)\n            res = (res * x) % p;\n        y = y >> 1;\n        x = (x * x) % p;\n    }\n    return res;\n}\n\nint main() {\n    int n, k;\n    scanf(\"%d %d\", &n, &k);\n    \n    long long *F = (long long *)malloc((n+1) * sizeof(long long));\n    long long *G = (long long *)malloc((n+1) * sizeof(long long));\n    long long *A = (long long *)calloc((n+1), sizeof(long long));\n    long long *B = (long long *)calloc((n+1), sizeof(long long));\n    long long *C = (long long *)calloc((n+1), sizeof(long long));\n    \n    F[0] = G[0] = 1;\n    for (int i = 1; i <= n; i++) {\n        F[i] = F[i-1] * i % MOD;\n        G[i] = power(F[i], MOD-2, MOD);\n    }\n    \n    for (int i = 0; i <= n; i++) {\n        if (i * 2 > n) break;\n        B[i] = (F[n-i] * G[i] % MOD) * G[n-i*2] % MOD;\n    }\n    \n    for (int i = 0; i <= n/2; i++) {\n        for (int j = 0; j <= n/2; j++) {\n            A[i+j] = (A[i+j] + B[i] * B[j]) % MOD;\n        }\n    }\n    \n    for (int i = 0; i <= n; i++) {\n        A[i] = A[i] * F[n-i] % MOD;\n    }\n    \n    for (int i = 0; i <= n; i++) {\n        for (int j = 0; j <= i; j++) {\n            C[j] = (C[j] + A[i] * F[i] % MOD * G[j] % MOD * G[i-j] % MOD * (1 - (i-j) % 2 * 2)) % MOD;\n        }\n    }\n    \n    printf(\"%lld\\n\", (C[k] % MOD + MOD) % MOD);\n    \n    free(F);\n    free(G);\n    free(A);\n    free(B);\n    free(C);\n    \n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                }
+            ],
+            "usage": {
+                "prompt_tokens": 1640,
+                "completion_tokens": 2985,
+                "total_tokens": 4625
+            }
+        }
+    },
+    "source_data": {
+        "code_uid": "fb4c18db409acbed597f35900f2fd6cf",
+        "prob_desc_output_to": "standard output",
+        "prob_desc_notes": "NoteThe only permutation of size 1 has 0 good positions.Permutation (1,\u20092) has 0 good positions, and permutation (2,\u20091) has 2 positions.Permutations of size 3: (1,\u20092,\u20093) \u2014 0 positions  \u2014 2 positions  \u2014 2 positions  \u2014 2 positions  \u2014 2 positions (3,\u20092,\u20091) \u2014 0 positions",
+        "lang_cluster": "Python",
+        "prob_desc_time_limit": "2 seconds",
+        "prob_desc_input_spec": "The single line contains two space-separated integers n and k (1\u2009\u2264\u2009n\u2009\u2264\u20091000,\u20090\u2009\u2264\u2009k\u2009\u2264\u2009n).",
+        "source_code": "mod=10**9+7\nn,k=map(int,input().split())\n\nA=[0]*(n+1)\nB=[0]*(n+1)\nC=[0]*(n+1)\nF=[0]*(n+1)\nG=[0]*(n+1)\n\nF[0]=G[0]=1\nfor i in range(1,n+1):\n\tG[i]=F[i]=F[i-1]*i%mod\n\tG[i]=pow(F[i],(mod-2),mod)\n\nfor i in range(0,n):\n\tif i*2>n:\n\t\tbreak\n\tB[i]=(F[n-i]*G[i]*G[n-i*2])%mod\nfor i in range(0,n//2+1):\n\tfor j in range(0,n//2+1):\n\t\tA[i+j]=(A[i+j]+B[i]*B[j])%mod\nfor i in range(0,n+1):\n\tA[i]=A[i]*F[n-i]%mod\nfor i in range(0,n+1):\n\tfor j in range(0,i+1):\n\t\tC[j]=(C[j]+A[i]*F[i]*G[j]*G[i-j]*(1-(i-j)%2*2))%mod\nprint(C[k]%mod)\n\n",
+        "prob_desc_sample_inputs": [
+            "1 0",
+            "2 1",
+            "3 2",
+            "4 1",
+            "7 4"
+        ],
+        "prob_desc_memory_limit": "256 megabytes",
+        "exec_outcome": "PASSED",
+        "prob_desc_output_spec": "Print the number of permutations of length n with exactly k good positions modulo 1000000007 (109\u2009+\u20097).",
+        "src_uid": "1243e98fe2ebd6e6d1de851984b96079",
+        "prob_desc_input_from": "standard input",
+        "lang": "Python 3",
+        "prob_desc_sample_outputs": [
+            "1",
+            "0",
+            "4",
+            "6",
+            "328"
+        ],
+        "file_name": "d7021504500d5ca7c2b02df8100a574d159e6e67e20ec8071b75800b1267370a",
+        "prob_desc_description": "Permutation p is an ordered set of integers p1,\u2009\u2009p2,\u2009\u2009...,\u2009\u2009pn, consisting of n distinct positive integers, each of them doesn't exceed n. We'll denote the i-th element of permutation p as pi. We'll call number n the size or the length of permutation p1,\u2009\u2009p2,\u2009\u2009...,\u2009\u2009pn.We'll call position i (1\u2009\u2264\u2009i\u2009\u2264\u2009n) in permutation p1,\u2009p2,\u2009...,\u2009pn good, if |p[i]\u2009-\u2009i|\u2009=\u20091. Count the number of permutations of size n with exactly k good positions. Print the answer modulo 1000000007 (109\u2009+\u20097).",
+        "prob_desc_created_at": "1363879800",
+        "difficulty": 2600.0,
+        "hidden_unit_tests": "[{\"input\": \"1 0\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"2 1\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"3 2\\r\\n\", \"output\": [\"4\"]}, {\"input\": \"4 1\\r\\n\", \"output\": [\"6\"]}, {\"input\": \"7 4\\r\\n\", \"output\": [\"328\"]}, {\"input\": \"7 7\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"8 4\\r\\n\", \"output\": [\"2658\"]}, {\"input\": \"8 5\\r\\n\", \"output\": [\"688\"]}, {\"input\": \"10 3\\r\\n\", \"output\": [\"614420\"]}, {\"input\": \"20 0\\r\\n\", \"output\": [\"111008677\"]}, {\"input\": \"100 99\\r\\n\", \"output\": [\"2450\"]}, {\"input\": \"13 13\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"100 100\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"1000 0\\r\\n\", \"output\": [\"845393494\"]}, {\"input\": \"1000 1\\r\\n\", \"output\": [\"418947603\"]}, {\"input\": \"1000 2\\r\\n\", \"output\": [\"819706485\"]}, {\"input\": \"1000 10\\r\\n\", \"output\": [\"305545369\"]}, {\"input\": \"1000 99\\r\\n\", \"output\": [\"115316732\"]}, {\"input\": \"1000 500\\r\\n\", \"output\": [\"979041279\"]}, {\"input\": \"1000 700\\r\\n\", \"output\": [\"642759746\"]}, {\"input\": \"1000 900\\r\\n\", \"output\": [\"301804159\"]}, {\"input\": \"1000 999\\r\\n\", \"output\": [\"249500\"]}, {\"input\": \"1000 998\\r\\n\", \"output\": [\"583666213\"]}, {\"input\": \"1000 1000\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"999 0\\r\\n\", \"output\": [\"184907578\"]}, {\"input\": \"999 1\\r\\n\", \"output\": [\"167859862\"]}, {\"input\": \"999 5\\r\\n\", \"output\": [\"642835575\"]}, {\"input\": \"999 13\\r\\n\", \"output\": [\"740892203\"]}, {\"input\": \"999 300\\r\\n\", \"output\": [\"562270116\"]}, {\"input\": \"999 600\\r\\n\", \"output\": [\"553332041\"]}, {\"input\": \"999 999\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"999 989\\r\\n\", \"output\": [\"254295912\"]}, {\"input\": \"999 998\\r\\n\", \"output\": [\"250000\"]}, {\"input\": \"10 0\\r\\n\", \"output\": [\"543597\"]}, {\"input\": \"5 0\\r\\n\", \"output\": [\"21\"]}, {\"input\": \"5 1\\r\\n\", \"output\": [\"36\"]}, {\"input\": \"5 2\\r\\n\", \"output\": [\"42\"]}, {\"input\": \"5 3\\r\\n\", \"output\": [\"12\"]}, {\"input\": \"5 4\\r\\n\", \"output\": [\"9\"]}, {\"input\": \"5 5\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"4 4\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"4 3\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"4 2\\r\\n\", \"output\": [\"10\"]}, {\"input\": \"1 1\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"2 2\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"3 1\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"3 3\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"2 0\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"3 0\\r\\n\", \"output\": [\"2\"]}]",
+        "source_lang": "Python 3",
+        "target_lang": "C"
+    }
+}

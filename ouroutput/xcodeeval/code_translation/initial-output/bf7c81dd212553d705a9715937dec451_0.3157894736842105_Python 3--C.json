@@ -1,0 +1,89 @@
+{
+    "oai_response": {
+        "prompt": "Here is code in Python 3 programming lanaguge. Translate the following code from Python 3 to C programming lanaguge. Do not output any extra description or tokens other than the translated code. \n\nfrom math import log, ceil\nnumber = str(input())\n\nresult = ceil(len(number) / 2)\n\ntodas = True\nfor index, wea in enumerate(number):\n    if index == 0:\n        continue\n    else:\n        todas = todas and wea == '0'\n\nif todas and (len(number) - 1) % 2 == 0:\n    result -= 1\n\nprint(result)\n||END-of-SRC||",
+        "response": {
+            "id": "multi-call-as-m5te3qy2ht",
+            "model": "deepseek-v3",
+            "created": 1767066842,
+            "choices": [
+                {
+                    "index": 0,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <string.h>\n#include <math.h>\n\nint main() {\n    char number[100];\n    scanf(\"%s\", number);\n    \n    int length = strlen(number);\n    int result = ceil(length / 2.0);\n    \n    int todas = 1;\n    for (int index = 0; index < length; index++) {\n        if (index == 0) {\n            continue;\n        } else {\n            todas = todas && (number[index] == '0');\n        }\n    }\n    \n    if (todas && (length - 1) % 2 == 0) {\n        result -= 1;\n    }\n    \n    printf(\"%d\\n\", result);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 1,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <string.h>\n#include <math.h>\n\nint main() {\n    char number[100];\n    scanf(\"%s\", number);\n    \n    int length = strlen(number);\n    int result = ceil(length / 2.0);\n    \n    int todas = 1;\n    for (int index = 0; index < length; index++) {\n        if (index == 0) {\n            continue;\n        } else {\n            todas = todas && (number[index] == '0');\n        }\n    }\n    \n    if (todas && (length - 1) % 2 == 0) {\n        result -= 1;\n    }\n    \n    printf(\"%d\\n\", result);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 2,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <string.h>\n#include <math.h>\n\nint main() {\n    char number[100];\n    scanf(\"%s\", number);\n    \n    int length = strlen(number);\n    int result = ceil(length / 2.0);\n    \n    int todas = 1;\n    for (int index = 0; index < length; index++) {\n        if (index == 0) {\n            continue;\n        } else {\n            todas = todas && (number[index] == '0');\n        }\n    }\n    \n    if (todas && (length - 1) % 2 == 0) {\n        result -= 1;\n    }\n    \n    printf(\"%d\\n\", result);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 3,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <string.h>\n#include <math.h>\n\nint main() {\n    char number[100];\n    scanf(\"%s\", number);\n    \n    int length = strlen(number);\n    int result = ceil(length / 2.0);\n    \n    int todas = 1;\n    for (int index = 0; index < length; index++) {\n        if (index == 0) {\n            continue;\n        } else {\n            todas = todas && (number[index] == '0');\n        }\n    }\n    \n    if (todas && (length - 1) % 2 == 0) {\n        result -= 1;\n    }\n    \n    printf(\"%d\\n\", result);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 4,
+                    "message": {
+                        "role": "assistant",
+                        "content": "Here's the equivalent code in C:\n\n```c\n#include <stdio.h>\n#include <string.h>\n#include <math.h>\n\nint main() {\n    char number[100];\n    scanf(\"%s\", number);\n    \n    int length = strlen(number);\n    int result = ceil(length / 2.0);\n    \n    int todas = 1;\n    for (int i = 0; i < length; i++) {\n        if (i == 0) {\n            continue;\n        } else {\n            todas = todas && (number[i] == '0');\n        }\n    }\n    \n    if (todas && (length - 1) % 2 == 0) {\n        result -= 1;\n    }\n    \n    printf(\"%d\\n\", result);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                }
+            ],
+            "usage": {
+                "prompt_tokens": 690,
+                "completion_tokens": 801,
+                "total_tokens": 1491
+            }
+        }
+    },
+    "source_data": {
+        "code_uid": "bf7c81dd212553d705a9715937dec451",
+        "prob_desc_output_to": "standard output",
+        "prob_desc_notes": "NoteIn the first example $$$100000000_2 = 256_{10}$$$, missed trains have departed at $$$1$$$, $$$4$$$, $$$16$$$ and $$$64$$$.In the second example $$$101_2 = 5_{10}$$$, trains have departed at $$$1$$$ and $$$4$$$.The third example is explained in the statements.",
+        "lang_cluster": "Python",
+        "prob_desc_time_limit": "1 second",
+        "prob_desc_input_spec": "The first line contains a single binary number $$$s$$$ ($$$0 \\leq s &lt; 2^{100}$$$) without leading zeroes.",
+        "source_code": "from math import log, ceil\nnumber = str(input())\n\nresult = ceil(len(number) / 2)\n\ntodas = True\nfor index, wea in enumerate(number):\n    if index == 0:\n        continue\n    else:\n        todas = todas and wea == '0'\n\nif todas and (len(number) - 1) % 2 == 0:\n    result -= 1\n\nprint(result)\n",
+        "prob_desc_sample_inputs": [
+            "100000000",
+            "101",
+            "10100"
+        ],
+        "prob_desc_memory_limit": "256 megabytes",
+        "exec_outcome": "PASSED",
+        "prob_desc_output_spec": "Output a single number\u00a0\u2014 the number of trains which have departed strictly before the time $$$s$$$.",
+        "src_uid": "d8ca1c83b431466eff6054d3b422ab47",
+        "prob_desc_input_from": "standard input",
+        "lang": "Python 3",
+        "prob_desc_sample_outputs": [
+            "4",
+            "2",
+            "3"
+        ],
+        "file_name": "d7021504500d5ca7c2b02df8100a574d159e6e67e20ec8071b75800b1267370a",
+        "prob_desc_description": "In the city of Saint Petersburg, a day lasts for $$$2^{100}$$$ minutes. From the main station of Saint Petersburg, a train departs after $$$1$$$ minute, $$$4$$$ minutes, $$$16$$$ minutes, and so on; in other words, the train departs at time $$$4^k$$$ for each integer $$$k \\geq 0$$$. Team BowWow has arrived at the station at the time $$$s$$$ and it is trying to count how many trains have they missed; in other words, the number of trains that have departed strictly before time $$$s$$$. For example if $$$s = 20$$$, then they missed trains which have departed at $$$1$$$, $$$4$$$ and $$$16$$$. As you are the only one who knows the time, help them!Note that the number $$$s$$$ will be given you in a binary representation without leading zeroes.",
+        "prob_desc_created_at": "1566311700",
+        "difficulty": 1000.0,
+        "hidden_unit_tests": "[{\"input\": \"100000000\\r\\n\", \"output\": [\"4\"]}, {\"input\": \"101\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"10100\\r\\n\", \"output\": [\"3\"]}, {\"input\": \"1111010010000101100100001110011101111\\r\\n\", \"output\": [\"19\"]}, {\"input\": \"11110010110000101001001101010111110101101111001000100100101111011\\r\\n\", \"output\": [\"33\"]}, {\"input\": \"0\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"10000\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"1000010011100010111000001101000011001010011101011001101100000001011011000000101101101011101111011011\\r\\n\", \"output\": [\"50\"]}, {\"input\": \"1000\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"1\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"1110001001\\r\\n\", \"output\": [\"5\"]}, {\"input\": \"11010011011\\r\\n\", \"output\": [\"6\"]}, {\"input\": \"1010111110011010101111001\\r\\n\", \"output\": [\"13\"]}, {\"input\": \"1000000000000000000000000000000000000000000\\r\\n\", \"output\": [\"21\"]}, {\"input\": \"100000000000000000000000000000000000000000000000000000000\\r\\n\", \"output\": [\"28\"]}, {\"input\": \"1000000000000000000000000000000000000000000000000\\r\\n\", \"output\": [\"24\"]}, {\"input\": \"10000000000000000000000000000000000000000\\r\\n\", \"output\": [\"20\"]}, {\"input\": \"10000000000000000000000000000000000000000000000000000\\r\\n\", \"output\": [\"26\"]}, {\"input\": \"100000000000000000000000000000000000000000000\\r\\n\", \"output\": [\"22\"]}, {\"input\": \"101011000111000110001101101011100011001111001110010010000101100111100101001101111101111001010\\r\\n\", \"output\": [\"47\"]}, {\"input\": \"10001000011101100\\r\\n\", \"output\": [\"9\"]}, {\"input\": \"10001010110110010110011110001010001000001\\r\\n\", \"output\": [\"21\"]}, {\"input\": \"11010100100011101110010001110011111011110011101001011100001011100\\r\\n\", \"output\": [\"33\"]}, {\"input\": \"111100000000100111111011110000110100101011001011001101001100000010010111010010111010010001011\\r\\n\", \"output\": [\"47\"]}, {\"input\": \"1010111000101\\r\\n\", \"output\": [\"7\"]}, {\"input\": \"111100001001101011111000101000000100001101100100110011110011101011101100000000000110010011100101010\\r\\n\", \"output\": [\"50\"]}, {\"input\": \"10011011100001110011101001100010011111011010010101101000000101100110101010001100011111100110101101\\r\\n\", \"output\": [\"49\"]}, {\"input\": \"110\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"1111010\\r\\n\", \"output\": [\"4\"]}, {\"input\": \"100000\\r\\n\", \"output\": [\"3\"]}, {\"input\": \"10010\\r\\n\", \"output\": [\"3\"]}, {\"input\": \"100\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"11\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001\\r\\n\", \"output\": [\"50\"]}, {\"input\": \"1010\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000\\r\\n\", \"output\": [\"49\"]}, {\"input\": \"100000000000000000000101111000111011111\\r\\n\", \"output\": [\"20\"]}, {\"input\": \"100000000000000000000000000000000000000000000000000000000000000000000000000000001\\r\\n\", \"output\": [\"41\"]}, {\"input\": \"11010\\r\\n\", \"output\": [\"3\"]}, {\"input\": \"1000000000000000000000000000000000000000000000000000000000000000000000\\r\\n\", \"output\": [\"35\"]}, {\"input\": \"1111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111\\r\\n\", \"output\": [\"50\"]}, {\"input\": \"10000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000\\r\\n\", \"output\": [\"49\"]}, {\"input\": \"11111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111\\r\\n\", \"output\": [\"49\"]}, {\"input\": \"1100000\\r\\n\", \"output\": [\"4\"]}, {\"input\": \"11000\\r\\n\", \"output\": [\"3\"]}, {\"input\": \"100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001\\r\\n\", \"output\": [\"47\"]}, {\"input\": \"1000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000\\r\\n\", \"output\": [\"47\"]}, {\"input\": \"10000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001\\r\\n\", \"output\": [\"48\"]}, {\"input\": \"100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000\\r\\n\", \"output\": [\"48\"]}, {\"input\": \"1000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001\\r\\n\", \"output\": [\"49\"]}]",
+        "source_lang": "Python 3",
+        "target_lang": "C"
+    }
+}

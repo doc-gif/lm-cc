@@ -1,0 +1,88 @@
+{
+    "oai_response": {
+        "prompt": "Here is code in Python 3 programming lanaguge. Translate the following code from Python 3 to C programming lanaguge. Do not output any extra description or tokens other than the translated code. \n\nfrom collections import Counter\ndef primes(n):\n    factor_counts = Counter()\n    divisor = 2\n    while divisor * divisor <= n:\n        while n % divisor == 0:\n            factor_counts[divisor] += 1\n            n //= divisor\n        divisor += 1\n    if n > 1:\n        factor_counts[n] += 1\n    return list(factor_counts.values())\ndef run():\n    number = int(input())\n    exponents = primes(number)\n    result = 1\n    for exp in exponents:\n        result *= exp + 1\n    print(result)\nif __name__ == \"__main__\":\n    run()||END-of-SRC||",
+        "response": {
+            "id": "multi-call-as-g477wc9ufa",
+            "model": "deepseek-v3",
+            "created": 1769631063,
+            "choices": [
+                {
+                    "index": 0,
+                    "message": {
+                        "role": "assistant",
+                        "content": "#include <stdio.h>\n#include <stdlib.h>\n\ntypedef struct {\n    int key;\n    int value;\n} FactorCount;\n\nFactorCount* factor_counts = NULL;\nint count_size = 0;\nint count_capacity = 0;\n\nvoid add_factor(int divisor) {\n    for (int i = 0; i < count_size; i++) {\n        if (factor_counts[i].key == divisor) {\n            factor_counts[i].value++;\n            return;\n        }\n    }\n    if (count_size >= count_capacity) {\n        count_capacity = count_capacity == 0 ? 1 : count_capacity * 2;\n        factor_counts = realloc(factor_counts, count_capacity * sizeof(FactorCount));\n    }\n    factor_counts[count_size].key = divisor;\n    factor_counts[count_size].value = 1;\n    count_size++;\n}\n\nint* primes(int n) {\n    int divisor = 2;\n    while (divisor * divisor <= n) {\n        while (n % divisor == 0) {\n            add_factor(divisor);\n            n /= divisor;\n        }\n        divisor++;\n    }\n    if (n > 1) {\n        add_factor(n);\n    }\n    int* exponents = malloc(count_size * sizeof(int));\n    for (int i = 0; i < count_size; i++) {\n        exponents[i] = factor_counts[i].value;\n    }\n    return exponents;\n}\n\nvoid run() {\n    int number;\n    scanf(\"%d\", &number);\n    int* exponents = primes(number);\n    int result = 1;\n    for (int i = 0; i < count_size; i++) {\n        result *= exponents[i] + 1;\n    }\n    printf(\"%d\\n\", result);\n    free(exponents);\n    free(factor_counts);\n    factor_counts = NULL;\n    count_size = 0;\n    count_capacity = 0;\n}\n\nint main() {\n    run();\n    return 0;\n}"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 1,
+                    "message": {
+                        "role": "assistant",
+                        "content": "Here's the translated code in C:\n\n```c\n#include <stdio.h>\n#include <stdlib.h>\n\ntypedef struct {\n    int* factors;\n    int count;\n} FactorCounts;\n\nFactorCounts primes(int n) {\n    FactorCounts fc;\n    fc.factors = malloc(100 * sizeof(int));\n    fc.count = 0;\n    for (int i = 0; i < 100; i++) {\n        fc.factors[i] = 0;\n    }\n    \n    int divisor = 2;\n    while (divisor * divisor <= n) {\n        while (n % divisor == 0) {\n            fc.factors[divisor]++;\n            n /= divisor;\n        }\n        divisor++;\n    }\n    if (n > 1) {\n        fc.factors[n]++;\n    }\n    return fc;\n}\n\nvoid run() {\n    int number;\n    scanf(\"%d\", &number);\n    FactorCounts fc = primes(number);\n    int result = 1;\n    for (int i = 0; i < 100; i++) {\n        if (fc.factors[i] > 0) {\n            result *= (fc.factors[i] + 1);\n        }\n    }\n    printf(\"%d\\n\", result);\n    free(fc.factors);\n}\n\nint main() {\n    run();\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 2,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <stdlib.h>\n\ntypedef struct {\n    int key;\n    int value;\n} Pair;\n\ntypedef struct {\n    Pair* pairs;\n    int size;\n    int capacity;\n} Counter;\n\nCounter* create_counter() {\n    Counter* counter = (Counter*)malloc(sizeof(Counter));\n    counter->pairs = (Pair*)malloc(10 * sizeof(Pair));\n    counter->size = 0;\n    counter->capacity = 10;\n    return counter;\n}\n\nvoid increment(Counter* counter, int key) {\n    for (int i = 0; i < counter->size; i++) {\n        if (counter->pairs[i].key == key) {\n            counter->pairs[i].value++;\n            return;\n        }\n    }\n    if (counter->size == counter->capacity) {\n        counter->capacity *= 2;\n        counter->pairs = (Pair*)realloc(counter->pairs, counter->capacity * sizeof(Pair));\n    }\n    counter->pairs[counter->size].key = key;\n    counter->pairs[counter->size].value = 1;\n    counter->size++;\n}\n\nint* get_values(Counter* counter) {\n    int* values = (int*)malloc(counter->size * sizeof(int));\n    for (int i = 0; i < counter->size; i++) {\n        values[i] = counter->pairs[i].value;\n    }\n    return values;\n}\n\nint* primes(int n, int* size) {\n    Counter* factor_counts = create_counter();\n    int divisor = 2;\n    while (divisor * divisor <= n) {\n        while (n % divisor == 0) {\n            increment(factor_counts, divisor);\n            n /= divisor;\n        }\n        divisor++;\n    }\n    if (n > 1) {\n        increment(factor_counts, n);\n    }\n    *size = factor_counts->size;\n    int* values = get_values(factor_counts);\n    free(factor_counts->pairs);\n    free(factor_counts);\n    return values;\n}\n\nvoid run() {\n    int number;\n    scanf(\"%d\", &number);\n    int size;\n    int* exponents = primes(number, &size);\n    int result = 1;\n    for (int i = 0; i < size; i++) {\n        result *= exponents[i] + 1;\n    }\n    printf(\"%d\\n\", result);\n    free(exponents);\n}\n\nint main() {\n    run();\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 3,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <stdlib.h>\n\ntypedef struct {\n    int key;\n    int value;\n} FactorCount;\n\nFactorCount* factor_counts = NULL;\nint size = 0;\nint capacity = 0;\n\nvoid add_factor(int divisor) {\n    for (int i = 0; i < size; i++) {\n        if (factor_counts[i].key == divisor) {\n            factor_counts[i].value++;\n            return;\n        }\n    }\n    if (size >= capacity) {\n        capacity = (capacity == 0) ? 1 : capacity * 2;\n        factor_counts = realloc(factor_counts, capacity * sizeof(FactorCount));\n    }\n    factor_counts[size].key = divisor;\n    factor_counts[size].value = 1;\n    size++;\n}\n\nint* primes(int n) {\n    int divisor = 2;\n    while (divisor * divisor <= n) {\n        while (n % divisor == 0) {\n            add_factor(divisor);\n            n /= divisor;\n        }\n        divisor++;\n    }\n    if (n > 1) {\n        add_factor(n);\n    }\n    int* exponents = malloc(size * sizeof(int));\n    for (int i = 0; i < size; i++) {\n        exponents[i] = factor_counts[i].value;\n    }\n    return exponents;\n}\n\nvoid run() {\n    int number;\n    scanf(\"%d\", &number);\n    int* exponents = primes(number);\n    int result = 1;\n    for (int i = 0; i < size; i++) {\n        result *= (exponents[i] + 1);\n    }\n    printf(\"%d\\n\", result);\n    free(exponents);\n    free(factor_counts);\n}\n\nint main() {\n    run();\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 4,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <stdlib.h>\n\ntypedef struct {\n    int key;\n    int value;\n} KeyValuePair;\n\ntypedef struct {\n    KeyValuePair* pairs;\n    int size;\n    int capacity;\n} Counter;\n\nCounter* createCounter() {\n    Counter* counter = (Counter*)malloc(sizeof(Counter));\n    counter->pairs = (KeyValuePair*)malloc(10 * sizeof(KeyValuePair));\n    counter->size = 0;\n    counter->capacity = 10;\n    return counter;\n}\n\nvoid increment(Counter* counter, int key) {\n    for (int i = 0; i < counter->size; i++) {\n        if (counter->pairs[i].key == key) {\n            counter->pairs[i].value++;\n            return;\n        }\n    }\n    if (counter->size == counter->capacity) {\n        counter->capacity *= 2;\n        counter->pairs = (KeyValuePair*)realloc(counter->pairs, counter->capacity * sizeof(KeyValuePair));\n    }\n    counter->pairs[counter->size].key = key;\n    counter->pairs[counter->size].value = 1;\n    counter->size++;\n}\n\nint* getValues(Counter* counter, int* count) {\n    int* values = (int*)malloc(counter->size * sizeof(int));\n    for (int i = 0; i < counter->size; i++) {\n        values[i] = counter->pairs[i].value;\n    }\n    *count = counter->size;\n    return values;\n}\n\nvoid freeCounter(Counter* counter) {\n    free(counter->pairs);\n    free(counter);\n}\n\nint* primes(int n, int* count) {\n    Counter* factor_counts = createCounter();\n    int divisor = 2;\n    while (divisor * divisor <= n) {\n        while (n % divisor == 0) {\n            increment(factor_counts, divisor);\n            n /= divisor;\n        }\n        divisor++;\n    }\n    if (n > 1) {\n        increment(factor_counts, n);\n    }\n    int* exponents = getValues(factor_counts, count);\n    freeCounter(factor_counts);\n    return exponents;\n}\n\nvoid run() {\n    int number;\n    scanf(\"%d\", &number);\n    int count;\n    int* exponents = primes(number, &count);\n    int result = 1;\n    for (int i = 0; i < count; i++) {\n        result *= exponents[i] + 1;\n    }\n    printf(\"%d\\n\", result);\n    free(exponents);\n}\n\nint main() {\n    run();\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                }
+            ],
+            "usage": {
+                "prompt_tokens": 930,
+                "completion_tokens": 2169,
+                "total_tokens": 3099
+            }
+        }
+    },
+    "source_data": {
+        "code_uid": "b1804fab5fca213fef024760ab105e1b",
+        "prob_desc_output_to": "standard output",
+        "prob_desc_notes": "NoteIn the first example $$$[a, \\,\\, 1] = a$$$, therefore $$$\\frac{[a, \\,\\, b]}{a}$$$ is always equal to $$$1$$$.In the second example $$$[a, \\,\\, 2]$$$ can be equal to $$$a$$$ or $$$2 \\cdot a$$$ depending on parity of $$$a$$$. $$$\\frac{[a, \\,\\, b]}{a}$$$ can be equal to $$$1$$$ and $$$2$$$.",
+        "lang_cluster": "Python",
+        "prob_desc_time_limit": "1 second",
+        "prob_desc_input_spec": "The only line contains one integer\u00a0\u2014 $$$b$$$ $$$(1 \\le b \\le 10^{10})$$$.",
+        "prob_desc_sample_inputs": [
+            "1",
+            "2"
+        ],
+        "prob_desc_memory_limit": "256 megabytes",
+        "exec_outcome": "PASSED",
+        "prob_desc_output_spec": "Print one number\u00a0\u2014 answer for the problem.",
+        "src_uid": "7fc9e7d7e25ab97d8ebc10ed8ae38fd1",
+        "prob_desc_input_from": "standard input",
+        "lang": "Python 3",
+        "prob_desc_sample_outputs": [
+            "1",
+            "2"
+        ],
+        "file_name": "d7021504500d5ca7c2b02df8100a574d159e6e67e20ec8071b75800b1267370a",
+        "prob_desc_description": "Ivan has number $$$b$$$. He is sorting through the numbers $$$a$$$ from $$$1$$$ to $$$10^{18}$$$, and for every $$$a$$$ writes $$$\\frac{[a, \\,\\, b]}{a}$$$ on blackboard. Here $$$[a, \\,\\, b]$$$ stands for least common multiple of $$$a$$$ and $$$b$$$. Ivan is very lazy, that's why this task bored him soon. But he is interested in how many different numbers he would write on the board if he would finish the task. Help him to find the quantity of different numbers he would write on the board.",
+        "prob_desc_created_at": "1540398900",
+        "difficulty": 1200.0,
+        "hidden_unit_tests": "[{\"input\": \"1\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"2\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"16\\r\\n\", \"output\": [\"5\"]}, {\"input\": \"433494437\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"10000000000\\r\\n\", \"output\": [\"121\"]}, {\"input\": \"169\\r\\n\", \"output\": [\"3\"]}, {\"input\": \"244078129\\r\\n\", \"output\": [\"9\"]}, {\"input\": \"7169516929\\r\\n\", \"output\": [\"3\"]}, {\"input\": \"2147483647\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"2971215073\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"3\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"14\\r\\n\", \"output\": [\"4\"]}, {\"input\": \"999393068\\r\\n\", \"output\": [\"24\"]}, {\"input\": \"9749081567\\r\\n\", \"output\": [\"4\"]}, {\"input\": \"1024\\r\\n\", \"output\": [\"11\"]}, {\"input\": \"48932\\r\\n\", \"output\": [\"12\"]}, {\"input\": \"179\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"58697100\\r\\n\", \"output\": [\"324\"]}, {\"input\": \"603979776\\r\\n\", \"output\": [\"81\"]}, {\"input\": \"1048576\\r\\n\", \"output\": [\"21\"]}, {\"input\": \"963837006\\r\\n\", \"output\": [\"32\"]}, {\"input\": \"196729490\\r\\n\", \"output\": [\"8\"]}, {\"input\": \"5760838\\r\\n\", \"output\": [\"24\"]}, {\"input\": \"6508183\\r\\n\", \"output\": [\"4\"]}, {\"input\": \"999152231\\r\\n\", \"output\": [\"16\"]}, {\"input\": \"1073676287\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"2162160\\r\\n\", \"output\": [\"320\"]}, {\"input\": \"4324320\\r\\n\", \"output\": [\"384\"]}, {\"input\": \"13693680\\r\\n\", \"output\": [\"480\"]}, {\"input\": \"985944960\\r\\n\", \"output\": [\"1280\"]}, {\"input\": \"898781184\\r\\n\", \"output\": [\"364\"]}, {\"input\": \"9133684560\\r\\n\", \"output\": [\"1920\"]}, {\"input\": \"8872504640\\r\\n\", \"output\": [\"56\"]}, {\"input\": \"9886593024\\r\\n\", \"output\": [\"728\"]}, {\"input\": \"6983776800\\r\\n\", \"output\": [\"2304\"]}, {\"input\": \"5587021440\\r\\n\", \"output\": [\"2048\"]}, {\"input\": \"4655851200\\r\\n\", \"output\": [\"2016\"]}, {\"input\": \"3491888400\\r\\n\", \"output\": [\"1920\"]}, {\"input\": \"2793510720\\r\\n\", \"output\": [\"1792\"]}, {\"input\": \"2327925600\\r\\n\", \"output\": [\"1728\"]}, {\"input\": \"2205403200\\r\\n\", \"output\": [\"1680\"]}, {\"input\": \"2095133040\\r\\n\", \"output\": [\"1600\"]}, {\"input\": \"1396755360\\r\\n\", \"output\": [\"1536\"]}, {\"input\": \"1102701600\\r\\n\", \"output\": [\"1440\"]}, {\"input\": \"10\\r\\n\", \"output\": [\"4\"]}, {\"input\": \"6\\r\\n\", \"output\": [\"4\"]}, {\"input\": \"5\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"8\\r\\n\", \"output\": [\"4\"]}, {\"input\": \"2000000014\\r\\n\", \"output\": [\"4\"]}, {\"input\": \"51\\r\\n\", \"output\": [\"4\"]}, {\"input\": \"45\\r\\n\", \"output\": [\"6\"]}, {\"input\": \"4000000028\\r\\n\", \"output\": [\"6\"]}]",
+        "initial_source_code": "from collections import Counter\n\ndef primes(n):\n    primfac = []\n    cnt = Counter()\n    d = 2\n    while d * d <= n:\n        while (n % d) == 0:\n            cnt[d] += 1\n            # primfac.append(d)\n            n //= d\n        d += 1\n    if n > 1:\n        cnt[n] += 1\n        # primfac.append(n)\n\n\n    return list(cnt.values())\n\n\ndef run():\n    b = int(input())\n    occ = primes(b)\n    res = 1\n    for e in occ:\n        res *= e + 1\n\n    print(res)\n\n\nif __name__ == '__main__':\n    run()\n",
+        "source_code": "from collections import Counter\ndef primes(n):\n    factor_counts = Counter()\n    divisor = 2\n    while divisor * divisor <= n:\n        while n % divisor == 0:\n            factor_counts[divisor] += 1\n            n //= divisor\n        divisor += 1\n    if n > 1:\n        factor_counts[n] += 1\n    return list(factor_counts.values())\ndef run():\n    number = int(input())\n    exponents = primes(number)\n    result = 1\n    for exp in exponents:\n        result *= exp + 1\n    print(result)\nif __name__ == \"__main__\":\n    run()",
+        "source_lang": "Python 3",
+        "target_lang": "C"
+    }
+}

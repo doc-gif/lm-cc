@@ -1,0 +1,89 @@
+{
+    "oai_response": {
+        "prompt": "Here is code in Python 3 programming lanaguge. Translate the following code from Python 3 to C programming lanaguge. Do not output any extra description or tokens other than the translated code. \n\nq=input()\nv=''\nw=[]\nfor i in range(0,len(q),2):\n    w.append(int(q[i]))\nw.sort()\nfor i in range(len(w)):\n    if i==len(w)-1:\n        v=v+str(w[i])\n    elif i==0:\n        v=str(w[i])+'+'\n    else:\n        v=v+str(w[i])+'+'\nprint(v)||END-of-SRC||",
+        "response": {
+            "id": "multi-call-as-n4uym14wxr",
+            "model": "deepseek-v3",
+            "created": 1767067012,
+            "choices": [
+                {
+                    "index": 0,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\nint compare(const void *a, const void *b) {\n    return (*(int*)a - *(int*)b);\n}\n\nint main() {\n    char q[100];\n    scanf(\"%s\", q);\n    int len = strlen(q);\n    int w[50];\n    int count = 0;\n    \n    for (int i = 0; i < len; i += 2) {\n        w[count++] = q[i] - '0';\n    }\n    \n    qsort(w, count, sizeof(int), compare);\n    \n    char v[100] = \"\";\n    \n    for (int i = 0; i < count; i++) {\n        if (i == count - 1) {\n            char temp[2];\n            sprintf(temp, \"%d\", w[i]);\n            strcat(v, temp);\n        } else if (i == 0) {\n            char temp[4];\n            sprintf(temp, \"%d+\", w[i]);\n            strcpy(v, temp);\n        } else {\n            char temp[4];\n            sprintf(temp, \"%d+\", w[i]);\n            strcat(v, temp);\n        }\n    }\n    \n    printf(\"%s\\n\", v);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 1,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\nint compare(const void *a, const void *b) {\n    return (*(int*)a - *(int*)b);\n}\n\nint main() {\n    char q[100];\n    scanf(\"%s\", q);\n    int len = strlen(q);\n    int w[50];\n    int count = 0;\n    \n    for (int i = 0; i < len; i += 2) {\n        w[count++] = q[i] - '0';\n    }\n    \n    qsort(w, count, sizeof(int), compare);\n    \n    for (int i = 0; i < count; i++) {\n        printf(\"%d\", w[i]);\n        if (i != count - 1) {\n            printf(\"+\");\n        }\n    }\n    \n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 2,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\nint compare(const void *a, const void *b) {\n    return (*(int*)a - *(int*)b);\n}\n\nint main() {\n    char q[100];\n    scanf(\"%s\", q);\n    int len = strlen(q);\n    int w[50];\n    int count = 0;\n    \n    for (int i = 0; i < len; i += 2) {\n        w[count++] = q[i] - '0';\n    }\n    \n    qsort(w, count, sizeof(int), compare);\n    \n    for (int i = 0; i < count; i++) {\n        printf(\"%d\", w[i]);\n        if (i != count - 1) {\n            printf(\"+\");\n        }\n    }\n    \n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 3,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\nint compare(const void *a, const void *b) {\n    return (*(int*)a - *(int*)b);\n}\n\nint main() {\n    char q[100];\n    scanf(\"%s\", q);\n    int len = strlen(q);\n    int w[50];\n    int count = 0;\n    \n    for (int i = 0; i < len; i += 2) {\n        w[count++] = q[i] - '0';\n    }\n    \n    qsort(w, count, sizeof(int), compare);\n    \n    for (int i = 0; i < count; i++) {\n        printf(\"%d\", w[i]);\n        if (i != count - 1) {\n            printf(\"+\");\n        }\n    }\n    \n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 4,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\nint compare(const void *a, const void *b) {\n    return (*(int*)a - *(int*)b);\n}\n\nint main() {\n    char q[100];\n    scanf(\"%s\", q);\n    int len = strlen(q);\n    int w[50];\n    int count = 0;\n    \n    for (int i = 0; i < len; i += 2) {\n        w[count++] = q[i] - '0';\n    }\n    \n    qsort(w, count, sizeof(int), compare);\n    \n    char v[100] = \"\";\n    for (int i = 0; i < count; i++) {\n        if (i == count - 1) {\n            sprintf(v + strlen(v), \"%d\", w[i]);\n        } else if (i == 0) {\n            sprintf(v, \"%d+\", w[i]);\n        } else {\n            sprintf(v + strlen(v), \"%d+\", w[i]);\n        }\n    }\n    \n    printf(\"%s\", v);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                }
+            ],
+            "usage": {
+                "prompt_tokens": 680,
+                "completion_tokens": 1068,
+                "total_tokens": 1748
+            }
+        }
+    },
+    "source_data": {
+        "code_uid": "f65beb218a3ef9548bdd70dfef0d620a",
+        "prob_desc_output_to": "standard output",
+        "prob_desc_notes": null,
+        "lang_cluster": "Python",
+        "prob_desc_time_limit": "2 seconds",
+        "prob_desc_input_spec": "The first line contains a non-empty string s \u2014 the sum Xenia needs to count. String s contains no spaces. It only contains digits and characters \"+\". Besides, string s is a correct sum of numbers 1, 2 and 3. String s is at most 100 characters long.",
+        "source_code": "q=input()\nv=''\nw=[]\nfor i in range(0,len(q),2):\n    w.append(int(q[i]))\nw.sort()\nfor i in range(len(w)):\n    if i==len(w)-1:\n        v=v+str(w[i])\n    elif i==0:\n        v=str(w[i])+'+'\n    else:\n        v=v+str(w[i])+'+'\nprint(v)",
+        "prob_desc_sample_inputs": [
+            "3+2+1",
+            "1+1+3+1+3",
+            "2"
+        ],
+        "prob_desc_memory_limit": "256 megabytes",
+        "exec_outcome": "PASSED",
+        "prob_desc_output_spec": "Print the new sum that Xenia can count.",
+        "src_uid": "76c7312733ef9d8278521cf09d3ccbc8",
+        "prob_desc_input_from": "standard input",
+        "lang": "Python 3",
+        "prob_desc_sample_outputs": [
+            "1+2+3",
+            "1+1+1+3+3",
+            "2"
+        ],
+        "file_name": "d7021504500d5ca7c2b02df8100a574d159e6e67e20ec8071b75800b1267370a",
+        "prob_desc_description": "Xenia the beginner mathematician is a third year student at elementary school. She is now learning the addition operation.The teacher has written down the sum of multiple numbers. Pupils should calculate the sum. To make the calculation easier, the sum only contains numbers 1, 2 and 3. Still, that isn't enough for Xenia. She is only beginning to count, so she can calculate a sum only if the summands follow in non-decreasing order. For example, she can't calculate sum 1+3+2+1 but she can calculate sums 1+1+2 and 3+3.You've got the sum that was written on the board. Rearrange the summans and print the sum in such a way that Xenia can calculate the sum.",
+        "prob_desc_created_at": "1377531000",
+        "difficulty": 800.0,
+        "hidden_unit_tests": "[{\"input\": \"3+2+1\\r\\n\", \"output\": [\"1+2+3\"]}, {\"input\": \"1+1+3+1+3\\r\\n\", \"output\": [\"1+1+1+3+3\"]}, {\"input\": \"2\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"2+2+1+1+3\\r\\n\", \"output\": [\"1+1+2+2+3\"]}, {\"input\": \"2+1+2+2+2+3+1+3+1+2\\r\\n\", \"output\": [\"1+1+1+2+2+2+2+2+3+3\"]}, {\"input\": \"1+2+1+2+2+2+2+1+3+3\\r\\n\", \"output\": [\"1+1+1+2+2+2+2+2+3+3\"]}, {\"input\": \"2+3+3+1+2+2+2+1+1+2+1+3+2+2+3+3+2+2+3+3+3+1+1+1+3+3+3+2+1+3+2+3+2+1+1+3+3+3+1+2+2+1+2+2+1+2+1+3+1+1\\r\\n\", \"output\": [\"1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+2+2+2+2+2+2+2+2+2+2+2+2+2+2+2+2+2+3+3+3+3+3+3+3+3+3+3+3+3+3+3+3+3+3\"]}, {\"input\": \"1\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"2+1+2+2+1+3+2+3+1+1+2+1+2+2+3+1+1+3+3+3+2+2+3+2+2+2+1+2+1+2+3+2+2+2+1+3+1+3+3+3+1+2+1+2+2+2+2+3+1+1\\r\\n\", \"output\": [\"1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+2+2+2+2+2+2+2+2+2+2+2+2+2+2+2+2+2+2+2+2+2+2+3+3+3+3+3+3+3+3+3+3+3+3+3\"]}, {\"input\": \"2+2+1+1+1+3+1+1+3+3+2+3+1+3+1+1+3+1+1+2+2+2+2+1+2+1+2+1+1+1+3+1+3+2+3+2+3+3+1+1+1+2+3+2+1+3+1+3+2+2\\r\\n\", \"output\": [\"1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+2+2+2+2+2+2+2+2+2+2+2+2+2+2+2+3+3+3+3+3+3+3+3+3+3+3+3+3+3\"]}, {\"input\": \"3+2+3+3+2+2+1+2+1+2+3+1+2+3+2+3+2+1+2+2+1+1+2+2+3+2+1+3+1+1+3+2+2+2+2+3+3+2+2+3+3+1+1+2+3+3+2+3+3+3\\r\\n\", \"output\": [\"1+1+1+1+1+1+1+1+1+1+1+2+2+2+2+2+2+2+2+2+2+2+2+2+2+2+2+2+2+2+2+2+3+3+3+3+3+3+3+3+3+3+3+3+3+3+3+3+3+3\"]}, {\"input\": \"3\\r\\n\", \"output\": [\"3\"]}, {\"input\": \"1+1\\r\\n\", \"output\": [\"1+1\"]}, {\"input\": \"1+2\\r\\n\", \"output\": [\"1+2\"]}, {\"input\": \"1+3\\r\\n\", \"output\": [\"1+3\"]}, {\"input\": \"2+1\\r\\n\", \"output\": [\"1+2\"]}, {\"input\": \"2+2\\r\\n\", \"output\": [\"2+2\"]}, {\"input\": \"2+3\\r\\n\", \"output\": [\"2+3\"]}, {\"input\": \"3+1\\r\\n\", \"output\": [\"1+3\"]}, {\"input\": \"3+2\\r\\n\", \"output\": [\"2+3\"]}, {\"input\": \"3+3\\r\\n\", \"output\": [\"3+3\"]}]",
+        "source_lang": "Python 3",
+        "target_lang": "C"
+    }
+}

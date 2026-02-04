@@ -1,0 +1,87 @@
+{
+    "oai_response": {
+        "prompt": "Here is code in Python 3 programming lanaguge. Translate the following code from Python 3 to C programming lanaguge. Do not output any extra description or tokens other than the translated code. \n\np, y = map(int, input().split())\n\nans = -1\n\nfor j in range(y, p, -1):\n    i = 2\n    d = j\n    while i * i <= j:\n        if j % i == 0:\n            d = i\n            break\n        i += 1\n\n    if d > p:\n        ans = j\n        break\n\nprint(ans)        \n        \n    \n\n\n||END-of-SRC||",
+        "response": {
+            "id": "multi-call-as-6sjx6y80e6",
+            "model": "deepseek-v3",
+            "created": 1767066777,
+            "choices": [
+                {
+                    "index": 0,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n\nint main() {\n    int p, y;\n    scanf(\"%d %d\", &p, &y);\n    \n    int ans = -1;\n    \n    for (int j = y; j > p; j--) {\n        int i = 2;\n        int d = j;\n        while (i * i <= j) {\n            if (j % i == 0) {\n                d = i;\n                break;\n            }\n            i++;\n        }\n        \n        if (d > p) {\n            ans = j;\n            break;\n        }\n    }\n    \n    printf(\"%d\\n\", ans);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 1,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n\nint main() {\n    int p, y;\n    scanf(\"%d %d\", &p, &y);\n    \n    int ans = -1;\n    \n    for (int j = y; j > p; j--) {\n        int d = j;\n        for (int i = 2; i * i <= j; i++) {\n            if (j % i == 0) {\n                d = i;\n                break;\n            }\n        }\n        \n        if (d > p) {\n            ans = j;\n            break;\n        }\n    }\n    \n    printf(\"%d\\n\", ans);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 2,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n\nint main() {\n    int p, y;\n    scanf(\"%d %d\", &p, &y);\n    \n    int ans = -1;\n    \n    for (int j = y; j > p; j--) {\n        int d = j;\n        for (int i = 2; i * i <= j; i++) {\n            if (j % i == 0) {\n                d = i;\n                break;\n            }\n        }\n        if (d > p) {\n            ans = j;\n            break;\n        }\n    }\n    \n    printf(\"%d\\n\", ans);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 3,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n\nint main() {\n    int p, y;\n    scanf(\"%d %d\", &p, &y);\n    \n    int ans = -1;\n    \n    for (int j = y; j > p; j--) {\n        int i = 2;\n        int d = j;\n        while (i * i <= j) {\n            if (j % i == 0) {\n                d = i;\n                break;\n            }\n            i++;\n        }\n        \n        if (d > p) {\n            ans = j;\n            break;\n        }\n    }\n    \n    printf(\"%d\\n\", ans);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 4,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n\nint main() {\n    int p, y;\n    scanf(\"%d %d\", &p, &y);\n    \n    int ans = -1;\n    \n    for (int j = y; j > p; j--) {\n        int i = 2;\n        int d = j;\n        while (i * i <= j) {\n            if (j % i == 0) {\n                d = i;\n                break;\n            }\n            i++;\n        }\n        \n        if (d > p) {\n            ans = j;\n            break;\n        }\n    }\n    \n    printf(\"%d\\n\", ans);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                }
+            ],
+            "usage": {
+                "prompt_tokens": 700,
+                "completion_tokens": 709,
+                "total_tokens": 1409
+            }
+        }
+    },
+    "source_data": {
+        "code_uid": "21e856e1cf6b1d73d302c2c139e928de",
+        "prob_desc_output_to": "standard output",
+        "prob_desc_notes": "NoteIn the first sample case grasshopper from branch 2 reaches branches 2, 4 and 6 while branch 3 is initially settled by another grasshopper. Therefore the answer is 5.It immediately follows that there are no valid branches in second sample case.",
+        "lang_cluster": "Python",
+        "prob_desc_time_limit": "1 second",
+        "prob_desc_input_spec": "The only line contains two integers p and y (2\u2009\u2264\u2009p\u2009\u2264\u2009y\u2009\u2264\u2009109).",
+        "source_code": "p, y = map(int, input().split())\n\nans = -1\n\nfor j in range(y, p, -1):\n    i = 2\n    d = j\n    while i * i <= j:\n        if j % i == 0:\n            d = i\n            break\n        i += 1\n\n    if d > p:\n        ans = j\n        break\n\nprint(ans)        \n        \n    \n\n\n",
+        "prob_desc_sample_inputs": [
+            "3 6",
+            "3 4"
+        ],
+        "prob_desc_memory_limit": "256 megabytes",
+        "exec_outcome": "PASSED",
+        "prob_desc_output_spec": "Output the number of the highest suitable branch. If there are none, print -1 instead.",
+        "src_uid": "b533203f488fa4caf105f3f46dd5844d",
+        "prob_desc_input_from": "standard input",
+        "lang": "Python 3",
+        "prob_desc_sample_outputs": [
+            "5",
+            "-1"
+        ],
+        "file_name": "d7021504500d5ca7c2b02df8100a574d159e6e67e20ec8071b75800b1267370a",
+        "prob_desc_description": "The weather is fine today and hence it's high time to climb the nearby pine and enjoy the landscape.The pine's trunk includes several branches, located one above another and numbered from 2 to y. Some of them (more precise, from 2 to p) are occupied by tiny vile grasshoppers which you're at war with. These grasshoppers are known for their awesome jumping skills: the grasshopper at branch x can jump to branches .Keeping this in mind, you wisely decided to choose such a branch that none of the grasshoppers could interrupt you. At the same time you wanna settle as high as possible since the view from up there is simply breathtaking.In other words, your goal is to find the highest branch that cannot be reached by any of the grasshoppers or report that it's impossible.",
+        "prob_desc_created_at": "1519574700",
+        "difficulty": 1400.0,
+        "hidden_unit_tests": "[{\"input\": \"3 6\\r\\n\", \"output\": [\"5\"]}, {\"input\": \"3 4\\r\\n\", \"output\": [\"-1\"]}, {\"input\": \"2 2\\r\\n\", \"output\": [\"-1\"]}, {\"input\": \"5 50\\r\\n\", \"output\": [\"49\"]}, {\"input\": \"944192806 944193066\\r\\n\", \"output\": [\"944192807\"]}, {\"input\": \"1000000000 1000000000\\r\\n\", \"output\": [\"-1\"]}, {\"input\": \"2 1000000000\\r\\n\", \"output\": [\"999999999\"]}, {\"input\": \"28788 944193066\\r\\n\", \"output\": [\"944192833\"]}, {\"input\": \"49 52\\r\\n\", \"output\": [\"-1\"]}, {\"input\": \"698964997 734575900\\r\\n\", \"output\": [\"734575871\"]}, {\"input\": \"287894773 723316271\\r\\n\", \"output\": [\"723316207\"]}, {\"input\": \"171837140 733094070\\r\\n\", \"output\": [\"733094069\"]}, {\"input\": \"37839169 350746807\\r\\n\", \"output\": [\"350746727\"]}, {\"input\": \"125764821 234689174\\r\\n\", \"output\": [\"234689137\"]}, {\"input\": \"413598841 430509920\\r\\n\", \"output\": [\"430509917\"]}, {\"input\": \"145320418 592508508\\r\\n\", \"output\": [\"592508479\"]}, {\"input\": \"155098216 476450875\\r\\n\", \"output\": [\"476450861\"]}, {\"input\": \"459843315 950327842\\r\\n\", \"output\": [\"950327831\"]}, {\"input\": \"469621113 834270209\\r\\n\", \"output\": [\"834270209\"]}, {\"input\": \"13179877 557546766\\r\\n\", \"output\": [\"557546753\"]}, {\"input\": \"541748242 723508350\\r\\n\", \"output\": [\"723508301\"]}, {\"input\": \"607450717 924641194\\r\\n\", \"output\": [\"924641189\"]}, {\"input\": \"786360384 934418993\\r\\n\", \"output\": [\"934418981\"]}, {\"input\": \"649229491 965270051\\r\\n\", \"output\": [\"965270051\"]}, {\"input\": \"144179719 953974590\\r\\n\", \"output\": [\"953974583\"]}, {\"input\": \"28122086 963752388\\r\\n\", \"output\": [\"963752347\"]}, {\"input\": \"268497487 501999053\\r\\n\", \"output\": [\"501999053\"]}, {\"input\": \"356423140 385941420\\r\\n\", \"output\": [\"385941419\"]}, {\"input\": \"71233638 269883787\\r\\n\", \"output\": [\"269883787\"]}, {\"input\": \"2601 698964997\\r\\n\", \"output\": [\"698964983\"]}, {\"input\": \"4096 287894773\\r\\n\", \"output\": [\"287894771\"]}, {\"input\": \"5675 171837140\\r\\n\", \"output\": [\"171837131\"]}, {\"input\": \"13067 350746807\\r\\n\", \"output\": [\"350746727\"]}, {\"input\": \"8699 234689174\\r\\n\", \"output\": [\"234689137\"]}, {\"input\": \"12190 413598841\\r\\n\", \"output\": [\"413598817\"]}, {\"input\": \"20555 592508508\\r\\n\", \"output\": [\"592508479\"]}, {\"input\": \"19137 476450875\\r\\n\", \"output\": [\"476450861\"]}, {\"input\": \"8793 950327842\\r\\n\", \"output\": [\"950327831\"]}, {\"input\": \"1541 834270209\\r\\n\", \"output\": [\"834270209\"]}, {\"input\": \"1082 13179877\\r\\n\", \"output\": [\"13179871\"]}, {\"input\": \"3888 723508350\\r\\n\", \"output\": [\"723508301\"]}, {\"input\": \"14078 607450717\\r\\n\", \"output\": [\"607450703\"]}, {\"input\": \"20869 786360384\\r\\n\", \"output\": [\"786360373\"]}, {\"input\": \"13689 965270051\\r\\n\", \"output\": [\"965270051\"]}, {\"input\": \"782 144179719\\r\\n\", \"output\": [\"144179719\"]}, {\"input\": \"404 28122086\\r\\n\", \"output\": [\"28122079\"]}, {\"input\": \"21992 501999053\\r\\n\", \"output\": [\"501999053\"]}, {\"input\": \"13745 385941420\\r\\n\", \"output\": [\"385941419\"]}, {\"input\": \"8711 269883787\\r\\n\", \"output\": [\"269883787\"]}, {\"input\": \"31333 981756889\\r\\n\", \"output\": [\"981756871\"]}, {\"input\": \"944192808 944193061\\r\\n\", \"output\": [\"-1\"]}, {\"input\": \"3 9\\r\\n\", \"output\": [\"7\"]}, {\"input\": \"4 5\\r\\n\", \"output\": [\"5\"]}, {\"input\": \"2 13\\r\\n\", \"output\": [\"13\"]}, {\"input\": \"7 53\\r\\n\", \"output\": [\"53\"]}, {\"input\": \"10 1000000000\\r\\n\", \"output\": [\"999999997\"]}, {\"input\": \"2 7\\r\\n\", \"output\": [\"7\"]}, {\"input\": \"4 9\\r\\n\", \"output\": [\"7\"]}]",
+        "source_lang": "Python 3",
+        "target_lang": "C"
+    }
+}

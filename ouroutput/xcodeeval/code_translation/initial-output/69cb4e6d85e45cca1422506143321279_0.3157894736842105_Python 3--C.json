@@ -1,0 +1,89 @@
+{
+    "oai_response": {
+        "prompt": "Here is code in Python 3 programming lanaguge. Translate the following code from Python 3 to C programming lanaguge. Do not output any extra description or tokens other than the translated code. \n\nimport math\nr,g,b=map(int,input().split(\" \"))\nli = [r,g,b]\nli.sort()\nif(li[2]>2*(sum(li)-li[2])):\n    print(sum(li)-li[2])\nelse:\n    print(sum(li)//3)\n||END-of-SRC||",
+        "response": {
+            "id": "multi-call-as-dtn6nenwkz",
+            "model": "deepseek-v3",
+            "created": 1767067329,
+            "choices": [
+                {
+                    "index": 0,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <stdlib.h>\n\nint main() {\n    int r, g, b;\n    scanf(\"%d %d %d\", &r, &g, &b);\n    int li[3] = {r, g, b};\n    \n    // Sort the array\n    for (int i = 0; i < 3; i++) {\n        for (int j = i + 1; j < 3; j++) {\n            if (li[i] > li[j]) {\n                int temp = li[i];\n                li[i] = li[j];\n                li[j] = temp;\n            }\n        }\n    }\n    \n    if (li[2] > 2 * (li[0] + li[1])) {\n        printf(\"%d\\n\", li[0] + li[1]);\n    } else {\n        printf(\"%d\\n\", (li[0] + li[1] + li[2]) / 3);\n    }\n    \n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 1,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <stdlib.h>\n\nint compare(const void *a, const void *b) {\n    return (*(int*)a - *(int*)b);\n}\n\nint main() {\n    int r, g, b;\n    scanf(\"%d %d %d\", &r, &g, &b);\n    int li[3] = {r, g, b};\n    qsort(li, 3, sizeof(int), compare);\n    if (li[2] > 2 * (li[0] + li[1])) {\n        printf(\"%d\", li[0] + li[1]);\n    } else {\n        printf(\"%d\", (li[0] + li[1] + li[2]) / 3);\n    }\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 2,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <stdlib.h>\n\nint compare(const void *a, const void *b) {\n    return (*(int *)a - *(int *)b);\n}\n\nint main() {\n    int r, g, b;\n    scanf(\"%d %d %d\", &r, &g, &b);\n    int li[3] = {r, g, b};\n    qsort(li, 3, sizeof(int), compare);\n    if (li[2] > 2 * (li[0] + li[1])) {\n        printf(\"%d\\n\", li[0] + li[1]);\n    } else {\n        printf(\"%d\\n\", (li[0] + li[1] + li[2]) / 3);\n    }\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 3,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <stdlib.h>\n\nint compare(const void *a, const void *b) {\n    return (*(int*)a - *(int*)b);\n}\n\nint main() {\n    int r, g, b;\n    scanf(\"%d %d %d\", &r, &g, &b);\n    int li[3] = {r, g, b};\n    qsort(li, 3, sizeof(int), compare);\n    if (li[2] > 2 * (li[0] + li[1])) {\n        printf(\"%d\", li[0] + li[1]);\n    } else {\n        printf(\"%d\", (li[0] + li[1] + li[2]) / 3);\n    }\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 4,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <stdlib.h>\n\nint main() {\n    int r, g, b;\n    scanf(\"%d %d %d\", &r, &g, &b);\n    int li[3] = {r, g, b};\n    \n    // Sort the array\n    for (int i = 0; i < 3; i++) {\n        for (int j = i + 1; j < 3; j++) {\n            if (li[i] > li[j]) {\n                int temp = li[i];\n                li[i] = li[j];\n                li[j] = temp;\n            }\n        }\n    }\n    \n    if (li[2] > 2 * (li[0] + li[1])) {\n        printf(\"%d\\n\", li[0] + li[1]);\n    } else {\n        printf(\"%d\\n\", (li[0] + li[1] + li[2]) / 3);\n    }\n    \n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                }
+            ],
+            "usage": {
+                "prompt_tokens": 560,
+                "completion_tokens": 954,
+                "total_tokens": 1514
+            }
+        }
+    },
+    "source_data": {
+        "code_uid": "69cb4e6d85e45cca1422506143321279",
+        "prob_desc_output_to": "standard output",
+        "prob_desc_notes": "NoteIn the first sample you can decorate the tables with the following balloon sets: \"rgg\", \"gbb\", \"brr\", \"rrg\", where \"r\", \"g\" and \"b\" represent the red, green and blue balls, respectively.",
+        "lang_cluster": "Python",
+        "prob_desc_time_limit": "1 second",
+        "prob_desc_input_spec": "The single line contains three integers r, g and b (0\u2009\u2264\u2009r,\u2009g,\u2009b\u2009\u2264\u20092\u00b7109) \u2014 the number of red, green and blue baloons respectively. The numbers are separated by exactly one space.",
+        "source_code": "import math\nr,g,b=map(int,input().split(\" \"))\nli = [r,g,b]\nli.sort()\nif(li[2]>2*(sum(li)-li[2])):\n    print(sum(li)-li[2])\nelse:\n    print(sum(li)//3)\n",
+        "prob_desc_sample_inputs": [
+            "5 4 3",
+            "1 1 1",
+            "2 3 3"
+        ],
+        "prob_desc_memory_limit": "256 megabytes",
+        "exec_outcome": "PASSED",
+        "prob_desc_output_spec": "Print a single integer t \u2014 the maximum number of tables that can be decorated in the required manner.",
+        "src_uid": "bae7cbcde19114451b8712d6361d2b01",
+        "prob_desc_input_from": "standard input",
+        "lang": "Python 3",
+        "prob_desc_sample_outputs": [
+            "4",
+            "1",
+            "2"
+        ],
+        "file_name": "d7021504500d5ca7c2b02df8100a574d159e6e67e20ec8071b75800b1267370a",
+        "prob_desc_description": "You have r red, g green and b blue balloons. To decorate a single table for the banquet you need exactly three balloons. Three balloons attached to some table shouldn't have the same color. What maximum number t of tables can be decorated if we know number of balloons of each color?Your task is to write a program that for given values r, g and b will find the maximum number t of tables, that can be decorated in the required manner.",
+        "prob_desc_created_at": "1413474000",
+        "difficulty": 1800.0,
+        "hidden_unit_tests": "[{\"input\": \"5 4 3\\r\\n\", \"output\": [\"4\"]}, {\"input\": \"1 1 1\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"2 3 3\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"0 1 0\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"0 3 3\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"4 0 4\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"1000000000 1000000000 1000000000\\r\\n\", \"output\": [\"1000000000\"]}, {\"input\": \"100 99 56\\r\\n\", \"output\": [\"85\"]}, {\"input\": \"1000 1000 1002\\r\\n\", \"output\": [\"1000\"]}, {\"input\": \"0 1 1000000000\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"500000000 1000000000 500000000\\r\\n\", \"output\": [\"666666666\"]}, {\"input\": \"1000000000 2000000000 1000000000\\r\\n\", \"output\": [\"1333333333\"]}, {\"input\": \"2000000000 2000000000 2000000000\\r\\n\", \"output\": [\"2000000000\"]}, {\"input\": \"0 0 0\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"1 2000000000 1000000000\\r\\n\", \"output\": [\"1000000000\"]}, {\"input\": \"1585222789 1889821127 2000000000\\r\\n\", \"output\": [\"1825014638\"]}, {\"input\": \"10000 7500 7500\\r\\n\", \"output\": [\"8333\"]}, {\"input\": \"150000 75000 75000\\r\\n\", \"output\": [\"100000\"]}, {\"input\": \"999288131 55884921 109298382\\r\\n\", \"output\": [\"165183303\"]}, {\"input\": \"100500 100500 3\\r\\n\", \"output\": [\"67001\"]}, {\"input\": \"1463615122 1988383731 837331500\\r\\n\", \"output\": [\"1429776784\"]}, {\"input\": \"1938 8999 1882\\r\\n\", \"output\": [\"3820\"]}, {\"input\": \"45 33 76\\r\\n\", \"output\": [\"51\"]}, {\"input\": \"100000 1 2\\r\\n\", \"output\": [\"3\"]}, {\"input\": \"198488 50 18\\r\\n\", \"output\": [\"68\"]}, {\"input\": \"82728372 939848 100139442\\r\\n\", \"output\": [\"61269220\"]}, {\"input\": \"99 5747 5298\\r\\n\", \"output\": [\"3714\"]}, {\"input\": \"3 5 2\\r\\n\", \"output\": [\"3\"]}, {\"input\": \"7511 7512 7513\\r\\n\", \"output\": [\"7512\"]}, {\"input\": \"1234567890 123456789 987654321\\r\\n\", \"output\": [\"781893000\"]}, {\"input\": \"500000000 2000000000 500000000\\r\\n\", \"output\": [\"1000000000\"]}, {\"input\": \"500000002 2000000000 500000001\\r\\n\", \"output\": [\"1000000001\"]}, {\"input\": \"520000000 1000000033 501000000\\r\\n\", \"output\": [\"673666677\"]}, {\"input\": \"10000 1000 100000\\r\\n\", \"output\": [\"11000\"]}, {\"input\": \"2000000000 500000000 499999999\\r\\n\", \"output\": [\"999999999\"]}, {\"input\": \"1999999999 500000000 500000000\\r\\n\", \"output\": [\"999999999\"]}, {\"input\": \"1 1 9\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"3 0 0\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"6 1 1\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"2000000000 1999999999 1999999999\\r\\n\", \"output\": [\"1999999999\"]}, {\"input\": \"3 4 9\\r\\n\", \"output\": [\"5\"]}, {\"input\": \"3 3 6\\r\\n\", \"output\": [\"4\"]}]",
+        "source_lang": "Python 3",
+        "target_lang": "C"
+    }
+}

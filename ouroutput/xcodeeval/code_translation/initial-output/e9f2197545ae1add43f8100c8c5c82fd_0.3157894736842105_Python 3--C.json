@@ -1,0 +1,89 @@
+{
+    "oai_response": {
+        "prompt": "Here is code in Python 3 programming lanaguge. Translate the following code from Python 3 to C programming lanaguge. Do not output any extra description or tokens other than the translated code. \n\nx1,y1,z1=input().split()\nx2,y2,z2=input().split()\nif x1==x2 or y1==y2 or z1==z2:\n    print(\"YES\")\nelse:\n    print(\"NO\")||END-of-SRC||",
+        "response": {
+            "id": "multi-call-as-n26xxdmkdv",
+            "model": "deepseek-v3",
+            "created": 1767067397,
+            "choices": [
+                {
+                    "index": 0,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <string.h>\n\nint main() {\n    char x1[100], y1[100], z1[100];\n    char x2[100], y2[100], z2[100];\n    scanf(\"%s %s %s\", x1, y1, z1);\n    scanf(\"%s %s %s\", x2, y2, z2);\n    if (strcmp(x1, x2) == 0 || strcmp(y1, y2) == 0 || strcmp(z1, z2) == 0) {\n        printf(\"YES\\n\");\n    } else {\n        printf(\"NO\\n\");\n    }\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 1,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <string.h>\n\nint main() {\n    char x1[100], y1[100], z1[100];\n    char x2[100], y2[100], z2[100];\n    scanf(\"%s %s %s\", x1, y1, z1);\n    scanf(\"%s %s %s\", x2, y2, z2);\n    if (strcmp(x1, x2) == 0 || strcmp(y1, y2) == 0 || strcmp(z1, z2) == 0) {\n        printf(\"YES\\n\");\n    } else {\n        printf(\"NO\\n\");\n    }\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 2,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <string.h>\n\nint main() {\n    char x1[100], y1[100], z1[100];\n    char x2[100], y2[100], z2[100];\n    scanf(\"%s %s %s\", x1, y1, z1);\n    scanf(\"%s %s %s\", x2, y2, z2);\n    if (strcmp(x1, x2) == 0 || strcmp(y1, y2) == 0 || strcmp(z1, z2) == 0) {\n        printf(\"YES\\n\");\n    } else {\n        printf(\"NO\\n\");\n    }\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 3,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <string.h>\n\nint main() {\n    char x1[100], y1[100], z1[100];\n    char x2[100], y2[100], z2[100];\n    \n    scanf(\"%s %s %s\", x1, y1, z1);\n    scanf(\"%s %s %s\", x2, y2, z2);\n    \n    if (strcmp(x1, x2) == 0 || strcmp(y1, y2) == 0 || strcmp(z1, z2) == 0) {\n        printf(\"YES\\n\");\n    } else {\n        printf(\"NO\\n\");\n    }\n    \n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 4,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <string.h>\n\nint main() {\n    char x1[100], y1[100], z1[100];\n    char x2[100], y2[100], z2[100];\n    scanf(\"%s %s %s\", x1, y1, z1);\n    scanf(\"%s %s %s\", x2, y2, z2);\n    if (strcmp(x1, x2) == 0 || strcmp(y1, y2) == 0 || strcmp(z1, z2) == 0) {\n        printf(\"YES\\n\");\n    } else {\n        printf(\"NO\\n\");\n    }\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                }
+            ],
+            "usage": {
+                "prompt_tokens": 510,
+                "completion_tokens": 767,
+                "total_tokens": 1277
+            }
+        }
+    },
+    "source_data": {
+        "code_uid": "e9f2197545ae1add43f8100c8c5c82fd",
+        "prob_desc_output_to": "standard output",
+        "prob_desc_notes": null,
+        "lang_cluster": "Python",
+        "prob_desc_time_limit": "2 seconds",
+        "prob_desc_input_spec": "The first line contains three space-separated integers (0 or 1) \u2014 the coordinates of the first fly, the second line analogously contains the coordinates of the second fly.",
+        "source_code": "x1,y1,z1=input().split()\nx2,y2,z2=input().split()\nif x1==x2 or y1==y2 or z1==z2:\n    print(\"YES\")\nelse:\n    print(\"NO\")",
+        "prob_desc_sample_inputs": [
+            "0 0 0\n0 1 0",
+            "1 1 0\n0 1 0",
+            "0 0 0\n1 1 1"
+        ],
+        "prob_desc_memory_limit": "64 megabytes",
+        "exec_outcome": "PASSED",
+        "prob_desc_output_spec": "Output \"YES\" (without quotes) if the flies see each other. Otherwise, output \"NO\".",
+        "src_uid": "91c9dbbceb467d5fd420e92c2919ecb6",
+        "prob_desc_input_from": "standard input",
+        "lang": "Python 3",
+        "prob_desc_sample_outputs": [
+            "YES",
+            "YES",
+            "NO"
+        ],
+        "file_name": "d7021504500d5ca7c2b02df8100a574d159e6e67e20ec8071b75800b1267370a",
+        "prob_desc_description": "You can find anything whatsoever in our Galaxy! A cubical planet goes round an icosahedral star. Let us introduce a system of axes so that the edges of the cubical planet are parallel to the coordinate axes and two opposite vertices lay in the points (0,\u20090,\u20090) and (1,\u20091,\u20091). Two flies live on the planet. At the moment they are sitting on two different vertices of the cubical planet. Your task is to determine whether they see each other or not. The flies see each other when the vertices they occupy lie on the same face of the cube.",
+        "prob_desc_created_at": "1287904200",
+        "difficulty": 1100.0,
+        "hidden_unit_tests": "[{\"input\": \"0 0 0\\r\\n0 1 0\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"1 1 0\\r\\n0 1 0\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"0 0 0\\r\\n1 1 1\\r\\n\", \"output\": [\"No\", \"NO\"]}, {\"input\": \"0 0 0\\r\\n1 0 0\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"0 0 0\\r\\n0 1 0\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"0 0 0\\r\\n1 1 0\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"0 0 0\\r\\n0 0 1\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"0 0 0\\r\\n1 0 1\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"0 0 0\\r\\n0 1 1\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"0 0 0\\r\\n1 1 1\\r\\n\", \"output\": [\"No\", \"NO\"]}, {\"input\": \"1 0 0\\r\\n0 0 0\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"1 0 0\\r\\n0 1 0\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"1 0 0\\r\\n1 1 0\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"1 0 0\\r\\n0 0 1\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"1 0 0\\r\\n1 0 1\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"1 0 0\\r\\n0 1 1\\r\\n\", \"output\": [\"No\", \"NO\"]}, {\"input\": \"1 0 0\\r\\n1 1 1\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"0 1 0\\r\\n0 0 0\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"0 1 0\\r\\n1 0 0\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"0 1 0\\r\\n1 1 0\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"0 1 0\\r\\n0 0 1\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"0 1 0\\r\\n1 0 1\\r\\n\", \"output\": [\"No\", \"NO\"]}, {\"input\": \"0 1 0\\r\\n0 1 1\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"0 1 0\\r\\n1 1 1\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"1 1 0\\r\\n0 0 0\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"1 1 0\\r\\n1 0 0\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"1 1 0\\r\\n0 1 0\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"1 1 0\\r\\n0 0 1\\r\\n\", \"output\": [\"No\", \"NO\"]}, {\"input\": \"1 1 0\\r\\n1 0 1\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"1 1 0\\r\\n0 1 1\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"1 1 0\\r\\n1 1 1\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"0 0 1\\r\\n0 0 0\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"0 0 1\\r\\n1 0 0\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"0 0 1\\r\\n0 1 0\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"0 0 1\\r\\n1 1 0\\r\\n\", \"output\": [\"No\", \"NO\"]}, {\"input\": \"0 0 1\\r\\n1 0 1\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"0 0 1\\r\\n0 1 1\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"0 0 1\\r\\n1 1 1\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"1 0 1\\r\\n0 0 0\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"1 0 1\\r\\n1 0 0\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"1 0 1\\r\\n0 1 0\\r\\n\", \"output\": [\"No\", \"NO\"]}, {\"input\": \"1 0 1\\r\\n1 1 0\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"1 0 1\\r\\n0 0 1\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"1 0 1\\r\\n0 1 1\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"1 0 1\\r\\n1 1 1\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"0 1 1\\r\\n0 0 0\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"0 1 1\\r\\n1 0 0\\r\\n\", \"output\": [\"No\", \"NO\"]}, {\"input\": \"0 1 1\\r\\n0 1 0\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"0 1 1\\r\\n1 1 0\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"0 1 1\\r\\n0 0 1\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"0 1 1\\r\\n1 0 1\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"0 1 1\\r\\n1 1 1\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"1 1 1\\r\\n0 0 0\\r\\n\", \"output\": [\"No\", \"NO\"]}, {\"input\": \"1 1 1\\r\\n1 0 0\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"1 1 1\\r\\n0 1 0\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"1 1 1\\r\\n1 1 0\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"1 1 1\\r\\n0 0 1\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"1 1 1\\r\\n1 0 1\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"1 1 1\\r\\n0 1 1\\r\\n\", \"output\": [\"YES\"]}]",
+        "source_lang": "Python 3",
+        "target_lang": "C"
+    }
+}

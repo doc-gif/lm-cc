@@ -1,0 +1,90 @@
+{
+    "oai_response": {
+        "prompt": "Here is code in Python 3 programming lanaguge. Translate the following code from Python 3 to C programming lanaguge. Do not output any extra description or tokens other than the translated code. \n\ndef binary_search(n, k, low, high):\n    while low <= high:\n        mid = (high + low) // 2\n        total = ((k * (k + 1)) // 2 - 1) - (((mid - 1) * mid) // 2 - 1) - (k - 2)\n        if total == n:\n            return k - mid + 1\n        if total > n:\n            low = mid + 1\n        elif total < n:\n            high = mid - 1\n    if total > n:\n        mid += 1\n    return k - mid + 1\ndef solve():\n    n, k = map(int, input().split())\n    if n == 1:\n        return 0\n    if (k * (k + 1) // 2) - (k - 2) <= n:\n        return -1\n    if k >= n:\n        return 1\n    return binary_search(n, k, 2, k)\nprint(solve())||END-of-SRC||",
+        "response": {
+            "id": "multi-call-as-c41c8yxtyy",
+            "model": "deepseek-v3",
+            "created": 1769631008,
+            "choices": [
+                {
+                    "index": 0,
+                    "message": {
+                        "role": "assistant",
+                        "content": "Here's the translated code in C:\n\n```c\n#include <stdio.h>\n\nint binary_search(int n, int k, int low, int high) {\n    int mid, total;\n    while (low <= high) {\n        mid = (high + low) / 2;\n        total = ((k * (k + 1)) / 2 - 1) - (((mid - 1) * mid) / 2 - 1) - (k - 2);\n        if (total == n) {\n            return k - mid + 1;\n        }\n        if (total > n) {\n            low = mid + 1;\n        } else if (total < n) {\n            high = mid - 1;\n        }\n    }\n    if (total > n) {\n        mid += 1;\n    }\n    return k - mid + 1;\n}\n\nint solve() {\n    int n, k;\n    scanf(\"%d %d\", &n, &k);\n    if (n == 1) {\n        return 0;\n    }\n    if (((k * (k + 1)) / 2) - (k - 2) <= n) {\n        return -1;\n    }\n    if (k >= n) {\n        return 1;\n    }\n    return binary_search(n, k, 2, k);\n}\n\nint main() {\n    printf(\"%d\\n\", solve());\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 1,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n\nint binary_search(int n, int k, int low, int high) {\n    int mid, total;\n    while (low <= high) {\n        mid = (high + low) / 2;\n        total = ((k * (k + 1)) / 2 - 1) - (((mid - 1) * mid) / 2 - 1) - (k - 2);\n        if (total == n) {\n            return k - mid + 1;\n        }\n        if (total > n) {\n            low = mid + 1;\n        } else if (total < n) {\n            high = mid - 1;\n        }\n    }\n    if (total > n) {\n        mid += 1;\n    }\n    return k - mid + 1;\n}\n\nint solve() {\n    int n, k;\n    scanf(\"%d %d\", &n, &k);\n    if (n == 1) {\n        return 0;\n    }\n    if ((k * (k + 1) / 2) - (k - 2) <= n) {\n        return -1;\n    }\n    if (k >= n) {\n        return 1;\n    }\n    return binary_search(n, k, 2, k);\n}\n\nint main() {\n    printf(\"%d\\n\", solve());\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 2,
+                    "message": {
+                        "role": "assistant",
+                        "content": "Here's the translated code in C:\n\n```c\n#include <stdio.h>\n\nint binary_search(int n, int k, int low, int high) {\n    int mid, total;\n    while (low <= high) {\n        mid = (high + low) / 2;\n        total = ((k * (k + 1)) / 2 - 1) - (((mid - 1) * mid) / 2 - 1) - (k - 2);\n        if (total == n) {\n            return k - mid + 1;\n        }\n        if (total > n) {\n            low = mid + 1;\n        } else if (total < n) {\n            high = mid - 1;\n        }\n    }\n    if (total > n) {\n        mid += 1;\n    }\n    return k - mid + 1;\n}\n\nint solve() {\n    int n, k;\n    scanf(\"%d %d\", &n, &k);\n    if (n == 1) {\n        return 0;\n    }\n    if (((k * (k + 1)) / 2) - (k - 2) <= n) {\n        return -1;\n    }\n    if (k >= n) {\n        return 1;\n    }\n    return binary_search(n, k, 2, k);\n}\n\nint main() {\n    printf(\"%d\\n\", solve());\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 3,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n\nint binary_search(int n, int k, int low, int high) {\n    int mid, total;\n    while (low <= high) {\n        mid = (high + low) / 2;\n        total = ((k * (k + 1)) / 2 - 1) - (((mid - 1) * mid) / 2 - 1) - (k - 2);\n        if (total == n) {\n            return k - mid + 1;\n        }\n        if (total > n) {\n            low = mid + 1;\n        } else if (total < n) {\n            high = mid - 1;\n        }\n    }\n    if (total > n) {\n        mid += 1;\n    }\n    return k - mid + 1;\n}\n\nint solve() {\n    int n, k;\n    scanf(\"%d %d\", &n, &k);\n    if (n == 1) {\n        return 0;\n    }\n    if ((k * (k + 1) / 2) - (k - 2) <= n) {\n        return -1;\n    }\n    if (k >= n) {\n        return 1;\n    }\n    return binary_search(n, k, 2, k);\n}\n\nint main() {\n    printf(\"%d\\n\", solve());\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 4,
+                    "message": {
+                        "role": "assistant",
+                        "content": "Here's the translated code in C:\n\n```c\n#include <stdio.h>\n\nint binary_search(int n, int k, int low, int high) {\n    int mid, total;\n    while (low <= high) {\n        mid = (high + low) / 2;\n        total = ((k * (k + 1)) / 2 - 1) - (((mid - 1) * mid) / 2 - 1) - (k - 2);\n        if (total == n) {\n            return k - mid + 1;\n        }\n        if (total > n) {\n            low = mid + 1;\n        } else if (total < n) {\n            high = mid - 1;\n        }\n    }\n    if (total > n) {\n        mid += 1;\n    }\n    return k - mid + 1;\n}\n\nint solve() {\n    int n, k;\n    scanf(\"%d %d\", &n, &k);\n    if (n == 1) {\n        return 0;\n    }\n    if (((k * (k + 1)) / 2) - (k - 2) <= n) {\n        return -1;\n    }\n    if (k >= n) {\n        return 1;\n    }\n    return binary_search(n, k, 2, k);\n}\n\nint main() {\n    printf(\"%d\\n\", solve());\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                }
+            ],
+            "usage": {
+                "prompt_tokens": 1360,
+                "completion_tokens": 1505,
+                "total_tokens": 2865
+            }
+        }
+    },
+    "source_data": {
+        "code_uid": "2dd963f592f95d7eedd74446e9652f5e",
+        "prob_desc_output_to": "standard output",
+        "prob_desc_notes": null,
+        "lang_cluster": "Python",
+        "prob_desc_time_limit": "0.4 seconds",
+        "prob_desc_input_spec": "The first line contains two space-separated integers n and k (1\u2009\u2264\u2009n\u2009\u2264\u20091018, 2\u2009\u2264\u2009k\u2009\u2264\u2009109). Please, do not use the %lld specifier to read or write 64-bit integers in \u0421++. It is preferred to use the cin, cout streams or the %I64d specifier.",
+        "prob_desc_sample_inputs": [
+            "4 3",
+            "5 5",
+            "8 4"
+        ],
+        "prob_desc_memory_limit": "256 megabytes",
+        "exec_outcome": "PASSED",
+        "prob_desc_output_spec": "Print a single integer \u2014 the minimum number of splitters needed to build the pipeline. If it is impossible to build a pipeline with the given splitters, print -1.",
+        "src_uid": "83bcfe32db302fbae18e8a95d89cf411",
+        "prob_desc_input_from": "standard input",
+        "lang": "Python 3",
+        "prob_desc_sample_outputs": [
+            "2",
+            "1",
+            "-1"
+        ],
+        "file_name": "d7021504500d5ca7c2b02df8100a574d159e6e67e20ec8071b75800b1267370a",
+        "prob_desc_description": "Vova, the Ultimate Thule new shaman, wants to build a pipeline. As there are exactly n houses in Ultimate Thule, Vova wants the city to have exactly n pipes, each such pipe should be connected to the water supply. A pipe can be connected to the water supply if there's water flowing out of it. Initially Vova has only one pipe with flowing water. Besides, Vova has several splitters.A splitter is a construction that consists of one input (it can be connected to a water pipe) and x output pipes. When a splitter is connected to a water pipe, water flows from each output pipe. You can assume that the output pipes are ordinary pipes. For example, you can connect water supply to such pipe if there's water flowing out from it. At most one splitter can be connected to any water pipe.  The figure shows a 4-output splitter Vova has one splitter of each kind: with 2, 3, 4, ..., k outputs. Help Vova use the minimum number of splitters to build the required pipeline or otherwise state that it's impossible.Vova needs the pipeline to have exactly n pipes with flowing out water. Note that some of those pipes can be the output pipes of the splitters.",
+        "prob_desc_created_at": "1364025600",
+        "difficulty": 1700.0,
+        "hidden_unit_tests": "[{\"input\": \"4 3\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"5 5\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"8 4\\r\\n\", \"output\": [\"-1\"]}, {\"input\": \"1000000000000000000 1000000000\\r\\n\", \"output\": [\"-1\"]}, {\"input\": \"499999998500000001 1000000000\\r\\n\", \"output\": [\"999955279\"]}, {\"input\": \"499999998500000000 1000000000\\r\\n\", \"output\": [\"999955279\"]}, {\"input\": \"499999999500000000 1000000000\\r\\n\", \"output\": [\"999999998\"]}, {\"input\": \"499999999500000001 1000000000\\r\\n\", \"output\": [\"999999999\"]}, {\"input\": \"525 34\\r\\n\", \"output\": [\"25\"]}, {\"input\": \"223265034477 726990\\r\\n\", \"output\": [\"440662\"]}, {\"input\": \"15597035789572051 185473109\\r\\n\", \"output\": [\"128849771\"]}, {\"input\": \"499999999500000002 1000000000\\r\\n\", \"output\": [\"-1\"]}, {\"input\": \"1 1000000000\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"1000000000 2\\r\\n\", \"output\": [\"-1\"]}, {\"input\": \"462498979 204468265\\r\\n\", \"output\": [\"3\"]}, {\"input\": \"2107921 542531\\r\\n\", \"output\": [\"4\"]}, {\"input\": \"131 49\\r\\n\", \"output\": [\"3\"]}, {\"input\": \"20171878992939541 200857557\\r\\n\", \"output\": [\"200853401\"]}, {\"input\": \"399812655947 894219\\r\\n\", \"output\": [\"893030\"]}, {\"input\": \"93 17\\r\\n\", \"output\": [\"8\"]}, {\"input\": \"1000000000 999999999\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"100000000000000000 1000000000\\r\\n\", \"output\": [\"105572810\"]}]",
+        "initial_source_code": "def bs(n, k, lo, hi):\n    \n    while lo <= hi: \n        mid = (hi + lo)//2\n        # print(lo, hi, mid)\n        # print('start')\n        # ks = range(mid, k+1)\n        # print('end')\n        # print('start')\n        # summ = (mid + k) * ((k - mid +1)/2) - (k-2)\n        # summ = (-mid * (mid -1) + k * (k + 1))/2 - (k-2)\n        summ = ((k * (k + 1))//2 - 1) - (((mid-1) * (mid))//2 -1) - (k-2)\n        # kk = k\n        # summ = 0\n        # while kk > 0:\n        #     summ += summ\n        #     kk -=1\n        # summ = summ - (k-2)\n        # summ = sum(ks) - (len(ks) - 1)\n        # print('end')\n        # print(list(range(mid, k+1)))\n        # print(summ, n)\n        # print(mid, k, (summ), 'mid')\n        if summ == n: \n            # print('done')\n            return k - mid + 1\n            # print(f'result: {k - mid + 1}')\n            # break\n        if summ > n: \n            # print('hi')\n            lo = mid + 1\n            # print(lo, hi, (hi + lo)//2)\n            \n        elif summ < n:\n            hi = mid - 1\n            # print((hi + lo)//2 , 'yarab', lo, hi)\n            # print('lala')\n            # print(summ)\n    # print(lo, 'i am the mid')\n    # if n - summ == 1:\n    #     print('there') \n    #     return -1\n    # summ = ((k * (k + 1))//2 - 1) - ((((mid+1)-1) * ((mid+1)))//2 -1) - (k-2)\n    # print(summ, 'yalla')\n    # print(mid, 'lol')\n    # print(k - mid)\n    # print('yo')\n    if summ > n: \n       mid += 1\n    return k - mid + 1\n    # print(f'result: {k - mid + 2}')\n\n\n\ndef solve():\n    n, k = map(int, input().split())\n    # n, k = 499999999500000000, 1000000000\n    # n, k = 8, 4\n    if n == 1: return 0\n    elif (k * (k + 1)//2) - (k-2) <= n: \n        # print('here')\n        return -1\n    elif k >= n: return 1\n    else: \n        return bs(n, k, 2, k)\n\nprint(solve())",
+        "source_code": "def binary_search(n, k, low, high):\n    while low <= high:\n        mid = (high + low) // 2\n        total = ((k * (k + 1)) // 2 - 1) - (((mid - 1) * mid) // 2 - 1) - (k - 2)\n        if total == n:\n            return k - mid + 1\n        if total > n:\n            low = mid + 1\n        elif total < n:\n            high = mid - 1\n    if total > n:\n        mid += 1\n    return k - mid + 1\ndef solve():\n    n, k = map(int, input().split())\n    if n == 1:\n        return 0\n    if (k * (k + 1) // 2) - (k - 2) <= n:\n        return -1\n    if k >= n:\n        return 1\n    return binary_search(n, k, 2, k)\nprint(solve())",
+        "source_lang": "Python 3",
+        "target_lang": "C"
+    }
+}

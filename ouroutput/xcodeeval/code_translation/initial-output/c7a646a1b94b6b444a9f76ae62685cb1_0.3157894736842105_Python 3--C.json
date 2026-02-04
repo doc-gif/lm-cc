@@ -1,0 +1,89 @@
+{
+    "oai_response": {
+        "prompt": "Here is code in Python 3 programming lanaguge. Translate the following code from Python 3 to C programming lanaguge. Do not output any extra description or tokens other than the translated code. \n\na = list(map(int,input().split()))\nif a[0] <= a[1] and a[0] <= a[2]:\n  print(\"Yes\")\nelse:\n  print(\"No\")||END-of-SRC||",
+        "response": {
+            "id": "multi-call-as-12ujjxusz1",
+            "model": "deepseek-v3",
+            "created": 1767067272,
+            "choices": [
+                {
+                    "index": 0,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n\nint main() {\n    int a[3];\n    scanf(\"%d %d %d\", &a[0], &a[1], &a[2]);\n    if (a[0] <= a[1] && a[0] <= a[2]) {\n        printf(\"Yes\\n\");\n    } else {\n        printf(\"No\\n\");\n    }\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 1,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n\nint main() {\n    int a[3];\n    scanf(\"%d %d %d\", &a[0], &a[1], &a[2]);\n    if (a[0] <= a[1] && a[0] <= a[2]) {\n        printf(\"Yes\\n\");\n    } else {\n        printf(\"No\\n\");\n    }\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 2,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n\nint main() {\n    int a[3];\n    scanf(\"%d %d %d\", &a[0], &a[1], &a[2]);\n    if (a[0] <= a[1] && a[0] <= a[2]) {\n        printf(\"Yes\\n\");\n    } else {\n        printf(\"No\\n\");\n    }\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 3,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n\nint main() {\n    int a[3];\n    scanf(\"%d %d %d\", &a[0], &a[1], &a[2]);\n    if (a[0] <= a[1] && a[0] <= a[2]) {\n        printf(\"Yes\\n\");\n    } else {\n        printf(\"No\\n\");\n    }\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 4,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n\nint main() {\n    int a[3];\n    scanf(\"%d %d %d\", &a[0], &a[1], &a[2]);\n    if (a[0] <= a[1] && a[0] <= a[2]) {\n        printf(\"Yes\\n\");\n    } else {\n        printf(\"No\\n\");\n    }\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                }
+            ],
+            "usage": {
+                "prompt_tokens": 460,
+                "completion_tokens": 452,
+                "total_tokens": 912
+            }
+        }
+    },
+    "source_data": {
+        "code_uid": "c7a646a1b94b6b444a9f76ae62685cb1",
+        "prob_desc_output_to": "standard output",
+        "prob_desc_notes": "NoteIn the first example, there are $$$5$$$ participants. The Cossack has $$$8$$$ pens and $$$6$$$ notebooks. Therefore, he has enough pens and notebooks.In the second example, there are $$$3$$$ participants. The Cossack has $$$9$$$ pens and $$$3$$$ notebooks. He has more than enough pens but only the minimum needed number of notebooks.In the third example, there are $$$8$$$ participants but only $$$5$$$ pens. Since the Cossack does not have enough pens, the answer is \"No\".",
+        "lang_cluster": "Python",
+        "prob_desc_time_limit": "1 second",
+        "prob_desc_input_spec": "The first line contains three integers $$$n$$$, $$$m$$$, and $$$k$$$ ($$$1 \\leq n, m, k \\leq 100$$$)\u00a0\u2014 the number of participants, the number of pens, and the number of notebooks respectively.",
+        "source_code": "a = list(map(int,input().split()))\nif a[0] <= a[1] and a[0] <= a[2]:\n  print(\"Yes\")\nelse:\n  print(\"No\")",
+        "prob_desc_sample_inputs": [
+            "5 8 6",
+            "3 9 3",
+            "8 5 20"
+        ],
+        "prob_desc_memory_limit": "256 megabytes",
+        "exec_outcome": "PASSED",
+        "prob_desc_output_spec": "Print \"Yes\" if it possible to reward all the participants. Otherwise, print \"No\". You can print each letter in any case (upper or lower).",
+        "src_uid": "6cd07298b23cc6ce994bb1811b9629c4",
+        "prob_desc_input_from": "standard input",
+        "lang": "Python 3",
+        "prob_desc_sample_outputs": [
+            "Yes",
+            "Yes",
+            "No"
+        ],
+        "file_name": "d7021504500d5ca7c2b02df8100a574d159e6e67e20ec8071b75800b1267370a",
+        "prob_desc_description": "Vus the Cossack holds a programming competition, in which $$$n$$$ people participate. He decided to award them all with pens and notebooks. It is known that Vus has exactly $$$m$$$ pens and $$$k$$$ notebooks.Determine whether the Cossack can reward all participants, giving each of them at least one pen and at least one notebook.",
+        "prob_desc_created_at": "1561710000",
+        "difficulty": 800.0,
+        "hidden_unit_tests": "[{\"input\": \"5 8 6\\r\\n\", \"output\": [\"YES\", \"yes\", \"Yes\"]}, {\"input\": \"3 9 3\\r\\n\", \"output\": [\"YES\", \"yes\", \"Yes\"]}, {\"input\": \"8 5 20\\r\\n\", \"output\": [\"No\", \"NO\", \"no\"]}, {\"input\": \"1 1 1\\r\\n\", \"output\": [\"YES\", \"yes\", \"Yes\"]}, {\"input\": \"54 82 100\\r\\n\", \"output\": [\"YES\", \"yes\", \"Yes\"]}, {\"input\": \"1 100 100\\r\\n\", \"output\": [\"YES\", \"yes\", \"Yes\"]}, {\"input\": \"100 99 99\\r\\n\", \"output\": [\"No\", \"NO\", \"no\"]}, {\"input\": \"8 20 5\\r\\n\", \"output\": [\"No\", \"NO\", \"no\"]}, {\"input\": \"68 91 90\\r\\n\", \"output\": [\"YES\", \"yes\", \"Yes\"]}, {\"input\": \"92 35 39\\r\\n\", \"output\": [\"No\", \"NO\", \"no\"]}, {\"input\": \"20 84 93\\r\\n\", \"output\": [\"YES\", \"yes\", \"Yes\"]}, {\"input\": \"44 28 47\\r\\n\", \"output\": [\"No\", \"NO\", \"no\"]}, {\"input\": \"68 73 96\\r\\n\", \"output\": [\"YES\", \"yes\", \"Yes\"]}, {\"input\": \"92 17 54\\r\\n\", \"output\": [\"No\", \"NO\", \"no\"]}, {\"input\": \"20 61 100\\r\\n\", \"output\": [\"YES\", \"yes\", \"Yes\"]}, {\"input\": \"44 2 53\\r\\n\", \"output\": [\"No\", \"NO\", \"no\"]}, {\"input\": \"68 54 3\\r\\n\", \"output\": [\"No\", \"NO\", \"no\"]}, {\"input\": \"58 92 33\\r\\n\", \"output\": [\"No\", \"NO\", \"no\"]}, {\"input\": \"2 1 2\\r\\n\", \"output\": [\"No\", \"NO\", \"no\"]}, {\"input\": \"2 2 1\\r\\n\", \"output\": [\"No\", \"NO\", \"no\"]}, {\"input\": \"2 2 2\\r\\n\", \"output\": [\"YES\", \"yes\", \"Yes\"]}, {\"input\": \"2 1 1\\r\\n\", \"output\": [\"No\", \"NO\", \"no\"]}, {\"input\": \"100 100 100\\r\\n\", \"output\": [\"YES\", \"yes\", \"Yes\"]}, {\"input\": \"100 1 1\\r\\n\", \"output\": [\"No\", \"NO\", \"no\"]}, {\"input\": \"5 3 2\\r\\n\", \"output\": [\"No\", \"NO\", \"no\"]}]",
+        "source_lang": "Python 3",
+        "target_lang": "C"
+    }
+}

@@ -1,0 +1,103 @@
+{
+    "oai_response": {
+        "prompt": "Fix a buggy program written in Python language to solve the following programming problem:\nDescription: Alice and Bob begin their day with a quick game. They first choose a starting number X0\u2009\u2265\u20093 and try to reach one million by the process described below. Alice goes first and then they take alternating turns. In the i-th turn, the player whose turn it is selects a prime number smaller than the current number, and announces the smallest multiple of this prime number that is not smaller than the current number.Formally, he or she selects a prime p\u2009&lt;\u2009Xi\u2009-\u20091 and then finds the minimum Xi\u2009\u2265\u2009Xi\u2009-\u20091 such that p divides Xi. Note that if the selected prime p already divides Xi\u2009-\u20091, then the number does not change.Eve has witnessed the state of the game after two turns. Given X2, help her determine what is the smallest possible starting number X0. Note that the players don't necessarily play optimally. You should consider all possible game evolutions.\nInput Specification: The input contains a single integer X2 (4\u2009\u2264\u2009X2\u2009\u2264\u2009106). It is guaranteed that the integer X2 is composite, that is, is not prime.\nOutput Specification: Output a single integer\u00a0\u2014 the minimum possible X0.\n\nSample Input:\n14\nSample Output:\n6\n\nSample Input:\n20\nSample Output:\n15\n\nSample Input:\n8192\nSample Output:\n8191\n\nNotes: NoteIn the first test, the smallest possible starting number is X0\u2009=\u20096. One possible course of the game is as follows:   Alice picks prime 5 and announces X1\u2009=\u200910  Bob picks prime 7 and announces X2\u2009=\u200914. In the second case, let X0\u2009=\u200915.   Alice picks prime 2 and announces X1\u2009=\u200916  Bob picks prime 5 and announces X2\u2009=\u200920. \nTake input from standard input and output to standard output\n\nHere is the code with a bug of TIME_LIMIT_EXCEEDED:\n\nprime_number = [2,3,5,7,11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,71\n,73,79,83,89,97,101,103,107,109,113,127,131,137,139,149,151,157,163,167,173\n,179,181,191,193,197,199,211,223,227,229,233,239,241,251,257,263,269,271,277,281\n,283,293,307,311,313,317,331,337,347,349,353,359,367,373,379,383,389,397,401,409\n,419,421,431,433,439,443,449,457,461,463,467,479,487,491,499,503,509,521,523,541\n,547,557,563,569,571,577,587,593,599,601,607,613,617,619,631,641,643,647,653,659\n,661,673,677,683,691,701,709,719,727,733,739,743,751,757,761,769,773,787,797,809\n,811,821,823,827,829,839,853,857,859,863,877,881,883,887,907,911,919,929,937,941\n,947,953,967,971,977,983,991,997,1009]\nimport math\n\ndef find_max_prime(val):\n    result= 0\n    for prime in prime_number:\n        if (prime > math.sqrt(val)):\n            break\n        if val % prime == 0:\n            temp=max(prime, find_max_prime(val/prime))\n            result=max(result,temp)\n            break\n    if result==0:\n        return int(val)\n    else:\n        return int(result)\n\nnum = int(input())\nprev = find_max_prime(num)\nval = 10000000\nfor i in  range(num - prev +1, num + 1):\n    k = find_max_prime(i)\n    if k == i:\n        continue\n    else:\n        val= min(val, i - k + 1)\nprint(val)\n\nProvide the fixed Python code without any description or extra tokens.\n\nFixed source code:\n ||END-of-SRC||",
+        "response": {
+            "id": "multi-call-as-g1p8hv6bwg",
+            "model": "deepseek-v3",
+            "created": 1760421446,
+            "choices": [
+                {
+                    "index": 0,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```python\nimport math\n\ndef find_max_prime(val):\n    result = 0\n    for prime in range(2, int(math.sqrt(val)) + 1):\n        if val % prime == 0:\n            while val % prime == 0:\n                val = val // prime\n            result = max(prime, find_max_prime(val))\n            break\n    if result == 0:\n        return val\n    else:\n        return result\n\nnum = int(input())\nprev = find_max_prime(num)\nval = float('inf')\nfor i in range(num - prev + 1, num + 1):\n    k = find_max_prime(i)\n    if k == i:\n        continue\n    else:\n        val = min(val, i - k + 1)\nprint(val)\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 1,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```python\nimport math\n\ndef find_max_prime(val):\n    result = 0\n    for prime in range(2, int(math.sqrt(val)) + 1):\n        if val % prime == 0:\n            result = prime\n            while val % prime == 0:\n                val = val // prime\n    if val > 1:\n        result = max(result, val)\n    return result\n\nnum = int(input())\nprev = find_max_prime(num)\nval = float('inf')\nfor i in range(num - prev + 1, num + 1):\n    k = find_max_prime(i)\n    if k == i:\n        continue\n    else:\n        val = min(val, i - k + 1)\nprint(val)\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 2,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```python\nimport math\n\ndef find_max_prime(val):\n    max_prime = 1\n    temp = val\n    for i in range(2, int(math.sqrt(temp)) + 1):\n        if temp % i == 0:\n            max_prime = max(max_prime, i)\n            while temp % i == 0:\n                temp //= i\n    if temp > 1:\n        max_prime = max(max_prime, temp)\n    return max_prime\n\nnum = int(input())\nprev = find_max_prime(num)\nval = float('inf')\nfor i in range(num - prev + 1, num + 1):\n    k = find_max_prime(i)\n    if k == i:\n        continue\n    else:\n        val = min(val, i - k + 1)\nprint(val)\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 3,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```python\nimport math\n\ndef find_max_prime(val):\n    max_prime = 1\n    temp = val\n    for prime in range(2, int(math.sqrt(temp)) + 1):\n        if temp % prime == 0:\n            max_prime = max(max_prime, prime)\n            while temp % prime == 0:\n                temp //= prime\n    if temp > 1:\n        max_prime = max(max_prime, temp)\n    return max_prime\n\nnum = int(input())\nprev = find_max_prime(num)\nval = float('inf')\nfor i in range(num - prev + 1, num + 1):\n    k = find_max_prime(i)\n    if k == i:\n        continue\n    val = min(val, i - k + 1)\nprint(val)\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 4,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```python\nimport math\n\ndef find_max_prime(val):\n    result = 0\n    for prime in range(2, int(math.sqrt(val)) + 1):\n        if val % prime == 0:\n            while val % prime == 0:\n                val //= prime\n            result = max(prime, result)\n    if val > 1:\n        result = max(result, val)\n    return int(result)\n\nnum = int(input())\nprev = find_max_prime(num)\nval = float('inf')\nstart = max(2, num - prev + 1)\nfor i in range(start, num + 1):\n    k = find_max_prime(i)\n    if k == i:\n        continue\n    else:\n        val = min(val, i - k + 1)\nprint(val)\n```"
+                    },
+                    "finish_reason": "stop"
+                }
+            ],
+            "usage": {
+                "prompt_tokens": 4810,
+                "completion_tokens": 825,
+                "total_tokens": 5635
+            }
+        }
+    },
+    "source_data": {
+        "prob_desc_memory_limit": "256 megabytes",
+        "tags": [
+            "math",
+            "brute force",
+            "number theory"
+        ],
+        "prob_desc_created_at": "1520696100",
+        "fix_source_code": "",
+        "prob_desc_input_spec": "The input contains a single integer X2 (4\u2009\u2264\u2009X2\u2009\u2264\u2009106). It is guaranteed that the integer X2 is composite, that is, is not prime.",
+        "prob_desc_sample_outputs": [
+            "6",
+            "15",
+            "8191"
+        ],
+        "src_uid": "43ff6a223c68551eff793ba170110438",
+        "prob_desc_time_limit": "1.5 seconds",
+        "fix_exec_outcome": "",
+        "delete_cnt": 3,
+        "apr_id": "b0017b5cd508217217881bd3985d8b14",
+        "fix_code_uid": "",
+        "lang_cluster": "Python",
+        "prob_desc_sample_inputs": [
+            "14",
+            "20",
+            "8192"
+        ],
+        "prob_desc_output_to": "standard output",
+        "file_name": "Python.jsonl",
+        "equal_cnt": 16,
+        "lang": "Python 3",
+        "prob_desc_output_spec": "Output a single integer\u00a0\u2014 the minimum possible X0.",
+        "bug_exec_outcome": "TIME_LIMIT_EXCEEDED",
+        "prob_desc_notes": "NoteIn the first test, the smallest possible starting number is X0\u2009=\u20096. One possible course of the game is as follows:   Alice picks prime 5 and announces X1\u2009=\u200910  Bob picks prime 7 and announces X2\u2009=\u200914. In the second case, let X0\u2009=\u200915.   Alice picks prime 2 and announces X1\u2009=\u200916  Bob picks prime 5 and announces X2\u2009=\u200920. ",
+        "difficulty": 1700.0,
+        "similarity_score": 0.8360360265,
+        "prob_desc_description": "Alice and Bob begin their day with a quick game. They first choose a starting number X0\u2009\u2265\u20093 and try to reach one million by the process described below. Alice goes first and then they take alternating turns. In the i-th turn, the player whose turn it is selects a prime number smaller than the current number, and announces the smallest multiple of this prime number that is not smaller than the current number.Formally, he or she selects a prime p\u2009&lt;\u2009Xi\u2009-\u20091 and then finds the minimum Xi\u2009\u2265\u2009Xi\u2009-\u20091 such that p divides Xi. Note that if the selected prime p already divides Xi\u2009-\u20091, then the number does not change.Eve has witnessed the state of the game after two turns. Given X2, help her determine what is the smallest possible starting number X0. Note that the players don't necessarily play optimally. You should consider all possible game evolutions.",
+        "potential_dominant_fix_op": "insert",
+        "bug_source_code": "prime_number = [2,3,5,7,11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,71\n,73,79,83,89,97,101,103,107,109,113,127,131,137,139,149,151,157,163,167,173\n,179,181,191,193,197,199,211,223,227,229,233,239,241,251,257,263,269,271,277,281\n,283,293,307,311,313,317,331,337,347,349,353,359,367,373,379,383,389,397,401,409\n,419,421,431,433,439,443,449,457,461,463,467,479,487,491,499,503,509,521,523,541\n,547,557,563,569,571,577,587,593,599,601,607,613,617,619,631,641,643,647,653,659\n,661,673,677,683,691,701,709,719,727,733,739,743,751,757,761,769,773,787,797,809\n,811,821,823,827,829,839,853,857,859,863,877,881,883,887,907,911,919,929,937,941\n,947,953,967,971,977,983,991,997,1009]\nimport math\n\ndef find_max_prime(val):\n    result= 0\n    for prime in prime_number:\n        if (prime > math.sqrt(val)):\n            break\n        if val % prime == 0:\n            temp=max(prime, find_max_prime(val/prime))\n            result=max(result,temp)\n            break\n    if result==0:\n        return int(val)\n    else:\n        return int(result)\n\nnum = int(input())\nprev = find_max_prime(num)\nval = 10000000\nfor i in  range(num - prev +1, num + 1):\n    k = find_max_prime(i)\n    if k == i:\n        continue\n    else:\n        val= min(val, i - k + 1)\nprint(val)",
+        "replace_cnt": 4,
+        "prob_desc_input_from": "standard input",
+        "bug_code_uid": "5e2bd11e0039393ff31adee0fc43597b",
+        "insert_cnt": 9,
+        "fix_ops_cnt": 16,
+        "hidden_unit_tests": "[{\"input\": \"14\\r\\n\", \"output\": [\"6\"]}, {\"input\": \"20\\r\\n\", \"output\": [\"15\"]}, {\"input\": \"8192\\r\\n\", \"output\": [\"8191\"]}, {\"input\": \"1000000\\r\\n\", \"output\": [\"998677\"]}, {\"input\": \"959806\\r\\n\", \"output\": [\"239958\"]}, {\"input\": \"1452\\r\\n\", \"output\": [\"1206\"]}, {\"input\": \"4\\r\\n\", \"output\": [\"3\"]}, {\"input\": \"6\\r\\n\", \"output\": [\"3\"]}, {\"input\": \"8\\r\\n\", \"output\": [\"7\"]}, {\"input\": \"9\\r\\n\", \"output\": [\"7\"]}, {\"input\": \"10\\r\\n\", \"output\": [\"4\"]}, {\"input\": \"12\\r\\n\", \"output\": [\"6\"]}, {\"input\": \"15\\r\\n\", \"output\": [\"8\"]}, {\"input\": \"16\\r\\n\", \"output\": [\"11\"]}, {\"input\": \"110880\\r\\n\", \"output\": [\"55440\"]}, {\"input\": \"166320\\r\\n\", \"output\": [\"110879\"]}, {\"input\": \"221760\\r\\n\", \"output\": [\"110880\"]}, {\"input\": \"277200\\r\\n\", \"output\": [\"138600\"]}, {\"input\": \"332640\\r\\n\", \"output\": [\"166320\"]}, {\"input\": \"498960\\r\\n\", \"output\": [\"332639\"]}, {\"input\": \"554400\\r\\n\", \"output\": [\"415798\"]}, {\"input\": \"665280\\r\\n\", \"output\": [\"498958\"]}, {\"input\": \"720720\\r\\n\", \"output\": [\"540538\"]}, {\"input\": \"510510\\r\\n\", \"output\": [\"255248\"]}, {\"input\": \"570570\\r\\n\", \"output\": [\"285282\"]}, {\"input\": \"690690\\r\\n\", \"output\": [\"460455\"]}, {\"input\": \"959818\\r\\n\", \"output\": [\"239958\"]}, {\"input\": \"959878\\r\\n\", \"output\": [\"239978\"]}, {\"input\": \"959902\\r\\n\", \"output\": [\"239978\"]}, {\"input\": \"974847\\r\\n\", \"output\": [\"324954\"]}, {\"input\": \"974859\\r\\n\", \"output\": [\"324978\"]}, {\"input\": \"974931\\r\\n\", \"output\": [\"324980\"]}, {\"input\": \"885481\\r\\n\", \"output\": [\"442272\"]}, {\"input\": \"896809\\r\\n\", \"output\": [\"447944\"]}, {\"input\": \"908209\\r\\n\", \"output\": [\"453632\"]}, {\"input\": \"935089\\r\\n\", \"output\": [\"467064\"]}, {\"input\": \"720721\\r\\n\", \"output\": [\"355298\"]}, {\"input\": \"690691\\r\\n\", \"output\": [\"342864\"]}, {\"input\": \"959903\\r\\n\", \"output\": [\"479702\"]}, {\"input\": \"974932\\r\\n\", \"output\": [\"470060\"]}, {\"input\": \"935090\\r\\n\", \"output\": [\"463950\"]}, {\"input\": \"524288\\r\\n\", \"output\": [\"524287\"]}, {\"input\": \"524289\\r\\n\", \"output\": [\"174768\"]}, {\"input\": \"524286\\r\\n\", \"output\": [\"262110\"]}, {\"input\": \"531441\\r\\n\", \"output\": [\"526737\"]}, {\"input\": \"531442\\r\\n\", \"output\": [\"262490\"]}, {\"input\": \"531440\\r\\n\", \"output\": [\"265704\"]}, {\"input\": \"81\\r\\n\", \"output\": [\"76\"]}, {\"input\": \"999958\\r\\n\", \"output\": [\"250008\"]}, {\"input\": \"2048\\r\\n\", \"output\": [\"1959\"]}]"
+    }
+}

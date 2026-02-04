@@ -1,0 +1,106 @@
+{
+    "oai_response": {
+        "prompt": "Fix a buggy program written in Python language to solve the following programming problem:\nDescription: Recall that the permutation is an array consisting of $$$n$$$ distinct integers from $$$1$$$ to $$$n$$$ in arbitrary order. For example, $$$[2,3,1,5,4]$$$ is a permutation, but $$$[1,2,2]$$$ is not a permutation ($$$2$$$ appears twice in the array) and $$$[1,3,4]$$$ is also not a permutation ($$$n=3$$$ but there is $$$4$$$ in the array).A sequence $$$a$$$ is a subsegment of a sequence $$$b$$$ if $$$a$$$ can be obtained from $$$b$$$ by deletion of several (possibly, zero or all) elements from the beginning and several (possibly, zero or all) elements from the end. We will denote the subsegments as $$$[l, r]$$$, where $$$l, r$$$ are two integers with $$$1 \\le l \\le r \\le n$$$. This indicates the subsegment where $$$l-1$$$ elements from the beginning and $$$n-r$$$ elements from the end are deleted from the sequence.For a permutation $$$p_1, p_2, \\ldots, p_n$$$, we define a framed segment as a subsegment $$$[l,r]$$$ where $$$\\max\\{p_l, p_{l+1}, \\dots, p_r\\} - \\min\\{p_l, p_{l+1}, \\dots, p_r\\} = r - l$$$. For example, for the permutation $$$(6, 7, 1, 8, 5, 3, 2, 4)$$$ some of its framed segments are: $$$[1, 2], [5, 8], [6, 7], [3, 3], [8, 8]$$$. In particular, a subsegment $$$[i,i]$$$ is always a framed segments for any $$$i$$$ between $$$1$$$ and $$$n$$$, inclusive.We define the happiness of a permutation $$$p$$$ as the number of pairs $$$(l, r)$$$ such that $$$1 \\le l \\le r \\le n$$$, and $$$[l, r]$$$ is a framed segment. For example, the permutation $$$[3, 1, 2]$$$ has happiness $$$5$$$: all segments except $$$[1, 2]$$$ are framed segments.Given integers $$$n$$$ and $$$m$$$, Jongwon wants to compute the sum of happiness for all permutations of length $$$n$$$, modulo the prime number $$$m$$$. Note that there exist $$$n!$$$ (factorial of $$$n$$$) different permutations of length $$$n$$$.\nInput Specification: The only line contains two integers $$$n$$$ and $$$m$$$ ($$$1 \\le n \\le 250\\,000$$$, $$$10^8 \\le m \\le 10^9$$$, $$$m$$$ is prime).\nOutput Specification: Print $$$r$$$ ($$$0 \\le r &lt; m$$$), the sum of happiness for all permutations of length $$$n$$$, modulo a prime number $$$m$$$.\n\nSample Input:\n1 993244853\nSample Output:\n1\n\nSample Input:\n2 993244853\nSample Output:\n6\n\nSample Input:\n3 993244853\nSample Output:\n32\n\nSample Input:\n2019 993244853\nSample Output:\n923958830\n\nSample Input:\n2020 437122297\nSample Output:\n265955509\n\nNotes: NoteFor sample input $$$n=3$$$, let's consider all permutations of length $$$3$$$:  $$$[1, 2, 3]$$$, all subsegments are framed segment. Happiness is $$$6$$$.  $$$[1, 3, 2]$$$, all subsegments except $$$[1, 2]$$$ are framed segment. Happiness is $$$5$$$.  $$$[2, 1, 3]$$$, all subsegments except $$$[2, 3]$$$ are framed segment. Happiness is $$$5$$$.  $$$[2, 3, 1]$$$, all subsegments except $$$[2, 3]$$$ are framed segment. Happiness is $$$5$$$.  $$$[3, 1, 2]$$$, all subsegments except $$$[1, 2]$$$ are framed segment. Happiness is $$$5$$$.  $$$[3, 2, 1]$$$, all subsegments are framed segment. Happiness is $$$6$$$. Thus, the sum of happiness is $$$6+5+5+5+5+6 = 32$$$.\nTake input from standard input and output to standard output\n\nHere is the code with a bug of MEMORY_LIMIT_EXCEEDED:\n\nn,m=map(int,input().split())\nans=0\nfact=[1]*(n+1)\nfor i in range(1,n+1):\n    fact[i]=fact[i-1]*i\nfor d in range(1,n):\n    s=n-d\n    t=fact[d+1]*fact[n-d-1]*s*(n-d)\n    #print(l,r,d,s,t)\n    ans= ans + t\n    ans=ans%m\ntemp=fact[n]*n\n#print(ans)\nans+=temp\nans=ans%m\n#print(temp)\nprint(ans)\n\n\n\n\n'''\nfrom bisect import bisect_right as br\nmaxx=[]\nminn=[]\nc=0\nn=int(input())\nfor _ in range(n):\n    t=list(map(int,input().split()))\n    t=t[1:]\n    flag=False\n    for k in range(len(t)-1):\n        if(t[k]<t[k+1]):\n            flag=True\n            break\n    if(not flag):\n        maxx.append(max(t))\n        minn.append(min(t))\n    else:\n        c+=1\nans=0\nmaxx.sort()\nminn.sort()\n\n\nfor k in minn:\n    ans+=len(maxx)-br(maxx,k)\n\nprint(pow(n,2)-pow((n-c),2)+ans)\n\n\n\n\n#code forces hello 2020 problem A\nm,n=map(int,input().split())\nmm=list(input().split(' '))\nnn=list(input().split(' '))\nfor _ in range(int(input())):\n    k=int(input())\n    mmm=k%m\n    nnn=k%n\n    mmm= (mmm+m-1)%m\n    nnn=(nnn+n-1)%n\n    ans=mm[mmm]+nn[nnn]\n    print(ans)\n\n\n'''\n\nProvide the fixed Python code without any description or extra tokens.\n\nFixed source code:\n ||END-of-SRC||",
+        "response": {
+            "id": "multi-call-as-7v9gd5cbh8",
+            "model": "deepseek-v3",
+            "created": 1760424174,
+            "choices": [
+                {
+                    "index": 0,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```python\nn, m = map(int, input().split())\nans = 0\nfact = [1] * (n + 1)\nfor i in range(1, n + 1):\n    fact[i] = fact[i-1] * i % m\nfor d in range(1, n):\n    s = n - d\n    term = fact[d+1] * fact[n - d - 1] % m\n    term = term * s % m\n    term = term * (n - d) % m\n    ans = (ans + term) % m\ntemp = fact[n] * n % m\nans = (ans + temp) % m\nprint(ans)\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 1,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```python\nn, m = map(int, input().split())\nans = 0\nfact = [1] * (n + 1)\nfor i in range(1, n + 1):\n    fact[i] = fact[i-1] * i % m\nfor d in range(1, n):\n    s = n - d\n    t = fact[d+1] * fact[n - d - 1] % m\n    t = t * s % m\n    t = t * (n - d) % m\n    ans = (ans + t) % m\ntemp = fact[n] * n % m\nans = (ans + temp) % m\nprint(ans)\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 2,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```python\nn, m = map(int, input().split())\nans = 0\nfact = [1] * (n + 1)\nfor i in range(1, n + 1):\n    fact[i] = fact[i-1] * i % m\nfor d in range(1, n):\n    s = n - d\n    t = fact[d+1] * fact[n - d - 1] % m\n    t = t * s % m\n    t = t * (n - d) % m\n    ans = (ans + t) % m\ntemp = fact[n] * n % m\nans = (ans + temp) % m\nprint(ans)\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 3,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```python\nn, m = map(int, input().split())\nans = 0\nfact = [1] * (n + 1)\nfor i in range(1, n + 1):\n    fact[i] = fact[i-1] * i % m\nfor d in range(1, n):\n    s = n - d\n    t = fact[d+1] * fact[n - d - 1] % m\n    t = t * s % m\n    t = t * (n - d) % m\n    ans = (ans + t) % m\ntemp = fact[n] * n % m\nans = (ans + temp) % m\nprint(ans)\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 4,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```python\nn, m = map(int, input().split())\nans = 0\nfact = [1] * (n + 1)\nfor i in range(1, n + 1):\n    fact[i] = fact[i-1] * i % m\nfor d in range(1, n):\n    s = n - d\n    t = fact[d+1] * fact[n-d-1] % m\n    t = t * s % m\n    t = t * (n - d) % m\n    ans = (ans + t) % m\ntemp = fact[n] * n % m\nans = (ans + temp) % m\nprint(ans)\n```"
+                    },
+                    "finish_reason": "stop"
+                }
+            ],
+            "usage": {
+                "prompt_tokens": 7300,
+                "completion_tokens": 758,
+                "total_tokens": 8058
+            }
+        }
+    },
+    "source_data": {
+        "prob_desc_memory_limit": "1024 megabytes",
+        "tags": [
+            "math",
+            "combinatorics"
+        ],
+        "prob_desc_created_at": "1578139500",
+        "fix_source_code": "",
+        "prob_desc_input_spec": "The only line contains two integers $$$n$$$ and $$$m$$$ ($$$1 \\le n \\le 250\\,000$$$, $$$10^8 \\le m \\le 10^9$$$, $$$m$$$ is prime).",
+        "prob_desc_sample_outputs": [
+            "1",
+            "6",
+            "32",
+            "923958830",
+            "265955509"
+        ],
+        "src_uid": "020d5dae7157d937c3f58554c9b155f9",
+        "prob_desc_time_limit": "1 second",
+        "fix_exec_outcome": "",
+        "delete_cnt": 2,
+        "apr_id": "5ed0c59ec7fd83dfef43504c5bfd8df1",
+        "fix_code_uid": "",
+        "lang_cluster": "Python",
+        "prob_desc_sample_inputs": [
+            "1 993244853",
+            "2 993244853",
+            "3 993244853",
+            "2019 993244853",
+            "2020 437122297"
+        ],
+        "prob_desc_output_to": "standard output",
+        "file_name": "Python.jsonl",
+        "equal_cnt": 12,
+        "lang": "Python 3",
+        "prob_desc_output_spec": "Print $$$r$$$ ($$$0 \\le r &lt; m$$$), the sum of happiness for all permutations of length $$$n$$$, modulo a prime number $$$m$$$.",
+        "bug_exec_outcome": "MEMORY_LIMIT_EXCEEDED",
+        "prob_desc_notes": "NoteFor sample input $$$n=3$$$, let's consider all permutations of length $$$3$$$:  $$$[1, 2, 3]$$$, all subsegments are framed segment. Happiness is $$$6$$$.  $$$[1, 3, 2]$$$, all subsegments except $$$[1, 2]$$$ are framed segment. Happiness is $$$5$$$.  $$$[2, 1, 3]$$$, all subsegments except $$$[2, 3]$$$ are framed segment. Happiness is $$$5$$$.  $$$[2, 3, 1]$$$, all subsegments except $$$[2, 3]$$$ are framed segment. Happiness is $$$5$$$.  $$$[3, 1, 2]$$$, all subsegments except $$$[1, 2]$$$ are framed segment. Happiness is $$$5$$$.  $$$[3, 2, 1]$$$, all subsegments are framed segment. Happiness is $$$6$$$. Thus, the sum of happiness is $$$6+5+5+5+5+6 = 32$$$.",
+        "difficulty": 1600.0,
+        "similarity_score": 0.7429864407,
+        "prob_desc_description": "Recall that the permutation is an array consisting of $$$n$$$ distinct integers from $$$1$$$ to $$$n$$$ in arbitrary order. For example, $$$[2,3,1,5,4]$$$ is a permutation, but $$$[1,2,2]$$$ is not a permutation ($$$2$$$ appears twice in the array) and $$$[1,3,4]$$$ is also not a permutation ($$$n=3$$$ but there is $$$4$$$ in the array).A sequence $$$a$$$ is a subsegment of a sequence $$$b$$$ if $$$a$$$ can be obtained from $$$b$$$ by deletion of several (possibly, zero or all) elements from the beginning and several (possibly, zero or all) elements from the end. We will denote the subsegments as $$$[l, r]$$$, where $$$l, r$$$ are two integers with $$$1 \\le l \\le r \\le n$$$. This indicates the subsegment where $$$l-1$$$ elements from the beginning and $$$n-r$$$ elements from the end are deleted from the sequence.For a permutation $$$p_1, p_2, \\ldots, p_n$$$, we define a framed segment as a subsegment $$$[l,r]$$$ where $$$\\max\\{p_l, p_{l+1}, \\dots, p_r\\} - \\min\\{p_l, p_{l+1}, \\dots, p_r\\} = r - l$$$. For example, for the permutation $$$(6, 7, 1, 8, 5, 3, 2, 4)$$$ some of its framed segments are: $$$[1, 2], [5, 8], [6, 7], [3, 3], [8, 8]$$$. In particular, a subsegment $$$[i,i]$$$ is always a framed segments for any $$$i$$$ between $$$1$$$ and $$$n$$$, inclusive.We define the happiness of a permutation $$$p$$$ as the number of pairs $$$(l, r)$$$ such that $$$1 \\le l \\le r \\le n$$$, and $$$[l, r]$$$ is a framed segment. For example, the permutation $$$[3, 1, 2]$$$ has happiness $$$5$$$: all segments except $$$[1, 2]$$$ are framed segments.Given integers $$$n$$$ and $$$m$$$, Jongwon wants to compute the sum of happiness for all permutations of length $$$n$$$, modulo the prime number $$$m$$$. Note that there exist $$$n!$$$ (factorial of $$$n$$$) different permutations of length $$$n$$$.",
+        "potential_dominant_fix_op": "replace",
+        "bug_source_code": "n,m=map(int,input().split())\nans=0\nfact=[1]*(n+1)\nfor i in range(1,n+1):\n    fact[i]=fact[i-1]*i\nfor d in range(1,n):\n    s=n-d\n    t=fact[d+1]*fact[n-d-1]*s*(n-d)\n    #print(l,r,d,s,t)\n    ans= ans + t\n    ans=ans%m\ntemp=fact[n]*n\n#print(ans)\nans+=temp\nans=ans%m\n#print(temp)\nprint(ans)\n\n\n\n\n'''\nfrom bisect import bisect_right as br\nmaxx=[]\nminn=[]\nc=0\nn=int(input())\nfor _ in range(n):\n    t=list(map(int,input().split()))\n    t=t[1:]\n    flag=False\n    for k in range(len(t)-1):\n        if(t[k]<t[k+1]):\n            flag=True\n            break\n    if(not flag):\n        maxx.append(max(t))\n        minn.append(min(t))\n    else:\n        c+=1\nans=0\nmaxx.sort()\nminn.sort()\n\n\nfor k in minn:\n    ans+=len(maxx)-br(maxx,k)\n\nprint(pow(n,2)-pow((n-c),2)+ans)\n\n\n\n\n#code forces hello 2020 problem A\nm,n=map(int,input().split())\nmm=list(input().split(' '))\nnn=list(input().split(' '))\nfor _ in range(int(input())):\n    k=int(input())\n    mmm=k%m\n    nnn=k%n\n    mmm= (mmm+m-1)%m\n    nnn=(nnn+n-1)%n\n    ans=mm[mmm]+nn[nnn]\n    print(ans)\n\n\n'''",
+        "replace_cnt": 7,
+        "prob_desc_input_from": "standard input",
+        "bug_code_uid": "19ea8f94c1bfd4263a9d0b5901c14afa",
+        "insert_cnt": 2,
+        "fix_ops_cnt": 11,
+        "hidden_unit_tests": "[{\"input\": \"1 993244853\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"2 993244853\\r\\n\", \"output\": [\"6\"]}, {\"input\": \"3 993244853\\r\\n\", \"output\": [\"32\"]}, {\"input\": \"2019 993244853\\r\\n\", \"output\": [\"923958830\"]}, {\"input\": \"2020 437122297\\r\\n\", \"output\": [\"265955509\"]}, {\"input\": \"250000 993244853\\r\\n\", \"output\": [\"872048421\"]}, {\"input\": \"244435 994838543\\r\\n\", \"output\": [\"634651929\"]}, {\"input\": \"234324 994631069\\r\\n\", \"output\": [\"720229385\"]}, {\"input\": \"249996 997202249\\r\\n\", \"output\": [\"633673455\"]}, {\"input\": \"32433 992864681\\r\\n\", \"output\": [\"302084847\"]}, {\"input\": \"4 389349601\\r\\n\", \"output\": [\"180\"]}, {\"input\": \"5 141602633\\r\\n\", \"output\": [\"1116\"]}, {\"input\": \"6 223676287\\r\\n\", \"output\": [\"7728\"]}, {\"input\": \"7 110998807\\r\\n\", \"output\": [\"59904\"]}, {\"input\": \"8 848339069\\r\\n\", \"output\": [\"518400\"]}, {\"input\": \"9 298827211\\r\\n\", \"output\": [\"4982400\"]}, {\"input\": \"10 876938317\\r\\n\", \"output\": [\"52842240\"]}, {\"input\": \"11 739198003\\r\\n\", \"output\": [\"614200320\"]}, {\"input\": \"12 273157301\\r\\n\", \"output\": [\"122791732\"]}, {\"input\": \"13 797912417\\r\\n\", \"output\": [\"234147739\"]}, {\"input\": \"14 353847517\\r\\n\", \"output\": [\"42904792\"]}, {\"input\": \"249997 996061721\\r\\n\", \"output\": [\"69046617\"]}, {\"input\": \"249998 990040613\\r\\n\", \"output\": [\"108188702\"]}, {\"input\": \"249999 992509109\\r\\n\", \"output\": [\"854585866\"]}, {\"input\": \"250000 996140731\\r\\n\", \"output\": [\"227969454\"]}, {\"input\": \"2341 994476991\\r\\n\", \"output\": [\"121932216\"]}, {\"input\": \"1000 100000651\\r\\n\", \"output\": [\"92079298\"]}, {\"input\": \"100000 100000921\\r\\n\", \"output\": [\"51605491\"]}, {\"input\": \"20422 956269049\\r\\n\", \"output\": [\"895579878\"]}, {\"input\": \"40424 285650803\\r\\n\", \"output\": [\"114646354\"]}, {\"input\": \"60426 547574749\\r\\n\", \"output\": [\"323978028\"]}, {\"input\": \"80428 410667659\\r\\n\", \"output\": [\"284512223\"]}, {\"input\": \"100432 858603079\\r\\n\", \"output\": [\"763015781\"]}, {\"input\": \"120424 735211237\\r\\n\", \"output\": [\"78258285\"]}, {\"input\": \"140426 454141843\\r\\n\", \"output\": [\"451934478\"]}, {\"input\": \"160428 434183023\\r\\n\", \"output\": [\"156691255\"]}, {\"input\": \"180420 266525887\\r\\n\", \"output\": [\"239713633\"]}, {\"input\": \"200422 984828937\\r\\n\", \"output\": [\"556345906\"]}, {\"input\": \"220424 428927617\\r\\n\", \"output\": [\"43877713\"]}, {\"input\": \"240422 623039447\\r\\n\", \"output\": [\"291729074\"]}]"
+    }
+}

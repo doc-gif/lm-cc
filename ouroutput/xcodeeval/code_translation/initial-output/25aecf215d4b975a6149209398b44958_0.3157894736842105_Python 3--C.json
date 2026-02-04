@@ -1,0 +1,89 @@
+{
+    "oai_response": {
+        "prompt": "Here is code in Python 3 programming lanaguge. Translate the following code from Python 3 to C programming lanaguge. Do not output any extra description or tokens other than the translated code. \n\nn, m, k = map(int, input().split())\n\nif m > n:\n\n\tn, m = m, n\n\nans = -1\n\nif k < n:\n\n\tans = m * (n // (k + 1))\n\n\tif k < m:\n\n\t\tans = max(ans, n * (m // (k + 1)))\n\nelif k <= (n - 1) + (m - 1):\n\n\tans = m // ((k + 1 - n) + 1)\n\nprint(ans)\n\n\n\n# Made By Mostafa_Khaled||END-of-SRC||",
+        "response": {
+            "id": "multi-call-as-ks1urd75tg",
+            "model": "deepseek-v3",
+            "created": 1767069789,
+            "choices": [
+                {
+                    "index": 0,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n\nint main() {\n    int n, m, k;\n    scanf(\"%d %d %d\", &n, &m, &k);\n    \n    if (m > n) {\n        int temp = n;\n        n = m;\n        m = temp;\n    }\n    \n    int ans = -1;\n    \n    if (k < n) {\n        ans = m * (n / (k + 1));\n        if (k < m) {\n            int temp = n * (m / (k + 1));\n            if (temp > ans) {\n                ans = temp;\n            }\n        }\n    } else if (k <= (n - 1) + (m - 1)) {\n        ans = m / ((k + 1 - n) + 1);\n    }\n    \n    printf(\"%d\\n\", ans);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 1,
+                    "message": {
+                        "role": "assistant",
+                        "content": "Here's the translated code in C:\n\n```c\n#include <stdio.h>\n\nint main() {\n    int n, m, k;\n    scanf(\"%d %d %d\", &n, &m, &k);\n    \n    if (m > n) {\n        int temp = n;\n        n = m;\n        m = temp;\n    }\n    \n    int ans = -1;\n    \n    if (k < n) {\n        ans = m * (n / (k + 1));\n        if (k < m) {\n            int temp = n * (m / (k + 1));\n            if (temp > ans) {\n                ans = temp;\n            }\n        }\n    } else if (k <= (n - 1) + (m - 1)) {\n        ans = m / ((k + 1 - n) + 1);\n    }\n    \n    printf(\"%d\", ans);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 2,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n\nint main() {\n    int n, m, k;\n    scanf(\"%d %d %d\", &n, &m, &k);\n    \n    if (m > n) {\n        int temp = n;\n        n = m;\n        m = temp;\n    }\n    \n    int ans = -1;\n    \n    if (k < n) {\n        ans = m * (n / (k + 1));\n        if (k < m) {\n            int temp = n * (m / (k + 1));\n            if (temp > ans) {\n                ans = temp;\n            }\n        }\n    } else if (k <= (n - 1) + (m - 1)) {\n        ans = m / ((k + 1 - n) + 1);\n    }\n    \n    printf(\"%d\\n\", ans);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 3,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n\nint main() {\n    int n, m, k;\n    scanf(\"%d %d %d\", &n, &m, &k);\n    \n    if (m > n) {\n        int temp = n;\n        n = m;\n        m = temp;\n    }\n    \n    int ans = -1;\n    \n    if (k < n) {\n        ans = m * (n / (k + 1));\n        if (k < m) {\n            int temp = n * (m / (k + 1));\n            if (temp > ans) {\n                ans = temp;\n            }\n        }\n    } else if (k <= (n - 1) + (m - 1)) {\n        ans = m / ((k + 1 - n) + 1);\n    }\n    \n    printf(\"%d\\n\", ans);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 4,
+                    "message": {
+                        "role": "assistant",
+                        "content": "Here's the translated code in C:\n\n```c\n#include <stdio.h>\n\nint main() {\n    int n, m, k;\n    scanf(\"%d %d %d\", &n, &m, &k);\n    \n    if (m > n) {\n        int temp = n;\n        n = m;\n        m = temp;\n    }\n    \n    int ans = -1;\n    \n    if (k < n) {\n        ans = m * (n / (k + 1));\n        if (k < m) {\n            int temp = n * (m / (k + 1));\n            if (temp > ans) {\n                ans = temp;\n            }\n        }\n    } else if (k <= (n - 1) + (m - 1)) {\n        ans = m / ((k + 1 - n) + 1);\n    }\n    \n    printf(\"%d\", ans);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                }
+            ],
+            "usage": {
+                "prompt_tokens": 825,
+                "completion_tokens": 982,
+                "total_tokens": 1807
+            }
+        }
+    },
+    "source_data": {
+        "code_uid": "25aecf215d4b975a6149209398b44958",
+        "prob_desc_output_to": "standard output",
+        "prob_desc_notes": "NoteIn the first sample, Jzzhu can cut the chocolate following the picture below:  In the second sample the optimal division looks like this:  In the third sample, it's impossible to cut a 2\u2009\u00d7\u20093 chocolate 4 times.",
+        "lang_cluster": "Python",
+        "prob_desc_time_limit": "1 second",
+        "prob_desc_input_spec": "A single line contains three integers n,\u2009m,\u2009k (1\u2009\u2264\u2009n,\u2009m\u2009\u2264\u2009109;\u00a01\u2009\u2264\u2009k\u2009\u2264\u20092\u00b7109).",
+        "source_code": "n, m, k = map(int, input().split())\n\nif m > n:\n\n\tn, m = m, n\n\nans = -1\n\nif k < n:\n\n\tans = m * (n // (k + 1))\n\n\tif k < m:\n\n\t\tans = max(ans, n * (m // (k + 1)))\n\nelif k <= (n - 1) + (m - 1):\n\n\tans = m // ((k + 1 - n) + 1)\n\nprint(ans)\n\n\n\n# Made By Mostafa_Khaled",
+        "prob_desc_sample_inputs": [
+            "3 4 1",
+            "6 4 2",
+            "2 3 4"
+        ],
+        "prob_desc_memory_limit": "256 megabytes",
+        "exec_outcome": "PASSED",
+        "prob_desc_output_spec": "Output a single integer representing the answer. If it is impossible to cut the big chocolate k times, print -1.",
+        "src_uid": "bb453bbe60769bcaea6a824c72120f73",
+        "prob_desc_input_from": "standard input",
+        "lang": "Python 3",
+        "prob_desc_sample_outputs": [
+            "6",
+            "8",
+            "-1"
+        ],
+        "file_name": "d7021504500d5ca7c2b02df8100a574d159e6e67e20ec8071b75800b1267370a",
+        "prob_desc_description": "Jzzhu has a big rectangular chocolate bar that consists of n\u2009\u00d7\u2009m unit squares. He wants to cut this bar exactly k times. Each cut must meet the following requirements:  each cut should be straight (horizontal or vertical);  each cut should go along edges of unit squares (it is prohibited to divide any unit chocolate square with cut);  each cut should go inside the whole chocolate bar, and all cuts must be distinct. The picture below shows a possible way to cut a 5\u2009\u00d7\u20096 chocolate for 5 times.  Imagine Jzzhu have made k cuts and the big chocolate is splitted into several pieces. Consider the smallest (by area) piece of the chocolate, Jzzhu wants this piece to be as large as possible. What is the maximum possible area of smallest piece he can get with exactly k cuts? The area of a chocolate piece is the number of unit squares in it.",
+        "prob_desc_created_at": "1405774800",
+        "difficulty": 1700.0,
+        "hidden_unit_tests": "[{\"input\": \"3 4 1\\r\\n\", \"output\": [\"6\"]}, {\"input\": \"6 4 2\\r\\n\", \"output\": [\"8\"]}, {\"input\": \"2 3 4\\r\\n\", \"output\": [\"-1\"]}, {\"input\": \"10 10 2\\r\\n\", \"output\": [\"30\"]}, {\"input\": \"1000000000 1000000000 2000000000\\r\\n\", \"output\": [\"-1\"]}, {\"input\": \"1000000000 1000000000 999999999\\r\\n\", \"output\": [\"1000000000\"]}, {\"input\": \"1000000000 1000000000 1\\r\\n\", \"output\": [\"500000000000000000\"]}, {\"input\": \"98283 999283848 23\\r\\n\", \"output\": [\"4092192268041\"]}, {\"input\": \"6 4 5\\r\\n\", \"output\": [\"4\"]}, {\"input\": \"6 4 6\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"482738478 493948384 502919283\\r\\n\", \"output\": [\"53\"]}, {\"input\": \"1 1 1\\r\\n\", \"output\": [\"-1\"]}, {\"input\": \"1 1 2\\r\\n\", \"output\": [\"-1\"]}, {\"input\": \"1 1 1000000000\\r\\n\", \"output\": [\"-1\"]}, {\"input\": \"1000000000 1000000000 123456\\r\\n\", \"output\": [\"8099000000000\"]}, {\"input\": \"192837483 829387483 828374\\r\\n\", \"output\": [\"193030320483\"]}, {\"input\": \"987283748 999283748 589766888\\r\\n\", \"output\": [\"999283748\"]}, {\"input\": \"999999123 999999789 123456789\\r\\n\", \"output\": [\"7999998312\"]}, {\"input\": \"999999789 999999123 52452444\\r\\n\", \"output\": [\"18999995991\"]}, {\"input\": \"789789789 777888999 999999999\\r\\n\", \"output\": [\"3\"]}, {\"input\": \"789529529 444524524 888524444\\r\\n\", \"output\": [\"4\"]}, {\"input\": \"983748524 23 2\\r\\n\", \"output\": [\"7542072002\"]}, {\"input\": \"999999999 1000000000 1\\r\\n\", \"output\": [\"499999999500000000\"]}, {\"input\": \"1000000000 999999999 3\\r\\n\", \"output\": [\"249999999750000000\"]}, {\"input\": \"12345 123456789 123456789\\r\\n\", \"output\": [\"6172\"]}, {\"input\": \"98283 999283848 23\\r\\n\", \"output\": [\"4092192268041\"]}, {\"input\": \"98723848 8238748 82838\\r\\n\", \"output\": [\"9812348868\"]}, {\"input\": \"444444444 524444444 524\\r\\n\", \"output\": [\"443973777333804\"]}, {\"input\": \"298238388 998888999 1000000000\\r\\n\", \"output\": [\"268\"]}, {\"input\": \"599399444 599999994 897254524\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"999882937 982983748 999999888\\r\\n\", \"output\": [\"8404\"]}, {\"input\": \"979882937 982983748 988254444\\r\\n\", \"output\": [\"185\"]}, {\"input\": \"999872837 979283748 987837524\\r\\n\", \"output\": [\"979283748\"]}, {\"input\": \"979283524 999872524 987524524\\r\\n\", \"output\": [\"979283524\"]}, {\"input\": \"989872444 999283444 977999524\\r\\n\", \"output\": [\"999283444\"]}, {\"input\": \"999872524 989283524 977999444\\r\\n\", \"output\": [\"999872524\"]}, {\"input\": \"999524524 888524524 6\\r\\n\", \"output\": [\"126871721067257708\"]}, {\"input\": \"888999999 999999444 7\\r\\n\", \"output\": [\"111124937645000070\"]}, {\"input\": \"999888524 999995249 52424\\r\\n\", \"output\": [\"19071909388928\"]}, {\"input\": \"999995244 999852424 52999\\r\\n\", \"output\": [\"18864910278060\"]}, {\"input\": \"628145517 207579013 1361956\\r\\n\", \"output\": [\"95693924993\"]}, {\"input\": \"186969586 883515281 376140463\\r\\n\", \"output\": [\"373939172\"]}, {\"input\": \"98152103 326402540 762888636\\r\\n\", \"output\": [\"-1\"]}, {\"input\": \"127860890 61402893 158176573\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"646139320 570870045 9580639\\r\\n\", \"output\": [\"38248293015\"]}, {\"input\": \"61263305 484027667 178509023\\r\\n\", \"output\": [\"122526610\"]}, {\"input\": \"940563716 558212775 841082556\\r\\n\", \"output\": [\"558212775\"]}, {\"input\": \"496148000 579113529 26389630\\r\\n\", \"output\": [\"10424043522\"]}, {\"input\": \"70301174 837151741 925801173\\r\\n\", \"output\": [\"-1\"]}, {\"input\": \"902071051 285845006 656585276\\r\\n\", \"output\": [\"285845006\"]}, {\"input\": \"9467291 727123763 403573724\\r\\n\", \"output\": [\"9467291\"]}, {\"input\": \"899374334 631265401 296231663\\r\\n\", \"output\": [\"1893796203\"]}, {\"input\": \"491747710 798571511 520690250\\r\\n\", \"output\": [\"491747710\"]}, {\"input\": \"789204467 643215696 799313373\\r\\n\", \"output\": [\"63\"]}, {\"input\": \"456517317 162733265 614608449\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"181457955 806956092 555253432\\r\\n\", \"output\": [\"181457955\"]}, {\"input\": \"158398860 751354014 528156707\\r\\n\", \"output\": [\"158398860\"]}, {\"input\": \"458000643 743974603 152040411\\r\\n\", \"output\": [\"2231923809\"]}, {\"input\": \"882264705 164556874 37883251\\r\\n\", \"output\": [\"3784808102\"]}, {\"input\": \"167035009 877444310 205461190\\r\\n\", \"output\": [\"668140036\"]}, {\"input\": \"732553408 300206285 785986539\\r\\n\", \"output\": [\"5\"]}, {\"input\": \"896205951 132099861 775142615\\r\\n\", \"output\": [\"132099861\"]}, {\"input\": \"19344368 457641319 555144413\\r\\n\", \"output\": [\"-1\"]}, {\"input\": \"909420688 506507264 590064714\\r\\n\", \"output\": [\"506507264\"]}, {\"input\": \"793692317 55434271 489726670\\r\\n\", \"output\": [\"55434271\"]}, {\"input\": \"537850353 901329639 210461043\\r\\n\", \"output\": [\"2151401412\"]}, {\"input\": \"570497240 614794872 29523792\\r\\n\", \"output\": [\"11681102568\"]}, {\"input\": \"904237002 706091348 905203770\\r\\n\", \"output\": [\"730\"]}, {\"input\": \"307178253 337246325 118054687\\r\\n\", \"output\": [\"674492650\"]}, {\"input\": \"644505509 896162464 150625750\\r\\n\", \"output\": [\"3584649856\"]}, {\"input\": \"500000002 500000002 1000000000\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"6 6 9\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"6 7 2\\r\\n\", \"output\": [\"14\"]}, {\"input\": \"1000000000 1000000000 1999999998\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"100 100 150\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"2 2 2\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"5 5 5\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"4 6 4\\r\\n\", \"output\": [\"4\"]}, {\"input\": \"1000 1000 1000\\r\\n\", \"output\": [\"500\"]}, {\"input\": \"5 4 3\\r\\n\", \"output\": [\"5\"]}, {\"input\": \"6 7 1\\r\\n\", \"output\": [\"21\"]}, {\"input\": \"6 7 5\\r\\n\", \"output\": [\"7\"]}, {\"input\": \"6874 8974 3245\\r\\n\", \"output\": [\"17948\"]}, {\"input\": \"1000000000 1000000000 220000000\\r\\n\", \"output\": [\"4000000000\"]}, {\"input\": \"100 100 100\\r\\n\", \"output\": [\"50\"]}, {\"input\": \"1000000000 10000000 10000000\\r\\n\", \"output\": [\"990000000\"]}, {\"input\": \"7 8 9\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"4 5 6\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"4 6 3\\r\\n\", \"output\": [\"6\"]}, {\"input\": \"10 10 11\\r\\n\", \"output\": [\"3\"]}, {\"input\": \"1000000000 1000000000 999000111\\r\\n\", \"output\": [\"1000000000\"]}, {\"input\": \"2 1 1\\r\\n\", \"output\": [\"1\"]}]",
+        "source_lang": "Python 3",
+        "target_lang": "C"
+    }
+}

@@ -1,0 +1,89 @@
+{
+    "oai_response": {
+        "prompt": "Here is code in Python 3 programming lanaguge. Translate the following code from Python 3 to C programming lanaguge. Do not output any extra description or tokens other than the translated code. \n\nc,a,b=input().split()\nc=int(c)\nlevel=0\nwhile c!=1:\n    level+=1\n    c//=2\na=int(a)-1\nb=int(b)-1\nroundik=0\nwhile a!=b:\n    roundik+=1\n    a//=2\n    b//=2\nif roundik==level:\n    print(\"Final!\")\nelse:\n    print(roundik)||END-of-SRC||",
+        "response": {
+            "id": "multi-call-as-4st0g2dp28",
+            "model": "deepseek-v3",
+            "created": 1767066443,
+            "choices": [
+                {
+                    "index": 0,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n\nint main() {\n    int c, a, b;\n    scanf(\"%d %d %d\", &c, &a, &b);\n    int level = 0;\n    while (c != 1) {\n        level++;\n        c /= 2;\n    }\n    a--;\n    b--;\n    int roundik = 0;\n    while (a != b) {\n        roundik++;\n        a /= 2;\n        b /= 2;\n    }\n    if (roundik == level) {\n        printf(\"Final!\\n\");\n    } else {\n        printf(\"%d\\n\", roundik);\n    }\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 1,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n\nint main() {\n    int c, a, b;\n    scanf(\"%d %d %d\", &c, &a, &b);\n    int level = 0;\n    while (c != 1) {\n        level++;\n        c /= 2;\n    }\n    a--;\n    b--;\n    int roundik = 0;\n    while (a != b) {\n        roundik++;\n        a /= 2;\n        b /= 2;\n    }\n    if (roundik == level) {\n        printf(\"Final!\\n\");\n    } else {\n        printf(\"%d\\n\", roundik);\n    }\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 2,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n\nint main() {\n    int c, a, b;\n    scanf(\"%d %d %d\", &c, &a, &b);\n    int level = 0;\n    while (c != 1) {\n        level++;\n        c /= 2;\n    }\n    a--;\n    b--;\n    int roundik = 0;\n    while (a != b) {\n        roundik++;\n        a /= 2;\n        b /= 2;\n    }\n    if (roundik == level) {\n        printf(\"Final!\\n\");\n    } else {\n        printf(\"%d\\n\", roundik);\n    }\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 3,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n\nint main() {\n    int c, a, b;\n    scanf(\"%d %d %d\", &c, &a, &b);\n    int level = 0;\n    int temp = c;\n    while (temp != 1) {\n        level++;\n        temp /= 2;\n    }\n    a--;\n    b--;\n    int roundik = 0;\n    while (a != b) {\n        roundik++;\n        a /= 2;\n        b /= 2;\n    }\n    if (roundik == level) {\n        printf(\"Final!\");\n    } else {\n        printf(\"%d\", roundik);\n    }\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 4,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n\nint main() {\n    int c, a, b;\n    scanf(\"%d %d %d\", &c, &a, &b);\n    int level = 0;\n    int temp_c = c;\n    while (temp_c != 1) {\n        level++;\n        temp_c /= 2;\n    }\n    a--;\n    b--;\n    int roundik = 0;\n    while (a != b) {\n        roundik++;\n        a /= 2;\n        b /= 2;\n    }\n    if (roundik == level) {\n        printf(\"Final!\\n\");\n    } else {\n        printf(\"%d\\n\", roundik);\n    }\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                }
+            ],
+            "usage": {
+                "prompt_tokens": 705,
+                "completion_tokens": 734,
+                "total_tokens": 1439
+            }
+        }
+    },
+    "source_data": {
+        "code_uid": "fe26456ae3105f8652e100359ffabc37",
+        "prob_desc_output_to": "standard output",
+        "prob_desc_notes": "NoteIn the first example teams 1 and 2 meet in the first round.In the second example teams 2 and 6 can only meet in the third round, which is the Final, if they win all their opponents in earlier rounds.In the third example the teams with ids 7 and 5 can meet in the second round, if they win their opponents in the first round.",
+        "lang_cluster": "Python",
+        "prob_desc_time_limit": "1 second",
+        "prob_desc_input_spec": "The only line contains three integers n, a and b (2\u2009\u2264\u2009n\u2009\u2264\u2009256, 1\u2009\u2264\u2009a,\u2009b\u2009\u2264\u2009n)\u00a0\u2014 the total number of teams, and the ids of the teams that Arkady is interested in.  It is guaranteed that n is such that in each round an even number of team advance, and that a and b are not equal.",
+        "source_code": "c,a,b=input().split()\nc=int(c)\nlevel=0\nwhile c!=1:\n    level+=1\n    c//=2\na=int(a)-1\nb=int(b)-1\nroundik=0\nwhile a!=b:\n    roundik+=1\n    a//=2\n    b//=2\nif roundik==level:\n    print(\"Final!\")\nelse:\n    print(roundik)",
+        "prob_desc_sample_inputs": [
+            "4 1 2",
+            "8 2 6",
+            "8 7 5"
+        ],
+        "prob_desc_memory_limit": "256 megabytes",
+        "exec_outcome": "PASSED",
+        "prob_desc_output_spec": "In the only line print \"Final!\" (without quotes), if teams a and b can meet in the Final. Otherwise, print a single integer\u00a0\u2014 the number of the round in which teams a and b can meet. The round are enumerated from 1.",
+        "src_uid": "a753bfa7bde157e108f34a28240f441f",
+        "prob_desc_input_from": "standard input",
+        "lang": "Python 3",
+        "prob_desc_sample_outputs": [
+            "1",
+            "Final!",
+            "2"
+        ],
+        "file_name": "d7021504500d5ca7c2b02df8100a574d159e6e67e20ec8071b75800b1267370a",
+        "prob_desc_description": "The last stage of Football World Cup is played using the play-off system.There are n teams left in this stage, they are enumerated from 1 to n. Several rounds are held, in each round the remaining teams are sorted in the order of their ids, then the first in this order plays with the second, the third\u00a0\u2014 with the fourth, the fifth\u00a0\u2014 with the sixth, and so on. It is guaranteed that in each round there is even number of teams. The winner of each game advances to the next round, the loser is eliminated from the tournament, there are no draws. In the last round there is the only game with two remaining teams: the round is called the Final, the winner is called the champion, and the tournament is over.Arkady wants his two favorite teams to play in the Final. Unfortunately, the team ids are already determined, and it may happen that it is impossible for teams to meet in the Final, because they are to meet in some earlier stage, if they are strong enough. Determine, in which round the teams with ids a and b can meet.",
+        "prob_desc_created_at": "1520177700",
+        "difficulty": 1200.0,
+        "hidden_unit_tests": "[{\"input\": \"4 1 2\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"8 2 6\\r\\n\", \"output\": [\"Final!\"]}, {\"input\": \"8 7 5\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"128 30 98\\r\\n\", \"output\": [\"Final!\"]}, {\"input\": \"256 128 256\\r\\n\", \"output\": [\"Final!\"]}, {\"input\": \"256 2 127\\r\\n\", \"output\": [\"7\"]}, {\"input\": \"2 1 2\\r\\n\", \"output\": [\"Final!\"]}, {\"input\": \"2 2 1\\r\\n\", \"output\": [\"Final!\"]}, {\"input\": \"4 1 3\\r\\n\", \"output\": [\"Final!\"]}, {\"input\": \"4 1 4\\r\\n\", \"output\": [\"Final!\"]}, {\"input\": \"4 2 1\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"4 2 3\\r\\n\", \"output\": [\"Final!\"]}, {\"input\": \"4 2 4\\r\\n\", \"output\": [\"Final!\"]}, {\"input\": \"4 3 1\\r\\n\", \"output\": [\"Final!\"]}, {\"input\": \"4 3 2\\r\\n\", \"output\": [\"Final!\"]}, {\"input\": \"4 3 4\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"4 4 1\\r\\n\", \"output\": [\"Final!\"]}, {\"input\": \"4 4 2\\r\\n\", \"output\": [\"Final!\"]}, {\"input\": \"4 4 3\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"8 8 7\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"8 8 5\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"8 8 1\\r\\n\", \"output\": [\"Final!\"]}, {\"input\": \"16 4 3\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"16 2 4\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"16 14 11\\r\\n\", \"output\": [\"3\"]}, {\"input\": \"16 3 11\\r\\n\", \"output\": [\"Final!\"]}, {\"input\": \"32 10 9\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"32 25 28\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"32 22 18\\r\\n\", \"output\": [\"3\"]}, {\"input\": \"32 17 25\\r\\n\", \"output\": [\"4\"]}, {\"input\": \"32 18 3\\r\\n\", \"output\": [\"Final!\"]}, {\"input\": \"64 40 39\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"64 60 58\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"64 34 37\\r\\n\", \"output\": [\"3\"]}, {\"input\": \"64 26 24\\r\\n\", \"output\": [\"4\"]}, {\"input\": \"64 50 43\\r\\n\", \"output\": [\"5\"]}, {\"input\": \"64 17 42\\r\\n\", \"output\": [\"Final!\"]}, {\"input\": \"128 116 115\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"128 35 33\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"128 61 59\\r\\n\", \"output\": [\"3\"]}, {\"input\": \"128 116 123\\r\\n\", \"output\": [\"4\"]}, {\"input\": \"128 17 15\\r\\n\", \"output\": [\"5\"]}, {\"input\": \"128 124 77\\r\\n\", \"output\": [\"6\"]}, {\"input\": \"128 4 80\\r\\n\", \"output\": [\"Final!\"]}, {\"input\": \"256 224 223\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"256 24 22\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"256 199 196\\r\\n\", \"output\": [\"3\"]}, {\"input\": \"256 148 159\\r\\n\", \"output\": [\"4\"]}, {\"input\": \"256 178 166\\r\\n\", \"output\": [\"5\"]}, {\"input\": \"256 75 97\\r\\n\", \"output\": [\"6\"]}, {\"input\": \"256 185 200\\r\\n\", \"output\": [\"7\"]}, {\"input\": \"256 3 238\\r\\n\", \"output\": [\"Final!\"]}, {\"input\": \"256 128 129\\r\\n\", \"output\": [\"Final!\"]}, {\"input\": \"256 255 129\\r\\n\", \"output\": [\"7\"]}, {\"input\": \"256 255 128\\r\\n\", \"output\": [\"Final!\"]}, {\"input\": \"256 129 256\\r\\n\", \"output\": [\"7\"]}, {\"input\": \"128 98 69\\r\\n\", \"output\": [\"6\"]}, {\"input\": \"128 47 83\\r\\n\", \"output\": [\"Final!\"]}, {\"input\": \"16 2 3\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"64 32 30\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"8 4 5\\r\\n\", \"output\": [\"Final!\"]}, {\"input\": \"8 7 8\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"8 2 3\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"8 2 5\\r\\n\", \"output\": [\"Final!\"]}]",
+        "source_lang": "Python 3",
+        "target_lang": "C"
+    }
+}

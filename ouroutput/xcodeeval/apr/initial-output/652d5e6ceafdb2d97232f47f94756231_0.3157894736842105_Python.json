@@ -1,0 +1,104 @@
+{
+    "oai_response": {
+        "prompt": "Fix a buggy program written in Python language to solve the following programming problem:\nDescription: Ivan likes to learn different things about numbers, but he is especially interested in really big numbers. Ivan thinks that a positive integer number x is really big if the difference between x and the sum of its digits (in decimal representation) is not less than s. To prove that these numbers may have different special properties, he wants to know how rare (or not rare) they are \u2014 in fact, he needs to calculate the quantity of really big numbers that are not greater than n.Ivan tried to do the calculations himself, but soon realized that it's too difficult for him. So he asked you to help him in calculations.\nInput Specification: The first (and the only) line contains two integers n and s (1\u2009\u2264\u2009n,\u2009s\u2009\u2264\u20091018).\nOutput Specification: Print one integer \u2014 the quantity of really big numbers that are not greater than n.\n\nSample Input:\n12 1\nSample Output:\n3\n\nSample Input:\n25 20\nSample Output:\n0\n\nSample Input:\n10 9\nSample Output:\n1\n\nNotes: NoteIn the first example numbers 10, 11 and 12 are really big.In the second example there are no really big numbers that are not greater than 25 (in fact, the first really big number is 30: 30\u2009-\u20093\u2009\u2265\u200920).In the third example 10 is the only really big number (10\u2009-\u20091\u2009\u2265\u20099).\nTake input from standard input and output to standard output\n\nHere is the code with a bug of TIME_LIMIT_EXCEEDED:\n\n# def sum_digits(n):\n#     s = 0\n#     while n:\n#         s += n % 10\n#         n //= 10\n#     return s\n\n\n# n, s = map(int, input().split())\n\n# count = 0\n# summ = sum_digits(n)\n# # k = sum_digits(n - n%10 - 1)\n# # print(k)\n# for num in range(n, 9, -1):\n# \tif num % 10 == 9:\n# \t\tsumm = sum_digits(num)\n# \t# print(num, summ)\n# \tif num - summ  >= s:\n# \t\tcount += 1\n# \tsumm -= 1\n\t\n\n\n# print(count)\n\n\ndef sum_digits(n):\n    s = 0\n    while n:\n        s += n % 10\n        n //= 10\n    return s\n\ndef binsearch(a, l, r, elem):\n\tmedium = (l + r ) // 2\n\ts = a[medium] - sum_digits(a[medium])\n\ts1 = a[medium-1] - sum_digits(a[medium-1])\n\ts2 = a[medium+1] - sum_digits(a[medium+1])\n\twhile not(s2 >= elem and s < elem): #s >= elem and s1 < elem or \n\t\t# print(l,medium,r)\n\t\tif s <= elem:\n\t\t\tl = medium\n\t\telif s >= elem:\n\t\t\tr = medium\n\t\tk = medium\n\t\tmedium = (l + r ) // 2\n\t\tif k == medium:\n\t\t\tbreak\n\t\t# print(l,medium,r)\n\t\ts = a[medium] - sum_digits(a[medium])\n\t\ts2 = a[medium+1] - sum_digits(a[medium+1])\n\ts1 = a[medium-1] - sum_digits(a[medium-1])\n\tif s >= elem and s1 < elem:\n\t\treturn medium\n\telif s2 >= elem and s < elem:\n\t\treturn medium + 1\n\telse:\n\t\treturn len(a)\t\n\nn, s = map(int, input().split())\na = [i for i in range(n+1)]\n\n\ny = binsearch(a, 0, len(a)-1, s)\n# print(y)\nprint(n - y + 1)\n\n\n\n\n\n\nProvide the fixed Python code without any description or extra tokens.\n\nFixed source code:\n ||END-of-SRC||",
+        "response": {
+            "id": "multi-call-as-8pwwn7zt9d",
+            "model": "deepseek-v3",
+            "created": 1760422048,
+            "choices": [
+                {
+                    "index": 0,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```python\ndef sum_digits(n):\n    s = 0\n    while n:\n        s += n % 10\n        n //= 10\n    return s\n\ndef find_min_x(n, s):\n    low = 1\n    high = n\n    answer = n + 1  # Default to no solution\n    while low <= high:\n        mid = (low + high) // 2\n        if mid - sum_digits(mid) >= s:\n            answer = mid\n            high = mid - 1\n        else:\n            low = mid + 1\n    return answer\n\nn, s = map(int, input().split())\nmin_x = find_min_x(n, s)\nif min_x <= n:\n    print(n - min_x + 1)\nelse:\n    print(0)\n``` ||END-of-SRC||"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 1,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```python\ndef sum_digits(n):\n    s = 0\n    while n:\n        s += n % 10\n        n //= 10\n    return s\n\ndef find_min_x(n, s):\n    low = 1\n    high = n\n    answer = n + 1  # Default to no solution\n    while low <= high:\n        mid = (low + high) // 2\n        if mid - sum_digits(mid) >= s:\n            answer = mid\n            high = mid - 1\n        else:\n            low = mid + 1\n    return answer\n\nn, s = map(int, input().split())\nmin_x = find_min_x(n, s)\nif min_x <= n:\n    print(n - min_x + 1)\nelse:\n    print(0)\n``` ||END-of-SRC||"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 2,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```python\ndef sum_digits(n):\n    s = 0\n    while n:\n        s += n % 10\n        n //= 10\n    return s\n\ndef find_min_x(n, s):\n    low = 1\n    high = n\n    answer = n + 1\n    while low <= high:\n        mid = (low + high) // 2\n        if mid - sum_digits(mid) >= s:\n            answer = mid\n            high = mid - 1\n        else:\n            low = mid + 1\n    return answer\n\nn, s = map(int, input().split())\nmin_x = find_min_x(n, s)\nif min_x > n:\n    print(0)\nelse:\n    print(n - min_x + 1)\n``` ||END-of-SRC||"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 3,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```python\ndef sum_digits(x):\n    s = 0\n    while x > 0:\n        s += x % 10\n        x = x // 10\n    return s\n\ndef find_min_x(n, s):\n    low = 1\n    high = n\n    answer = n + 1  # default to no solution\n    while low <= high:\n        mid = (low + high) // 2\n        if mid - sum_digits(mid) >= s:\n            answer = mid\n            high = mid - 1\n        else:\n            low = mid + 1\n    return answer\n\nn, s = map(int, input().split())\nmin_x = find_min_x(n, s)\nif min_x <= n:\n    print(n - min_x + 1)\nelse:\n    print(0)\n``` ||END-of-SRC||"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 4,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```python\ndef sum_digits(n):\n    s = 0\n    while n:\n        s += n % 10\n        n //= 10\n    return s\n\ndef find_min_x(n, s):\n    low = 1\n    high = n\n    answer = n + 1\n    while low <= high:\n        mid = (low + high) // 2\n        if mid - sum_digits(mid) >= s:\n            answer = mid\n            high = mid - 1\n        else:\n            low = mid + 1\n    return answer\n\nn, s = map(int, input().split())\nmin_x = find_min_x(n, s)\nif min_x > n:\n    print(0)\nelse:\n    print(n - min_x + 1)\n``` ||END-of-SRC||"
+                    },
+                    "finish_reason": "stop"
+                }
+            ],
+            "usage": {
+                "prompt_tokens": 4375,
+                "completion_tokens": 906,
+                "total_tokens": 5281
+            }
+        }
+    },
+    "source_data": {
+        "prob_desc_memory_limit": "256 megabytes",
+        "tags": [
+            "dp",
+            "math",
+            "brute force",
+            "binary search"
+        ],
+        "prob_desc_created_at": "1497539100",
+        "fix_source_code": "",
+        "prob_desc_input_spec": "The first (and the only) line contains two integers n and s (1\u2009\u2264\u2009n,\u2009s\u2009\u2264\u20091018).",
+        "prob_desc_sample_outputs": [
+            "3",
+            "0",
+            "1"
+        ],
+        "src_uid": "9704e2ac6a158d5ced8fd1dc1edb356b",
+        "prob_desc_time_limit": "1 second",
+        "fix_exec_outcome": "",
+        "delete_cnt": 6,
+        "apr_id": "4cd09160190a4f1dc1fbd6507dd5ddd1",
+        "fix_code_uid": "",
+        "lang_cluster": "Python",
+        "prob_desc_sample_inputs": [
+            "12 1",
+            "25 20",
+            "10 9"
+        ],
+        "prob_desc_output_to": "standard output",
+        "file_name": "Python.jsonl",
+        "equal_cnt": 19,
+        "lang": "Python 3",
+        "prob_desc_output_spec": "Print one integer \u2014 the quantity of really big numbers that are not greater than n.",
+        "bug_exec_outcome": "TIME_LIMIT_EXCEEDED",
+        "prob_desc_notes": "NoteIn the first example numbers 10, 11 and 12 are really big.In the second example there are no really big numbers that are not greater than 25 (in fact, the first really big number is 30: 30\u2009-\u20093\u2009\u2265\u200920).In the third example 10 is the only really big number (10\u2009-\u20091\u2009\u2265\u20099).",
+        "difficulty": 1600.0,
+        "similarity_score": 0.7362722158,
+        "prob_desc_description": "Ivan likes to learn different things about numbers, but he is especially interested in really big numbers. Ivan thinks that a positive integer number x is really big if the difference between x and the sum of its digits (in decimal representation) is not less than s. To prove that these numbers may have different special properties, he wants to know how rare (or not rare) they are \u2014 in fact, he needs to calculate the quantity of really big numbers that are not greater than n.Ivan tried to do the calculations himself, but soon realized that it's too difficult for him. So he asked you to help him in calculations.",
+        "potential_dominant_fix_op": "replace",
+        "bug_source_code": "# def sum_digits(n):\n#     s = 0\n#     while n:\n#         s += n % 10\n#         n //= 10\n#     return s\n\n\n# n, s = map(int, input().split())\n\n# count = 0\n# summ = sum_digits(n)\n# # k = sum_digits(n - n%10 - 1)\n# # print(k)\n# for num in range(n, 9, -1):\n# \tif num % 10 == 9:\n# \t\tsumm = sum_digits(num)\n# \t# print(num, summ)\n# \tif num - summ  >= s:\n# \t\tcount += 1\n# \tsumm -= 1\n\t\n\n\n# print(count)\n\n\ndef sum_digits(n):\n    s = 0\n    while n:\n        s += n % 10\n        n //= 10\n    return s\n\ndef binsearch(a, l, r, elem):\n\tmedium = (l + r ) // 2\n\ts = a[medium] - sum_digits(a[medium])\n\ts1 = a[medium-1] - sum_digits(a[medium-1])\n\ts2 = a[medium+1] - sum_digits(a[medium+1])\n\twhile not(s2 >= elem and s < elem): #s >= elem and s1 < elem or \n\t\t# print(l,medium,r)\n\t\tif s <= elem:\n\t\t\tl = medium\n\t\telif s >= elem:\n\t\t\tr = medium\n\t\tk = medium\n\t\tmedium = (l + r ) // 2\n\t\tif k == medium:\n\t\t\tbreak\n\t\t# print(l,medium,r)\n\t\ts = a[medium] - sum_digits(a[medium])\n\t\ts2 = a[medium+1] - sum_digits(a[medium+1])\n\ts1 = a[medium-1] - sum_digits(a[medium-1])\n\tif s >= elem and s1 < elem:\n\t\treturn medium\n\telif s2 >= elem and s < elem:\n\t\treturn medium + 1\n\telse:\n\t\treturn len(a)\t\n\nn, s = map(int, input().split())\na = [i for i in range(n+1)]\n\n\ny = binsearch(a, 0, len(a)-1, s)\n# print(y)\nprint(n - y + 1)\n\n\n\n\n",
+        "replace_cnt": 9,
+        "prob_desc_input_from": "standard input",
+        "bug_code_uid": "652d5e6ceafdb2d97232f47f94756231",
+        "insert_cnt": 3,
+        "fix_ops_cnt": 18,
+        "hidden_unit_tests": "[{\"input\": \"12 1\\r\\n\", \"output\": [\"3\"]}, {\"input\": \"25 20\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"10 9\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"300 1000\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"500 1000\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"1000 2000\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"10000 1000\\r\\n\", \"output\": [\"8991\"]}, {\"input\": \"1000000000000000000 1000000000000000000\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"1000000000000000000 100000000000000000\\r\\n\", \"output\": [\"899999999999999991\"]}, {\"input\": \"1000000000000000000 10000000000000000\\r\\n\", \"output\": [\"989999999999999991\"]}, {\"input\": \"1000000000000000000 1000000000000000\\r\\n\", \"output\": [\"998999999999999991\"]}, {\"input\": \"1000000000000000000 100000000000000\\r\\n\", \"output\": [\"999899999999999991\"]}, {\"input\": \"1000000000000000000 200000000000000000\\r\\n\", \"output\": [\"799999999999999991\"]}, {\"input\": \"10 5\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"20 5\\r\\n\", \"output\": [\"11\"]}, {\"input\": \"20 9\\r\\n\", \"output\": [\"11\"]}, {\"input\": \"100 9\\r\\n\", \"output\": [\"91\"]}, {\"input\": \"1 1\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"130 118\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"190 181\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"1999 1971\\r\\n\", \"output\": [\"10\"]}, {\"input\": \"100 99\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"6909094398 719694282\\r\\n\", \"output\": [\"6189400069\"]}, {\"input\": \"260 258\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"35 19\\r\\n\", \"output\": [\"6\"]}, {\"input\": \"100 87\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"91 89\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"109 89\\r\\n\", \"output\": [\"10\"]}, {\"input\": \"109 91\\r\\n\", \"output\": [\"10\"]}, {\"input\": \"20331 11580\\r\\n\", \"output\": [\"8732\"]}, {\"input\": \"405487470 255750281\\r\\n\", \"output\": [\"149737161\"]}, {\"input\": \"17382 12863\\r\\n\", \"output\": [\"4493\"]}, {\"input\": \"19725 14457\\r\\n\", \"output\": [\"5246\"]}, {\"input\": \"24848 15384\\r\\n\", \"output\": [\"9449\"]}, {\"input\": \"25727 15982\\r\\n\", \"output\": [\"9728\"]}, {\"input\": \"109 90\\r\\n\", \"output\": [\"10\"]}, {\"input\": \"1000000000000000000 999999999999999999\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"1000000000000000000 999999999999999998\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"1009 980\\r\\n\", \"output\": [\"10\"]}, {\"input\": \"999999999999999999 999999999999999838\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"1000000000000000000 99999999999999800\\r\\n\", \"output\": [\"900000000000000061\"]}, {\"input\": \"8785369357 3377262261\\r\\n\", \"output\": [\"5408107058\"]}, {\"input\": \"110 109\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"999 777\\r\\n\", \"output\": [\"200\"]}, {\"input\": \"327170000015578 77230000029054\\r\\n\", \"output\": [\"249939999986479\"]}, {\"input\": \"12515000022229 1791000022317\\r\\n\", \"output\": [\"10723999999880\"]}, {\"input\": \"9999999999999 9999999999882\\r\\n\", \"output\": [\"10\"]}, {\"input\": \"213 196\\r\\n\", \"output\": [\"14\"]}, {\"input\": \"92 82\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"148 136\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"8 9\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"309 299\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"9999 9963\\r\\n\", \"output\": [\"10\"]}, {\"input\": \"82 81\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"9999999 9999936\\r\\n\", \"output\": [\"10\"]}, {\"input\": \"171 155\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"999 972\\r\\n\", \"output\": [\"10\"]}, {\"input\": \"999999999999 999999999891\\r\\n\", \"output\": [\"10\"]}, {\"input\": \"9 9\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"6900 6885\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"96 57\\r\\n\", \"output\": [\"27\"]}, {\"input\": \"5 4\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"17386 5814\\r\\n\", \"output\": [\"11557\"]}, {\"input\": \"493679757404593 316259583979965\\r\\n\", \"output\": [\"177420173424564\"]}, {\"input\": \"18474 9478\\r\\n\", \"output\": [\"8975\"]}, {\"input\": \"270091571496186 250931112649966\\r\\n\", \"output\": [\"19160458846177\"]}, {\"input\": \"565751690089037 381448507916936\\r\\n\", \"output\": [\"184303182172038\"]}, {\"input\": \"19 10\\r\\n\", \"output\": [\"0\"]}]"
+    }
+}

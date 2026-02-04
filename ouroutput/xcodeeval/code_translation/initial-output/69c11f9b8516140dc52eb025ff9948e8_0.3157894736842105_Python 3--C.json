@@ -1,0 +1,85 @@
+{
+    "oai_response": {
+        "prompt": "Here is code in Python 3 programming lanaguge. Translate the following code from Python 3 to C programming lanaguge. Do not output any extra description or tokens other than the translated code. \n\n# Asad Alwadi (RAND DEEB) ;)\nnum = list(input())\ncarry = 0\nans = []\nfor i in range(0,len(num)):\n    if(num[i] == '1' or carry):\n        ans.append('1')\n\n    else:\n        if(num[i] == '0'):\n            ans.append('0')\n        else:\n            ans.append('1')\n            carry = 1\nans = \"\".join(ans)\nprint(int(ans,2))||END-of-SRC||",
+        "response": {
+            "id": "multi-call-as-yyszntv0gf",
+            "model": "deepseek-v3",
+            "created": 1767068640,
+            "choices": [
+                {
+                    "index": 0,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <string.h>\n#include <math.h>\n\nint main() {\n    char num[100];\n    scanf(\"%s\", num);\n    int carry = 0;\n    char ans[100] = {0};\n    int len = strlen(num);\n    \n    for (int i = 0; i < len; i++) {\n        if (num[i] == '1' || carry) {\n            ans[i] = '1';\n        } else {\n            if (num[i] == '0') {\n                ans[i] = '0';\n            } else {\n                ans[i] = '1';\n                carry = 1;\n            }\n        }\n    }\n    \n    int result = 0;\n    for (int i = 0; i < len; i++) {\n        if (ans[i] == '1') {\n            result += pow(2, len - 1 - i);\n        }\n    }\n    \n    printf(\"%d\\n\", result);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 1,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <string.h>\n\nint main() {\n    char num[100];\n    scanf(\"%s\", num);\n    int carry = 0;\n    char ans[100] = {0};\n    int len = strlen(num);\n    \n    for (int i = 0; i < len; i++) {\n        if (num[i] == '1' || carry) {\n            ans[i] = '1';\n        } else {\n            if (num[i] == '0') {\n                ans[i] = '0';\n            } else {\n                ans[i] = '1';\n                carry = 1;\n            }\n        }\n    }\n    \n    int result = 0;\n    for (int i = 0; i < len; i++) {\n        result = result * 2 + (ans[i] - '0');\n    }\n    \n    printf(\"%d\", result);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 2,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <string.h>\n\nint main() {\n    char num[100];\n    scanf(\"%s\", num);\n    int carry = 0;\n    char ans[100] = {0};\n    int len = strlen(num);\n    \n    for (int i = 0; i < len; i++) {\n        if (num[i] == '1' || carry) {\n            ans[i] = '1';\n        } else {\n            if (num[i] == '0') {\n                ans[i] = '0';\n            } else {\n                ans[i] = '1';\n                carry = 1;\n            }\n        }\n    }\n    \n    int result = 0;\n    for (int i = 0; i < len; i++) {\n        result = result * 2 + (ans[i] - '0');\n    }\n    \n    printf(\"%d\\n\", result);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 3,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <string.h>\n#include <math.h>\n\nint main() {\n    char num[100];\n    scanf(\"%s\", num);\n    int carry = 0;\n    char ans[100] = {0};\n    int len = strlen(num);\n    \n    for (int i = 0; i < len; i++) {\n        if (num[i] == '1' || carry) {\n            ans[i] = '1';\n        } else {\n            if (num[i] == '0') {\n                ans[i] = '0';\n            } else {\n                ans[i] = '1';\n                carry = 1;\n            }\n        }\n    }\n    \n    int result = 0;\n    for (int i = 0; i < len; i++) {\n        if (ans[i] == '1') {\n            result += pow(2, len - 1 - i);\n        }\n    }\n    \n    printf(\"%d\\n\", result);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 4,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <string.h>\n#include <math.h>\n\nint main() {\n    char num[100];\n    scanf(\"%s\", num);\n    int carry = 0;\n    char ans[100] = {0};\n    int len = strlen(num);\n    \n    for (int i = 0; i < len; i++) {\n        if (num[i] == '1' || carry) {\n            ans[i] = '1';\n        } else {\n            if (num[i] == '0') {\n                ans[i] = '0';\n            } else {\n                ans[i] = '1';\n                carry = 1;\n            }\n        }\n    }\n    \n    int result = 0;\n    for (int i = 0; i < len; i++) {\n        if (ans[i] == '1') {\n            result += pow(2, len - 1 - i);\n        }\n    }\n    \n    printf(\"%d\\n\", result);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                }
+            ],
+            "usage": {
+                "prompt_tokens": 765,
+                "completion_tokens": 1045,
+                "total_tokens": 1810
+            }
+        }
+    },
+    "source_data": {
+        "code_uid": "69c11f9b8516140dc52eb025ff9948e8",
+        "prob_desc_output_to": "standard output",
+        "prob_desc_notes": "NoteFor n = 10 the answer includes numbers 1 and 10.",
+        "lang_cluster": "Python",
+        "prob_desc_time_limit": "1 second",
+        "prob_desc_input_spec": "Input data contains the only number n (1\u2009\u2264\u2009n\u2009\u2264\u2009109).",
+        "source_code": "# Asad Alwadi (RAND DEEB) ;)\nnum = list(input())\ncarry = 0\nans = []\nfor i in range(0,len(num)):\n    if(num[i] == '1' or carry):\n        ans.append('1')\n\n    else:\n        if(num[i] == '0'):\n            ans.append('0')\n        else:\n            ans.append('1')\n            carry = 1\nans = \"\".join(ans)\nprint(int(ans,2))",
+        "prob_desc_sample_inputs": [
+            "10"
+        ],
+        "prob_desc_memory_limit": "64 megabytes",
+        "exec_outcome": "PASSED",
+        "prob_desc_output_spec": "Output the only number \u2014 answer to the problem.",
+        "src_uid": "64a842f9a41f85a83b7d65bfbe21b6cb",
+        "prob_desc_input_from": "standard input",
+        "lang": "Python 3",
+        "prob_desc_sample_outputs": [
+            "2"
+        ],
+        "file_name": "d7021504500d5ca7c2b02df8100a574d159e6e67e20ec8071b75800b1267370a",
+        "prob_desc_description": "One beautiful July morning a terrible thing happened in Mainframe: a mean virus Megabyte somehow got access to the memory of his not less mean sister Hexadecimal. He loaded there a huge amount of n different natural numbers from 1 to n to obtain total control over her energy.But his plan failed. The reason for this was very simple: Hexadecimal didn't perceive any information, apart from numbers written in binary format. This means that if a number in a decimal representation contained characters apart from 0 and 1, it was not stored in the memory. Now Megabyte wants to know, how many numbers were loaded successfully.",
+        "prob_desc_created_at": "1270983600",
+        "difficulty": 1200.0,
+        "hidden_unit_tests": "[{\"input\": \"10\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"20\\r\\n\", \"output\": [\"3\"]}, {\"input\": \"72\\r\\n\", \"output\": [\"3\"]}, {\"input\": \"99\\r\\n\", \"output\": [\"3\"]}, {\"input\": \"100\\r\\n\", \"output\": [\"4\"]}, {\"input\": \"101\\r\\n\", \"output\": [\"5\"]}, {\"input\": \"102\\r\\n\", \"output\": [\"5\"]}, {\"input\": \"111\\r\\n\", \"output\": [\"7\"]}, {\"input\": \"112\\r\\n\", \"output\": [\"7\"]}, {\"input\": \"745\\r\\n\", \"output\": [\"7\"]}, {\"input\": \"23536\\r\\n\", \"output\": [\"31\"]}, {\"input\": \"1\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"1010011\\r\\n\", \"output\": [\"83\"]}, {\"input\": \"312410141\\r\\n\", \"output\": [\"511\"]}, {\"input\": \"1000000000\\r\\n\", \"output\": [\"512\"]}, {\"input\": \"999999999\\r\\n\", \"output\": [\"511\"]}, {\"input\": \"111111111\\r\\n\", \"output\": [\"511\"]}, {\"input\": \"101010101\\r\\n\", \"output\": [\"341\"]}, {\"input\": \"121212121\\r\\n\", \"output\": [\"511\"]}, {\"input\": \"106341103\\r\\n\", \"output\": [\"383\"]}, {\"input\": \"901556123\\r\\n\", \"output\": [\"511\"]}, {\"input\": \"832513432\\r\\n\", \"output\": [\"511\"]}, {\"input\": \"3\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"732875234\\r\\n\", \"output\": [\"511\"]}, {\"input\": \"7\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"9\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"2\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"11\\r\\n\", \"output\": [\"3\"]}, {\"input\": \"12\\r\\n\", \"output\": [\"3\"]}, {\"input\": \"13\\r\\n\", \"output\": [\"3\"]}, {\"input\": \"101020101\\r\\n\", \"output\": [\"351\"]}, {\"input\": \"111100100\\r\\n\", \"output\": [\"484\"]}, {\"input\": \"110110101\\r\\n\", \"output\": [\"437\"]}, {\"input\": \"100111001\\r\\n\", \"output\": [\"313\"]}, {\"input\": \"100100\\r\\n\", \"output\": [\"36\"]}, {\"input\": \"110100102\\r\\n\", \"output\": [\"421\"]}]",
+        "source_lang": "Python 3",
+        "target_lang": "C"
+    }
+}

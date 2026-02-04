@@ -1,0 +1,85 @@
+{
+    "oai_response": {
+        "prompt": "Here is code in Python 3 programming lanaguge. Translate the following code from Python 3 to C programming lanaguge. Do not output any extra description or tokens other than the translated code. \n\na = int(input())\nprint(2**(a+1)-2)||END-of-SRC||",
+        "response": {
+            "id": "multi-call-as-migyagg8qs",
+            "model": "deepseek-v3",
+            "created": 1767066943,
+            "choices": [
+                {
+                    "index": 0,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <math.h>\n\nint main() {\n    int a;\n    scanf(\"%d\", &a);\n    printf(\"%d\", (int)pow(2, a+1) - 2);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 1,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <math.h>\n\nint main() {\n    int a;\n    scanf(\"%d\", &a);\n    printf(\"%d\\n\", (int)(pow(2, a + 1) - 2));\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 2,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <math.h>\n\nint main() {\n    int a;\n    scanf(\"%d\", &a);\n    printf(\"%d\", (int)pow(2, a+1) - 2);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 3,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <math.h>\n\nint main() {\n    int a;\n    scanf(\"%d\", &a);\n    printf(\"%d\\n\", (int)(pow(2, a + 1) - 2));\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 4,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <math.h>\n\nint main() {\n    int a;\n    scanf(\"%d\", &a);\n    printf(\"%d\", (int)(pow(2, a+1)) - 2);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                }
+            ],
+            "usage": {
+                "prompt_tokens": 330,
+                "completion_tokens": 286,
+                "total_tokens": 616
+            }
+        }
+    },
+    "source_data": {
+        "code_uid": "f1e1270a9cfafcf34e36955009049c24",
+        "prob_desc_output_to": "standard output",
+        "prob_desc_notes": null,
+        "lang_cluster": "Python",
+        "prob_desc_time_limit": "0.5 seconds",
+        "prob_desc_input_spec": "The only line of input contains one integer n (1\u2009\u2264\u2009n\u2009\u2264\u200955) \u2014 the maximum length of a number that a door-plate can hold.",
+        "source_code": "a = int(input())\nprint(2**(a+1)-2)",
+        "prob_desc_sample_inputs": [
+            "2"
+        ],
+        "prob_desc_memory_limit": "64 megabytes",
+        "exec_outcome": "PASSED",
+        "prob_desc_output_spec": "Output one integer \u2014 the maximum number of offices, than can have unique lucky numbers not longer than n digits.",
+        "src_uid": "f1b43baa14d4c262ba616d892525dfde",
+        "prob_desc_input_from": "standard input",
+        "lang": "Python 3",
+        "prob_desc_sample_outputs": [
+            "6"
+        ],
+        "file_name": "d7021504500d5ca7c2b02df8100a574d159e6e67e20ec8071b75800b1267370a",
+        "prob_desc_description": "The numbers of all offices in the new building of the Tax Office of IT City will have lucky numbers.Lucky number is a number that consists of digits 7 and 8 only. Find the maximum number of offices in the new building of the Tax Office given that a door-plate can hold a number not longer than n digits.",
+        "prob_desc_created_at": "1455807600",
+        "difficulty": 1100.0,
+        "hidden_unit_tests": "[{\"input\": \"2\\r\\n\", \"output\": [\"6\"]}, {\"input\": \"1\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"3\\r\\n\", \"output\": [\"14\"]}, {\"input\": \"5\\r\\n\", \"output\": [\"62\"]}, {\"input\": \"12\\r\\n\", \"output\": [\"8190\"]}, {\"input\": \"34\\r\\n\", \"output\": [\"34359738366\"]}, {\"input\": \"43\\r\\n\", \"output\": [\"17592186044414\"]}, {\"input\": \"49\\r\\n\", \"output\": [\"1125899906842622\"]}, {\"input\": \"54\\r\\n\", \"output\": [\"36028797018963966\"]}, {\"input\": \"55\\r\\n\", \"output\": [\"72057594037927934\"]}]",
+        "source_lang": "Python 3",
+        "target_lang": "C"
+    }
+}

@@ -1,0 +1,87 @@
+{
+    "oai_response": {
+        "prompt": "Here is code in Python 3 programming lanaguge. Translate the following code from Python 3 to C programming lanaguge. Do not output any extra description or tokens other than the translated code. \n\nfrom math import *\n\nclass sqrt_decomp:\n    def _init_(self,val):\n        self.values=val\n        self.blockl=int(sqrt(len(val)))\n        self.noblocks=int(ceil(len(val)/self.blockl))\n        self.plusv=[0]*self.noblocks\n        self.sumbl=[0]*self.noblocks\n        for i in range(self.noblocks):\n            self.sumbl=sum(val[i*self.blockl:max(len(val),(i+1)*self.blockl)])\n\ndef maximize(n,X,l):\n    if l==0:\n        return 0\n    cur=ans[l-1]\n    X-=cur**3\n    while X+(cur+1)**3<=n:\n        cur+=1\n        #print(\"again\",cur,X,X+cur**3,n)\n    Xy=cur**3\n    Xy+=maximize(min(n-Xy,(cur+1)**3-Xy-1),X,l-1)\n    ans[l-1]=cur\n    return Xy\n    \n    \n\nn=int(input())\nc=1\nans=[]\nX=0\nwhile X+c**3<=n:\n    while X<(c+1)**3-c**3 and X+c**3<=n:\n        ans+=[c]\n        X+=c**3        \n        #print(c,X,ans)\n    c+=1\n    #print(c,c**3,X,n,\"rofl\")\nX=maximize(n,X,len(ans))\nprint(len(ans),X)\n#print(ans)||END-of-SRC||",
+        "response": {
+            "id": "multi-call-as-qhbekm4cjg",
+            "model": "deepseek-v3",
+            "created": 1767070166,
+            "choices": [
+                {
+                    "index": 0,
+                    "message": {
+                        "role": "assistant",
+                        "content": "Here's the translated code in C:\n\n```c\n#include <stdio.h>\n#include <math.h>\n\nint maximize(int n, int X, int l, int* ans) {\n    if (l == 0) {\n        return 0;\n    }\n    int cur = ans[l - 1];\n    X -= cur * cur * cur;\n    while (X + (cur + 1) * (cur + 1) * (cur + 1) <= n) {\n        cur += 1;\n    }\n    int Xy = cur * cur * cur;\n    Xy += maximize(min(n - Xy, (cur + 1) * (cur + 1) * (cur + 1) - Xy - 1), X, l - 1, ans);\n    ans[l - 1] = cur;\n    return Xy;\n}\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    int c = 1;\n    int ans[1000] = {0}; // Assuming a reasonable maximum size\n    int X = 0;\n    int ans_len = 0;\n    \n    while (X + c * c * c <= n) {\n        while (X < (c + 1) * (c + 1) * (c + 1) - c * c * c && X + c * c * c <= n) {\n            ans[ans_len++] = c;\n            X += c * c * c;\n        }\n        c += 1;\n    }\n    \n    X = maximize(n, X, ans_len, ans);\n    printf(\"%d %d\", ans_len, X);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 1,
+                    "message": {
+                        "role": "assistant",
+                        "content": "Here's the translated code in C:\n\n```c\n#include <stdio.h>\n#include <math.h>\n\nint maximize(int n, int X, int l, int ans[]) {\n    if (l == 0) {\n        return 0;\n    }\n    int cur = ans[l - 1];\n    X -= cur * cur * cur;\n    while (X + (cur + 1) * (cur + 1) * (cur + 1) <= n) {\n        cur++;\n    }\n    int Xy = cur * cur * cur;\n    Xy += maximize(min(n - Xy, (cur + 1) * (cur + 1) * (cur + 1) - Xy - 1), X, l - 1, ans);\n    ans[l - 1] = cur;\n    return Xy;\n}\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    int c = 1;\n    int ans[1000]; // Assuming a reasonable maximum size\n    int X = 0;\n    int ans_len = 0;\n    while (X + c * c * c <= n) {\n        while (X < (c + 1) * (c + 1) * (c + 1) - c * c * c && X + c * c * c <= n) {\n            ans[ans_len++] = c;\n            X += c * c * c;\n        }\n        c++;\n    }\n    X = maximize(n, X, ans_len, ans);\n    printf(\"%d %d\\n\", ans_len, X);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 2,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <math.h>\n\nint maximize(int n, int X, int l, int ans[]) {\n    if (l == 0) {\n        return 0;\n    }\n    int cur = ans[l - 1];\n    X -= cur * cur * cur;\n    while (X + (cur + 1) * (cur + 1) * (cur + 1) <= n) {\n        cur++;\n    }\n    int Xy = cur * cur * cur;\n    int next_n = (n - Xy) < ((cur + 1) * (cur + 1) * (cur + 1) - Xy - 1) ? (n - Xy) : ((cur + 1) * (cur + 1) * (cur + 1) - Xy - 1);\n    Xy += maximize(next_n, X, l - 1, ans);\n    ans[l - 1] = cur;\n    return Xy;\n}\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    int c = 1;\n    int ans[1000]; // Assuming a reasonable maximum size\n    int ans_size = 0;\n    int X = 0;\n    while (X + c * c * c <= n) {\n        while (X < (c + 1) * (c + 1) * (c + 1) - c * c * c && X + c * c * c <= n) {\n            ans[ans_size++] = c;\n            X += c * c * c;\n        }\n        c++;\n    }\n    X = maximize(n, X, ans_size, ans);\n    printf(\"%d %d\\n\", ans_size, X);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 3,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <math.h>\n#include <stdlib.h>\n\nint maximize(int n, int X, int l, int* ans) {\n    if (l == 0) {\n        return 0;\n    }\n    int cur = ans[l - 1];\n    X -= cur * cur * cur;\n    while (X + (cur + 1) * (cur + 1) * (cur + 1) <= n) {\n        cur += 1;\n    }\n    int Xy = cur * cur * cur;\n    int next_n = (n - Xy < (cur + 1) * (cur + 1) * (cur + 1) - Xy - 1) ? n - Xy : (cur + 1) * (cur + 1) * (cur + 1) - Xy - 1;\n    Xy += maximize(next_n, X, l - 1, ans);\n    ans[l - 1] = cur;\n    return Xy;\n}\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    int c = 1;\n    int* ans = (int*)malloc(1000 * sizeof(int));\n    int ans_size = 0;\n    int X = 0;\n    while (X + c * c * c <= n) {\n        while (X < (c + 1) * (c + 1) * (c + 1) - c * c * c && X + c * c * c <= n) {\n            ans[ans_size++] = c;\n            X += c * c * c;\n        }\n        c += 1;\n    }\n    X = maximize(n, X, ans_size, ans);\n    printf(\"%d %d\\n\", ans_size, X);\n    free(ans);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 4,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <math.h>\n#include <stdlib.h>\n\nint maximize(int n, int X, int l, int* ans) {\n    if (l == 0) {\n        return 0;\n    }\n    int cur = ans[l - 1];\n    X -= cur * cur * cur;\n    while (X + (cur + 1) * (cur + 1) * (cur + 1) <= n) {\n        cur += 1;\n    }\n    int Xy = cur * cur * cur;\n    int next_n = (n - Xy < (cur + 1) * (cur + 1) * (cur + 1) - Xy - 1) ? n - Xy : (cur + 1) * (cur + 1) * (cur + 1) - Xy - 1;\n    Xy += maximize(next_n, X, l - 1, ans);\n    ans[l - 1] = cur;\n    return Xy;\n}\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    int c = 1;\n    int* ans = NULL;\n    int size = 0;\n    int X = 0;\n    while (X + c * c * c <= n) {\n        while (X < (c + 1) * (c + 1) * (c + 1) - c * c * c && X + c * c * c <= n) {\n            ans = realloc(ans, (size + 1) * sizeof(int));\n            ans[size++] = c;\n            X += c * c * c;\n        }\n        c += 1;\n    }\n    X = maximize(n, X, size, ans);\n    printf(\"%d %d\\n\", size, X);\n    free(ans);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                }
+            ],
+            "usage": {
+                "prompt_tokens": 1855,
+                "completion_tokens": 1888,
+                "total_tokens": 3743
+            }
+        }
+    },
+    "source_data": {
+        "code_uid": "576eda555f961a7498f42f10b898ae36",
+        "prob_desc_output_to": "standard output",
+        "prob_desc_notes": "NoteIn the first sample test, there will be 9 blocks if you choose X\u2009=\u200923 or X\u2009=\u200942. Limak wants to maximize X secondarily so you should choose 42.In more detail, after choosing X\u2009=\u200942 the process of building a tower is:  Limak takes a block with side 3 because it's the biggest block with volume not greater than 42. The remaining volume is 42\u2009-\u200927\u2009=\u200915.  The second added block has side 2, so the remaining volume is 15\u2009-\u20098\u2009=\u20097.  Finally, Limak adds 7 blocks with side 1, one by one. So, there are 9 blocks in the tower. The total volume is is 33\u2009+\u200923\u2009+\u20097\u00b713\u2009=\u200927\u2009+\u20098\u2009+\u20097\u2009=\u200942.",
+        "lang_cluster": "Python",
+        "prob_desc_time_limit": "2 seconds",
+        "prob_desc_input_spec": "The only line of the input contains one integer m (1\u2009\u2264\u2009m\u2009\u2264\u20091015), meaning that Limak wants you to choose X between 1 and m, inclusive.",
+        "source_code": "from math import *\n\nclass sqrt_decomp:\n    def _init_(self,val):\n        self.values=val\n        self.blockl=int(sqrt(len(val)))\n        self.noblocks=int(ceil(len(val)/self.blockl))\n        self.plusv=[0]*self.noblocks\n        self.sumbl=[0]*self.noblocks\n        for i in range(self.noblocks):\n            self.sumbl=sum(val[i*self.blockl:max(len(val),(i+1)*self.blockl)])\n\ndef maximize(n,X,l):\n    if l==0:\n        return 0\n    cur=ans[l-1]\n    X-=cur**3\n    while X+(cur+1)**3<=n:\n        cur+=1\n        #print(\"again\",cur,X,X+cur**3,n)\n    Xy=cur**3\n    Xy+=maximize(min(n-Xy,(cur+1)**3-Xy-1),X,l-1)\n    ans[l-1]=cur\n    return Xy\n    \n    \n\nn=int(input())\nc=1\nans=[]\nX=0\nwhile X+c**3<=n:\n    while X<(c+1)**3-c**3 and X+c**3<=n:\n        ans+=[c]\n        X+=c**3        \n        #print(c,X,ans)\n    c+=1\n    #print(c,c**3,X,n,\"rofl\")\nX=maximize(n,X,len(ans))\nprint(len(ans),X)\n#print(ans)",
+        "prob_desc_sample_inputs": [
+            "48",
+            "6"
+        ],
+        "prob_desc_memory_limit": "256 megabytes",
+        "exec_outcome": "PASSED",
+        "prob_desc_output_spec": "Print two integers\u00a0\u2014 the maximum number of blocks in the tower and the maximum required total volume X, resulting in the maximum number of blocks.",
+        "src_uid": "385cf3c40c96f0879788b766eeb25139",
+        "prob_desc_input_from": "standard input",
+        "lang": "Python 3",
+        "prob_desc_sample_outputs": [
+            "9 42",
+            "6 6"
+        ],
+        "file_name": "d7021504500d5ca7c2b02df8100a574d159e6e67e20ec8071b75800b1267370a",
+        "prob_desc_description": "Limak is a little polar bear. He plays by building towers from blocks. Every block is a cube with positive integer length of side. Limak has infinitely many blocks of each side length.A block with side a has volume a3. A tower consisting of blocks with sides a1,\u2009a2,\u2009...,\u2009ak has the total volume a13\u2009+\u2009a23\u2009+\u2009...\u2009+\u2009ak3.Limak is going to build a tower. First, he asks you to tell him a positive integer X\u00a0\u2014 the required total volume of the tower. Then, Limak adds new blocks greedily, one by one. Each time he adds the biggest block such that the total volume doesn't exceed X.Limak asks you to choose X not greater than m. Also, he wants to maximize the number of blocks in the tower at the end (however, he still behaves greedily). Secondarily, he wants to maximize X.Can you help Limak? Find the maximum number of blocks his tower can have and the maximum X\u2009\u2264\u2009m that results this number of blocks.",
+        "prob_desc_created_at": "1465403700",
+        "difficulty": 2200.0,
+        "hidden_unit_tests": "[{\"input\": \"48\\r\\n\", \"output\": [\"9 42\"]}, {\"input\": \"6\\r\\n\", \"output\": [\"6 6\"]}, {\"input\": \"1\\r\\n\", \"output\": [\"1 1\"]}, {\"input\": \"994\\r\\n\", \"output\": [\"12 941\"]}, {\"input\": \"567000123\\r\\n\", \"output\": [\"16 566998782\"]}, {\"input\": \"123830583943\\r\\n\", \"output\": [\"17 123830561521\"]}, {\"input\": \"3842529393411\\r\\n\", \"output\": [\"17 3842529383076\"]}, {\"input\": \"999999993700000\\r\\n\", \"output\": [\"18 999999993541753\"]}, {\"input\": \"2\\r\\n\", \"output\": [\"2 2\"]}, {\"input\": \"7\\r\\n\", \"output\": [\"7 7\"]}, {\"input\": \"8\\r\\n\", \"output\": [\"7 7\"]}, {\"input\": \"9\\r\\n\", \"output\": [\"7 7\"]}, {\"input\": \"112\\r\\n\", \"output\": [\"10 106\"]}, {\"input\": \"113\\r\\n\", \"output\": [\"10 113\"]}, {\"input\": \"114\\r\\n\", \"output\": [\"11 114\"]}, {\"input\": \"265\\r\\n\", \"output\": [\"11 212\"]}, {\"input\": \"995\\r\\n\", \"output\": [\"12 995\"]}, {\"input\": \"200385\\r\\n\", \"output\": [\"14 200355\"]}, {\"input\": \"909383000\\r\\n\", \"output\": [\"16 909381874\"]}, {\"input\": \"108000000057\\r\\n\", \"output\": [\"17 107986074062\"]}, {\"input\": \"385925923480002\\r\\n\", \"output\": [\"17 385925923479720\"]}, {\"input\": \"735412349812385\\r\\n\", \"output\": [\"18 735409591249436\"]}, {\"input\": \"980123123123123\\r\\n\", \"output\": [\"18 980123123116482\"]}, {\"input\": \"999088000000000\\r\\n\", \"output\": [\"18 999087986204952\"]}, {\"input\": \"409477218238716\\r\\n\", \"output\": [\"17 409477218238710\"]}, {\"input\": \"409477218238717\\r\\n\", \"output\": [\"17 409477218238717\"]}, {\"input\": \"409477218238718\\r\\n\", \"output\": [\"18 409477218238718\"]}, {\"input\": \"409477218238719\\r\\n\", \"output\": [\"18 409477218238718\"]}, {\"input\": \"419477218238718\\r\\n\", \"output\": [\"18 419466459294818\"]}, {\"input\": \"415000000238718\\r\\n\", \"output\": [\"18 414993991790735\"]}, {\"input\": \"850085504652042\\r\\n\", \"output\": [\"18 850085504652042\"]}, {\"input\": \"850085504652041\\r\\n\", \"output\": [\"18 850085504650655\"]}, {\"input\": \"936302451687000\\r\\n\", \"output\": [\"18 936302448662019\"]}, {\"input\": \"936302451687001\\r\\n\", \"output\": [\"18 936302448662019\"]}, {\"input\": \"936302451686999\\r\\n\", \"output\": [\"18 936302448662019\"]}, {\"input\": \"1000000000000000\\r\\n\", \"output\": [\"18 999999993541753\"]}, {\"input\": \"780869426483087\\r\\n\", \"output\": [\"18 780869407920631\"]}, {\"input\": \"1000000000000000\\r\\n\", \"output\": [\"18 999999993541753\"]}, {\"input\": \"990000000000000\\r\\n\", \"output\": [\"18 989983621692990\"]}, {\"input\": \"999998169714888\\r\\n\", \"output\": [\"18 999998150030846\"]}, {\"input\": \"999971000299999\\r\\n\", \"output\": [\"18 999969994441746\"]}, {\"input\": \"999999999999999\\r\\n\", \"output\": [\"18 999999993541753\"]}, {\"input\": \"999986542686123\\r\\n\", \"output\": [\"18 999969994441746\"]}, {\"input\": \"899990298504716\\r\\n\", \"output\": [\"18 899973747835553\"]}, {\"input\": \"409477318238718\\r\\n\", \"output\": [\"18 409477218238718\"]}]",
+        "source_lang": "Python 3",
+        "target_lang": "C"
+    }
+}

@@ -1,0 +1,103 @@
+{
+    "oai_response": {
+        "prompt": "Fix a buggy program written in Python language to solve the following programming problem:\nDescription: Mike has a string s consisting of only lowercase English letters. He wants to change exactly one character from the string so that the resulting one is a palindrome. A palindrome is a string that reads the same backward as forward, for example strings \"z\", \"aaa\", \"aba\", \"abccba\" are palindromes, but strings \"codeforces\", \"reality\", \"ab\" are not.\nInput Specification: The first and single line contains string s (1\u2009\u2264\u2009|s|\u2009\u2264\u200915).\nOutput Specification: Print \"YES\" (without quotes) if Mike can change exactly one character so that the resulting string is palindrome or \"NO\" (without quotes) otherwise. \n\nSample Input:\nabccaa\nSample Output:\nYES\n\nSample Input:\nabbcca\nSample Output:\nNO\n\nSample Input:\nabcda\nSample Output:\nYES\n\nNotes: None\nTake input from standard input and output to standard output\n\nHere is the code with a bug of RUNTIME_ERROR:\n\nl1 = input().split()\nl = int(l1[0])\njump = int(l1[1])\nstring = input()\ng = string.find(\"G\")\nt = string.find(\"T\")\n\nif (g != 0) and g+1<len(string):\n    if jump != 1 and (string[g+1]==\"T\" or string[g-1]==\"T\"):\n        print(\"NO\")\n        exit()\nif g==0 and g+1<len(string):\n    if jump != 1 and (string[g+1]==\"T\"):\n        print(\"NO\")\n        exit()\nif g == len(string)-1:\n    if jump != 1 and (string[g-1]==\"T\"):\n        print(\"NO\")\n        exit()\n\n\n\nif (t > g):\n    while g < len(string):\n        g += jump\n        if string[g] == \"#\":\n            print(\"NO\")\n            exit()\n        elif string[g] == \".\":\n            continue\n        else:\n            print(\"YES\")\n            exit()\nelse:\n    while g > 0:\n        g -= jump\n        if string[g] == \"#\":\n            print(\"NO\")\n            exit()\n        elif string[g] == \".\":\n            continue\n        else:\n            print(\"YES\")\n            exit()\n\n\n\nProvide the fixed Python code without any description or extra tokens.\n\nFixed source code:\n ||END-of-SRC||",
+        "response": {
+            "id": "multi-call-as-7nt2n6bfza",
+            "model": "deepseek-v3",
+            "created": 1760422803,
+            "choices": [
+                {
+                    "index": 0,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```python\ns = input().strip()\nn = len(s)\ncount = 0\nfor i in range(n // 2):\n    if s[i] != s[n - 1 - i]:\n        count += 1\nif count == 1 or (count == 0 and n % 2 == 1):\n    print(\"YES\")\nelse:\n    print(\"NO\")\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 1,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```python\ns = input().strip()\nn = len(s)\ncount = 0\nfor i in range(n // 2):\n    if s[i] != s[n - 1 - i]:\n        count += 1\nif count == 1 or (count == 0 and n % 2 == 1):\n    print(\"YES\")\nelse:\n    print(\"NO\")\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 2,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```python\ns = input().strip()\nn = len(s)\ncount = 0\nfor i in range(n // 2):\n    if s[i] != s[n - 1 - i]:\n        count += 1\nif count == 1 or (count == 0 and n % 2 == 1):\n    print(\"YES\")\nelse:\n    print(\"NO\")\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 3,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```python\ns = input().strip()\nn = len(s)\ncount = 0\nfor i in range(n // 2):\n    if s[i] != s[n - 1 - i]:\n        count += 1\nif count == 1 or (count == 0 and n % 2 == 1):\n    print(\"YES\")\nelse:\n    print(\"NO\")\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 4,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```python\ns = input().strip()\nn = len(s)\ncount = 0\nfor i in range(n // 2):\n    if s[i] != s[n - 1 - i]:\n        count += 1\nif count == 1 or (count == 0 and n % 2 == 1):\n    print(\"YES\")\nelse:\n    print(\"NO\")\n```"
+                    },
+                    "finish_reason": "stop"
+                }
+            ],
+            "usage": {
+                "prompt_tokens": 2615,
+                "completion_tokens": 415,
+                "total_tokens": 3030
+            }
+        }
+    },
+    "source_data": {
+        "prob_desc_memory_limit": "256 megabytes",
+        "tags": [
+            "brute force",
+            "constructive algorithms",
+            "strings"
+        ],
+        "prob_desc_created_at": "1492785300",
+        "fix_source_code": "",
+        "prob_desc_input_spec": "The first and single line contains string s (1\u2009\u2264\u2009|s|\u2009\u2264\u200915).",
+        "prob_desc_sample_outputs": [
+            "YES",
+            "NO",
+            "YES"
+        ],
+        "src_uid": "fe74313abcf381f6c5b7b2057adaaa52",
+        "prob_desc_time_limit": "2 seconds",
+        "fix_exec_outcome": "",
+        "delete_cnt": 0,
+        "apr_id": "ce40d01823bce93c11270167c3cba39a",
+        "fix_code_uid": "",
+        "lang_cluster": "Python",
+        "prob_desc_sample_inputs": [
+            "abccaa",
+            "abbcca",
+            "abcda"
+        ],
+        "prob_desc_output_to": "standard output",
+        "file_name": "Python.jsonl",
+        "equal_cnt": 7,
+        "lang": "Python 3",
+        "prob_desc_output_spec": "Print \"YES\" (without quotes) if Mike can change exactly one character so that the resulting string is palindrome or \"NO\" (without quotes) otherwise. ",
+        "bug_exec_outcome": "RUNTIME_ERROR",
+        "prob_desc_notes": null,
+        "difficulty": 1000.0,
+        "similarity_score": 0.1555411518,
+        "prob_desc_description": "Mike has a string s consisting of only lowercase English letters. He wants to change exactly one character from the string so that the resulting one is a palindrome. A palindrome is a string that reads the same backward as forward, for example strings \"z\", \"aaa\", \"aba\", \"abccba\" are palindromes, but strings \"codeforces\", \"reality\", \"ab\" are not.",
+        "potential_dominant_fix_op": "replace",
+        "bug_source_code": "l1 = input().split()\nl = int(l1[0])\njump = int(l1[1])\nstring = input()\ng = string.find(\"G\")\nt = string.find(\"T\")\n\nif (g != 0) and g+1<len(string):\n    if jump != 1 and (string[g+1]==\"T\" or string[g-1]==\"T\"):\n        print(\"NO\")\n        exit()\nif g==0 and g+1<len(string):\n    if jump != 1 and (string[g+1]==\"T\"):\n        print(\"NO\")\n        exit()\nif g == len(string)-1:\n    if jump != 1 and (string[g-1]==\"T\"):\n        print(\"NO\")\n        exit()\n\n\n\nif (t > g):\n    while g < len(string):\n        g += jump\n        if string[g] == \"#\":\n            print(\"NO\")\n            exit()\n        elif string[g] == \".\":\n            continue\n        else:\n            print(\"YES\")\n            exit()\nelse:\n    while g > 0:\n        g -= jump\n        if string[g] == \"#\":\n            print(\"NO\")\n            exit()\n        elif string[g] == \".\":\n            continue\n        else:\n            print(\"YES\")\n            exit()\n\n",
+        "replace_cnt": 7,
+        "prob_desc_input_from": "standard input",
+        "bug_code_uid": "0c4e8ea1b73ad99ef27d3b3af7409b15",
+        "insert_cnt": 1,
+        "fix_ops_cnt": 8,
+        "hidden_unit_tests": "[{\"input\": \"abccaa\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"abbcca\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"abcda\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"kyw\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"fccf\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"mnlm\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"gqrk\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"glxlg\\r\\n\", \"output\": [\"YES\", \"Yes\"]}, {\"input\": \"czhfc\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"broon\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"rmggmr\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"wvxxzw\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"ukvciu\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"vrnwnrv\\r\\n\", \"output\": [\"YES\", \"Yes\"]}, {\"input\": \"vlkjkav\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"guayhmg\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"lkvhhvkl\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"ffdsslff\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"galjjtyw\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"uosgwgsou\\r\\n\", \"output\": [\"YES\", \"Yes\"]}, {\"input\": \"qjwmjmljq\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"ustrvrodf\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"a\\r\\n\", \"output\": [\"YES\", \"Yes\"]}, {\"input\": \"qjfyjjyfjq\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"ysxibbixsq\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"howfslfwmh\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"ekhajrjahke\\r\\n\", \"output\": [\"YES\", \"Yes\"]}, {\"input\": \"ucnolsloncw\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"jrzsfrrkrtj\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"typayzzyapyt\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"uwdhkzokhdwu\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"xokxpyyuafij\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"eusneioiensue\\r\\n\", \"output\": [\"YES\", \"Yes\"]}, {\"input\": \"fuxpuajabpxuf\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"guvggtfhlgruy\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"cojhkhxxhkhjoc\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"mhifbmmmmbmihm\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"kxfqqncnebpami\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"scfwrjevejrwfcs\\r\\n\", \"output\": [\"YES\", \"Yes\"]}, {\"input\": \"thdaonpepdoadht\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"jsfzcbnhsccuqsj\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"nn\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"nm\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"jdj\\r\\n\", \"output\": [\"YES\", \"Yes\"]}, {\"input\": \"bbcaa\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"abcde\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"abcdf\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"aa\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"abecd\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"abccacb\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"aabc\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"anpqb\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"c\\r\\n\", \"output\": [\"YES\", \"Yes\"]}, {\"input\": \"abcdefg\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"aanbb\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"aabbb\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"aaabbab\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"ab\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"aabbc\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"ecabd\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"abcdrty\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"abcdmnp\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"bbbbbb\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"abcxuio\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"abcdabcde\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"abcxpoi\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"aba\\r\\n\", \"output\": [\"YES\", \"Yes\"]}, {\"input\": \"aacbb\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"abcedca\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"abcdd\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"abbcs\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"aaabccc\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"paxkxbq\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"z\\r\\n\", \"output\": [\"YES\", \"Yes\"]}, {\"input\": \"b\\r\\n\", \"output\": [\"YES\", \"Yes\"]}, {\"input\": \"abcdefghi\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"abcqr\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"abcdc\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"abcb\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"aabcd\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"abbba\\r\\n\", \"output\": [\"YES\", \"Yes\"]}, {\"input\": \"aaabbb\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"bb\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"aaacbbb\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"abbzcca\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"abxab\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"bbb\\r\\n\", \"output\": [\"YES\", \"Yes\"]}, {\"input\": \"abcrtyu\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"cbacb\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"acbb\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"ww\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"aaaaaa\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"jizzz\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"aaakcba\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"acbak\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"bddeffd\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"aaa\\r\\n\", \"output\": [\"YES\", \"Yes\"]}, {\"input\": \"afghqwe\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"abcdfga\\r\\n\", \"output\": [\"NO\"]}]"
+    }
+}

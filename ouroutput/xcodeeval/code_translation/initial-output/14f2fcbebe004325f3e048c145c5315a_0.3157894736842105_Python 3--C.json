@@ -1,0 +1,93 @@
+{
+    "oai_response": {
+        "prompt": "Here is code in Python 3 programming lanaguge. Translate the following code from Python 3 to C programming lanaguge. Do not output any extra description or tokens other than the translated code. \n\na, b, c = map(int, input().split())\nif abs(a - b) <= 1:\n    print(a + b + 2 * c)\nelse:\n    if a < b:\n        print(a + a + 1 + 2 * c)\n    else:\n        print(b + b + 1 + 2 * c)\n\n||END-of-SRC||",
+        "response": {
+            "id": "multi-call-as-vdxq277dv7",
+            "model": "deepseek-v3",
+            "created": 1767066150,
+            "choices": [
+                {
+                    "index": 0,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <stdlib.h>\n\nint main() {\n    int a, b, c;\n    scanf(\"%d %d %d\", &a, &b, &c);\n    if (abs(a - b) <= 1) {\n        printf(\"%d\\n\", a + b + 2 * c);\n    } else {\n        if (a < b) {\n            printf(\"%d\\n\", a + a + 1 + 2 * c);\n        } else {\n            printf(\"%d\\n\", b + b + 1 + 2 * c);\n        }\n    }\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 1,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <stdlib.h>\n\nint main() {\n    int a, b, c;\n    scanf(\"%d %d %d\", &a, &b, &c);\n    if (abs(a - b) <= 1) {\n        printf(\"%d\\n\", a + b + 2 * c);\n    } else {\n        if (a < b) {\n            printf(\"%d\\n\", a + a + 1 + 2 * c);\n        } else {\n            printf(\"%d\\n\", b + b + 1 + 2 * c);\n        }\n    }\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 2,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <stdlib.h>\n\nint main() {\n    int a, b, c;\n    scanf(\"%d %d %d\", &a, &b, &c);\n    if (abs(a - b) <= 1) {\n        printf(\"%d\\n\", a + b + 2 * c);\n    } else {\n        if (a < b) {\n            printf(\"%d\\n\", a + a + 1 + 2 * c);\n        } else {\n            printf(\"%d\\n\", b + b + 1 + 2 * c);\n        }\n    }\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 3,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <stdlib.h>\n\nint main() {\n    int a, b, c;\n    scanf(\"%d %d %d\", &a, &b, &c);\n    if (abs(a - b) <= 1) {\n        printf(\"%d\\n\", a + b + 2 * c);\n    } else {\n        if (a < b) {\n            printf(\"%d\\n\", a + a + 1 + 2 * c);\n        } else {\n            printf(\"%d\\n\", b + b + 1 + 2 * c);\n        }\n    }\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 4,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <stdlib.h>\n\nint main() {\n    int a, b, c;\n    scanf(\"%d %d %d\", &a, &b, &c);\n    if (abs(a - b) <= 1) {\n        printf(\"%d\\n\", a + b + 2 * c);\n    } else {\n        if (a < b) {\n            printf(\"%d\\n\", a + a + 1 + 2 * c);\n        } else {\n            printf(\"%d\\n\", b + b + 1 + 2 * c);\n        }\n    }\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                }
+            ],
+            "usage": {
+                "prompt_tokens": 620,
+                "completion_tokens": 676,
+                "total_tokens": 1296
+            }
+        }
+    },
+    "source_data": {
+        "code_uid": "14f2fcbebe004325f3e048c145c5315a",
+        "prob_desc_output_to": "standard output",
+        "prob_desc_notes": "NoteIn the first example the optimal string is \"baba\".In the second example the optimal string is \"abababa\".In the third example the optimal string is \"bababababab\".In the fourth example the optimal string is \"ababab\".",
+        "lang_cluster": "Python",
+        "prob_desc_time_limit": "1 second",
+        "prob_desc_input_spec": "The first line contains three positive integers $$$a$$$, $$$b$$$, $$$c$$$ ($$$1 \\leq a, b, c \\leq 10^9$$$)\u00a0\u2014 the number of strings \"a\", \"b\" and \"ab\" respectively.",
+        "source_code": "a, b, c = map(int, input().split())\nif abs(a - b) <= 1:\n    print(a + b + 2 * c)\nelse:\n    if a < b:\n        print(a + a + 1 + 2 * c)\n    else:\n        print(b + b + 1 + 2 * c)\n\n",
+        "prob_desc_sample_inputs": [
+            "1 1 1",
+            "2 1 2",
+            "3 5 2",
+            "2 2 1",
+            "1000000000 1000000000 1000000000"
+        ],
+        "prob_desc_memory_limit": "256 megabytes",
+        "exec_outcome": "PASSED",
+        "prob_desc_output_spec": "Print a single number\u00a0\u2014 the maximum possible length of the good string you can obtain.",
+        "src_uid": "609f131325c13213aedcf8d55fc3ed77",
+        "prob_desc_input_from": "standard input",
+        "lang": "Python 3",
+        "prob_desc_sample_outputs": [
+            "4",
+            "7",
+            "11",
+            "6",
+            "4000000000"
+        ],
+        "file_name": "d7021504500d5ca7c2b02df8100a574d159e6e67e20ec8071b75800b1267370a",
+        "prob_desc_description": "Let's call a string good if and only if it consists of only two types of letters\u00a0\u2014 'a' and 'b' and every two consecutive letters are distinct. For example \"baba\" and \"aba\" are good strings and \"abb\" is a bad string.You have $$$a$$$ strings \"a\", $$$b$$$ strings \"b\" and $$$c$$$ strings \"ab\". You want to choose some subset of these strings and concatenate them in any arbitrarily order.What is the length of the longest good string you can obtain this way?",
+        "prob_desc_created_at": "1559399700",
+        "difficulty": 800.0,
+        "hidden_unit_tests": "[{\"input\": \"1 1 1\\r\\n\", \"output\": [\"4\"]}, {\"input\": \"2 1 2\\r\\n\", \"output\": [\"7\"]}, {\"input\": \"3 5 2\\r\\n\", \"output\": [\"11\"]}, {\"input\": \"2 2 1\\r\\n\", \"output\": [\"6\"]}, {\"input\": \"1000000000 1000000000 1000000000\\r\\n\", \"output\": [\"4000000000\"]}, {\"input\": \"3 1 3\\r\\n\", \"output\": [\"9\"]}, {\"input\": \"2 2 3\\r\\n\", \"output\": [\"10\"]}, {\"input\": \"1 1 4\\r\\n\", \"output\": [\"10\"]}, {\"input\": \"1 1 2\\r\\n\", \"output\": [\"6\"]}, {\"input\": \"1 2 1\\r\\n\", \"output\": [\"5\"]}, {\"input\": \"3 6 3\\r\\n\", \"output\": [\"13\"]}, {\"input\": \"5 5 4\\r\\n\", \"output\": [\"18\"]}, {\"input\": \"41764 97259 54586\\r\\n\", \"output\": [\"192701\"]}, {\"input\": \"3698483 6798912 18096063\\r\\n\", \"output\": [\"43589093\"]}, {\"input\": \"13350712 76770926 61331309\\r\\n\", \"output\": [\"149364043\"]}, {\"input\": \"6 1 6\\r\\n\", \"output\": [\"15\"]}, {\"input\": \"3 7 5\\r\\n\", \"output\": [\"17\"]}, {\"input\": \"8 4 5\\r\\n\", \"output\": [\"19\"]}, {\"input\": \"8 8 7\\r\\n\", \"output\": [\"30\"]}, {\"input\": \"3 9 1\\r\\n\", \"output\": [\"9\"]}, {\"input\": \"7 9 7\\r\\n\", \"output\": [\"29\"]}, {\"input\": \"3 1 8\\r\\n\", \"output\": [\"19\"]}, {\"input\": \"1 2 8\\r\\n\", \"output\": [\"19\"]}, {\"input\": \"7 5 12\\r\\n\", \"output\": [\"35\"]}, {\"input\": \"11 9 6\\r\\n\", \"output\": [\"31\"]}, {\"input\": \"894 197 325\\r\\n\", \"output\": [\"1045\"]}, {\"input\": \"8581 6058 3019\\r\\n\", \"output\": [\"18155\"]}, {\"input\": \"17843355 6588793 15517352\\r\\n\", \"output\": [\"44212291\"]}, {\"input\": \"333625 453145 800800\\r\\n\", \"output\": [\"2268851\"]}, {\"input\": \"254762 244010 3461323\\r\\n\", \"output\": [\"7410667\"]}, {\"input\": \"4394826 2233224 609367\\r\\n\", \"output\": [\"5685183\"]}, {\"input\": \"135266639 299910226 320610730\\r\\n\", \"output\": [\"911754739\"]}, {\"input\": \"142098087 687355301 987788392\\r\\n\", \"output\": [\"2259772959\"]}, {\"input\": \"4 2 6\\r\\n\", \"output\": [\"17\"]}, {\"input\": \"4 8 5\\r\\n\", \"output\": [\"19\"]}, {\"input\": \"6 1 1\\r\\n\", \"output\": [\"5\"]}, {\"input\": \"5 2 2\\r\\n\", \"output\": [\"9\"]}, {\"input\": \"4 8 10\\r\\n\", \"output\": [\"29\"]}, {\"input\": \"6 14 1\\r\\n\", \"output\": [\"15\"]}, {\"input\": \"7 3 4\\r\\n\", \"output\": [\"15\"]}, {\"input\": \"1000000000 1 1\\r\\n\", \"output\": [\"5\"]}, {\"input\": \"3 4 1\\r\\n\", \"output\": [\"9\"]}, {\"input\": \"2 4 1\\r\\n\", \"output\": [\"7\"]}, {\"input\": \"100 101 99\\r\\n\", \"output\": [\"399\"]}, {\"input\": \"300 1 100\\r\\n\", \"output\": [\"203\"]}, {\"input\": \"6 7 1000\\r\\n\", \"output\": [\"2013\"]}, {\"input\": \"1000 100 10\\r\\n\", \"output\": [\"221\"]}, {\"input\": \"10 1 1\\r\\n\", \"output\": [\"5\"]}, {\"input\": \"1000000000 1000000000 99999999\\r\\n\", \"output\": [\"2199999998\"]}, {\"input\": \"1 5 10\\r\\n\", \"output\": [\"23\"]}, {\"input\": \"6 8 1\\r\\n\", \"output\": [\"15\"]}, {\"input\": \"700 800 1900\\r\\n\", \"output\": [\"5201\"]}, {\"input\": \"3 5 10\\r\\n\", \"output\": [\"27\"]}, {\"input\": \"100 101 102\\r\\n\", \"output\": [\"405\"]}, {\"input\": \"2 100 1\\r\\n\", \"output\": [\"7\"]}, {\"input\": \"1 2333 2333\\r\\n\", \"output\": [\"4669\"]}, {\"input\": \"10 2 5\\r\\n\", \"output\": [\"15\"]}]",
+        "source_lang": "Python 3",
+        "target_lang": "C"
+    }
+}

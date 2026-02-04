@@ -1,0 +1,87 @@
+{
+    "oai_response": {
+        "prompt": "Here is code in Python 3 programming lanaguge. Translate the following code from Python 3 to C programming lanaguge. Do not output any extra description or tokens other than the translated code. \n\nimport math\na,b= map(int,input().split())\nn=a+b\nans,l=0,1\nwhile l<=n:\n    g= n//l\n    if a<g or b<g:\n        l= (n//g) +1\n        continue\n    r= n//g\n    a_low = (a+g)//(g+1)\n    a_high = a//g\n    b_low=(b+g)//(g+1)\n    b_high = b//g\n    if (a_low <= a_high and b_low <= b_high):\n        ans += max(0,min(r,a_high+b_high)- max(l,a_low +b_low)+1)\n\n    l=r+1\nprint(ans)\n||END-of-SRC||",
+        "response": {
+            "id": "multi-call-as-rk0hagfkik",
+            "model": "deepseek-v3",
+            "created": 1767070490,
+            "choices": [
+                {
+                    "index": 0,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <math.h>\n\nint main() {\n    int a, b;\n    scanf(\"%d %d\", &a, &b);\n    int n = a + b;\n    int ans = 0;\n    long long l = 1;\n    while (l <= n) {\n        int g = n / l;\n        if (a < g || b < g) {\n            l = (n / g) + 1;\n            continue;\n        }\n        int r = n / g;\n        int a_low = (a + g) / (g + 1);\n        int a_high = a / g;\n        int b_low = (b + g) / (g + 1);\n        int b_high = b / g;\n        if (a_low <= a_high && b_low <= b_high) {\n            int lower = (a_low + b_low) > l ? (a_low + b_low) : l;\n            int upper = (a_high + b_high) < r ? (a_high + b_high) : r;\n            if (upper >= lower) {\n                ans += upper - lower + 1;\n            }\n        }\n        l = r + 1;\n    }\n    printf(\"%d\\n\", ans);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 1,
+                    "message": {
+                        "role": "assistant",
+                        "content": "Here's the translated code in C:\n\n```c\n#include <stdio.h>\n#include <math.h>\n\nint main() {\n    int a, b;\n    scanf(\"%d %d\", &a, &b);\n    int n = a + b;\n    int ans = 0, l = 1;\n    while (l <= n) {\n        int g = n / l;\n        if (a < g || b < g) {\n            l = (n / g) + 1;\n            continue;\n        }\n        int r = n / g;\n        int a_low = (a + g) / (g + 1);\n        int a_high = a / g;\n        int b_low = (b + g) / (g + 1);\n        int b_high = b / g;\n        if (a_low <= a_high && b_low <= b_high) {\n            int min_val = (r < (a_high + b_high)) ? r : (a_high + b_high);\n            int max_val = (l > (a_low + b_low)) ? l : (a_low + b_low);\n            ans += (min_val - max_val + 1) > 0 ? (min_val - max_val + 1) : 0;\n        }\n        l = r + 1;\n    }\n    printf(\"%d\\n\", ans);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 2,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <math.h>\n\nint main() {\n    int a, b;\n    scanf(\"%d %d\", &a, &b);\n    int n = a + b;\n    int ans = 0;\n    long long l = 1;\n    while (l <= n) {\n        int g = n / l;\n        if (a < g || b < g) {\n            l = (n / g) + 1;\n            continue;\n        }\n        int r = n / g;\n        int a_low = (a + g) / (g + 1);\n        int a_high = a / g;\n        int b_low = (b + g) / (g + 1);\n        int b_high = b / g;\n        if (a_low <= a_high && b_low <= b_high) {\n            int lower = (l > a_low + b_low) ? l : a_low + b_low;\n            int upper = (r < a_high + b_high) ? r : a_high + b_high;\n            if (upper >= lower) {\n                ans += upper - lower + 1;\n            }\n        }\n        l = r + 1;\n    }\n    printf(\"%d\\n\", ans);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 3,
+                    "message": {
+                        "role": "assistant",
+                        "content": "Here's the translated code in C:\n\n```c\n#include <stdio.h>\n#include <math.h>\n\nint main() {\n    int a, b;\n    scanf(\"%d %d\", &a, &b);\n    int n = a + b;\n    int ans = 0, l = 1;\n    while (l <= n) {\n        int g = n / l;\n        if (a < g || b < g) {\n            l = (n / g) + 1;\n            continue;\n        }\n        int r = n / g;\n        int a_low = (a + g) / (g + 1);\n        int a_high = a / g;\n        int b_low = (b + g) / (g + 1);\n        int b_high = b / g;\n        if (a_low <= a_high && b_low <= b_high) {\n            int min_val = (r < (a_high + b_high)) ? r : (a_high + b_high);\n            int max_val = (l > (a_low + b_low)) ? l : (a_low + b_low);\n            ans += (min_val - max_val + 1) > 0 ? (min_val - max_val + 1) : 0;\n        }\n        l = r + 1;\n    }\n    printf(\"%d\\n\", ans);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 4,
+                    "message": {
+                        "role": "assistant",
+                        "content": "Here's the translated code in C:\n\n```c\n#include <stdio.h>\n#include <math.h>\n\nint main() {\n    int a, b;\n    scanf(\"%d %d\", &a, &b);\n    int n = a + b;\n    int ans = 0, l = 1;\n    while (l <= n) {\n        int g = n / l;\n        if (a < g || b < g) {\n            l = (n / g) + 1;\n            continue;\n        }\n        int r = n / g;\n        int a_low = (a + g) / (g + 1);\n        int a_high = a / g;\n        int b_low = (b + g) / (g + 1);\n        int b_high = b / g;\n        if (a_low <= a_high && b_low <= b_high) {\n            int min_val = (r < (a_high + b_high)) ? r : (a_high + b_high);\n            int max_val = (l > (a_low + b_low)) ? l : (a_low + b_low);\n            ans += (min_val - max_val + 1) > 0 ? (min_val - max_val + 1) : 0;\n        }\n        l = r + 1;\n    }\n    printf(\"%d\\n\", ans);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                }
+            ],
+            "usage": {
+                "prompt_tokens": 1090,
+                "completion_tokens": 1511,
+                "total_tokens": 2601
+            }
+        }
+    },
+    "source_data": {
+        "code_uid": "267078b17a8b82f2c60f86cd246fb705",
+        "prob_desc_output_to": "standard output",
+        "prob_desc_notes": "NoteAll the possible periods for the first example:   $$$3$$$ \"BBABBA\"  $$$4$$$ \"BBAABB\"  $$$5$$$ \"BBBAAB\"  $$$6$$$ \"AABBBB\" All the possible periods for the second example:   $$$3$$$ \"BAABAABA\"  $$$5$$$ \"BAABABAA\"  $$$6$$$ \"BABAAABA\"  $$$7$$$ \"BAABAAAB\"  $$$8$$$ \"AAAAABBB\" Note that these are not the only possible strings for the given periods.",
+        "lang_cluster": "Python",
+        "prob_desc_time_limit": "1 second",
+        "prob_desc_input_spec": "The first line contains two integers $$$a$$$ and $$$b$$$ ($$$1 \\le a, b \\le 10^9$$$) \u2014 the number of letters 'A' and 'B', respectively.",
+        "source_code": "import math\na,b= map(int,input().split())\nn=a+b\nans,l=0,1\nwhile l<=n:\n    g= n//l\n    if a<g or b<g:\n        l= (n//g) +1\n        continue\n    r= n//g\n    a_low = (a+g)//(g+1)\n    a_high = a//g\n    b_low=(b+g)//(g+1)\n    b_high = b//g\n    if (a_low <= a_high and b_low <= b_high):\n        ans += max(0,min(r,a_high+b_high)- max(l,a_low +b_low)+1)\n\n    l=r+1\nprint(ans)\n",
+        "prob_desc_sample_inputs": [
+            "2 4",
+            "5 3"
+        ],
+        "prob_desc_memory_limit": "256 megabytes",
+        "exec_outcome": "PASSED",
+        "prob_desc_output_spec": "Print the number of different periods over all possible strings with $$$a$$$ letters 'A' and $$$b$$$ letters 'B'.",
+        "src_uid": "0e6a204565fef118ea99d2fa1e378dd0",
+        "prob_desc_input_from": "standard input",
+        "lang": "Python 3",
+        "prob_desc_sample_outputs": [
+            "4",
+            "5"
+        ],
+        "file_name": "d7021504500d5ca7c2b02df8100a574d159e6e67e20ec8071b75800b1267370a",
+        "prob_desc_description": "You are given $$$a$$$ uppercase Latin letters 'A' and $$$b$$$ letters 'B'.The period of the string is the smallest such positive integer $$$k$$$ that $$$s_i = s_{i~mod~k}$$$ ($$$0$$$-indexed) for each $$$i$$$. Note that this implies that $$$k$$$ won't always divide $$$a+b = |s|$$$.For example, the period of string \"ABAABAA\" is $$$3$$$, the period of \"AAAA\" is $$$1$$$, and the period of \"AABBB\" is $$$5$$$.Find the number of different periods over all possible strings with $$$a$$$ letters 'A' and $$$b$$$ letters 'B'.",
+        "prob_desc_created_at": "1565188500",
+        "difficulty": 2700.0,
+        "hidden_unit_tests": "[{\"input\": \"2 4\\r\\n\", \"output\": [\"4\"]}, {\"input\": \"5 3\\r\\n\", \"output\": [\"5\"]}, {\"input\": \"1 1\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"1 2\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"2 1\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"1000000000 1\\r\\n\", \"output\": [\"500000001\"]}, {\"input\": \"1 1000000000\\r\\n\", \"output\": [\"500000001\"]}, {\"input\": \"1000000000 1000000000\\r\\n\", \"output\": [\"1999936805\"]}, {\"input\": \"49464524 956817411\\r\\n\", \"output\": [\"1006177186\"]}, {\"input\": \"917980664 839933539\\r\\n\", \"output\": [\"1757835091\"]}, {\"input\": \"491529509 18016963\\r\\n\", \"output\": [\"509460797\"]}, {\"input\": \"65078353 196100387\\r\\n\", \"output\": [\"261146454\"]}, {\"input\": \"933594493 374183811\\r\\n\", \"output\": [\"1307707417\"]}, {\"input\": \"1000000000 956817411\\r\\n\", \"output\": [\"1956733985\"]}, {\"input\": \"1000000000 839933539\\r\\n\", \"output\": [\"1839852485\"]}, {\"input\": \"1000000000 18016963\\r\\n\", \"output\": [\"1017851489\"]}, {\"input\": \"1 122878623\\r\\n\", \"output\": [\"61439312\"]}, {\"input\": \"1 300962047\\r\\n\", \"output\": [\"150481024\"]}, {\"input\": \"1 479045471\\r\\n\", \"output\": [\"239522736\"]}, {\"input\": \"956817411 1000000000\\r\\n\", \"output\": [\"1956733985\"]}, {\"input\": \"839933539 1000000000\\r\\n\", \"output\": [\"1839852485\"]}, {\"input\": \"18016963 1000000000\\r\\n\", \"output\": [\"1017851489\"]}, {\"input\": \"804463085 1\\r\\n\", \"output\": [\"402231543\"]}, {\"input\": \"982546509 1\\r\\n\", \"output\": [\"491273255\"]}, {\"input\": \"865662637 1\\r\\n\", \"output\": [\"432831319\"]}, {\"input\": \"500000000 515868890\\r\\n\", \"output\": [\"1015808858\"]}, {\"input\": \"500000000 693952314\\r\\n\", \"output\": [\"1193887001\"]}, {\"input\": \"500000000 577068442\\r\\n\", \"output\": [\"1077006614\"]}, {\"input\": \"97590986 500000000\\r\\n\", \"output\": [\"597537504\"]}, {\"input\": \"275674410 500000000\\r\\n\", \"output\": [\"775621118\"]}, {\"input\": \"453757834 500000000\\r\\n\", \"output\": [\"953699599\"]}, {\"input\": \"310973933 310973932\\r\\n\", \"output\": [\"621912604\"]}, {\"input\": \"194090061 194090063\\r\\n\", \"output\": [\"388152264\"]}, {\"input\": \"728340333 728340331\\r\\n\", \"output\": [\"1456626719\"]}, {\"input\": \"611471244 611471251\\r\\n\", \"output\": [\"1222892906\"]}, {\"input\": \"943610807 943610806\\r\\n\", \"output\": [\"1887160182\"]}, {\"input\": \"486624528 486624569\\r\\n\", \"output\": [\"973204768\"]}, {\"input\": \"355140669 355140562\\r\\n\", \"output\": [\"710242885\"]}, {\"input\": \"370754498 370754723\\r\\n\", \"output\": [\"741469514\"]}, {\"input\": \"310973932 310973933\\r\\n\", \"output\": [\"621912604\"]}, {\"input\": \"194090063 194090061\\r\\n\", \"output\": [\"388152264\"]}, {\"input\": \"728340331 728340333\\r\\n\", \"output\": [\"1456626719\"]}, {\"input\": \"611471251 611471244\\r\\n\", \"output\": [\"1222892906\"]}, {\"input\": \"943610806 943610807\\r\\n\", \"output\": [\"1887160182\"]}, {\"input\": \"486624569 486624528\\r\\n\", \"output\": [\"973204768\"]}, {\"input\": \"355140562 355140669\\r\\n\", \"output\": [\"710242885\"]}, {\"input\": \"370754723 370754498\\r\\n\", \"output\": [\"741469514\"]}, {\"input\": \"1 3\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"3 1\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"2 2\\r\\n\", \"output\": [\"3\"]}, {\"input\": \"1 4\\r\\n\", \"output\": [\"3\"]}, {\"input\": \"2 3\\r\\n\", \"output\": [\"4\"]}, {\"input\": \"3 2\\r\\n\", \"output\": [\"4\"]}, {\"input\": \"4 1\\r\\n\", \"output\": [\"3\"]}]",
+        "source_lang": "Python 3",
+        "target_lang": "C"
+    }
+}

@@ -1,0 +1,91 @@
+{
+    "oai_response": {
+        "prompt": "Here is code in Python 3 programming lanaguge. Translate the following code from Python 3 to C programming lanaguge. Do not output any extra description or tokens other than the translated code. \n\na, b = map(int, input().split())\ns = input()\nsm = [[0, 0] for i in range(len(s))]\nrepl = {'U': (0, 1), 'D': (0, -1), 'L': (-1, 0), 'R': (1, 0)}\nfor i, c in enumerate(s):\n    sm[i][0] = sm[i - 1][0] + repl[c][0]\n    sm[i][1] = sm[i - 1][1] + repl[c][1]\n# a = n * sm[-1][0] + sm[i][0]\nfor i in range(len(s)):\n    na, nb = 0 if sm[-1][0] == 0 else (a - sm[i][0]) // sm[-1][0], 0 if sm[-1][1] == 0 else (b - sm[i][1]) // sm[-1][1]\n    if a == na * sm[-1][0] + sm[i][0] and b == nb * sm[-1][1] + sm[i][1] and (0 in sm[-1] or na == nb) and na >= -1 and nb >= -1:\n        print('Yes')\n        exit(0)\nprint('No')\n||END-of-SRC||",
+        "response": {
+            "id": "multi-call-as-i4nyjqw685",
+            "model": "deepseek-v3",
+            "created": 1767067745,
+            "choices": [
+                {
+                    "index": 0,
+                    "message": {
+                        "role": "assistant",
+                        "content": "Here's the translated code in C:\n\n```c\n#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\nint main() {\n    int a, b;\n    scanf(\"%d %d\", &a, &b);\n    char s[100001];\n    scanf(\"%s\", s);\n    int len = strlen(s);\n    int (*sm)[2] = malloc(len * sizeof(int[2]));\n    \n    for (int i = 0; i < len; i++) {\n        if (i == 0) {\n            sm[i][0] = 0;\n            sm[i][1] = 0;\n        } else {\n            sm[i][0] = sm[i-1][0];\n            sm[i][1] = sm[i-1][1];\n        }\n        switch(s[i]) {\n            case 'U': sm[i][1]++; break;\n            case 'D': sm[i][1]--; break;\n            case 'L': sm[i][0]--; break;\n            case 'R': sm[i][0]++; break;\n        }\n    }\n    \n    for (int i = 0; i < len; i++) {\n        int na = (sm[len-1][0] == 0) ? 0 : (a - sm[i][0]) / sm[len-1][0];\n        int nb = (sm[len-1][1] == 0) ? 0 : (b - sm[i][1]) / sm[len-1][1];\n        if (a == na * sm[len-1][0] + sm[i][0] && \n            b == nb * sm[len-1][1] + sm[i][1] && \n            (sm[len-1][0] == 0 || sm[len-1][1] == 0 || na == nb) && \n            na >= -1 && nb >= -1) {\n            printf(\"Yes\\n\");\n            free(sm);\n            return 0;\n        }\n    }\n    \n    printf(\"No\\n\");\n    free(sm);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 1,
+                    "message": {
+                        "role": "assistant",
+                        "content": "Here's the translated code in C:\n\n```c\n#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\nint main() {\n    int a, b;\n    scanf(\"%d %d\", &a, &b);\n    char s[100001];\n    scanf(\"%s\", s);\n    int len = strlen(s);\n    int (*sm)[2] = malloc(len * sizeof(int[2]));\n    \n    for (int i = 0; i < len; i++) {\n        if (i == 0) {\n            sm[i][0] = 0;\n            sm[i][1] = 0;\n        } else {\n            sm[i][0] = sm[i-1][0];\n            sm[i][1] = sm[i-1][1];\n        }\n        switch(s[i]) {\n            case 'U': sm[i][1]++; break;\n            case 'D': sm[i][1]--; break;\n            case 'L': sm[i][0]--; break;\n            case 'R': sm[i][0]++; break;\n        }\n    }\n    \n    for (int i = 0; i < len; i++) {\n        int na = 0, nb = 0;\n        if (sm[len-1][0] != 0) {\n            na = (a - sm[i][0]) / sm[len-1][0];\n        }\n        if (sm[len-1][1] != 0) {\n            nb = (b - sm[i][1]) / sm[len-1][1];\n        }\n        if (a == na * sm[len-1][0] + sm[i][0] && \n            b == nb * sm[len-1][1] + sm[i][1] && \n            (sm[len-1][0] == 0 || sm[len-1][1] == 0 || na == nb) && \n            na >= -1 && nb >= -1) {\n            printf(\"Yes\\n\");\n            free(sm);\n            return 0;\n        }\n    }\n    \n    printf(\"No\\n\");\n    free(sm);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 2,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\ntypedef struct {\n    int x;\n    int y;\n} Point;\n\nint main() {\n    int a, b;\n    scanf(\"%d %d\", &a, &b);\n    char s[100001];\n    scanf(\"%s\", s);\n    int len = strlen(s);\n    Point *sm = (Point *)malloc(len * sizeof(Point));\n    Point repl[256];\n    repl['U'] = (Point){0, 1};\n    repl['D'] = (Point){0, -1};\n    repl['L'] = (Point){-1, 0};\n    repl['R'] = (Point){1, 0};\n    \n    for (int i = 0; i < len; i++) {\n        char c = s[i];\n        sm[i].x = (i == 0 ? 0 : sm[i-1].x) + repl[c].x;\n        sm[i].y = (i == 0 ? 0 : sm[i-1].y) + repl[c].y;\n    }\n    \n    for (int i = 0; i < len; i++) {\n        int na, nb;\n        if (sm[len-1].x == 0) {\n            na = 0;\n        } else {\n            na = (a - sm[i].x) / sm[len-1].x;\n        }\n        if (sm[len-1].y == 0) {\n            nb = 0;\n        } else {\n            nb = (b - sm[i].y) / sm[len-1].y;\n        }\n        \n        if (a == na * sm[len-1].x + sm[i].x && \n            b == nb * sm[len-1].y + sm[i].y && \n            (sm[len-1].x == 0 || sm[len-1].y == 0 || na == nb) && \n            na >= -1 && nb >= -1) {\n            printf(\"Yes\\n\");\n            free(sm);\n            return 0;\n        }\n    }\n    \n    printf(\"No\\n\");\n    free(sm);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 3,
+                    "message": {
+                        "role": "assistant",
+                        "content": "Here's the translated code in C:\n\n```c\n#include <stdio.h>\n#include <string.h>\n\nint main() {\n    int a, b;\n    scanf(\"%d %d\", &a, &b);\n    char s[100001];\n    scanf(\"%s\", s);\n    int len = strlen(s);\n    int sm[len][2];\n    int repl[4][2] = {{0, 1}, {0, -1}, {-1, 0}, {1, 0}};\n    for (int i = 0; i < len; i++) {\n        char c = s[i];\n        int idx = (c == 'U') ? 0 : (c == 'D') ? 1 : (c == 'L') ? 2 : 3;\n        sm[i][0] = (i == 0) ? repl[idx][0] : sm[i-1][0] + repl[idx][0];\n        sm[i][1] = (i == 0) ? repl[idx][1] : sm[i-1][1] + repl[idx][1];\n    }\n    for (int i = 0; i < len; i++) {\n        int na = (sm[len-1][0] == 0) ? 0 : (a - sm[i][0]) / sm[len-1][0];\n        int nb = (sm[len-1][1] == 0) ? 0 : (b - sm[i][1]) / sm[len-1][1];\n        if (a == na * sm[len-1][0] + sm[i][0] && \n            b == nb * sm[len-1][1] + sm[i][1] && \n            (sm[len-1][0] == 0 || sm[len-1][1] == 0 || na == nb) && \n            na >= -1 && nb >= -1) {\n            printf(\"Yes\\n\");\n            return 0;\n        }\n    }\n    printf(\"No\\n\");\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 4,
+                    "message": {
+                        "role": "assistant",
+                        "content": "Here's the translated code in C:\n\n```c\n#include <stdio.h>\n#include <string.h>\n#include <stdlib.h>\n\nint main() {\n    int a, b;\n    scanf(\"%d %d\", &a, &b);\n    char s[100000];\n    scanf(\"%s\", s);\n    int len = strlen(s);\n    int (*sm)[2] = malloc(len * sizeof(int[2]));\n    \n    for (int i = 0; i < len; i++) {\n        if (i == 0) {\n            sm[i][0] = 0;\n            sm[i][1] = 0;\n        } else {\n            sm[i][0] = sm[i-1][0];\n            sm[i][1] = sm[i-1][1];\n        }\n        switch(s[i]) {\n            case 'U': sm[i][1]++; break;\n            case 'D': sm[i][1]--; break;\n            case 'L': sm[i][0]--; break;\n            case 'R': sm[i][0]++; break;\n        }\n    }\n    \n    for (int i = 0; i < len; i++) {\n        int na = (sm[len-1][0] == 0) ? 0 : (a - sm[i][0]) / sm[len-1][0];\n        int nb = (sm[len-1][1] == 0) ? 0 : (b - sm[i][1]) / sm[len-1][1];\n        if (a == na * sm[len-1][0] + sm[i][0] && \n            b == nb * sm[len-1][1] + sm[i][1] && \n            (sm[len-1][0] == 0 || sm[len-1][1] == 0 || na == nb) && \n            na >= -1 && nb >= -1) {\n            printf(\"Yes\\n\");\n            free(sm);\n            return 0;\n        }\n    }\n    \n    printf(\"No\\n\");\n    free(sm);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                }
+            ],
+            "usage": {
+                "prompt_tokens": 1640,
+                "completion_tokens": 2244,
+                "total_tokens": 3884
+            }
+        }
+    },
+    "source_data": {
+        "code_uid": "496f3a1c26a26a84cdcee922a2e41ba7",
+        "prob_desc_output_to": "standard output",
+        "prob_desc_notes": "NoteIn the first and second test case, command string is \"RU\", so the robot will go right, then go up, then right, and then up and so on.The locations of its moves are (0, 0) \u2009\u2192\u2009 (1, 0) \u2009\u2192\u2009 (1, 1) \u2009\u2192\u2009 (2, 1) \u2009\u2192\u2009 (2, 2) \u2009\u2192\u2009 ...So it can reach (2, 2) but not (1, 2).",
+        "lang_cluster": "Python",
+        "prob_desc_time_limit": "1 second",
+        "prob_desc_input_spec": "The first line contains two integers a and b, (\u2009-\u2009109\u2009\u2264\u2009a,\u2009b\u2009\u2264\u2009109). The second line contains a string s (1\u2009\u2264\u2009|s|\u2009\u2264\u2009100, s only contains characters 'U', 'D', 'L', 'R') \u2014 the command.",
+        "source_code": "a, b = map(int, input().split())\ns = input()\nsm = [[0, 0] for i in range(len(s))]\nrepl = {'U': (0, 1), 'D': (0, -1), 'L': (-1, 0), 'R': (1, 0)}\nfor i, c in enumerate(s):\n    sm[i][0] = sm[i - 1][0] + repl[c][0]\n    sm[i][1] = sm[i - 1][1] + repl[c][1]\n# a = n * sm[-1][0] + sm[i][0]\nfor i in range(len(s)):\n    na, nb = 0 if sm[-1][0] == 0 else (a - sm[i][0]) // sm[-1][0], 0 if sm[-1][1] == 0 else (b - sm[i][1]) // sm[-1][1]\n    if a == na * sm[-1][0] + sm[i][0] and b == nb * sm[-1][1] + sm[i][1] and (0 in sm[-1] or na == nb) and na >= -1 and nb >= -1:\n        print('Yes')\n        exit(0)\nprint('No')\n",
+        "prob_desc_sample_inputs": [
+            "2 2\nRU",
+            "1 2\nRU",
+            "-1 1000000000\nLRRLU",
+            "0 0\nD"
+        ],
+        "prob_desc_memory_limit": "256 megabytes",
+        "exec_outcome": "PASSED",
+        "prob_desc_output_spec": "Print \"Yes\" if the robot will be located at (a,\u2009b), and \"No\" otherwise.",
+        "src_uid": "5d6212e28c7942e9ff4d096938b782bf",
+        "prob_desc_input_from": "standard input",
+        "lang": "Python 3",
+        "prob_desc_sample_outputs": [
+            "Yes",
+            "No",
+            "Yes",
+            "Yes"
+        ],
+        "file_name": "d7021504500d5ca7c2b02df8100a574d159e6e67e20ec8071b75800b1267370a",
+        "prob_desc_description": "Fox Ciel has a robot on a 2D plane. Initially it is located in (0, 0). Fox Ciel code a command to it. The command was represented by string s. Each character of s is one move operation. There are four move operations at all:  'U': go up, (x, y) \u2009\u2192\u2009 (x, y+1);  'D': go down, (x, y) \u2009\u2192\u2009 (x, y-1);  'L': go left, (x, y) \u2009\u2192\u2009 (x-1, y);  'R': go right, (x, y) \u2009\u2192\u2009 (x+1, y). The robot will do the operations in s from left to right, and repeat it infinite times. Help Fox Ciel to determine if after some steps the robot will located in (a,\u2009b).",
+        "prob_desc_created_at": "1372433400",
+        "difficulty": 1700.0,
+        "hidden_unit_tests": "[{\"input\": \"2 2\\r\\nRU\\r\\n\", \"output\": [\"Yes\"]}, {\"input\": \"1 2\\r\\nRU\\r\\n\", \"output\": [\"No\"]}, {\"input\": \"-1 1000000000\\r\\nLRRLU\\r\\n\", \"output\": [\"Yes\"]}, {\"input\": \"0 0\\r\\nD\\r\\n\", \"output\": [\"Yes\"]}, {\"input\": \"0 0\\r\\nUURRDL\\r\\n\", \"output\": [\"Yes\"]}, {\"input\": \"987654321 987654321\\r\\nUURRDL\\r\\n\", \"output\": [\"Yes\"]}, {\"input\": \"4 2\\r\\nUURRDL\\r\\n\", \"output\": [\"No\"]}, {\"input\": \"4 3\\r\\nUURRDL\\r\\n\", \"output\": [\"Yes\"]}, {\"input\": \"4 4\\r\\nUURRDL\\r\\n\", \"output\": [\"Yes\"]}, {\"input\": \"4 6\\r\\nUURRDL\\r\\n\", \"output\": [\"Yes\"]}, {\"input\": \"4 7\\r\\nUURRDL\\r\\n\", \"output\": [\"No\"]}, {\"input\": \"1000000000 1000000000\\r\\nUURRDL\\r\\n\", \"output\": [\"Yes\"]}, {\"input\": \"-1 -1\\r\\nUR\\r\\n\", \"output\": [\"No\"]}, {\"input\": \"1 1\\r\\nUURRDDLL\\r\\n\", \"output\": [\"No\"]}, {\"input\": \"987654321 2\\r\\nUURDD\\r\\n\", \"output\": [\"Yes\"]}, {\"input\": \"0 123456789\\r\\nRRULL\\r\\n\", \"output\": [\"Yes\"]}, {\"input\": \"4 4\\r\\nUUUURRRRDDDDLLLL\\r\\n\", \"output\": [\"Yes\"]}, {\"input\": \"-491226083 -49122610\\r\\nUDRLDURLDLLLDUDURLRDUUDDUUULUDRDRDUULURDRLLDDDLUDUURLUUDLLDULLLLDDLDDUU\\r\\n\", \"output\": [\"Yes\"]}, {\"input\": \"-261597957 418556728\\r\\nLLLDLUDUULLRDDULLRRUDRDLULRLRLLRRUUDRRLRUDLRRLUDRDLLUUDUULRURLDLULUUULDDUURLRUDURRL\\r\\n\", \"output\": [\"Yes\"]}, {\"input\": \"-771928144 -3\\r\\nRUDULULDRDLLLULDDUDDDDUDULRULRUULDDDURUDLUURULLLDLLDDRDDRLRURUULRUURRUDLDLDDRLLULRRDRRLLUULUDRUUDRRD\\r\\n\", \"output\": [\"Yes\"]}, {\"input\": \"397346346 1\\r\\nDDURRUURLDLRRLULD\\r\\n\", \"output\": [\"Yes\"]}, {\"input\": \"-528551525 0\\r\\nUDRLRRLDLDLURRRRULDLRLRLURUUDDLRLLDRRULLUDLURDLUUULLLRUUUDRRURLDUDULDDRDDDRDL\\r\\n\", \"output\": [\"Yes\"]}, {\"input\": \"311692421 -129871846\\r\\nLLLDURULDDDDUDDURRLUUDRLDDRDURDDRUDUURLUDUDLDRUDDDUUURDRRUDRDRDURLLDURUUDRLDLDURRRRRRDULURDRU\\r\\n\", \"output\": [\"Yes\"]}, {\"input\": \"485940814 728911221\\r\\nURURU\\r\\n\", \"output\": [\"Yes\"]}, {\"input\": \"-843450986 632588242\\r\\nLURLULULRUDUDULRDDLUL\\r\\n\", \"output\": [\"Yes\"]}, {\"input\": \"647999516 -809999401\\r\\nUDLDDLLULUDDLLDUULRRRDLUDDLDDLRLRRDRURURDRRDRULUDRDULRULLRRLLDDRLRRUDRURDUULUDLRRLRDR\\r\\n\", \"output\": [\"Yes\"]}, {\"input\": \"352820537 -764444491\\r\\nRDDUDLUDDUDLRRRDRRRDRRDUDUDDURLRRLDRLLRLLLLUULUDRURRDRLDDLLDRDURDUDRUDDLUDRLURUDRURDRDDLDRLDLDLLU\\r\\n\", \"output\": [\"Yes\"]}, {\"input\": \"-284973644 -1\\r\\nDLULLDLRUUDRR\\r\\n\", \"output\": [\"Yes\"]}, {\"input\": \"356922591 -2\\r\\nRRLDLDUDRUUUULUUDDULDDUDD\\r\\n\", \"output\": [\"No\"]}, {\"input\": \"27033101 54066203\\r\\nUDDDRDLLLRUUDDLRDLDRLRUDDULRLLRULR\\r\\n\", \"output\": [\"No\"]}, {\"input\": \"-199335150 39867031\\r\\nLLURRDUULRUDDRDUUULDLDRDDLURDRLDRLLLRRRRRULRRRUUDD\\r\\n\", \"output\": [\"No\"]}, {\"input\": \"609504072 609504074\\r\\nULRLUDLDDR\\r\\n\", \"output\": [\"No\"]}, {\"input\": \"497684357 829473929\\r\\nRRLDUUURULURRLLRRLRLURRLDU\\r\\n\", \"output\": [\"Yes\"]}, {\"input\": \"551922835 183974295\\r\\nDUDUUULDRLRURRDULRRUDDLRLLUULLRLRDRDRR\\r\\n\", \"output\": [\"No\"]}, {\"input\": \"825368095 -825368096\\r\\nRD\\r\\n\", \"output\": [\"No\"]}, {\"input\": \"-458990423 -229495204\\r\\nDLLDDRLUDLRLUL\\r\\n\", \"output\": [\"No\"]}, {\"input\": \"285102789 570205594\\r\\nRRDULRULULRRDUURRLURUDDULLRDUL\\r\\n\", \"output\": [\"No\"]}, {\"input\": \"109928480 219856920\\r\\nLRURLRLURDRDLDRDLRDDUUDDLULDRRUUURRUDLLUULUUUR\\r\\n\", \"output\": [\"No\"]}, {\"input\": \"-532674020 532674026\\r\\nUURLLL\\r\\n\", \"output\": [\"No\"]}, {\"input\": \"999999999 0\\r\\nRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR\\r\\n\", \"output\": [\"Yes\"]}, {\"input\": \"0 0\\r\\nUDLRUDLRUDLRUDLRUDLRUDLRUDLRUDLRUDLRUDLRUDLRUDLRUDLRUDLRUDLRUDLRUDLRUDLRUDLRUDLRUDLRUDLRUDLRUDLRUDLR\\r\\n\", \"output\": [\"Yes\"]}, {\"input\": \"1 1\\r\\nUDLRUDLRUDLRUDLRUDLRUDLRUDLRUDLRUDLRUDLRUDLRUDLRUDLRUDLRUDLRUDLRUDLRUDLRUDLRUDLRUDLRUDLRUDLRUDLRUDLR\\r\\n\", \"output\": [\"No\"]}, {\"input\": \"-1000000000 -1000000000\\r\\nDLDLDLDLDLDLDLDLDLDLDLDLDLDLDLDLDLDLDLDLDLDLDLDLDLDLDLDLDLDLDLDLDLDLDLDLDLDLDLDLDLDLDLDLDLDLDLDLDLDL\\r\\n\", \"output\": [\"Yes\"]}, {\"input\": \"3 3\\r\\nUURR\\r\\n\", \"output\": [\"No\"]}, {\"input\": \"-2 -2\\r\\nUR\\r\\n\", \"output\": [\"No\"]}, {\"input\": \"5 5\\r\\nUDLR\\r\\n\", \"output\": [\"No\"]}, {\"input\": \"0 -1\\r\\nU\\r\\n\", \"output\": [\"No\"]}, {\"input\": \"-1 0\\r\\nR\\r\\n\", \"output\": [\"No\"]}, {\"input\": \"1000000000 1000000000\\r\\nURURURUR\\r\\n\", \"output\": [\"Yes\"]}, {\"input\": \"-1 -1\\r\\nRU\\r\\n\", \"output\": [\"No\"]}, {\"input\": \"1 1\\r\\nLD\\r\\n\", \"output\": [\"No\"]}, {\"input\": \"-2 -2\\r\\nUURR\\r\\n\", \"output\": [\"No\"]}, {\"input\": \"1000000000 0\\r\\nRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR\\r\\n\", \"output\": [\"Yes\"]}, {\"input\": \"2 6\\r\\nRUUUURLDDDL\\r\\n\", \"output\": [\"Yes\"]}, {\"input\": \"0 1\\r\\nLUUR\\r\\n\", \"output\": [\"No\"]}, {\"input\": \"1 1\\r\\nURDLDL\\r\\n\", \"output\": [\"Yes\"]}, {\"input\": \"-10 -10\\r\\nRU\\r\\n\", \"output\": [\"No\"]}, {\"input\": \"1000000000 1000000000\\r\\nRURURURURURURURURURURURURURURURURURURURURURURURURURURURURURURURURURURURURURURURURURURURURURURURURURU\\r\\n\", \"output\": [\"Yes\"]}, {\"input\": \"-1000000000 -500000000\\r\\nURR\\r\\n\", \"output\": [\"No\"]}, {\"input\": \"-2 0\\r\\nULLLDDRRRR\\r\\n\", \"output\": [\"Yes\"]}, {\"input\": \"999999999 -999999999\\r\\nRRRRRRRRRRRRRRRRRRRRRRRRRDDDDDDDDDDDDDDDDDDDDDDDDDLLLLLLLLLLLLLLLLLLLLLLLUUUUUUUUUUUUUUUUUUUUUUU\\r\\n\", \"output\": [\"Yes\"]}, {\"input\": \"-100 -100\\r\\nRU\\r\\n\", \"output\": [\"No\"]}, {\"input\": \"100 100\\r\\nRUL\\r\\n\", \"output\": [\"No\"]}, {\"input\": \"0 1\\r\\nUDLR\\r\\n\", \"output\": [\"Yes\"]}, {\"input\": \"0 1\\r\\nD\\r\\n\", \"output\": [\"No\"]}, {\"input\": \"0 -3\\r\\nRDDL\\r\\n\", \"output\": [\"No\"]}]",
+        "source_lang": "Python 3",
+        "target_lang": "C"
+    }
+}

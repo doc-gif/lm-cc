@@ -1,0 +1,89 @@
+{
+    "oai_response": {
+        "prompt": "Here is code in Python 3 programming lanaguge. Translate the following code from Python 3 to C programming lanaguge. Do not output any extra description or tokens other than the translated code. \n\nn,s,a=input(),[],0\nfor i in map(int,input().split(' ')):\n    while len(s)>1 and min(s[-2],i)>=s[-1]:\n        a+=min(i,s[-2])\n        del(s[-1])\n    s.append(i)\ns.sort()\nprint(a+sum(s[0:-2]))||END-of-SRC||",
+        "response": {
+            "id": "multi-call-as-wbvc9z46tt",
+            "model": "deepseek-v3",
+            "created": 1767070324,
+            "choices": [
+                {
+                    "index": 0,
+                    "message": {
+                        "role": "assistant",
+                        "content": "Here's the translated code in C:\n\n```c\n#include <stdio.h>\n#include <stdlib.h>\n\nint compare(const void *a, const void *b) {\n    return (*(int*)a - *(int*)b);\n}\n\nint main() {\n    int n, a = 0;\n    scanf(\"%d\", &n);\n    int *s = (int*)malloc(n * sizeof(int));\n    int top = -1;\n    \n    for (int i = 0; i < n; i++) {\n        int val;\n        scanf(\"%d\", &val);\n        while (top > 0 && (s[top-1] < val ? s[top-1] : val) >= s[top]) {\n            a += s[top-1] < s[top] ? s[top-1] : s[top];\n            top--;\n        }\n        s[++top] = val;\n    }\n    \n    qsort(s, top+1, sizeof(int), compare);\n    int sum = 0;\n    for (int i = 0; i <= top-2; i++) {\n        sum += s[i];\n    }\n    printf(\"%d\", a + sum);\n    free(s);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 1,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <stdlib.h>\n\nint main() {\n    int n, a = 0;\n    scanf(\"%d\", &n);\n    int *s = (int *)malloc(n * sizeof(int));\n    int top = -1;\n    \n    for (int i = 0; i < n; i++) {\n        int val;\n        scanf(\"%d\", &val);\n        while (top > 0 && (s[top-1] < val ? s[top-1] : val) >= s[top]) {\n            a += s[top-1] < s[top] ? s[top-1] : s[top];\n            top--;\n        }\n        s[++top] = val;\n    }\n    \n    for (int i = 0; i < top; i++) {\n        for (int j = i + 1; j <= top; j++) {\n            if (s[i] > s[j]) {\n                int temp = s[i];\n                s[i] = s[j];\n                s[j] = temp;\n            }\n        }\n    }\n    \n    int sum = 0;\n    for (int i = 0; i <= top - 2; i++) {\n        sum += s[i];\n    }\n    \n    printf(\"%d\\n\", a + sum);\n    free(s);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 2,
+                    "message": {
+                        "role": "assistant",
+                        "content": "Here's the translated code in C:\n\n```c\n#include <stdio.h>\n#include <stdlib.h>\n\nint compare(const void *a, const void *b) {\n    return (*(int*)a - *(int*)b);\n}\n\nint main() {\n    int n, a = 0;\n    scanf(\"%d\", &n);\n    int *s = malloc(n * sizeof(int));\n    int top = 0;\n    \n    for (int i = 0; i < n; i++) {\n        int val;\n        scanf(\"%d\", &val);\n        while (top > 1 && (s[top-2] < val ? s[top-2] : val) >= s[top-1]) {\n            a += s[top-2] < val ? s[top-2] : val;\n            top--;\n        }\n        s[top++] = val;\n    }\n    \n    qsort(s, top, sizeof(int), compare);\n    int sum = 0;\n    for (int i = 0; i < top - 2; i++) {\n        sum += s[i];\n    }\n    printf(\"%d\\n\", a + sum);\n    free(s);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 3,
+                    "message": {
+                        "role": "assistant",
+                        "content": "Here's the translated code in C:\n\n```c\n#include <stdio.h>\n#include <stdlib.h>\n\nint compare(const void *a, const void *b) {\n    return (*(int*)a - *(int*)b);\n}\n\nint main() {\n    int n, a = 0;\n    scanf(\"%d\", &n);\n    int *s = malloc(n * sizeof(int));\n    int top = -1;\n    \n    for (int i = 0; i < n; i++) {\n        int val;\n        scanf(\"%d\", &val);\n        while (top > 0 && (s[top-1] < val ? s[top-1] : val) >= s[top]) {\n            a += s[top-1] < val ? s[top-1] : val;\n            top--;\n        }\n        s[++top] = val;\n    }\n    \n    qsort(s, top+1, sizeof(int), compare);\n    int sum = 0;\n    for (int i = 0; i <= top-2; i++) {\n        sum += s[i];\n    }\n    printf(\"%d\\n\", a + sum);\n    free(s);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 4,
+                    "message": {
+                        "role": "assistant",
+                        "content": "Here's the translated code in C:\n\n```c\n#include <stdio.h>\n#include <stdlib.h>\n\nint compare(const void *a, const void *b) {\n    return (*(int*)a - *(int*)b);\n}\n\nint main() {\n    int n, a = 0;\n    scanf(\"%d\", &n);\n    int *s = (int*)malloc(n * sizeof(int));\n    int top = -1;\n    \n    for (int i = 0; i < n; i++) {\n        int val;\n        scanf(\"%d\", &val);\n        while (top > 0 && (s[top-1] < val ? s[top-1] : val) >= s[top]) {\n            a += (s[top-1] < val ? s[top-1] : val);\n            top--;\n        }\n        s[++top] = val;\n    }\n    \n    qsort(s, top+1, sizeof(int), compare);\n    int sum = 0;\n    for (int i = 0; i <= top-2; i++) {\n        sum += s[i];\n    }\n    printf(\"%d\", a + sum);\n    free(s);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                }
+            ],
+            "usage": {
+                "prompt_tokens": 610,
+                "completion_tokens": 1324,
+                "total_tokens": 1934
+            }
+        }
+    },
+    "source_data": {
+        "code_uid": "cdb31f94a3fc62b6fc60d366bba94736",
+        "prob_desc_output_to": "standard output",
+        "prob_desc_notes": null,
+        "lang_cluster": "Python",
+        "prob_desc_time_limit": "2 seconds",
+        "prob_desc_input_spec": "The first line contains a single integer n (1\u2009\u2264\u2009n\u2009\u2264\u20095\u00b7105) \u2014 the number of elements in the array. The next line contains n integers ai (1\u2009\u2264\u2009ai\u2009\u2264\u2009106) \u2014 the values of the array elements.",
+        "source_code": "n,s,a=input(),[],0\nfor i in map(int,input().split(' ')):\n    while len(s)>1 and min(s[-2],i)>=s[-1]:\n        a+=min(i,s[-2])\n        del(s[-1])\n    s.append(i)\ns.sort()\nprint(a+sum(s[0:-2]))",
+        "prob_desc_sample_inputs": [
+            "5\n3 1 5 2 6",
+            "5\n1 2 3 4 5",
+            "5\n1 100 101 100 1"
+        ],
+        "prob_desc_memory_limit": "256 megabytes",
+        "exec_outcome": "PASSED",
+        "prob_desc_output_spec": "In a single line print a single integer \u2014 the maximum number of points Artem can get.",
+        "src_uid": "e7e0f9069166fe992abe6f0e19caa6a1",
+        "prob_desc_input_from": "standard input",
+        "lang": "Python 3",
+        "prob_desc_sample_outputs": [
+            "11",
+            "6",
+            "102"
+        ],
+        "file_name": "d7021504500d5ca7c2b02df8100a574d159e6e67e20ec8071b75800b1267370a",
+        "prob_desc_description": "Artem has an array of n positive integers. Artem decided to play with it. The game consists of n moves. Each move goes like this. Artem chooses some element of the array and removes it. For that, he gets min(a,\u2009b) points, where a and b are numbers that were adjacent with the removed number. If the number doesn't have an adjacent number to the left or right, Artem doesn't get any points. After the element is removed, the two parts of the array glue together resulting in the new array that Artem continues playing with. Borya wondered what maximum total number of points Artem can get as he plays this game.",
+        "prob_desc_created_at": "1403191800",
+        "difficulty": 2500.0,
+        "hidden_unit_tests": "[{\"input\": \"5\\r\\n3 1 5 2 6\\r\\n\", \"output\": [\"11\"]}, {\"input\": \"5\\r\\n1 2 3 4 5\\r\\n\", \"output\": [\"6\"]}, {\"input\": \"5\\r\\n1 100 101 100 1\\r\\n\", \"output\": [\"102\"]}, {\"input\": \"10\\r\\n96 66 8 18 30 48 34 11 37 42\\r\\n\", \"output\": [\"299\"]}, {\"input\": \"1\\r\\n87\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"2\\r\\n93 51\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"3\\r\\n31 19 5\\r\\n\", \"output\": [\"5\"]}, {\"input\": \"4\\r\\n86 21 58 60\\r\\n\", \"output\": [\"118\"]}, {\"input\": \"5\\r\\n21 6 54 69 32\\r\\n\", \"output\": [\"74\"]}, {\"input\": \"500000\\r\\n420656 493141 666713 218520 820461 110241 571052 221576 622547 422070 444000 24019 418357 645255 263883 786440 591985 779139 998849 699918 621698 430994 923570 83634 935074 894461 984992 212896 370138 429677 404026 15213 848103 382539 159706 6993 455627 684167 261848 815538 804077 201076 870537 670363 994669 268113 564376 907979 656969 685475 403646 794602 737125 100285 295201 87959 875706 465762 542151 602140 51614 146049 277621 882179 886827 375902 131432 382594 587151 541266 352879 686993 128432...\", \"output\": [\"333286228412\"]}, {\"input\": \"6\\r\\n46 30 38 9 65 23\\r\\n\", \"output\": [\"145\"]}, {\"input\": \"7\\r\\n82 60 92 4 2 13 15\\r\\n\", \"output\": [\"129\"]}, {\"input\": \"8\\r\\n77 84 26 34 17 56 76 3\\r\\n\", \"output\": [\"279\"]}, {\"input\": \"9\\r\\n72 49 39 50 68 35 75 94 56\\r\\n\", \"output\": [\"435\"]}, {\"input\": \"10\\r\\n4 2 2 4 1 2 2 4 2 1\\r\\n\", \"output\": [\"21\"]}, {\"input\": \"1\\r\\n4\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"2\\r\\n3 1\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"3\\r\\n1 2 1\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"4\\r\\n2 3 1 2\\r\\n\", \"output\": [\"4\"]}, {\"input\": \"5\\r\\n2 6 2 1 2\\r\\n\", \"output\": [\"6\"]}, {\"input\": \"6\\r\\n1 7 3 1 6 2\\r\\n\", \"output\": [\"12\"]}, {\"input\": \"7\\r\\n2 1 2 2 2 2 2\\r\\n\", \"output\": [\"10\"]}, {\"input\": \"8\\r\\n3 4 3 1 1 3 4 1\\r\\n\", \"output\": [\"15\"]}, {\"input\": \"9\\r\\n4 5 2 2 3 1 3 3 5\\r\\n\", \"output\": [\"23\"]}, {\"input\": \"10000\\r\\n4 4 4 3 1 3 3 4 2 4 2 3 4 3 3 3 3 1 1 2 3 4 4 4 1 4 2 4 2 1 1 1 1 4 3 3 4 2 2 2 2 3 4 3 4 4 4 1 2 3 4 3 1 1 3 4 1 4 3 2 4 1 2 4 3 3 4 1 4 1 3 1 4 2 2 4 2 2 3 1 4 4 4 1 2 1 4 4 3 2 3 3 4 4 4 2 3 3 1 3 4 1 4 1 2 4 3 1 2 4 4 4 3 3 2 1 1 1 1 4 1 2 3 3 3 3 1 1 1 3 1 2 4 1 4 2 3 1 4 1 4 3 2 4 2 3 1 1 2 4 2 1 1 2 4 2 1 2 2 4 2 4 1 3 1 3 4 3 4 2 2 1 1 4 3 2 2 1 4 1 4 3 2 3 3 2 1 3 1 3 3 4 1 3 1 2 1 1 2 2 3 1 2 3 2 4 1 2 3 2 2 4 3 4 4 3 3 3 2 2 3 2 2 2 4 1 3 4 3 4 2 1 3 1 2 2 4 2 2 1 2 3 1 4 3 4 4 1 1 1 1 1 ...\", \"output\": [\"31378\"]}, {\"input\": \"10000\\r\\n51 51 65 78 110 6 77 101 73 76 92 60 8 46 74 87 88 121 11 32 3 63 51 27 31 57 53 62 70 19 55 75 22 26 94 72 47 120 49 49 102 95 57 35 3 110 23 15 44 6 90 69 34 112 28 61 45 112 69 54 88 113 54 19 86 70 32 103 1 34 57 56 24 67 122 109 89 6 14 22 100 107 1 86 5 16 110 34 53 103 117 11 17 117 104 96 8 18 89 50 1 62 88 43 96 85 57 108 92 120 102 79 58 5 41 16 55 27 51 70 50 87 104 53 11 32 32 89 54 59 53 44 55 57 86 5 91 14 116 20 108 10 63 40 61 98 16 11 58 82 36 59 118 59 123 123 98 90 58 91 69 118 12...\", \"output\": [\"821942\"]}, {\"input\": \"10000\\r\\n305 2217 4079 1032 5027 4431 3905 1423 5423 5392 1722 1680 1222 3408 3246 1744 313 198 2852 5327 4617 3077 1253 5283 4127 57 2085 4838 1455 3747 3155 653 5543 463 1760 3758 623 487 4815 4685 2438 3820 5468 2579 1979 1354 4215 597 3319 178 1200 4881 3173 2107 1530 1655 1204 1759 5293 4445 4639 1091 345 2857 5238 54 4080 5496 2450 1616 2908 5260 1962 214 5331 4168 4219 2063 4259 5448 3784 1780 5350 5256 3855 1569 1931 3502 2232 1257 4228 4088 4848 2240 3837 3720 1861 1766 5281 4250 2527 667 4055 5472 ...\", \"output\": [\"37185774\"]}, {\"input\": \"10000\\r\\n937269 52328 616518 108211 17319 217729 361901 517567 299812 362331 49608 475088 381160 101157 459745 35742 462673 352769 61032 762616 306099 871281 26520 482300 466697 128157 683319 888115 379270 285379 141948 996358 851593 5371 991562 829025 5230 660134 585115 179107 422785 274611 294904 612799 771725 323149 129188 640754 219219 685413 34649 799777 335062 985559 825834 950158 976275 787003 772423 702710 5262 143627 864927 253387 613960 710956 911648 621065 443981 973723 583194 122871 425769 931957...\", \"output\": [\"6648774646\"]}, {\"input\": \"100000\\r\\n613499 780095 313501 52879 215436 862263 306729 367183 314542 622970 347292 284166 390702 24018 760627 417939 959455 794970 72227 14085 898342 330881 379441 184430 577249 650477 997745 520528 335412 503227 478361 262772 20466 474277 603648 474266 969253 51773 82745 652811 764347 57110 457094 203530 849485 737666 428091 975657 519756 220085 813489 991735 795658 830856 558883 554711 755875 12122 487656 850988 725126 310417 670157 310832 379427 197118 45262 907428 966835 513182 387697 873250 834207 43...\", \"output\": [\"66739070768\"]}, {\"input\": \"500000\\r\\n2 3 3 4 4 3 4 2 1 2 2 2 3 4 1 3 2 2 2 2 2 4 3 2 4 2 1 1 1 1 1 4 3 3 4 1 3 3 3 1 4 2 4 1 3 1 4 1 3 1 3 1 3 2 4 4 4 3 3 1 3 4 1 4 1 1 1 2 2 2 2 2 1 1 4 2 3 1 3 3 1 1 2 4 3 4 3 2 1 4 3 4 2 2 1 2 2 2 1 4 1 2 3 2 1 3 2 4 4 3 1 4 2 4 3 3 3 2 3 2 2 4 1 2 2 3 2 3 4 1 3 4 3 4 4 4 4 4 4 1 2 2 4 1 2 3 4 1 2 4 4 1 2 1 2 3 2 1 3 1 4 4 4 2 2 4 4 2 1 4 3 4 2 4 4 2 1 4 3 3 1 1 1 3 2 2 4 2 1 3 2 2 1 2 3 1 3 3 3 1 4 4 2 3 3 2 2 4 2 4 4 1 3 2 1 4 4 2 3 2 2 2 3 4 2 3 4 3 2 4 4 3 4 3 1 1 1 3 3 1 4 2 3 3 1 4 1 1 3 1 3 2...\", \"output\": [\"1563483\"]}, {\"input\": \"500000\\r\\n44 118 122 87 58 104 114 106 81 111 14 8 49 53 103 5 80 44 109 120 100 106 107 103 26 33 56 9 7 110 105 73 35 4 107 20 83 60 54 52 118 68 105 96 45 12 46 93 11 92 43 51 74 21 121 22 25 33 122 103 82 62 123 44 89 56 51 112 28 107 67 116 10 112 31 65 109 92 73 87 69 117 3 54 12 16 6 102 66 103 16 82 50 104 18 81 6 91 33 49 84 33 18 28 79 1 48 95 111 97 113 59 78 87 37 123 4 74 123 107 75 111 82 41 11 42 62 14 49 49 26 9 61 1 14 81 82 113 80 115 81 1 109 105 34 100 96 6 1 48 33 98 99 38 18 94 3 21 121...\", \"output\": [\"41304696\"]}, {\"input\": \"500000\\r\\n2996 495 5250 3319 834 4335 31 5346 2500 497 2969 5281 4565 148 751 3013 458 4778 89 3078 1778 5024 1260 680 4032 3533 2712 2960 4555 446 3276 4720 3834 780 48 2339 1279 993 4615 3464 4087 5104 5353 4137 693 1529 2840 4239 184 1898 4882 2801 1799 4278 389 3559 1091 2903 863 58 631 4525 2711 1593 2277 3881 5037 2159 833 1331 4007 2752 599 3842 4380 4157 4714 4643 873 4661 972 1993 1444 170 1494 433 2164 4501 836 3073 1392 926 1190 3662 1576 3044 494 1163 2913 4205 2407 2704 1754 813 2371 1461 275 89...\", \"output\": [\"1852279744\"]}, {\"input\": \"500000\\r\\n305368 255895 502210 475877 574974 319198 59454 129258 744627 274911 746538 93295 246339 880196 988079 162872 74868 863817 254869 229545 378612 868571 310138 694129 923809 769115 205295 744739 551541 291521 567023 406565 767565 447582 141629 295361 171092 421882 561881 904537 604432 530779 159902 533815 437577 232679 668923 928707 308433 882401 153548 122957 259701 681103 280788 128202 512446 994748 156569 587356 248100 943961 977757 720330 856976 975743 356724 203343 511564 495952 489991 697230 32...\", \"output\": [\"333152632699\"]}, {\"input\": \"500000\\r\\n54986 980609 331654 936147 176951 525059 592709 211432 591241 565473 737272 587991 893779 272415 574906 55545 666668 818799 640849 742225 477091 121575 887416 813637 948128 913172 227400 429067 232792 142760 966786 81503 789228 123534 798267 454896 383327 937374 189412 819995 681842 687532 650421 701518 573278 262715 825910 932815 863406 298127 998890 568149 779318 472096 670872 580500 89459 637099 612919 718166 865473 785250 421813 52485 372339 475139 116708 380165 923858 202758 358658 638718 3182...\", \"output\": [\"333666489394\"]}, {\"input\": \"500000\\r\\n606433 543120 598155 992348 182763 279356 839193 832513 782824 747497 627843 949366 560065 716458 575943 789004 30045 637256 880029 473537 159456 445146 826313 561257 922709 211453 541393 306170 427238 722609 958857 763700 249096 676240 282570 725035 472883 246636 459841 278771 426255 904515 269923 57318 844203 536993 376958 978388 400294 929875 389675 850952 233392 821443 43552 81651 453227 576821 71970 445240 172395 297821 394391 243091 336604 847130 449529 592167 71107 682387 233575 535714 15657...\", \"output\": [\"333785777692\"]}]",
+        "source_lang": "Python 3",
+        "target_lang": "C"
+    }
+}

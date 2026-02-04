@@ -1,0 +1,87 @@
+{
+    "oai_response": {
+        "prompt": "Here is code in Python 3 programming lanaguge. Translate the following code from Python 3 to C programming lanaguge. Do not output any extra description or tokens other than the translated code. \n\nn = list(map(int,input().split()))\nif(n[1] == 1):\n\tprint(n[0]-1)\nelse:\n\tprint(n[0]*(n[1]-1))||END-of-SRC||",
+        "response": {
+            "id": "multi-call-as-dwabgyhxth",
+            "model": "deepseek-v3",
+            "created": 1767067179,
+            "choices": [
+                {
+                    "index": 0,
+                    "message": {
+                        "role": "assistant",
+                        "content": "Here's the translated code in C:\n\n```c\n#include <stdio.h>\n\nint main() {\n    int n[2];\n    scanf(\"%d %d\", &n[0], &n[1]);\n    if (n[1] == 1) {\n        printf(\"%d\", n[0] - 1);\n    } else {\n        printf(\"%d\", n[0] * (n[1] - 1));\n    }\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 1,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n\nint main() {\n    int n[2];\n    scanf(\"%d %d\", &n[0], &n[1]);\n    if (n[1] == 1) {\n        printf(\"%d\\n\", n[0] - 1);\n    } else {\n        printf(\"%d\\n\", n[0] * (n[1] - 1));\n    }\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 2,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n\nint main() {\n    int n[2];\n    scanf(\"%d %d\", &n[0], &n[1]);\n    if (n[1] == 1) {\n        printf(\"%d\\n\", n[0] - 1);\n    } else {\n        printf(\"%d\\n\", n[0] * (n[1] - 1));\n    }\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 3,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n\nint main() {\n    int n[2];\n    scanf(\"%d %d\", &n[0], &n[1]);\n    if (n[1] == 1) {\n        printf(\"%d\\n\", n[0] - 1);\n    } else {\n        printf(\"%d\\n\", n[0] * (n[1] - 1));\n    }\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 4,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n\nint main() {\n    int n[2];\n    scanf(\"%d %d\", &n[0], &n[1]);\n    if (n[1] == 1) {\n        printf(\"%d\", n[0] - 1);\n    } else {\n        printf(\"%d\", n[0] * (n[1] - 1));\n    }\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                }
+            ],
+            "usage": {
+                "prompt_tokens": 450,
+                "completion_tokens": 478,
+                "total_tokens": 928
+            }
+        }
+    },
+    "source_data": {
+        "code_uid": "48e9b5b56d4e8cae9592594c1b76fcc4",
+        "prob_desc_output_to": "standard output",
+        "prob_desc_notes": "NoteThe picture below is the grid that Pak Chanek has in the first example.  The picture below is an example of a tight domino in the grid.  ",
+        "lang_cluster": "Python",
+        "prob_desc_time_limit": "1 second",
+        "prob_desc_input_spec": "The only line contains two integers $$$N$$$ and $$$M$$$ ($$$1 \\leq N, M \\leq 10^9$$$) \u2014 the number of rows and columns in the grid.",
+        "source_code": "n = list(map(int,input().split()))\nif(n[1] == 1):\n\tprint(n[0]-1)\nelse:\n\tprint(n[0]*(n[1]-1))",
+        "prob_desc_sample_inputs": [
+            "3 4",
+            "2 1"
+        ],
+        "prob_desc_memory_limit": "256 megabytes",
+        "exec_outcome": "PASSED",
+        "prob_desc_output_spec": "An integer representing the number of distinct tight dominoes in the grid.",
+        "src_uid": "a91aab4c0618d036c81022232814ef44",
+        "prob_desc_input_from": "standard input",
+        "lang": "Python 3",
+        "prob_desc_sample_outputs": [
+            "9",
+            "1"
+        ],
+        "file_name": "d7021504500d5ca7c2b02df8100a574d159e6e67e20ec8071b75800b1267370a",
+        "prob_desc_description": "Pak Chanek has a grid that has $$$N$$$ rows and $$$M$$$ columns. Each row is numbered from $$$1$$$ to $$$N$$$ from top to bottom. Each column is numbered from $$$1$$$ to $$$M$$$ from left to right.Each tile in the grid contains a number. The numbers are arranged as follows:   Row $$$1$$$ contains integers from $$$1$$$ to $$$M$$$ from left to right.  Row $$$2$$$ contains integers from $$$M+1$$$ to $$$2 \\times M$$$ from left to right.  Row $$$3$$$ contains integers from $$$2 \\times M+1$$$ to $$$3 \\times M$$$ from left to right.  And so on until row $$$N$$$. A domino is defined as two different tiles in the grid that touch by their sides. A domino is said to be tight if and only if the two numbers in the domino have a difference of exactly $$$1$$$. Count the number of distinct tight dominoes in the grid.Two dominoes are said to be distinct if and only if there exists at least one tile that is in one domino, but not in the other.",
+        "prob_desc_created_at": "1662298500",
+        "difficulty": 800.0,
+        "hidden_unit_tests": "[{\"input\": \"3 4\\n\", \"output\": [\"\\n9\", \"9\", \"9\\n\\n\", \"9\\n\\n\", \"\\n\\n\\n9\\n\", \"9\\n\", \"\\n9\\n\", \"\\n\\n\\n\\n\\n\\n\\n\\n9\\n\", \"9\\n\"]}, {\"input\": \"2 1\\n\", \"output\": [\"\\n1\", \"1\\n\", \"1\", \"1\\n\\n\", \"\\n1\\n\", \"1\\n\\n\", \"\\n\\n1\\n\", \"1\\n\", \"\\n\\n\\n\\n\\n1\\n\"]}, {\"input\": \"1 1\\n\", \"output\": [\"\\n0\\n\", \"\\n0\", \"0\\n\\n\", \"0\\n\\n\", \"0\\n\", \"0\\n\", \"\\n\\n0\\n\", \"0\"]}, {\"input\": \"1 2\\n\", \"output\": [\"\\n1\", \"1\\n\", \"1\", \"1\\n\\n\", \"\\n1\\n\", \"1\\n\\n\", \"\\n\\n1\\n\", \"1\\n\"]}, {\"input\": \"2 2\\n\", \"output\": [\"2\\n\", \"2\", \"\\n\\n\\n\\n\\n2\\n\", \"2\\n\\n\", \"\\n\\n2\\n\", \"\\n2\", \"2\\n\\n\", \"\\n2\\n\", \"2\\n\"]}, {\"input\": \"1 1000000000\\n\", \"output\": [\"999999999\\n\", \"\\n999999999\\n\", \"\\n999999999\", \"999999999\\n\", \"999999999\\n\\n\", \"999999999\", \"999999999\\n\\n\"]}, {\"input\": \"1 999999997\\n\", \"output\": [\"999999996\\n\\n\", \"\\n999999996\", \"999999996\\n\\n\", \"999999996\\n\", \"999999996\\n\", \"\\n999999996\\n\", \"999999996\"]}, {\"input\": \"1 589284012\\n\", \"output\": [\"589284011\\n\", \"\\n589284011\", \"589284011\", \"589284011\\n\\n\", \"589284011\\n\\n\", \"\\n589284011\\n\", \"589284011\\n\"]}, {\"input\": \"1000000000 1\\n\", \"output\": [\"999999999\\n\", \"\\n999999999\\n\", \"\\n999999999\", \"999999999\\n\", \"999999999\\n\\n\", \"999999999\", \"999999999\\n\\n\"]}, {\"input\": \"999999999 1\\n\", \"output\": [\"\\n999999998\", \"\\n999999998\\n\", \"999999998\", \"999999998\\n\\n\", \"999999998\\n\", \"999999998\\n\\n\", \"999999998\\n\"]}, {\"input\": \"636562060 1\\n\", \"output\": [\"\\n636562059\", \"636562059\\n\\n\", \"636562059\\n\", \"636562059\", \"\\n636562059\\n\", \"636562059\\n\", \"636562059\\n\\n\"]}, {\"input\": \"2 1000000000\\n\", \"output\": [\"1999999998\\n\\n\", \"\\n1999999998\\n\", \"1999999998\\n\", \"1999999998\", \"1999999998\\n\", \"\\n1999999998\", \"1999999998\\n\\n\"]}, {\"input\": \"1000000000 2\\n\", \"output\": [\"1000000000\", \"1000000000\\n\\n\", \"1000000000\\n\", \"1000000000\\n\", \"\\n1000000000\", \"\\n1000000000\\n\", \"1000000000\\n\\n\"]}, {\"input\": \"30001 30001\\n\", \"output\": [\"900030000\\n\", \"\\n900030000\\n\", \"900030000\", \"\\n900030000\", \"900030000\\n\\n\", \"900030000\\n\\n\", \"900030000\\n\"]}, {\"input\": \"1000000000 1000000000\\n\", \"output\": [\"999999999000000000\\n\", \"999999999000000000\\n\\n\", \"999999999000000000\\n\\n\", \"999999999000000000\\n\", \"999999999000000000\"]}, {\"input\": \"767928735 1000000000\\n\", \"output\": [\"767928734232071265\\n\\n\", \"767928734232071265\\n\", \"767928734232071265\\n\\n\", \"767928734232071265\\n\", \"767928734232071265\"]}, {\"input\": \"1000000000 906523442\\n\", \"output\": [\"906523441000000000\\n\\n\", \"906523441000000000\", \"906523441000000000\\n\", \"906523441000000000\\n\\n\", \"906523441000000000\\n\"]}, {\"input\": \"647242241 921242095\\n\", \"output\": [\"596266797424092654\\n\", \"596266797424092654\\n\\n\", \"596266797424092654\\n\", \"596266797424092654\", \"596266797424092654\\n\\n\"]}]",
+        "source_lang": "Python 3",
+        "target_lang": "C"
+    }
+}

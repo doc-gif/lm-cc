@@ -1,0 +1,89 @@
+{
+    "oai_response": {
+        "prompt": "Here is code in Python 3 programming lanaguge. Translate the following code from Python 3 to C programming lanaguge. Do not output any extra description or tokens other than the translated code. \n\nm,d=map(int,input().split())\na=[]\nif m==1 or m==3 or m==5 or m==7 or m==8 or m==10 or m==12:\n    for i in range(d,8):\n        a.append(1)\n    c=(31-len(a))/7\n    if c>4:\n        print(6)\n    else:\n        print(5)    \nif m==4 or m==6 or m==9 or m==11:\n    for i in range(d,8):\n        a.append(1)\n    c=(30-len(a))/7\n    if c<=4:\n        print(5)\n    else:\n        print(6)\nif m==2:\n    for i in range(d,8):\n        a.append(1)\n    c=(28-len(a))/7\n    if c==3:\n        print(4)\n    elif c<=4:\n        print(5)\n    ||END-of-SRC||",
+        "response": {
+            "id": "multi-call-as-fu9rb450th",
+            "model": "deepseek-v3",
+            "created": 1767066191,
+            "choices": [
+                {
+                    "index": 0,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n\nint main() {\n    int m, d;\n    scanf(\"%d %d\", &m, &d);\n    int a_len = 0;\n    \n    if (m == 1 || m == 3 || m == 5 || m == 7 || m == 8 || m == 10 || m == 12) {\n        for (int i = d; i < 8; i++) {\n            a_len++;\n        }\n        float c = (31 - a_len) / 7.0;\n        if (c > 4) {\n            printf(\"6\\n\");\n        } else {\n            printf(\"5\\n\");\n        }\n    } else if (m == 4 || m == 6 || m == 9 || m == 11) {\n        for (int i = d; i < 8; i++) {\n            a_len++;\n        }\n        float c = (30 - a_len) / 7.0;\n        if (c <= 4) {\n            printf(\"5\\n\");\n        } else {\n            printf(\"6\\n\");\n        }\n    } else if (m == 2) {\n        for (int i = d; i < 8; i++) {\n            a_len++;\n        }\n        float c = (28 - a_len) / 7.0;\n        if (c == 3) {\n            printf(\"4\\n\");\n        } else if (c <= 4) {\n            printf(\"5\\n\");\n        }\n    }\n    \n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 1,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n\nint main() {\n    int m, d;\n    scanf(\"%d %d\", &m, &d);\n    int a = 0;\n    if (m == 1 || m == 3 || m == 5 || m == 7 || m == 8 || m == 10 || m == 12) {\n        for (int i = d; i < 8; i++) {\n            a++;\n        }\n        int c = (31 - a) / 7;\n        if (c > 4) {\n            printf(\"6\\n\");\n        } else {\n            printf(\"5\\n\");\n        }\n    }\n    if (m == 4 || m == 6 || m == 9 || m == 11) {\n        for (int i = d; i < 8; i++) {\n            a++;\n        }\n        int c = (30 - a) / 7;\n        if (c <= 4) {\n            printf(\"5\\n\");\n        } else {\n            printf(\"6\\n\");\n        }\n    }\n    if (m == 2) {\n        for (int i = d; i < 8; i++) {\n            a++;\n        }\n        int c = (28 - a) / 7;\n        if (c == 3) {\n            printf(\"4\\n\");\n        } else if (c <= 4) {\n            printf(\"5\\n\");\n        }\n    }\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 2,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n\nint main() {\n    int m, d;\n    scanf(\"%d %d\", &m, &d);\n    int a_length = 0;\n    \n    if (m == 1 || m == 3 || m == 5 || m == 7 || m == 8 || m == 10 || m == 12) {\n        for (int i = d; i < 8; i++) {\n            a_length++;\n        }\n        float c = (31 - a_length) / 7.0;\n        if (c > 4) {\n            printf(\"6\\n\");\n        } else {\n            printf(\"5\\n\");\n        }\n    } else if (m == 4 || m == 6 || m == 9 || m == 11) {\n        for (int i = d; i < 8; i++) {\n            a_length++;\n        }\n        float c = (30 - a_length) / 7.0;\n        if (c <= 4) {\n            printf(\"5\\n\");\n        } else {\n            printf(\"6\\n\");\n        }\n    } else if (m == 2) {\n        for (int i = d; i < 8; i++) {\n            a_length++;\n        }\n        float c = (28 - a_length) / 7.0;\n        if (c == 3) {\n            printf(\"4\\n\");\n        } else if (c <= 4) {\n            printf(\"5\\n\");\n        }\n    }\n    \n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 3,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n\nint main() {\n    int m, d;\n    scanf(\"%d %d\", &m, &d);\n    int a = 0;\n    if (m == 1 || m == 3 || m == 5 || m == 7 || m == 8 || m == 10 || m == 12) {\n        for (int i = d; i < 8; i++) {\n            a++;\n        }\n        int c = (31 - a) / 7;\n        if (c > 4) {\n            printf(\"6\\n\");\n        } else {\n            printf(\"5\\n\");\n        }\n    }\n    if (m == 4 || m == 6 || m == 9 || m == 11) {\n        for (int i = d; i < 8; i++) {\n            a++;\n        }\n        int c = (30 - a) / 7;\n        if (c <= 4) {\n            printf(\"5\\n\");\n        } else {\n            printf(\"6\\n\");\n        }\n    }\n    if (m == 2) {\n        for (int i = d; i < 8; i++) {\n            a++;\n        }\n        int c = (28 - a) / 7;\n        if (c == 3) {\n            printf(\"4\\n\");\n        } else if (c <= 4) {\n            printf(\"5\\n\");\n        }\n    }\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 4,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n\nint main() {\n    int m, d;\n    scanf(\"%d %d\", &m, &d);\n    int a_len = 0;\n    \n    if (m == 1 || m == 3 || m == 5 || m == 7 || m == 8 || m == 10 || m == 12) {\n        for (int i = d; i < 8; i++) {\n            a_len++;\n        }\n        int c = (31 - a_len) / 7;\n        if (c > 4) {\n            printf(\"6\\n\");\n        } else {\n            printf(\"5\\n\");\n        }\n    } else if (m == 4 || m == 6 || m == 9 || m == 11) {\n        for (int i = d; i < 8; i++) {\n            a_len++;\n        }\n        int c = (30 - a_len) / 7;\n        if (c <= 4) {\n            printf(\"5\\n\");\n        } else {\n            printf(\"6\\n\");\n        }\n    } else if (m == 2) {\n        for (int i = d; i < 8; i++) {\n            a_len++;\n        }\n        int c = (28 - a_len) / 7;\n        if (c == 3) {\n            printf(\"4\\n\");\n        } else if (c <= 4) {\n            printf(\"5\\n\");\n        }\n    }\n    \n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                }
+            ],
+            "usage": {
+                "prompt_tokens": 1250,
+                "completion_tokens": 1610,
+                "total_tokens": 2860
+            }
+        }
+    },
+    "source_data": {
+        "code_uid": "09d65d01ae958f50af3de436a9fa8e72",
+        "prob_desc_output_to": "standard output",
+        "prob_desc_notes": "NoteThe first example corresponds to the January 2017 shown on the picture in the statements.In the second example 1-st January is Monday, so the whole month fits into 5 columns.In the third example 1-st November is Saturday and 5 columns is enough.",
+        "lang_cluster": "Python",
+        "prob_desc_time_limit": "2 seconds",
+        "prob_desc_input_spec": "The only line contain two integers m and d (1\u2009\u2264\u2009m\u2009\u2264\u200912, 1\u2009\u2264\u2009d\u2009\u2264\u20097)\u00a0\u2014 the number of month (January is the first month, December is the twelfth) and the weekday of the first date of this month (1 is Monday, 7 is Sunday).",
+        "source_code": "m,d=map(int,input().split())\na=[]\nif m==1 or m==3 or m==5 or m==7 or m==8 or m==10 or m==12:\n    for i in range(d,8):\n        a.append(1)\n    c=(31-len(a))/7\n    if c>4:\n        print(6)\n    else:\n        print(5)    \nif m==4 or m==6 or m==9 or m==11:\n    for i in range(d,8):\n        a.append(1)\n    c=(30-len(a))/7\n    if c<=4:\n        print(5)\n    else:\n        print(6)\nif m==2:\n    for i in range(d,8):\n        a.append(1)\n    c=(28-len(a))/7\n    if c==3:\n        print(4)\n    elif c<=4:\n        print(5)\n    ",
+        "prob_desc_sample_inputs": [
+            "1 7",
+            "1 1",
+            "11 6"
+        ],
+        "prob_desc_memory_limit": "256 megabytes",
+        "exec_outcome": "PASSED",
+        "prob_desc_output_spec": "Print single integer: the number of columns the table should have.",
+        "src_uid": "5b969b6f564df6f71e23d4adfb2ded74",
+        "prob_desc_input_from": "standard input",
+        "lang": "Python 3",
+        "prob_desc_sample_outputs": [
+            "6",
+            "5",
+            "5"
+        ],
+        "file_name": "d7021504500d5ca7c2b02df8100a574d159e6e67e20ec8071b75800b1267370a",
+        "prob_desc_description": "Petr wants to make a calendar for current month. For this purpose he draws a table in which columns correspond to weeks (a week is seven consequent days from Monday to Sunday), rows correspond to weekdays, and cells contain dates. For example, a calendar for January 2017 should look like on the picture:  Petr wants to know how many columns his table should have given the month and the weekday of the first date of that month? Assume that the year is non-leap.",
+        "prob_desc_created_at": "1485108900",
+        "difficulty": 800.0,
+        "hidden_unit_tests": "[{\"input\": \"1 7\\r\\n\", \"output\": [\"6\"]}, {\"input\": \"1 1\\r\\n\", \"output\": [\"5\"]}, {\"input\": \"11 6\\r\\n\", \"output\": [\"5\"]}, {\"input\": \"2 7\\r\\n\", \"output\": [\"5\"]}, {\"input\": \"2 1\\r\\n\", \"output\": [\"4\"]}, {\"input\": \"8 6\\r\\n\", \"output\": [\"6\"]}, {\"input\": \"1 2\\r\\n\", \"output\": [\"5\"]}, {\"input\": \"1 3\\r\\n\", \"output\": [\"5\"]}, {\"input\": \"1 4\\r\\n\", \"output\": [\"5\"]}, {\"input\": \"1 5\\r\\n\", \"output\": [\"5\"]}, {\"input\": \"1 6\\r\\n\", \"output\": [\"6\"]}, {\"input\": \"2 2\\r\\n\", \"output\": [\"5\"]}, {\"input\": \"2 3\\r\\n\", \"output\": [\"5\"]}, {\"input\": \"2 4\\r\\n\", \"output\": [\"5\"]}, {\"input\": \"2 5\\r\\n\", \"output\": [\"5\"]}, {\"input\": \"2 6\\r\\n\", \"output\": [\"5\"]}, {\"input\": \"3 1\\r\\n\", \"output\": [\"5\"]}, {\"input\": \"3 2\\r\\n\", \"output\": [\"5\"]}, {\"input\": \"3 3\\r\\n\", \"output\": [\"5\"]}, {\"input\": \"3 4\\r\\n\", \"output\": [\"5\"]}, {\"input\": \"3 5\\r\\n\", \"output\": [\"5\"]}, {\"input\": \"3 6\\r\\n\", \"output\": [\"6\"]}, {\"input\": \"3 7\\r\\n\", \"output\": [\"6\"]}, {\"input\": \"4 1\\r\\n\", \"output\": [\"5\"]}, {\"input\": \"4 2\\r\\n\", \"output\": [\"5\"]}, {\"input\": \"4 3\\r\\n\", \"output\": [\"5\"]}, {\"input\": \"4 4\\r\\n\", \"output\": [\"5\"]}, {\"input\": \"4 5\\r\\n\", \"output\": [\"5\"]}, {\"input\": \"4 6\\r\\n\", \"output\": [\"5\"]}, {\"input\": \"4 7\\r\\n\", \"output\": [\"6\"]}, {\"input\": \"5 1\\r\\n\", \"output\": [\"5\"]}, {\"input\": \"5 2\\r\\n\", \"output\": [\"5\"]}, {\"input\": \"5 3\\r\\n\", \"output\": [\"5\"]}, {\"input\": \"5 4\\r\\n\", \"output\": [\"5\"]}, {\"input\": \"5 5\\r\\n\", \"output\": [\"5\"]}, {\"input\": \"5 6\\r\\n\", \"output\": [\"6\"]}, {\"input\": \"5 7\\r\\n\", \"output\": [\"6\"]}, {\"input\": \"6 1\\r\\n\", \"output\": [\"5\"]}, {\"input\": \"6 2\\r\\n\", \"output\": [\"5\"]}, {\"input\": \"6 3\\r\\n\", \"output\": [\"5\"]}, {\"input\": \"6 4\\r\\n\", \"output\": [\"5\"]}, {\"input\": \"6 5\\r\\n\", \"output\": [\"5\"]}, {\"input\": \"6 6\\r\\n\", \"output\": [\"5\"]}, {\"input\": \"6 7\\r\\n\", \"output\": [\"6\"]}, {\"input\": \"7 1\\r\\n\", \"output\": [\"5\"]}, {\"input\": \"7 2\\r\\n\", \"output\": [\"5\"]}, {\"input\": \"7 3\\r\\n\", \"output\": [\"5\"]}, {\"input\": \"7 4\\r\\n\", \"output\": [\"5\"]}, {\"input\": \"7 5\\r\\n\", \"output\": [\"5\"]}, {\"input\": \"7 6\\r\\n\", \"output\": [\"6\"]}, {\"input\": \"7 7\\r\\n\", \"output\": [\"6\"]}, {\"input\": \"8 1\\r\\n\", \"output\": [\"5\"]}, {\"input\": \"8 2\\r\\n\", \"output\": [\"5\"]}, {\"input\": \"8 3\\r\\n\", \"output\": [\"5\"]}, {\"input\": \"8 4\\r\\n\", \"output\": [\"5\"]}, {\"input\": \"8 5\\r\\n\", \"output\": [\"5\"]}, {\"input\": \"8 7\\r\\n\", \"output\": [\"6\"]}, {\"input\": \"9 1\\r\\n\", \"output\": [\"5\"]}, {\"input\": \"9 2\\r\\n\", \"output\": [\"5\"]}, {\"input\": \"9 3\\r\\n\", \"output\": [\"5\"]}, {\"input\": \"9 4\\r\\n\", \"output\": [\"5\"]}, {\"input\": \"9 5\\r\\n\", \"output\": [\"5\"]}, {\"input\": \"9 6\\r\\n\", \"output\": [\"5\"]}, {\"input\": \"9 7\\r\\n\", \"output\": [\"6\"]}, {\"input\": \"10 1\\r\\n\", \"output\": [\"5\"]}, {\"input\": \"10 2\\r\\n\", \"output\": [\"5\"]}, {\"input\": \"10 3\\r\\n\", \"output\": [\"5\"]}, {\"input\": \"10 4\\r\\n\", \"output\": [\"5\"]}, {\"input\": \"10 5\\r\\n\", \"output\": [\"5\"]}, {\"input\": \"10 6\\r\\n\", \"output\": [\"6\"]}, {\"input\": \"10 7\\r\\n\", \"output\": [\"6\"]}, {\"input\": \"11 1\\r\\n\", \"output\": [\"5\"]}, {\"input\": \"11 2\\r\\n\", \"output\": [\"5\"]}, {\"input\": \"11 3\\r\\n\", \"output\": [\"5\"]}, {\"input\": \"11 4\\r\\n\", \"output\": [\"5\"]}, {\"input\": \"11 5\\r\\n\", \"output\": [\"5\"]}, {\"input\": \"11 7\\r\\n\", \"output\": [\"6\"]}, {\"input\": \"12 1\\r\\n\", \"output\": [\"5\"]}, {\"input\": \"12 2\\r\\n\", \"output\": [\"5\"]}, {\"input\": \"12 3\\r\\n\", \"output\": [\"5\"]}, {\"input\": \"12 4\\r\\n\", \"output\": [\"5\"]}, {\"input\": \"12 5\\r\\n\", \"output\": [\"5\"]}, {\"input\": \"12 6\\r\\n\", \"output\": [\"6\"]}, {\"input\": \"12 7\\r\\n\", \"output\": [\"6\"]}]",
+        "source_lang": "Python 3",
+        "target_lang": "C"
+    }
+}

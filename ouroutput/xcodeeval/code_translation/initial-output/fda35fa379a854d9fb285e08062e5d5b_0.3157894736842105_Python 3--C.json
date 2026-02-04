@@ -1,0 +1,91 @@
+{
+    "oai_response": {
+        "prompt": "Here is code in Python 3 programming lanaguge. Translate the following code from Python 3 to C programming lanaguge. Do not output any extra description or tokens other than the translated code. \n\na = int(input())\nsumm = 5\nwhile summ % 4 != 0:\n    summ = 0\n    a = str(a)\n    for i in a:\n        summ += int(i)\n    if summ % 4 != 0:\n        a = int(a) + 1\nprint(a)\n\n||END-of-SRC||",
+        "response": {
+            "id": "multi-call-as-27a7bk23ij",
+            "model": "deepseek-v3",
+            "created": 1767069168,
+            "choices": [
+                {
+                    "index": 0,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <string.h>\n\nint main() {\n    int a;\n    scanf(\"%d\", &a);\n    int summ = 5;\n    while (summ % 4 != 0) {\n        summ = 0;\n        char str[20];\n        sprintf(str, \"%d\", a);\n        for (int i = 0; i < strlen(str); i++) {\n            summ += str[i] - '0';\n        }\n        if (summ % 4 != 0) {\n            a++;\n        }\n    }\n    printf(\"%d\\n\", a);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 1,
+                    "message": {
+                        "role": "assistant",
+                        "content": "Here's the equivalent code in C:\n\n```c\n#include <stdio.h>\n#include <string.h>\n\nint main() {\n    int a;\n    scanf(\"%d\", &a);\n    int summ = 5;\n    while (summ % 4 != 0) {\n        summ = 0;\n        char str[20];\n        sprintf(str, \"%d\", a);\n        for (int i = 0; i < strlen(str); i++) {\n            summ += str[i] - '0';\n        }\n        if (summ % 4 != 0) {\n            a++;\n        }\n    }\n    printf(\"%d\", a);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 2,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <string.h>\n\nint main() {\n    int a;\n    scanf(\"%d\", &a);\n    int summ = 5;\n    while (summ % 4 != 0) {\n        summ = 0;\n        char str_a[20];\n        sprintf(str_a, \"%d\", a);\n        for (int i = 0; i < strlen(str_a); i++) {\n            summ += str_a[i] - '0';\n        }\n        if (summ % 4 != 0) {\n            a += 1;\n        }\n    }\n    printf(\"%d\\n\", a);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 3,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <string.h>\n\nint main() {\n    char a_str[100];\n    scanf(\"%s\", a_str);\n    int a = atoi(a_str);\n    int summ = 5;\n    while (summ % 4 != 0) {\n        summ = 0;\n        sprintf(a_str, \"%d\", a);\n        for (int i = 0; i < strlen(a_str); i++) {\n            summ += a_str[i] - '0';\n        }\n        if (summ % 4 != 0) {\n            a++;\n        }\n    }\n    printf(\"%d\\n\", a);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 4,
+                    "message": {
+                        "role": "assistant",
+                        "content": "Here's the equivalent code translated to C:\n\n```c\n#include <stdio.h>\n#include <string.h>\n\nint main() {\n    int a;\n    scanf(\"%d\", &a);\n    int summ = 5;\n    while (summ % 4 != 0) {\n        summ = 0;\n        char str[20];\n        sprintf(str, \"%d\", a);\n        for (int i = 0; i < strlen(str); i++) {\n            summ += str[i] - '0';\n        }\n        if (summ % 4 != 0) {\n            a++;\n        }\n    }\n    printf(\"%d\", a);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                }
+            ],
+            "usage": {
+                "prompt_tokens": 590,
+                "completion_tokens": 706,
+                "total_tokens": 1296
+            }
+        }
+    },
+    "source_data": {
+        "code_uid": "fda35fa379a854d9fb285e08062e5d5b",
+        "prob_desc_output_to": "standard output",
+        "prob_desc_notes": null,
+        "lang_cluster": "Python",
+        "prob_desc_time_limit": "1 second",
+        "prob_desc_input_spec": "The only line in the input contains an integer $$$a$$$ ($$$1 \\le a \\le 1000$$$).",
+        "source_code": "a = int(input())\nsumm = 5\nwhile summ % 4 != 0:\n    summ = 0\n    a = str(a)\n    for i in a:\n        summ += int(i)\n    if summ % 4 != 0:\n        a = int(a) + 1\nprint(a)\n\n",
+        "prob_desc_sample_inputs": [
+            "432",
+            "99",
+            "237",
+            "42"
+        ],
+        "prob_desc_memory_limit": "256 megabytes",
+        "exec_outcome": "PASSED",
+        "prob_desc_output_spec": "Print the nearest greater or equal interesting number for the given number $$$a$$$. In other words, print the interesting number $$$n$$$ such that $$$n \\ge a$$$ and $$$n$$$ is minimal.",
+        "src_uid": "bb6fb9516b2c55d1ee47a30d423562d7",
+        "prob_desc_input_from": "standard input",
+        "lang": "Python 3",
+        "prob_desc_sample_outputs": [
+            "435",
+            "103",
+            "237",
+            "44"
+        ],
+        "file_name": "d7021504500d5ca7c2b02df8100a574d159e6e67e20ec8071b75800b1267370a",
+        "prob_desc_description": "Polycarp knows that if the sum of the digits of a number is divisible by $$$3$$$, then the number itself is divisible by $$$3$$$. He assumes that the numbers, the sum of the digits of which is divisible by $$$4$$$, are also somewhat interesting. Thus, he considers a positive integer $$$n$$$ interesting if its sum of digits is divisible by $$$4$$$.Help Polycarp find the nearest larger or equal interesting number for the given number $$$a$$$. That is, find the interesting number $$$n$$$ such that $$$n \\ge a$$$ and $$$n$$$ is minimal.",
+        "prob_desc_created_at": "1561559700",
+        "difficulty": 800.0,
+        "hidden_unit_tests": "[{\"input\": \"432\\r\\n\", \"output\": [\"435\"]}, {\"input\": \"99\\r\\n\", \"output\": [\"103\"]}, {\"input\": \"237\\r\\n\", \"output\": [\"237\"]}, {\"input\": \"42\\r\\n\", \"output\": [\"44\"]}, {\"input\": \"1\\r\\n\", \"output\": [\"4\"]}, {\"input\": \"2\\r\\n\", \"output\": [\"4\"]}, {\"input\": \"1000\\r\\n\", \"output\": [\"1003\"]}, {\"input\": \"898\\r\\n\", \"output\": [\"903\"]}, {\"input\": \"997\\r\\n\", \"output\": [\"1003\"]}, {\"input\": \"999\\r\\n\", \"output\": [\"1003\"]}, {\"input\": \"399\\r\\n\", \"output\": [\"400\"]}, {\"input\": \"8\\r\\n\", \"output\": [\"8\"]}, {\"input\": \"120\\r\\n\", \"output\": [\"121\"]}, {\"input\": \"909\\r\\n\", \"output\": [\"912\"]}, {\"input\": \"9\\r\\n\", \"output\": [\"13\"]}, {\"input\": \"398\\r\\n\", \"output\": [\"398\"]}, {\"input\": \"7\\r\\n\", \"output\": [\"8\"]}, {\"input\": \"799\\r\\n\", \"output\": [\"800\"]}, {\"input\": \"970\\r\\n\", \"output\": [\"970\"]}, {\"input\": \"188\\r\\n\", \"output\": [\"192\"]}, {\"input\": \"4\\r\\n\", \"output\": [\"4\"]}, {\"input\": \"38\\r\\n\", \"output\": [\"39\"]}, {\"input\": \"12\\r\\n\", \"output\": [\"13\"]}, {\"input\": \"3\\r\\n\", \"output\": [\"4\"]}, {\"input\": \"518\\r\\n\", \"output\": [\"521\"]}, {\"input\": \"6\\r\\n\", \"output\": [\"8\"]}, {\"input\": \"400\\r\\n\", \"output\": [\"400\"]}, {\"input\": \"36\\r\\n\", \"output\": [\"39\"]}]",
+        "source_lang": "Python 3",
+        "target_lang": "C"
+    }
+}

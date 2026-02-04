@@ -1,0 +1,89 @@
+{
+    "oai_response": {
+        "prompt": "Here is code in Python 3 programming lanaguge. Translate the following code from Python 3 to C programming lanaguge. Do not output any extra description or tokens other than the translated code. \n\narrs = []\nfor char in input():\n    if char not in arrs:\n        arrs.append(char)\nif len(arrs) % 2 != 0:\n    print('IGNORE HIM!')\nelse:\n    print('CHAT WITH HER!')||END-of-SRC||",
+        "response": {
+            "id": "multi-call-as-jbv4bfhzh3",
+            "model": "deepseek-v3",
+            "created": 1767067352,
+            "choices": [
+                {
+                    "index": 0,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <string.h>\n\nint main() {\n    char input[100];\n    scanf(\"%s\", input);\n    int len = strlen(input);\n    char arrs[100];\n    int arrs_len = 0;\n    \n    for (int i = 0; i < len; i++) {\n        int found = 0;\n        for (int j = 0; j < arrs_len; j++) {\n            if (input[i] == arrs[j]) {\n                found = 1;\n                break;\n            }\n        }\n        if (!found) {\n            arrs[arrs_len++] = input[i];\n        }\n    }\n    \n    if (arrs_len % 2 != 0) {\n        printf(\"IGNORE HIM!\\n\");\n    } else {\n        printf(\"CHAT WITH HER!\\n\");\n    }\n    \n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 1,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <string.h>\n\nint main() {\n    char input[101];\n    scanf(\"%s\", input);\n    int count[26] = {0};\n    int unique = 0;\n    \n    for (int i = 0; i < strlen(input); i++) {\n        if (count[input[i] - 'a'] == 0) {\n            count[input[i] - 'a'] = 1;\n            unique++;\n        }\n    }\n    \n    if (unique % 2 != 0) {\n        printf(\"IGNORE HIM!\\n\");\n    } else {\n        printf(\"CHAT WITH HER!\\n\");\n    }\n    \n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 2,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <string.h>\n\nint main() {\n    char input[101];\n    scanf(\"%s\", input);\n    int len = strlen(input);\n    int unique[26] = {0};\n    int count = 0;\n    \n    for (int i = 0; i < len; i++) {\n        if (unique[input[i] - 'a'] == 0) {\n            unique[input[i] - 'a'] = 1;\n            count++;\n        }\n    }\n    \n    if (count % 2 != 0) {\n        printf(\"IGNORE HIM!\\n\");\n    } else {\n        printf(\"CHAT WITH HER!\\n\");\n    }\n    \n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 3,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <string.h>\n\nint main() {\n    char input[101];\n    scanf(\"%s\", input);\n    int len = strlen(input);\n    int unique[26] = {0};\n    int count = 0;\n    \n    for (int i = 0; i < len; i++) {\n        if (unique[input[i] - 'a'] == 0) {\n            unique[input[i] - 'a'] = 1;\n            count++;\n        }\n    }\n    \n    if (count % 2 != 0) {\n        printf(\"IGNORE HIM!\\n\");\n    } else {\n        printf(\"CHAT WITH HER!\\n\");\n    }\n    \n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 4,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <string.h>\n\nint main() {\n    char input[101];\n    scanf(\"%s\", input);\n    int len = strlen(input);\n    char unique[26] = {0};\n    int count = 0;\n    \n    for (int i = 0; i < len; i++) {\n        char c = input[i];\n        if (unique[c - 'a'] == 0) {\n            unique[c - 'a'] = 1;\n            count++;\n        }\n    }\n    \n    if (count % 2 != 0) {\n        printf(\"IGNORE HIM!\\n\");\n    } else {\n        printf(\"CHAT WITH HER!\\n\");\n    }\n    \n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                }
+            ],
+            "usage": {
+                "prompt_tokens": 530,
+                "completion_tokens": 820,
+                "total_tokens": 1350
+            }
+        }
+    },
+    "source_data": {
+        "code_uid": "c6d8dff26971cd0ad1209918fd5d0da5",
+        "prob_desc_output_to": "standard output",
+        "prob_desc_notes": "NoteFor the first example. There are 6 distinct characters in \"wjmzbmr\". These characters are: \"w\", \"j\", \"m\", \"z\", \"b\", \"r\". So wjmzbmr is a female and you should print \"CHAT WITH HER!\".",
+        "lang_cluster": "Python",
+        "prob_desc_time_limit": "1 second",
+        "prob_desc_input_spec": "The first line contains a non-empty string, that contains only lowercase English letters \u2014 the user name. This string contains at most 100 letters.",
+        "source_code": "arrs = []\nfor char in input():\n    if char not in arrs:\n        arrs.append(char)\nif len(arrs) % 2 != 0:\n    print('IGNORE HIM!')\nelse:\n    print('CHAT WITH HER!')",
+        "prob_desc_sample_inputs": [
+            "wjmzbmr",
+            "xiaodao",
+            "sevenkplus"
+        ],
+        "prob_desc_memory_limit": "256 megabytes",
+        "exec_outcome": "PASSED",
+        "prob_desc_output_spec": "If it is a female by our hero's method, print \"CHAT WITH HER!\" (without the quotes), otherwise, print \"IGNORE HIM!\" (without the quotes).",
+        "src_uid": "a8c14667b94b40da087501fd4bdd7818",
+        "prob_desc_input_from": "standard input",
+        "lang": "Python 3",
+        "prob_desc_sample_outputs": [
+            "CHAT WITH HER!",
+            "IGNORE HIM!",
+            "CHAT WITH HER!"
+        ],
+        "file_name": "d7021504500d5ca7c2b02df8100a574d159e6e67e20ec8071b75800b1267370a",
+        "prob_desc_description": "Those days, many boys use beautiful girls' photos as avatars in forums. So it is pretty hard to tell the gender of a user at the first glance. Last year, our hero went to a forum and had a nice chat with a beauty (he thought so). After that they talked very often and eventually they became a couple in the network. But yesterday, he came to see \"her\" in the real world and found out \"she\" is actually a very strong man! Our hero is very sad and he is too tired to love again now. So he came up with a way to recognize users' genders by their user names.This is his method: if the number of distinct characters in one's user name is odd, then he is a male, otherwise she is a female. You are given the string that denotes the user name, please help our hero to determine the gender of this user by his method.",
+        "prob_desc_created_at": "1350803400",
+        "difficulty": 800.0,
+        "hidden_unit_tests": "[{\"input\": \"wjmzbmr\\r\\n\", \"output\": [\"CHAT WITH HER!\"]}, {\"input\": \"xiaodao\\r\\n\", \"output\": [\"IGNORE HIM!\"]}, {\"input\": \"sevenkplus\\r\\n\", \"output\": [\"CHAT WITH HER!\"]}, {\"input\": \"pezu\\r\\n\", \"output\": [\"CHAT WITH HER!\"]}, {\"input\": \"wnemlgppy\\r\\n\", \"output\": [\"CHAT WITH HER!\"]}, {\"input\": \"zcinitufxoldnokacdvtmdohsfdjepyfioyvclhmujiqwvmudbfjzxjfqqxjmoiyxrfsbvseawwoyynn\\r\\n\", \"output\": [\"IGNORE HIM!\"]}, {\"input\": \"qsxxuoynwtebujwpxwpajitiwxaxwgbcylxneqiebzfphugwkftpaikixmumkhfbjiswmvzbtiyifbx\\r\\n\", \"output\": [\"CHAT WITH HER!\"]}, {\"input\": \"qwbdfzfylckctudyjlyrtmvbidfatdoqfmrfshsqqmhzohhsczscvwzpwyoyswhktjlykumhvaounpzwpxcspxwlgt\\r\\n\", \"output\": [\"IGNORE HIM!\"]}, {\"input\": \"nuezoadauueermoeaabjrkxttkatspjsjegjcjcdmcxgodowzbwuqncfbeqlhkk\\r\\n\", \"output\": [\"IGNORE HIM!\"]}, {\"input\": \"lggvdmulrsvtuagoavstuyufhypdxfomjlzpnduulukszqnnwfvxbvxyzmleocmofwclmzz\\r\\n\", \"output\": [\"IGNORE HIM!\"]}, {\"input\": \"tgcdptnkc\\r\\n\", \"output\": [\"IGNORE HIM!\"]}, {\"input\": \"wvfgnfrzabgibzxhzsojskmnlmrokydjoexnvi\\r\\n\", \"output\": [\"IGNORE HIM!\"]}, {\"input\": \"sxtburpzskucowowebgrbovhadrrayamuwypmmxhscrujkmcgvyinp\\r\\n\", \"output\": [\"IGNORE HIM!\"]}, {\"input\": \"pjqxhvxkyeqqvyuujxhmbspatvrckhhkfloottuybjivkkhpyivcighxumavrxzxslfpggnwbtalmhysyfllznphzia\\r\\n\", \"output\": [\"IGNORE HIM!\"]}, {\"input\": \"fpellxwskyekoyvrfnuf\\r\\n\", \"output\": [\"CHAT WITH HER!\"]}, {\"input\": \"xninyvkuvakfbs\\r\\n\", \"output\": [\"IGNORE HIM!\"]}, {\"input\": \"vnxhrweyvhqufpfywdwftoyrfgrhxuamqhblkvdpxmgvphcbeeqbqssresjifwyzgfhurmamhkwupymuomak\\r\\n\", \"output\": [\"CHAT WITH HER!\"]}, {\"input\": \"kmsk\\r\\n\", \"output\": [\"IGNORE HIM!\"]}, {\"input\": \"lqonogasrkzhryjxppjyriyfxmdfubieglthyswz\\r\\n\", \"output\": [\"CHAT WITH HER!\"]}, {\"input\": \"ndormkufcrkxlihdhmcehzoimcfhqsmombnfjrlcalffq\\r\\n\", \"output\": [\"CHAT WITH HER!\"]}, {\"input\": \"zqzlnnuwcfufwujygtczfakhcpqbtxtejrbgoodychepzdphdahtxyfpmlrycyicqthsgm\\r\\n\", \"output\": [\"IGNORE HIM!\"]}, {\"input\": \"ppcpbnhwoizajrl\\r\\n\", \"output\": [\"IGNORE HIM!\"]}, {\"input\": \"sgubujztzwkzvztitssxxxwzanfmddfqvv\\r\\n\", \"output\": [\"CHAT WITH HER!\"]}, {\"input\": \"ptkyaxycecpbrjnvxcjtbqiocqcswnmicxbvhdsptbxyxswbw\\r\\n\", \"output\": [\"IGNORE HIM!\"]}, {\"input\": \"yhbtzfppwcycxqjpqdfmjnhwaogyuaxamwxpnrdrnqsgdyfvxu\\r\\n\", \"output\": [\"CHAT WITH HER!\"]}, {\"input\": \"ojjvpnkrxibyevxk\\r\\n\", \"output\": [\"CHAT WITH HER!\"]}, {\"input\": \"wjweqcrqfuollfvfbiyriijovweg\\r\\n\", \"output\": [\"IGNORE HIM!\"]}, {\"input\": \"hkdbykboclchfdsuovvpknwqr\\r\\n\", \"output\": [\"IGNORE HIM!\"]}, {\"input\": \"stjvyfrfowopwfjdveduedqylerqugykyu\\r\\n\", \"output\": [\"IGNORE HIM!\"]}, {\"input\": \"rafcaanqytfclvfdegak\\r\\n\", \"output\": [\"CHAT WITH HER!\"]}, {\"input\": \"xczn\\r\\n\", \"output\": [\"CHAT WITH HER!\"]}, {\"input\": \"arcoaeozyeawbveoxpmafxxzdjldsielp\\r\\n\", \"output\": [\"IGNORE HIM!\"]}, {\"input\": \"smdfafbyehdylhaleevhoggiurdgeleaxkeqdixyfztkuqsculgslheqfafxyghyuibdgiuwrdxfcitojxika\\r\\n\", \"output\": [\"CHAT WITH HER!\"]}, {\"input\": \"vbpfgjqnhfazmvtkpjrdasfhsuxnpiepxfrzvoh\\r\\n\", \"output\": [\"CHAT WITH HER!\"]}, {\"input\": \"dbdokywnpqnotfrhdbrzmuyoxfdtrgrzcccninbtmoqvxfatcqg\\r\\n\", \"output\": [\"CHAT WITH HER!\"]}, {\"input\": \"udlpagtpq\\r\\n\", \"output\": [\"CHAT WITH HER!\"]}, {\"input\": \"zjurevbytijifnpfuyswfchdzelxheboruwjqijxcucylysmwtiqsqqhktexcynquvcwhbjsipy\\r\\n\", \"output\": [\"CHAT WITH HER!\"]}, {\"input\": \"qagzrqjomdwhagkhrjahhxkieijyten\\r\\n\", \"output\": [\"CHAT WITH HER!\"]}, {\"input\": \"achhcfjnnfwgoufxamcqrsontgjjhgyfzuhklkmiwybnrlsvblnsrjqdytglipxsulpnphpjpoewvlusalsgovwnsngb\\r\\n\", \"output\": [\"CHAT WITH HER!\"]}, {\"input\": \"qbkjsdwpahdbbohggbclfcufqelnojoehsxxkr\\r\\n\", \"output\": [\"CHAT WITH HER!\"]}, {\"input\": \"cpvftiwgyvnlmbkadiafddpgfpvhqqvuehkypqjsoibpiudfvpkhzlfrykc\\r\\n\", \"output\": [\"IGNORE HIM!\"]}, {\"input\": \"lnpdosnceumubvk\\r\\n\", \"output\": [\"IGNORE HIM!\"]}, {\"input\": \"efrk\\r\\n\", \"output\": [\"CHAT WITH HER!\"]}, {\"input\": \"temnownneghnrujforif\\r\\n\", \"output\": [\"IGNORE HIM!\"]}, {\"input\": \"ottnneymszwbumgobazfjyxewkjakglbfflsajuzescplpcxqta\\r\\n\", \"output\": [\"IGNORE HIM!\"]}, {\"input\": \"eswpaclodzcwhgixhpyzvhdwsgneqidanbzdzszquefh\\r\\n\", \"output\": [\"IGNORE HIM!\"]}, {\"input\": \"gwntwbpj\\r\\n\", \"output\": [\"IGNORE HIM!\"]}, {\"input\": \"wuqvlbblkddeindiiswsinkfrnkxghhwunzmmvyovpqapdfbolyim\\r\\n\", \"output\": [\"IGNORE HIM!\"]}, {\"input\": \"swdqsnzmzmsyvktukaoyqsqzgfmbzhezbfaqeywgwizrwjyzquaahucjchegknqaioliqd\\r\\n\", \"output\": [\"CHAT WITH HER!\"]}, {\"input\": \"vlhrpzezawyolhbmvxbwhtjustdbqggexmzxyieihjlelvwjosmkwesfjmramsikhkupzvfgezmrqzudjcalpjacmhykhgfhrjx\\r\\n\", \"output\": [\"IGNORE HIM!\"]}, {\"input\": \"lxxwbkrjgnqjwsnflfnsdyxihmlspgivirazsbveztnkuzpaxtygidniflyjheejelnjyjvgkgvdqks\\r\\n\", \"output\": [\"CHAT WITH HER!\"]}, {\"input\": \"wpxbxzfhtdecetpljcrvpjjnllosdqirnkzesiqeukbedkayqx\\r\\n\", \"output\": [\"CHAT WITH HER!\"]}, {\"input\": \"vmzxgacicvweclaodrunmjnfwtimceetsaoickarqyrkdghcmyjgmtgsqastcktyrjgvjqimdc\\r\\n\", \"output\": [\"CHAT WITH HER!\"]}, {\"input\": \"yzlzmesxdttfcztooypjztlgxwcr\\r\\n\", \"output\": [\"IGNORE HIM!\"]}, {\"input\": \"qpbjwzwgdzmeluheirjrvzrhbmagfsjdgvzgwumjtjzecsfkrfqjasssrhhtgdqqfydlmrktlgfc\\r\\n\", \"output\": [\"IGNORE HIM!\"]}, {\"input\": \"aqzftsvezdgouyrirsxpbuvdjupnzvbhguyayeqozfzymfnepvwgblqzvmxxkxcilmsjvcgyqykpoaktjvsxbygfgsalbjoq\\r\\n\", \"output\": [\"CHAT WITH HER!\"]}, {\"input\": \"znicjjgijhrbdlnwmtjgtdgziollrfxroabfhadygnomodaembllreorlyhnehijfyjbfxucazellblegyfrzuraogadj\\r\\n\", \"output\": [\"IGNORE HIM!\"]}, {\"input\": \"qordzrdiknsympdrkgapjxokbldorpnmnpucmwakklmqenpmkom\\r\\n\", \"output\": [\"CHAT WITH HER!\"]}, {\"input\": \"wqfldgihuxfktzanyycluzhtewmwvnawqlfoavuguhygqrrxtstxwouuzzsryjqtfqo\\r\\n\", \"output\": [\"CHAT WITH HER!\"]}, {\"input\": \"vujtrrpshinkskgyknlcfckmqdrwtklkzlyipmetjvaqxdsslkskschbalmdhzsdrrjmxdltbtnxbh\\r\\n\", \"output\": [\"IGNORE HIM!\"]}, {\"input\": \"zioixjibuhrzyrbzqcdjbbhhdmpgmqykixcxoqupggaqajuzonrpzihbsogjfsrrypbiphehonyhohsbybnnukqebopppa\\r\\n\", \"output\": [\"CHAT WITH HER!\"]}, {\"input\": \"oh\\r\\n\", \"output\": [\"CHAT WITH HER!\"]}, {\"input\": \"kxqthadqesbpgpsvpbcbznxpecqrzjoilpauttzlnxvaczcqwuri\\r\\n\", \"output\": [\"IGNORE HIM!\"]}, {\"input\": \"zwlunigqnhrwirkvufqwrnwcnkqqonebrwzcshcbqqwkjxhymjjeakuzjettebciadjlkbfp\\r\\n\", \"output\": [\"CHAT WITH HER!\"]}, {\"input\": \"fjuldpuejgmggvvigkwdyzytfxzwdlofrpifqpdnhfyroginqaufwgjcbgshyyruwhofctsdaisqpjxqjmtpp\\r\\n\", \"output\": [\"CHAT WITH HER!\"]}, {\"input\": \"xiwntnheuitbtqxrmzvxmieldudakogealwrpygbxsbluhsqhtwmdlpjwzyafckrqrdduonkgo\\r\\n\", \"output\": [\"CHAT WITH HER!\"]}, {\"input\": \"mnmbupgo\\r\\n\", \"output\": [\"IGNORE HIM!\"]}, {\"input\": \"mcjehdiygkbmrbfjqwpwxidbdfelifwhstaxdapigbymmsgrhnzsdjhsqchl\\r\\n\", \"output\": [\"IGNORE HIM!\"]}, {\"input\": \"yocxrzspinchmhtmqo\\r\\n\", \"output\": [\"CHAT WITH HER!\"]}, {\"input\": \"vasvvnpymtgjirnzuynluluvmgpquskuaafwogeztfnvybblajvuuvfomtifeuzpikjrolzeeoftv\\r\\n\", \"output\": [\"CHAT WITH HER!\"]}, {\"input\": \"ecsdicrznvglwggrdbrvehwzaenzjutjydhvimtqegweurpxtjkmpcznshtrvotkvrghxhacjkedidqqzrduzad\\r\\n\", \"output\": [\"IGNORE HIM!\"]}, {\"input\": \"ubvhyaebyxoghakajqrpqpctwbrfqzli\\r\\n\", \"output\": [\"CHAT WITH HER!\"]}, {\"input\": \"gogbxfeqylxoummvgxpkoqzsmobasesxbqjjktqbwqxeiaagnnhbvepbpy\\r\\n\", \"output\": [\"IGNORE HIM!\"]}, {\"input\": \"nheihhxkbbrmlpxpxbhnpofcjmxemyvqqdbanwd\\r\\n\", \"output\": [\"IGNORE HIM!\"]}, {\"input\": \"acrzbavz\\r\\n\", \"output\": [\"CHAT WITH HER!\"]}, {\"input\": \"drvzznznvrzskftnrhvvzxcalwutxmdza\\r\\n\", \"output\": [\"IGNORE HIM!\"]}, {\"input\": \"oacwxipdfcoabhkwxqdbtowiekpnflnqhlrkustgzryvws\\r\\n\", \"output\": [\"CHAT WITH HER!\"]}, {\"input\": \"tpnwfmfsibnccvdwjvzviyvjfljupinfigfunyff\\r\\n\", \"output\": [\"CHAT WITH HER!\"]}, {\"input\": \"gavaihhamfolcndgytcsgucqdqngxkrlovpthvteacmmthoglxu\\r\\n\", \"output\": [\"CHAT WITH HER!\"]}, {\"input\": \"hsfcfvameeupldgvchmogrvwxrvsmnwxxkxoawwodtsahqvehlcw\\r\\n\", \"output\": [\"IGNORE HIM!\"]}, {\"input\": \"sbkydrscoojychxchqsuciperfroumenelgiyiwlqfwximrgdbyvkmacy\\r\\n\", \"output\": [\"CHAT WITH HER!\"]}, {\"input\": \"rhh\\r\\n\", \"output\": [\"CHAT WITH HER!\"]}, {\"input\": \"zhdouqfmlkenjzdijxdfxnlegxeuvhelo\\r\\n\", \"output\": [\"IGNORE HIM!\"]}, {\"input\": \"yufkkfwyhhvcjntsgsvpzbhqtmtgyxifqoewmuplphykmptfdebjxuaxigomjtwgtljwdjhjernkitifbomifbhysnmadtnyn\\r\\n\", \"output\": [\"CHAT WITH HER!\"]}, {\"input\": \"urigreuzpxnej\\r\\n\", \"output\": [\"CHAT WITH HER!\"]}]",
+        "source_lang": "Python 3",
+        "target_lang": "C"
+    }
+}

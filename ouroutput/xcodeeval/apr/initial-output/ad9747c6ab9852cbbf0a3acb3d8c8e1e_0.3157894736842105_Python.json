@@ -1,0 +1,102 @@
+{
+    "oai_response": {
+        "prompt": "Fix a buggy program written in Python language to solve the following programming problem:\nDescription: Hideo Kojima has just quit his job at Konami. Now he is going to find a new place to work. Despite being such a well-known person, he still needs a CV to apply for a job.During all his career Hideo has produced n games. Some of them were successful, some were not. Hideo wants to remove several of them (possibly zero) from his CV to make a better impression on employers. As a result there should be no unsuccessful game which comes right after successful one in his CV.More formally, you are given an array s1,\u2009s2,\u2009...,\u2009sn of zeros and ones. Zero corresponds to an unsuccessful game, one \u2014 to a successful one. Games are given in order they were produced, and Hideo can't swap these values. He should remove some elements from this array in such a way that no zero comes right after one.Besides that, Hideo still wants to mention as much games in his CV as possible. Help this genius of a man determine the maximum number of games he can leave in his CV.\nInput Specification: The first line contains one integer number n (1\u2009\u2264\u2009n\u2009\u2264\u2009100). The second line contains n space-separated integer numbers s1,\u2009s2,\u2009...,\u2009sn (0\u2009\u2264\u2009si\u2009\u2264\u20091). 0 corresponds to an unsuccessful game, 1 \u2014 to a successful one.\nOutput Specification: Print one integer \u2014 the maximum number of games Hideo can leave in his CV so that no unsuccessful game comes after a successful one.\n\nSample Input:\n4\n1 1 0 1\nSample Output:\n3\n\nSample Input:\n6\n0 1 0 0 1 0\nSample Output:\n4\n\nSample Input:\n1\n0\nSample Output:\n1\n\nNotes: None\nTake input from standard input and output to standard output\n\nHere is the code with a bug of TIME_LIMIT_EXCEEDED:\n\ndef inc(arr):\n    for i in range(len(arr) - 1, -1, -1):\n        w = arr[i]\n        if w == 0:\n            for j in range(len(arr) - 1, i, -1):\n                arr[j] = 0\n            arr[i] = 1\n            return arr\n\n\ndef proveralo1(a, arr):\n    c = []\n    for i in range(len(arr)):\n        if arr[i] == 1:\n            c.append(a[i])\n    return c\ndef proveralo2(c):\n    f = 0\n    for i in range(len(c)):\n        if f == 1 and c[i] == 0:\n            return False\n        if f == 0 and c[i] == 1:\n            f = 1\n    return True\n\n\nn = int(input())\narr = [0] * n\na = list(map(int,input().split()))\ns = 0\nc1 = []\nwhile True:\n    c = []\n    r = 0\n    arr = inc(arr)\n    c = proveralo1(a,arr)\n    if proveralo2(c) == True:\n        r = len(c)\n    if r > s:\n        s = r\n        c1 = c\n    if inc(arr) == None:\n        break\nprint(s)\n\nProvide the fixed Python code without any description or extra tokens.\n\nFixed source code:\n ||END-of-SRC||",
+        "response": {
+            "id": "multi-call-as-xp4usdceym",
+            "model": "deepseek-v3",
+            "created": 1760422856,
+            "choices": [
+                {
+                    "index": 0,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```python\nn = int(input())\na = list(map(int, input().split()))\nmax_games = 0\n\nfor i in range(n + 1):\n    for j in range(i, n + 1):\n        # The first part (0..i-1) can have 0s and 1s, but no 0 after 1\n        # The middle part (i..j-1) is all 0s\n        # The last part (j..n-1) is all 1s\n        valid = True\n        # Check first part\n        for k in range(1, i):\n            if a[k-1] == 1 and a[k] == 0:\n                valid = False\n                break\n        if not valid:\n            continue\n        # Check middle part (all 0s)\n        for k in range(i, j):\n            if k >= n:\n                break\n            if a[k] != 0:\n                valid = False\n                break\n        if not valid:\n            continue\n        # Check last part (all 1s)\n        for k in range(j, n):\n            if a[k] != 1:\n                valid = False\n                break\n        if valid:\n            current_games = n - (j - i)  # Since we're not actually removing, but counting the valid configuration\n            # Wait, no. The total is the entire array, but the condition is that after the first part (which can have 0s and 1s but no 0 after 1), then all 0s, then all 1s.\n            # So the total games is the entire array, but the condition is met.\n            # Actually, the number of games is the length of the array under the condition.\n            # So the maximum is n if the entire array meets the condition.\n            # Otherwise, we need to find the largest subset where the condition is met.\n            # So perhaps the approach is to find the maximum length where the array is non-decreasing in terms of 0s followed by 1s.\n            # So the correct approach is to find the longest sequence where all 0s come before all 1s.\n            # So the maximum is the maximum of (count of 0s up to i) + (count of 1s from i to n-1) for all i.\n            pass\n\n# The correct approach is to find the maximum of (number of 0s in the first k elements) + (number of 1s in the remaining elements)\nmax_games = 0\ncount_1 = sum(a)\ncount_0 = n - count_1\nmax_games = max(count_0, count_1)  # Either all 0s or all 1s\n\nfor k in range(1, n):\n    zeros = a[:k].count(0)\n    ones = a[k:].count(1)\n    total = zeros + ones\n    if total > max_games:\n        max_games = total\n\nprint(max_games)\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 1,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```python\nn = int(input())\na = list(map(int, input().split()))\nmax_games = 0\n\nfor i in range(n + 1):\n    for j in range(i, n + 1):\n        # The first part is 0s, the second part is 1s\n        count = a[:i].count(0) + a[j:].count(1)\n        if count > max_games:\n            max_games = count\n\nprint(max_games)\n``` ||END-of-SRC||"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 2,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```python\nn = int(input())\na = list(map(int, input().split()))\nmax_games = 0\n\nfor i in range(n + 1):\n    for j in range(i, n + 1):\n        # The first part (0..i-1) can have 0s and 1s, but no 0 after 1\n        # The middle part (i..j-1) is all 0s\n        # The last part (j..n-1) is all 1s\n        valid = True\n        # Check first part\n        for k in range(1, i):\n            if a[k-1] == 1 and a[k] == 0:\n                valid = False\n                break\n        if not valid:\n            continue\n        # Check middle part (all 0s)\n        for k in range(i, j):\n            if k >= n:\n                break\n            if a[k] != 0:\n                valid = False\n                break\n        if not valid:\n            continue\n        # Check last part (all 1s)\n        for k in range(j, n):\n            if a[k] != 1:\n                valid = False\n                break\n        if valid:\n            current_games = n - (j - i)  # since we're setting middle to 0s, but actually we can keep them if they are 0\n            # Wait, no. The actual count is the entire array with the condition that after first 1, no 0s.\n            # So the correct count is the length of the array after removing some elements to meet the condition.\n            # The above approach is not directly counting correctly. Let me think differently.\n            # The correct approach is to find the best split point where all before are 0s or 1s in order, and after are 1s.\n            # So the maximum is the maximum of (number of 0s up to i) + (number of 1s from i to end) for all i.\n            pass\n\n# The correct approach is to find the best split point where all 0s are before all 1s.\nmax_games = 0\nfor i in range(n + 1):\n    # 0..i-1 can have 0s and 1s, but no 0 after 1\n    # i..n-1 must be all 1s (or empty)\n    valid = True\n    # Check first part\n    for k in range(1, i):\n        if a[k-1] == 1 and a[k] == 0:\n            valid = False\n            break\n    if not valid:\n        continue\n    # Check second part (all 1s)\n    for k in range(i, n):\n        if a[k] != 1:\n            valid = False\n            break\n    if valid:\n        max_games = max(max_games, n)\n        continue\n    # If second part is not all 1s, we can still have some 0s in the first part, but need to count correctly\n    # So the maximum is the count of 0s in first part + count of 1s in entire array\n    # But need to ensure no 0 after 1 in first part\n    # So better to count the maximum sequence where all 0s come before all 1s\n    # So the maximum is the maximum of (count of 0s up to k) + (count of 1s from k+1 to end) for all k\n    pass\n\n# The optimal solution is to find the maximum of (number of 0s in the prefix) + (number of 1s in the suffix)\ncount_1 = a.count(1)\nmax_games = count_1  # case where we take all 1s\ncount_0_prefix = 0\nfor i in range(n):\n    if a[i] == 0:\n        count_0_prefix += 1\n    count_1_suffix = count_1 - sum(a[:i+1])\n    current = count_0_prefix + count_1_suffix\n    if current > max_games:\n        max_games = current\n\nprint(max_games)\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 3,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```python\nn = int(input())\na = list(map(int, input().split()))\nmax_games = 0\n\nfor i in range(n + 1):\n    for j in range(i, n + 1):\n        # The first part (0..i-1) can have only 0s\n        # The middle part (i..j-1) can have anything (but we'll take all)\n        # The last part (j..n-1) can have only 1s\n        valid = True\n        # Check first part (0..i-1)\n        for k in range(i):\n            if a[k] == 1:\n                valid = False\n                break\n        if not valid:\n            continue\n        # Check last part (j..n-1)\n        for k in range(j, n):\n            if a[k] == 0:\n                valid = False\n                break\n        if valid:\n            current = n - (j - i)\n            if current > max_games:\n                max_games = current\n\nprint(max_games)\n``` ||END-of-SRC||"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 4,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```python\nn = int(input())\na = list(map(int, input().split()))\nmax_games = 0\n\nfor i in range(n + 1):\n    for j in range(i, n + 1):\n        # The first part (0..i-1) can have 0s only\n        # The middle part (i..j-1) can have anything (but we'll take all 1s)\n        # The last part (j..n-1) can have 0s only\n        count = 0\n        for k in range(i):\n            if a[k] == 0:\n                count += 1\n        for k in range(i, j):\n            if a[k] == 1:\n                count += 1\n        for k in range(j, n):\n            if a[k] == 0:\n                count += 1\n        if count > max_games:\n            max_games = count\n\nprint(max_games)\n``` ||END-of-SRC||"
+                    },
+                    "finish_reason": "stop"
+                }
+            ],
+            "usage": {
+                "prompt_tokens": 3670,
+                "completion_tokens": 2112,
+                "total_tokens": 5782
+            }
+        }
+    },
+    "source_data": {
+        "prob_desc_memory_limit": "256 megabytes",
+        "tags": [
+            "brute force",
+            "implementation"
+        ],
+        "prob_desc_created_at": "1504623900",
+        "fix_source_code": "",
+        "prob_desc_input_spec": "The first line contains one integer number n (1\u2009\u2264\u2009n\u2009\u2264\u2009100). The second line contains n space-separated integer numbers s1,\u2009s2,\u2009...,\u2009sn (0\u2009\u2264\u2009si\u2009\u2264\u20091). 0 corresponds to an unsuccessful game, 1 \u2014 to a successful one.",
+        "prob_desc_sample_outputs": [
+            "3",
+            "4",
+            "1"
+        ],
+        "src_uid": "c7b1f0b40e310f99936d1c33e4816b95",
+        "prob_desc_time_limit": "1 second",
+        "fix_exec_outcome": "",
+        "delete_cnt": 0,
+        "apr_id": "e9a732fad817745dc2e4a51f1c6ed3f8",
+        "fix_code_uid": "",
+        "lang_cluster": "Python",
+        "prob_desc_sample_inputs": [
+            "4\n1 1 0 1",
+            "6\n0 1 0 0 1 0",
+            "1\n0"
+        ],
+        "prob_desc_output_to": "standard output",
+        "file_name": "Python.jsonl",
+        "equal_cnt": 5,
+        "lang": "Python 3",
+        "prob_desc_output_spec": "Print one integer \u2014 the maximum number of games Hideo can leave in his CV so that no unsuccessful game comes after a successful one.",
+        "bug_exec_outcome": "TIME_LIMIT_EXCEEDED",
+        "prob_desc_notes": null,
+        "difficulty": 1500.0,
+        "similarity_score": 0.0486048609,
+        "prob_desc_description": "Hideo Kojima has just quit his job at Konami. Now he is going to find a new place to work. Despite being such a well-known person, he still needs a CV to apply for a job.During all his career Hideo has produced n games. Some of them were successful, some were not. Hideo wants to remove several of them (possibly zero) from his CV to make a better impression on employers. As a result there should be no unsuccessful game which comes right after successful one in his CV.More formally, you are given an array s1,\u2009s2,\u2009...,\u2009sn of zeros and ones. Zero corresponds to an unsuccessful game, one \u2014 to a successful one. Games are given in order they were produced, and Hideo can't swap these values. He should remove some elements from this array in such a way that no zero comes right after one.Besides that, Hideo still wants to mention as much games in his CV as possible. Help this genius of a man determine the maximum number of games he can leave in his CV.",
+        "potential_dominant_fix_op": "replace",
+        "bug_source_code": "def inc(arr):\n    for i in range(len(arr) - 1, -1, -1):\n        w = arr[i]\n        if w == 0:\n            for j in range(len(arr) - 1, i, -1):\n                arr[j] = 0\n            arr[i] = 1\n            return arr\n\n\ndef proveralo1(a, arr):\n    c = []\n    for i in range(len(arr)):\n        if arr[i] == 1:\n            c.append(a[i])\n    return c\ndef proveralo2(c):\n    f = 0\n    for i in range(len(c)):\n        if f == 1 and c[i] == 0:\n            return False\n        if f == 0 and c[i] == 1:\n            f = 1\n    return True\n\n\nn = int(input())\narr = [0] * n\na = list(map(int,input().split()))\ns = 0\nc1 = []\nwhile True:\n    c = []\n    r = 0\n    arr = inc(arr)\n    c = proveralo1(a,arr)\n    if proveralo2(c) == True:\n        r = len(c)\n    if r > s:\n        s = r\n        c1 = c\n    if inc(arr) == None:\n        break\nprint(s)",
+        "replace_cnt": 6,
+        "prob_desc_input_from": "standard input",
+        "bug_code_uid": "ad9747c6ab9852cbbf0a3acb3d8c8e1e",
+        "insert_cnt": 0,
+        "fix_ops_cnt": 6,
+        "hidden_unit_tests": "[{\"input\": \"4\\r\\n1 1 0 1\\r\\n\", \"output\": [\"3\"]}, {\"input\": \"6\\r\\n0 1 0 0 1 0\\r\\n\", \"output\": [\"4\"]}, {\"input\": \"1\\r\\n0\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"100\\r\\n0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0\\r\\n\", \"output\": [\"100\"]}, {\"input\": \"100\\r\\n0 0 1 1 1 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 1 0 0 0 0 0 0 1 1 1 0 0 1 0 1 0 0 0 1 1 0 0 0 0 0 1 1 0 1 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 1 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0\\r\\n\", \"output\": [\"80\"]}, {\"input\": \"1\\r\\n1\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"100\\r\\n1 1 0 1 1 0 0 0 0 1 0 1 1 1 0 1 1 1 1 0 1 1 1 1 1 1 0 1 1 0 0 1 1 1 0 0 0 1 0 0 1 0 1 1 0 1 0 0 1 0 0 1 1 0 0 1 0 0 1 1 0 1 0 1 0 0 0 0 0 1 0 0 0 0 0 0 1 1 0 0 0 1 1 1 0 1 1 0 1 1 1 0 0 1 1 0 0 0 0 1\\r\\n\", \"output\": [\"53\"]}, {\"input\": \"100\\r\\n1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1\\r\\n\", \"output\": [\"100\"]}, {\"input\": \"3\\r\\n1 0 0\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"10\\r\\n1 1 0 0 0 1 1 0 0 0\\r\\n\", \"output\": [\"6\"]}, {\"input\": \"90\\r\\n1 0 0 1 1 0 0 1 0 0 0 0 1 1 1 0 1 0 1 0 0 0 0 1 0 0 1 1 1 1 1 0 0 0 1 0 1 0 1 0 1 0 0 1 0 1 0 1 0 1 0 1 0 0 1 0 0 1 1 0 0 1 0 0 0 0 1 1 1 0 1 0 1 0 0 0 0 1 0 0 1 1 1 1 1 0 0 0 1 0\\r\\n\", \"output\": [\"52\"]}, {\"input\": \"78\\r\\n0 0 1 0 1 0 1 1 0 0 0 1 1 1 1 0 0 0 1 0 1 1 1 0 1 0 0 0 1 0 0 0 1 1 1 1 1 1 1 1 1 1 1 0 1 0 0 0 0 0 1 0 0 1 0 1 0 1 0 1 0 1 1 1 0 0 1 0 0 0 0 1 0 1 0 0 1 0\\r\\n\", \"output\": [\"42\"]}, {\"input\": \"4\\r\\n1 0 0 1\\r\\n\", \"output\": [\"3\"]}, {\"input\": \"2\\r\\n0 1\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"5\\r\\n0 1 0 0 1\\r\\n\", \"output\": [\"4\"]}, {\"input\": \"3\\r\\n1 0 1\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"3\\r\\n1 1 0\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"16\\r\\n1 1 1 1 1 0 0 0 0 0 1 0 1 0 0 1\\r\\n\", \"output\": [\"9\"]}]"
+    }
+}

@@ -1,0 +1,89 @@
+{
+    "oai_response": {
+        "prompt": "Here is code in Python 3 programming lanaguge. Translate the following code from Python 3 to C programming lanaguge. Do not output any extra description or tokens other than the translated code. \n\nn = int(input())\nk=0\nfor i in [100, 20, 10, 5]:\n    k = k + n // i\n    n = n % i\nprint(k + n)||END-of-SRC||",
+        "response": {
+            "id": "multi-call-as-rjxtdpmfee",
+            "model": "deepseek-v3",
+            "created": 1767067257,
+            "choices": [
+                {
+                    "index": 0,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n\nint main() {\n    int n, k = 0;\n    scanf(\"%d\", &n);\n    int denominations[] = {100, 20, 10, 5};\n    for (int i = 0; i < 4; i++) {\n        k += n / denominations[i];\n        n %= denominations[i];\n    }\n    printf(\"%d\\n\", k + n);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 1,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n\nint main() {\n    int n, k = 0;\n    scanf(\"%d\", &n);\n    int denominations[] = {100, 20, 10, 5};\n    for (int i = 0; i < 4; i++) {\n        k += n / denominations[i];\n        n %= denominations[i];\n    }\n    printf(\"%d\\n\", k + n);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 2,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n\nint main() {\n    int n, k = 0;\n    scanf(\"%d\", &n);\n    int denominations[] = {100, 20, 10, 5};\n    for (int i = 0; i < 4; i++) {\n        k += n / denominations[i];\n        n %= denominations[i];\n    }\n    printf(\"%d\\n\", k + n);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 3,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n\nint main() {\n    int n, k = 0;\n    scanf(\"%d\", &n);\n    int denominations[] = {100, 20, 10, 5};\n    for (int i = 0; i < 4; i++) {\n        k += n / denominations[i];\n        n %= denominations[i];\n    }\n    printf(\"%d\\n\", k + n);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 4,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n\nint main() {\n    int n, k = 0;\n    scanf(\"%d\", &n);\n    int denominations[] = {100, 20, 10, 5};\n    for (int i = 0; i < 4; i++) {\n        k += n / denominations[i];\n        n %= denominations[i];\n    }\n    printf(\"%d\\n\", k + n);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                }
+            ],
+            "usage": {
+                "prompt_tokens": 480,
+                "completion_tokens": 488,
+                "total_tokens": 968
+            }
+        }
+    },
+    "source_data": {
+        "code_uid": "b81f7cb17f6026db6c6e274c80665a91",
+        "prob_desc_output_to": "standard output",
+        "prob_desc_notes": "NoteIn the first sample case, Allen can withdraw this with a $$$100$$$ dollar bill, a $$$20$$$ dollar bill, and a $$$5$$$ dollar bill. There is no way for Allen to receive $$$125$$$ dollars in one or two bills.In the second sample case, Allen can withdraw two $$$20$$$ dollar bills and three $$$1$$$ dollar bills.In the third sample case, Allen can withdraw $$$100000000$$$ (ten million!) $$$100$$$ dollar bills.",
+        "lang_cluster": "Python",
+        "prob_desc_time_limit": "1 second",
+        "prob_desc_input_spec": "The first and only line of input contains a single integer $$$n$$$ ($$$1 \\le n \\le 10^9$$$).",
+        "source_code": "n = int(input())\nk=0\nfor i in [100, 20, 10, 5]:\n    k = k + n // i\n    n = n % i\nprint(k + n)",
+        "prob_desc_sample_inputs": [
+            "125",
+            "43",
+            "1000000000"
+        ],
+        "prob_desc_memory_limit": "256 megabytes",
+        "exec_outcome": "PASSED",
+        "prob_desc_output_spec": "Output the minimum number of bills that Allen could receive.",
+        "src_uid": "8e81ad7110552c20297f08ad3e5f8ddc",
+        "prob_desc_input_from": "standard input",
+        "lang": "Python 3",
+        "prob_desc_sample_outputs": [
+            "3",
+            "5",
+            "10000000"
+        ],
+        "file_name": "d7021504500d5ca7c2b02df8100a574d159e6e67e20ec8071b75800b1267370a",
+        "prob_desc_description": "Allen has a LOT of money. He has $$$n$$$ dollars in the bank. For security reasons, he wants to withdraw it in cash (we will not disclose the reasons here). The denominations for dollar bills are $$$1$$$, $$$5$$$, $$$10$$$, $$$20$$$, $$$100$$$. What is the minimum number of bills Allen could receive after withdrawing his entire balance?",
+        "prob_desc_created_at": "1529858100",
+        "difficulty": 800.0,
+        "hidden_unit_tests": "[{\"input\": \"125\\r\\n\", \"output\": [\"3\"]}, {\"input\": \"43\\r\\n\", \"output\": [\"5\"]}, {\"input\": \"1000000000\\r\\n\", \"output\": [\"10000000\"]}, {\"input\": \"4\\r\\n\", \"output\": [\"4\"]}, {\"input\": \"5\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"1\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"74\\r\\n\", \"output\": [\"8\"]}, {\"input\": \"31\\r\\n\", \"output\": [\"3\"]}, {\"input\": \"59\\r\\n\", \"output\": [\"8\"]}, {\"input\": \"79\\r\\n\", \"output\": [\"9\"]}, {\"input\": \"7\\r\\n\", \"output\": [\"3\"]}, {\"input\": \"55\\r\\n\", \"output\": [\"4\"]}, {\"input\": \"40\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"719\\r\\n\", \"output\": [\"13\"]}, {\"input\": \"847\\r\\n\", \"output\": [\"13\"]}, {\"input\": \"225\\r\\n\", \"output\": [\"4\"]}, {\"input\": \"4704\\r\\n\", \"output\": [\"51\"]}, {\"input\": \"1132\\r\\n\", \"output\": [\"15\"]}, {\"input\": \"7811\\r\\n\", \"output\": [\"80\"]}, {\"input\": \"7981\\r\\n\", \"output\": [\"84\"]}, {\"input\": \"82655\\r\\n\", \"output\": [\"830\"]}, {\"input\": \"6364\\r\\n\", \"output\": [\"70\"]}, {\"input\": \"74611\\r\\n\", \"output\": [\"748\"]}, {\"input\": \"45391\\r\\n\", \"output\": [\"459\"]}, {\"input\": \"620448\\r\\n\", \"output\": [\"6210\"]}, {\"input\": \"265145\\r\\n\", \"output\": [\"2654\"]}, {\"input\": \"671704\\r\\n\", \"output\": [\"6721\"]}, {\"input\": \"365173\\r\\n\", \"output\": [\"3658\"]}, {\"input\": \"7130872\\r\\n\", \"output\": [\"71314\"]}, {\"input\": \"9628747\\r\\n\", \"output\": [\"96292\"]}, {\"input\": \"8898399\\r\\n\", \"output\": [\"88993\"]}, {\"input\": \"9497953\\r\\n\", \"output\": [\"94985\"]}, {\"input\": \"19070947\\r\\n\", \"output\": [\"190714\"]}, {\"input\": \"20185520\\r\\n\", \"output\": [\"201856\"]}, {\"input\": \"91402248\\r\\n\", \"output\": [\"914028\"]}, {\"input\": \"27035533\\r\\n\", \"output\": [\"270360\"]}, {\"input\": \"22717528\\r\\n\", \"output\": [\"227180\"]}, {\"input\": \"24403439\\r\\n\", \"output\": [\"244041\"]}, {\"input\": \"163565555\\r\\n\", \"output\": [\"1635659\"]}, {\"input\": \"152541908\\r\\n\", \"output\": [\"1525423\"]}, {\"input\": \"668439837\\r\\n\", \"output\": [\"6684403\"]}, {\"input\": \"20\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"999999999\\r\\n\", \"output\": [\"10000009\"]}, {\"input\": \"10\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"6\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"99999999\\r\\n\", \"output\": [\"1000009\"]}, {\"input\": \"1000001\\r\\n\", \"output\": [\"10001\"]}, {\"input\": \"2521\\r\\n\", \"output\": [\"27\"]}]",
+        "source_lang": "Python 3",
+        "target_lang": "C"
+    }
+}

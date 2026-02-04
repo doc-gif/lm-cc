@@ -1,0 +1,93 @@
+{
+    "oai_response": {
+        "prompt": "Here is code in Python 3 programming lanaguge. Translate the following code from Python 3 to C programming lanaguge. Do not output any extra description or tokens other than the translated code. \n\nnnn=\"312831303130313130313031312831303130313130313031312831303130313130313031\"\nnnl=\"312831303130313130313031312831303130313130313031312931303130313130313031\"\nnln=\"312831303130313130313031312931303130313130313031312831303130313130313031\"\nlnn=\"312931303130313130313031312831303130313130313031312831303130313130313031\"\nN=int(input())\ns=input().split()\ns=''.join(s)\nif s in nnn or s in nnl or s in nln or s in lnn:\n\tprint(\"YES\")\nelse:\n\tprint(\"NO\")\n||END-of-SRC||",
+        "response": {
+            "id": "multi-call-as-z9zmsxuy6q",
+            "model": "deepseek-v3",
+            "created": 1767066315,
+            "choices": [
+                {
+                    "index": 0,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <string.h>\n\nint main() {\n    char nnn[] = \"312831303130313130313031312831303130313130313031312831303130313130313031\";\n    char nnl[] = \"312831303130313130313031312831303130313130313031312931303130313130313031\";\n    char nln[] = \"312831303130313130313031312931303130313130313031312831303130313130313031\";\n    char lnn[] = \"312931303130313130313031312831303130313130313031312831303130313130313031\";\n    \n    int N;\n    scanf(\"%d\", &N);\n    getchar(); // consume newline\n    \n    char s[1000];\n    fgets(s, sizeof(s), stdin);\n    s[strcspn(s, \"\\n\")] = 0; // remove newline\n    \n    // Remove all spaces from s\n    char s_clean[1000];\n    int j = 0;\n    for (int i = 0; s[i] != '\\0'; i++) {\n        if (s[i] != ' ') {\n            s_clean[j++] = s[i];\n        }\n    }\n    s_clean[j] = '\\0';\n    \n    if (strstr(nnn, s_clean) || strstr(nnl, s_clean) || strstr(nln, s_clean) || strstr(lnn, s_clean)) {\n        printf(\"YES\\n\");\n    } else {\n        printf(\"NO\\n\");\n    }\n    \n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 1,
+                    "message": {
+                        "role": "assistant",
+                        "content": "Here's the translated code in C:\n\n```c\n#include <stdio.h>\n#include <string.h>\n\nint main() {\n    char nnn[] = \"312831303130313130313031312831303130313130313031312831303130313130313031\";\n    char nnl[] = \"312831303130313130313031312831303130313130313031312931303130313130313031\";\n    char nln[] = \"312831303130313130313031312931303130313130313031312831303130313130313031\";\n    char lnn[] = \"312931303130313130313031312831303130313130313031312831303130313130313031\";\n    \n    int N;\n    scanf(\"%d\", &N);\n    \n    char s[1000];\n    scanf(\" %[^\\n]\", s);\n    \n    char temp[1000] = {0};\n    int j = 0;\n    for (int i = 0; s[i] != '\\0'; i++) {\n        if (s[i] != ' ') {\n            temp[j++] = s[i];\n        }\n    }\n    \n    if (strstr(nnn, temp) || strstr(nnl, temp) || strstr(nln, temp) || strstr(lnn, temp)) {\n        printf(\"YES\\n\");\n    } else {\n        printf(\"NO\\n\");\n    }\n    \n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 2,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <string.h>\n\nint main() {\n    char nnn[] = \"312831303130313130313031312831303130313130313031312831303130313130313031\";\n    char nnl[] = \"312831303130313130313031312831303130313130313031312931303130313130313031\";\n    char nln[] = \"312831303130313130313031312931303130313130313031312831303130313130313031\";\n    char lnn[] = \"312931303130313130313031312831303130313130313031312831303130313130313031\";\n    \n    int N;\n    scanf(\"%d\", &N);\n    getchar(); // consume newline\n    \n    char s[1000];\n    fgets(s, sizeof(s), stdin);\n    s[strcspn(s, \"\\n\")] = '\\0'; // remove newline\n    \n    // Remove all spaces from input\n    char input[1000];\n    int j = 0;\n    for (int i = 0; s[i] != '\\0'; i++) {\n        if (s[i] != ' ') {\n            input[j++] = s[i];\n        }\n    }\n    input[j] = '\\0';\n    \n    if (strcmp(input, nnn) == 0 || strcmp(input, nnl) == 0 || strcmp(input, nln) == 0 || strcmp(input, lnn) == 0) {\n        printf(\"YES\\n\");\n    } else {\n        printf(\"NO\\n\");\n    }\n    \n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 3,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <string.h>\n\nint main() {\n    char nnn[] = \"312831303130313130313031312831303130313130313031312831303130313130313031\";\n    char nnl[] = \"312831303130313130313031312831303130313130313031312931303130313130313031\";\n    char nln[] = \"312831303130313130313031312931303130313130313031312831303130313130313031\";\n    char lnn[] = \"312931303130313130313031312831303130313130313031312831303130313130313031\";\n    \n    int N;\n    scanf(\"%d\", &N);\n    \n    char s[1000];\n    scanf(\" %[^\\n]\", s);\n    \n    char processed[1000];\n    int j = 0;\n    for (int i = 0; s[i] != '\\0'; i++) {\n        if (s[i] != ' ') {\n            processed[j++] = s[i];\n        }\n    }\n    processed[j] = '\\0';\n    \n    if (strstr(nnn, processed) || strstr(nnl, processed) || strstr(nln, processed) || strstr(lnn, processed)) {\n        printf(\"YES\\n\");\n    } else {\n        printf(\"NO\\n\");\n    }\n    \n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 4,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <string.h>\n\nint main() {\n    char nnn[] = \"312831303130313130313031312831303130313130313031312831303130313130313031\";\n    char nnl[] = \"312831303130313130313031312831303130313130313031312931303130313130313031\";\n    char nln[] = \"312831303130313130313031312931303130313130313031312831303130313130313031\";\n    char lnn[] = \"312931303130313130313031312831303130313130313031312831303130313130313031\";\n    \n    int N;\n    scanf(\"%d\", &N);\n    \n    char s[1000];\n    scanf(\" %[^\\n]\", s);\n    \n    char processed[1000] = {0};\n    int j = 0;\n    for (int i = 0; s[i] != '\\0'; i++) {\n        if (s[i] != ' ') {\n            processed[j++] = s[i];\n        }\n    }\n    \n    if (strstr(nnn, processed) || strstr(nnl, processed) || strstr(nln, processed) || strstr(lnn, processed)) {\n        printf(\"YES\\n\");\n    } else {\n        printf(\"NO\\n\");\n    }\n    \n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                }
+            ],
+            "usage": {
+                "prompt_tokens": 1045,
+                "completion_tokens": 1620,
+                "total_tokens": 2665
+            }
+        }
+    },
+    "source_data": {
+        "code_uid": "f7a483432ed1a322351a74139510608e",
+        "prob_desc_output_to": "standard output",
+        "prob_desc_notes": "NoteIn the first example the integers can denote months July, August, September and October.In the second example the answer is no, because there are no two consecutive months each having 30 days.In the third example the months are: February (leap year) \u2014 March \u2014 April \u2013 May \u2014 June.In the fourth example the number of days in the second month is 28, so this is February. March follows February and has 31 days, but not 30, so the answer is NO.In the fifth example the months are: December \u2014 January \u2014 February (non-leap year).",
+        "lang_cluster": "Python",
+        "prob_desc_time_limit": "1 second",
+        "prob_desc_input_spec": "The first line contains single integer n (1\u2009\u2264\u2009n\u2009\u2264\u200924) \u2014 the number of integers. The second line contains n integers a1,\u2009a2,\u2009...,\u2009an (28\u2009\u2264\u2009ai\u2009\u2264\u200931) \u2014 the numbers you are to check.",
+        "source_code": "nnn=\"312831303130313130313031312831303130313130313031312831303130313130313031\"\nnnl=\"312831303130313130313031312831303130313130313031312931303130313130313031\"\nnln=\"312831303130313130313031312931303130313130313031312831303130313130313031\"\nlnn=\"312931303130313130313031312831303130313130313031312831303130313130313031\"\nN=int(input())\ns=input().split()\ns=''.join(s)\nif s in nnn or s in nnl or s in nln or s in lnn:\n\tprint(\"YES\")\nelse:\n\tprint(\"NO\")\n",
+        "prob_desc_sample_inputs": [
+            "4\n31 31 30 31",
+            "2\n30 30",
+            "5\n29 31 30 31 30",
+            "3\n31 28 30",
+            "3\n31 31 28"
+        ],
+        "prob_desc_memory_limit": "256 megabytes",
+        "exec_outcome": "PASSED",
+        "prob_desc_output_spec": "If there are several consecutive months that fit the sequence, print \"YES\" (without quotes). Otherwise, print \"NO\" (without quotes). You can print each letter in arbitrary case (small or large).",
+        "src_uid": "d60c8895cebcc5d0c6459238edbdb945",
+        "prob_desc_input_from": "standard input",
+        "lang": "Python 3",
+        "prob_desc_sample_outputs": [
+            "Yes",
+            "No",
+            "Yes",
+            "No",
+            "Yes"
+        ],
+        "file_name": "d7021504500d5ca7c2b02df8100a574d159e6e67e20ec8071b75800b1267370a",
+        "prob_desc_description": "Everybody in Russia uses Gregorian calendar. In this calendar there are 31 days in January, 28 or 29 days in February (depending on whether the year is leap or not), 31 days in March, 30 days in April, 31 days in May, 30 in June, 31 in July, 31 in August, 30 in September, 31 in October, 30 in November, 31 in December.A year is leap in one of two cases: either its number is divisible by 4, but not divisible by 100, or is divisible by 400. For example, the following years are leap: 2000, 2004, but years 1900 and 2018 are not leap.In this problem you are given n (1\u2009\u2264\u2009n\u2009\u2264\u200924) integers a1,\u2009a2,\u2009...,\u2009an, and you have to check if these integers could be durations in days of n consecutive months, according to Gregorian calendar. Note that these months could belong to several consecutive years. In other words, check if there is a month in some year, such that its duration is a1 days, duration of the next month is a2 days, and so on.",
+        "prob_desc_created_at": "1513492500",
+        "difficulty": 1200.0,
+        "hidden_unit_tests": "[{\"input\": \"4\\r\\n31 31 30 31\\r\\n\", \"output\": [\"YES\", \"Yes\"]}, {\"input\": \"2\\r\\n30 30\\r\\n\", \"output\": [\"No\", \"NO\"]}, {\"input\": \"5\\r\\n29 31 30 31 30\\r\\n\", \"output\": [\"YES\", \"Yes\"]}, {\"input\": \"3\\r\\n31 28 30\\r\\n\", \"output\": [\"No\", \"NO\"]}, {\"input\": \"3\\r\\n31 31 28\\r\\n\", \"output\": [\"YES\", \"Yes\"]}, {\"input\": \"24\\r\\n29 28 31 30 31 30 31 31 30 31 30 31 31 29 31 30 31 30 31 31 30 31 30 31\\r\\n\", \"output\": [\"No\", \"NO\"]}, {\"input\": \"4\\r\\n31 29 31 30\\r\\n\", \"output\": [\"YES\", \"Yes\"]}, {\"input\": \"24\\r\\n31 28 31 30 31 30 31 31 30 31 30 31 31 29 31 30 31 30 31 31 30 31 30 31\\r\\n\", \"output\": [\"YES\", \"Yes\"]}, {\"input\": \"8\\r\\n31 29 31 30 31 30 31 31\\r\\n\", \"output\": [\"YES\", \"Yes\"]}, {\"input\": \"1\\r\\n29\\r\\n\", \"output\": [\"YES\", \"Yes\"]}, {\"input\": \"8\\r\\n31 29 31 30 31 31 31 31\\r\\n\", \"output\": [\"No\", \"NO\"]}, {\"input\": \"1\\r\\n31\\r\\n\", \"output\": [\"YES\", \"Yes\"]}, {\"input\": \"11\\r\\n30 31 30 31 31 30 31 30 31 31 28\\r\\n\", \"output\": [\"YES\", \"Yes\"]}, {\"input\": \"21\\r\\n30 31 30 31 31 28 31 30 31 30 31 31 30 31 30 31 31 28 31 30 31\\r\\n\", \"output\": [\"YES\", \"Yes\"]}, {\"input\": \"4\\r\\n31 28 28 30\\r\\n\", \"output\": [\"No\", \"NO\"]}, {\"input\": \"2\\r\\n30 31\\r\\n\", \"output\": [\"YES\", \"Yes\"]}, {\"input\": \"7\\r\\n28 31 30 31 30 31 31\\r\\n\", \"output\": [\"YES\", \"Yes\"]}, {\"input\": \"4\\r\\n28 31 30 31\\r\\n\", \"output\": [\"YES\", \"Yes\"]}, {\"input\": \"17\\r\\n28 30 31 30 31 31 28 31 30 31 30 31 31 30 31 30 31\\r\\n\", \"output\": [\"No\", \"NO\"]}, {\"input\": \"9\\r\\n31 31 29 31 30 31 30 31 31\\r\\n\", \"output\": [\"YES\", \"Yes\"]}, {\"input\": \"4\\r\\n31 28 31 30\\r\\n\", \"output\": [\"YES\", \"Yes\"]}, {\"input\": \"21\\r\\n30 31 30 31 31 28 31 30 31 30 31 29 30 31 30 31 31 28 31 30 31\\r\\n\", \"output\": [\"No\", \"NO\"]}, {\"input\": \"2\\r\\n31 31\\r\\n\", \"output\": [\"YES\", \"Yes\"]}, {\"input\": \"17\\r\\n31 30 31 30 31 31 28 31 30 31 30 31 31 30 31 30 31\\r\\n\", \"output\": [\"YES\", \"Yes\"]}, {\"input\": \"4\\r\\n30 31 30 31\\r\\n\", \"output\": [\"YES\", \"Yes\"]}, {\"input\": \"12\\r\\n31 28 31 30 31 30 31 31 30 31 30 31\\r\\n\", \"output\": [\"YES\", \"Yes\"]}, {\"input\": \"12\\r\\n31 29 31 30 31 30 31 31 30 31 30 31\\r\\n\", \"output\": [\"YES\", \"Yes\"]}, {\"input\": \"11\\r\\n30 31 30 31 31 30 31 30 31 29 28\\r\\n\", \"output\": [\"No\", \"NO\"]}, {\"input\": \"22\\r\\n31 30 31 30 31 31 30 31 30 31 31 28 31 30 31 30 31 31 30 31 30 31\\r\\n\", \"output\": [\"YES\", \"Yes\"]}, {\"input\": \"14\\r\\n31 30 31 31 28 31 30 31 30 31 31 30 31 30\\r\\n\", \"output\": [\"YES\", \"Yes\"]}, {\"input\": \"12\\r\\n31 30 31 31 28 31 30 31 30 31 31 30\\r\\n\", \"output\": [\"YES\", \"Yes\"]}, {\"input\": \"4\\r\\n31 29 29 30\\r\\n\", \"output\": [\"No\", \"NO\"]}, {\"input\": \"7\\r\\n28 28 30 31 30 31 31\\r\\n\", \"output\": [\"No\", \"NO\"]}, {\"input\": \"9\\r\\n29 31 29 31 30 31 30 31 31\\r\\n\", \"output\": [\"No\", \"NO\"]}, {\"input\": \"17\\r\\n31 30 31 30 31 31 29 31 30 31 30 31 31 30 31 30 31\\r\\n\", \"output\": [\"YES\", \"Yes\"]}, {\"input\": \"2\\r\\n31 29\\r\\n\", \"output\": [\"YES\", \"Yes\"]}, {\"input\": \"12\\r\\n31 28 31 30 31 30 31 31 30 31 28 31\\r\\n\", \"output\": [\"No\", \"NO\"]}, {\"input\": \"2\\r\\n29 31\\r\\n\", \"output\": [\"YES\", \"Yes\"]}, {\"input\": \"12\\r\\n31 29 31 30 31 30 31 30 30 31 30 31\\r\\n\", \"output\": [\"No\", \"NO\"]}, {\"input\": \"12\\r\\n31 28 31 30 31 29 31 31 30 31 30 31\\r\\n\", \"output\": [\"No\", \"NO\"]}, {\"input\": \"22\\r\\n31 30 31 30 31 31 30 31 30 31 31 28 31 30 28 30 31 31 30 31 30 31\\r\\n\", \"output\": [\"No\", \"NO\"]}, {\"input\": \"14\\r\\n31 30 31 31 28 31 30 31 30 31 31 30 29 30\\r\\n\", \"output\": [\"No\", \"NO\"]}, {\"input\": \"19\\r\\n31 28 31 30 31 30 31 31 30 31 30 31 31 28 31 30 31 30 31\\r\\n\", \"output\": [\"YES\", \"Yes\"]}, {\"input\": \"20\\r\\n31 28 31 30 31 30 31 31 30 31 30 31 31 28 31 30 31 30 31 31\\r\\n\", \"output\": [\"YES\", \"Yes\"]}, {\"input\": \"1\\r\\n28\\r\\n\", \"output\": [\"YES\", \"Yes\"]}, {\"input\": \"17\\r\\n31 30 31 30 31 31 29 31 30 31 31 31 31 30 31 30 31\\r\\n\", \"output\": [\"No\", \"NO\"]}, {\"input\": \"1\\r\\n30\\r\\n\", \"output\": [\"YES\", \"Yes\"]}, {\"input\": \"24\\r\\n31 28 31 30 31 30 31 31 30 31 30 31 31 28 31 30 31 30 31 31 30 31 30 31\\r\\n\", \"output\": [\"YES\", \"Yes\"]}, {\"input\": \"24\\r\\n28 31 30 31 30 31 31 30 31 30 31 31 28 31 30 31 30 31 31 30 31 30 31 31\\r\\n\", \"output\": [\"YES\", \"Yes\"]}, {\"input\": \"12\\r\\n31 30 31 31 28 28 30 31 30 31 31 30\\r\\n\", \"output\": [\"No\", \"NO\"]}, {\"input\": \"24\\r\\n29 31 30 31 30 31 31 30 31 30 31 31 28 31 30 31 30 31 31 30 31 30 31 31\\r\\n\", \"output\": [\"YES\", \"Yes\"]}, {\"input\": \"24\\r\\n28 31 30 31 30 31 31 30 31 30 31 31 29 31 30 31 30 31 31 30 31 30 31 31\\r\\n\", \"output\": [\"YES\", \"Yes\"]}, {\"input\": \"24\\r\\n31 29 31 30 31 30 31 31 30 31 30 31 31 29 31 30 31 30 31 31 30 31 30 31\\r\\n\", \"output\": [\"No\", \"NO\"]}, {\"input\": \"13\\r\\n28 31 30 31 30 31 31 30 31 30 31 31 28\\r\\n\", \"output\": [\"YES\", \"Yes\"]}, {\"input\": \"15\\r\\n31 31 28 31 30 31 30 31 31 30 31 30 31 31 29\\r\\n\", \"output\": [\"YES\", \"Yes\"]}, {\"input\": \"23\\r\\n31 30 31 31 30 31 30 31 31 28 31 30 31 30 31 31 30 31 30 31 31 29 31\\r\\n\", \"output\": [\"YES\", \"Yes\"]}, {\"input\": \"24\\r\\n31 30 31 30 31 31 30 31 30 31 31 30 31 30 31 30 31 31 30 31 30 31 31 30\\r\\n\", \"output\": [\"No\", \"NO\"]}, {\"input\": \"23\\r\\n29 31 30 31 30 31 31 30 31 30 31 31 29 31 30 31 30 31 31 30 31 30 31\\r\\n\", \"output\": [\"No\", \"NO\"]}, {\"input\": \"15\\r\\n31 31 29 31 30 31 30 31 31 30 31 30 31 31 28\\r\\n\", \"output\": [\"YES\", \"Yes\"]}, {\"input\": \"12\\r\\n31 30 31 30 31 30 31 31 30 31 30 31\\r\\n\", \"output\": [\"No\", \"NO\"]}]",
+        "source_lang": "Python 3",
+        "target_lang": "C"
+    }
+}

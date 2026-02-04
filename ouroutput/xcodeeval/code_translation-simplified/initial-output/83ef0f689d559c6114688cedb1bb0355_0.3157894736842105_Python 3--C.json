@@ -1,0 +1,90 @@
+{
+    "oai_response": {
+        "prompt": "Here is code in Python 3 programming lanaguge. Translate the following code from Python 3 to C programming lanaguge. Do not output any extra description or tokens other than the translated code. \n\nmod = 10**9 + 7\nf = [0] * 500000\ndef POW(a, b):\n    if b == 0:\n        return 1\n    if b & 1:\n        return POW(a, b // 2) ** 2 * a % mod\n    else:\n        return POW(a, b // 2) ** 2 % mod\ndef C(n, m):\n    if m > n:\n        return 0\n    return f[n] * POW(f[m], mod - 2) % mod * POW(f[n - m], mod - 2) % mod\nf[0] = 1\nfor i in range(1, 500000):\n    f[i] = f[i - 1] * i % mod\na, b, k, t = map(int, input().split())\nans = 0\nfor i in range(0, 2 * t + 1):\n    t1 = POW(-1, i) * C(2 * t, i) % mod\n    t2 = (\n        C(210000 + 2 * k * t - a + b + 2 * t - 1 - (2 * k + 1) * i + 1, 2 * t)\n        - C(1 + 2 * k * t - a + b + 2 * t - 1 - (2 * k + 1) * i, 2 * t)\n    ) % mod\n    ans = (ans + t1 * t2) % mod\nprint(ans)||END-of-SRC||",
+        "response": {
+            "id": "multi-call-as-i6bx4ekr4v",
+            "model": "deepseek-v3",
+            "created": 1769631266,
+            "choices": [
+                {
+                    "index": 0,
+                    "message": {
+                        "role": "assistant",
+                        "content": "Here's the translated code in C:\n\n```c\n#include <stdio.h>\n#define MOD 1000000007\n#define MAX 500000\n\nlong long f[MAX];\n\nlong long POW(long long a, long long b) {\n    if (b == 0) return 1;\n    long long res = POW(a, b / 2);\n    res = res * res % MOD;\n    if (b & 1) res = res * a % MOD;\n    return res;\n}\n\nlong long C(long long n, long long m) {\n    if (m > n) return 0;\n    return f[n] * POW(f[m], MOD - 2) % MOD * POW(f[n - m], MOD - 2) % MOD;\n}\n\nint main() {\n    f[0] = 1;\n    for (int i = 1; i < MAX; i++) {\n        f[i] = f[i - 1] * i % MOD;\n    }\n    long long a, b, k, t;\n    scanf(\"%lld %lld %lld %lld\", &a, &b, &k, &t);\n    long long ans = 0;\n    for (int i = 0; i <= 2 * t; i++) {\n        long long t1 = POW(-1, i) * C(2 * t, i) % MOD;\n        long long t2 = (C(210000 + 2 * k * t - a + b + 2 * t - 1 - (2 * k + 1) * i + 1, 2 * t) - C(1 + 2 * k * t - a + b + 2 * t - 1 - (2 * k + 1) * i, 2 * t)) % MOD;\n        ans = (ans + t1 * t2) % MOD;\n    }\n    printf(\"%lld\\n\", (ans + MOD) % MOD);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 1,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#define MOD 1000000007\n#define MAX 500000\n\nlong long f[MAX];\n\nlong long POW(long long a, long long b) {\n    if (b == 0) return 1;\n    long long half = POW(a, b / 2);\n    if (b % 2) return half * half % MOD * a % MOD;\n    else return half * half % MOD;\n}\n\nlong long C(long long n, long long m) {\n    if (m > n) return 0;\n    return f[n] * POW(f[m], MOD - 2) % MOD * POW(f[n - m], MOD - 2) % MOD;\n}\n\nint main() {\n    f[0] = 1;\n    for (int i = 1; i < MAX; i++) {\n        f[i] = f[i - 1] * i % MOD;\n    }\n    long long a, b, k, t;\n    scanf(\"%lld %lld %lld %lld\", &a, &b, &k, &t);\n    long long ans = 0;\n    for (int i = 0; i <= 2 * t; i++) {\n        long long t1 = POW(-1, i) * C(2 * t, i) % MOD;\n        long long t2 = (C(210000 + 2 * k * t - a + b + 2 * t - 1 - (2 * k + 1) * i + 1, 2 * t) - C(1 + 2 * k * t - a + b + 2 * t - 1 - (2 * k + 1) * i, 2 * t)) % MOD;\n        ans = (ans + t1 * t2) % MOD;\n    }\n    printf(\"%lld\\n\", ans);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 2,
+                    "message": {
+                        "role": "assistant",
+                        "content": "Here's the translated code in C:\n\n```c\n#include <stdio.h>\n#include <stdlib.h>\n\n#define MOD 1000000007\n#define MAX 500000\n\nlong long f[MAX];\n\nlong long POW(long long a, long long b) {\n    if (b == 0) return 1;\n    long long res = POW(a, b / 2);\n    res = res * res % MOD;\n    if (b & 1) res = res * a % MOD;\n    return res;\n}\n\nlong long C(long long n, long long m) {\n    if (m > n) return 0;\n    return f[n] * POW(f[m], MOD - 2) % MOD * POW(f[n - m], MOD - 2) % MOD;\n}\n\nint main() {\n    f[0] = 1;\n    for (int i = 1; i < MAX; i++) {\n        f[i] = f[i - 1] * i % MOD;\n    }\n    \n    long long a, b, k, t;\n    scanf(\"%lld %lld %lld %lld\", &a, &b, &k, &t);\n    \n    long long ans = 0;\n    for (int i = 0; i <= 2 * t; i++) {\n        long long t1 = POW(-1, i) * C(2 * t, i) % MOD;\n        long long t2 = (C(210000 + 2 * k * t - a + b + 2 * t - 1 - (2 * k + 1) * i + 1, 2 * t) - \n                        C(1 + 2 * k * t - a + b + 2 * t - 1 - (2 * k + 1) * i, 2 * t)) % MOD;\n        ans = (ans + t1 * t2) % MOD;\n    }\n    printf(\"%lld\\n\", (ans + MOD) % MOD);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 3,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#define MOD 1000000007\n#define MAX 500000\n\nlong long f[MAX];\n\nlong long POW(long long a, long long b) {\n    if (b == 0) return 1;\n    long long half = POW(a, b / 2);\n    if (b % 2) return half * half % MOD * a % MOD;\n    else return half * half % MOD;\n}\n\nlong long C(long long n, long long m) {\n    if (m > n) return 0;\n    return f[n] * POW(f[m], MOD - 2) % MOD * POW(f[n - m], MOD - 2) % MOD;\n}\n\nint main() {\n    f[0] = 1;\n    for (int i = 1; i < MAX; i++) {\n        f[i] = f[i - 1] * i % MOD;\n    }\n    long long a, b, k, t;\n    scanf(\"%lld %lld %lld %lld\", &a, &b, &k, &t);\n    long long ans = 0;\n    for (int i = 0; i <= 2 * t; i++) {\n        long long t1 = POW(-1, i) * C(2 * t, i) % MOD;\n        long long t2 = (C(210000 + 2 * k * t - a + b + 2 * t - 1 - (2 * k + 1) * i + 1, 2 * t) - C(1 + 2 * k * t - a + b + 2 * t - 1 - (2 * k + 1) * i, 2 * t)) % MOD;\n        ans = (ans + t1 * t2) % MOD;\n    }\n    printf(\"%lld\\n\", ans);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 4,
+                    "message": {
+                        "role": "assistant",
+                        "content": "Here's the translated code in C:\n\n```c\n#include <stdio.h>\n#define MOD 1000000007\n#define MAX 500000\n\nlong long f[MAX];\n\nlong long POW(long long a, long long b) {\n    if (b == 0) return 1;\n    long long res = POW(a, b / 2);\n    res = res * res % MOD;\n    if (b & 1) res = res * a % MOD;\n    return res;\n}\n\nlong long C(long long n, long long m) {\n    if (m > n) return 0;\n    return f[n] * POW(f[m], MOD - 2) % MOD * POW(f[n - m], MOD - 2) % MOD;\n}\n\nint main() {\n    f[0] = 1;\n    for (int i = 1; i < MAX; i++) {\n        f[i] = f[i - 1] * i % MOD;\n    }\n    long long a, b, k, t;\n    scanf(\"%lld %lld %lld %lld\", &a, &b, &k, &t);\n    long long ans = 0;\n    for (int i = 0; i <= 2 * t; i++) {\n        long long t1 = POW(-1, i) * C(2 * t, i) % MOD;\n        long long t2 = (C(210000 + 2 * k * t - a + b + 2 * t - 1 - (2 * k + 1) * i + 1, 2 * t) - C(1 + 2 * k * t - a + b + 2 * t - 1 - (2 * k + 1) * i, 2 * t)) % MOD;\n        ans = (ans + t1 * t2) % MOD;\n    }\n    printf(\"%lld\\n\", (ans + MOD) % MOD);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                }
+            ],
+            "usage": {
+                "prompt_tokens": 1935,
+                "completion_tokens": 2089,
+                "total_tokens": 4024
+            }
+        }
+    },
+    "source_data": {
+        "code_uid": "83ef0f689d559c6114688cedb1bb0355",
+        "prob_desc_output_to": "standard output",
+        "prob_desc_notes": "NoteIn the first sample test, Memory starts with 1 and Lexa starts with 2. If Lexa picks \u2009-\u20092, Memory can pick 0, 1, or 2 to win. If Lexa picks \u2009-\u20091, Memory can pick 1 or 2 to win. If Lexa picks 0, Memory can pick 2 to win. If Lexa picks 1 or 2, Memory cannot win. Thus, there are 3\u2009+\u20092\u2009+\u20091\u2009=\u20096 possible games in which Memory wins.",
+        "lang_cluster": "Python",
+        "prob_desc_time_limit": "2 seconds",
+        "prob_desc_input_spec": "The first and only line of input contains the four integers a, b, k, and t (1\u2009\u2264\u2009a,\u2009b\u2009\u2264\u2009100, 1\u2009\u2264\u2009k\u2009\u2264\u20091000, 1\u2009\u2264\u2009t\u2009\u2264\u2009100)\u00a0\u2014 the amount Memory and Lexa start with, the number k, and the number of turns respectively.",
+        "prob_desc_sample_inputs": [
+            "1 2 2 1",
+            "1 1 1 2",
+            "2 12 3 1"
+        ],
+        "prob_desc_memory_limit": "512 megabytes",
+        "exec_outcome": "PASSED",
+        "prob_desc_output_spec": "Print the number of possible games satisfying the conditions modulo 1\u2009000\u2009000\u2009007 (109\u2009+\u20097) in one line.",
+        "src_uid": "8b8327512a318a5b5afd531ff7223bd0",
+        "prob_desc_input_from": "standard input",
+        "lang": "Python 3",
+        "prob_desc_sample_outputs": [
+            "6",
+            "31",
+            "0"
+        ],
+        "file_name": "d7021504500d5ca7c2b02df8100a574d159e6e67e20ec8071b75800b1267370a",
+        "prob_desc_description": "Memory and his friend Lexa are competing to get higher score in one popular computer game. Memory starts with score a and Lexa starts with score b. In a single turn, both Memory and Lexa get some integer in the range [\u2009-\u2009k;k] (i.e. one integer among \u2009-\u2009k,\u2009\u2009-\u2009k\u2009+\u20091,\u2009\u2009-\u2009k\u2009+\u20092,\u2009...,\u2009\u2009-\u20092,\u2009\u2009-\u20091,\u20090,\u20091,\u20092,\u2009...,\u2009k\u2009-\u20091,\u2009k) and add them to their current scores. The game has exactly t turns. Memory and Lexa, however, are not good at this game, so they both always get a random integer at their turn.Memory wonders how many possible games exist such that he ends with a strictly higher score than Lexa. Two games are considered to be different if in at least one turn at least one player gets different score. There are (2k\u2009+\u20091)2t games in total. Since the answer can be very large, you should print it modulo 109\u2009+\u20097. Please solve this problem for Memory.",
+        "prob_desc_created_at": "1473525900",
+        "difficulty": 2200.0,
+        "hidden_unit_tests": "[{\"input\": \"1 2 2 1\\r\\n\", \"output\": [\"6\"]}, {\"input\": \"1 1 1 2\\r\\n\", \"output\": [\"31\"]}, {\"input\": \"2 12 3 1\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"4 6 2 1\\r\\n\", \"output\": [\"3\"]}, {\"input\": \"4 6 2 2\\r\\n\", \"output\": [\"122\"]}, {\"input\": \"6 4 2 2\\r\\n\", \"output\": [\"435\"]}, {\"input\": \"10 1 3 3\\r\\n\", \"output\": [\"112812\"]}, {\"input\": \"5 3 1 1\\r\\n\", \"output\": [\"8\"]}, {\"input\": \"50 22 5 5\\r\\n\", \"output\": [\"876439301\"]}, {\"input\": \"6 20 1 1\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"42 42 2 3\\r\\n\", \"output\": [\"6937\"]}, {\"input\": \"42 42 3 2\\r\\n\", \"output\": [\"1085\"]}, {\"input\": \"45 54 4 5\\r\\n\", \"output\": [\"433203628\"]}, {\"input\": \"6 5 4 3\\r\\n\", \"output\": [\"282051\"]}, {\"input\": \"42 42 42 42\\r\\n\", \"output\": [\"284470145\"]}, {\"input\": \"1 100 42 42\\r\\n\", \"output\": [\"58785421\"]}, {\"input\": \"1 100 1000 100\\r\\n\", \"output\": [\"542673827\"]}, {\"input\": \"1 1 1000 100\\r\\n\", \"output\": [\"922257788\"]}, {\"input\": \"100 100 1000 100\\r\\n\", \"output\": [\"922257788\"]}, {\"input\": \"1 8 1 4\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"9 4 5 2\\r\\n\", \"output\": [\"11045\"]}, {\"input\": \"2 6 6 2\\r\\n\", \"output\": [\"8015\"]}, {\"input\": \"7 8 5 9\\r\\n\", \"output\": [\"860378382\"]}, {\"input\": \"3 7 8 6\\r\\n\", \"output\": [\"510324293\"]}, {\"input\": \"69 69 803 81\\r\\n\", \"output\": [\"74925054\"]}, {\"input\": \"67 67 871 88\\r\\n\", \"output\": [\"123371511\"]}, {\"input\": \"71 71 891 31\\r\\n\", \"output\": [\"790044038\"]}, {\"input\": \"49 49 631 34\\r\\n\", \"output\": [\"764129060\"]}, {\"input\": \"83 83 770 49\\r\\n\", \"output\": [\"761730117\"]}, {\"input\": \"49 49 163 15\\r\\n\", \"output\": [\"458364105\"]}, {\"input\": \"38 38 701 74\\r\\n\", \"output\": [\"496603581\"]}, {\"input\": \"65 65 803 79\\r\\n\", \"output\": [\"253679300\"]}, {\"input\": \"56 56 725 64\\r\\n\", \"output\": [\"338598412\"]}, {\"input\": \"70 70 176 56\\r\\n\", \"output\": [\"990579000\"]}, {\"input\": \"32 32 44 79\\r\\n\", \"output\": [\"20803934\"]}, {\"input\": \"35 35 353 21\\r\\n\", \"output\": [\"149936279\"]}, {\"input\": \"57 57 896 52\\r\\n\", \"output\": [\"271910130\"]}, {\"input\": \"86 86 373 19\\r\\n\", \"output\": [\"940701970\"]}, {\"input\": \"27 27 296 97\\r\\n\", \"output\": [\"394599845\"]}, {\"input\": \"60 60 86 51\\r\\n\", \"output\": [\"277883413\"]}, {\"input\": \"40 40 955 95\\r\\n\", \"output\": [\"600387428\"]}, {\"input\": \"34 34 706 59\\r\\n\", \"output\": [\"274236101\"]}, {\"input\": \"74 74 791 51\\r\\n\", \"output\": [\"367968499\"]}, {\"input\": \"69 69 443 53\\r\\n\", \"output\": [\"385620893\"]}, {\"input\": \"59 19 370 48\\r\\n\", \"output\": [\"125206836\"]}, {\"input\": \"78 82 511 33\\r\\n\", \"output\": [\"375900871\"]}, {\"input\": \"66 90 805 16\\r\\n\", \"output\": [\"593436252\"]}, {\"input\": \"60 61 772 19\\r\\n\", \"output\": [\"931528755\"]}, {\"input\": \"81 13 607 21\\r\\n\", \"output\": [\"762608093\"]}, {\"input\": \"35 79 128 21\\r\\n\", \"output\": [\"177972209\"]}, {\"input\": \"93 25 958 20\\r\\n\", \"output\": [\"873170266\"]}, {\"input\": \"44 85 206 80\\r\\n\", \"output\": [\"170080402\"]}, {\"input\": \"79 99 506 18\\r\\n\", \"output\": [\"486170430\"]}, {\"input\": \"97 22 29 8\\r\\n\", \"output\": [\"471632954\"]}, {\"input\": \"14 47 184 49\\r\\n\", \"output\": [\"726421144\"]}, {\"input\": \"74 33 868 5\\r\\n\", \"output\": [\"826980486\"]}, {\"input\": \"53 79 823 11\\r\\n\", \"output\": [\"526626321\"]}, {\"input\": \"99 99 913 42\\r\\n\", \"output\": [\"446683872\"]}, {\"input\": \"52 34 89 41\\r\\n\", \"output\": [\"905639400\"]}, {\"input\": \"87 100 200 80\\r\\n\", \"output\": [\"913761305\"]}, {\"input\": \"40 94 510 53\\r\\n\", \"output\": [\"233079261\"]}, {\"input\": \"2 56 438 41\\r\\n\", \"output\": [\"500592304\"]}, {\"input\": \"6 68 958 41\\r\\n\", \"output\": [\"719351710\"]}, {\"input\": \"44 80 814 26\\r\\n\", \"output\": [\"414148151\"]}, {\"input\": \"100 1 1000 100\\r\\n\", \"output\": [\"603336175\"]}, {\"input\": \"1 3 1000 100\\r\\n\", \"output\": [\"604187087\"]}, {\"input\": \"10 10 1000 100\\r\\n\", \"output\": [\"922257788\"]}]",
+        "initial_source_code": "mod=10**9+7\nf=[0]*500000\n\ndef POW(a,b):\n\tif(b==0):\n\t\treturn 1\n\tif(b&1):\n\t\treturn POW(a,b//2)**2*a%mod\n\telse:\n\t\treturn POW(a,b//2)**2\n\ndef C(n,m):\n\tif(m>n):\n\t\treturn 0\n\tt=f[n]*POW(f[m],mod-2)%mod*POW(f[n-m],mod-2)%mod\n\treturn t\n\n\nf[0]=1\nfor i in range(1,500000):\n\tf[i]=f[i-1]*i%mod\na,b,k,t=map(int,input().split(' '))\n\nans=0\nfor i in range(0,2*t+1):\n\tt1=POW(-1,i)*C(2*t,i)%mod\n\tt2=(C(210000+2*k*t-a+b+2*t-1-(2*k+1)*i+1,2*t)-C(1+2*k*t-a+b+2*t-1-(2*k+1)*i,2*t))%mod\n\tans=(ans+t1*t2)%mod\nprint(ans)\n",
+        "source_code": "mod = 10**9 + 7\nf = [0] * 500000\ndef POW(a, b):\n    if b == 0:\n        return 1\n    if b & 1:\n        return POW(a, b // 2) ** 2 * a % mod\n    else:\n        return POW(a, b // 2) ** 2 % mod\ndef C(n, m):\n    if m > n:\n        return 0\n    return f[n] * POW(f[m], mod - 2) % mod * POW(f[n - m], mod - 2) % mod\nf[0] = 1\nfor i in range(1, 500000):\n    f[i] = f[i - 1] * i % mod\na, b, k, t = map(int, input().split())\nans = 0\nfor i in range(0, 2 * t + 1):\n    t1 = POW(-1, i) * C(2 * t, i) % mod\n    t2 = (\n        C(210000 + 2 * k * t - a + b + 2 * t - 1 - (2 * k + 1) * i + 1, 2 * t)\n        - C(1 + 2 * k * t - a + b + 2 * t - 1 - (2 * k + 1) * i, 2 * t)\n    ) % mod\n    ans = (ans + t1 * t2) % mod\nprint(ans)",
+        "source_lang": "Python 3",
+        "target_lang": "C"
+    }
+}

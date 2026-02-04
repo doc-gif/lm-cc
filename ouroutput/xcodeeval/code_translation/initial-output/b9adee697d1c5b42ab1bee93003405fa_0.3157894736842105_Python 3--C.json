@@ -1,0 +1,87 @@
+{
+    "oai_response": {
+        "prompt": "Here is code in Python 3 programming lanaguge. Translate the following code from Python 3 to C programming lanaguge. Do not output any extra description or tokens other than the translated code. \n\nn1=int(input())\na=int(n1/1234567)\nb=int(n1/123456)\nt=0\nresultado=0\nfor x in range(0,a+1):\n    for i in range(0,b+1):\n        resultado=n1-(1234567*x+123456*i)\n        if(resultado%1234==0 and resultado>=0):\n            print(\"YES\")\n            t=1\n            break\n    if(t==1):\n        break\nif(t==0):\n    print(\"NO\")\n||END-of-SRC||",
+        "response": {
+            "id": "multi-call-as-urdmxfhguh",
+            "model": "deepseek-v3",
+            "created": 1767066321,
+            "choices": [
+                {
+                    "index": 0,
+                    "message": {
+                        "role": "assistant",
+                        "content": "Here's the translated code in C:\n\n```c\n#include <stdio.h>\n\nint main() {\n    int n1;\n    scanf(\"%d\", &n1);\n    int a = n1 / 1234567;\n    int b = n1 / 123456;\n    int t = 0;\n    int resultado = 0;\n    for (int x = 0; x <= a; x++) {\n        for (int i = 0; i <= b; i++) {\n            resultado = n1 - (1234567 * x + 123456 * i);\n            if (resultado % 1234 == 0 && resultado >= 0) {\n                printf(\"YES\");\n                t = 1;\n                break;\n            }\n        }\n        if (t == 1) {\n            break;\n        }\n    }\n    if (t == 0) {\n        printf(\"NO\");\n    }\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 1,
+                    "message": {
+                        "role": "assistant",
+                        "content": "Here's the translated code in C:\n\n```c\n#include <stdio.h>\n\nint main() {\n    int n1;\n    scanf(\"%d\", &n1);\n    int a = n1 / 1234567;\n    int b = n1 / 123456;\n    int t = 0;\n    int resultado = 0;\n    for (int x = 0; x <= a; x++) {\n        for (int i = 0; i <= b; i++) {\n            resultado = n1 - (1234567 * x + 123456 * i);\n            if (resultado % 1234 == 0 && resultado >= 0) {\n                printf(\"YES\");\n                t = 1;\n                break;\n            }\n        }\n        if (t == 1) {\n            break;\n        }\n    }\n    if (t == 0) {\n        printf(\"NO\");\n    }\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 2,
+                    "message": {
+                        "role": "assistant",
+                        "content": "Here's the translated code in C:\n\n```c\n#include <stdio.h>\n\nint main() {\n    int n1;\n    scanf(\"%d\", &n1);\n    int a = n1 / 1234567;\n    int b = n1 / 123456;\n    int t = 0;\n    int resultado = 0;\n    for (int x = 0; x <= a; x++) {\n        for (int i = 0; i <= b; i++) {\n            resultado = n1 - (1234567 * x + 123456 * i);\n            if (resultado % 1234 == 0 && resultado >= 0) {\n                printf(\"YES\");\n                t = 1;\n                break;\n            }\n        }\n        if (t == 1) {\n            break;\n        }\n    }\n    if (t == 0) {\n        printf(\"NO\");\n    }\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 3,
+                    "message": {
+                        "role": "assistant",
+                        "content": "Here's the translated code in C:\n\n```c\n#include <stdio.h>\n\nint main() {\n    int n1;\n    scanf(\"%d\", &n1);\n    int a = n1 / 1234567;\n    int b = n1 / 123456;\n    int t = 0;\n    int resultado = 0;\n    for (int x = 0; x <= a; x++) {\n        for (int i = 0; i <= b; i++) {\n            resultado = n1 - (1234567 * x + 123456 * i);\n            if (resultado % 1234 == 0 && resultado >= 0) {\n                printf(\"YES\");\n                t = 1;\n                break;\n            }\n        }\n        if (t == 1) {\n            break;\n        }\n    }\n    if (t == 0) {\n        printf(\"NO\");\n    }\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 4,
+                    "message": {
+                        "role": "assistant",
+                        "content": "Here's the translated code in C:\n\n```c\n#include <stdio.h>\n\nint main() {\n    int n1;\n    scanf(\"%d\", &n1);\n    int a = n1 / 1234567;\n    int b = n1 / 123456;\n    int t = 0;\n    int resultado = 0;\n    for (int x = 0; x <= a; x++) {\n        for (int i = 0; i <= b; i++) {\n            resultado = n1 - (1234567 * x + 123456 * i);\n            if (resultado % 1234 == 0 && resultado >= 0) {\n                printf(\"YES\");\n                t = 1;\n                break;\n            }\n        }\n        if (t == 1) {\n            break;\n        }\n    }\n    if (t == 0) {\n        printf(\"NO\");\n    }\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                }
+            ],
+            "usage": {
+                "prompt_tokens": 815,
+                "completion_tokens": 995,
+                "total_tokens": 1810
+            }
+        }
+    },
+    "source_data": {
+        "code_uid": "b9adee697d1c5b42ab1bee93003405fa",
+        "prob_desc_output_to": "standard output",
+        "prob_desc_notes": "NoteIn the first sample, one of the possible solutions is to buy one house, one car and one computer, spending 1\u2009234\u2009567\u2009+\u2009123\u2009456\u2009+\u20091234\u2009=\u20091\u2009359\u2009257 game-coins in total.",
+        "lang_cluster": "Python",
+        "prob_desc_time_limit": "1 second",
+        "prob_desc_input_spec": "The first line of the input contains a single integer n (1\u2009\u2264\u2009n\u2009\u2264\u2009109)\u00a0\u2014 Kolya's initial game-coin score.",
+        "source_code": "n1=int(input())\na=int(n1/1234567)\nb=int(n1/123456)\nt=0\nresultado=0\nfor x in range(0,a+1):\n    for i in range(0,b+1):\n        resultado=n1-(1234567*x+123456*i)\n        if(resultado%1234==0 and resultado>=0):\n            print(\"YES\")\n            t=1\n            break\n    if(t==1):\n        break\nif(t==0):\n    print(\"NO\")\n",
+        "prob_desc_sample_inputs": [
+            "1359257",
+            "17851817"
+        ],
+        "prob_desc_memory_limit": "256 megabytes",
+        "exec_outcome": "PASSED",
+        "prob_desc_output_spec": "Print \"YES\" (without quotes) if it's possible that Kolya spent all of his initial n coins buying only houses, cars and computers. Otherwise print \"NO\" (without quotes).",
+        "src_uid": "72d7e422a865cc1f85108500bdf2adf2",
+        "prob_desc_input_from": "standard input",
+        "lang": "Python 3",
+        "prob_desc_sample_outputs": [
+            "YES",
+            "NO"
+        ],
+        "file_name": "d7021504500d5ca7c2b02df8100a574d159e6e67e20ec8071b75800b1267370a",
+        "prob_desc_description": "Kolya is developing an economy simulator game. His most favourite part of the development process is in-game testing. Once he was entertained by the testing so much, that he found out his game-coin score become equal to 0.Kolya remembers that at the beginning of the game his game-coin score was equal to n and that he have bought only some houses (for 1\u2009234\u2009567 game-coins each), cars (for 123\u2009456 game-coins each) and computers (for 1\u2009234 game-coins each).Kolya is now interested, whether he could have spent all of his initial n game-coins buying only houses, cars and computers or there is a bug in the game. Formally, is there a triple of non-negative integers a, b and c such that a\u2009\u00d7\u20091\u2009234\u2009567\u2009+\u2009b\u2009\u00d7\u2009123\u2009456\u2009+\u2009c\u2009\u00d7\u20091\u2009234\u2009=\u2009n?Please help Kolya answer this question.",
+        "prob_desc_created_at": "1465922100",
+        "difficulty": 1300.0,
+        "hidden_unit_tests": "[{\"input\": \"1359257\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"17851817\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"1000000000\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"17851818\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"438734347\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"43873430\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"999999987\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"27406117\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"27404883\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"27403649\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"27402415\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"27401181\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"999999999\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"999999244\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"999129999\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"17159199\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"13606913\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"14841529\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"915968473\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"980698615\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"912331505\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"917261049\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"999999997\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"12345\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"1234\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"124690\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"1358023\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"1234567\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"123456\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"2592590\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"999999998\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"1356789\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"12345670\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"11\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"1480800\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"908000000\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"3000\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"1235801\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"991919191\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"25613715\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"13580237\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"14814804\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"11403961\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"999999989\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"1237035\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"81134231\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"1236\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"1359250\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"100\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"987654321\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"122222\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"123458\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"20987639\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"999973333\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"253082\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"1235\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"803219200\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"100000000\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"1485181\\r\\n\", \"output\": [\"YES\"]}]",
+        "source_lang": "Python 3",
+        "target_lang": "C"
+    }
+}

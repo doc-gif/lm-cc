@@ -1,0 +1,87 @@
+{
+    "oai_response": {
+        "prompt": "Here is code in Python 3 programming lanaguge. Translate the following code from Python 3 to C programming lanaguge. Do not output any extra description or tokens other than the translated code. \n\n# https://codeforces.com/contest/47/problem/B\n\n\ndef single_integer():\n    return int(input())\n\n\ndef multi_integer():\n    return map(int, input().split())\n\n\ndef string():\n    return input()\n\n\ndef multi_string():\n    return input().split()\n\n\nleft_dict = dict()\nright_dict = dict()\n\nfor i in range(3):\n    c1, s, c2 = input()\n    if s == \">\":\n        left_dict[c1] = left_dict.get(c1, 0) + 1\n        right_dict[c2] = right_dict.get(c2, 0) + 1\n    else:\n        left_dict[c2] = left_dict.get(c2, 0) + 1\n        right_dict[c1] = right_dict.get(c1, 0) + 1\n\n\nif len(left_dict) == 3:\n    print(\"Impossible\")\nelse:\n    for k, v in right_dict.items():\n        if v == 2:\n            print(k, end=\"\")\n            break\n    for k, v in right_dict.items():\n        if v == 1:\n            print(k, end=\"\")\n            break\n\n    for k, v in left_dict.items():\n        if v == 2:\n            print(k, end=\"\")\n            break\n\n\n||END-of-SRC||",
+        "response": {
+            "id": "multi-call-as-2v572qp51j",
+            "model": "deepseek-v3",
+            "created": 1767068777,
+            "choices": [
+                {
+                    "index": 0,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <string.h>\n\nint main() {\n    int left_dict[256] = {0};\n    int right_dict[256] = {0};\n    char input[4];\n\n    for (int i = 0; i < 3; i++) {\n        scanf(\"%s\", input);\n        char c1 = input[0];\n        char s = input[1];\n        char c2 = input[2];\n        if (s == '>') {\n            left_dict[c1]++;\n            right_dict[c2]++;\n        } else {\n            left_dict[c2]++;\n            right_dict[c1]++;\n        }\n    }\n\n    if (left_dict['A'] && left_dict['B'] && left_dict['C']) {\n        printf(\"Impossible\");\n    } else {\n        for (char c = 'A'; c <= 'C'; c++) {\n            if (right_dict[c] == 2) {\n                printf(\"%c\", c);\n                break;\n            }\n        }\n        for (char c = 'A'; c <= 'C'; c++) {\n            if (right_dict[c] == 1) {\n                printf(\"%c\", c);\n                break;\n            }\n        }\n        for (char c = 'A'; c <= 'C'; c++) {\n            if (left_dict[c] == 2) {\n                printf(\"%c\", c);\n                break;\n            }\n        }\n    }\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 1,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <string.h>\n\nint main() {\n    int left_dict[256] = {0};\n    int right_dict[256] = {0};\n    char input[4];\n\n    for (int i = 0; i < 3; i++) {\n        scanf(\"%s\", input);\n        char c1 = input[0];\n        char s = input[1];\n        char c2 = input[2];\n        if (s == '>') {\n            left_dict[c1]++;\n            right_dict[c2]++;\n        } else {\n            left_dict[c2]++;\n            right_dict[c1]++;\n        }\n    }\n\n    if (left_dict['A'] && left_dict['B'] && left_dict['C']) {\n        printf(\"Impossible\");\n    } else {\n        for (char c = 'A'; c <= 'C'; c++) {\n            if (right_dict[c] == 2) {\n                printf(\"%c\", c);\n                break;\n            }\n        }\n        for (char c = 'A'; c <= 'C'; c++) {\n            if (right_dict[c] == 1) {\n                printf(\"%c\", c);\n                break;\n            }\n        }\n        for (char c = 'A'; c <= 'C'; c++) {\n            if (left_dict[c] == 2) {\n                printf(\"%c\", c);\n                break;\n            }\n        }\n    }\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 2,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <string.h>\n\nint main() {\n    int left_dict[256] = {0};\n    int right_dict[256] = {0};\n    char input[4];\n\n    for (int i = 0; i < 3; i++) {\n        scanf(\"%s\", input);\n        char c1 = input[0];\n        char s = input[1];\n        char c2 = input[2];\n        if (s == '>') {\n            left_dict[c1]++;\n            right_dict[c2]++;\n        } else {\n            left_dict[c2]++;\n            right_dict[c1]++;\n        }\n    }\n\n    if (left_dict['A'] && left_dict['B'] && left_dict['C']) {\n        printf(\"Impossible\");\n    } else {\n        for (char c = 'A'; c <= 'C'; c++) {\n            if (right_dict[c] == 2) {\n                printf(\"%c\", c);\n                break;\n            }\n        }\n        for (char c = 'A'; c <= 'C'; c++) {\n            if (right_dict[c] == 1) {\n                printf(\"%c\", c);\n                break;\n            }\n        }\n        for (char c = 'A'; c <= 'C'; c++) {\n            if (left_dict[c] == 2) {\n                printf(\"%c\", c);\n                break;\n            }\n        }\n    }\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 3,
+                    "message": {
+                        "role": "assistant",
+                        "content": "Here's the translated code in C:\n\n```c\n#include <stdio.h>\n#include <string.h>\n\nint main() {\n    int left_dict[256] = {0};\n    int right_dict[256] = {0};\n    \n    for(int i = 0; i < 3; i++) {\n        char c1, s, c2;\n        scanf(\" %c%c%c\", &c1, &s, &c2);\n        if(s == '>') {\n            left_dict[(int)c1]++;\n            right_dict[(int)c2]++;\n        } else {\n            left_dict[(int)c2]++;\n            right_dict[(int)c1]++;\n        }\n    }\n    \n    int count = 0;\n    for(int i = 0; i < 256; i++) {\n        if(left_dict[i] > 0) {\n            count++;\n        }\n    }\n    \n    if(count == 3) {\n        printf(\"Impossible\");\n    } else {\n        for(int i = 0; i < 256; i++) {\n            if(right_dict[i] == 2) {\n                printf(\"%c\", (char)i);\n                break;\n            }\n        }\n        for(int i = 0; i < 256; i++) {\n            if(right_dict[i] == 1) {\n                printf(\"%c\", (char)i);\n                break;\n            }\n        }\n        for(int i = 0; i < 256; i++) {\n            if(left_dict[i] == 2) {\n                printf(\"%c\", (char)i);\n                break;\n            }\n        }\n    }\n    \n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 4,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <string.h>\n\nint main() {\n    int left_dict[256] = {0};\n    int right_dict[256] = {0};\n    char input[4];\n\n    for (int i = 0; i < 3; i++) {\n        scanf(\"%s\", input);\n        char c1 = input[0];\n        char s = input[1];\n        char c2 = input[2];\n        if (s == '>') {\n            left_dict[c1]++;\n            right_dict[c2]++;\n        } else {\n            left_dict[c2]++;\n            right_dict[c1]++;\n        }\n    }\n\n    if (left_dict['A'] && left_dict['B'] && left_dict['C']) {\n        printf(\"Impossible\");\n    } else {\n        for (char c = 'A'; c <= 'C'; c++) {\n            if (right_dict[c] == 2) {\n                printf(\"%c\", c);\n                break;\n            }\n        }\n        for (char c = 'A'; c <= 'C'; c++) {\n            if (right_dict[c] == 1) {\n                printf(\"%c\", c);\n                break;\n            }\n        }\n        for (char c = 'A'; c <= 'C'; c++) {\n            if (left_dict[c] == 2) {\n                printf(\"%c\", c);\n                break;\n            }\n        }\n    }\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                }
+            ],
+            "usage": {
+                "prompt_tokens": 1615,
+                "completion_tokens": 1567,
+                "total_tokens": 3182
+            }
+        }
+    },
+    "source_data": {
+        "code_uid": "c299aa7fbade61d11d076e1b9e48d0c9",
+        "prob_desc_output_to": "standard output",
+        "prob_desc_notes": null,
+        "lang_cluster": "Python",
+        "prob_desc_time_limit": "2 seconds",
+        "prob_desc_input_spec": "The input data contains the results of all the weighting, one result on each line. It is guaranteed that every coin pair was weighted exactly once. Vasya labelled the coins with letters \u00abA\u00bb, \u00abB\u00bb and \u00abC\u00bb. Each result is a line that appears as (letter)(&gt; or &lt; sign)(letter). For example, if coin \"A\" proved lighter than coin \"B\", the result of the weighting is A&lt;B.",
+        "source_code": "# https://codeforces.com/contest/47/problem/B\n\n\ndef single_integer():\n    return int(input())\n\n\ndef multi_integer():\n    return map(int, input().split())\n\n\ndef string():\n    return input()\n\n\ndef multi_string():\n    return input().split()\n\n\nleft_dict = dict()\nright_dict = dict()\n\nfor i in range(3):\n    c1, s, c2 = input()\n    if s == \">\":\n        left_dict[c1] = left_dict.get(c1, 0) + 1\n        right_dict[c2] = right_dict.get(c2, 0) + 1\n    else:\n        left_dict[c2] = left_dict.get(c2, 0) + 1\n        right_dict[c1] = right_dict.get(c1, 0) + 1\n\n\nif len(left_dict) == 3:\n    print(\"Impossible\")\nelse:\n    for k, v in right_dict.items():\n        if v == 2:\n            print(k, end=\"\")\n            break\n    for k, v in right_dict.items():\n        if v == 1:\n            print(k, end=\"\")\n            break\n\n    for k, v in left_dict.items():\n        if v == 2:\n            print(k, end=\"\")\n            break\n\n\n",
+        "prob_desc_sample_inputs": [
+            "A&gt;B\nC&lt;B\nA&gt;C",
+            "A&lt;B\nB&gt;C\nC&gt;A"
+        ],
+        "prob_desc_memory_limit": "256 megabytes",
+        "exec_outcome": "PASSED",
+        "prob_desc_output_spec": "It the results are contradictory, print Impossible. Otherwise, print without spaces the rearrangement of letters \u00abA\u00bb, \u00abB\u00bb and \u00abC\u00bb which represent the coins in the increasing order of their weights.",
+        "src_uid": "97fd9123d0fb511da165b900afbde5dc",
+        "prob_desc_input_from": "standard input",
+        "lang": "Python 3",
+        "prob_desc_sample_outputs": [
+            "CBA",
+            "ACB"
+        ],
+        "file_name": "d7021504500d5ca7c2b02df8100a574d159e6e67e20ec8071b75800b1267370a",
+        "prob_desc_description": "One day Vasya came across three Berland coins. They didn't have any numbers that's why Vasya didn't understand how their denominations differ. He supposed that if one coin is heavier than the other one, then it should be worth more. Vasya weighed all the three pairs of coins on pan balance scales and told you the results. Find out how the deminations of the coins differ or if Vasya has a mistake in the weighting results. No two coins are equal.",
+        "prob_desc_created_at": "1291737600",
+        "difficulty": 1200.0,
+        "hidden_unit_tests": "[{\"input\": \"A>B\\r\\nC<B\\r\\nA>C\\r\\n\", \"output\": [\"CBA\"]}, {\"input\": \"A<B\\r\\nB>C\\r\\nC>A\\r\\n\", \"output\": [\"ACB\"]}, {\"input\": \"A<C\\r\\nB<A\\r\\nB>C\\r\\n\", \"output\": [\"Impossible\"]}, {\"input\": \"A<B\\r\\nA<C\\r\\nB>C\\r\\n\", \"output\": [\"ACB\"]}, {\"input\": \"B>A\\r\\nC<B\\r\\nC>A\\r\\n\", \"output\": [\"ACB\"]}, {\"input\": \"A>B\\r\\nB>C\\r\\nC<A\\r\\n\", \"output\": [\"CBA\"]}, {\"input\": \"A>C\\r\\nA>B\\r\\nB<C\\r\\n\", \"output\": [\"BCA\"]}, {\"input\": \"C<B\\r\\nB>A\\r\\nA<C\\r\\n\", \"output\": [\"ACB\"]}, {\"input\": \"C<B\\r\\nA>B\\r\\nC<A\\r\\n\", \"output\": [\"CBA\"]}, {\"input\": \"C>B\\r\\nB>A\\r\\nA<C\\r\\n\", \"output\": [\"ABC\"]}, {\"input\": \"C<B\\r\\nB<A\\r\\nC>A\\r\\n\", \"output\": [\"Impossible\"]}, {\"input\": \"B<C\\r\\nC<A\\r\\nA>B\\r\\n\", \"output\": [\"BCA\"]}, {\"input\": \"A>B\\r\\nC<B\\r\\nC<A\\r\\n\", \"output\": [\"CBA\"]}, {\"input\": \"B>A\\r\\nC>B\\r\\nA>C\\r\\n\", \"output\": [\"Impossible\"]}, {\"input\": \"B<A\\r\\nC>B\\r\\nC>A\\r\\n\", \"output\": [\"BAC\"]}, {\"input\": \"A<B\\r\\nC>B\\r\\nA<C\\r\\n\", \"output\": [\"ABC\"]}, {\"input\": \"A<B\\r\\nC<A\\r\\nB<C\\r\\n\", \"output\": [\"Impossible\"]}, {\"input\": \"A>C\\r\\nC<B\\r\\nB>A\\r\\n\", \"output\": [\"CAB\"]}, {\"input\": \"C>A\\r\\nA<B\\r\\nB>C\\r\\n\", \"output\": [\"ACB\"]}, {\"input\": \"C>A\\r\\nC<B\\r\\nB>A\\r\\n\", \"output\": [\"ACB\"]}, {\"input\": \"B>C\\r\\nB>A\\r\\nA<C\\r\\n\", \"output\": [\"ACB\"]}, {\"input\": \"C<B\\r\\nC<A\\r\\nB<A\\r\\n\", \"output\": [\"CBA\"]}, {\"input\": \"A<C\\r\\nA<B\\r\\nB>C\\r\\n\", \"output\": [\"ACB\"]}, {\"input\": \"B>A\\r\\nA>C\\r\\nB>C\\r\\n\", \"output\": [\"CAB\"]}, {\"input\": \"B<A\\r\\nA<C\\r\\nC<B\\r\\n\", \"output\": [\"Impossible\"]}, {\"input\": \"A<C\\r\\nB>C\\r\\nA>B\\r\\n\", \"output\": [\"Impossible\"]}, {\"input\": \"B>A\\r\\nC<A\\r\\nC>B\\r\\n\", \"output\": [\"Impossible\"]}, {\"input\": \"A>C\\r\\nC>B\\r\\nB<A\\r\\n\", \"output\": [\"BCA\"]}, {\"input\": \"B<C\\r\\nB<A\\r\\nA>C\\r\\n\", \"output\": [\"BCA\"]}, {\"input\": \"A>B\\r\\nC>B\\r\\nA<C\\r\\n\", \"output\": [\"BAC\"]}, {\"input\": \"C<B\\r\\nC<A\\r\\nB<A\\r\\n\", \"output\": [\"CBA\"]}, {\"input\": \"A<C\\r\\nA>B\\r\\nB>C\\r\\n\", \"output\": [\"Impossible\"]}, {\"input\": \"B>A\\r\\nB>C\\r\\nA<C\\r\\n\", \"output\": [\"ACB\"]}, {\"input\": \"B>C\\r\\nC<A\\r\\nB<A\\r\\n\", \"output\": [\"CBA\"]}, {\"input\": \"C>A\\r\\nB>A\\r\\nB>C\\r\\n\", \"output\": [\"ACB\"]}, {\"input\": \"B<A\\r\\nB>C\\r\\nA<C\\r\\n\", \"output\": [\"Impossible\"]}, {\"input\": \"B<C\\r\\nA<B\\r\\nC>A\\r\\n\", \"output\": [\"ABC\"]}, {\"input\": \"C<B\\r\\nB>A\\r\\nA>C\\r\\n\", \"output\": [\"CAB\"]}, {\"input\": \"A>B\\r\\nC>A\\r\\nB<C\\r\\n\", \"output\": [\"BAC\"]}, {\"input\": \"A>B\\r\\nB>C\\r\\nC<A\\r\\n\", \"output\": [\"CBA\"]}, {\"input\": \"B>C\\r\\nC>A\\r\\nA>B\\r\\n\", \"output\": [\"Impossible\"]}, {\"input\": \"B<A\\r\\nB>C\\r\\nC<A\\r\\n\", \"output\": [\"CBA\"]}, {\"input\": \"C>B\\r\\nB>A\\r\\nC>A\\r\\n\", \"output\": [\"ABC\"]}, {\"input\": \"A>C\\r\\nA>B\\r\\nB>C\\r\\n\", \"output\": [\"CBA\"]}, {\"input\": \"B<C\\r\\nA>B\\r\\nA<C\\r\\n\", \"output\": [\"BAC\"]}, {\"input\": \"C>A\\r\\nC<B\\r\\nB>A\\r\\n\", \"output\": [\"ACB\"]}, {\"input\": \"C>B\\r\\nA<B\\r\\nC<A\\r\\n\", \"output\": [\"Impossible\"]}, {\"input\": \"A<C\\r\\nC<B\\r\\nA>B\\r\\n\", \"output\": [\"Impossible\"]}, {\"input\": \"B>C\\r\\nA<B\\r\\nA<C\\r\\n\", \"output\": [\"ACB\"]}, {\"input\": \"C>A\\r\\nA<B\\r\\nC>B\\r\\n\", \"output\": [\"ABC\"]}]",
+        "source_lang": "Python 3",
+        "target_lang": "C"
+    }
+}

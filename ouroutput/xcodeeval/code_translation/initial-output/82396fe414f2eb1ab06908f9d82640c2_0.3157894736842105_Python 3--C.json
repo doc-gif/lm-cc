@@ -1,0 +1,87 @@
+{
+    "oai_response": {
+        "prompt": "Here is code in Python 3 programming lanaguge. Translate the following code from Python 3 to C programming lanaguge. Do not output any extra description or tokens other than the translated code. \n\nx1, y1 = map(int, input().split())\nx2, y2 = map(int, input().split())\n \nif x1 == x2:\n    x1 += 1\nelif y1 == y2:\n    y1 += 1\nprint((abs(x2 - x1) + 1 + abs(y2 - y1) + 1) * 2)||END-of-SRC||",
+        "response": {
+            "id": "multi-call-as-suai84be42",
+            "model": "deepseek-v3",
+            "created": 1767069397,
+            "choices": [
+                {
+                    "index": 0,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <stdlib.h>\n\nint main() {\n    int x1, y1, x2, y2;\n    scanf(\"%d %d\", &x1, &y1);\n    scanf(\"%d %d\", &x2, &y2);\n    \n    if (x1 == x2) {\n        x1 += 1;\n    } else if (y1 == y2) {\n        y1 += 1;\n    }\n    printf(\"%d\\n\", (abs(x2 - x1) + 1 + abs(y2 - y1) + 1) * 2);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 1,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <stdlib.h>\n\nint main() {\n    int x1, y1, x2, y2;\n    scanf(\"%d %d\", &x1, &y1);\n    scanf(\"%d %d\", &x2, &y2);\n    \n    if (x1 == x2) {\n        x1 += 1;\n    } else if (y1 == y2) {\n        y1 += 1;\n    }\n    \n    printf(\"%d\\n\", (abs(x2 - x1) + 1 + abs(y2 - y1) + 1) * 2);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 2,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <stdlib.h>\n\nint main() {\n    int x1, y1, x2, y2;\n    scanf(\"%d %d\", &x1, &y1);\n    scanf(\"%d %d\", &x2, &y2);\n    \n    if (x1 == x2) {\n        x1 += 1;\n    } else if (y1 == y2) {\n        y1 += 1;\n    }\n    printf(\"%d\\n\", (abs(x2 - x1) + 1 + abs(y2 - y1) + 1) * 2);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 3,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <stdlib.h>\n\nint main() {\n    int x1, y1, x2, y2;\n    scanf(\"%d %d\", &x1, &y1);\n    scanf(\"%d %d\", &x2, &y2);\n    \n    if (x1 == x2) {\n        x1 += 1;\n    } else if (y1 == y2) {\n        y1 += 1;\n    }\n    printf(\"%d\\n\", (abs(x2 - x1) + 1 + abs(y2 - y1) + 1) * 2);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 4,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <stdlib.h>\n\nint main() {\n    int x1, y1, x2, y2;\n    scanf(\"%d %d\", &x1, &y1);\n    scanf(\"%d %d\", &x2, &y2);\n    \n    if (x1 == x2) {\n        x1 += 1;\n    } else if (y1 == y2) {\n        y1 += 1;\n    }\n    \n    printf(\"%d\\n\", (abs(x2 - x1) + 1 + abs(y2 - y1) + 1) * 2);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                }
+            ],
+            "usage": {
+                "prompt_tokens": 670,
+                "completion_tokens": 708,
+                "total_tokens": 1378
+            }
+        }
+    },
+    "source_data": {
+        "code_uid": "82396fe414f2eb1ab06908f9d82640c2",
+        "prob_desc_output_to": "standard output",
+        "prob_desc_notes": null,
+        "lang_cluster": "Python",
+        "prob_desc_time_limit": "3 seconds",
+        "prob_desc_input_spec": "The first line contains two integer numbers x1 and y1 (\u2009-\u2009100\u2009\u2264\u2009x1,\u2009y1\u2009\u2264\u2009100) \u2014 coordinates of the quadcopter starting (and finishing) point. The second line contains two integer numbers x2 and y2 (\u2009-\u2009100\u2009\u2264\u2009x2,\u2009y2\u2009\u2264\u2009100) \u2014 coordinates of the flag. It is guaranteed that the quadcopter starting point and the flag do not coincide.",
+        "source_code": "x1, y1 = map(int, input().split())\nx2, y2 = map(int, input().split())\n \nif x1 == x2:\n    x1 += 1\nelif y1 == y2:\n    y1 += 1\nprint((abs(x2 - x1) + 1 + abs(y2 - y1) + 1) * 2)",
+        "prob_desc_sample_inputs": [
+            "1 5\n5 2",
+            "0 1\n0 0"
+        ],
+        "prob_desc_memory_limit": "256 megabytes",
+        "exec_outcome": "PASSED",
+        "prob_desc_output_spec": "Print the length of minimal path of the quadcopter to surround the flag and return back.",
+        "src_uid": "f54ce13fb92e51ebd5e82ffbdd1acbed",
+        "prob_desc_input_from": "standard input",
+        "lang": "Python 3",
+        "prob_desc_sample_outputs": [
+            "18",
+            "8"
+        ],
+        "file_name": "d7021504500d5ca7c2b02df8100a574d159e6e67e20ec8071b75800b1267370a",
+        "prob_desc_description": "Polycarp takes part in a quadcopter competition. According to the rules a flying robot should:  start the race from some point of a field,  go around the flag,  close cycle returning back to the starting point. Polycarp knows the coordinates of the starting point (x1,\u2009y1) and the coordinates of the point where the flag is situated (x2,\u2009y2). Polycarp\u2019s quadcopter can fly only parallel to the sides of the field each tick changing exactly one coordinate by 1. It means that in one tick the quadcopter can fly from the point (x,\u2009y) to any of four points: (x\u2009-\u20091,\u2009y), (x\u2009+\u20091,\u2009y), (x,\u2009y\u2009-\u20091) or (x,\u2009y\u2009+\u20091).Thus the quadcopter path is a closed cycle starting and finishing in (x1,\u2009y1) and containing the point (x2,\u2009y2) strictly inside.    The picture corresponds to the first example: the starting (and finishing) point is in (1,\u20095) and the flag is in (5,\u20092). What is the minimal length of the quadcopter path?",
+        "prob_desc_created_at": "1508573100",
+        "difficulty": 1100.0,
+        "hidden_unit_tests": "[{\"input\": \"1 5\\r\\n5 2\\r\\n\", \"output\": [\"18\"]}, {\"input\": \"0 1\\r\\n0 0\\r\\n\", \"output\": [\"8\"]}, {\"input\": \"-100 -100\\r\\n100 100\\r\\n\", \"output\": [\"804\"]}, {\"input\": \"-100 -100\\r\\n-100 100\\r\\n\", \"output\": [\"406\"]}, {\"input\": \"-100 -100\\r\\n100 -100\\r\\n\", \"output\": [\"406\"]}, {\"input\": \"100 -100\\r\\n-100 -100\\r\\n\", \"output\": [\"406\"]}, {\"input\": \"100 -100\\r\\n-100 100\\r\\n\", \"output\": [\"804\"]}, {\"input\": \"100 -100\\r\\n100 100\\r\\n\", \"output\": [\"406\"]}, {\"input\": \"-100 100\\r\\n-100 -100\\r\\n\", \"output\": [\"406\"]}, {\"input\": \"-100 100\\r\\n100 -100\\r\\n\", \"output\": [\"804\"]}, {\"input\": \"-100 100\\r\\n100 100\\r\\n\", \"output\": [\"406\"]}, {\"input\": \"100 100\\r\\n-100 -100\\r\\n\", \"output\": [\"804\"]}, {\"input\": \"100 100\\r\\n-100 100\\r\\n\", \"output\": [\"406\"]}, {\"input\": \"100 100\\r\\n100 -100\\r\\n\", \"output\": [\"406\"]}, {\"input\": \"45 -43\\r\\n45 -44\\r\\n\", \"output\": [\"8\"]}, {\"input\": \"76 76\\r\\n75 75\\r\\n\", \"output\": [\"8\"]}, {\"input\": \"-34 -56\\r\\n-35 -56\\r\\n\", \"output\": [\"8\"]}, {\"input\": \"56 -7\\r\\n55 -6\\r\\n\", \"output\": [\"8\"]}, {\"input\": \"43 -11\\r\\n43 -10\\r\\n\", \"output\": [\"8\"]}, {\"input\": \"1 -3\\r\\n2 -2\\r\\n\", \"output\": [\"8\"]}, {\"input\": \"-27 -25\\r\\n-28 68\\r\\n\", \"output\": [\"192\"]}, {\"input\": \"25 76\\r\\n24 76\\r\\n\", \"output\": [\"8\"]}, {\"input\": \"-53 63\\r\\n-53 62\\r\\n\", \"output\": [\"8\"]}, {\"input\": \"63 41\\r\\n62 40\\r\\n\", \"output\": [\"8\"]}, {\"input\": \"0 0\\r\\n0 1\\r\\n\", \"output\": [\"8\"]}, {\"input\": \"0 0\\r\\n1 0\\r\\n\", \"output\": [\"8\"]}, {\"input\": \"0 0\\r\\n1 1\\r\\n\", \"output\": [\"8\"]}, {\"input\": \"0 1\\r\\n1 0\\r\\n\", \"output\": [\"8\"]}, {\"input\": \"0 1\\r\\n1 1\\r\\n\", \"output\": [\"8\"]}, {\"input\": \"1 0\\r\\n0 0\\r\\n\", \"output\": [\"8\"]}, {\"input\": \"1 0\\r\\n0 1\\r\\n\", \"output\": [\"8\"]}, {\"input\": \"1 0\\r\\n1 1\\r\\n\", \"output\": [\"8\"]}, {\"input\": \"1 1\\r\\n0 0\\r\\n\", \"output\": [\"8\"]}, {\"input\": \"1 1\\r\\n0 1\\r\\n\", \"output\": [\"8\"]}, {\"input\": \"1 1\\r\\n1 0\\r\\n\", \"output\": [\"8\"]}, {\"input\": \"100 100\\r\\n99 -100\\r\\n\", \"output\": [\"406\"]}, {\"input\": \"100 100\\r\\n-100 99\\r\\n\", \"output\": [\"406\"]}, {\"input\": \"-100 -100\\r\\n-99 100\\r\\n\", \"output\": [\"406\"]}, {\"input\": \"-100 -100\\r\\n100 -99\\r\\n\", \"output\": [\"406\"]}, {\"input\": \"0 0\\r\\n1 2\\r\\n\", \"output\": [\"10\"]}, {\"input\": \"0 0\\r\\n2 1\\r\\n\", \"output\": [\"10\"]}, {\"input\": \"55 71\\r\\n56 71\\r\\n\", \"output\": [\"8\"]}, {\"input\": \"54 -87\\r\\n55 -88\\r\\n\", \"output\": [\"8\"]}, {\"input\": \"22 98\\r\\n100 33\\r\\n\", \"output\": [\"290\"]}, {\"input\": \"37 84\\r\\n-83 5\\r\\n\", \"output\": [\"402\"]}, {\"input\": \"52 74\\r\\n-73 -39\\r\\n\", \"output\": [\"480\"]}, {\"input\": \"66 51\\r\\n51 -71\\r\\n\", \"output\": [\"278\"]}, {\"input\": \"-31 44\\r\\n73 86\\r\\n\", \"output\": [\"296\"]}, {\"input\": \"-20 34\\r\\n-9 55\\r\\n\", \"output\": [\"68\"]}, {\"input\": \"-5 19\\r\\n-91 -86\\r\\n\", \"output\": [\"386\"]}, {\"input\": \"-82 5\\r\\n28 -17\\r\\n\", \"output\": [\"268\"]}, {\"input\": \"-90 -100\\r\\n55 48\\r\\n\", \"output\": [\"590\"]}, {\"input\": \"-75 -14\\r\\n-32 8\\r\\n\", \"output\": [\"134\"]}, {\"input\": \"-53 -28\\r\\n-13 -28\\r\\n\", \"output\": [\"86\"]}, {\"input\": \"-42 -46\\r\\n10 -64\\r\\n\", \"output\": [\"144\"]}, {\"input\": \"55 -42\\r\\n25 2\\r\\n\", \"output\": [\"152\"]}, {\"input\": \"70 -64\\r\\n-54 70\\r\\n\", \"output\": [\"520\"]}, {\"input\": \"93 -78\\r\\n-32 -75\\r\\n\", \"output\": [\"260\"]}, {\"input\": \"8 -93\\r\\n79 -6\\r\\n\", \"output\": [\"320\"]}, {\"input\": \"50 43\\r\\n54 10\\r\\n\", \"output\": [\"78\"]}, {\"input\": \"65 32\\r\\n-37 71\\r\\n\", \"output\": [\"286\"]}, {\"input\": \"80 18\\r\\n-15 -58\\r\\n\", \"output\": [\"346\"]}, {\"input\": \"94 92\\r\\n4 -1\\r\\n\", \"output\": [\"370\"]}, {\"input\": \"-10 96\\r\\n27 64\\r\\n\", \"output\": [\"142\"]}, {\"input\": \"-96 78\\r\\n-56 32\\r\\n\", \"output\": [\"176\"]}, {\"input\": \"-81 64\\r\\n-37 -8\\r\\n\", \"output\": [\"236\"]}, {\"input\": \"-58 49\\r\\n74 -40\\r\\n\", \"output\": [\"446\"]}, {\"input\": \"-62 -55\\r\\n1 18\\r\\n\", \"output\": [\"276\"]}, {\"input\": \"-51 -69\\r\\n-78 86\\r\\n\", \"output\": [\"368\"]}, {\"input\": \"-29 -80\\r\\n-56 -47\\r\\n\", \"output\": [\"124\"]}, {\"input\": \"-14 -94\\r\\n55 -90\\r\\n\", \"output\": [\"150\"]}, {\"input\": \"83 -2\\r\\n82 83\\r\\n\", \"output\": [\"176\"]}, {\"input\": \"98 -16\\r\\n-96 40\\r\\n\", \"output\": [\"504\"]}, {\"input\": \"17 -34\\r\\n-86 -93\\r\\n\", \"output\": [\"328\"]}, {\"input\": \"32 -48\\r\\n33 -37\\r\\n\", \"output\": [\"28\"]}, {\"input\": \"74 87\\r\\n3 92\\r\\n\", \"output\": [\"156\"]}, {\"input\": \"89 73\\r\\n-80 49\\r\\n\", \"output\": [\"390\"]}, {\"input\": \"4 58\\r\\n-61 -80\\r\\n\", \"output\": [\"410\"]}, {\"input\": \"15 48\\r\\n50 -20\\r\\n\", \"output\": [\"210\"]}, {\"input\": \"-82 45\\r\\n81 46\\r\\n\", \"output\": [\"332\"]}, {\"input\": \"-68 26\\r\\n-2 6\\r\\n\", \"output\": [\"176\"]}, {\"input\": \"-53 4\\r\\n-92 -31\\r\\n\", \"output\": [\"152\"]}, {\"input\": \"-30 94\\r\\n31 -58\\r\\n\", \"output\": [\"430\"]}, {\"input\": \"-38 -11\\r\\n58 99\\r\\n\", \"output\": [\"416\"]}, {\"input\": \"-5 -39\\r\\n-10 -77\\r\\n\", \"output\": [\"90\"]}, {\"input\": \"-90 -54\\r\\n9 -9\\r\\n\", \"output\": [\"292\"]}, {\"input\": \"7 -57\\r\\n28 61\\r\\n\", \"output\": [\"282\"]}, {\"input\": \"18 -67\\r\\n-51 21\\r\\n\", \"output\": [\"318\"]}, {\"input\": \"41 -82\\r\\n-33 -15\\r\\n\", \"output\": [\"286\"]}, {\"input\": \"56 -8\\r\\n91 -55\\r\\n\", \"output\": [\"168\"]}, {\"input\": \"-23 -13\\r\\n-24 -12\\r\\n\", \"output\": [\"8\"]}, {\"input\": \"1 32\\r\\n1 33\\r\\n\", \"output\": [\"8\"]}, {\"input\": \"-29 -78\\r\\n-28 -79\\r\\n\", \"output\": [\"8\"]}, {\"input\": \"-77 19\\r\\n-76 19\\r\\n\", \"output\": [\"8\"]}, {\"input\": \"86 12\\r\\n86 11\\r\\n\", \"output\": [\"8\"]}, {\"input\": \"14 56\\r\\n13 56\\r\\n\", \"output\": [\"8\"]}, {\"input\": \"0 -4\\r\\n1 -4\\r\\n\", \"output\": [\"8\"]}, {\"input\": \"24 41\\r\\n24 42\\r\\n\", \"output\": [\"8\"]}, {\"input\": \"48 85\\r\\n49 86\\r\\n\", \"output\": [\"8\"]}]",
+        "source_lang": "Python 3",
+        "target_lang": "C"
+    }
+}

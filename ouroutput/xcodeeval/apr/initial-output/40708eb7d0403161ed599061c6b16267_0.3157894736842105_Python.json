@@ -1,0 +1,99 @@
+{
+    "oai_response": {
+        "prompt": "Fix a buggy program written in Python language to solve the following programming problem:\nDescription: One beautiful July morning a terrible thing happened in Mainframe: a mean virus Megabyte somehow got access to the memory of his not less mean sister Hexadecimal. He loaded there a huge amount of n different natural numbers from 1 to n to obtain total control over her energy.But his plan failed. The reason for this was very simple: Hexadecimal didn't perceive any information, apart from numbers written in binary format. This means that if a number in a decimal representation contained characters apart from 0 and 1, it was not stored in the memory. Now Megabyte wants to know, how many numbers were loaded successfully.\nInput Specification: Input data contains the only number n (1\u2009\u2264\u2009n\u2009\u2264\u2009109).\nOutput Specification: Output the only number \u2014 answer to the problem.\n\nSample Input:\n10\nSample Output:\n2\n\nNotes: NoteFor n = 10 the answer includes numbers 1 and 10.\nTake input from standard input and output to standard output\n\nHere is the code with a bug of MEMORY_LIMIT_EXCEEDED:\n\nimport sys\nfrom functools import lru_cache, cmp_to_key\nfrom heapq import merge, heapify, heappop, heappush\n# from math import *\nfrom collections import defaultdict as dd, deque, Counter as C\nfrom itertools import combinations as comb, permutations as perm\nfrom bisect import bisect_left as bl, bisect_right as br, bisect\nfrom time import perf_counter\nfrom fractions import Fraction\nimport copy\nimport time\n# import numpy as np\nstarttime = time.time()\n# import numpy as np\nmod = int(pow(10, 9) + 7)\nmod2 = 998244353\ndef data(): return sys.stdin.readline().strip()\ndef out(*var, end=\"\\n\"): sys.stdout.write(' '.join(map(str, var))+end)\ndef L(): return list(sp())\ndef sl(): return list(ssp())\ndef sp(): return map(int, data().split())\ndef ssp(): return map(str, data().split())\ndef l1d(n, val=0): return [val for i in range(n)]\ndef l2d(n, m, val=0): return [l1d(n, val) for j in range(m)]\n\ntry:\n    # sys.setrecursionlimit(int(pow(10,6)))\n    sys.stdin = open(\"input.txt\", \"r\")\n    # sys.stdout = open(\"../output.txt\", \"w\")\nexcept:\n    pass\n\n\nn=L()[0]\nA=[1]\ni=0\nwhile(A[-1]<=n):\n    A.append(A[i]*10+0)\n    A.append(A[i]*10+1)\nwhile(A[-1]>n):\n    del(A[-1])\nprint(len(A))\n\nendtime = time.time()\n# print(f\"Runtime of the program is {endtime - starttime}\")\n\n\nProvide the fixed Python code without any description or extra tokens.\n\nFixed source code:\n ||END-of-SRC||",
+        "response": {
+            "id": "multi-call-as-yqrm6upr62",
+            "model": "deepseek-v3",
+            "created": 1760421624,
+            "choices": [
+                {
+                    "index": 0,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```python\nimport sys\n\ndef data(): return sys.stdin.readline().strip()\ndef L(): return list(map(int, data().split()))\n\nn = L()[0]\nqueue = [1]\ncount = 0\ni = 0\n\nwhile i < len(queue):\n    num = queue[i]\n    if num > n:\n        i += 1\n        continue\n    count += 1\n    queue.append(num * 10)\n    queue.append(num * 10 + 1)\n    i += 1\n\nprint(count)\n``` ||END-of-SRC||"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 1,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```python\nimport sys\n\ndef data(): return sys.stdin.readline().strip()\ndef L(): return list(map(int, data().split()))\n\nn = L()[0]\nqueue = [1]\ncount = 0\ni = 0\n\nwhile i < len(queue):\n    num = queue[i]\n    if num > n:\n        i += 1\n        continue\n    count += 1\n    queue.append(num * 10)\n    queue.append(num * 10 + 1)\n    i += 1\n\nprint(count)\n``` ||END-of-SRC||"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 2,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```python\nimport sys\n\ndef solve():\n    n = int(sys.stdin.readline())\n    count = 0\n    from collections import deque\n    queue = deque()\n    queue.append(1)\n    while queue:\n        num = queue.popleft()\n        if num > n:\n            continue\n        count += 1\n        queue.append(num * 10)\n        queue.append(num * 10 + 1)\n    print(count)\n\nsolve()\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 3,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```python\nimport sys\n\ndef data(): return sys.stdin.readline().strip()\ndef L(): return list(map(int, data().split()))\n\nn = L()[0]\nqueue = [1]\ncount = 0\ni = 0\n\nwhile i < len(queue):\n    num = queue[i]\n    if num > n:\n        i += 1\n        continue\n    count += 1\n    queue.append(num * 10)\n    queue.append(num * 10 + 1)\n    i += 1\n\nprint(count)\n``` ||END-of-SRC||"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 4,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```python\nimport sys\n\ndef data(): return sys.stdin.readline().strip()\ndef L(): return list(map(int, data().split()))\n\nn = L()[0]\nqueue = [1]\ncount = 0\ni = 0\n\nwhile i < len(queue):\n    num = queue[i]\n    if num > n:\n        i += 1\n        continue\n    count += 1\n    queue.append(num * 10)\n    queue.append(num * 10 + 1)\n    i += 1\n\nprint(count)\n``` ||END-of-SRC||"
+                    },
+                    "finish_reason": "stop"
+                }
+            ],
+            "usage": {
+                "prompt_tokens": 3210,
+                "completion_tokens": 574,
+                "total_tokens": 3784
+            }
+        }
+    },
+    "source_data": {
+        "prob_desc_memory_limit": "64 megabytes",
+        "tags": [
+            "math",
+            "brute force",
+            "implementation"
+        ],
+        "prob_desc_created_at": "1270983600",
+        "fix_source_code": "",
+        "prob_desc_input_spec": "Input data contains the only number n (1\u2009\u2264\u2009n\u2009\u2264\u2009109).",
+        "prob_desc_sample_outputs": [
+            "2"
+        ],
+        "src_uid": "64a842f9a41f85a83b7d65bfbe21b6cb",
+        "prob_desc_time_limit": "1 second",
+        "fix_exec_outcome": "",
+        "delete_cnt": 0,
+        "apr_id": "f7a150f568bcdffce128455ae4f55dfc",
+        "fix_code_uid": "",
+        "lang_cluster": "Python",
+        "prob_desc_sample_inputs": [
+            "10"
+        ],
+        "prob_desc_output_to": "standard output",
+        "file_name": "Python.jsonl",
+        "equal_cnt": 2,
+        "lang": "PyPy 3",
+        "prob_desc_output_spec": "Output the only number \u2014 answer to the problem.",
+        "bug_exec_outcome": "MEMORY_LIMIT_EXCEEDED",
+        "prob_desc_notes": "NoteFor n = 10 the answer includes numbers 1 and 10.",
+        "difficulty": 1200.0,
+        "similarity_score": 0.9964185953,
+        "prob_desc_description": "One beautiful July morning a terrible thing happened in Mainframe: a mean virus Megabyte somehow got access to the memory of his not less mean sister Hexadecimal. He loaded there a huge amount of n different natural numbers from 1 to n to obtain total control over her energy.But his plan failed. The reason for this was very simple: Hexadecimal didn't perceive any information, apart from numbers written in binary format. This means that if a number in a decimal representation contained characters apart from 0 and 1, it was not stored in the memory. Now Megabyte wants to know, how many numbers were loaded successfully.",
+        "potential_dominant_fix_op": "insert",
+        "bug_source_code": "import sys\nfrom functools import lru_cache, cmp_to_key\nfrom heapq import merge, heapify, heappop, heappush\n# from math import *\nfrom collections import defaultdict as dd, deque, Counter as C\nfrom itertools import combinations as comb, permutations as perm\nfrom bisect import bisect_left as bl, bisect_right as br, bisect\nfrom time import perf_counter\nfrom fractions import Fraction\nimport copy\nimport time\n# import numpy as np\nstarttime = time.time()\n# import numpy as np\nmod = int(pow(10, 9) + 7)\nmod2 = 998244353\ndef data(): return sys.stdin.readline().strip()\ndef out(*var, end=\"\\n\"): sys.stdout.write(' '.join(map(str, var))+end)\ndef L(): return list(sp())\ndef sl(): return list(ssp())\ndef sp(): return map(int, data().split())\ndef ssp(): return map(str, data().split())\ndef l1d(n, val=0): return [val for i in range(n)]\ndef l2d(n, m, val=0): return [l1d(n, val) for j in range(m)]\n\ntry:\n    # sys.setrecursionlimit(int(pow(10,6)))\n    sys.stdin = open(\"input.txt\", \"r\")\n    # sys.stdout = open(\"../output.txt\", \"w\")\nexcept:\n    pass\n\n\nn=L()[0]\nA=[1]\ni=0\nwhile(A[-1]<=n):\n    A.append(A[i]*10+0)\n    A.append(A[i]*10+1)\nwhile(A[-1]>n):\n    del(A[-1])\nprint(len(A))\n\nendtime = time.time()\n# print(f\"Runtime of the program is {endtime - starttime}\")\n",
+        "replace_cnt": 0,
+        "prob_desc_input_from": "standard input",
+        "bug_code_uid": "40708eb7d0403161ed599061c6b16267",
+        "insert_cnt": 1,
+        "fix_ops_cnt": 1,
+        "hidden_unit_tests": "[{\"input\": \"10\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"20\\r\\n\", \"output\": [\"3\"]}, {\"input\": \"72\\r\\n\", \"output\": [\"3\"]}, {\"input\": \"99\\r\\n\", \"output\": [\"3\"]}, {\"input\": \"100\\r\\n\", \"output\": [\"4\"]}, {\"input\": \"101\\r\\n\", \"output\": [\"5\"]}, {\"input\": \"102\\r\\n\", \"output\": [\"5\"]}, {\"input\": \"111\\r\\n\", \"output\": [\"7\"]}, {\"input\": \"112\\r\\n\", \"output\": [\"7\"]}, {\"input\": \"745\\r\\n\", \"output\": [\"7\"]}, {\"input\": \"23536\\r\\n\", \"output\": [\"31\"]}, {\"input\": \"1\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"1010011\\r\\n\", \"output\": [\"83\"]}, {\"input\": \"312410141\\r\\n\", \"output\": [\"511\"]}, {\"input\": \"1000000000\\r\\n\", \"output\": [\"512\"]}, {\"input\": \"999999999\\r\\n\", \"output\": [\"511\"]}, {\"input\": \"111111111\\r\\n\", \"output\": [\"511\"]}, {\"input\": \"101010101\\r\\n\", \"output\": [\"341\"]}, {\"input\": \"121212121\\r\\n\", \"output\": [\"511\"]}, {\"input\": \"106341103\\r\\n\", \"output\": [\"383\"]}, {\"input\": \"901556123\\r\\n\", \"output\": [\"511\"]}, {\"input\": \"832513432\\r\\n\", \"output\": [\"511\"]}, {\"input\": \"3\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"732875234\\r\\n\", \"output\": [\"511\"]}, {\"input\": \"7\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"9\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"2\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"11\\r\\n\", \"output\": [\"3\"]}, {\"input\": \"12\\r\\n\", \"output\": [\"3\"]}, {\"input\": \"13\\r\\n\", \"output\": [\"3\"]}, {\"input\": \"101020101\\r\\n\", \"output\": [\"351\"]}, {\"input\": \"111100100\\r\\n\", \"output\": [\"484\"]}, {\"input\": \"110110101\\r\\n\", \"output\": [\"437\"]}, {\"input\": \"100111001\\r\\n\", \"output\": [\"313\"]}, {\"input\": \"100100\\r\\n\", \"output\": [\"36\"]}, {\"input\": \"110100102\\r\\n\", \"output\": [\"421\"]}]"
+    }
+}

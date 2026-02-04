@@ -1,0 +1,87 @@
+{
+    "oai_response": {
+        "prompt": "Here is code in Python 3 programming lanaguge. Translate the following code from Python 3 to C programming lanaguge. Do not output any extra description or tokens other than the translated code. \n\ns=[int(c) for c in input()]\nok=1\nfor i in range(1,len(s)):\n  if abs(s[i]-s[i-1])>1: ok=0; break\nw=[1]*10\nfor v in s[1:]:\n  ww=w[:]\n  w=[0]*10\n  for d in range(10):\n    q,r=divmod(v+d,2)\n    w[q]+=ww[d]\n    if r>0:\n      w[q+1]+=ww[d]\n\nprint(sum(w)-ok)      \n||END-of-SRC||",
+        "response": {
+            "id": "multi-call-as-f41fcn07kk",
+            "model": "deepseek-v3",
+            "created": 1767067303,
+            "choices": [
+                {
+                    "index": 0,
+                    "message": {
+                        "role": "assistant",
+                        "content": "Here's the translated code in C:\n\n```c\n#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n#include <math.h>\n\nint main() {\n    char input[100];\n    scanf(\"%s\", input);\n    int len = strlen(input);\n    int s[len];\n    for (int i = 0; i < len; i++) {\n        s[i] = input[i] - '0';\n    }\n    \n    int ok = 1;\n    for (int i = 1; i < len; i++) {\n        if (abs(s[i] - s[i-1]) > 1) {\n            ok = 0;\n            break;\n        }\n    }\n    \n    int w[10] = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1};\n    for (int i = 1; i < len; i++) {\n        int v = s[i];\n        int ww[10];\n        memcpy(ww, w, sizeof(w));\n        memset(w, 0, sizeof(w));\n        for (int d = 0; d < 10; d++) {\n            int q = (v + d) / 2;\n            int r = (v + d) % 2;\n            w[q] += ww[d];\n            if (r > 0) {\n                w[q + 1] += ww[d];\n            }\n        }\n    }\n    \n    int sum = 0;\n    for (int i = 0; i < 10; i++) {\n        sum += w[i];\n    }\n    printf(\"%d\\n\", sum - ok);\n    \n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 1,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n#include <math.h>\n\nint main() {\n    char input[100];\n    scanf(\"%s\", input);\n    int len = strlen(input);\n    int s[len];\n    for (int i = 0; i < len; i++) {\n        s[i] = input[i] - '0';\n    }\n    \n    int ok = 1;\n    for (int i = 1; i < len; i++) {\n        if (abs(s[i] - s[i-1]) > 1) {\n            ok = 0;\n            break;\n        }\n    }\n    \n    int w[10] = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1};\n    for (int i = 1; i < len; i++) {\n        int v = s[i];\n        int ww[10];\n        memcpy(ww, w, sizeof(ww));\n        memset(w, 0, sizeof(w));\n        for (int d = 0; d < 10; d++) {\n            int sum = v + d;\n            int q = sum / 2;\n            int r = sum % 2;\n            w[q] += ww[d];\n            if (r > 0) {\n                w[q + 1] += ww[d];\n            }\n        }\n    }\n    \n    int sum_w = 0;\n    for (int i = 0; i < 10; i++) {\n        sum_w += w[i];\n    }\n    printf(\"%d\\n\", sum_w - ok);\n    \n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 2,
+                    "message": {
+                        "role": "assistant",
+                        "content": "Here's the translated code in C:\n\n```c\n#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n#include <math.h>\n\nint main() {\n    char input[100];\n    scanf(\"%s\", input);\n    int len = strlen(input);\n    int s[len];\n    for (int i = 0; i < len; i++) {\n        s[i] = input[i] - '0';\n    }\n    int ok = 1;\n    for (int i = 1; i < len; i++) {\n        if (abs(s[i] - s[i-1]) > 1) {\n            ok = 0;\n            break;\n        }\n    }\n    int w[10] = {1,1,1,1,1,1,1,1,1,1};\n    for (int i = 1; i < len; i++) {\n        int v = s[i];\n        int ww[10];\n        memcpy(ww, w, sizeof(w));\n        memset(w, 0, sizeof(w));\n        for (int d = 0; d < 10; d++) {\n            int q = (v + d) / 2;\n            int r = (v + d) % 2;\n            w[q] += ww[d];\n            if (r > 0) {\n                w[q+1] += ww[d];\n            }\n        }\n    }\n    int sum = 0;\n    for (int i = 0; i < 10; i++) {\n        sum += w[i];\n    }\n    printf(\"%d\\n\", sum - ok);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 3,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n#include <math.h>\n\nint main() {\n    char input[100];\n    scanf(\"%s\", input);\n    int len = strlen(input);\n    int s[len];\n    for (int i = 0; i < len; i++) {\n        s[i] = input[i] - '0';\n    }\n    \n    int ok = 1;\n    for (int i = 1; i < len; i++) {\n        if (abs(s[i] - s[i - 1]) > 1) {\n            ok = 0;\n            break;\n        }\n    }\n    \n    int w[10] = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1};\n    for (int i = 1; i < len; i++) {\n        int v = s[i];\n        int ww[10];\n        memcpy(ww, w, sizeof(ww));\n        memset(w, 0, sizeof(w));\n        for (int d = 0; d < 10; d++) {\n            int q = (v + d) / 2;\n            int r = (v + d) % 2;\n            w[q] += ww[d];\n            if (r > 0) {\n                w[q + 1] += ww[d];\n            }\n        }\n    }\n    \n    int sum = 0;\n    for (int i = 0; i < 10; i++) {\n        sum += w[i];\n    }\n    printf(\"%d\\n\", sum - ok);\n    \n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 4,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n#include <math.h>\n\nint main() {\n    char input[100];\n    scanf(\"%s\", input);\n    int len = strlen(input);\n    int s[len];\n    for (int i = 0; i < len; i++) {\n        s[i] = input[i] - '0';\n    }\n    \n    int ok = 1;\n    for (int i = 1; i < len; i++) {\n        if (abs(s[i] - s[i-1]) > 1) {\n            ok = 0;\n            break;\n        }\n    }\n    \n    int w[10] = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1};\n    for (int i = 1; i < len; i++) {\n        int v = s[i];\n        int ww[10];\n        memcpy(ww, w, sizeof(ww));\n        memset(w, 0, sizeof(w));\n        for (int d = 0; d < 10; d++) {\n            int sum = v + d;\n            int q = sum / 2;\n            int r = sum % 2;\n            w[q] += ww[d];\n            if (r > 0) {\n                w[q + 1] += ww[d];\n            }\n        }\n    }\n    \n    int sum_w = 0;\n    for (int i = 0; i < 10; i++) {\n        sum_w += w[i];\n    }\n    printf(\"%d\\n\", sum_w - ok);\n    \n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                }
+            ],
+            "usage": {
+                "prompt_tokens": 860,
+                "completion_tokens": 1800,
+                "total_tokens": 2660
+            }
+        }
+    },
+    "source_data": {
+        "code_uid": "bce323c750f3e2a41cbd561b2ed418cb",
+        "prob_desc_output_to": "standard output",
+        "prob_desc_notes": null,
+        "lang_cluster": "Python",
+        "prob_desc_time_limit": "2 seconds",
+        "prob_desc_input_spec": "The first line contains nonempty sequence consisting of digits from 0 to 9 \u2014 Masha's phone number. The sequence length does not exceed 50.",
+        "source_code": "s=[int(c) for c in input()]\nok=1\nfor i in range(1,len(s)):\n  if abs(s[i]-s[i-1])>1: ok=0; break\nw=[1]*10\nfor v in s[1:]:\n  ww=w[:]\n  w=[0]*10\n  for d in range(10):\n    q,r=divmod(v+d,2)\n    w[q]+=ww[d]\n    if r>0:\n      w[q+1]+=ww[d]\n\nprint(sum(w)-ok)      \n",
+        "prob_desc_sample_inputs": [
+            "12345",
+            "09"
+        ],
+        "prob_desc_memory_limit": "256 megabytes",
+        "exec_outcome": "PASSED",
+        "prob_desc_output_spec": "Output the single number \u2014 the number of phone numbers Masha will dial.",
+        "src_uid": "2dd8bb6e8182278d037aa3a59ca3517b",
+        "prob_desc_input_from": "standard input",
+        "lang": "Python 3",
+        "prob_desc_sample_outputs": [
+            "48",
+            "15"
+        ],
+        "file_name": "d7021504500d5ca7c2b02df8100a574d159e6e67e20ec8071b75800b1267370a",
+        "prob_desc_description": "Alas, finding one's true love is not easy. Masha has been unsuccessful in that yet. Her friend Dasha told Masha about a way to determine the phone number of one's Prince Charming through arithmancy. The phone number is divined like that. First one needs to write down one's own phone numbers. For example, let's suppose that Masha's phone number is 12345. After that one should write her favorite digit from 0 to 9 under the first digit of her number. That will be the first digit of the needed number. For example, Masha's favorite digit is 9. The second digit is determined as a half sum of the second digit of Masha's number and the already written down first digit from her beloved one's number. In this case the arithmetic average equals to (2\u2009+\u20099)\u2009/\u20092\u2009=\u20095.5. Masha can round the number up or down, depending on her wishes. For example, she chooses the digit 5. Having written down the resulting digit under the second digit of her number, Masha moves to finding the third digit in the same way, i.e. finding the half sum the the third digit of her number and the second digit of the new number. The result is (5\u2009+\u20093)\u2009/\u20092\u2009=\u20094. In this case the answer is unique. Thus, every i-th digit is determined as an arithmetic average of the i-th digit of Masha's number and the i\u2009-\u20091-th digit of her true love's number. If needed, the digit can be rounded up or down. For example, Masha can get: 12345 95444 Unfortunately, when Masha tried dialing the number, she got disappointed: as it turned out, the number was unavailable or outside the coverage area. But Masha won't give up. Perhaps, she rounded to a wrong digit or chose the first digit badly. That's why she keeps finding more and more new numbers and calling them. Count the number of numbers Masha calls. Masha calls all the possible numbers that can be found by the described means of arithmancy, except for, perhaps, her own one.",
+        "prob_desc_created_at": "1289041200",
+        "difficulty": 1700.0,
+        "hidden_unit_tests": "[{\"input\": \"12345\\r\\n\", \"output\": [\"48\"]}, {\"input\": \"09\\r\\n\", \"output\": [\"15\"]}, {\"input\": \"3\\r\\n\", \"output\": [\"9\"]}, {\"input\": \"55\\r\\n\", \"output\": [\"14\"]}, {\"input\": \"737\\r\\n\", \"output\": [\"23\"]}, {\"input\": \"21583\\r\\n\", \"output\": [\"55\"]}, {\"input\": \"33408349\\r\\n\", \"output\": [\"133\"]}, {\"input\": \"0180990956\\r\\n\", \"output\": [\"473\"]}, {\"input\": \"433488906230138\\r\\n\", \"output\": [\"1399\"]}, {\"input\": \"00046142930690780976\\r\\n\", \"output\": [\"35257\"]}, {\"input\": \"317579445234107659439645596\\r\\n\", \"output\": [\"145866\"]}, {\"input\": \"95066916647678224147260013920\\r\\n\", \"output\": [\"446529\"]}, {\"input\": \"36460576924876475371008334246121610\\r\\n\", \"output\": [\"31319157\"]}, {\"input\": \"429622625617508557672595893160462042433748844995\\r\\n\", \"output\": [\"284175107\"]}, {\"input\": \"17601120900014764776764048700928872725171605903217\\r\\n\", \"output\": [\"10428170619\"]}, {\"input\": \"39884857105160870767160905699169880375621726152715\\r\\n\", \"output\": [\"244663375\"]}, {\"input\": \"52056884218028089650567882557609167736461846591193\\r\\n\", \"output\": [\"1358962463\"]}, {\"input\": \"74239501210975375541963549337949373386030687741681\\r\\n\", \"output\": [\"3422420940\"]}, {\"input\": \"96591550315931484452350406227169651758570705180260\\r\\n\", \"output\": [\"6869183484\"]}, {\"input\": \"10764487327809690332754482187409867297140746339768\\r\\n\", \"output\": [\"3435387051\"]}, {\"input\": \"44444444444444444444444444444444444444444444444444\\r\\n\", \"output\": [\"631\"]}, {\"input\": \"9876543210\\r\\n\", \"output\": [\"157\"]}, {\"input\": \"23321232101010000101232344554334\\r\\n\", \"output\": [\"5316368\"]}, {\"input\": \"3232345665654567888878887898999998788766654567878\\r\\n\", \"output\": [\"2520209072\"]}, {\"input\": \"78776656654555655544443212222101121000000000100000\\r\\n\", \"output\": [\"164642009\"]}, {\"input\": \"78767765544454334445445555455676565433343455432332\\r\\n\", \"output\": [\"11031574582\"]}, {\"input\": \"67676566654565654332111011212211111223433222110012\\r\\n\", \"output\": [\"5882859948\"]}]",
+        "source_lang": "Python 3",
+        "target_lang": "C"
+    }
+}

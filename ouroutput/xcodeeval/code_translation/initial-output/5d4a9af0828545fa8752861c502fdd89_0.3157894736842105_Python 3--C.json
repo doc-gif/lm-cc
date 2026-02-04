@@ -1,0 +1,89 @@
+{
+    "oai_response": {
+        "prompt": "Here is code in Python 3 programming lanaguge. Translate the following code from Python 3 to C programming lanaguge. Do not output any extra description or tokens other than the translated code. \n\nn=int(input())\nm=int(n**(1/2))\nfor i in range(max(0,m-10**3),m+10**3):\n    if i*i+sum(list(map(int,str(i))))*i==n:\n        print(i)\n        exit()\nprint(-1)||END-of-SRC||",
+        "response": {
+            "id": "multi-call-as-qkhawwik5z",
+            "model": "deepseek-v3",
+            "created": 1767067354,
+            "choices": [
+                {
+                    "index": 0,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <math.h>\n#include <stdlib.h>\n\nint sum_of_digits(int num) {\n    int sum = 0;\n    while (num > 0) {\n        sum += num % 10;\n        num /= 10;\n    }\n    return sum;\n}\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    int m = (int)sqrt(n);\n    int start = (m - 1000) > 0 ? (m - 1000) : 0;\n    for (int i = start; i <= m + 1000; i++) {\n        if (i * i + sum_of_digits(i) * i == n) {\n            printf(\"%d\\n\", i);\n            exit(0);\n        }\n    }\n    printf(\"-1\\n\");\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 1,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <math.h>\n#include <stdlib.h>\n\nint sum_of_digits(int num) {\n    int sum = 0;\n    while (num > 0) {\n        sum += num % 10;\n        num /= 10;\n    }\n    return sum;\n}\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    int m = (int)sqrt(n);\n    for (int i = (m - 1000 > 0 ? m - 1000 : 0); i <= m + 1000; i++) {\n        if (i * i + sum_of_digits(i) * i == n) {\n            printf(\"%d\\n\", i);\n            exit(0);\n        }\n    }\n    printf(\"-1\\n\");\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 2,
+                    "message": {
+                        "role": "assistant",
+                        "content": "Here's the translated code in C:\n\n```c\n#include <stdio.h>\n#include <math.h>\n#include <stdlib.h>\n#include <string.h>\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    int m = (int)sqrt(n);\n    for (int i = (0 > m-1000 ? 0 : m-1000); i <= m+1000; i++) {\n        int sum = 0;\n        int temp = i;\n        while (temp > 0) {\n            sum += temp % 10;\n            temp /= 10;\n        }\n        if (i*i + sum*i == n) {\n            printf(\"%d\\n\", i);\n            return 0;\n        }\n    }\n    printf(\"-1\\n\");\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 3,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <math.h>\n#include <stdlib.h>\n\nint sum_of_digits(int num) {\n    int sum = 0;\n    while (num > 0) {\n        sum += num % 10;\n        num /= 10;\n    }\n    return sum;\n}\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    int m = (int)sqrt(n);\n    int start = (m - 1000) > 0 ? (m - 1000) : 0;\n    for (int i = start; i <= m + 1000; i++) {\n        if (i * i + sum_of_digits(i) * i == n) {\n            printf(\"%d\\n\", i);\n            exit(0);\n        }\n    }\n    printf(\"-1\\n\");\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 4,
+                    "message": {
+                        "role": "assistant",
+                        "content": "Here's the translated code in C:\n\n```c\n#include <stdio.h>\n#include <math.h>\n#include <stdlib.h>\n\nint sum_of_digits(int num) {\n    int sum = 0;\n    while (num > 0) {\n        sum += num % 10;\n        num /= 10;\n    }\n    return sum;\n}\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    int m = (int)sqrt(n);\n    for (int i = (m - 1000 > 0 ? m - 1000 : 0); i < m + 1000; i++) {\n        if (i * i + sum_of_digits(i) * i == n) {\n            printf(\"%d\\n\", i);\n            return 0;\n        }\n    }\n    printf(\"-1\\n\");\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                }
+            ],
+            "usage": {
+                "prompt_tokens": 555,
+                "completion_tokens": 897,
+                "total_tokens": 1452
+            }
+        }
+    },
+    "source_data": {
+        "code_uid": "5d4a9af0828545fa8752861c502fdd89",
+        "prob_desc_output_to": "standard output",
+        "prob_desc_notes": "NoteIn the first test case x\u2009=\u20091 is the minimum root. As s(1)\u2009=\u20091 and 12\u2009+\u20091\u00b71\u2009-\u20092\u2009=\u20090.In the second test case x\u2009=\u200910 is the minimum root. As s(10)\u2009=\u20091\u2009+\u20090\u2009=\u20091 and 102\u2009+\u20091\u00b710\u2009-\u2009110\u2009=\u20090.In the third test case the equation has no roots.",
+        "lang_cluster": "Python",
+        "prob_desc_time_limit": "1 second",
+        "prob_desc_input_spec": "A single line contains integer n (1\u2009\u2264\u2009n\u2009\u2264\u20091018) \u2014 the equation parameter. Please, do not use the %lld specifier to read or write 64-bit integers in \u0421++. It is preferred to use cin, cout streams or the %I64d specifier. ",
+        "source_code": "n=int(input())\nm=int(n**(1/2))\nfor i in range(max(0,m-10**3),m+10**3):\n    if i*i+sum(list(map(int,str(i))))*i==n:\n        print(i)\n        exit()\nprint(-1)",
+        "prob_desc_sample_inputs": [
+            "2",
+            "110",
+            "4"
+        ],
+        "prob_desc_memory_limit": "256 megabytes",
+        "exec_outcome": "PASSED",
+        "prob_desc_output_spec": "Print -1, if the equation doesn't have integer positive roots. Otherwise print such smallest integer x (x\u2009&gt;\u20090), that the equation given in the statement holds.",
+        "src_uid": "e1070ad4383f27399d31b8d0e87def59",
+        "prob_desc_input_from": "standard input",
+        "lang": "Python 3",
+        "prob_desc_sample_outputs": [
+            "1",
+            "10",
+            "-1"
+        ],
+        "file_name": "d7021504500d5ca7c2b02df8100a574d159e6e67e20ec8071b75800b1267370a",
+        "prob_desc_description": "Let's consider equation:x2\u2009+\u2009s(x)\u00b7x\u2009-\u2009n\u2009=\u20090,\u2009 where x,\u2009n are positive integers, s(x) is the function, equal to the sum of digits of number x in the decimal number system.You are given an integer n, find the smallest positive integer root of equation x, or else determine that there are no such roots.",
+        "prob_desc_created_at": "1349969400",
+        "difficulty": 1400.0,
+        "hidden_unit_tests": "[{\"input\": \"2\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"110\\r\\n\", \"output\": [\"10\"]}, {\"input\": \"4\\r\\n\", \"output\": [\"-1\"]}, {\"input\": \"8\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"10000000100000000\\r\\n\", \"output\": [\"100000000\"]}, {\"input\": \"10000006999999929\\r\\n\", \"output\": [\"99999999\"]}, {\"input\": \"172541340\\r\\n\", \"output\": [\"13131\"]}, {\"input\": \"172580744\\r\\n\", \"output\": [\"13132\"]}, {\"input\": \"10000100000\\r\\n\", \"output\": [\"100000\"]}, {\"input\": \"1000001000000\\r\\n\", \"output\": [\"1000000\"]}, {\"input\": \"100000010000000\\r\\n\", \"output\": [\"10000000\"]}, {\"input\": \"425\\r\\n\", \"output\": [\"17\"]}, {\"input\": \"1085\\r\\n\", \"output\": [\"31\"]}, {\"input\": \"4296409065\\r\\n\", \"output\": [\"65535\"]}, {\"input\": \"9211004165221796\\r\\n\", \"output\": [\"95973949\"]}, {\"input\": \"1245131330556680\\r\\n\", \"output\": [\"35286397\"]}, {\"input\": \"40000000400000000\\r\\n\", \"output\": [\"200000000\"]}, {\"input\": \"90000000900000000\\r\\n\", \"output\": [\"300000000\"]}, {\"input\": \"160000001600000000\\r\\n\", \"output\": [\"400000000\"]}, {\"input\": \"250000002500000000\\r\\n\", \"output\": [\"500000000\"]}, {\"input\": \"360000003600000000\\r\\n\", \"output\": [\"600000000\"]}, {\"input\": \"490000004900000000\\r\\n\", \"output\": [\"700000000\"]}, {\"input\": \"640000006400000000\\r\\n\", \"output\": [\"800000000\"]}, {\"input\": \"810000008100000000\\r\\n\", \"output\": [\"900000000\"]}, {\"input\": \"902500013300000000\\r\\n\", \"output\": [\"950000000\"]}, {\"input\": \"790123519209876480\\r\\n\", \"output\": [\"888888888\"]}, {\"input\": \"100000609999938\\r\\n\", \"output\": [\"9999999\"]}, {\"input\": \"1000051999947\\r\\n\", \"output\": [\"999999\"]}, {\"input\": \"10004299956\\r\\n\", \"output\": [\"99999\"]}, {\"input\": \"40000014199999928\\r\\n\", \"output\": [\"199999999\"]}, {\"input\": \"90000021599999927\\r\\n\", \"output\": [\"299999999\"]}, {\"input\": \"160000029199999926\\r\\n\", \"output\": [\"399999999\"]}, {\"input\": \"250000036999999925\\r\\n\", \"output\": [\"499999999\"]}, {\"input\": \"360000044999999924\\r\\n\", \"output\": [\"599999999\"]}, {\"input\": \"810000070199999921\\r\\n\", \"output\": [\"899999999\"]}, {\"input\": \"1000000000000000000\\r\\n\", \"output\": [\"-1\"]}, {\"input\": \"980100017820000000\\r\\n\", \"output\": [\"990000000\"]}, {\"input\": \"990025022885000000\\r\\n\", \"output\": [\"995000000\"]}, {\"input\": \"9999999900000001\\r\\n\", \"output\": [\"-1\"]}, {\"input\": \"99999999999999999\\r\\n\", \"output\": [\"-1\"]}, {\"input\": \"89997012024799500\\r\\n\", \"output\": [\"299994990\"]}, {\"input\": \"999999999999999997\\r\\n\", \"output\": [\"-1\"]}, {\"input\": \"999999887000001932\\r\\n\", \"output\": [\"999999908\"]}, {\"input\": \"162\\r\\n\", \"output\": [\"9\"]}, {\"input\": \"999920076596999923\\r\\n\", \"output\": [\"-1\"]}, {\"input\": \"9999956110095370\\r\\n\", \"output\": [\"-1\"]}, {\"input\": \"999999863000003700\\r\\n\", \"output\": [\"999999900\"]}]",
+        "source_lang": "Python 3",
+        "target_lang": "C"
+    }
+}

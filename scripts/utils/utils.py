@@ -105,7 +105,7 @@ def format_python_code(code):
                     text=True
                 )
             except subprocess.CalledProcessError as e:    
-                print(f"Black 格式化失败: {e.stderr}")
+                print(f"Format failed: {e.stderr}")
                 # print(code)
                 return None
         # 读取格式化后的代码
@@ -113,7 +113,7 @@ def format_python_code(code):
             formatted_code = f.read()
         return formatted_code
     except Exception as e:
-        print(f"格式化过程中发生错误: {str(e)}")
+        print(f"Error: {str(e)}")
         return None
     finally:
         os.remove(random_filename)

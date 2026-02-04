@@ -1,0 +1,103 @@
+{
+    "oai_response": {
+        "prompt": "Fix a buggy program written in Python language to solve the following programming problem:\nDescription: There are $$$n$$$ computers in a row, all originally off, and Phoenix wants to turn all of them on. He will manually turn on computers one at a time. At any point, if computer $$$i-1$$$ and computer $$$i+1$$$ are both on, computer $$$i$$$ $$$(2 \\le i \\le n-1)$$$ will turn on automatically if it is not already on. Note that Phoenix cannot manually turn on a computer that already turned on automatically.If we only consider the sequence of computers that Phoenix turns on manually, how many ways can he turn on all the computers? Two sequences are distinct if either the set of computers turned on manually is distinct, or the order of computers turned on manually is distinct. Since this number may be large, please print it modulo $$$M$$$.\nInput Specification: The first line contains two integers $$$n$$$ and $$$M$$$ ($$$3 \\le n \\le 400$$$; $$$10^8 \\le M \\le 10^9$$$)\u00a0\u2014 the number of computers and the modulo. It is guaranteed that $$$M$$$ is prime.\nOutput Specification: Print one integer\u00a0\u2014 the number of ways to turn on the computers modulo $$$M$$$.\n\nSample Input:\n3 100000007\nSample Output:\n6\n\nSample Input:\n4 100000007\nSample Output:\n20\n\nSample Input:\n400 234567899\nSample Output:\n20914007\n\nNotes: NoteIn the first example, these are the $$$6$$$ orders in which Phoenix can turn on all computers:   $$$[1,3]$$$. Turn on computer $$$1$$$, then $$$3$$$. Note that computer $$$2$$$ turns on automatically after computer $$$3$$$ is turned on manually, but we only consider the sequence of computers that are turned on manually.  $$$[3,1]$$$. Turn on computer $$$3$$$, then $$$1$$$.  $$$[1,2,3]$$$. Turn on computer $$$1$$$, $$$2$$$, then $$$3$$$.  $$$[2,1,3]$$$  $$$[2,3,1]$$$  $$$[3,2,1]$$$ \nTake input from standard input and output to standard output\n\nHere is the code with a bug of TIME_LIMIT_EXCEEDED:\n\n#import time\r\n\r\ndef make_nCr_mod(max_n=2 * 10**5, mod=10**9 + 7):\r\n    max_n = min(max_n, mod - 1)\r\n\r\n    fact, inv_fact = [0] * (max_n + 1), [0] * (max_n + 1)\r\n    fact[0] = 1\r\n    for i in range(max_n):\r\n        fact[i + 1] = fact[i] * (i + 1) % mod\r\n\r\n    inv_fact[-1] = pow(fact[-1], mod - 2, mod)\r\n    for i in reversed(range(max_n)):\r\n        inv_fact[i] = inv_fact[i + 1] * (i + 1) % mod\r\n\r\n    def nCr_mod(n, r):\r\n        res = 1\r\n        while n or r:\r\n            a, b = n % mod, r % mod\r\n            if a < b:\r\n                return 0\r\n            res = res * fact[a] % mod * inv_fact[b] % mod * inv_fact[a - b] % mod\r\n            n //= mod\r\n            r //= mod\r\n        return res\r\n\r\n    return nCr_mod\r\n\r\n\r\ndef process(N, M):\r\n #   s = time.time()\r\n    f = make_nCr_mod(mod=M)\r\n    two_powers = [1]\r\n    for i in range(401):\r\n        two_powers.append((2*two_powers[-1]) % M)\r\n    d = [[0 for i in range(N+1)] for i in range(N+1)]\r\n    d[0][0] = 1\r\n    for n in range(1, N+1):\r\n        \"\"\"\r\n        the length of result\r\n        \"\"\"\r\n        for a in range(1, n+1):\r\n            \"\"\"\r\n            the number of consecutive numbers ending in n\r\n            \"\"\"\r\n            entry = two_powers[a-1]\r\n            if a==n:\r\n                d[n][n]+=entry\r\n            else:\r\n                for l2 in range(1, n-a):\r\n                    entry2 = d[n-a-1][l2]\r\n                  #  print(a, l2, entry, entry2, f(l2+a, l2))\r\n                    d[n][l2+a]+=(entry*entry2*f(l2+a, l2))\r\n                    d[n][l2+a] = d[n][l2+a] % M\r\n       # print(d[n][:n+1])\r\n     #   print(n, time.time()-s)\r\n    answer = 0\r\n    for i in range(N+1):\r\n    #    print(d[n][i])\r\n        answer = (answer+d[n][i]) % M\r\n    return answer\r\n\r\nN, M = [int(x) for x in input().split()]\r\nprint(process(N, M))\n\nProvide the fixed Python code without any description or extra tokens.\n\nFixed source code:\n ||END-of-SRC||",
+        "response": {
+            "id": "multi-call-as-s9en8z9im0",
+            "model": "deepseek-v3",
+            "created": 1760424700,
+            "choices": [
+                {
+                    "index": 0,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```python\ndef make_nCr_mod(max_n=2 * 10**5, mod=10**9 + 7):\n    max_n = min(max_n, mod - 1)\n\n    fact, inv_fact = [0] * (max_n + 1), [0] * (max_n + 1)\n    fact[0] = 1\n    for i in range(max_n):\n        fact[i + 1] = fact[i] * (i + 1) % mod\n\n    inv_fact[-1] = pow(fact[-1], mod - 2, mod)\n    for i in reversed(range(max_n)):\n        inv_fact[i] = inv_fact[i + 1] * (i + 1) % mod\n\n    def nCr_mod(n, r):\n        res = 1\n        while n or r:\n            a, b = n % mod, r % mod\n            if a < b:\n                return 0\n            res = res * fact[a] % mod * inv_fact[b] % mod * inv_fact[a - b] % mod\n            n //= mod\n            r //= mod\n        return res\n\n    return nCr_mod\n\n\ndef process(N, M):\n    f = make_nCr_mod(mod=M)\n    two_powers = [1] * (N + 2)\n    for i in range(1, N + 2):\n        two_powers[i] = (2 * two_powers[i - 1]) % M\n    d = [[0] * (N + 2) for _ in range(N + 2)]\n    d[0][0] = 1\n    for n in range(1, N + 1):\n        for a in range(1, n + 1):\n            entry = two_powers[a - 1]\n            if a == n:\n                d[n][a] = (d[n][a] + entry) % M\n            else:\n                remaining = n - a - 1\n                if remaining >= 0:\n                    for l2 in range(0, remaining + 1):\n                        if d[remaining][l2] == 0:\n                            continue\n                        comb = f(l2 + a, a)\n                        d[n][l2 + a] = (d[n][l2 + a] + entry * d[remaining][l2] % M * comb) % M\n    answer = 0\n    for i in range(N + 1):\n        answer = (answer + d[N][i]) % M\n    return answer\n\nN, M = [int(x) for x in input().split()]\nprint(process(N, M))\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 1,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```python\ndef make_nCr_mod(max_n=2 * 10**5, mod=10**9 + 7):\n    max_n = min(max_n, mod - 1)\n\n    fact, inv_fact = [0] * (max_n + 1), [0] * (max_n + 1)\n    fact[0] = 1\n    for i in range(max_n):\n        fact[i + 1] = fact[i] * (i + 1) % mod\n\n    inv_fact[-1] = pow(fact[-1], mod - 2, mod)\n    for i in reversed(range(max_n)):\n        inv_fact[i] = inv_fact[i + 1] * (i + 1) % mod\n\n    def nCr_mod(n, r):\n        if r < 0 or r > n:\n            return 0\n        return fact[n] * inv_fact[r] % mod * inv_fact[n - r] % mod\n\n    return nCr_mod\n\n\ndef process(N, M):\n    f = make_nCr_mod(mod=M)\n    two_powers = [1] * (N + 2)\n    for i in range(1, N + 2):\n        two_powers[i] = (2 * two_powers[i - 1]) % M\n    d = [[0] * (N + 2) for _ in range(N + 2)]\n    d[0][0] = 1\n    for n in range(1, N + 1):\n        for a in range(1, n + 1):\n            entry = two_powers[a - 1]\n            if a == n:\n                d[n][a] = (d[n][a] + entry) % M\n            else:\n                for l2 in range(1, n - a + 1):\n                    entry2 = d[n - a - 1][l2]\n                    comb = f(l2 + a, a)\n                    d[n][l2 + a] = (d[n][l2 + a] + entry * entry2 % M * comb) % M\n    answer = 0\n    for i in range(N + 1):\n        answer = (answer + d[N][i]) % M\n    return answer\n\n\nN, M = [int(x) for x in input().split()]\nprint(process(N, M))\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 2,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```python\ndef make_nCr_mod(max_n=2 * 10**5, mod=10**9 + 7):\n    max_n = min(max_n, mod - 1)\n\n    fact, inv_fact = [0] * (max_n + 1), [0] * (max_n + 1)\n    fact[0] = 1\n    for i in range(max_n):\n        fact[i + 1] = fact[i] * (i + 1) % mod\n\n    inv_fact[-1] = pow(fact[-1], mod - 2, mod)\n    for i in reversed(range(max_n)):\n        inv_fact[i] = inv_fact[i + 1] * (i + 1) % mod\n\n    def nCr_mod(n, r):\n        res = 1\n        while n or r:\n            a, b = n % mod, r % mod\n            if a < b:\n                return 0\n            res = res * fact[a] % mod * inv_fact[b] % mod * inv_fact[a - b] % mod\n            n //= mod\n            r //= mod\n        return res\n\n    return nCr_mod\n\n\ndef process(N, M):\n    f = make_nCr_mod(mod=M)\n    two_powers = [1] * (N + 2)\n    for i in range(1, N + 2):\n        two_powers[i] = (2 * two_powers[i - 1]) % M\n    d = [[0] * (N + 2) for _ in range(N + 2)]\n    d[0][0] = 1\n    for n in range(1, N + 1):\n        for a in range(1, n + 1):\n            entry = two_powers[a - 1]\n            if a == n:\n                d[n][a] = (d[n][a] + entry) % M\n            else:\n                for l2 in range(0, n - a + 1):\n                    if d[n - a - 1][l2] == 0:\n                        continue\n                    comb = f(l2 + a, a)\n                    d[n][l2 + a] = (d[n][l2 + a] + entry * d[n - a - 1][l2] % M * comb) % M\n    answer = 0\n    for i in range(N + 1):\n        answer = (answer + d[N][i]) % M\n    return answer\n\n\nN, M = [int(x) for x in input().split()]\nprint(process(N, M))\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 3,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```python\ndef make_nCr_mod(max_n=2 * 10**5, mod=10**9 + 7):\n    max_n = min(max_n, mod - 1)\n\n    fact, inv_fact = [0] * (max_n + 1), [0] * (max_n + 1)\n    fact[0] = 1\n    for i in range(max_n):\n        fact[i + 1] = fact[i] * (i + 1) % mod\n\n    inv_fact[-1] = pow(fact[-1], mod - 2, mod)\n    for i in reversed(range(max_n)):\n        inv_fact[i] = inv_fact[i + 1] * (i + 1) % mod\n\n    def nCr_mod(n, r):\n        res = 1\n        while n or r:\n            a, b = n % mod, r % mod\n            if a < b:\n                return 0\n            res = res * fact[a] % mod * inv_fact[b] % mod * inv_fact[a - b] % mod\n            n //= mod\n            r //= mod\n        return res\n\n    return nCr_mod\n\n\ndef process(N, M):\n    f = make_nCr_mod(mod=M)\n    two_powers = [1] * (N + 2)\n    for i in range(1, N + 2):\n        two_powers[i] = (2 * two_powers[i - 1]) % M\n    d = [[0] * (N + 2) for _ in range(N + 2)]\n    d[0][0] = 1\n    for n in range(1, N + 1):\n        for a in range(1, n + 1):\n            entry = two_powers[a - 1]\n            if a == n:\n                d[n][a] = (d[n][a] + entry) % M\n            else:\n                for l2 in range(1, n - a + 1):\n                    entry2 = d[n - a - 1][l2]\n                    comb = f(l2 + a, l2)\n                    d[n][l2 + a] = (d[n][l2 + a] + entry * entry2 % M * comb % M) % M\n    answer = 0\n    for i in range(N + 1):\n        answer = (answer + d[N][i]) % M\n    return answer\n\n\nN, M = [int(x) for x in input().split()]\nprint(process(N, M))\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 4,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```python\ndef make_nCr_mod(max_n=2 * 10**5, mod=10**9 + 7):\n    max_n = min(max_n, mod - 1)\n\n    fact, inv_fact = [0] * (max_n + 1), [0] * (max_n + 1)\n    fact[0] = 1\n    for i in range(max_n):\n        fact[i + 1] = fact[i] * (i + 1) % mod\n\n    inv_fact[-1] = pow(fact[-1], mod - 2, mod)\n    for i in reversed(range(max_n)):\n        inv_fact[i] = inv_fact[i + 1] * (i + 1) % mod\n\n    def nCr_mod(n, r):\n        if r < 0 or r > n:\n            return 0\n        return fact[n] * inv_fact[r] % mod * inv_fact[n - r] % mod\n\n    return nCr_mod\n\n\ndef process(N, M):\n    f = make_nCr_mod(mod=M)\n    two_powers = [1] * (N + 2)\n    for i in range(1, N + 2):\n        two_powers[i] = (2 * two_powers[i - 1]) % M\n    d = [[0] * (N + 2) for _ in range(N + 2)]\n    d[0][0] = 1\n    for n in range(1, N + 1):\n        for a in range(1, n + 1):\n            entry = two_powers[a - 1]\n            if a == n:\n                d[n][a] = (d[n][a] + entry) % M\n            else:\n                for l2 in range(1, n - a + 1):\n                    entry2 = d[n - a - 1][l2]\n                    comb = f(l2 + a, a)\n                    d[n][l2 + a] = (d[n][l2 + a] + entry * entry2 % M * comb) % M\n    answer = 0\n    for i in range(N + 1):\n        answer = (answer + d[N][i]) % M\n    return answer\n\n\nN, M = [int(x) for x in input().split()]\nprint(process(N, M))\n```"
+                    },
+                    "finish_reason": "stop"
+                }
+            ],
+            "usage": {
+                "prompt_tokens": 6195,
+                "completion_tokens": 2724,
+                "total_tokens": 8919
+            }
+        }
+    },
+    "source_data": {
+        "prob_desc_memory_limit": "256 megabytes",
+        "tags": [
+            "dp",
+            "math",
+            "combinatorics"
+        ],
+        "prob_desc_created_at": "1619966100",
+        "fix_source_code": "",
+        "prob_desc_input_spec": "The first line contains two integers $$$n$$$ and $$$M$$$ ($$$3 \\le n \\le 400$$$; $$$10^8 \\le M \\le 10^9$$$)\u00a0\u2014 the number of computers and the modulo. It is guaranteed that $$$M$$$ is prime.",
+        "prob_desc_sample_outputs": [
+            "6",
+            "20",
+            "20914007"
+        ],
+        "src_uid": "4f0e0d1deef0761a46b64de3eb98e774",
+        "prob_desc_time_limit": "3 seconds",
+        "fix_exec_outcome": "",
+        "delete_cnt": 1,
+        "apr_id": "076c0e513051942f710f10f869dbca9c",
+        "fix_code_uid": "",
+        "lang_cluster": "Python",
+        "prob_desc_sample_inputs": [
+            "3 100000007",
+            "4 100000007",
+            "400 234567899"
+        ],
+        "prob_desc_output_to": "standard output",
+        "file_name": "Python.jsonl",
+        "equal_cnt": 8,
+        "lang": "PyPy 3",
+        "prob_desc_output_spec": "Print one integer\u00a0\u2014 the number of ways to turn on the computers modulo $$$M$$$.",
+        "bug_exec_outcome": "TIME_LIMIT_EXCEEDED",
+        "prob_desc_notes": "NoteIn the first example, these are the $$$6$$$ orders in which Phoenix can turn on all computers:   $$$[1,3]$$$. Turn on computer $$$1$$$, then $$$3$$$. Note that computer $$$2$$$ turns on automatically after computer $$$3$$$ is turned on manually, but we only consider the sequence of computers that are turned on manually.  $$$[3,1]$$$. Turn on computer $$$3$$$, then $$$1$$$.  $$$[1,2,3]$$$. Turn on computer $$$1$$$, $$$2$$$, then $$$3$$$.  $$$[2,1,3]$$$  $$$[2,3,1]$$$  $$$[3,2,1]$$$ ",
+        "difficulty": 2200.0,
+        "similarity_score": 0.5040000081,
+        "prob_desc_description": "There are $$$n$$$ computers in a row, all originally off, and Phoenix wants to turn all of them on. He will manually turn on computers one at a time. At any point, if computer $$$i-1$$$ and computer $$$i+1$$$ are both on, computer $$$i$$$ $$$(2 \\le i \\le n-1)$$$ will turn on automatically if it is not already on. Note that Phoenix cannot manually turn on a computer that already turned on automatically.If we only consider the sequence of computers that Phoenix turns on manually, how many ways can he turn on all the computers? Two sequences are distinct if either the set of computers turned on manually is distinct, or the order of computers turned on manually is distinct. Since this number may be large, please print it modulo $$$M$$$.",
+        "potential_dominant_fix_op": "replace",
+        "bug_source_code": "#import time\r\n\r\ndef make_nCr_mod(max_n=2 * 10**5, mod=10**9 + 7):\r\n    max_n = min(max_n, mod - 1)\r\n\r\n    fact, inv_fact = [0] * (max_n + 1), [0] * (max_n + 1)\r\n    fact[0] = 1\r\n    for i in range(max_n):\r\n        fact[i + 1] = fact[i] * (i + 1) % mod\r\n\r\n    inv_fact[-1] = pow(fact[-1], mod - 2, mod)\r\n    for i in reversed(range(max_n)):\r\n        inv_fact[i] = inv_fact[i + 1] * (i + 1) % mod\r\n\r\n    def nCr_mod(n, r):\r\n        res = 1\r\n        while n or r:\r\n            a, b = n % mod, r % mod\r\n            if a < b:\r\n                return 0\r\n            res = res * fact[a] % mod * inv_fact[b] % mod * inv_fact[a - b] % mod\r\n            n //= mod\r\n            r //= mod\r\n        return res\r\n\r\n    return nCr_mod\r\n\r\n\r\ndef process(N, M):\r\n #   s = time.time()\r\n    f = make_nCr_mod(mod=M)\r\n    two_powers = [1]\r\n    for i in range(401):\r\n        two_powers.append((2*two_powers[-1]) % M)\r\n    d = [[0 for i in range(N+1)] for i in range(N+1)]\r\n    d[0][0] = 1\r\n    for n in range(1, N+1):\r\n        \"\"\"\r\n        the length of result\r\n        \"\"\"\r\n        for a in range(1, n+1):\r\n            \"\"\"\r\n            the number of consecutive numbers ending in n\r\n            \"\"\"\r\n            entry = two_powers[a-1]\r\n            if a==n:\r\n                d[n][n]+=entry\r\n            else:\r\n                for l2 in range(1, n-a):\r\n                    entry2 = d[n-a-1][l2]\r\n                  #  print(a, l2, entry, entry2, f(l2+a, l2))\r\n                    d[n][l2+a]+=(entry*entry2*f(l2+a, l2))\r\n                    d[n][l2+a] = d[n][l2+a] % M\r\n       # print(d[n][:n+1])\r\n     #   print(n, time.time()-s)\r\n    answer = 0\r\n    for i in range(N+1):\r\n    #    print(d[n][i])\r\n        answer = (answer+d[n][i]) % M\r\n    return answer\r\n\r\nN, M = [int(x) for x in input().split()]\r\nprint(process(N, M))",
+        "replace_cnt": 6,
+        "prob_desc_input_from": "standard input",
+        "bug_code_uid": "552492a4bbeaa3b3109ada314f6b4399",
+        "insert_cnt": 2,
+        "fix_ops_cnt": 9,
+        "hidden_unit_tests": "[{\"input\": \"3 100000007\\n\", \"output\": [\"6\\n\", \"6\\n\", \"6\", \"6 \\n\", \"6 \"]}, {\"input\": \"4 100000007\\n\", \"output\": [\"20 \\n\", \"20 \", \"20\", \"20\\n\", \"20\\n\"]}, {\"input\": \"400 234567899\\n\", \"output\": [\"20914007\\n\", \"20914007\", \"20914007 \\n\", \"20914007 \", \"20914007\\n\"]}, {\"input\": \"5 999999937\\n\", \"output\": [\"78\\n\", \"78\\n\", \"78\", \"78 \", \"78 \\n\"]}, {\"input\": \"6 100000007\\n\", \"output\": [\"344 \\n\", \"344\\n\", \"344 \", \"344\", \"344\\n\"]}, {\"input\": \"7 100000007\\n\", \"output\": [\"1680 \", \"1680\", \"1680\\n\", \"1680\\n\", \"1680 \\n\"]}, {\"input\": \"100 999999733\\n\", \"output\": [\"499246611 \\n\", \"499246611\\n\", \"499246611\\n\", \"499246611 \", \"499246611\"]}, {\"input\": \"350 999999733\\n\", \"output\": [\"255248393\", \"255248393 \", \"255248393\\n\", \"255248393\\n\", \"255248393 \\n\"]}, {\"input\": \"400 100000007\\n\", \"output\": [\"29181726\\n\", \"29181726\\n\", \"29181726\", \"29181726 \\n\", \"29181726 \"]}, {\"input\": \"397 999999733\\n\", \"output\": [\"239189389 \", \"239189389\\n\", \"239189389\\n\", \"239189389\", \"239189389 \\n\"]}, {\"input\": \"398 999999733\\n\", \"output\": [\"875462745\\n\", \"875462745\", \"875462745\\n\", \"875462745 \", \"875462745 \\n\"]}, {\"input\": \"399 999999733\\n\", \"output\": [\"530105147 \\n\", \"530105147\", \"530105147 \", \"530105147\\n\", \"530105147\\n\"]}, {\"input\": \"400 999999733\\n\", \"output\": [\"564062758\\n\", \"564062758\\n\", \"564062758 \\n\", \"564062758 \", \"564062758\"]}]"
+    }
+}

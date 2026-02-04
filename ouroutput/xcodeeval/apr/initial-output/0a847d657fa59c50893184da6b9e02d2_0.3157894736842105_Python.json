@@ -1,0 +1,105 @@
+{
+    "oai_response": {
+        "prompt": "Fix a buggy program written in Python language to solve the following programming problem:\nDescription: There are $$$n + 2$$$ towns located on a coordinate line, numbered from $$$0$$$ to $$$n + 1$$$. The $$$i$$$-th town is located at the point $$$i$$$.You build a radio tower in each of the towns $$$1, 2, \\dots, n$$$ with probability $$$\\frac{1}{2}$$$ (these events are independent). After that, you want to set the signal power on each tower to some integer from $$$1$$$ to $$$n$$$ (signal powers are not necessarily the same, but also not necessarily different). The signal from a tower located in a town $$$i$$$ with signal power $$$p$$$ reaches every city $$$c$$$ such that $$$|c - i| &lt; p$$$.After building the towers, you want to choose signal powers in such a way that:  towns $$$0$$$ and $$$n + 1$$$ don't get any signal from the radio towers;  towns $$$1, 2, \\dots, n$$$ get signal from exactly one radio tower each. For example, if $$$n = 5$$$, and you have built the towers in towns $$$2$$$, $$$4$$$ and $$$5$$$, you may set the signal power of the tower in town $$$2$$$ to $$$2$$$, and the signal power of the towers in towns $$$4$$$ and $$$5$$$ to $$$1$$$. That way, towns $$$0$$$ and $$$n + 1$$$ don't get the signal from any tower, towns $$$1$$$, $$$2$$$ and $$$3$$$ get the signal from the tower in town $$$2$$$, town $$$4$$$ gets the signal from the tower in town $$$4$$$, and town $$$5$$$ gets the signal from the tower in town $$$5$$$.Calculate the probability that, after building the towers, you will have a way to set signal powers to meet all constraints.\nInput Specification: The first (and only) line of the input contains one integer $$$n$$$ ($$$1 \\le n \\le 2 \\cdot 10^5$$$).\nOutput Specification: Print one integer \u2014 the probability that there will be a way to set signal powers so that all constraints are met, taken modulo $$$998244353$$$. Formally, the probability can be expressed as an irreducible fraction $$$\\frac{x}{y}$$$. You have to print the value of $$$x \\cdot y^{-1} \\bmod 998244353$$$, where $$$y^{-1}$$$ is an integer such that $$$y \\cdot y^{-1} \\bmod 998244353 = 1$$$.\n\nSample Input:\n2\nSample Output:\n748683265\n\nSample Input:\n3\nSample Output:\n748683265\n\nSample Input:\n5\nSample Output:\n842268673\n\nSample Input:\n200000\nSample Output:\n202370013\n\nNotes: NoteThe real answer for the first example is $$$\\frac{1}{4}$$$:  with probability $$$\\frac{1}{4}$$$, the towers are built in both towns $$$1$$$ and $$$2$$$, so we can set their signal powers to $$$1$$$. The real answer for the second example is $$$\\frac{1}{4}$$$:   with probability $$$\\frac{1}{8}$$$, the towers are built in towns $$$1$$$, $$$2$$$ and $$$3$$$, so we can set their signal powers to $$$1$$$;  with probability $$$\\frac{1}{8}$$$, only one tower in town $$$2$$$ is built, and we can set its signal power to $$$2$$$. The real answer for the third example is $$$\\frac{5}{32}$$$. Note that even though the previous explanations used equal signal powers for all towers, it is not necessarily so. For example, if $$$n = 5$$$ and the towers are built in towns $$$2$$$, $$$4$$$ and $$$5$$$, you may set the signal power of the tower in town $$$2$$$ to $$$2$$$, and the signal power of the towers in towns $$$4$$$ and $$$5$$$ to $$$1$$$.\nTake input from standard input and output to standard output\n\nHere is the code with a bug of TIME_LIMIT_EXCEEDED:\n\nn = int(input())\nif n == 1:\n\tprint(499122177)\n\texit()\nif n == 2:\n\tprint(748683265)\n\texit()\ndp = [0]*(n+1)\ndp[0], dp[1], dp[2] = 1, 1, 1\ndp[3] = 2\nmodulo = 998244353\ncount1, count2 = dp[1] + dp[3], dp[0] + dp[2]\nfor i in range(4, n+1):\n\tif i%2 == 0:\n\t\tdp[i] = count1\n\t\tcount2 += dp[i]\n\t\tcount2 %= modulo\n\telse:\n\t\tdp[i] = count2\n\t\tcount1 += dp[i]\n\t\tcount1 %= modulo\ny = 1\nfor i in range(n):\n\ty *= 2\n\ty %= modulo\ntime = 1\nyre = 0\nwhile True:\n\tal = modulo*time+1\n\tif al%y == 0:\n\t\tyre = al//y\n\t\tbreak\n\ttime += 1\nres = (dp[n]*yre)%modulo\nprint(res)\n\nProvide the fixed Python code without any description or extra tokens.\n\nFixed source code:\n ||END-of-SRC||",
+        "response": {
+            "id": "multi-call-as-39jeg5hahx",
+            "model": "deepseek-v3",
+            "created": 1760421921,
+            "choices": [
+                {
+                    "index": 0,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```python\nn = int(input())\nmodulo = 998244353\nif n == 1:\n    print(499122177)\n    exit()\nif n == 2:\n    print(748683265)\n    exit()\n\ndp = [0] * (n + 2)\ndp[0] = 1\ndp[1] = 1\nfor i in range(2, n + 1):\n    dp[i] = (dp[i-1] + dp[i-2]) % modulo\n\ninv_2_pow_n = pow(2, n * (modulo - 2), modulo)\nres = (dp[n] * inv_2_pow_n) % modulo\nprint(res)\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 1,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```python\nn = int(input())\nmodulo = 998244353\n\nif n == 1:\n    print(499122177)\n    exit()\nif n == 2:\n    print(748683265)\n    exit()\n\ndp = [0] * (n + 2)\ndp[0] = 1\ndp[1] = 1\ndp[2] = 1\ndp[3] = 2\n\ncount1 = (dp[1] + dp[3]) % modulo\ncount2 = (dp[0] + dp[2]) % modulo\n\nfor i in range(4, n + 1):\n    if i % 2 == 0:\n        dp[i] = count1\n        count2 = (count2 + dp[i]) % modulo\n    else:\n        dp[i] = count2\n        count1 = (count1 + dp[i]) % modulo\n\ninv_two = (modulo + 1) // 2  # 1/2 mod modulo\npower = pow(inv_two, n, modulo)\nres = (dp[n] * power) % modulo\nprint(res)\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 2,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```python\nn = int(input())\nmod = 998244353\n\nif n == 1:\n    print(499122177)\n    exit()\nif n == 2:\n    print(748683265)\n    exit()\n\ndp = [0] * (n + 2)\ndp[0] = 1\ndp[1] = 1\ndp[2] = 1\ndp[3] = 2\n\ncount1 = (dp[1] + dp[3]) % mod\ncount2 = (dp[0] + dp[2]) % mod\n\nfor i in range(4, n + 1):\n    if i % 2 == 0:\n        dp[i] = count1\n        count2 = (count2 + dp[i]) % mod\n    else:\n        dp[i] = count2\n        count1 = (count1 + dp[i]) % mod\n\ninv_2_pow_n = pow(2, n, mod)\ninv_2_pow_n = pow(inv_2_pow_n, mod - 2, mod)\nres = (dp[n] * inv_2_pow_n) % mod\nprint(res)\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 3,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```python\nn = int(input())\nmodulo = 998244353\nif n == 1:\n    print(499122177)\n    exit()\nif n == 2:\n    print(748683265)\n    exit()\n\ndp = [0] * (n + 2)\ndp[0] = 1\ndp[1] = 1\nfor i in range(2, n + 1):\n    dp[i] = (dp[i-1] + dp[i-2]) % modulo\n\ninv_2_pow_n = pow(2, n, modulo)\ninv_2_pow_n = pow(inv_2_pow_n, modulo - 2, modulo)\nresult = (dp[n] * inv_2_pow_n) % modulo\nprint(result)\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 4,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```python\nn = int(input())\nmod = 998244353\nif n == 1:\n    print(499122177)\n    exit()\nif n == 2:\n    print(748683265)\n    exit()\n\ndp = [0] * (n + 2)\ndp[0] = 1\ndp[1] = 1\nfor i in range(2, n + 1):\n    dp[i] = (dp[i-1] + dp[i-2]) % mod\n\ninv_2_pow_n = pow(2, n, mod)\ninv_2_pow_n = pow(inv_2_pow_n, mod-2, mod)\nresult = (dp[n] * inv_2_pow_n) % mod\nprint(result)\n```"
+                    },
+                    "finish_reason": "stop"
+                }
+            ],
+            "usage": {
+                "prompt_tokens": 6055,
+                "completion_tokens": 982,
+                "total_tokens": 7037
+            }
+        }
+    },
+    "source_data": {
+        "prob_desc_memory_limit": "512 megabytes",
+        "tags": [
+            "dp",
+            "math",
+            "combinatorics"
+        ],
+        "prob_desc_created_at": "1605796500",
+        "fix_source_code": "",
+        "prob_desc_input_spec": "The first (and only) line of the input contains one integer $$$n$$$ ($$$1 \\le n \\le 2 \\cdot 10^5$$$).",
+        "prob_desc_sample_outputs": [
+            "748683265",
+            "748683265",
+            "842268673",
+            "202370013"
+        ],
+        "src_uid": "cec37432956bb0a1ce62a0188fe2d805",
+        "prob_desc_time_limit": "2 seconds",
+        "fix_exec_outcome": "",
+        "delete_cnt": 2,
+        "apr_id": "d15826ffe7edcdcf98b6309bb8029a71",
+        "fix_code_uid": "",
+        "lang_cluster": "Python",
+        "prob_desc_sample_inputs": [
+            "2",
+            "3",
+            "5",
+            "200000"
+        ],
+        "prob_desc_output_to": "standard output",
+        "file_name": "Python.jsonl",
+        "equal_cnt": 6,
+        "lang": "PyPy 3",
+        "prob_desc_output_spec": "Print one integer \u2014 the probability that there will be a way to set signal powers so that all constraints are met, taken modulo $$$998244353$$$. Formally, the probability can be expressed as an irreducible fraction $$$\\frac{x}{y}$$$. You have to print the value of $$$x \\cdot y^{-1} \\bmod 998244353$$$, where $$$y^{-1}$$$ is an integer such that $$$y \\cdot y^{-1} \\bmod 998244353 = 1$$$.",
+        "bug_exec_outcome": "TIME_LIMIT_EXCEEDED",
+        "prob_desc_notes": "NoteThe real answer for the first example is $$$\\frac{1}{4}$$$:  with probability $$$\\frac{1}{4}$$$, the towers are built in both towns $$$1$$$ and $$$2$$$, so we can set their signal powers to $$$1$$$. The real answer for the second example is $$$\\frac{1}{4}$$$:   with probability $$$\\frac{1}{8}$$$, the towers are built in towns $$$1$$$, $$$2$$$ and $$$3$$$, so we can set their signal powers to $$$1$$$;  with probability $$$\\frac{1}{8}$$$, only one tower in town $$$2$$$ is built, and we can set its signal power to $$$2$$$. The real answer for the third example is $$$\\frac{5}{32}$$$. Note that even though the previous explanations used equal signal powers for all towers, it is not necessarily so. For example, if $$$n = 5$$$ and the towers are built in towns $$$2$$$, $$$4$$$ and $$$5$$$, you may set the signal power of the tower in town $$$2$$$ to $$$2$$$, and the signal power of the towers in towns $$$4$$$ and $$$5$$$ to $$$1$$$.",
+        "difficulty": 1600.0,
+        "similarity_score": 0.7579618096,
+        "prob_desc_description": "There are $$$n + 2$$$ towns located on a coordinate line, numbered from $$$0$$$ to $$$n + 1$$$. The $$$i$$$-th town is located at the point $$$i$$$.You build a radio tower in each of the towns $$$1, 2, \\dots, n$$$ with probability $$$\\frac{1}{2}$$$ (these events are independent). After that, you want to set the signal power on each tower to some integer from $$$1$$$ to $$$n$$$ (signal powers are not necessarily the same, but also not necessarily different). The signal from a tower located in a town $$$i$$$ with signal power $$$p$$$ reaches every city $$$c$$$ such that $$$|c - i| &lt; p$$$.After building the towers, you want to choose signal powers in such a way that:  towns $$$0$$$ and $$$n + 1$$$ don't get any signal from the radio towers;  towns $$$1, 2, \\dots, n$$$ get signal from exactly one radio tower each. For example, if $$$n = 5$$$, and you have built the towers in towns $$$2$$$, $$$4$$$ and $$$5$$$, you may set the signal power of the tower in town $$$2$$$ to $$$2$$$, and the signal power of the towers in towns $$$4$$$ and $$$5$$$ to $$$1$$$. That way, towns $$$0$$$ and $$$n + 1$$$ don't get the signal from any tower, towns $$$1$$$, $$$2$$$ and $$$3$$$ get the signal from the tower in town $$$2$$$, town $$$4$$$ gets the signal from the tower in town $$$4$$$, and town $$$5$$$ gets the signal from the tower in town $$$5$$$.Calculate the probability that, after building the towers, you will have a way to set signal powers to meet all constraints.",
+        "potential_dominant_fix_op": "replace",
+        "bug_source_code": "n = int(input())\nif n == 1:\n\tprint(499122177)\n\texit()\nif n == 2:\n\tprint(748683265)\n\texit()\ndp = [0]*(n+1)\ndp[0], dp[1], dp[2] = 1, 1, 1\ndp[3] = 2\nmodulo = 998244353\ncount1, count2 = dp[1] + dp[3], dp[0] + dp[2]\nfor i in range(4, n+1):\n\tif i%2 == 0:\n\t\tdp[i] = count1\n\t\tcount2 += dp[i]\n\t\tcount2 %= modulo\n\telse:\n\t\tdp[i] = count2\n\t\tcount1 += dp[i]\n\t\tcount1 %= modulo\ny = 1\nfor i in range(n):\n\ty *= 2\n\ty %= modulo\ntime = 1\nyre = 0\nwhile True:\n\tal = modulo*time+1\n\tif al%y == 0:\n\t\tyre = al//y\n\t\tbreak\n\ttime += 1\nres = (dp[n]*yre)%modulo\nprint(res)",
+        "replace_cnt": 4,
+        "prob_desc_input_from": "standard input",
+        "bug_code_uid": "0a847d657fa59c50893184da6b9e02d2",
+        "insert_cnt": 0,
+        "fix_ops_cnt": 6,
+        "hidden_unit_tests": "[{\"input\": \"2\\r\\n\", \"output\": [\"748683265\"]}, {\"input\": \"3\\r\\n\", \"output\": [\"748683265\"]}, {\"input\": \"5\\r\\n\", \"output\": [\"842268673\"]}, {\"input\": \"200000\\r\\n\", \"output\": [\"202370013\"]}, {\"input\": \"6\\r\\n\", \"output\": [\"873463809\"]}, {\"input\": \"1\\r\\n\", \"output\": [\"499122177\"]}, {\"input\": \"4\\r\\n\", \"output\": [\"811073537\"]}, {\"input\": \"7\\r\\n\", \"output\": [\"896860161\"]}, {\"input\": \"13\\r\\n\", \"output\": [\"969851905\"]}, {\"input\": \"42\\r\\n\", \"output\": [\"708668919\"]}, {\"input\": \"69\\r\\n\", \"output\": [\"342983896\"]}, {\"input\": \"1337\\r\\n\", \"output\": [\"843775535\"]}, {\"input\": \"199999\\r\\n\", \"output\": [\"503231359\"]}, {\"input\": \"199998\\r\\n\", \"output\": [\"801261687\"]}]"
+    }
+}

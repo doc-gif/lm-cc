@@ -1,0 +1,92 @@
+{
+    "oai_response": {
+        "prompt": "Here is code in Python 3 programming lanaguge. Translate the following code from Python 3 to C programming lanaguge. Do not output any extra description or tokens other than the translated code. \n\ndef gcd(a, b):\n    if b == 0:\n        return a, 1, 0\n    d, x_, y_ = gcd(b, a % b)\n    return d, y_, x_ - (a // b) * y_\ndef co(a, i):\n    return (f[a] * g[i] % 998244353 * g[a - i]) % 998244353\nMOD = 998244353\nMAX_N = 5005\na, b, c = map(int, input().split())\nf = [1]\nfor i in range(1, MAX_N):\n    f.append(f[-1] * i % MOD)\ng = [gcd(val, MOD)[1] for val in f]\nr = 0\nfor i in range(min(a, b) + 1):\n    r = (r + co(a, i) * co(b, i) % MOD * f[i]) % MOD\nh = 0\nfor i in range(min(a, c) + 1):\n    h = (h + co(a, i) * co(c, i) % MOD * f[i]) % MOD\nv = 0\nfor i in range(min(c, b) + 1):\n    v = (v + co(c, i) * co(b, i) % MOD * f[i]) % MOD\nprint((r * h * v) % MOD)||END-of-SRC||",
+        "response": {
+            "id": "multi-call-as-ncmdb198ht",
+            "model": "deepseek-v3",
+            "created": 1769631069,
+            "choices": [
+                {
+                    "index": 0,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n\nint gcd(int a, int b, int *x, int *y) {\n    if (b == 0) {\n        *x = 1;\n        *y = 0;\n        return a;\n    }\n    int x_, y_;\n    int d = gcd(b, a % b, &x_, &y_);\n    *x = y_;\n    *y = x_ - (a / b) * y_;\n    return d;\n}\n\n#define MOD 998244353\n#define MAX_N 5005\n\nint f[MAX_N];\nint g[MAX_N];\n\nint co(int a, int i) {\n    return (int)((long long)f[a] * g[i] % MOD * g[a - i] % MOD);\n}\n\nint main() {\n    int a, b, c;\n    scanf(\"%d %d %d\", &a, &b, &c);\n    \n    f[0] = 1;\n    for (int i = 1; i < MAX_N; i++) {\n        f[i] = (int)((long long)f[i - 1] * i % MOD);\n    }\n    \n    for (int i = 0; i < MAX_N; i++) {\n        int x, y;\n        gcd(f[i], MOD, &x, &y);\n        g[i] = (x % MOD + MOD) % MOD;\n    }\n    \n    int r = 0;\n    for (int i = 0; i <= (a < b ? a : b); i++) {\n        r = (int)((r + (long long)co(a, i) * co(b, i) % MOD * f[i] % MOD) % MOD);\n    }\n    \n    int h = 0;\n    for (int i = 0; i <= (a < c ? a : c); i++) {\n        h = (int)((h + (long long)co(a, i) * co(c, i) % MOD * f[i] % MOD) % MOD);\n    }\n    \n    int v = 0;\n    for (int i = 0; i <= (c < b ? c : b); i++) {\n        v = (int)((v + (long long)co(c, i) * co(b, i) % MOD * f[i] % MOD) % MOD);\n    }\n    \n    printf(\"%d\\n\", (int)((long long)r * h % MOD * v % MOD));\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 1,
+                    "message": {
+                        "role": "assistant",
+                        "content": "Here's the translated code in C:\n\n```c\n#include <stdio.h>\n\nint gcd(int a, int b, int* x, int* y) {\n    if (b == 0) {\n        *x = 1;\n        *y = 0;\n        return a;\n    }\n    int x1, y1;\n    int d = gcd(b, a % b, &x1, &y1);\n    *x = y1;\n    *y = x1 - (a / b) * y1;\n    return d;\n}\n\n#define MOD 998244353\n#define MAX_N 5005\n\nlong long f[MAX_N], g[MAX_N];\n\nlong long co(int a, int i) {\n    return (f[a] * g[i] % MOD * g[a - i]) % MOD;\n}\n\nint main() {\n    int a, b, c;\n    scanf(\"%d %d %d\", &a, &b, &c);\n    \n    f[0] = 1;\n    for (int i = 1; i < MAX_N; i++) {\n        f[i] = f[i - 1] * i % MOD;\n    }\n    \n    for (int i = 0; i < MAX_N; i++) {\n        int x, y;\n        gcd(f[i], MOD, &x, &y);\n        g[i] = (x % MOD + MOD) % MOD;\n    }\n    \n    long long r = 0;\n    for (int i = 0; i <= (a < b ? a : b); i++) {\n        r = (r + co(a, i) * co(b, i) % MOD * f[i]) % MOD;\n    }\n    \n    long long h = 0;\n    for (int i = 0; i <= (a < c ? a : c); i++) {\n        h = (h + co(a, i) * co(c, i) % MOD * f[i]) % MOD;\n    }\n    \n    long long v = 0;\n    for (int i = 0; i <= (c < b ? c : b); i++) {\n        v = (v + co(c, i) * co(b, i) % MOD * f[i]) % MOD;\n    }\n    \n    printf(\"%lld\\n\", (r * h % MOD * v % MOD) % MOD);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 2,
+                    "message": {
+                        "role": "assistant",
+                        "content": "Here's the translated code in C:\n\n```c\n#include <stdio.h>\n\nlong long gcd(long long a, long long b, long long *x, long long *y) {\n    if (b == 0) {\n        *x = 1;\n        *y = 0;\n        return a;\n    }\n    long long x1, y1;\n    long long d = gcd(b, a % b, &x1, &y1);\n    *x = y1;\n    *y = x1 - (a / b) * y1;\n    return d;\n}\n\n#define MOD 998244353\n#define MAX_N 5005\n\nlong long f[MAX_N], g[MAX_N];\n\nlong long co(long long a, long long i) {\n    return (f[a] * g[i] % MOD * g[a - i]) % MOD;\n}\n\nint main() {\n    int a, b, c;\n    scanf(\"%d %d %d\", &a, &b, &c);\n    \n    f[0] = 1;\n    for (int i = 1; i < MAX_N; i++) {\n        f[i] = f[i - 1] * i % MOD;\n    }\n    \n    for (int i = 0; i < MAX_N; i++) {\n        long long x, y;\n        gcd(f[i], MOD, &x, &y);\n        g[i] = (x % MOD + MOD) % MOD;\n    }\n    \n    long long r = 0;\n    for (int i = 0; i <= (a < b ? a : b); i++) {\n        r = (r + co(a, i) * co(b, i) % MOD * f[i]) % MOD;\n    }\n    \n    long long h = 0;\n    for (int i = 0; i <= (a < c ? a : c); i++) {\n        h = (h + co(a, i) * co(c, i) % MOD * f[i]) % MOD;\n    }\n    \n    long long v = 0;\n    for (int i = 0; i <= (c < b ? c : b); i++) {\n        v = (v + co(c, i) * co(b, i) % MOD * f[i]) % MOD;\n    }\n    \n    printf(\"%lld\\n\", (r * h % MOD * v % MOD) % MOD);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 3,
+                    "message": {
+                        "role": "assistant",
+                        "content": "Here's the translated code in C:\n\n```c\n#include <stdio.h>\n\nint gcd(int a, int b, int* x, int* y) {\n    if (b == 0) {\n        *x = 1;\n        *y = 0;\n        return a;\n    }\n    int x1, y1;\n    int d = gcd(b, a % b, &x1, &y1);\n    *x = y1;\n    *y = x1 - (a / b) * y1;\n    return d;\n}\n\n#define MOD 998244353\n#define MAX_N 5005\n\nlong long f[MAX_N], g[MAX_N];\n\nlong long co(int a, int i) {\n    return (f[a] * g[i] % MOD * g[a - i]) % MOD;\n}\n\nint main() {\n    int a, b, c;\n    scanf(\"%d %d %d\", &a, &b, &c);\n    \n    f[0] = 1;\n    for (int i = 1; i < MAX_N; i++) {\n        f[i] = f[i - 1] * i % MOD;\n    }\n    \n    for (int i = 0; i < MAX_N; i++) {\n        int x, y;\n        gcd(f[i], MOD, &x, &y);\n        g[i] = (x % MOD + MOD) % MOD;\n    }\n    \n    long long r = 0;\n    for (int i = 0; i <= (a < b ? a : b); i++) {\n        r = (r + co(a, i) * co(b, i) % MOD * f[i]) % MOD;\n    }\n    \n    long long h = 0;\n    for (int i = 0; i <= (a < c ? a : c); i++) {\n        h = (h + co(a, i) * co(c, i) % MOD * f[i]) % MOD;\n    }\n    \n    long long v = 0;\n    for (int i = 0; i <= (c < b ? c : b); i++) {\n        v = (v + co(c, i) * co(b, i) % MOD * f[i]) % MOD;\n    }\n    \n    printf(\"%lld\\n\", (r * h % MOD * v % MOD) % MOD);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 4,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n\nlong long gcd(long long a, long long b, long long *x, long long *y) {\n    if (b == 0) {\n        *x = 1;\n        *y = 0;\n        return a;\n    }\n    long long x1, y1;\n    long long d = gcd(b, a % b, &x1, &y1);\n    *x = y1;\n    *y = x1 - (a / b) * y1;\n    return d;\n}\n\n#define MOD 998244353\n#define MAX_N 5005\n\nlong long f[MAX_N];\nlong long g[MAX_N];\n\nlong long co(long long a, long long i) {\n    return (f[a] * g[i] % MOD * g[a - i]) % MOD;\n}\n\nint main() {\n    long long a, b, c;\n    scanf(\"%lld %lld %lld\", &a, &b, &c);\n    \n    f[0] = 1;\n    for (int i = 1; i < MAX_N; i++) {\n        f[i] = f[i - 1] * i % MOD;\n    }\n    \n    for (int i = 0; i < MAX_N; i++) {\n        long long x, y;\n        gcd(f[i], MOD, &x, &y);\n        g[i] = (x % MOD + MOD) % MOD;\n    }\n    \n    long long r = 0;\n    for (int i = 0; i <= (a < b ? a : b); i++) {\n        r = (r + co(a, i) * co(b, i) % MOD * f[i]) % MOD;\n    }\n    \n    long long h = 0;\n    for (int i = 0; i <= (a < c ? a : c); i++) {\n        h = (h + co(a, i) * co(c, i) % MOD * f[i]) % MOD;\n    }\n    \n    long long v = 0;\n    for (int i = 0; i <= (c < b ? c : b); i++) {\n        v = (v + co(c, i) * co(b, i) % MOD * f[i]) % MOD;\n    }\n    \n    printf(\"%lld\\n\", (r * h % MOD * v % MOD) % MOD);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                }
+            ],
+            "usage": {
+                "prompt_tokens": 1755,
+                "completion_tokens": 2598,
+                "total_tokens": 4353
+            }
+        }
+    },
+    "source_data": {
+        "code_uid": "d7b5620c08a9a15c2ea79c6726c7a299",
+        "prob_desc_output_to": "standard output",
+        "prob_desc_notes": "NoteIn the first example, there are 3 bridges that can possibly be built, and no setup of bridges violates the restrictions. Thus the answer is 23\u2009=\u20098.In the second example, the upper two structures in the figure below are instances of valid ones, while the lower two are invalid due to the blue and purple clusters, respectively.  ",
+        "lang_cluster": "Python",
+        "prob_desc_time_limit": "1 second",
+        "prob_desc_input_spec": "The first and only line of input contains three space-separated integers a, b and c (1\u2009\u2264\u2009a,\u2009b,\u2009c\u2009\u2264\u20095\u2009000)\u00a0\u2014 the number of islands in the red, blue and purple clusters, respectively.",
+        "prob_desc_sample_inputs": [
+            "1 1 1",
+            "1 2 2",
+            "1 3 5",
+            "6 2 9"
+        ],
+        "prob_desc_memory_limit": "256 megabytes",
+        "exec_outcome": "PASSED",
+        "prob_desc_output_spec": "Output one line containing an integer\u00a0\u2014 the number of different ways to build bridges, modulo 998\u2009244\u2009353.",
+        "src_uid": "b6dc5533fbf285d5ef4cf60ef6300383",
+        "prob_desc_input_from": "standard input",
+        "lang": "Python 3",
+        "prob_desc_sample_outputs": [
+            "8",
+            "63",
+            "3264",
+            "813023575"
+        ],
+        "file_name": "d7021504500d5ca7c2b02df8100a574d159e6e67e20ec8071b75800b1267370a",
+        "prob_desc_description": "\u2014 This is not playing but duty as allies of justice, Nii-chan!\u2014 Not allies but justice itself, Onii-chan!With hands joined, go everywhere at a speed faster than our thoughts! This time, the Fire Sisters\u00a0\u2014 Karen and Tsukihi\u00a0\u2014 is heading for somewhere they've never reached\u00a0\u2014 water-surrounded islands!There are three clusters of islands, conveniently coloured red, blue and purple. The clusters consist of a, b and c distinct islands respectively.Bridges have been built between some (possibly all or none) of the islands. A bridge bidirectionally connects two different islands and has length 1. For any two islands of the same colour, either they shouldn't be reached from each other through bridges, or the shortest distance between them is at least 3, apparently in order to prevent oddities from spreading quickly inside a cluster.The Fire Sisters are ready for the unknown, but they'd also like to test your courage. And you're here to figure out the number of different ways to build all bridges under the constraints, and give the answer modulo 998\u2009244\u2009353. Two ways are considered different if a pair of islands exist, such that there's a bridge between them in one of them, but not in the other.",
+        "prob_desc_created_at": "1507296900",
+        "difficulty": 1800.0,
+        "hidden_unit_tests": "[{\"input\": \"1 1 1\\r\\n\", \"output\": [\"8\"]}, {\"input\": \"1 2 2\\r\\n\", \"output\": [\"63\"]}, {\"input\": \"1 3 5\\r\\n\", \"output\": [\"3264\"]}, {\"input\": \"6 2 9\\r\\n\", \"output\": [\"813023575\"]}, {\"input\": \"7 3 7\\r\\n\", \"output\": [\"807577560\"]}, {\"input\": \"135 14 39\\r\\n\", \"output\": [\"414849507\"]}, {\"input\": \"5000 5000 5000\\r\\n\", \"output\": [\"986778560\"]}, {\"input\": \"2 1 1\\r\\n\", \"output\": [\"18\"]}, {\"input\": \"1 1 3\\r\\n\", \"output\": [\"32\"]}, {\"input\": \"1 2 3\\r\\n\", \"output\": [\"156\"]}, {\"input\": \"4 1 2\\r\\n\", \"output\": [\"315\"]}, {\"input\": \"5 9 4\\r\\n\", \"output\": [\"661093467\"]}, {\"input\": \"4 2 5\\r\\n\", \"output\": [\"326151\"]}, {\"input\": \"9 4 10\\r\\n\", \"output\": [\"391175867\"]}, {\"input\": \"16 8 29\\r\\n\", \"output\": [\"349763770\"]}, {\"input\": \"17 46 45\\r\\n\", \"output\": [\"518654435\"]}, {\"input\": \"28 47 1\\r\\n\", \"output\": [\"517406193\"]}, {\"input\": \"94 87 10\\r\\n\", \"output\": [\"846321893\"]}, {\"input\": \"84 29 61\\r\\n\", \"output\": [\"391253501\"]}, {\"input\": \"179 856 377\\r\\n\", \"output\": [\"518957210\"]}, {\"input\": \"1925 1009 273\\r\\n\", \"output\": [\"207866159\"]}, {\"input\": \"1171 2989 2853\\r\\n\", \"output\": [\"234725427\"]}, {\"input\": \"3238 2923 4661\\r\\n\", \"output\": [\"636587126\"]}, {\"input\": \"1158 506 4676\\r\\n\", \"output\": [\"6109065\"]}, {\"input\": \"4539 2805 2702\\r\\n\", \"output\": [\"356944655\"]}, {\"input\": \"4756 775 3187\\r\\n\", \"output\": [\"56242066\"]}, {\"input\": \"4998 4998 4998\\r\\n\", \"output\": [\"259368717\"]}, {\"input\": \"4996 1 5000\\r\\n\", \"output\": [\"196902859\"]}, {\"input\": \"2048 4096 1024\\r\\n\", \"output\": [\"445542375\"]}, {\"input\": \"5000 1 1\\r\\n\", \"output\": [\"50020002\"]}]",
+        "initial_source_code": "def gcd(a, b,):\n    if b == 0:\n        return a, 1, 0\n    d, x_, y_  = gcd(b, a % b)\n    return d, y_, x_ - (a // b) * y_\n\n\ndef co(a, i):\n    return (f[a]*g[i]%998244353*g[a-i])%998244353\n\n\na, b, c = map(int, input().split())\nr = 0\nf = [1]\ng = []\nfor i in range(1, 5005):\n    f.append(f[-1]*i%998244353)\ng = [(gcd(i, 998244353)[1]) for i in f]\nfor i in range(min(a, b)+1):\n    r+=(co(a, i)*co(b, i)%998244353*f[i])%998244353\nh = 0\nfor i in range(min(a, c)+1):\n    h+=(co(a, i)*co(c, i)%998244353*f[i])%998244353\nv = 0\nfor i in range(min(c, b)+1):\n    v+=(co(c, i)*co(b, i)%998244353*f[i])%998244353\nprint((r*h*v)%998244353)",
+        "source_code": "def gcd(a, b):\n    if b == 0:\n        return a, 1, 0\n    d, x_, y_ = gcd(b, a % b)\n    return d, y_, x_ - (a // b) * y_\ndef co(a, i):\n    return (f[a] * g[i] % 998244353 * g[a - i]) % 998244353\nMOD = 998244353\nMAX_N = 5005\na, b, c = map(int, input().split())\nf = [1]\nfor i in range(1, MAX_N):\n    f.append(f[-1] * i % MOD)\ng = [gcd(val, MOD)[1] for val in f]\nr = 0\nfor i in range(min(a, b) + 1):\n    r = (r + co(a, i) * co(b, i) % MOD * f[i]) % MOD\nh = 0\nfor i in range(min(a, c) + 1):\n    h = (h + co(a, i) * co(c, i) % MOD * f[i]) % MOD\nv = 0\nfor i in range(min(c, b) + 1):\n    v = (v + co(c, i) * co(b, i) % MOD * f[i]) % MOD\nprint((r * h * v) % MOD)",
+        "source_lang": "Python 3",
+        "target_lang": "C"
+    }
+}

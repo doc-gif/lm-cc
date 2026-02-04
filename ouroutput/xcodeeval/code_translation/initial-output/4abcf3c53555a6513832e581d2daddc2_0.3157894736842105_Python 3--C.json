@@ -1,0 +1,91 @@
+{
+    "oai_response": {
+        "prompt": "Here is code in Python 3 programming lanaguge. Translate the following code from Python 3 to C programming lanaguge. Do not output any extra description or tokens other than the translated code. \n\n__author__ = 'asmn'\na, b, w, x, c = tuple(map(int, input().split()))\n\nif c <= a:\n    print(0)\n    exit()\nl, r = 0, (c - a) * 10000\nwhile l + 1 < r:\n    m = (l + r) // 2\n\n    if c - m <= a - (w - b - 1 + m * x) // w:\n        r = m\n    else:\n        l = m\nprint(r)||END-of-SRC||",
+        "response": {
+            "id": "multi-call-as-9e1edu315j",
+            "model": "deepseek-v3",
+            "created": 1767068789,
+            "choices": [
+                {
+                    "index": 0,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n\nint main() {\n    int a, b, w, x, c;\n    scanf(\"%d %d %d %d %d\", &a, &b, &w, &x, &c);\n\n    if (c <= a) {\n        printf(\"0\\n\");\n        return 0;\n    }\n\n    long long l = 0, r = (c - a) * 10000LL;\n    while (l + 1 < r) {\n        long long m = (l + r) / 2;\n\n        if (c - m <= a - (w - b - 1 + m * x) / w) {\n            r = m;\n        } else {\n            l = m;\n        }\n    }\n\n    printf(\"%lld\\n\", r);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 1,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n\nint main() {\n    int a, b, w, x, c;\n    scanf(\"%d %d %d %d %d\", &a, &b, &w, &x, &c);\n\n    if (c <= a) {\n        printf(\"0\\n\");\n        return 0;\n    }\n\n    long long l = 0, r = (c - a) * 10000LL;\n    while (l + 1 < r) {\n        long long m = (l + r) / 2;\n\n        if (c - m <= a - (w - b - 1 + m * x) / w) {\n            r = m;\n        } else {\n            l = m;\n        }\n    }\n\n    printf(\"%lld\\n\", r);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 2,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n\nint main() {\n    int a, b, w, x, c;\n    scanf(\"%d %d %d %d %d\", &a, &b, &w, &x, &c);\n\n    if (c <= a) {\n        printf(\"0\\n\");\n        return 0;\n    }\n\n    long long l = 0, r = (c - a) * 10000LL;\n    while (l + 1 < r) {\n        long long m = (l + r) / 2;\n\n        if (c - m <= a - (w - b - 1 + m * x) / w) {\n            r = m;\n        } else {\n            l = m;\n        }\n    }\n\n    printf(\"%lld\\n\", r);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 3,
+                    "message": {
+                        "role": "assistant",
+                        "content": "Here's the translated code in C:\n\n```c\n#include <stdio.h>\n\nint main() {\n    int a, b, w, x, c;\n    scanf(\"%d %d %d %d %d\", &a, &b, &w, &x, &c);\n    \n    if (c <= a) {\n        printf(\"0\\n\");\n        return 0;\n    }\n    \n    long long l = 0, r = (c - a) * 10000LL;\n    while (l + 1 < r) {\n        long long m = (l + r) / 2;\n        \n        if (c - m <= a - (w - b - 1 + m * x) / w) {\n            r = m;\n        } else {\n            l = m;\n        }\n    }\n    printf(\"%lld\\n\", r);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 4,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n\nint main() {\n    int a, b, w, x, c;\n    scanf(\"%d %d %d %d %d\", &a, &b, &w, &x, &c);\n\n    if (c <= a) {\n        printf(\"0\\n\");\n        return 0;\n    }\n    long long l = 0, r = (c - a) * 10000LL;\n    while (l + 1 < r) {\n        long long m = (l + r) / 2;\n\n        if (c - m <= a - (w - b - 1 + m * x) / w) {\n            r = m;\n        } else {\n            l = m;\n        }\n    }\n    printf(\"%lld\\n\", r);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                }
+            ],
+            "usage": {
+                "prompt_tokens": 835,
+                "completion_tokens": 901,
+                "total_tokens": 1736
+            }
+        }
+    },
+    "source_data": {
+        "code_uid": "4abcf3c53555a6513832e581d2daddc2",
+        "prob_desc_output_to": "standard output",
+        "prob_desc_notes": null,
+        "lang_cluster": "Python",
+        "prob_desc_time_limit": "1 second",
+        "prob_desc_input_spec": "The first line contains integers a,\u2009b,\u2009w,\u2009x,\u2009c (1\u2009\u2264\u2009a\u2009\u2264\u20092\u00b7109,\u20091\u2009\u2264\u2009w\u2009\u2264\u20091000,\u20090\u2009\u2264\u2009b\u2009&lt;\u2009w,\u20090\u2009&lt;\u2009x\u2009&lt;\u2009w,\u20091\u2009\u2264\u2009c\u2009\u2264\u20092\u00b7109).",
+        "source_code": "__author__ = 'asmn'\na, b, w, x, c = tuple(map(int, input().split()))\n\nif c <= a:\n    print(0)\n    exit()\nl, r = 0, (c - a) * 10000\nwhile l + 1 < r:\n    m = (l + r) // 2\n\n    if c - m <= a - (w - b - 1 + m * x) // w:\n        r = m\n    else:\n        l = m\nprint(r)",
+        "prob_desc_sample_inputs": [
+            "4 2 3 1 6",
+            "4 2 3 1 7",
+            "1 2 3 2 6",
+            "1 1 2 1 1"
+        ],
+        "prob_desc_memory_limit": "256 megabytes",
+        "exec_outcome": "PASSED",
+        "prob_desc_output_spec": "Print a single integer \u2014 the minimum time in seconds Alexander needs to get ahead of Arthur. You can prove that the described situation always occurs within the problem's limits.",
+        "src_uid": "a1db3dd9f8d0f0cad7bdeb1780707143",
+        "prob_desc_input_from": "standard input",
+        "lang": "Python 3",
+        "prob_desc_sample_outputs": [
+            "2",
+            "4",
+            "13",
+            "0"
+        ],
+        "file_name": "d7021504500d5ca7c2b02df8100a574d159e6e67e20ec8071b75800b1267370a",
+        "prob_desc_description": "Arthur and Alexander are number busters. Today they've got a competition. Arthur took a group of four integers a,\u2009b,\u2009w,\u2009x (0\u2009\u2264\u2009b\u2009&lt;\u2009w,\u20090\u2009&lt;\u2009x\u2009&lt;\u2009w) and Alexander took integer \u0441. Arthur and Alexander use distinct approaches to number bustings. Alexander is just a regular guy. Each second, he subtracts one from his number. In other words, he performs the assignment: c\u2009=\u2009c\u2009-\u20091. Arthur is a sophisticated guy. Each second Arthur performs a complex operation, described as follows: if b\u2009\u2265\u2009x, perform the assignment b\u2009=\u2009b\u2009-\u2009x, if b\u2009&lt;\u2009x, then perform two consecutive assignments a\u2009=\u2009a\u2009-\u20091;\u00a0b\u2009=\u2009w\u2009-\u2009(x\u2009-\u2009b).You've got numbers a,\u2009b,\u2009w,\u2009x,\u2009c. Determine when Alexander gets ahead of Arthur if both guys start performing the operations at the same time. Assume that Alexander got ahead of Arthur if c\u2009\u2264\u2009a.",
+        "prob_desc_created_at": "1389972600",
+        "difficulty": 2000.0,
+        "hidden_unit_tests": "[{\"input\": \"4 2 3 1 6\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"4 2 3 1 7\\r\\n\", \"output\": [\"4\"]}, {\"input\": \"1 2 3 2 6\\r\\n\", \"output\": [\"13\"]}, {\"input\": \"1 1 2 1 1\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"1 0 1000 999 2000000000\\r\\n\", \"output\": [\"1999999999000\"]}, {\"input\": \"10 1 6 4 20\\r\\n\", \"output\": [\"30\"]}, {\"input\": \"10 3 6 5 30\\r\\n\", \"output\": [\"117\"]}, {\"input\": \"10 3 5 1 30\\r\\n\", \"output\": [\"25\"]}, {\"input\": \"10 32 312 72 1000\\r\\n\", \"output\": [\"1287\"]}, {\"input\": \"1 102 123 27 2321\\r\\n\", \"output\": [\"2972\"]}, {\"input\": \"2000000000 159 1000 870 2000000000\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"200000000 794 1000 117 2000000000\\r\\n\", \"output\": [\"2038505096\"]}, {\"input\": \"20000000 280 1000 25 2000000000\\r\\n\", \"output\": [\"2030769231\"]}, {\"input\": \"1999999999 47 1000 527 2000000000\\r\\n\", \"output\": [\"3\"]}, {\"input\": \"19999 346 1000 141 2000000000\\r\\n\", \"output\": [\"2328265426\"]}, {\"input\": \"1 142 1000 673 2000000000\\r\\n\", \"output\": [\"6116207948\"]}, {\"input\": \"1 851 999 721 2000000000\\r\\n\", \"output\": [\"7187050354\"]}, {\"input\": \"1 504 998 900 2000000000\\r\\n\", \"output\": [\"20367346924\"]}, {\"input\": \"1 250 997 55 2000000000\\r\\n\", \"output\": [\"2116772823\"]}, {\"input\": \"1 2 3 2 2000000000\\r\\n\", \"output\": [\"5999999995\"]}, {\"input\": \"1 0 2 1 1232132\\r\\n\", \"output\": [\"2464262\"]}, {\"input\": \"1 999 1000 1 2000000000\\r\\n\", \"output\": [\"2002002001\"]}, {\"input\": \"1 999 1000 2 2000000000\\r\\n\", \"output\": [\"2004008015\"]}]",
+        "source_lang": "Python 3",
+        "target_lang": "C"
+    }
+}

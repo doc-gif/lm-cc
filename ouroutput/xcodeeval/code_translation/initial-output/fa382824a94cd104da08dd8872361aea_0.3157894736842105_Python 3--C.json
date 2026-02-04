@@ -1,0 +1,89 @@
+{
+    "oai_response": {
+        "prompt": "Here is code in Python 3 programming lanaguge. Translate the following code from Python 3 to C programming lanaguge. Do not output any extra description or tokens other than the translated code. \n\nw,m=map(int,input().split())\n\ndef f(m,w):\n    while m!=0:\n        x=(m+1)%w\n        if x==0:\n            m=(m+1)//w\n        elif x<3:\n            m=m//w\n        else:\n            return False\n        \n    return True\nif w==2:\n    print(\"YES\")\nelif f(m,w):\n    print(\"YES\")\nelse:\n    print(\"NO\")\n||END-of-SRC||",
+        "response": {
+            "id": "multi-call-as-px054dnht8",
+            "model": "deepseek-v3",
+            "created": 1767068508,
+            "choices": [
+                {
+                    "index": 0,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <stdbool.h>\n\nbool f(int m, int w) {\n    while (m != 0) {\n        int x = (m + 1) % w;\n        if (x == 0) {\n            m = (m + 1) / w;\n        } else if (x < 3) {\n            m = m / w;\n        } else {\n            return false;\n        }\n    }\n    return true;\n}\n\nint main() {\n    int w, m;\n    scanf(\"%d %d\", &w, &m);\n    if (w == 2) {\n        printf(\"YES\\n\");\n    } else if (f(m, w)) {\n        printf(\"YES\\n\");\n    } else {\n        printf(\"NO\\n\");\n    }\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 1,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <stdbool.h>\n\nbool f(int m, int w) {\n    while (m != 0) {\n        int x = (m + 1) % w;\n        if (x == 0) {\n            m = (m + 1) / w;\n        } else if (x < 3) {\n            m = m / w;\n        } else {\n            return false;\n        }\n    }\n    return true;\n}\n\nint main() {\n    int w, m;\n    scanf(\"%d %d\", &w, &m);\n    if (w == 2) {\n        printf(\"YES\\n\");\n    } else if (f(m, w)) {\n        printf(\"YES\\n\");\n    } else {\n        printf(\"NO\\n\");\n    }\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 2,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n\nint f(int m, int w) {\n    while (m != 0) {\n        int x = (m + 1) % w;\n        if (x == 0) {\n            m = (m + 1) / w;\n        } else if (x < 3) {\n            m = m / w;\n        } else {\n            return 0;\n        }\n    }\n    return 1;\n}\n\nint main() {\n    int w, m;\n    scanf(\"%d %d\", &w, &m);\n    if (w == 2) {\n        printf(\"YES\\n\");\n    } else if (f(m, w)) {\n        printf(\"YES\\n\");\n    } else {\n        printf(\"NO\\n\");\n    }\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 3,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n\nint f(int m, int w) {\n    while (m != 0) {\n        int x = (m + 1) % w;\n        if (x == 0) {\n            m = (m + 1) / w;\n        } else if (x < 3) {\n            m = m / w;\n        } else {\n            return 0;\n        }\n    }\n    return 1;\n}\n\nint main() {\n    int w, m;\n    scanf(\"%d %d\", &w, &m);\n    if (w == 2) {\n        printf(\"YES\\n\");\n    } else if (f(m, w)) {\n        printf(\"YES\\n\");\n    } else {\n        printf(\"NO\\n\");\n    }\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 4,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <stdbool.h>\n\nbool f(int m, int w) {\n    while (m != 0) {\n        int x = (m + 1) % w;\n        if (x == 0) {\n            m = (m + 1) / w;\n        } else if (x < 3) {\n            m = m / w;\n        } else {\n            return false;\n        }\n    }\n    return true;\n}\n\nint main() {\n    int w, m;\n    scanf(\"%d %d\", &w, &m);\n    if (w == 2) {\n        printf(\"YES\\n\");\n    } else if (f(m, w)) {\n        printf(\"YES\\n\");\n    } else {\n        printf(\"NO\\n\");\n    }\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                }
+            ],
+            "usage": {
+                "prompt_tokens": 725,
+                "completion_tokens": 872,
+                "total_tokens": 1597
+            }
+        }
+    },
+    "source_data": {
+        "code_uid": "fa382824a94cd104da08dd8872361aea",
+        "prob_desc_output_to": "standard output",
+        "prob_desc_notes": "NoteNote to the first sample test. One pan can have an item of mass 7 and a weight of mass 3, and the second pan can have two weights of masses 9 and 1, correspondingly. Then 7\u2009+\u20093\u2009=\u20099\u2009+\u20091.Note to the second sample test. One pan of the scales can have an item of mass 99 and the weight of mass 1, and the second pan can have the weight of mass 100.Note to the third sample test. It is impossible to measure the weight of the item in the manner described in the input. ",
+        "lang_cluster": "Python",
+        "prob_desc_time_limit": "1 second",
+        "prob_desc_input_spec": "The first line contains two integers w,\u2009m (2\u2009\u2264\u2009w\u2009\u2264\u2009109, 1\u2009\u2264\u2009m\u2009\u2264\u2009109) \u2014 the number defining the masses of the weights and the mass of the item.",
+        "source_code": "w,m=map(int,input().split())\n\ndef f(m,w):\n    while m!=0:\n        x=(m+1)%w\n        if x==0:\n            m=(m+1)//w\n        elif x<3:\n            m=m//w\n        else:\n            return False\n        \n    return True\nif w==2:\n    print(\"YES\")\nelif f(m,w):\n    print(\"YES\")\nelse:\n    print(\"NO\")\n",
+        "prob_desc_sample_inputs": [
+            "3 7",
+            "100 99",
+            "100 50"
+        ],
+        "prob_desc_memory_limit": "256 megabytes",
+        "exec_outcome": "PASSED",
+        "prob_desc_output_spec": "Print word 'YES' if the item can be weighted and 'NO' if it cannot.",
+        "src_uid": "a74adcf0314692f8ac95f54d165d9582",
+        "prob_desc_input_from": "standard input",
+        "lang": "Python 3",
+        "prob_desc_sample_outputs": [
+            "YES",
+            "YES",
+            "NO"
+        ],
+        "file_name": "d7021504500d5ca7c2b02df8100a574d159e6e67e20ec8071b75800b1267370a",
+        "prob_desc_description": "Vanya has a scales for weighing loads and weights of masses w0,\u2009w1,\u2009w2,\u2009...,\u2009w100 grams where w is some integer not less than 2 (exactly one weight of each nominal value). Vanya wonders whether he can weight an item with mass m using the given weights, if the weights can be put on both pans of the scales. Formally speaking, your task is to determine whether it is possible to place an item of mass m and some weights on the left pan of the scales, and some weights on the right pan of the scales so that the pans of the scales were in balance.",
+        "prob_desc_created_at": "1434645000",
+        "difficulty": 1900.0,
+        "hidden_unit_tests": "[{\"input\": \"3 7\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"100 99\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"100 50\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"1000000000 1\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"100 10002\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"4 7\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"4 11\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"5 781\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"7 9\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"5077 5988\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"2 9596\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"4 1069\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"4 7134\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"4 9083\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"4 7927\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"4 6772\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"5 782\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"4 1000000000\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"4 357913941\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"4 357918037\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"5 12207031\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"5 41503906\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"5 90332031\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"11 1786324\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"10 999\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"8 28087\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"8 28598\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"32 33586176\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"87 56631258\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"19 20\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"58 11316496\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"89 89\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"21 85756882\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"56 540897225\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"91 8189\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"27 14329927\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"58 198535\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"939 938\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"27463 754243832\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"21427 459137757\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"26045 26045\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"25336 25336\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"24627 24626\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"29245 855299270\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"28536 814274759\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"33154 33155\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"27118 27119\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"70 338171\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"24 346226\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"41 2966964\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"31 29792\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"48 2402\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"65 4159\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"20 67376840\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"72 5111\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"27 14349609\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"44 89146\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"22787 519292944\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"24525 601475624\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"3716 13816089\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"4020 4020\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"13766 13767\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"23512 23511\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"23816 567225671\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"33562 33564\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"33866 33866\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"13057 13059\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"441890232 441890232\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"401739553 401739553\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"285681920 285681919\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"464591587 464591588\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"703722884 703722884\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"982276216 982276216\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"867871061 867871062\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"48433217 48433216\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"8 324818663\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"7 898367507\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"6 471916351\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"5 45465196\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"9 768757144\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"8 342305988\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"6 114457122\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"6 688005966\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"4 556522107\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"3 130070951\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"6 558395604\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"5 131944448\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"2 1000000\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"2 22222222\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"3 100000000\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"3 100000001\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"3 100000002\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"3 100000003\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"3 100000004\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"2 1\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"2 1000000000\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"3 1000000000\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"99999 1000000000\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"10 1000000000\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"1000 1000000000\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"10 999999999\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"100 99999999\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"1000 999999999\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"1000 999999998\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"2 536870912\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"10 99\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"10 8\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"3 5\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"3 26\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"10 8888\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"3 8\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"3 984742145\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"4 43\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"1000000000 1000000000\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"4194304 4194305\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"10 899\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"4 47\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"4 822083581\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"3 999987989\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"4 31\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"4 15\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"100000000 100000001\\r\\n\", \"output\": [\"YES\"]}]",
+        "source_lang": "Python 3",
+        "target_lang": "C"
+    }
+}

@@ -1,0 +1,89 @@
+{
+    "oai_response": {
+        "prompt": "Here is code in Python 3 programming lanaguge. Translate the following code from Python 3 to C programming lanaguge. Do not output any extra description or tokens other than the translated code. \n\nd = {'monday': 1, 'tuesday': 2, 'wednesday': 3, 'thursday': 4, 'friday': 5, 'saturday': 6, 'sunday': 0}\n\nday1=str(input())\nday2=str(input())\n\n\nif day1 == day2 or (d[day1] + 2) % 7 == d[day2] or (d[day1] + 3) % 7 == d[day2] :\n    print(\"YES\")\nelse:\n    print(\"NO\")||END-of-SRC||",
+        "response": {
+            "id": "multi-call-as-fn6uk9nzc8",
+            "model": "deepseek-v3",
+            "created": 1767067944,
+            "choices": [
+                {
+                    "index": 0,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <string.h>\n\nint main() {\n    char day1[20], day2[20];\n    scanf(\"%s %s\", day1, day2);\n    \n    int d[7] = {0, 1, 2, 3, 4, 5, 6};\n    int val1, val2;\n    \n    if (strcmp(day1, \"monday\") == 0) val1 = d[0];\n    else if (strcmp(day1, \"tuesday\") == 0) val1 = d[1];\n    else if (strcmp(day1, \"wednesday\") == 0) val1 = d[2];\n    else if (strcmp(day1, \"thursday\") == 0) val1 = d[3];\n    else if (strcmp(day1, \"friday\") == 0) val1 = d[4];\n    else if (strcmp(day1, \"saturday\") == 0) val1 = d[5];\n    else if (strcmp(day1, \"sunday\") == 0) val1 = d[6];\n    \n    if (strcmp(day2, \"monday\") == 0) val2 = d[0];\n    else if (strcmp(day2, \"tuesday\") == 0) val2 = d[1];\n    else if (strcmp(day2, \"wednesday\") == 0) val2 = d[2];\n    else if (strcmp(day2, \"thursday\") == 0) val2 = d[3];\n    else if (strcmp(day2, \"friday\") == 0) val2 = d[4];\n    else if (strcmp(day2, \"saturday\") == 0) val2 = d[5];\n    else if (strcmp(day2, \"sunday\") == 0) val2 = d[6];\n    \n    if (strcmp(day1, day2) == 0 || (val1 + 2) % 7 == val2 || (val1 + 3) % 7 == val2) {\n        printf(\"YES\\n\");\n    } else {\n        printf(\"NO\\n\");\n    }\n    \n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 1,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <string.h>\n\nint main() {\n    char* days[] = {\"sunday\", \"monday\", \"tuesday\", \"wednesday\", \"thursday\", \"friday\", \"saturday\"};\n    int d[7] = {0, 1, 2, 3, 4, 5, 6};\n    \n    char day1[20], day2[20];\n    scanf(\"%s\", day1);\n    scanf(\"%s\", day2);\n    \n    int day1_val = -1, day2_val = -1;\n    for (int i = 0; i < 7; i++) {\n        if (strcmp(day1, days[i]) == 0) {\n            day1_val = d[i];\n        }\n        if (strcmp(day2, days[i]) == 0) {\n            day2_val = d[i];\n        }\n    }\n    \n    if (strcmp(day1, day2) == 0 || (day1_val + 2) % 7 == day2_val || (day1_val + 3) % 7 == day2_val) {\n        printf(\"YES\\n\");\n    } else {\n        printf(\"NO\\n\");\n    }\n    \n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 2,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <string.h>\n\nint main() {\n    char day1[10], day2[10];\n    scanf(\"%s %s\", day1, day2);\n    \n    int d[7];\n    d[0] = 0; // sunday\n    d[1] = 1; // monday\n    d[2] = 2; // tuesday\n    d[3] = 3; // wednesday\n    d[4] = 4; // thursday\n    d[5] = 5; // friday\n    d[6] = 6; // saturday\n    \n    int day1_val, day2_val;\n    \n    if (strcmp(day1, \"monday\") == 0) day1_val = d[1];\n    else if (strcmp(day1, \"tuesday\") == 0) day1_val = d[2];\n    else if (strcmp(day1, \"wednesday\") == 0) day1_val = d[3];\n    else if (strcmp(day1, \"thursday\") == 0) day1_val = d[4];\n    else if (strcmp(day1, \"friday\") == 0) day1_val = d[5];\n    else if (strcmp(day1, \"saturday\") == 0) day1_val = d[6];\n    else if (strcmp(day1, \"sunday\") == 0) day1_val = d[0];\n    \n    if (strcmp(day2, \"monday\") == 0) day2_val = d[1];\n    else if (strcmp(day2, \"tuesday\") == 0) day2_val = d[2];\n    else if (strcmp(day2, \"wednesday\") == 0) day2_val = d[3];\n    else if (strcmp(day2, \"thursday\") == 0) day2_val = d[4];\n    else if (strcmp(day2, \"friday\") == 0) day2_val = d[5];\n    else if (strcmp(day2, \"saturday\") == 0) day2_val = d[6];\n    else if (strcmp(day2, \"sunday\") == 0) day2_val = d[0];\n    \n    if (strcmp(day1, day2) == 0 || (day1_val + 2) % 7 == day2_val || (day1_val + 3) % 7 == day2_val) {\n        printf(\"YES\\n\");\n    } else {\n        printf(\"NO\\n\");\n    }\n    \n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 3,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <string.h>\n\nint main() {\n    char day1[10], day2[10];\n    scanf(\"%s %s\", day1, day2);\n    \n    int d[7] = {0};\n    d[0] = 0; // sunday\n    d[1] = 1; // monday\n    d[2] = 2; // tuesday\n    d[3] = 3; // wednesday\n    d[4] = 4; // thursday\n    d[5] = 5; // friday\n    d[6] = 6; // saturday\n    \n    int day1_val, day2_val;\n    \n    if (strcmp(day1, \"monday\") == 0) day1_val = d[1];\n    else if (strcmp(day1, \"tuesday\") == 0) day1_val = d[2];\n    else if (strcmp(day1, \"wednesday\") == 0) day1_val = d[3];\n    else if (strcmp(day1, \"thursday\") == 0) day1_val = d[4];\n    else if (strcmp(day1, \"friday\") == 0) day1_val = d[5];\n    else if (strcmp(day1, \"saturday\") == 0) day1_val = d[6];\n    else if (strcmp(day1, \"sunday\") == 0) day1_val = d[0];\n    \n    if (strcmp(day2, \"monday\") == 0) day2_val = d[1];\n    else if (strcmp(day2, \"tuesday\") == 0) day2_val = d[2];\n    else if (strcmp(day2, \"wednesday\") == 0) day2_val = d[3];\n    else if (strcmp(day2, \"thursday\") == 0) day2_val = d[4];\n    else if (strcmp(day2, \"friday\") == 0) day2_val = d[5];\n    else if (strcmp(day2, \"saturday\") == 0) day2_val = d[6];\n    else if (strcmp(day2, \"sunday\") == 0) day2_val = d[0];\n    \n    if (strcmp(day1, day2) == 0 || (day1_val + 2) % 7 == day2_val || (day1_val + 3) % 7 == day2_val) {\n        printf(\"YES\\n\");\n    } else {\n        printf(\"NO\\n\");\n    }\n    \n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 4,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <string.h>\n\nint main() {\n    char day1[10], day2[10];\n    scanf(\"%s %s\", day1, day2);\n    \n    int d[7] = {0};\n    d[0] = 0; // sunday\n    d[1] = 1; // monday\n    d[2] = 2; // tuesday\n    d[3] = 3; // wednesday\n    d[4] = 4; // thursday\n    d[5] = 5; // friday\n    d[6] = 6; // saturday\n    \n    int day1_val, day2_val;\n    \n    if (strcmp(day1, \"monday\") == 0) day1_val = d[1];\n    else if (strcmp(day1, \"tuesday\") == 0) day1_val = d[2];\n    else if (strcmp(day1, \"wednesday\") == 0) day1_val = d[3];\n    else if (strcmp(day1, \"thursday\") == 0) day1_val = d[4];\n    else if (strcmp(day1, \"friday\") == 0) day1_val = d[5];\n    else if (strcmp(day1, \"saturday\") == 0) day1_val = d[6];\n    else if (strcmp(day1, \"sunday\") == 0) day1_val = d[0];\n    \n    if (strcmp(day2, \"monday\") == 0) day2_val = d[1];\n    else if (strcmp(day2, \"tuesday\") == 0) day2_val = d[2];\n    else if (strcmp(day2, \"wednesday\") == 0) day2_val = d[3];\n    else if (strcmp(day2, \"thursday\") == 0) day2_val = d[4];\n    else if (strcmp(day2, \"friday\") == 0) day2_val = d[5];\n    else if (strcmp(day2, \"saturday\") == 0) day2_val = d[6];\n    else if (strcmp(day2, \"sunday\") == 0) day2_val = d[0];\n    \n    if (strcmp(day1, day2) == 0 || (day1_val + 2) % 7 == day2_val || (day1_val + 3) % 7 == day2_val) {\n        printf(\"YES\\n\");\n    } else {\n        printf(\"NO\\n\");\n    }\n    \n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                }
+            ],
+            "usage": {
+                "prompt_tokens": 860,
+                "completion_tokens": 2558,
+                "total_tokens": 3418
+            }
+        }
+    },
+    "source_data": {
+        "code_uid": "10ed8dd9d0f8641a511517e204071e5e",
+        "prob_desc_output_to": "standard output",
+        "prob_desc_notes": "NoteIn the second sample, one can consider February 1 and March 1 of year 2015. Both these days were Sundays.In the third sample, one can consider July 1 and August 1 of year 2017. First of these two days is Saturday, while the second one is Tuesday.",
+        "lang_cluster": "Python",
+        "prob_desc_time_limit": "1 second",
+        "prob_desc_input_spec": "The input consists of two lines, each of them containing the name of exactly one day of the week. It's guaranteed that each string in the input is from the set \"monday\", \"tuesday\", \"wednesday\", \"thursday\", \"friday\", \"saturday\", \"sunday\".",
+        "source_code": "d = {'monday': 1, 'tuesday': 2, 'wednesday': 3, 'thursday': 4, 'friday': 5, 'saturday': 6, 'sunday': 0}\n\nday1=str(input())\nday2=str(input())\n\n\nif day1 == day2 or (d[day1] + 2) % 7 == d[day2] or (d[day1] + 3) % 7 == d[day2] :\n    print(\"YES\")\nelse:\n    print(\"NO\")",
+        "prob_desc_sample_inputs": [
+            "monday\ntuesday",
+            "sunday\nsunday",
+            "saturday\ntuesday"
+        ],
+        "prob_desc_memory_limit": "256 megabytes",
+        "exec_outcome": "PASSED",
+        "prob_desc_output_spec": "Print \"YES\" (without quotes) if such situation is possible during some non-leap year. Otherwise, print \"NO\" (without quotes).",
+        "src_uid": "2a75f68a7374b90b80bb362c6ead9a35",
+        "prob_desc_input_from": "standard input",
+        "lang": "Python 3",
+        "prob_desc_sample_outputs": [
+            "NO",
+            "YES",
+            "YES"
+        ],
+        "file_name": "d7021504500d5ca7c2b02df8100a574d159e6e67e20ec8071b75800b1267370a",
+        "prob_desc_description": "You are given names of two days of the week.Please, determine whether it is possible that during some non-leap year the first day of some month was equal to the first day of the week you are given, while the first day of the next month was equal to the second day of the week you are given. Both months should belong to one year.In this problem, we consider the Gregorian calendar to be used. The number of months in this calendar is equal to 12. The number of days in months during any non-leap year is: 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31.Names of the days of the week are given with lowercase English letters: \"monday\", \"tuesday\", \"wednesday\", \"thursday\", \"friday\", \"saturday\", \"sunday\".",
+        "prob_desc_created_at": "1475928900",
+        "difficulty": 1000.0,
+        "hidden_unit_tests": "[{\"input\": \"monday\\r\\ntuesday\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"sunday\\r\\nsunday\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"saturday\\r\\ntuesday\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"tuesday\\r\\nthursday\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"friday\\r\\nwednesday\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"sunday\\r\\nsaturday\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"monday\\r\\nmonday\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"monday\\r\\nwednesday\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"monday\\r\\nthursday\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"monday\\r\\nfriday\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"monday\\r\\nsaturday\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"monday\\r\\nsunday\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"tuesday\\r\\nmonday\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"tuesday\\r\\ntuesday\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"tuesday\\r\\nwednesday\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"tuesday\\r\\nfriday\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"tuesday\\r\\nsaturday\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"tuesday\\r\\nsunday\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"wednesday\\r\\nmonday\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"wednesday\\r\\ntuesday\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"wednesday\\r\\nwednesday\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"wednesday\\r\\nthursday\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"wednesday\\r\\nfriday\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"wednesday\\r\\nsaturday\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"wednesday\\r\\nsunday\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"thursday\\r\\nmonday\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"thursday\\r\\ntuesday\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"thursday\\r\\nwednesday\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"thursday\\r\\nthursday\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"thursday\\r\\nfriday\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"thursday\\r\\nsaturday\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"thursday\\r\\nsunday\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"friday\\r\\nmonday\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"friday\\r\\ntuesday\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"friday\\r\\nthursday\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"friday\\r\\nsaturday\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"friday\\r\\nsunday\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"saturday\\r\\nmonday\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"saturday\\r\\nwednesday\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"saturday\\r\\nthursday\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"saturday\\r\\nfriday\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"saturday\\r\\nsaturday\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"saturday\\r\\nsunday\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"sunday\\r\\nmonday\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"sunday\\r\\ntuesday\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"sunday\\r\\nwednesday\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"sunday\\r\\nthursday\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"sunday\\r\\nfriday\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"friday\\r\\nfriday\\r\\n\", \"output\": [\"YES\"]}]",
+        "source_lang": "Python 3",
+        "target_lang": "C"
+    }
+}

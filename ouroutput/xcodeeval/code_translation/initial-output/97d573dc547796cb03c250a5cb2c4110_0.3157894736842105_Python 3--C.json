@@ -1,0 +1,89 @@
+{
+    "oai_response": {
+        "prompt": "Here is code in Python 3 programming lanaguge. Translate the following code from Python 3 to C programming lanaguge. Do not output any extra description or tokens other than the translated code. \n\nfrom math import*\nn=int(input())\n\ni=1\nwhile i*(i+1)<2*n+2:\n    if(i*(i+1)==2*n):\n        print(\"YES\")\n        exit()\n    i+=1\n\nprint(\"NO\")\n\n||END-of-SRC||",
+        "response": {
+            "id": "multi-call-as-c0zuv8wh4n",
+            "model": "deepseek-v3",
+            "created": 1767066759,
+            "choices": [
+                {
+                    "index": 0,
+                    "message": {
+                        "role": "assistant",
+                        "content": "Here's the translated code in C:\n\n```c\n#include <stdio.h>\n#include <math.h>\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    \n    int i = 1;\n    while (i * (i + 1) < 2 * n + 2) {\n        if (i * (i + 1) == 2 * n) {\n            printf(\"YES\");\n            return 0;\n        }\n        i++;\n    }\n    \n    printf(\"NO\");\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 1,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <math.h>\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n\n    int i = 1;\n    while (i * (i + 1) < 2 * n + 2) {\n        if (i * (i + 1) == 2 * n) {\n            printf(\"YES\\n\");\n            return 0;\n        }\n        i++;\n    }\n\n    printf(\"NO\\n\");\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 2,
+                    "message": {
+                        "role": "assistant",
+                        "content": "Here's the translated code in C:\n\n```c\n#include <stdio.h>\n#include <math.h>\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    \n    int i = 1;\n    while (i * (i + 1) < 2 * n + 2) {\n        if (i * (i + 1) == 2 * n) {\n            printf(\"YES\\n\");\n            return 0;\n        }\n        i++;\n    }\n    \n    printf(\"NO\\n\");\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 3,
+                    "message": {
+                        "role": "assistant",
+                        "content": "Here's the translated code in C:\n\n```c\n#include <stdio.h>\n#include <math.h>\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    \n    int i = 1;\n    while (i * (i + 1) < 2 * n + 2) {\n        if (i * (i + 1) == 2 * n) {\n            printf(\"YES\\n\");\n            return 0;\n        }\n        i++;\n    }\n    \n    printf(\"NO\\n\");\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 4,
+                    "message": {
+                        "role": "assistant",
+                        "content": "Here's the translated code in C:\n\n```c\n#include <stdio.h>\n#include <math.h>\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    \n    int i = 1;\n    while (i * (i + 1) < 2 * n + 2) {\n        if (i * (i + 1) == 2 * n) {\n            printf(\"YES\\n\");\n            return 0;\n        }\n        i++;\n    }\n    \n    printf(\"NO\\n\");\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                }
+            ],
+            "usage": {
+                "prompt_tokens": 515,
+                "completion_tokens": 571,
+                "total_tokens": 1086
+            }
+        }
+    },
+    "source_data": {
+        "code_uid": "97d573dc547796cb03c250a5cb2c4110",
+        "prob_desc_output_to": "standard output",
+        "prob_desc_notes": null,
+        "lang_cluster": "Python",
+        "prob_desc_time_limit": "2 seconds",
+        "prob_desc_input_spec": "The first line contains the single number n (1\u2009\u2264\u2009n\u2009\u2264\u2009500) \u2014 the given integer.",
+        "source_code": "from math import*\nn=int(input())\n\ni=1\nwhile i*(i+1)<2*n+2:\n    if(i*(i+1)==2*n):\n        print(\"YES\")\n        exit()\n    i+=1\n\nprint(\"NO\")\n\n",
+        "prob_desc_sample_inputs": [
+            "1",
+            "2",
+            "3"
+        ],
+        "prob_desc_memory_limit": "256 megabytes",
+        "exec_outcome": "PASSED",
+        "prob_desc_output_spec": "If the given integer is a triangular number output YES, otherwise output NO.",
+        "src_uid": "587d4775dbd6a41fc9e4b81f71da7301",
+        "prob_desc_input_from": "standard input",
+        "lang": "Python 3",
+        "prob_desc_sample_outputs": [
+            "YES",
+            "NO",
+            "YES"
+        ],
+        "file_name": "d7021504500d5ca7c2b02df8100a574d159e6e67e20ec8071b75800b1267370a",
+        "prob_desc_description": "A triangular number is the number of dots in an equilateral triangle uniformly filled with dots. For example, three dots can be arranged in a triangle; thus three is a triangular number. The n-th triangular number is the number of dots in a triangle with n dots on a side. . You can learn more about these numbers from Wikipedia (http://en.wikipedia.org/wiki/Triangular_number).Your task is to find out if a given integer is a triangular number.",
+        "prob_desc_created_at": "1291737600",
+        "difficulty": 800.0,
+        "hidden_unit_tests": "[{\"input\": \"1\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"2\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"3\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"4\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"5\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"6\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"7\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"8\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"12\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"10\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"11\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"9\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"14\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"15\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"16\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"20\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"21\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"22\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"121\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"135\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"136\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"137\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"152\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"153\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"154\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"171\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"189\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"190\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"191\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"210\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"211\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"231\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"232\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"252\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"253\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"254\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"275\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"276\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"277\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"299\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"300\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"301\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"324\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"325\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"326\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"350\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"351\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"352\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"377\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"378\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"406\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"434\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"435\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"464\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"465\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"495\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"496\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"497\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"331\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"413\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"177\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"122\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"478\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"188\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"474\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"48\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"498\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"499\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"500\\r\\n\", \"output\": [\"NO\"]}]",
+        "source_lang": "Python 3",
+        "target_lang": "C"
+    }
+}

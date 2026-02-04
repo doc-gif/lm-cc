@@ -1,0 +1,99 @@
+{
+    "oai_response": {
+        "prompt": "Fix a buggy program written in Python language to solve the following programming problem:\nDescription: Recently Ivan the Fool decided to become smarter and study the probability theory. He thinks that he understands the subject fairly well, and so he began to behave like he already got PhD in that area.To prove his skills, Ivan decided to demonstrate his friends a concept of random picture. A picture is a field of $$$n$$$ rows and $$$m$$$ columns, where each cell is either black or white. Ivan calls the picture random if for every cell it has at most one adjacent cell of the same color. Two cells are considered adjacent if they share a side.Ivan's brothers spent some time trying to explain that it's not how the randomness usually works. Trying to convince Ivan, they want to count the number of different random (according to Ivan) pictures. Two pictures are considered different if at least one cell on those two picture is colored differently. Since the number of such pictures may be quite large, print it modulo $$$10^9 + 7$$$.\nInput Specification: The only line contains two integers $$$n$$$ and $$$m$$$ ($$$1 \\le n, m \\le 100\\,000$$$), the number of rows and the number of columns of the field.\nOutput Specification: Print one integer, the number of random pictures modulo $$$10^9 + 7$$$.\n\nSample Input:\n2 3\nSample Output:\n8\n\nNotes: NoteThe picture below shows all possible random pictures of size $$$2$$$ by $$$3$$$.   \nTake input from standard input and output to standard output\n\nHere is the code with a bug of MEMORY_LIMIT_EXCEEDED:\n\ninput = raw_input\nn, m = map(int, input().split(\" \"))\n\nif n >= 2 and m >= 2:\n    c = [2 for i in range(n+1)]\n    t = [2 for i in range(n+1)]\n    y = [2 for i in range(n+1)]\n    #t = c.copy()\n    #y = c.copy()\n    #c[2] = 2\n    #t[2] = 2\n    #y[2] = 2\n\n    #T = [[0 for i in range(m+1)] for i in range(n+1)]\n    T2 = [2 for i in range(n+1)]\n    for i in range(3, n+1):\n        c[i] = c[i-1] + y[i-1]\n        #t[i] = t[i-1]\n        y[i] = c[i-1]\n\n        #C[i][2] = 2\n        #T[i][2] = c[i] + y[i] - 2\n        T2[i] = c[i] + y[i] - 2\n        #Y[i][2] = t[i] = 2\n\n        \n    #C = [[2 for i in range(m+1)] for i in range(n+1)]\n    Cn = [2 for i in range(m+1)]\n    #Tn2 = T[n][2] = T2[n]\n    #T = [[Tn2 for i in range(m+1)] for i in range(n+1) ]\n    Tn = [T2[n] for i in range(m+1)]\n    #Y = C.copy()\n    #Yn = Cn.copy()\n    Yn = [2 for i in range(m+1)]\n    #T[2][2] = c[2] + y[2] - 2\n    #Y[2][2] = t[2]\n\n\n    for j in range(3, m+1):\n        #if n == 2 and j == 3:\n        #    Cn[j] = Yn[j-1] + Cn[j-1]\n        #    Yn[j] =  Yn[j-1] + Cn[j-1]\n\n        #else:\n        if True:\n            #C[n][j] = C[n][2] = 2\n            #Cn[j] = Cn[2] = 2\n            #T[n][j] = T[n][2]\n            #Tn[j] = Tn[2]\n            #Y[n][j] =  Y[n][j-1] + C[n][j-1]\n            Cn[j] = Yn[j-1] + Cn[j-1]\n            Yn[j] = Cn[j-1]\n            #print(Yn[j])\n\n    #out = C[n][m] + Y[n][m] + T[n][m]\n\n    #for j in range(m+1):\n    #    print(j, Cn[j], Tn[j], Yn[j])\n\n    out = Cn[m] + Yn[m] + Tn[m]\n\nelif n == 1 and m == 1:\n    out = 2\nelse:\n    n = max(n, m)\n    b1 = [0 for i in range(n+1)]\n    b2 = [0 for i in range(n+1)]\n    w1 = [0 for i in range(n+1)]\n    w2 = [0 for i in range(n+1)]\n    #b2 = b1.copy()\n    #w1 = b1.copy()\n    #w2 = b1.copy()\n    b1[1] = 1\n    w1[1] = 1\n\n    for i in range(2, n+1):\n        b1[i] = w1[i-1] + w2[i-1]\n        b2[i] = b1[i-1]\n        w1[i] = b1[i-1] + b2[i-1]\n        w2[i] = w1[i-1]\n    out = b1[n] + b2[n] + w1[n] + w2[n]\n\nprint(out)\n\nProvide the fixed Python code without any description or extra tokens.\n\nFixed source code:\n ||END-of-SRC||",
+        "response": {
+            "id": "multi-call-as-mtafzqxh4d",
+            "model": "deepseek-v3",
+            "created": 1760422910,
+            "choices": [
+                {
+                    "index": 0,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```python\nimport sys\nMOD = 10**9 + 7\n\ndef solve():\n    n, m = map(int, sys.stdin.readline().split())\n    if n == 1 and m == 1:\n        print(2)\n        return\n    if n == 1 or m == 1:\n        k = max(n, m)\n        dp = [0] * (k + 1)\n        dp[1] = 2\n        if k >= 2:\n            dp[2] = 4\n            for i in range(3, k + 1):\n                dp[i] = (dp[i-1] + dp[i-2]) % MOD\n        print(dp[k] % MOD)\n        return\n    \n    # For grid with n >=2 and m >=2\n    # The answer is (fib(n+1) + fib(m+1) - 1) * 2 mod MOD\n    # Where fib(1) = 1, fib(2) = 1, fib(3) = 2, etc.\n    \n    def compute_fib(k):\n        if k == 0:\n            return 0\n        a, b = 1, 1\n        for _ in range(2, k + 1):\n            a, b = b, (a + b) % MOD\n        return b\n    \n    fib_n_plus_1 = compute_fib(n + 1)\n    fib_m_plus_1 = compute_fib(m + 1)\n    res = (fib_n_plus_1 + fib_m_plus_1 - 1) % MOD\n    res = (res * 2) % MOD\n    print(res)\n\nsolve()\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 1,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```python\nimport sys\nMOD = 10**9 + 7\n\ndef solve():\n    n, m = map(int, sys.stdin.readline().split())\n    if n == 1 and m == 1:\n        print(2)\n        return\n    if n == 1 or m == 1:\n        k = max(n, m)\n        dp = [0] * (k + 1)\n        dp[1] = 2\n        if k >= 2:\n            dp[2] = 4\n            for i in range(3, k + 1):\n                dp[i] = (dp[i-1] + dp[i-2]) % MOD\n        print(dp[k] % MOD)\n        return\n    \n    # For grid with n >=2 and m >=2\n    # The answer is (fib(n+1) + fib(m+1) - 1) * 2 mod MOD\n    # Where fib(1) = 1, fib(2) = 1, fib(3) = 2, etc.\n    \n    def compute_fib(k):\n        if k == 0:\n            return 0\n        a, b = 1, 1\n        for _ in range(2, k + 1):\n            a, b = b, (a + b) % MOD\n        return b\n    \n    fib_n_plus_1 = compute_fib(n + 1)\n    fib_m_plus_1 = compute_fib(m + 1)\n    res = (fib_n_plus_1 + fib_m_plus_1 - 1) % MOD\n    res = (res * 2) % MOD\n    print(res)\n\nsolve()\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 2,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```python\nimport sys\nMOD = 10**9 + 7\n\ndef solve():\n    n, m = map(int, sys.stdin.readline().split())\n    if n == 1 and m == 1:\n        print(2)\n        return\n    if n == 1 or m == 1:\n        k = max(n, m)\n        dp = [0] * (k + 1)\n        dp[0] = 1\n        dp[1] = 2\n        for i in range(2, k + 1):\n            dp[i] = (dp[i-1] + dp[i-2]) % MOD\n        print(dp[k] % MOD)\n        return\n    \n    # For grid with n >= 2 and m >= 2\n    # The answer is (fib(n+1) + fib(m+1) - 1) * 2 mod MOD\n    # Where fib(1) = 1, fib(2) = 1, fib(3) = 2, etc.\n    \n    def compute_fib(k):\n        if k == 0:\n            return 0\n        a, b = 1, 1\n        for _ in range(2, k + 1):\n            a, b = b, (a + b) % MOD\n        return b\n    \n    fib_n = compute_fib(n + 1)\n    fib_m = compute_fib(m + 1)\n    res = (fib_n + fib_m - 1) % MOD\n    res = (res * 2) % MOD\n    print(res)\n\nsolve()\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 3,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```python\nimport sys\nMOD = 10**9 + 7\n\ndef solve():\n    n, m = map(int, sys.stdin.readline().split())\n    if n == 1 and m == 1:\n        print(2)\n        return\n    if n == 1 or m == 1:\n        k = max(n, m)\n        dp = [0] * (k + 1)\n        dp[0] = 1\n        dp[1] = 2\n        for i in range(2, k + 1):\n            dp[i] = (dp[i-1] + dp[i-2]) % MOD\n        print(dp[k] % MOD)\n        return\n    \n    # For n >= 2 and m >= 2\n    # The answer is (fib(n+1) + fib(m+1) - 1) * 2 mod MOD\n    # Compute fib(n+1) and fib(m+1)\n    def fib(x):\n        a, b = 1, 1\n        for _ in range(x - 1):\n            a, b = b, (a + b) % MOD\n        return b\n    \n    fib_n_plus_1 = fib(n + 1)\n    fib_m_plus_1 = fib(m + 1)\n    res = (fib_n_plus_1 + fib_m_plus_1 - 1) % MOD\n    res = (res * 2) % MOD\n    print(res)\n\nsolve()\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 4,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```python\nimport sys\nMOD = 10**9 + 7\n\ndef solve():\n    n, m = map(int, sys.stdin.readline().split())\n    if n == 1 and m == 1:\n        print(2)\n        return\n    if n == 1 or m == 1:\n        k = max(n, m)\n        dp = [0] * (k + 1)\n        dp[0] = 1\n        dp[1] = 2\n        for i in range(2, k + 1):\n            dp[i] = (dp[i-1] + dp[i-2]) % MOD\n        print(dp[k] % MOD)\n        return\n    \n    # For grid with n >=2 and m >=2\n    # The answer is (fib(n+1) + fib(m+1) - 1) * 2 mod MOD\n    # Compute fib(n+1) and fib(m+1)\n    def fib(x):\n        a, b = 1, 1\n        for _ in range(x - 1):\n            a, b = b, (a + b) % MOD\n        return b\n    \n    res = (fib(n + 1) + fib(m + 1) - 1) % MOD\n    res = (res * 2) % MOD\n    print(res)\n\nsolve()\n``` ||END-of-SRC||"
+                    },
+                    "finish_reason": "stop"
+                }
+            ],
+            "usage": {
+                "prompt_tokens": 6335,
+                "completion_tokens": 1685,
+                "total_tokens": 8020
+            }
+        }
+    },
+    "source_data": {
+        "prob_desc_memory_limit": "512 megabytes",
+        "tags": [
+            "dp",
+            "math",
+            "combinatorics"
+        ],
+        "prob_desc_created_at": "1571562300",
+        "fix_source_code": "",
+        "prob_desc_input_spec": "The only line contains two integers $$$n$$$ and $$$m$$$ ($$$1 \\le n, m \\le 100\\,000$$$), the number of rows and the number of columns of the field.",
+        "prob_desc_sample_outputs": [
+            "8"
+        ],
+        "src_uid": "0f1ab296cbe0952faa904f2bebe0567b",
+        "prob_desc_time_limit": "1 second",
+        "fix_exec_outcome": "",
+        "delete_cnt": 3,
+        "apr_id": "f06b7374d66ccd40f051cca206cfe525",
+        "fix_code_uid": "",
+        "lang_cluster": "Python",
+        "prob_desc_sample_inputs": [
+            "2 3"
+        ],
+        "prob_desc_output_to": "standard output",
+        "file_name": "Python.jsonl",
+        "equal_cnt": 30,
+        "lang": "PyPy 2",
+        "prob_desc_output_spec": "Print one integer, the number of random pictures modulo $$$10^9 + 7$$$.",
+        "bug_exec_outcome": "MEMORY_LIMIT_EXCEEDED",
+        "prob_desc_notes": "NoteThe picture below shows all possible random pictures of size $$$2$$$ by $$$3$$$.   ",
+        "difficulty": 1700.0,
+        "similarity_score": 0.2348857373,
+        "prob_desc_description": "Recently Ivan the Fool decided to become smarter and study the probability theory. He thinks that he understands the subject fairly well, and so he began to behave like he already got PhD in that area.To prove his skills, Ivan decided to demonstrate his friends a concept of random picture. A picture is a field of $$$n$$$ rows and $$$m$$$ columns, where each cell is either black or white. Ivan calls the picture random if for every cell it has at most one adjacent cell of the same color. Two cells are considered adjacent if they share a side.Ivan's brothers spent some time trying to explain that it's not how the randomness usually works. Trying to convince Ivan, they want to count the number of different random (according to Ivan) pictures. Two pictures are considered different if at least one cell on those two picture is colored differently. Since the number of such pictures may be quite large, print it modulo $$$10^9 + 7$$$.",
+        "potential_dominant_fix_op": "replace",
+        "bug_source_code": "input = raw_input\nn, m = map(int, input().split(\" \"))\n\nif n >= 2 and m >= 2:\n    c = [2 for i in range(n+1)]\n    t = [2 for i in range(n+1)]\n    y = [2 for i in range(n+1)]\n    #t = c.copy()\n    #y = c.copy()\n    #c[2] = 2\n    #t[2] = 2\n    #y[2] = 2\n\n    #T = [[0 for i in range(m+1)] for i in range(n+1)]\n    T2 = [2 for i in range(n+1)]\n    for i in range(3, n+1):\n        c[i] = c[i-1] + y[i-1]\n        #t[i] = t[i-1]\n        y[i] = c[i-1]\n\n        #C[i][2] = 2\n        #T[i][2] = c[i] + y[i] - 2\n        T2[i] = c[i] + y[i] - 2\n        #Y[i][2] = t[i] = 2\n\n        \n    #C = [[2 for i in range(m+1)] for i in range(n+1)]\n    Cn = [2 for i in range(m+1)]\n    #Tn2 = T[n][2] = T2[n]\n    #T = [[Tn2 for i in range(m+1)] for i in range(n+1) ]\n    Tn = [T2[n] for i in range(m+1)]\n    #Y = C.copy()\n    #Yn = Cn.copy()\n    Yn = [2 for i in range(m+1)]\n    #T[2][2] = c[2] + y[2] - 2\n    #Y[2][2] = t[2]\n\n\n    for j in range(3, m+1):\n        #if n == 2 and j == 3:\n        #    Cn[j] = Yn[j-1] + Cn[j-1]\n        #    Yn[j] =  Yn[j-1] + Cn[j-1]\n\n        #else:\n        if True:\n            #C[n][j] = C[n][2] = 2\n            #Cn[j] = Cn[2] = 2\n            #T[n][j] = T[n][2]\n            #Tn[j] = Tn[2]\n            #Y[n][j] =  Y[n][j-1] + C[n][j-1]\n            Cn[j] = Yn[j-1] + Cn[j-1]\n            Yn[j] = Cn[j-1]\n            #print(Yn[j])\n\n    #out = C[n][m] + Y[n][m] + T[n][m]\n\n    #for j in range(m+1):\n    #    print(j, Cn[j], Tn[j], Yn[j])\n\n    out = Cn[m] + Yn[m] + Tn[m]\n\nelif n == 1 and m == 1:\n    out = 2\nelse:\n    n = max(n, m)\n    b1 = [0 for i in range(n+1)]\n    b2 = [0 for i in range(n+1)]\n    w1 = [0 for i in range(n+1)]\n    w2 = [0 for i in range(n+1)]\n    #b2 = b1.copy()\n    #w1 = b1.copy()\n    #w2 = b1.copy()\n    b1[1] = 1\n    w1[1] = 1\n\n    for i in range(2, n+1):\n        b1[i] = w1[i-1] + w2[i-1]\n        b2[i] = b1[i-1]\n        w1[i] = b1[i-1] + b2[i-1]\n        w2[i] = w1[i-1]\n    out = b1[n] + b2[n] + w1[n] + w2[n]\n\nprint(out)",
+        "replace_cnt": 21,
+        "prob_desc_input_from": "standard input",
+        "bug_code_uid": "35ecaadb5627c0de42ecfb98df6c6847",
+        "insert_cnt": 6,
+        "fix_ops_cnt": 30,
+        "hidden_unit_tests": "[{\"input\": \"2 3\\r\\n\", \"output\": [\"8\"]}, {\"input\": \"1 2\\r\\n\", \"output\": [\"4\"]}, {\"input\": \"1 1\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"2 1\\r\\n\", \"output\": [\"4\"]}, {\"input\": \"1 3\\r\\n\", \"output\": [\"6\"]}, {\"input\": \"3 1\\r\\n\", \"output\": [\"6\"]}, {\"input\": \"2 5\\r\\n\", \"output\": [\"18\"]}, {\"input\": \"3 6\\r\\n\", \"output\": [\"30\"]}, {\"input\": \"2 2\\r\\n\", \"output\": [\"6\"]}, {\"input\": \"1 100000\\r\\n\", \"output\": [\"935236457\"]}, {\"input\": \"100000 1\\r\\n\", \"output\": [\"935236457\"]}, {\"input\": \"91697 91697\\r\\n\", \"output\": [\"999949469\"]}, {\"input\": \"86821 24538\\r\\n\", \"output\": [\"1000000005\"]}, {\"input\": \"100000 100000\\r\\n\", \"output\": [\"870472905\"]}, {\"input\": \"99999 1\\r\\n\", \"output\": [\"822870997\"]}, {\"input\": \"1 99999\\r\\n\", \"output\": [\"822870997\"]}, {\"input\": \"1 99998\\r\\n\", \"output\": [\"112365460\"]}, {\"input\": \"99998 1\\r\\n\", \"output\": [\"112365460\"]}, {\"input\": \"1 88588\\r\\n\", \"output\": [\"153641669\"]}, {\"input\": \"68869 1\\r\\n\", \"output\": [\"840775285\"]}, {\"input\": \"91248 82914\\r\\n\", \"output\": [\"542035391\"]}, {\"input\": \"99999 100000\\r\\n\", \"output\": [\"758107445\"]}, {\"input\": \"100000 99999\\r\\n\", \"output\": [\"758107445\"]}, {\"input\": \"99999 99999\\r\\n\", \"output\": [\"645741985\"]}, {\"input\": \"13771 94814\\r\\n\", \"output\": [\"581579207\"]}, {\"input\": \"99411 90913\\r\\n\", \"output\": [\"189215541\"]}, {\"input\": \"52702 64157\\r\\n\", \"output\": [\"1000000005\"]}, {\"input\": \"24538 86821\\r\\n\", \"output\": [\"1000000005\"]}]"
+    }
+}

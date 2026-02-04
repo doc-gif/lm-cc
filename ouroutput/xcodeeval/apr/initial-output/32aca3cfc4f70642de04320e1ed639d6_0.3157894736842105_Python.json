@@ -1,0 +1,102 @@
+{
+    "oai_response": {
+        "prompt": "Fix a buggy program written in Python language to solve the following programming problem:\nDescription: You are given an integer $$$n$$$ from $$$1$$$ to $$$10^{18}$$$ without leading zeroes.In one move you can swap any two adjacent digits in the given number in such a way that the resulting number will not contain leading zeroes. In other words, after each move the number you have cannot contain any leading zeroes.What is the minimum number of moves you have to make to obtain a number that is divisible by $$$25$$$? Print -1 if it is impossible to obtain a number that is divisible by $$$25$$$.\nInput Specification: The first line contains an integer $$$n$$$ ($$$1 \\le n \\le 10^{18}$$$). It is guaranteed that the first (left) digit of the number $$$n$$$ is not a zero.\nOutput Specification: If it is impossible to obtain a number that is divisible by $$$25$$$, print -1. Otherwise print the minimum number of moves required to obtain such number. Note that you can swap only adjacent digits in the given number.\n\nSample Input:\n5071\nSample Output:\n4\n\nSample Input:\n705\nSample Output:\n1\n\nSample Input:\n1241367\nSample Output:\n-1\n\nNotes: NoteIn the first example one of the possible sequences of moves is 5071 $$$\\rightarrow$$$ 5701 $$$\\rightarrow$$$ 7501 $$$\\rightarrow$$$ 7510 $$$\\rightarrow$$$ 7150.\nTake input from standard input and output to standard output\n\nHere is the code with a bug of WRONG_ANSWER:\n\nn = input()[::-1]\nc0 = n.count('0')\nc2 = n.count('2')\nc5 = n.count('5')\nc7 = n.count('7')\ns = 1e9\nif c0 > 1:\n    i = n.find('0')\n    j = n.find('0', i + 1)\n    s = min(s, i + j - 1)\nif c2 and c5:\n    i = n.find('2')\n    j = n.find('5')\n    r = j + i - 1 + (j > i)\n    i, j = sorted([i, j])\n    m = n[:i] + n[i + 1: j] + n[j + 1:]\n    if not (m and m[-1] == '0'):\n        s = min(s, r)\nif c5 and c0:\n    i = n.find('5')\n    j = n.find('0')\n    s = min(s, j + i - 1 + (j > i))\nif c7 and c5:\n    i = n.find('7')\n    j = n.find('5')\n    r = j + i - 1 + (j > i)\n    i, j = sorted([i, j])\n    m = n[:i] + n[i + 1: j] + n[j + 1:]\n    if not (m and m[-1] == '0'):\n        s = min(s, r)\nprint(-1 if s == 1e9 else s)\n\n\nProvide the fixed Python code without any description or extra tokens.\n\nFixed source code:\n ||END-of-SRC||",
+        "response": {
+            "id": "multi-call-as-aue3ehze1i",
+            "model": "deepseek-v3",
+            "created": 1760423699,
+            "choices": [
+                {
+                    "index": 0,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```python\nn = input()\nmin_moves = float('inf')\n\ndef calculate_moves(s, pos1, pos2):\n    moves = pos1 + pos2 - 1\n    if pos2 < pos1:\n        moves += 1\n    return moves\n\nfor i in range(len(n)):\n    for j in range(len(n)):\n        if i == j:\n            continue\n        if (int(n[i]) * 10 + int(n[j])) % 25 == 0:\n            moves = calculate_moves(n, i, j)\n            remaining = n[:i] + n[i+1:j] + (n[j+1:] if j+1 < len(n) else '')\n            if remaining and remaining[0] == '0':\n                k = 0\n                while k < len(remaining) and remaining[k] == '0':\n                    k += 1\n                if k == len(remaining):\n                    continue\n                moves += k\n            if moves < min_moves:\n                min_moves = moves\n\nprint(min_moves if min_moves != float('inf') else -1)\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 1,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```python\nn = input().strip()\nmin_moves = float('inf')\n\ndef calculate_moves(s, pos1, pos2):\n    moves = pos1 + pos2 - 1\n    if pos2 > pos1:\n        moves -= 1\n    # Check for leading zero after moving the digits\n    remaining = s[:pos1] + s[pos1+1:pos2] + s[pos2+1:]\n    if remaining and remaining[0] == '0':\n        # Find the first non-zero digit\n        first_non_zero = 0\n        for i, c in enumerate(remaining):\n            if c != '0':\n                first_non_zero = i\n                break\n        moves += first_non_zero\n    return moves\n\n# Check all possible pairs that can form 00, 25, 50, 75\nfor pair in ['00', '25', '50', '75']:\n    a, b = pair[0], pair[1]\n    if a not in n or b not in n:\n        continue\n    # Find the rightmost occurrence of b first\n    b_pos = n.rfind(b)\n    if b_pos == -1:\n        continue\n    # Find the rightmost occurrence of a before b_pos\n    a_pos = n[:b_pos].rfind(a)\n    if a_pos == -1:\n        continue\n    moves = calculate_moves(n, a_pos, b_pos)\n    if moves < min_moves:\n        min_moves = moves\n\nif min_moves != float('inf'):\n    print(min_moves)\nelse:\n    print(-1)\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 2,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```python\nn = input().strip()\nmin_moves = float('inf')\n\ndef calculate_moves(s, pos1, pos2):\n    moves = pos1 + pos2 - 1\n    if pos2 > pos1:\n        moves -= 1\n    # Check leading zero after moving these two digits to the end\n    remaining = s[:pos1] + s[pos1+1:pos2] + s[pos2+1:]\n    if remaining and remaining[0] == '0':\n        # Find the first non-zero digit in remaining\n        first_non_zero = next((i for i, ch in enumerate(remaining) if ch != '0'), None)\n        if first_non_zero is not None:\n            moves += first_non_zero\n        else:\n            return float('inf')\n    return moves\n\n# Check all possible pairs that can form 00, 25, 50, 75\nfor a, b in [('0', '0'), ('2', '5'), ('5', '0'), ('7', '5')]:\n    if a == '0' and b == '0':\n        # Find last two zeros\n        zero_indices = [i for i, ch in enumerate(n) if ch == '0']\n        if len(zero_indices) >= 2:\n            pos2 = zero_indices[-1]\n            pos1 = zero_indices[-2]\n            moves = (len(n) - 1 - pos2) + (len(n) - 2 - pos1)\n            remaining = n[:pos1] + n[pos1+1:pos2] + n[pos2+1:]\n            if remaining and remaining[0] == '0':\n                first_non_zero = next((i for i, ch in enumerate(remaining) if ch != '0'), None)\n                if first_non_zero is not None:\n                    moves += first_non_zero\n                else:\n                    continue\n            if moves < min_moves:\n                min_moves = moves\n    else:\n        if a in n and b in n:\n            # Find the rightmost occurrence of b first\n            b_pos = n.rfind(b)\n            # Then find the rightmost occurrence of a before b_pos\n            a_pos = n.rfind(a, 0, b_pos) if b_pos != -1 else -1\n            if a_pos != -1 and b_pos != -1:\n                moves = calculate_moves(n, a_pos, b_pos)\n                if moves < min_moves:\n                    min_moves = moves\n\nif min_moves != float('inf'):\n    print(min_moves)\nelse:\n    print(-1)\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 3,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```python\nn = input()\nmin_moves = float('inf')\n\ndef calculate_moves(s, target):\n    s = list(s)\n    moves = 0\n    # Find the positions of the target digits\n    pos1 = -1\n    pos2 = -1\n    for i in range(len(s)-1, -1, -1):\n        if s[i] == target[1]:\n            pos2 = i\n            break\n    if pos2 == -1:\n        return float('inf')\n    for i in range(len(s)-1, -1, -1):\n        if i != pos2 and s[i] == target[0]:\n            pos1 = i\n            break\n    if pos1 == -1:\n        return float('inf')\n    \n    # Calculate moves to bring them to the end\n    moves = (len(s)-1 - pos2) + (len(s)-2 - pos1) if pos1 < pos2 else (len(s)-1 - pos2) + (len(s)-2 - pos1) + 1\n    \n    # Check leading zeros\n    temp = s.copy()\n    temp.pop(max(pos1, pos2))\n    temp.pop(min(pos1, pos2))\n    if temp and temp[0] == '0':\n        # Find first non-zero to swap\n        found = False\n        for i in range(len(temp)):\n            if temp[i] != '0':\n                moves += i\n                found = True\n                break\n        if not found:\n            return float('inf')\n    return moves\n\n# Check all possible target endings for divisibility by 25\ntargets = ['00', '25', '50', '75']\nfor target in targets:\n    moves = calculate_moves(n, target)\n    if moves < min_moves:\n        min_moves = moves\n\nif min_moves != float('inf'):\n    print(min_moves)\nelse:\n    print(-1)\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 4,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```python\nn = input()\nmin_moves = float('inf')\n\ndef calculate_moves(s, pos1, pos2):\n    moves = pos1 + pos2 - 1\n    if pos2 > pos1:\n        moves -= 1\n    # Check for leading zero after moving the digits\n    remaining = s[:pos1] + s[pos1+1:pos2] + s[pos2+1:]\n    if remaining and remaining[0] == '0':\n        # Find the first non-zero digit to swap to the front\n        first_non_zero = next((i for i, ch in enumerate(remaining) if ch != '0'), None)\n        if first_non_zero is not None:\n            moves += first_non_zero\n        else:\n            return float('inf')  # invalid, leading zero cannot be fixed\n    return moves\n\n# Check all possible pairs that can form 00, 25, 50, 75\nfor pair in ['00', '25', '50', '75']:\n    a, b = pair[0], pair[1]\n    if a not in n or b not in n:\n        continue\n    # Find the rightmost occurrence of b first, then the rightmost a before b\n    b_pos = n.rfind(b)\n    a_pos = n[:b_pos].rfind(a)\n    if a_pos == -1:\n        continue\n    moves = calculate_moves(n, a_pos, b_pos)\n    if moves < min_moves:\n        min_moves = moves\n\nprint(min_moves if min_moves != float('inf') else -1)\n```"
+                    },
+                    "finish_reason": "stop"
+                }
+            ],
+            "usage": {
+                "prompt_tokens": 3475,
+                "completion_tokens": 1896,
+                "total_tokens": 5371
+            }
+        }
+    },
+    "source_data": {
+        "prob_desc_memory_limit": "256 megabytes",
+        "tags": [
+            "brute force",
+            "greedy"
+        ],
+        "prob_desc_created_at": "1527863700",
+        "fix_source_code": "",
+        "prob_desc_input_spec": "The first line contains an integer $$$n$$$ ($$$1 \\le n \\le 10^{18}$$$). It is guaranteed that the first (left) digit of the number $$$n$$$ is not a zero.",
+        "prob_desc_sample_outputs": [
+            "4",
+            "1",
+            "-1"
+        ],
+        "src_uid": "ea1c737956f88be94107f2565ca8bbfd",
+        "prob_desc_time_limit": "1 second",
+        "fix_exec_outcome": "",
+        "delete_cnt": 0,
+        "apr_id": "fffcc98b7e9d1c2dc96de8c2b5f2b9b1",
+        "fix_code_uid": "",
+        "lang_cluster": "Python",
+        "prob_desc_sample_inputs": [
+            "5071",
+            "705",
+            "1241367"
+        ],
+        "prob_desc_output_to": "standard output",
+        "file_name": "Python.jsonl",
+        "equal_cnt": 7,
+        "lang": "Python 3",
+        "prob_desc_output_spec": "If it is impossible to obtain a number that is divisible by $$$25$$$, print -1. Otherwise print the minimum number of moves required to obtain such number. Note that you can swap only adjacent digits in the given number.",
+        "bug_exec_outcome": "WRONG_ANSWER",
+        "prob_desc_notes": "NoteIn the first example one of the possible sequences of moves is 5071 $$$\\rightarrow$$$ 5701 $$$\\rightarrow$$$ 7501 $$$\\rightarrow$$$ 7510 $$$\\rightarrow$$$ 7150.",
+        "difficulty": 2100.0,
+        "similarity_score": 0.8094660044,
+        "prob_desc_description": "You are given an integer $$$n$$$ from $$$1$$$ to $$$10^{18}$$$ without leading zeroes.In one move you can swap any two adjacent digits in the given number in such a way that the resulting number will not contain leading zeroes. In other words, after each move the number you have cannot contain any leading zeroes.What is the minimum number of moves you have to make to obtain a number that is divisible by $$$25$$$? Print -1 if it is impossible to obtain a number that is divisible by $$$25$$$.",
+        "potential_dominant_fix_op": "replace",
+        "bug_source_code": "n = input()[::-1]\nc0 = n.count('0')\nc2 = n.count('2')\nc5 = n.count('5')\nc7 = n.count('7')\ns = 1e9\nif c0 > 1:\n    i = n.find('0')\n    j = n.find('0', i + 1)\n    s = min(s, i + j - 1)\nif c2 and c5:\n    i = n.find('2')\n    j = n.find('5')\n    r = j + i - 1 + (j > i)\n    i, j = sorted([i, j])\n    m = n[:i] + n[i + 1: j] + n[j + 1:]\n    if not (m and m[-1] == '0'):\n        s = min(s, r)\nif c5 and c0:\n    i = n.find('5')\n    j = n.find('0')\n    s = min(s, j + i - 1 + (j > i))\nif c7 and c5:\n    i = n.find('7')\n    j = n.find('5')\n    r = j + i - 1 + (j > i)\n    i, j = sorted([i, j])\n    m = n[:i] + n[i + 1: j] + n[j + 1:]\n    if not (m and m[-1] == '0'):\n        s = min(s, r)\nprint(-1 if s == 1e9 else s)\n",
+        "replace_cnt": 4,
+        "prob_desc_input_from": "standard input",
+        "bug_code_uid": "32aca3cfc4f70642de04320e1ed639d6",
+        "insert_cnt": 2,
+        "fix_ops_cnt": 6,
+        "hidden_unit_tests": "[{\"input\": \"5071\\r\\n\", \"output\": [\"4\"]}, {\"input\": \"705\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"1241367\\r\\n\", \"output\": [\"-1\"]}, {\"input\": \"7501\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"507\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"17010\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"52231\\r\\n\", \"output\": [\"6\"]}, {\"input\": \"50267\\r\\n\", \"output\": [\"5\"]}, {\"input\": \"574196831896431419\\r\\n\", \"output\": [\"33\"]}, {\"input\": \"1\\r\\n\", \"output\": [\"-1\"]}, {\"input\": \"10\\r\\n\", \"output\": [\"-1\"]}, {\"input\": \"123456123450\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"1000000000000000000\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"100000000000762582\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"123456789987654321\\r\\n\", \"output\": [\"5\"]}, {\"input\": \"213716413141380147\\r\\n\", \"output\": [\"-1\"]}, {\"input\": \"5284691\\r\\n\", \"output\": [\"11\"]}, {\"input\": \"750000000000000001\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"101\\r\\n\", \"output\": [\"-1\"]}, {\"input\": \"275257725752725722\\r\\n\", \"output\": [\"3\"]}, {\"input\": \"50932\\r\\n\", \"output\": [\"5\"]}, {\"input\": \"50272\\r\\n\", \"output\": [\"5\"]}, {\"input\": \"25\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"52\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"57\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"75\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"50\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"71\\r\\n\", \"output\": [\"-1\"]}, {\"input\": \"500111117\\r\\n\", \"output\": [\"10\"]}, {\"input\": \"50011117\\r\\n\", \"output\": [\"9\"]}, {\"input\": \"1002\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"521\\r\\n\", \"output\": [\"3\"]}, {\"input\": \"50011111112\\r\\n\", \"output\": [\"12\"]}, {\"input\": \"50000111111112\\r\\n\", \"output\": [\"17\"]}, {\"input\": \"250070000011111111\\r\\n\", \"output\": [\"16\"]}, {\"input\": \"502727272727272727\\r\\n\", \"output\": [\"18\"]}, {\"input\": \"500044444444442\\r\\n\", \"output\": [\"17\"]}, {\"input\": \"2057\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"700777111111222222\\r\\n\", \"output\": [\"30\"]}, {\"input\": \"50001111312\\r\\n\", \"output\": [\"13\"]}, {\"input\": \"700272727272727272\\r\\n\", \"output\": [\"30\"]}, {\"input\": \"700777711111222222\\r\\n\", \"output\": [\"30\"]}, {\"input\": \"20029292929292929\\r\\n\", \"output\": [\"28\"]}, {\"input\": \"257025702570257025\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"5001111117\\r\\n\", \"output\": [\"11\"]}, {\"input\": \"227782777298772774\\r\\n\", \"output\": [\"-1\"]}, {\"input\": \"205727272727272727\\r\\n\", \"output\": [\"15\"]}, {\"input\": \"50011112\\r\\n\", \"output\": [\"9\"]}, {\"input\": \"500272727272727272\\r\\n\", \"output\": [\"19\"]}, {\"input\": \"222772277289624486\\r\\n\", \"output\": [\"-1\"]}, {\"input\": \"5002727272727272\\r\\n\", \"output\": [\"17\"]}, {\"input\": \"200000000222222222\\r\\n\", \"output\": [\"18\"]}]"
+    }
+}

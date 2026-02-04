@@ -1,0 +1,89 @@
+{
+    "oai_response": {
+        "prompt": "Here is code in Python 3 programming lanaguge. Translate the following code from Python 3 to C programming lanaguge. Do not output any extra description or tokens other than the translated code. \n\nimport math\nn=int(input())\nx=n\nf=1\na=[x]\nfor i in range(2,int(math.sqrt(n))+1):\n    while n%i==0:\n        a.append(n//i)\n        n=n//i\n        \n\nif a[-1]!=1:\n    a.append(1)\nfor i in range(len(a)-1):\n    print(a[i],end=' ')\nprint(a[-1])||END-of-SRC||",
+        "response": {
+            "id": "multi-call-as-3pdsyk2b96",
+            "model": "deepseek-v3",
+            "created": 1767066605,
+            "choices": [
+                {
+                    "index": 0,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <math.h>\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    int x = n;\n    int a[1000]; // Assuming a reasonable maximum size\n    int count = 0;\n    a[count++] = x;\n    \n    for (int i = 2; i <= (int)sqrt(n); i++) {\n        while (n % i == 0) {\n            a[count++] = n / i;\n            n = n / i;\n        }\n    }\n    \n    if (a[count-1] != 1) {\n        a[count++] = 1;\n    }\n    \n    for (int i = 0; i < count - 1; i++) {\n        printf(\"%d \", a[i]);\n    }\n    printf(\"%d\", a[count-1]);\n    \n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 1,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <math.h>\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    int x = n;\n    int a[1000]; // Assuming a reasonable maximum size\n    int count = 0;\n    a[count++] = x;\n    \n    for (int i = 2; i <= (int)sqrt(n); i++) {\n        while (n % i == 0) {\n            a[count++] = n / i;\n            n = n / i;\n        }\n    }\n    \n    if (a[count-1] != 1) {\n        a[count++] = 1;\n    }\n    \n    for (int i = 0; i < count - 1; i++) {\n        printf(\"%d \", a[i]);\n    }\n    printf(\"%d\", a[count-1]);\n    \n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 2,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <math.h>\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    int x = n;\n    int a[1000]; // Assuming a reasonable maximum size\n    int count = 0;\n    a[count++] = x;\n    \n    for (int i = 2; i <= (int)sqrt(n); i++) {\n        while (n % i == 0) {\n            a[count++] = n / i;\n            n = n / i;\n        }\n    }\n    \n    if (a[count-1] != 1) {\n        a[count++] = 1;\n    }\n    \n    for (int i = 0; i < count - 1; i++) {\n        printf(\"%d \", a[i]);\n    }\n    printf(\"%d\", a[count-1]);\n    \n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 3,
+                    "message": {
+                        "role": "assistant",
+                        "content": "Here's the translated code in C:\n\n```c\n#include <stdio.h>\n#include <math.h>\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    int x = n;\n    int a[1000]; // Assuming a reasonable maximum size\n    int count = 0;\n    a[count++] = x;\n    \n    for (int i = 2; i <= (int)sqrt(n); i++) {\n        while (n % i == 0) {\n            a[count++] = n / i;\n            n = n / i;\n        }\n    }\n    \n    if (a[count-1] != 1) {\n        a[count++] = 1;\n    }\n    \n    for (int i = 0; i < count - 1; i++) {\n        printf(\"%d \", a[i]);\n    }\n    printf(\"%d\", a[count-1]);\n    \n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 4,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <math.h>\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    int x = n;\n    int a[1000]; // Assuming a reasonable maximum size\n    int count = 0;\n    a[count++] = x;\n    \n    for (int i = 2; i <= (int)sqrt(n); i++) {\n        while (n % i == 0) {\n            a[count++] = n / i;\n            n = n / i;\n        }\n    }\n    \n    if (a[count-1] != 1) {\n        a[count++] = 1;\n    }\n    \n    for (int i = 0; i < count - 1; i++) {\n        printf(\"%d \", a[i]);\n    }\n    printf(\"%d\", a[count-1]);\n    \n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                }
+            ],
+            "usage": {
+                "prompt_tokens": 695,
+                "completion_tokens": 974,
+                "total_tokens": 1669
+            }
+        }
+    },
+    "source_data": {
+        "code_uid": "40ce966f4165d852eb859e16812cf3e9",
+        "prob_desc_output_to": "standard output",
+        "prob_desc_notes": null,
+        "lang_cluster": "Python",
+        "prob_desc_time_limit": "2 seconds",
+        "prob_desc_input_spec": "The first and only line contains an integer n (1\u2009\u2264\u2009n\u2009\u2264\u2009106) which represents the denomination of the most expensive coin. ",
+        "source_code": "import math\nn=int(input())\nx=n\nf=1\na=[x]\nfor i in range(2,int(math.sqrt(n))+1):\n    while n%i==0:\n        a.append(n//i)\n        n=n//i\n        \n\nif a[-1]!=1:\n    a.append(1)\nfor i in range(len(a)-1):\n    print(a[i],end=' ')\nprint(a[-1])",
+        "prob_desc_sample_inputs": [
+            "10",
+            "4",
+            "3"
+        ],
+        "prob_desc_memory_limit": "256 megabytes",
+        "exec_outcome": "PASSED",
+        "prob_desc_output_spec": "Print the denominations of all the coins in the order of decreasing. The number of coins must be the largest possible (with the given denomination n of the most expensive coin). Also, the denomination of every coin must be divisible by the denomination of any cheaper coin. Naturally, the denominations of all the coins should be different. If there are several solutins to that problem, print any of them.",
+        "src_uid": "2fc946bb72f56b6d86eabfaf60f9fa63",
+        "prob_desc_input_from": "standard input",
+        "lang": "Python 3",
+        "prob_desc_sample_outputs": [
+            "10 5 1",
+            "4 2 1",
+            "3 1"
+        ],
+        "file_name": "d7021504500d5ca7c2b02df8100a574d159e6e67e20ec8071b75800b1267370a",
+        "prob_desc_description": "In Berland a money reform is being prepared. New coins are being introduced. After long economic calculations was decided that the most expensive coin should possess the denomination of exactly n Berland dollars. Also the following restriction has been introduced for comfort: the denomination of each coin should be divisible by the denomination of any cheaper coin. It is known that among all the possible variants the variant with the largest number of new coins will be chosen. Find this variant. Print in the order of decreasing of the coins' denominations.",
+        "prob_desc_created_at": "1296489600",
+        "difficulty": 1300.0,
+        "hidden_unit_tests": "[{\"input\": \"10\\r\\n\", \"output\": [\"10 5 1\", \"10\\r\\n5\\r\\n1\"]}, {\"input\": \"4\\r\\n\", \"output\": [\"4\\r\\n2\\r\\n1\", \"4 2 1\"]}, {\"input\": \"3\\r\\n\", \"output\": [\"3 1\", \"3\\r\\n1\"]}, {\"input\": \"2\\r\\n\", \"output\": [\"2 1\", \"2\\r\\n1\"]}, {\"input\": \"5\\r\\n\", \"output\": [\"5\\r\\n1\", \"5 1\"]}, {\"input\": \"6\\r\\n\", \"output\": [\"6\\r\\n3\\r\\n1\", \"6 3 1\"]}, {\"input\": \"7\\r\\n\", \"output\": [\"7 1\", \"7\\r\\n1\"]}, {\"input\": \"1\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"8\\r\\n\", \"output\": [\"8\\r\\n4\\r\\n2\\r\\n1\", \"8 4 2 1\"]}, {\"input\": \"12\\r\\n\", \"output\": [\"12 6 3 1\", \"12\\r\\n6\\r\\n3\\r\\n1\"]}, {\"input\": \"100\\r\\n\", \"output\": [\"100 50 25 5 1\", \"100\\r\\n50\\r\\n25\\r\\n5\\r\\n1\"]}, {\"input\": \"1000\\r\\n\", \"output\": [\"1000 500 250 125 25 5 1\", \"1000\\r\\n500\\r\\n250\\r\\n125\\r\\n25\\r\\n5\\r\\n1\"]}, {\"input\": \"10000\\r\\n\", \"output\": [\"10000\\r\\n5000\\r\\n2500\\r\\n1250\\r\\n625\\r\\n125\\r\\n25\\r\\n5\\r\\n1\", \"10000 5000 2500 1250 625 125 25 5 1\"]}, {\"input\": \"100000\\r\\n\", \"output\": [\"100000 50000 25000 12500 6250 3125 625 125 25 5 1\", \"100000\\r\\n50000\\r\\n25000\\r\\n12500\\r\\n6250\\r\\n3125\\r\\n625\\r\\n125\\r\\n25\\r\\n5\\r\\n1\"]}, {\"input\": \"1000000\\r\\n\", \"output\": [\"1000000\\r\\n500000\\r\\n250000\\r\\n125000\\r\\n62500\\r\\n31250\\r\\n15625\\r\\n3125\\r\\n625\\r\\n125\\r\\n25\\r\\n5\\r\\n1\", \"1000000 500000 250000 125000 62500 31250 15625 3125 625 125 25 5 1\"]}, {\"input\": \"509149\\r\\n\", \"output\": [\"509149\\r\\n1\", \"509149 1\"]}, {\"input\": \"572877\\r\\n\", \"output\": [\"572877\\r\\n190959\\r\\n63653\\r\\n1201\\r\\n1\", \"572877 190959 63653 1201 1\"]}, {\"input\": \"152956\\r\\n\", \"output\": [\"152956 76478 38239 1\", \"152956\\r\\n76478\\r\\n38239\\r\\n1\"]}, {\"input\": \"733035\\r\\n\", \"output\": [\"733035 244345 48869 1\", \"733035\\r\\n244345\\r\\n48869\\r\\n1\"]}, {\"input\": \"313114\\r\\n\", \"output\": [\"313114 156557 3331 1\", \"313114\\r\\n156557\\r\\n3331\\r\\n1\"]}, {\"input\": \"893193\\r\\n\", \"output\": [\"893193\\r\\n297731\\r\\n42533\\r\\n1\", \"893193 297731 42533 1\"]}, {\"input\": \"473273\\r\\n\", \"output\": [\"473273\\r\\n2243\\r\\n1\", \"473273 2243 1\"]}, {\"input\": \"537000\\r\\n\", \"output\": [\"537000 268500 134250 67125 22375 4475 895 179 1\", \"537000\\r\\n268500\\r\\n134250\\r\\n67125\\r\\n22375\\r\\n4475\\r\\n895\\r\\n179\\r\\n1\"]}, {\"input\": \"117079\\r\\n\", \"output\": [\"117079 6887 97 1\", \"117079\\r\\n6887\\r\\n97\\r\\n1\"]}, {\"input\": \"784653\\r\\n\", \"output\": [\"784653 261551 9019 311 1\", \"784653\\r\\n261551\\r\\n9019\\r\\n311\\r\\n1\"]}, {\"input\": \"627251\\r\\n\", \"output\": [\"627251 1\", \"627251\\r\\n1\"]}, {\"input\": \"9\\r\\n\", \"output\": [\"9 3 1\", \"9\\r\\n3\\r\\n1\"]}, {\"input\": \"999999\\r\\n\", \"output\": [\"999999\\r\\n333333\\r\\n111111\\r\\n37037\\r\\n5291\\r\\n481\\r\\n37\\r\\n1\", \"999999 333333 111111 37037 5291 481 37 1\"]}, {\"input\": \"120\\r\\n\", \"output\": [\"120\\r\\n60\\r\\n30\\r\\n15\\r\\n5\\r\\n1\", \"120 60 30 15 5 1\"]}, {\"input\": \"720\\r\\n\", \"output\": [\"720\\r\\n360\\r\\n180\\r\\n90\\r\\n45\\r\\n15\\r\\n5\\r\\n1\", \"720 360 180 90 45 15 5 1\"]}, {\"input\": \"648\\r\\n\", \"output\": [\"648 324 162 81 27 9 3 1\", \"648\\r\\n324\\r\\n162\\r\\n81\\r\\n27\\r\\n9\\r\\n3\\r\\n1\"]}, {\"input\": \"2430\\r\\n\", \"output\": [\"2430\\r\\n1215\\r\\n405\\r\\n135\\r\\n45\\r\\n15\\r\\n5\\r\\n1\", \"2430 1215 405 135 45 15 5 1\"]}, {\"input\": \"119070\\r\\n\", \"output\": [\"119070\\r\\n59535\\r\\n19845\\r\\n6615\\r\\n2205\\r\\n735\\r\\n245\\r\\n49\\r\\n7\\r\\n1\", \"119070 59535 19845 6615 2205 735 245 49 7 1\"]}, {\"input\": \"15\\r\\n\", \"output\": [\"15\\r\\n5\\r\\n1\", \"15 5 1\"]}, {\"input\": \"21\\r\\n\", \"output\": [\"21 7 1\", \"21\\r\\n7\\r\\n1\"]}, {\"input\": \"25\\r\\n\", \"output\": [\"25 5 1\", \"25\\r\\n5\\r\\n1\"]}, {\"input\": \"524287\\r\\n\", \"output\": [\"524287\\r\\n1\", \"524287 1\"]}, {\"input\": \"600\\r\\n\", \"output\": [\"600\\r\\n300\\r\\n150\\r\\n75\\r\\n25\\r\\n5\\r\\n1\", \"600 300 150 75 25 5 1\"]}, {\"input\": \"36\\r\\n\", \"output\": [\"36 18 9 3 1\", \"36\\r\\n18\\r\\n9\\r\\n3\\r\\n1\"]}, {\"input\": \"20\\r\\n\", \"output\": [\"20 10 5 1\", \"20\\r\\n10\\r\\n5\\r\\n1\"]}, {\"input\": \"999983\\r\\n\", \"output\": [\"999983\\r\\n1\", \"999983 1\"]}, {\"input\": \"121\\r\\n\", \"output\": [\"121 11 1\", \"121\\r\\n11\\r\\n1\"]}, {\"input\": \"1331\\r\\n\", \"output\": [\"1331 121 11 1\", \"1331\\r\\n121\\r\\n11\\r\\n1\"]}]",
+        "source_lang": "Python 3",
+        "target_lang": "C"
+    }
+}

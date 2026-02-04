@@ -1,0 +1,87 @@
+{
+    "oai_response": {
+        "prompt": "Here is code in Python 3 programming lanaguge. Translate the following code from Python 3 to C programming lanaguge. Do not output any extra description or tokens other than the translated code. \n\nn = int(input())\nif(n%5==0):\n   u = n/5\nelse:\n   k = n/5\n   u = k+1\nprint(int(u))||END-of-SRC||",
+        "response": {
+            "id": "multi-call-as-hi75pqnmhk",
+            "model": "deepseek-v3",
+            "created": 1767066452,
+            "choices": [
+                {
+                    "index": 0,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    int u;\n    if (n % 5 == 0) {\n        u = n / 5;\n    } else {\n        int k = n / 5;\n        u = k + 1;\n    }\n    printf(\"%d\\n\", u);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 1,
+                    "message": {
+                        "role": "assistant",
+                        "content": "Here's the translated code in C:\n\n```c\n#include <stdio.h>\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    int u;\n    if (n % 5 == 0) {\n        u = n / 5;\n    } else {\n        int k = n / 5;\n        u = k + 1;\n    }\n    printf(\"%d\", u);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 2,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    int u;\n    if (n % 5 == 0) {\n        u = n / 5;\n    } else {\n        u = n / 5 + 1;\n    }\n    printf(\"%d\", u);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 3,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    int u;\n    if (n % 5 == 0) {\n        u = n / 5;\n    } else {\n        int k = n / 5;\n        u = k + 1;\n    }\n    printf(\"%d\\n\", u);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 4,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    int u;\n    if (n % 5 == 0) {\n        u = n / 5;\n    } else {\n        int k = n / 5;\n        u = k + 1;\n    }\n    printf(\"%d\", u);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                }
+            ],
+            "usage": {
+                "prompt_tokens": 450,
+                "completion_tokens": 429,
+                "total_tokens": 879
+            }
+        }
+    },
+    "source_data": {
+        "code_uid": "193759ed065ac5ad263fe5acf2fc8fee",
+        "prob_desc_output_to": "standard output",
+        "prob_desc_notes": "NoteIn the first sample the elephant needs to make one step of length 5 to reach the point x.In the second sample the elephant can get to point x if he moves by 3, 5 and 4. There are other ways to get the optimal answer but the elephant cannot reach x in less than three moves.",
+        "lang_cluster": "Python",
+        "prob_desc_time_limit": "1 second",
+        "prob_desc_input_spec": "The first line of the input contains an integer x (1\u2009\u2264\u2009x\u2009\u2264\u20091\u2009000\u2009000)\u00a0\u2014 The coordinate of the friend's house.",
+        "source_code": "n = int(input())\nif(n%5==0):\n   u = n/5\nelse:\n   k = n/5\n   u = k+1\nprint(int(u))",
+        "prob_desc_sample_inputs": [
+            "5",
+            "12"
+        ],
+        "prob_desc_memory_limit": "256 megabytes",
+        "exec_outcome": "PASSED",
+        "prob_desc_output_spec": "Print the minimum number of steps that elephant needs to make to get from point 0 to point x.",
+        "src_uid": "4b3d65b1b593829e92c852be213922b6",
+        "prob_desc_input_from": "standard input",
+        "lang": "Python 3",
+        "prob_desc_sample_outputs": [
+            "1",
+            "3"
+        ],
+        "file_name": "d7021504500d5ca7c2b02df8100a574d159e6e67e20ec8071b75800b1267370a",
+        "prob_desc_description": "An elephant decided to visit his friend. It turned out that the elephant's house is located at point 0 and his friend's house is located at point x(x\u2009&gt;\u20090) of the coordinate line. In one step the elephant can move 1, 2, 3, 4 or 5 positions forward. Determine, what is the minimum number of steps he need to make in order to get to his friend's house.",
+        "prob_desc_created_at": "1453563300",
+        "difficulty": 800.0,
+        "hidden_unit_tests": "[{\"input\": \"5\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"12\\r\\n\", \"output\": [\"3\"]}, {\"input\": \"999999\\r\\n\", \"output\": [\"200000\"]}, {\"input\": \"41\\r\\n\", \"output\": [\"9\"]}, {\"input\": \"1000000\\r\\n\", \"output\": [\"200000\"]}, {\"input\": \"1\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"2\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"3\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"4\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"534204\\r\\n\", \"output\": [\"106841\"]}, {\"input\": \"469569\\r\\n\", \"output\": [\"93914\"]}, {\"input\": \"502877\\r\\n\", \"output\": [\"100576\"]}, {\"input\": \"942212\\r\\n\", \"output\": [\"188443\"]}, {\"input\": \"97\\r\\n\", \"output\": [\"20\"]}, {\"input\": \"53\\r\\n\", \"output\": [\"11\"]}, {\"input\": \"89\\r\\n\", \"output\": [\"18\"]}, {\"input\": \"574\\r\\n\", \"output\": [\"115\"]}, {\"input\": \"716\\r\\n\", \"output\": [\"144\"]}, {\"input\": \"729\\r\\n\", \"output\": [\"146\"]}, {\"input\": \"8901\\r\\n\", \"output\": [\"1781\"]}, {\"input\": \"3645\\r\\n\", \"output\": [\"729\"]}, {\"input\": \"4426\\r\\n\", \"output\": [\"886\"]}, {\"input\": \"46573\\r\\n\", \"output\": [\"9315\"]}, {\"input\": \"86380\\r\\n\", \"output\": [\"17276\"]}, {\"input\": \"94190\\r\\n\", \"output\": [\"18838\"]}, {\"input\": \"999990\\r\\n\", \"output\": [\"199998\"]}, {\"input\": \"999991\\r\\n\", \"output\": [\"199999\"]}, {\"input\": \"999992\\r\\n\", \"output\": [\"199999\"]}, {\"input\": \"999993\\r\\n\", \"output\": [\"199999\"]}, {\"input\": \"999994\\r\\n\", \"output\": [\"199999\"]}, {\"input\": \"999995\\r\\n\", \"output\": [\"199999\"]}, {\"input\": \"999996\\r\\n\", \"output\": [\"200000\"]}, {\"input\": \"999997\\r\\n\", \"output\": [\"200000\"]}, {\"input\": \"999998\\r\\n\", \"output\": [\"200000\"]}]",
+        "source_lang": "Python 3",
+        "target_lang": "C"
+    }
+}

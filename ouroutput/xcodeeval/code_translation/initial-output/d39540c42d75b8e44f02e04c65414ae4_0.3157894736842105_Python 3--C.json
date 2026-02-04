@@ -1,0 +1,87 @@
+{
+    "oai_response": {
+        "prompt": "Here is code in Python 3 programming lanaguge. Translate the following code from Python 3 to C programming lanaguge. Do not output any extra description or tokens other than the translated code. \n\nn=int(input(''))\nnum=list(input(''))\nlis=[]\ncount=0\nfor i in range(0,n):\n    if num[i]=='1':\n        count+=1\n    else:\n        lis.append(str(count))\n        count=0\n       # print('appended')\nif num[n-1]=='1':\n    lis.append(str(count))\nelse:\n    lis.append(str(0))\n\nprint(''.join(lis))||END-of-SRC||",
+        "response": {
+            "id": "multi-call-as-u0sggpu07p",
+            "model": "deepseek-v3",
+            "created": 1767068081,
+            "choices": [
+                {
+                    "index": 0,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    char num[n+1];\n    scanf(\"%s\", num);\n    char lis[n+1];\n    int count = 0;\n    int lis_index = 0;\n    \n    for (int i = 0; i < n; i++) {\n        if (num[i] == '1') {\n            count++;\n        } else {\n            lis[lis_index++] = count + '0';\n            count = 0;\n        }\n    }\n    \n    if (num[n-1] == '1') {\n        lis[lis_index++] = count + '0';\n    } else {\n        lis[lis_index++] = '0';\n    }\n    \n    lis[lis_index] = '\\0';\n    printf(\"%s\", lis);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 1,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    char num[n+1];\n    scanf(\"%s\", num);\n    char lis[n+1];\n    int count = 0;\n    int pos = 0;\n    for (int i = 0; i < n; i++) {\n        if (num[i] == '1') {\n            count++;\n        } else {\n            lis[pos++] = count + '0';\n            count = 0;\n        }\n    }\n    if (num[n-1] == '1') {\n        lis[pos++] = count + '0';\n    } else {\n        lis[pos++] = '0';\n    }\n    lis[pos] = '\\0';\n    printf(\"%s\", lis);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 2,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    char* num = malloc(n + 1);\n    scanf(\"%s\", num);\n    char* lis = malloc(n + 1);\n    int count = 0;\n    int lis_index = 0;\n    \n    for (int i = 0; i < n; i++) {\n        if (num[i] == '1') {\n            count++;\n        } else {\n            lis[lis_index++] = count + '0';\n            count = 0;\n        }\n    }\n    \n    if (num[n-1] == '1') {\n        lis[lis_index++] = count + '0';\n    } else {\n        lis[lis_index++] = '0';\n    }\n    \n    lis[lis_index] = '\\0';\n    printf(\"%s\", lis);\n    \n    free(num);\n    free(lis);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 3,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    char num[n+1];\n    scanf(\"%s\", num);\n    char lis[n+1];\n    int count = 0;\n    int lis_index = 0;\n    for (int i = 0; i < n; i++) {\n        if (num[i] == '1') {\n            count++;\n        } else {\n            lis[lis_index++] = count + '0';\n            count = 0;\n        }\n    }\n    if (num[n-1] == '1') {\n        lis[lis_index++] = count + '0';\n    } else {\n        lis[lis_index++] = '0';\n    }\n    lis[lis_index] = '\\0';\n    printf(\"%s\\n\", lis);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 4,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    char* num = malloc(n + 1);\n    scanf(\"%s\", num);\n    char* lis = malloc(n + 1);\n    int count = 0;\n    int lis_index = 0;\n    \n    for (int i = 0; i < n; i++) {\n        if (num[i] == '1') {\n            count++;\n        } else {\n            lis[lis_index++] = count + '0';\n            count = 0;\n        }\n    }\n    \n    if (num[n-1] == '1') {\n        lis[lis_index++] = count + '0';\n    } else {\n        lis[lis_index++] = '0';\n    }\n    \n    lis[lis_index] = '\\0';\n    printf(\"%s\", lis);\n    \n    free(num);\n    free(lis);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                }
+            ],
+            "usage": {
+                "prompt_tokens": 690,
+                "completion_tokens": 994,
+                "total_tokens": 1684
+            }
+        }
+    },
+    "source_data": {
+        "code_uid": "d39540c42d75b8e44f02e04c65414ae4",
+        "prob_desc_output_to": "standard output",
+        "prob_desc_notes": null,
+        "lang_cluster": "Python",
+        "prob_desc_time_limit": "1 second",
+        "prob_desc_input_spec": "The first line contains one integer number n (1\u2009\u2264\u2009n\u2009\u2264\u200989) \u2014 length of the string s. The second line contains string s \u2014 sequence of '0' and '1' characters, number in its encoded format. It is guaranteed that the number corresponding to the string is positive and doesn't exceed 109. The string always starts with '1'.",
+        "source_code": "n=int(input(''))\nnum=list(input(''))\nlis=[]\ncount=0\nfor i in range(0,n):\n    if num[i]=='1':\n        count+=1\n    else:\n        lis.append(str(count))\n        count=0\n       # print('appended')\nif num[n-1]=='1':\n    lis.append(str(count))\nelse:\n    lis.append(str(0))\n\nprint(''.join(lis))",
+        "prob_desc_sample_inputs": [
+            "3\n111",
+            "9\n110011101"
+        ],
+        "prob_desc_memory_limit": "256 megabytes",
+        "exec_outcome": "PASSED",
+        "prob_desc_output_spec": "Print the decoded number.",
+        "src_uid": "a4b3da4cb9b6a7ed0a33a862e940cafa",
+        "prob_desc_input_from": "standard input",
+        "lang": "Python 3",
+        "prob_desc_sample_outputs": [
+            "3",
+            "2031"
+        ],
+        "file_name": "d7021504500d5ca7c2b02df8100a574d159e6e67e20ec8071b75800b1267370a",
+        "prob_desc_description": "Polycarp has just invented a new binary protocol for data transmission. He is encoding positive integer decimal number to binary string using following algorithm:  Each digit is represented with number of '1' characters equal to the value of that digit (for 0 it is zero ones).  Digits are written one by one in order corresponding to number and separated by single '0' character. Though Polycarp learnt how to encode the numbers, he has no idea how to decode them back. Help him calculate the decoded number.",
+        "prob_desc_created_at": "1500217500",
+        "difficulty": 1100.0,
+        "hidden_unit_tests": "[{\"input\": \"3\\r\\n111\\r\\n\", \"output\": [\"3\"]}, {\"input\": \"9\\r\\n110011101\\r\\n\", \"output\": [\"2031\"]}, {\"input\": \"1\\r\\n1\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"3\\r\\n100\\r\\n\", \"output\": [\"100\"]}, {\"input\": \"5\\r\\n10001\\r\\n\", \"output\": [\"1001\"]}, {\"input\": \"14\\r\\n11001100011000\\r\\n\", \"output\": [\"202002000\"]}, {\"input\": \"31\\r\\n1000011111111100011110111111111\\r\\n\", \"output\": [\"100090049\"]}, {\"input\": \"53\\r\\n10110111011110111110111111011111110111111110111111111\\r\\n\", \"output\": [\"123456789\"]}, {\"input\": \"89\\r\\n11111111101111111110111111111011111111101111111110111111111011111111101111111110111111111\\r\\n\", \"output\": [\"999999999\"]}, {\"input\": \"10\\r\\n1000000000\\r\\n\", \"output\": [\"1000000000\"]}, {\"input\": \"2\\r\\n10\\r\\n\", \"output\": [\"10\"]}, {\"input\": \"4\\r\\n1110\\r\\n\", \"output\": [\"30\"]}, {\"input\": \"8\\r\\n10101010\\r\\n\", \"output\": [\"11110\"]}]",
+        "source_lang": "Python 3",
+        "target_lang": "C"
+    }
+}

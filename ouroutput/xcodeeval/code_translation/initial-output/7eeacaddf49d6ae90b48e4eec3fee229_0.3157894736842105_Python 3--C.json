@@ -1,0 +1,89 @@
+{
+    "oai_response": {
+        "prompt": "Here is code in Python 3 programming lanaguge. Translate the following code from Python 3 to C programming lanaguge. Do not output any extra description or tokens other than the translated code. \n\nfin = input()\n\na, b, c = map(int, fin.split())\nrings = 0\n\nfor ring in range(c):\n  rings = rings + (2 * a + 2 * b - 4)\n\n  a = a - 4\n  b = b - 4\n\nprint(rings)\n||END-of-SRC||",
+        "response": {
+            "id": "multi-call-as-yesa3q32i3",
+            "model": "deepseek-v3",
+            "created": 1767068094,
+            "choices": [
+                {
+                    "index": 0,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n\nint main() {\n    int a, b, c;\n    scanf(\"%d %d %d\", &a, &b, &c);\n    int rings = 0;\n\n    for (int ring = 0; ring < c; ring++) {\n        rings += (2 * a + 2 * b - 4);\n        a -= 4;\n        b -= 4;\n    }\n\n    printf(\"%d\\n\", rings);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 1,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n\nint main() {\n    int a, b, c;\n    scanf(\"%d %d %d\", &a, &b, &c);\n    int rings = 0;\n\n    for (int ring = 0; ring < c; ring++) {\n        rings += (2 * a + 2 * b - 4);\n        a -= 4;\n        b -= 4;\n    }\n\n    printf(\"%d\\n\", rings);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 2,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n\nint main() {\n    int a, b, c;\n    scanf(\"%d %d %d\", &a, &b, &c);\n    int rings = 0;\n\n    for (int ring = 0; ring < c; ring++) {\n        rings += (2 * a + 2 * b - 4);\n        a -= 4;\n        b -= 4;\n    }\n\n    printf(\"%d\\n\", rings);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 3,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n\nint main() {\n    int a, b, c;\n    scanf(\"%d %d %d\", &a, &b, &c);\n    int rings = 0;\n\n    for (int ring = 0; ring < c; ring++) {\n        rings += (2 * a + 2 * b - 4);\n        a -= 4;\n        b -= 4;\n    }\n\n    printf(\"%d\\n\", rings);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 4,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n\nint main() {\n    int a, b, c;\n    scanf(\"%d %d %d\", &a, &b, &c);\n    int rings = 0;\n\n    for (int ring = 0; ring < c; ring++) {\n        rings += (2 * a + 2 * b - 4);\n        a -= 4;\n        b -= 4;\n    }\n\n    printf(\"%d\\n\", rings);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                }
+            ],
+            "usage": {
+                "prompt_tokens": 580,
+                "completion_tokens": 540,
+                "total_tokens": 1120
+            }
+        }
+    },
+    "source_data": {
+        "code_uid": "7eeacaddf49d6ae90b48e4eec3fee229",
+        "prob_desc_output_to": "standard output",
+        "prob_desc_notes": "NoteThe first example is shown on the picture below.  The second example is shown on the picture below.  The third example is shown in the problem description.",
+        "lang_cluster": "Python",
+        "prob_desc_time_limit": "1 second",
+        "prob_desc_input_spec": "The only line contains three integers $$$w$$$, $$$h$$$ and $$$k$$$ ($$$3 \\le w, h \\le 100$$$, $$$1 \\le k \\le \\left\\lfloor \\frac{min(n, m) + 1}{4}\\right\\rfloor$$$, where $$$\\lfloor x \\rfloor$$$ denotes the number $$$x$$$ rounded down) \u2014 the number of rows, columns and the number of rings, respectively.",
+        "source_code": "fin = input()\n\na, b, c = map(int, fin.split())\nrings = 0\n\nfor ring in range(c):\n  rings = rings + (2 * a + 2 * b - 4)\n\n  a = a - 4\n  b = b - 4\n\nprint(rings)\n",
+        "prob_desc_sample_inputs": [
+            "3 3 1",
+            "7 9 1",
+            "7 9 2"
+        ],
+        "prob_desc_memory_limit": "256 megabytes",
+        "exec_outcome": "PASSED",
+        "prob_desc_output_spec": "Print a single positive integer\u00a0\u2014 the number of cells to be gilded.",
+        "src_uid": "2c98d59917337cb321d76f72a1b3c057",
+        "prob_desc_input_from": "standard input",
+        "lang": "Python 3",
+        "prob_desc_sample_outputs": [
+            "8",
+            "28",
+            "40"
+        ],
+        "file_name": "d7021504500d5ca7c2b02df8100a574d159e6e67e20ec8071b75800b1267370a",
+        "prob_desc_description": "You have a plate and you want to add some gilding to it. The plate is a rectangle that we split into $$$w\\times h$$$ cells. There should be $$$k$$$ gilded rings, the first one should go along the edge of the plate, the second one\u00a0\u2014 $$$2$$$ cells away from the edge and so on. Each ring has a width of $$$1$$$ cell. Formally, the $$$i$$$-th of these rings should consist of all bordering cells on the inner rectangle of size $$$(w - 4(i - 1))\\times(h - 4(i - 1))$$$.  The picture corresponds to the third example. Your task is to compute the number of cells to be gilded.",
+        "prob_desc_created_at": "1540109400",
+        "difficulty": 800.0,
+        "hidden_unit_tests": "[{\"input\": \"3 3 1\\r\\n\", \"output\": [\"8\"]}, {\"input\": \"7 9 1\\r\\n\", \"output\": [\"28\"]}, {\"input\": \"7 9 2\\r\\n\", \"output\": [\"40\"]}, {\"input\": \"18 26 3\\r\\n\", \"output\": [\"204\"]}, {\"input\": \"63 34 8\\r\\n\", \"output\": [\"1072\"]}, {\"input\": \"100 100 25\\r\\n\", \"output\": [\"5100\"]}, {\"input\": \"4 3 1\\r\\n\", \"output\": [\"10\"]}, {\"input\": \"3 4 1\\r\\n\", \"output\": [\"10\"]}, {\"input\": \"3 10 1\\r\\n\", \"output\": [\"22\"]}, {\"input\": \"12 3 1\\r\\n\", \"output\": [\"26\"]}, {\"input\": \"4 4 1\\r\\n\", \"output\": [\"12\"]}, {\"input\": \"10 4 1\\r\\n\", \"output\": [\"24\"]}, {\"input\": \"4 12 1\\r\\n\", \"output\": [\"28\"]}, {\"input\": \"10 10 1\\r\\n\", \"output\": [\"36\"]}, {\"input\": \"10 10 2\\r\\n\", \"output\": [\"56\"]}, {\"input\": \"12 10 1\\r\\n\", \"output\": [\"40\"]}, {\"input\": \"10 12 2\\r\\n\", \"output\": [\"64\"]}, {\"input\": \"12 11 1\\r\\n\", \"output\": [\"42\"]}, {\"input\": \"11 12 2\\r\\n\", \"output\": [\"68\"]}, {\"input\": \"12 11 3\\r\\n\", \"output\": [\"78\"]}, {\"input\": \"100 8 2\\r\\n\", \"output\": [\"408\"]}, {\"input\": \"8 100 2\\r\\n\", \"output\": [\"408\"]}, {\"input\": \"100 100 20\\r\\n\", \"output\": [\"4880\"]}, {\"input\": \"74 50 5\\r\\n\", \"output\": [\"1060\"]}, {\"input\": \"43 75 9\\r\\n\", \"output\": [\"1512\"]}, {\"input\": \"5 5 1\\r\\n\", \"output\": [\"16\"]}]",
+        "source_lang": "Python 3",
+        "target_lang": "C"
+    }
+}

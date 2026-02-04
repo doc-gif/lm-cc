@@ -1,0 +1,89 @@
+{
+    "oai_response": {
+        "prompt": "Here is code in Python 3 programming lanaguge. Translate the following code from Python 3 to C programming lanaguge. Do not output any extra description or tokens other than the translated code. \n\nst = input()\nworks = True\nfor i in st:\n    if(i != \"1\" and i != \"4\"):\n        works = False\nif(st[0] != \"1\"):\n    works = False\nfor i in range(len(st) - 2):\n    if(st[i] == \"4\" and st[i + 1] == \"4\" and st[i + 2] == \"4\"):\n        works = False\n        break\nif(works):\n    print(\"YES\")\nelse:\n    print(\"NO\")||END-of-SRC||",
+        "response": {
+            "id": "multi-call-as-qszumjkc4m",
+            "model": "deepseek-v3",
+            "created": 1767067208,
+            "choices": [
+                {
+                    "index": 0,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <string.h>\n#include <stdbool.h>\n\nint main() {\n    char st[100];\n    scanf(\"%s\", st);\n    bool works = true;\n    for (int i = 0; i < strlen(st); i++) {\n        if (st[i] != '1' && st[i] != '4') {\n            works = false;\n        }\n    }\n    if (st[0] != '1') {\n        works = false;\n    }\n    for (int i = 0; i < strlen(st) - 2; i++) {\n        if (st[i] == '4' && st[i + 1] == '4' && st[i + 2] == '4') {\n            works = false;\n            break;\n        }\n    }\n    if (works) {\n        printf(\"YES\\n\");\n    } else {\n        printf(\"NO\\n\");\n    }\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 1,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <string.h>\n#include <stdbool.h>\n\nint main() {\n    char st[100];\n    scanf(\"%s\", st);\n    bool works = true;\n    for (int i = 0; i < strlen(st); i++) {\n        if (st[i] != '1' && st[i] != '4') {\n            works = false;\n        }\n    }\n    if (st[0] != '1') {\n        works = false;\n    }\n    for (int i = 0; i < strlen(st) - 2; i++) {\n        if (st[i] == '4' && st[i+1] == '4' && st[i+2] == '4') {\n            works = false;\n            break;\n        }\n    }\n    if (works) {\n        printf(\"YES\\n\");\n    } else {\n        printf(\"NO\\n\");\n    }\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 2,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <stdbool.h>\n#include <string.h>\n\nint main() {\n    char st[100];\n    scanf(\"%s\", st);\n    bool works = true;\n    for (int i = 0; st[i] != '\\0'; i++) {\n        if (st[i] != '1' && st[i] != '4') {\n            works = false;\n        }\n    }\n    if (st[0] != '1') {\n        works = false;\n    }\n    for (int i = 0; i < strlen(st) - 2; i++) {\n        if (st[i] == '4' && st[i + 1] == '4' && st[i + 2] == '4') {\n            works = false;\n            break;\n        }\n    }\n    if (works) {\n        printf(\"YES\\n\");\n    } else {\n        printf(\"NO\\n\");\n    }\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 3,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <stdbool.h>\n#include <string.h>\n\nint main() {\n    char st[100];\n    scanf(\"%s\", st);\n    bool works = true;\n    for (int i = 0; st[i] != '\\0'; i++) {\n        if (st[i] != '1' && st[i] != '4') {\n            works = false;\n        }\n    }\n    if (st[0] != '1') {\n        works = false;\n    }\n    for (int i = 0; i < strlen(st) - 2; i++) {\n        if (st[i] == '4' && st[i + 1] == '4' && st[i + 2] == '4') {\n            works = false;\n            break;\n        }\n    }\n    if (works) {\n        printf(\"YES\\n\");\n    } else {\n        printf(\"NO\\n\");\n    }\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 4,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <stdbool.h>\n#include <string.h>\n\nint main() {\n    char st[100];\n    scanf(\"%s\", st);\n    bool works = true;\n    for (int i = 0; st[i] != '\\0'; i++) {\n        if (st[i] != '1' && st[i] != '4') {\n            works = false;\n        }\n    }\n    if (st[0] != '1') {\n        works = false;\n    }\n    for (int i = 0; i < strlen(st) - 2; i++) {\n        if (st[i] == '4' && st[i + 1] == '4' && st[i + 2] == '4') {\n            works = false;\n            break;\n        }\n    }\n    if (works) {\n        printf(\"YES\\n\");\n    } else {\n        printf(\"NO\\n\");\n    }\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                }
+            ],
+            "usage": {
+                "prompt_tokens": 810,
+                "completion_tokens": 1022,
+                "total_tokens": 1832
+            }
+        }
+    },
+    "source_data": {
+        "code_uid": "f50525c28ad278cd13f07534e74b3452",
+        "prob_desc_output_to": "standard output",
+        "prob_desc_notes": null,
+        "lang_cluster": "Python",
+        "prob_desc_time_limit": "2 seconds",
+        "prob_desc_input_spec": "The first line of input contains an integer n, (1\u2009\u2264\u2009n\u2009\u2264\u2009109). This number doesn't contain leading zeros.",
+        "source_code": "st = input()\nworks = True\nfor i in st:\n    if(i != \"1\" and i != \"4\"):\n        works = False\nif(st[0] != \"1\"):\n    works = False\nfor i in range(len(st) - 2):\n    if(st[i] == \"4\" and st[i + 1] == \"4\" and st[i + 2] == \"4\"):\n        works = False\n        break\nif(works):\n    print(\"YES\")\nelse:\n    print(\"NO\")",
+        "prob_desc_sample_inputs": [
+            "114114",
+            "1111",
+            "441231"
+        ],
+        "prob_desc_memory_limit": "256 megabytes",
+        "exec_outcome": "PASSED",
+        "prob_desc_output_spec": "Print \"YES\" if n is a magic number or print \"NO\" if it's not.",
+        "src_uid": "3153cfddae27fbd817caaf2cb7a6a4b5",
+        "prob_desc_input_from": "standard input",
+        "lang": "Python 3",
+        "prob_desc_sample_outputs": [
+            "YES",
+            "YES",
+            "NO"
+        ],
+        "file_name": "d7021504500d5ca7c2b02df8100a574d159e6e67e20ec8071b75800b1267370a",
+        "prob_desc_description": "A magic number is a number formed by concatenation of numbers 1, 14 and 144. We can use each of these numbers any number of times. Therefore 14144, 141414 and 1411 are magic numbers but 1444, 514 and 414 are not.You're given a number. Determine if it is a magic number or not.",
+        "prob_desc_created_at": "1371992400",
+        "difficulty": 900.0,
+        "hidden_unit_tests": "[{\"input\": \"114114\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"1111\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"441231\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"1\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"14\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"114\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"9\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"414\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"1000000000\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"144144144\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"1444\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"11\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"141414141\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"11110111\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"114114144\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"444\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"9999\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"111444\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"11114\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"41111\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"114414441\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"144414441\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"144244144\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"111111111\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"144444444\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"444444444\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"141441441\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"441\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"15\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"14444\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"11444\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"144\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"1414414\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"141444\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"14144\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"4\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"1144\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"141111444\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"14414414\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"141414144\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"1414\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"1441\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"12\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"144144141\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"144144\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"14414411\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"14414\\r\\n\", \"output\": [\"YES\"]}]",
+        "source_lang": "Python 3",
+        "target_lang": "C"
+    }
+}

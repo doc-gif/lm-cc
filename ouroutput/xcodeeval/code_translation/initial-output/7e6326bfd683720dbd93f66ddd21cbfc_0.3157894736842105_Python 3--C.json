@@ -1,0 +1,89 @@
+{
+    "oai_response": {
+        "prompt": "Here is code in Python 3 programming lanaguge. Translate the following code from Python 3 to C programming lanaguge. Do not output any extra description or tokens other than the translated code. \n\nfrom math import ceil\n\nn = int(input())\nm = int(input())\nif n <= 27:\t\n\tprint(ceil(m%pow(2,n)))\nelse:\n\tprint(m)||END-of-SRC||",
+        "response": {
+            "id": "multi-call-as-wmnc3x2i98",
+            "model": "deepseek-v3",
+            "created": 1767068427,
+            "choices": [
+                {
+                    "index": 0,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <math.h>\n\nint main() {\n    int n, m;\n    scanf(\"%d\", &n);\n    scanf(\"%d\", &m);\n    if (n <= 27) {\n        printf(\"%d\\n\", (int)ceil(fmod(m, pow(2, n))));\n    } else {\n        printf(\"%d\\n\", m);\n    }\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 1,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <math.h>\n\nint main() {\n    int n, m;\n    scanf(\"%d\", &n);\n    scanf(\"%d\", &m);\n    if (n <= 27) {\n        printf(\"%d\\n\", (int)ceil(fmod(m, pow(2, n))));\n    } else {\n        printf(\"%d\\n\", m);\n    }\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 2,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <math.h>\n\nint main() {\n    int n, m;\n    scanf(\"%d\", &n);\n    scanf(\"%d\", &m);\n    if (n <= 27) {\n        printf(\"%d\\n\", (int)ceil(fmod(m, pow(2, n))));\n    } else {\n        printf(\"%d\\n\", m);\n    }\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 3,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <math.h>\n\nint main() {\n    int n, m;\n    scanf(\"%d\", &n);\n    scanf(\"%d\", &m);\n    if (n <= 27) {\n        printf(\"%d\\n\", (int)ceil(fmod(m, pow(2, n))));\n    } else {\n        printf(\"%d\\n\", m);\n    }\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 4,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <math.h>\n\nint main() {\n    int n, m;\n    scanf(\"%d\", &n);\n    scanf(\"%d\", &m);\n    if (n <= 27) {\n        printf(\"%d\\n\", (int)ceil(fmod(m, pow(2, n))));\n    } else {\n        printf(\"%d\\n\", m);\n    }\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                }
+            ],
+            "usage": {
+                "prompt_tokens": 440,
+                "completion_tokens": 454,
+                "total_tokens": 894
+            }
+        }
+    },
+    "source_data": {
+        "code_uid": "7e6326bfd683720dbd93f66ddd21cbfc",
+        "prob_desc_output_to": "standard output",
+        "prob_desc_notes": "NoteIn the first example, the remainder of division of 42 by 24\u2009=\u200916 is equal to 10.In the second example, 58 is divisible by 21\u2009=\u20092 without remainder, and the answer is 0.",
+        "lang_cluster": "Python",
+        "prob_desc_time_limit": "1 second",
+        "prob_desc_input_spec": "The first line contains a single integer n (1\u2009\u2264\u2009n\u2009\u2264\u2009108). The second line contains a single integer m (1\u2009\u2264\u2009m\u2009\u2264\u2009108).",
+        "source_code": "from math import ceil\n\nn = int(input())\nm = int(input())\nif n <= 27:\t\n\tprint(ceil(m%pow(2,n)))\nelse:\n\tprint(m)",
+        "prob_desc_sample_inputs": [
+            "4\n42",
+            "1\n58",
+            "98765432\n23456789"
+        ],
+        "prob_desc_memory_limit": "256 megabytes",
+        "exec_outcome": "PASSED",
+        "prob_desc_output_spec": "Output a single integer\u00a0\u2014 the value of .",
+        "src_uid": "c649052b549126e600691931b512022f",
+        "prob_desc_input_from": "standard input",
+        "lang": "Python 3",
+        "prob_desc_sample_outputs": [
+            "10",
+            "0",
+            "23456789"
+        ],
+        "file_name": "d7021504500d5ca7c2b02df8100a574d159e6e67e20ec8071b75800b1267370a",
+        "prob_desc_description": "The following problem is well-known: given integers n and m, calculate , where 2n\u2009=\u20092\u00b72\u00b7...\u00b72 (n factors), and  denotes the remainder of division of x by y.You are asked to solve the \"reverse\" problem. Given integers n and m, calculate . ",
+        "prob_desc_created_at": "1515422700",
+        "difficulty": 900.0,
+        "hidden_unit_tests": "[{\"input\": \"4\\r\\n42\\r\\n\", \"output\": [\"10\"]}, {\"input\": \"1\\r\\n58\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"98765432\\r\\n23456789\\r\\n\", \"output\": [\"23456789\"]}, {\"input\": \"8\\r\\n88127381\\r\\n\", \"output\": [\"149\"]}, {\"input\": \"32\\r\\n92831989\\r\\n\", \"output\": [\"92831989\"]}, {\"input\": \"92831989\\r\\n25\\r\\n\", \"output\": [\"25\"]}, {\"input\": \"100000000\\r\\n100000000\\r\\n\", \"output\": [\"100000000\"]}, {\"input\": \"7\\r\\n1234\\r\\n\", \"output\": [\"82\"]}, {\"input\": \"1\\r\\n1\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"1\\r\\n100000000\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"100000000\\r\\n1\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"1\\r\\n2\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"2\\r\\n1\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"2\\r\\n2\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"2\\r\\n3\\r\\n\", \"output\": [\"3\"]}, {\"input\": \"2\\r\\n4\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"2\\r\\n5\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"25\\r\\n33554432\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"26\\r\\n33554432\\r\\n\", \"output\": [\"33554432\"]}, {\"input\": \"25\\r\\n67108864\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"26\\r\\n67108864\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"25\\r\\n92831989\\r\\n\", \"output\": [\"25723125\"]}, {\"input\": \"26\\r\\n92831989\\r\\n\", \"output\": [\"25723125\"]}, {\"input\": \"27\\r\\n92831989\\r\\n\", \"output\": [\"92831989\"]}, {\"input\": \"29\\r\\n92831989\\r\\n\", \"output\": [\"92831989\"]}, {\"input\": \"30\\r\\n92831989\\r\\n\", \"output\": [\"92831989\"]}, {\"input\": \"31\\r\\n92831989\\r\\n\", \"output\": [\"92831989\"]}, {\"input\": \"99812399\\r\\n93172892\\r\\n\", \"output\": [\"93172892\"]}, {\"input\": \"67108864\\r\\n12345678\\r\\n\", \"output\": [\"12345678\"]}, {\"input\": \"3\\r\\n98391849\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"13\\r\\n1231232\\r\\n\", \"output\": [\"2432\"]}, {\"input\": \"18\\r\\n9842194\\r\\n\", \"output\": [\"142866\"]}, {\"input\": \"24\\r\\n71237177\\r\\n\", \"output\": [\"4128313\"]}, {\"input\": \"11\\r\\n65535\\r\\n\", \"output\": [\"2047\"]}, {\"input\": \"11\\r\\n65536\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"12\\r\\n123\\r\\n\", \"output\": [\"123\"]}, {\"input\": \"123456\\r\\n12\\r\\n\", \"output\": [\"12\"]}, {\"input\": \"88\\r\\n888\\r\\n\", \"output\": [\"888\"]}, {\"input\": \"888\\r\\n88\\r\\n\", \"output\": [\"88\"]}, {\"input\": \"8888\\r\\n8888\\r\\n\", \"output\": [\"8888\"]}, {\"input\": \"64\\r\\n128\\r\\n\", \"output\": [\"128\"]}, {\"input\": \"128\\r\\n64\\r\\n\", \"output\": [\"64\"]}, {\"input\": \"60\\r\\n9999999\\r\\n\", \"output\": [\"9999999\"]}, {\"input\": \"200\\r\\n100000\\r\\n\", \"output\": [\"100000\"]}, {\"input\": \"3\\r\\n8\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"10000000\\r\\n25024886\\r\\n\", \"output\": [\"25024886\"]}, {\"input\": \"100\\r\\n100000\\r\\n\", \"output\": [\"100000\"]}, {\"input\": \"99999999\\r\\n100000000\\r\\n\", \"output\": [\"100000000\"]}, {\"input\": \"70\\r\\n12345678\\r\\n\", \"output\": [\"12345678\"]}]",
+        "source_lang": "Python 3",
+        "target_lang": "C"
+    }
+}

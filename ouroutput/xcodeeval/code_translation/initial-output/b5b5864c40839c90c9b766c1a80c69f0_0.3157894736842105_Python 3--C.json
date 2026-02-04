@@ -1,0 +1,87 @@
+{
+    "oai_response": {
+        "prompt": "Here is code in Python 3 programming lanaguge. Translate the following code from Python 3 to C programming lanaguge. Do not output any extra description or tokens other than the translated code. \n\nw1, h1, w2, h2 = map(int, input().split())\nans = (w1 + 2) + h1 + (h2 + 1) + (w2 + 1) + h2 + h1 + w1 - w2\nprint(ans)\n||END-of-SRC||",
+        "response": {
+            "id": "multi-call-as-0998xgt0u5",
+            "model": "deepseek-v3",
+            "created": 1767068491,
+            "choices": [
+                {
+                    "index": 0,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n\nint main() {\n    int w1, h1, w2, h2;\n    scanf(\"%d %d %d %d\", &w1, &h1, &w2, &h2);\n    int ans = (w1 + 2) + h1 + (h2 + 1) + (w2 + 1) + h2 + h1 + w1 - w2;\n    printf(\"%d\\n\", ans);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 1,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n\nint main() {\n    int w1, h1, w2, h2;\n    scanf(\"%d %d %d %d\", &w1, &h1, &w2, &h2);\n    int ans = (w1 + 2) + h1 + (h2 + 1) + (w2 + 1) + h2 + h1 + w1 - w2;\n    printf(\"%d\\n\", ans);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 2,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n\nint main() {\n    int w1, h1, w2, h2;\n    scanf(\"%d %d %d %d\", &w1, &h1, &w2, &h2);\n    int ans = (w1 + 2) + h1 + (h2 + 1) + (w2 + 1) + h2 + h1 + w1 - w2;\n    printf(\"%d\\n\", ans);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 3,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n\nint main() {\n    int w1, h1, w2, h2;\n    scanf(\"%d %d %d %d\", &w1, &h1, &w2, &h2);\n    int ans = (w1 + 2) + h1 + (h2 + 1) + (w2 + 1) + h2 + h1 + w1 - w2;\n    printf(\"%d\\n\", ans);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 4,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n\nint main() {\n    int w1, h1, w2, h2;\n    scanf(\"%d %d %d %d\", &w1, &h1, &w2, &h2);\n    int ans = (w1 + 2) + h1 + (h2 + 1) + (w2 + 1) + h2 + h1 + w1 - w2;\n    printf(\"%d\\n\", ans);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                }
+            ],
+            "usage": {
+                "prompt_tokens": 570,
+                "completion_tokens": 557,
+                "total_tokens": 1127
+            }
+        }
+    },
+    "source_data": {
+        "code_uid": "b5b5864c40839c90c9b766c1a80c69f0",
+        "prob_desc_output_to": "standard output",
+        "prob_desc_notes": "NoteIn the first example the field looks as follows (the first rectangle is red, the second rectangle is blue, green shows the marked squares):  In the second example the field looks as:  ",
+        "lang_cluster": "Python",
+        "prob_desc_time_limit": "1 second",
+        "prob_desc_input_spec": "Four lines contain integers $$$w_1, h_1, w_2$$$ and $$$h_2$$$ ($$$1 \\leq w_1, h_1, w_2, h_2 \\leq 10^8$$$, $$$w_1 \\ge w_2$$$)\u00a0\u2014 the width of the first rectangle, the height of the first rectangle, the width of the second rectangle and the height of the second rectangle. You can't rotate the rectangles.",
+        "source_code": "w1, h1, w2, h2 = map(int, input().split())\nans = (w1 + 2) + h1 + (h2 + 1) + (w2 + 1) + h2 + h1 + w1 - w2\nprint(ans)\n",
+        "prob_desc_sample_inputs": [
+            "2 1 2 1",
+            "2 2 1 2"
+        ],
+        "prob_desc_memory_limit": "256 megabytes",
+        "exec_outcome": "PASSED",
+        "prob_desc_output_spec": "Print exactly one integer\u00a0\u2014 the number of cells, which should be marked after the ship is destroyed.",
+        "src_uid": "b5d44e0041053c996938aadd1b3865f6",
+        "prob_desc_input_from": "standard input",
+        "lang": "Python 3",
+        "prob_desc_sample_outputs": [
+            "12",
+            "16"
+        ],
+        "file_name": "d7021504500d5ca7c2b02df8100a574d159e6e67e20ec8071b75800b1267370a",
+        "prob_desc_description": "In order to make the \"Sea Battle\" game more interesting, Boris decided to add a new ship type to it. The ship consists of two rectangles. The first rectangle has a width of $$$w_1$$$ and a height of $$$h_1$$$, while the second rectangle has a width of $$$w_2$$$ and a height of $$$h_2$$$, where $$$w_1 \\ge w_2$$$. In this game, exactly one ship is used, made up of two rectangles. There are no other ships on the field.The rectangles are placed on field in the following way:  the second rectangle is on top the first rectangle;  they are aligned to the left, i.e. their left sides are on the same line;  the rectangles are adjacent to each other without a gap. See the pictures in the notes: the first rectangle is colored red, the second rectangle is colored blue.Formally, let's introduce a coordinate system. Then, the leftmost bottom cell of the first rectangle has coordinates $$$(1, 1)$$$, the rightmost top cell of the first rectangle has coordinates $$$(w_1, h_1)$$$, the leftmost bottom cell of the second rectangle has coordinates $$$(1, h_1 + 1)$$$ and the rightmost top cell of the second rectangle has coordinates $$$(w_2, h_1 + h_2)$$$.After the ship is completely destroyed, all cells neighboring by side or a corner with the ship are marked. Of course, only cells, which don't belong to the ship are marked. On the pictures in the notes such cells are colored green.Find out how many cells should be marked after the ship is destroyed. The field of the game is infinite in any direction.",
+        "prob_desc_created_at": "1550917200",
+        "difficulty": 800.0,
+        "hidden_unit_tests": "[{\"input\": \"2 1 2 1\\r\\n\", \"output\": [\"12\"]}, {\"input\": \"2 2 1 2\\r\\n\", \"output\": [\"16\"]}, {\"input\": \"1 1 1 1\\r\\n\", \"output\": [\"10\"]}, {\"input\": \"1 50 1 50\\r\\n\", \"output\": [\"206\"]}, {\"input\": \"6 4 2 7\\r\\n\", \"output\": [\"38\"]}, {\"input\": \"100000000 100000000 99999999 100000000\\r\\n\", \"output\": [\"600000004\"]}, {\"input\": \"100000000 1 100000000 1\\r\\n\", \"output\": [\"200000008\"]}, {\"input\": \"19661988 30021918 8795449 27534575\\r\\n\", \"output\": [\"154436966\"]}, {\"input\": \"98948781 84140283 95485812 84557929\\r\\n\", \"output\": [\"535293990\"]}, {\"input\": \"47 40 42 49\\r\\n\", \"output\": [\"276\"]}, {\"input\": \"18 3 8 15\\r\\n\", \"output\": [\"76\"]}, {\"input\": \"49 45 49 46\\r\\n\", \"output\": [\"284\"]}, {\"input\": \"50 50 50 50\\r\\n\", \"output\": [\"304\"]}, {\"input\": \"24 25 16 38\\r\\n\", \"output\": [\"178\"]}, {\"input\": \"23 1 12 2\\r\\n\", \"output\": [\"56\"]}, {\"input\": \"1000000 1000000 1000000 1000000\\r\\n\", \"output\": [\"6000004\"]}, {\"input\": \"1000000 1000000 999999 1000000\\r\\n\", \"output\": [\"6000004\"]}, {\"input\": \"1000000 1 1000000 1\\r\\n\", \"output\": [\"2000008\"]}, {\"input\": \"672810 797124 51792 404095\\r\\n\", \"output\": [\"3748062\"]}, {\"input\": \"960051 866743 887923 926936\\r\\n\", \"output\": [\"5507464\"]}, {\"input\": \"100000000 100000000 100000000 100000000\\r\\n\", \"output\": [\"600000004\"]}, {\"input\": \"1000 1000 700 20000\\r\\n\", \"output\": [\"44004\"]}]",
+        "source_lang": "Python 3",
+        "target_lang": "C"
+    }
+}

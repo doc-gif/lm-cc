@@ -1,0 +1,87 @@
+{
+    "oai_response": {
+        "prompt": "Here is code in Python 3 programming lanaguge. Translate the following code from Python 3 to C programming lanaguge. Do not output any extra description or tokens other than the translated code. \n\ndef pixel(input):\n    red, green, blue = input.split()\n    red = int(red)\n    green = int(green)\n    blue = int(blue)\n\n    plist = [red,green,blue]\n    plist.sort()\n\n    lowestChet = is_chet(plist[0])\n    midChet = is_chet(plist[1])\n\n    if ((midChet + lowestChet) == 2) or ((midChet + lowestChet) == 0):\n        return plist[1]\n    else:\n        return plist[2]\n\n\ndef is_chet(n):\n    return 1 if n % 2 == 0 else 0\n    \nprint(pixel(input()))||END-of-SRC||",
+        "response": {
+            "id": "multi-call-as-f2y1qytehu",
+            "model": "deepseek-v3",
+            "created": 1767069822,
+            "choices": [
+                {
+                    "index": 0,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\nint is_chet(int n) {\n    return n % 2 == 0 ? 1 : 0;\n}\n\nint pixel(char* input) {\n    int red, green, blue;\n    sscanf(input, \"%d %d %d\", &red, &green, &blue);\n\n    int plist[3] = {red, green, blue};\n    for (int i = 0; i < 2; i++) {\n        for (int j = 0; j < 2 - i; j++) {\n            if (plist[j] > plist[j + 1]) {\n                int temp = plist[j];\n                plist[j] = plist[j + 1];\n                plist[j + 1] = temp;\n            }\n        }\n    }\n\n    int lowestChet = is_chet(plist[0]);\n    int midChet = is_chet(plist[1]);\n\n    if ((midChet + lowestChet) == 2 || (midChet + lowestChet) == 0) {\n        return plist[1];\n    } else {\n        return plist[2];\n    }\n}\n\nint main() {\n    char input[100];\n    fgets(input, sizeof(input), stdin);\n    printf(\"%d\\n\", pixel(input));\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 1,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <stdlib.h>\n\nint is_chet(int n) {\n    return n % 2 == 0 ? 1 : 0;\n}\n\nint pixel(int red, int green, int blue) {\n    int plist[3] = {red, green, blue};\n    \n    // Sort the array\n    for (int i = 0; i < 2; i++) {\n        for (int j = 0; j < 2 - i; j++) {\n            if (plist[j] > plist[j + 1]) {\n                int temp = plist[j];\n                plist[j] = plist[j + 1];\n                plist[j + 1] = temp;\n            }\n        }\n    }\n    \n    int lowestChet = is_chet(plist[0]);\n    int midChet = is_chet(plist[1]);\n    \n    if ((midChet + lowestChet) == 2 || (midChet + lowestChet) == 0) {\n        return plist[1];\n    } else {\n        return plist[2];\n    }\n}\n\nint main() {\n    int red, green, blue;\n    scanf(\"%d %d %d\", &red, &green, &blue);\n    printf(\"%d\", pixel(red, green, blue));\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 2,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <stdlib.h>\n\nint is_chet(int n) {\n    return n % 2 == 0 ? 1 : 0;\n}\n\nint pixel(int red, int green, int blue) {\n    int plist[3] = {red, green, blue};\n    \n    // Sort the array\n    for (int i = 0; i < 2; i++) {\n        for (int j = 0; j < 2 - i; j++) {\n            if (plist[j] > plist[j + 1]) {\n                int temp = plist[j];\n                plist[j] = plist[j + 1];\n                plist[j + 1] = temp;\n            }\n        }\n    }\n    \n    int lowestChet = is_chet(plist[0]);\n    int midChet = is_chet(plist[1]);\n    \n    if ((midChet + lowestChet) == 2 || (midChet + lowestChet) == 0) {\n        return plist[1];\n    } else {\n        return plist[2];\n    }\n}\n\nint main() {\n    int red, green, blue;\n    scanf(\"%d %d %d\", &red, &green, &blue);\n    printf(\"%d\", pixel(red, green, blue));\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 3,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\nint is_chet(int n) {\n    return n % 2 == 0 ? 1 : 0;\n}\n\nint pixel(char* input) {\n    int red, green, blue;\n    sscanf(input, \"%d %d %d\", &red, &green, &blue);\n\n    int plist[3] = {red, green, blue};\n    for (int i = 0; i < 2; i++) {\n        for (int j = 0; j < 2 - i; j++) {\n            if (plist[j] > plist[j + 1]) {\n                int temp = plist[j];\n                plist[j] = plist[j + 1];\n                plist[j + 1] = temp;\n            }\n        }\n    }\n\n    int lowestChet = is_chet(plist[0]);\n    int midChet = is_chet(plist[1]);\n\n    if ((midChet + lowestChet) == 2 || (midChet + lowestChet) == 0) {\n        return plist[1];\n    } else {\n        return plist[2];\n    }\n}\n\nint main() {\n    char input[100];\n    fgets(input, sizeof(input), stdin);\n    printf(\"%d\\n\", pixel(input));\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 4,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <stdlib.h>\n\nint is_chet(int n) {\n    return n % 2 == 0 ? 1 : 0;\n}\n\nint pixel(int red, int green, int blue) {\n    int plist[3] = {red, green, blue};\n    \n    // Sort the array\n    for (int i = 0; i < 3; i++) {\n        for (int j = i + 1; j < 3; j++) {\n            if (plist[i] > plist[j]) {\n                int temp = plist[i];\n                plist[i] = plist[j];\n                plist[j] = temp;\n            }\n        }\n    }\n    \n    int lowestChet = is_chet(plist[0]);\n    int midChet = is_chet(plist[1]);\n    \n    if ((midChet + lowestChet) == 2 || (midChet + lowestChet) == 0) {\n        return plist[1];\n    } else {\n        return plist[2];\n    }\n}\n\nint main() {\n    int red, green, blue;\n    scanf(\"%d %d %d\", &red, &green, &blue);\n    printf(\"%d\", pixel(red, green, blue));\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                }
+            ],
+            "usage": {
+                "prompt_tokens": 1015,
+                "completion_tokens": 1480,
+                "total_tokens": 2495
+            }
+        }
+    },
+    "source_data": {
+        "code_uid": "d2a21bc1482870decf9f7c6317b170e8",
+        "prob_desc_output_to": "standard output",
+        "prob_desc_notes": "NoteIn the first test sample the country needs only one fight to achieve peace and prosperity. Besides, it can be any fight whatsoever. For example, let's assume that the green and the blue pixels fight, then the surviving pixel will be red. As a result, after the fight there are two red pixels. There won't be other pixels.In the second sample the following sequence of fights is possible: red and blue, green and red, red and blue. As a result, after all fights there is one green pixel left.",
+        "lang_cluster": "Python",
+        "prob_desc_time_limit": "2 seconds",
+        "prob_desc_input_spec": "The first line contains three space-separated integers a, b and c (0\u2009\u2264\u2009a,\u2009b,\u2009c\u2009\u2264\u2009231;\u00a0a\u2009+\u2009b\u2009+\u2009c\u2009&gt;\u20090) \u2014 the number of red, green and blue pixels, correspondingly.",
+        "source_code": "def pixel(input):\n    red, green, blue = input.split()\n    red = int(red)\n    green = int(green)\n    blue = int(blue)\n\n    plist = [red,green,blue]\n    plist.sort()\n\n    lowestChet = is_chet(plist[0])\n    midChet = is_chet(plist[1])\n\n    if ((midChet + lowestChet) == 2) or ((midChet + lowestChet) == 0):\n        return plist[1]\n    else:\n        return plist[2]\n\n\ndef is_chet(n):\n    return 1 if n % 2 == 0 else 0\n    \nprint(pixel(input()))",
+        "prob_desc_sample_inputs": [
+            "1 1 1",
+            "3 1 0"
+        ],
+        "prob_desc_memory_limit": "256 megabytes",
+        "exec_outcome": "PASSED",
+        "prob_desc_output_spec": "Print a single number \u2014 the minimum number of pixel fights before the country becomes peaceful and prosperous. If making the country peaceful and prosperous is impossible, print -1.",
+        "src_uid": "b8008caf788336775cb8ebb76478b04c",
+        "prob_desc_input_from": "standard input",
+        "lang": "Python 3",
+        "prob_desc_sample_outputs": [
+            "1",
+            "3"
+        ],
+        "file_name": "d7021504500d5ca7c2b02df8100a574d159e6e67e20ec8071b75800b1267370a",
+        "prob_desc_description": "Flatland is inhabited by pixels of three colors: red, green and blue. We know that if two pixels of different colors meet in a violent fight, only one of them survives the fight (that is, the total number of pixels decreases by one). Besides, if pixels of colors x and y (x\u2009\u2260\u2009y) meet in a violent fight, then the pixel that survives the fight immediately changes its color to z (z\u2009\u2260\u2009x;\u00a0z\u2009\u2260\u2009y). Pixels of the same color are friends, so they don't fight.The King of Flatland knows that his land will be peaceful and prosperous when the pixels are of the same color. For each of the three colors you know the number of pixels of this color that inhabit Flatland. Help the king and determine whether fights can bring peace and prosperity to the country and if it is possible, find the minimum number of fights needed to make the land peaceful and prosperous. ",
+        "prob_desc_created_at": "1342252500",
+        "difficulty": 2100.0,
+        "hidden_unit_tests": "[{\"input\": \"1 1 1\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"3 1 0\\r\\n\", \"output\": [\"3\"]}, {\"input\": \"1 4 4\\r\\n\", \"output\": [\"4\"]}, {\"input\": \"5 10 6\\r\\n\", \"output\": [\"10\"]}, {\"input\": \"6 8 10\\r\\n\", \"output\": [\"8\"]}, {\"input\": \"1 10 2\\r\\n\", \"output\": [\"10\"]}, {\"input\": \"10 6 8\\r\\n\", \"output\": [\"8\"]}, {\"input\": \"18 67 5\\r\\n\", \"output\": [\"67\"]}, {\"input\": \"67 81 1\\r\\n\", \"output\": [\"67\"]}, {\"input\": \"51 10 91\\r\\n\", \"output\": [\"91\"]}, {\"input\": \"48 6 7\\r\\n\", \"output\": [\"48\"]}, {\"input\": \"8 97 83\\r\\n\", \"output\": [\"97\"]}, {\"input\": \"2 7 95\\r\\n\", \"output\": [\"95\"]}, {\"input\": \"772486757 1747374885 377299255\\r\\n\", \"output\": [\"772486757\"]}, {\"input\": \"1358352906 27037371 1947040615\\r\\n\", \"output\": [\"1947040615\"]}, {\"input\": \"1944219055 454183506 1369298327\\r\\n\", \"output\": [\"1944219055\"]}, {\"input\": \"382601556 881329640 791556039\\r\\n\", \"output\": [\"881329640\"]}, {\"input\": \"246543403 71853598 1504509195\\r\\n\", \"output\": [\"1504509195\"]}, {\"input\": \"50606342 2 1134945035\\r\\n\", \"output\": [\"50606342\"]}, {\"input\": \"9 530792195 6\\r\\n\", \"output\": [\"530792195\"]}, {\"input\": \"1016450951 2 9\\r\\n\", \"output\": [\"1016450951\"]}, {\"input\": \"3 10 1007169359\\r\\n\", \"output\": [\"1007169359\"]}, {\"input\": \"0 1 0\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"1 0 0\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"0 0 1\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"3 2 0\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"0 3 2\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"3 0 2\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"10 10 0\\r\\n\", \"output\": [\"10\"]}, {\"input\": \"0 0 10\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"2 2 0\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"0 2 10\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"5 0 5\\r\\n\", \"output\": [\"5\"]}, {\"input\": \"5 9 0\\r\\n\", \"output\": [\"9\"]}, {\"input\": \"2147483648 2147483648 2147483648\\r\\n\", \"output\": [\"2147483648\"]}, {\"input\": \"2147483648 2147483647 2147483648\\r\\n\", \"output\": [\"2147483648\"]}, {\"input\": \"2147483648 0 0\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"2147483648 2147483648 0\\r\\n\", \"output\": [\"2147483648\"]}, {\"input\": \"2147483648 0 2147483647\\r\\n\", \"output\": [\"2147483648\"]}, {\"input\": \"2147483630 2147483642 2147483610\\r\\n\", \"output\": [\"2147483630\"]}, {\"input\": \"1 4 3\\r\\n\", \"output\": [\"3\"]}, {\"input\": \"1 2 3\\r\\n\", \"output\": [\"3\"]}, {\"input\": \"1 0 1\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"92134834 23742837 92374737\\r\\n\", \"output\": [\"92374737\"]}, {\"input\": \"92134834 23742837 92374738\\r\\n\", \"output\": [\"92374738\"]}, {\"input\": \"92134834 23742837 92374739\\r\\n\", \"output\": [\"92374739\"]}, {\"input\": \"9214834 2742837 9234739\\r\\n\", \"output\": [\"9234739\"]}, {\"input\": \"914835 2742837 9234739\\r\\n\", \"output\": [\"2742837\"]}, {\"input\": \"1 2 2147483648\\r\\n\", \"output\": [\"2147483648\"]}, {\"input\": \"0 0 58\\r\\n\", \"output\": [\"0\"]}]",
+        "source_lang": "Python 3",
+        "target_lang": "C"
+    }
+}

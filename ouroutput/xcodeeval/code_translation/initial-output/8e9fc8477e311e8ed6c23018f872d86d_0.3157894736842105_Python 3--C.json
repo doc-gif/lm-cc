@@ -1,0 +1,87 @@
+{
+    "oai_response": {
+        "prompt": "Here is code in Python 3 programming lanaguge. Translate the following code from Python 3 to C programming lanaguge. Do not output any extra description or tokens other than the translated code. \n\nmod=10**9+7\r\nk=int(input())\r\nprint((pow(4,2**k-2,mod)*6)%mod)||END-of-SRC||",
+        "response": {
+            "id": "multi-call-as-wbsee6j6kr",
+            "model": "deepseek-v3",
+            "created": 1767068858,
+            "choices": [
+                {
+                    "index": 0,
+                    "message": {
+                        "role": "assistant",
+                        "content": "Here's the translated code in C:\n\n```c\n#include <stdio.h>\n#include <math.h>\n\n#define MOD 1000000007\n\nint main() {\n    int k;\n    scanf(\"%d\", &k);\n    long long exponent = pow(2, k) - 2;\n    long long result = 1;\n    long long base = 4;\n    while (exponent > 0) {\n        if (exponent % 2 == 1) {\n            result = (result * base) % MOD;\n        }\n        base = (base * base) % MOD;\n        exponent /= 2;\n    }\n    printf(\"%lld\\n\", (result * 6) % MOD);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 1,
+                    "message": {
+                        "role": "assistant",
+                        "content": "Here's the translated code in C:\n\n```c\n#include <stdio.h>\n#include <math.h>\n\n#define MOD 1000000007\n\nlong long power(long long base, long long exp, long long mod) {\n    long long result = 1;\n    while (exp > 0) {\n        if (exp % 2 == 1) {\n            result = (result * base) % mod;\n        }\n        base = (base * base) % mod;\n        exp /= 2;\n    }\n    return result;\n}\n\nint main() {\n    int k;\n    scanf(\"%d\", &k);\n    long long exp = (1LL << k) - 2;\n    long long ans = (power(4, exp, MOD) * 6) % MOD;\n    printf(\"%lld\\n\", ans);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 2,
+                    "message": {
+                        "role": "assistant",
+                        "content": "Here's the translated code in C:\n\n```c\n#include <stdio.h>\n#include <math.h>\n\n#define MOD 1000000007\n\nint main() {\n    int k;\n    scanf(\"%d\", &k);\n    long long exponent = pow(2, k) - 2;\n    long long result = 1;\n    long long base = 4;\n    while (exponent > 0) {\n        if (exponent % 2 == 1) {\n            result = (result * base) % MOD;\n        }\n        base = (base * base) % MOD;\n        exponent /= 2;\n    }\n    printf(\"%lld\\n\", (result * 6) % MOD);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 3,
+                    "message": {
+                        "role": "assistant",
+                        "content": "Here's the translated code in C:\n\n```c\n#include <stdio.h>\n#include <math.h>\n\n#define MOD 1000000007\n\nint main() {\n    int k;\n    scanf(\"%d\", &k);\n    long long exponent = pow(2, k) - 2;\n    long long result = 1;\n    long long base = 4;\n    while (exponent > 0) {\n        if (exponent % 2 == 1) {\n            result = (result * base) % MOD;\n        }\n        base = (base * base) % MOD;\n        exponent /= 2;\n    }\n    printf(\"%lld\\n\", (result * 6) % MOD);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 4,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <math.h>\n\n#define MOD 1000000007\n\nlong long power(long long base, long long exp, long long mod) {\n    long long result = 1;\n    while (exp > 0) {\n        if (exp % 2 == 1) {\n            result = (result * base) % mod;\n        }\n        base = (base * base) % mod;\n        exp = exp / 2;\n    }\n    return result;\n}\n\nint main() {\n    int k;\n    scanf(\"%d\", &k);\n    long long exponent = (1LL << k) - 2;\n    long long ans = (power(4, exponent, MOD) * 6) % MOD;\n    printf(\"%lld\\n\", ans);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                }
+            ],
+            "usage": {
+                "prompt_tokens": 420,
+                "completion_tokens": 811,
+                "total_tokens": 1231
+            }
+        }
+    },
+    "source_data": {
+        "code_uid": "8e9fc8477e311e8ed6c23018f872d86d",
+        "prob_desc_output_to": "standard output",
+        "prob_desc_notes": "NoteIn the picture below, you can see one of the correct colorings of the first example.  ",
+        "lang_cluster": "Python",
+        "prob_desc_time_limit": "2 seconds",
+        "prob_desc_input_spec": "The first and only line contains the integers $$$k$$$ ($$$1 \\le k \\le 60$$$)\u00a0\u2014 the number of levels in the perfect binary tree you need to color.",
+        "source_code": "mod=10**9+7\r\nk=int(input())\r\nprint((pow(4,2**k-2,mod)*6)%mod)",
+        "prob_desc_sample_inputs": [
+            "3",
+            "14"
+        ],
+        "prob_desc_memory_limit": "256 megabytes",
+        "exec_outcome": "PASSED",
+        "prob_desc_output_spec": "Print one integer\u00a0\u2014 the number of the different colorings modulo $$$10^9+7$$$.",
+        "src_uid": "5144b9b281ea4087d8334d91c3c8bda4",
+        "prob_desc_input_from": "standard input",
+        "lang": "Python 3",
+        "prob_desc_sample_outputs": [
+            "24576",
+            "934234"
+        ],
+        "file_name": "d7021504500d5ca7c2b02df8100a574d159e6e67e20ec8071b75800b1267370a",
+        "prob_desc_description": "It is the easy version of the problem. The difference is that in this version, there are no nodes with already chosen colors.Theofanis is starving, and he wants to eat his favorite food, sheftalia. However, he should first finish his homework. Can you help him with this problem?You have a perfect binary tree of $$$2^k - 1$$$ nodes\u00a0\u2014 a binary tree where all vertices $$$i$$$ from $$$1$$$ to $$$2^{k - 1} - 1$$$ have exactly two children: vertices $$$2i$$$ and $$$2i + 1$$$. Vertices from $$$2^{k - 1}$$$ to $$$2^k - 1$$$ don't have any children. You want to color its vertices with the $$$6$$$ Rubik's cube colors (White, Green, Red, Blue, Orange and Yellow).Let's call a coloring good when all edges connect nodes with colors that are neighboring sides in the Rubik's cube.  A picture of Rubik's cube and its 2D map. More formally:   a white node can not be neighboring with white and yellow nodes;  a yellow node can not be neighboring with white and yellow nodes;  a green node can not be neighboring with green and blue nodes;  a blue node can not be neighboring with green and blue nodes;  a red node can not be neighboring with red and orange nodes;  an orange node can not be neighboring with red and orange nodes; You want to calculate the number of the good colorings of the binary tree. Two colorings are considered different if at least one node is colored with a different color.The answer may be too large, so output the answer modulo $$$10^9+7$$$.",
+        "prob_desc_created_at": "1633705500",
+        "difficulty": 1300.0,
+        "hidden_unit_tests": "[{\"input\": \"3\\n\", \"output\": [\"24576 \\n\", \"24576\", \"24576\\n\\n\", \"24576 \", \"24576\\n\", \"24576\\n\"]}, {\"input\": \"14\\n\", \"output\": [\"934234 \\n\", \"934234\\n\", \"934234\\n\", \"934234\", \"934234\\n\\n\", \"934234 \"]}, {\"input\": \"1\\n\", \"output\": [\"6 \\n\", \"6\\n\", \"6\\n\", \"6\", \"6 \", \"6\\n\\n\"]}, {\"input\": \"2\\n\", \"output\": [\"96\\n\", \"96\\n\\n\", \"96 \\n\", \"96\", \"96\\n\", \"96 \"]}, {\"input\": \"60\\n\", \"output\": [\"937481864\\n\", \"937481864\", \"937481864 \\n\", \"937481864\\n\", \"937481864\\n\\n\"]}, {\"input\": \"50\\n\", \"output\": [\"902552662\\n\\n\", \"902552662\\n\", \"902552662 \\n\", \"902552662\\n\", \"902552662\"]}, {\"input\": \"59\\n\", \"output\": [\"950618124 \\n\", \"950618124\\n\\n\", \"950618124\\n\", \"950618124\\n\", \"950618124\"]}, {\"input\": \"58\\n\", \"output\": [\"166788441\\n\", \"166788441\\n\", \"166788441\\n\\n\", \"166788441 \\n\", \"166788441\"]}, {\"input\": \"4\\n\", \"output\": [\"610612729\\n\", \"610612729\", \"610612729\\n\\n\", \"610612729 \\n\", \"610612729\\n\"]}, {\"input\": \"10\\n\", \"output\": [\"153616455\", \"153616455\\n\", \"153616455 \\n\", \"153616455\\n\", \"153616455\\n\\n\"]}, {\"input\": \"20\\n\", \"output\": [\"61556388\\n\", \"61556388 \\n\", \"61556388\", \"61556388\\n\", \"61556388\\n\\n\"]}, {\"input\": \"30\\n\", \"output\": [\"686170158 \\n\", \"686170158\\n\\n\", \"686170158\\n\", \"686170158\", \"686170158\\n\"]}, {\"input\": \"40\\n\", \"output\": [\"622757975 \\n\", \"622757975\\n\\n\", \"622757975\", \"622757975\\n\", \"622757975\\n\"]}, {\"input\": \"57\\n\", \"output\": [\"690506414\\n\", \"690506414 \\n\", \"690506414\\n\\n\", \"690506414\\n\", \"690506414\"]}]",
+        "source_lang": "Python 3",
+        "target_lang": "C"
+    }
+}

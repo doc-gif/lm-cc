@@ -1,0 +1,89 @@
+{
+    "oai_response": {
+        "prompt": "Here is code in Python 3 programming lanaguge. Translate the following code from Python 3 to C programming lanaguge. Do not output any extra description or tokens other than the translated code. \n\nn = int(input())\np = 1\npp = 0\nif (n % 400 == 0) or ((n % 4 == 0) and (n % 100 != 0)):\n    pp = 4\nelse:\n    pp = 1\nfor i in range (n + 1, n + 100):\n    if (i % 400 == 0) or ((i % 4 == 0) and (i % 100 != 0)):\n        p += 2\n    else:\n        p += 1\n    p %= 7\n    if (p == 1) and (pp == 4) and ((i % 400 == 0) or ((i % 4 == 0) and (i % 100 != 0))):\n        print(i)\n        break\n    elif (p == 1) and (pp == 1) and ((i % 4 != 0) or ((i % 4 == 0) and (i % 100 == 0))):\n        print(i)\n        break||END-of-SRC||",
+        "response": {
+            "id": "multi-call-as-bay593u37a",
+            "model": "deepseek-v3",
+            "created": 1767066774,
+            "choices": [
+                {
+                    "index": 0,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n\nint main() {\n    int n, p = 1, pp = 0;\n    scanf(\"%d\", &n);\n    if ((n % 400 == 0) || ((n % 4 == 0) && (n % 100 != 0))) {\n        pp = 4;\n    } else {\n        pp = 1;\n    }\n    for (int i = n + 1; i < n + 100; i++) {\n        if ((i % 400 == 0) || ((i % 4 == 0) && (i % 100 != 0))) {\n            p += 2;\n        } else {\n            p += 1;\n        }\n        p %= 7;\n        if ((p == 1) && (pp == 4) && ((i % 400 == 0) || ((i % 4 == 0) && (i % 100 != 0)))) {\n            printf(\"%d\\n\", i);\n            break;\n        } else if ((p == 1) && (pp == 1) && ((i % 4 != 0) || ((i % 4 == 0) && (i % 100 == 0)))) {\n            printf(\"%d\\n\", i);\n            break;\n        }\n    }\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 1,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n\nint main() {\n    int n, p = 1, pp = 0;\n    scanf(\"%d\", &n);\n    if ((n % 400 == 0) || ((n % 4 == 0) && (n % 100 != 0))) {\n        pp = 4;\n    } else {\n        pp = 1;\n    }\n    for (int i = n + 1; i < n + 100; i++) {\n        if ((i % 400 == 0) || ((i % 4 == 0) && (i % 100 != 0))) {\n            p += 2;\n        } else {\n            p += 1;\n        }\n        p %= 7;\n        if ((p == 1) && (pp == 4) && ((i % 400 == 0) || ((i % 4 == 0) && (i % 100 != 0)))) {\n            printf(\"%d\\n\", i);\n            break;\n        } else if ((p == 1) && (pp == 1) && ((i % 4 != 0) || ((i % 4 == 0) && (i % 100 == 0)))) {\n            printf(\"%d\\n\", i);\n            break;\n        }\n    }\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 2,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    int p = 1;\n    int pp = 0;\n    if ((n % 400 == 0) || ((n % 4 == 0) && (n % 100 != 0))) {\n        pp = 4;\n    } else {\n        pp = 1;\n    }\n    for (int i = n + 1; i < n + 100; i++) {\n        if ((i % 400 == 0) || ((i % 4 == 0) && (i % 100 != 0))) {\n            p += 2;\n        } else {\n            p += 1;\n        }\n        p %= 7;\n        if ((p == 1) && (pp == 4) && ((i % 400 == 0) || ((i % 4 == 0) && (i % 100 != 0)))) {\n            printf(\"%d\\n\", i);\n            break;\n        } else if ((p == 1) && (pp == 1) && ((i % 4 != 0) || ((i % 4 == 0) && (i % 100 == 0)))) {\n            printf(\"%d\\n\", i);\n            break;\n        }\n    }\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 3,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    int p = 1;\n    int pp = 0;\n    if ((n % 400 == 0) || ((n % 4 == 0) && (n % 100 != 0))) {\n        pp = 4;\n    } else {\n        pp = 1;\n    }\n    for (int i = n + 1; i < n + 100; i++) {\n        if ((i % 400 == 0) || ((i % 4 == 0) && (i % 100 != 0))) {\n            p += 2;\n        } else {\n            p += 1;\n        }\n        p %= 7;\n        if ((p == 1) && (pp == 4) && ((i % 400 == 0) || ((i % 4 == 0) && (i % 100 != 0)))) {\n            printf(\"%d\\n\", i);\n            break;\n        } else if ((p == 1) && (pp == 1) && ((i % 4 != 0) || ((i % 4 == 0) && (i % 100 == 0)))) {\n            printf(\"%d\\n\", i);\n            break;\n        }\n    }\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 4,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    int p = 1;\n    int pp = 0;\n    if ((n % 400 == 0) || ((n % 4 == 0) && (n % 100 != 0))) {\n        pp = 4;\n    } else {\n        pp = 1;\n    }\n    for (int i = n + 1; i < n + 100; i++) {\n        if ((i % 400 == 0) || ((i % 4 == 0) && (i % 100 != 0))) {\n            p += 2;\n        } else {\n            p += 1;\n        }\n        p %= 7;\n        if ((p == 1) && (pp == 4) && ((i % 400 == 0) || ((i % 4 == 0) && (i % 100 != 0)))) {\n            printf(\"%d\\n\", i);\n            break;\n        } else if ((p == 1) && (pp == 1) && ((i % 4 != 0) || ((i % 4 == 0) && (i % 100 == 0)))) {\n            printf(\"%d\\n\", i);\n            break;\n        }\n    }\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                }
+            ],
+            "usage": {
+                "prompt_tokens": 1415,
+                "completion_tokens": 1462,
+                "total_tokens": 2877
+            }
+        }
+    },
+    "source_data": {
+        "code_uid": "03d91f9bb004837a16fe2f4020dc7907",
+        "prob_desc_output_to": "standard output",
+        "prob_desc_notes": "NoteToday is Monday, the 13th of June, 2016.",
+        "lang_cluster": "Python",
+        "prob_desc_time_limit": "1 second",
+        "prob_desc_input_spec": "The only line contains integer y (1000\u2009\u2264\u2009y\u2009&lt;\u2009100'000) \u2014 the year of the calendar.",
+        "source_code": "n = int(input())\np = 1\npp = 0\nif (n % 400 == 0) or ((n % 4 == 0) and (n % 100 != 0)):\n    pp = 4\nelse:\n    pp = 1\nfor i in range (n + 1, n + 100):\n    if (i % 400 == 0) or ((i % 4 == 0) and (i % 100 != 0)):\n        p += 2\n    else:\n        p += 1\n    p %= 7\n    if (p == 1) and (pp == 4) and ((i % 400 == 0) or ((i % 4 == 0) and (i % 100 != 0))):\n        print(i)\n        break\n    elif (p == 1) and (pp == 1) and ((i % 4 != 0) or ((i % 4 == 0) and (i % 100 == 0))):\n        print(i)\n        break",
+        "prob_desc_sample_inputs": [
+            "2016",
+            "2000",
+            "50501"
+        ],
+        "prob_desc_memory_limit": "256 megabytes",
+        "exec_outcome": "PASSED",
+        "prob_desc_output_spec": "Print the only integer y' \u2014 the next year after y when the calendar will be the same. Note that you should find the first year after y with the same calendar.",
+        "src_uid": "565bbd09f79eb7bfe2f2da46647af0f2",
+        "prob_desc_input_from": "standard input",
+        "lang": "Python 3",
+        "prob_desc_sample_outputs": [
+            "2044",
+            "2028",
+            "50507"
+        ],
+        "file_name": "d7021504500d5ca7c2b02df8100a574d159e6e67e20ec8071b75800b1267370a",
+        "prob_desc_description": "The girl Taylor has a beautiful calendar for the year y. In the calendar all days are given with their days of week: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday and Sunday.The calendar is so beautiful that she wants to know what is the next year after y when the calendar will be exactly the same. Help Taylor to find that year.Note that leap years has 366 days. The year is leap if it is divisible by 400 or it is divisible by 4, but not by 100 (https://en.wikipedia.org/wiki/Leap_year).",
+        "prob_desc_created_at": "1465834200",
+        "difficulty": 1600.0,
+        "hidden_unit_tests": "[{\"input\": \"2016\\r\\n\", \"output\": [\"2044\"]}, {\"input\": \"2000\\r\\n\", \"output\": [\"2028\"]}, {\"input\": \"50501\\r\\n\", \"output\": [\"50507\"]}, {\"input\": \"1000\\r\\n\", \"output\": [\"1006\"]}, {\"input\": \"1900\\r\\n\", \"output\": [\"1906\"]}, {\"input\": \"1899\\r\\n\", \"output\": [\"1905\"]}, {\"input\": \"99999\\r\\n\", \"output\": [\"100010\"]}, {\"input\": \"50000\\r\\n\", \"output\": [\"50028\"]}, {\"input\": \"99900\\r\\n\", \"output\": [\"99906\"]}, {\"input\": \"12345\\r\\n\", \"output\": [\"12351\"]}, {\"input\": \"1004\\r\\n\", \"output\": [\"1032\"]}, {\"input\": \"2100\\r\\n\", \"output\": [\"2106\"]}, {\"input\": \"1313\\r\\n\", \"output\": [\"1319\"]}, {\"input\": \"1872\\r\\n\", \"output\": [\"1912\"]}, {\"input\": \"2098\\r\\n\", \"output\": [\"2110\"]}, {\"input\": \"2072\\r\\n\", \"output\": [\"2112\"]}, {\"input\": \"2002\\r\\n\", \"output\": [\"2013\"]}, {\"input\": \"1179\\r\\n\", \"output\": [\"1190\"]}, {\"input\": \"2096\\r\\n\", \"output\": [\"2108\"]}, {\"input\": \"1096\\r\\n\", \"output\": [\"1108\"]}, {\"input\": \"1796\\r\\n\", \"output\": [\"1808\"]}, {\"input\": \"2014\\r\\n\", \"output\": [\"2025\"]}, {\"input\": \"2006\\r\\n\", \"output\": [\"2017\"]}, {\"input\": \"1874\\r\\n\", \"output\": [\"1885\"]}, {\"input\": \"1884\\r\\n\", \"output\": [\"1924\"]}, {\"input\": \"2342\\r\\n\", \"output\": [\"2353\"]}, {\"input\": \"2010\\r\\n\", \"output\": [\"2021\"]}, {\"input\": \"2097\\r\\n\", \"output\": [\"2109\"]}, {\"input\": \"1072\\r\\n\", \"output\": [\"1112\"]}, {\"input\": \"1191\\r\\n\", \"output\": [\"1202\"]}, {\"input\": \"2896\\r\\n\", \"output\": [\"2908\"]}, {\"input\": \"1797\\r\\n\", \"output\": [\"1809\"]}, {\"input\": \"1002\\r\\n\", \"output\": [\"1013\"]}, {\"input\": \"99988\\r\\n\", \"output\": [\"100016\"]}, {\"input\": \"1788\\r\\n\", \"output\": [\"1828\"]}, {\"input\": \"1994\\r\\n\", \"output\": [\"2005\"]}, {\"input\": \"5094\\r\\n\", \"output\": [\"5100\"]}, {\"input\": \"99996\\r\\n\", \"output\": [\"100024\"]}, {\"input\": \"3998\\r\\n\", \"output\": [\"4009\"]}, {\"input\": \"49376\\r\\n\", \"output\": [\"49416\"]}]",
+        "source_lang": "Python 3",
+        "target_lang": "C"
+    }
+}

@@ -1,0 +1,89 @@
+{
+    "oai_response": {
+        "prompt": "Here is code in Python 3 programming lanaguge. Translate the following code from Python 3 to C programming lanaguge. Do not output any extra description or tokens other than the translated code. \n\nimport sys\n\ndef sum_(a):\n    return max(0, a * (a + 1) // 2)\n\ndef check(a):\n    if a * n <= m:\n        return 1\n    a -= 1\n    ans = n\n    t1 = a - k + 1\n    #print(a)\n    if t1 >= 0:\n        ans += sum_(a) - sum_(t1 - 1)\n    else:\n        ans += sum_(a)\n    #print(ans)\n    z = n - k + 1\n    t2 = a - z + 1\n    #print('ts', t2)\n    if t2 >= 0:\n        ans += sum_(a - 1) - sum_(t2 - 1)\n    else:\n        ans += sum_(a - 1)\n    #print(ans)\n    return (ans <= m)\n\ndef bins():\n    l = 1\n    r = m + 1\n    while l + 1 != r:\n        m1 = (l + r) // 2\n        if check(m1):\n            l = m1\n        else:\n            r = m1\n    print(l)\n    \nn, m, k = map(int, input().split())\n#print(check(2))\nbins()\n\n            \n||END-of-SRC||",
+        "response": {
+            "id": "multi-call-as-kyubh6cx3q",
+            "model": "deepseek-v3",
+            "created": 1767068333,
+            "choices": [
+                {
+                    "index": 0,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n\nlong long sum_(long long a) {\n    return a * (a + 1) / 2 > 0 ? a * (a + 1) / 2 : 0;\n}\n\nint check(long long a, long long n, long long m, long long k) {\n    if (a * n <= m) {\n        return 1;\n    }\n    a -= 1;\n    long long ans = n;\n    long long t1 = a - k + 1;\n    if (t1 >= 0) {\n        ans += sum_(a) - sum_(t1 - 1);\n    } else {\n        ans += sum_(a);\n    }\n    long long z = n - k + 1;\n    long long t2 = a - z + 1;\n    if (t2 >= 0) {\n        ans += sum_(a - 1) - sum_(t2 - 1);\n    } else {\n        ans += sum_(a - 1);\n    }\n    return (ans <= m);\n}\n\nvoid bins(long long n, long long m, long long k) {\n    long long l = 1;\n    long long r = m + 1;\n    while (l + 1 != r) {\n        long long m1 = (l + r) / 2;\n        if (check(m1, n, m, k)) {\n            l = m1;\n        } else {\n            r = m1;\n        }\n    }\n    printf(\"%lld\\n\", l);\n}\n\nint main() {\n    long long n, m, k;\n    scanf(\"%lld %lld %lld\", &n, &m, &k);\n    bins(n, m, k);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 1,
+                    "message": {
+                        "role": "assistant",
+                        "content": "Here's the equivalent C code:\n\n```c\n#include <stdio.h>\n\nint sum_(int a) {\n    return a * (a + 1) / 2 > 0 ? a * (a + 1) / 2 : 0;\n}\n\nint check(int a, int n, int m, int k) {\n    if (a * n <= m) {\n        return 1;\n    }\n    a -= 1;\n    int ans = n;\n    int t1 = a - k + 1;\n    if (t1 >= 0) {\n        ans += sum_(a) - sum_(t1 - 1);\n    } else {\n        ans += sum_(a);\n    }\n    int z = n - k + 1;\n    int t2 = a - z + 1;\n    if (t2 >= 0) {\n        ans += sum_(a - 1) - sum_(t2 - 1);\n    } else {\n        ans += sum_(a - 1);\n    }\n    return (ans <= m);\n}\n\nvoid bins(int n, int m, int k) {\n    int l = 1;\n    int r = m + 1;\n    while (l + 1 != r) {\n        int m1 = (l + r) / 2;\n        if (check(m1, n, m, k)) {\n            l = m1;\n        } else {\n            r = m1;\n        }\n    }\n    printf(\"%d\\n\", l);\n}\n\nint main() {\n    int n, m, k;\n    scanf(\"%d %d %d\", &n, &m, &k);\n    bins(n, m, k);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 2,
+                    "message": {
+                        "role": "assistant",
+                        "content": "Here's the equivalent C code:\n\n```c\n#include <stdio.h>\n\nlong long sum_(long long a) {\n    return a * (a + 1) / 2 > 0 ? a * (a + 1) / 2 : 0;\n}\n\nint check(long long a, long long n, long long m, long long k) {\n    if (a * n <= m) {\n        return 1;\n    }\n    a -= 1;\n    long long ans = n;\n    long long t1 = a - k + 1;\n    if (t1 >= 0) {\n        ans += sum_(a) - sum_(t1 - 1);\n    } else {\n        ans += sum_(a);\n    }\n    long long z = n - k + 1;\n    long long t2 = a - z + 1;\n    if (t2 >= 0) {\n        ans += sum_(a - 1) - sum_(t2 - 1);\n    } else {\n        ans += sum_(a - 1);\n    }\n    return (ans <= m);\n}\n\nvoid bins(long long n, long long m, long long k) {\n    long long l = 1;\n    long long r = m + 1;\n    while (l + 1 != r) {\n        long long m1 = (l + r) / 2;\n        if (check(m1, n, m, k)) {\n            l = m1;\n        } else {\n            r = m1;\n        }\n    }\n    printf(\"%lld\\n\", l);\n}\n\nint main() {\n    long long n, m, k;\n    scanf(\"%lld %lld %lld\", &n, &m, &k);\n    bins(n, m, k);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 3,
+                    "message": {
+                        "role": "assistant",
+                        "content": "Here's the equivalent C code:\n\n```c\n#include <stdio.h>\n\nint sum_(int a) {\n    return a * (a + 1) / 2 > 0 ? a * (a + 1) / 2 : 0;\n}\n\nint check(int a, int n, int m, int k) {\n    if (a * n <= m) {\n        return 1;\n    }\n    a -= 1;\n    int ans = n;\n    int t1 = a - k + 1;\n    if (t1 >= 0) {\n        ans += sum_(a) - sum_(t1 - 1);\n    } else {\n        ans += sum_(a);\n    }\n    int z = n - k + 1;\n    int t2 = a - z + 1;\n    if (t2 >= 0) {\n        ans += sum_(a - 1) - sum_(t2 - 1);\n    } else {\n        ans += sum_(a - 1);\n    }\n    return (ans <= m);\n}\n\nvoid bins(int n, int m, int k) {\n    int l = 1;\n    int r = m + 1;\n    while (l + 1 != r) {\n        int m1 = (l + r) / 2;\n        if (check(m1, n, m, k)) {\n            l = m1;\n        } else {\n            r = m1;\n        }\n    }\n    printf(\"%d\\n\", l);\n}\n\nint main() {\n    int n, m, k;\n    scanf(\"%d %d %d\", &n, &m, &k);\n    bins(n, m, k);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 4,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n\nlong long sum_(long long a) {\n    return a * (a + 1) / 2 > 0 ? a * (a + 1) / 2 : 0;\n}\n\nint check(long long a, long long n, long long m, long long k) {\n    if (a * n <= m) {\n        return 1;\n    }\n    a -= 1;\n    long long ans = n;\n    long long t1 = a - k + 1;\n    if (t1 >= 0) {\n        ans += sum_(a) - sum_(t1 - 1);\n    } else {\n        ans += sum_(a);\n    }\n    long long z = n - k + 1;\n    long long t2 = a - z + 1;\n    if (t2 >= 0) {\n        ans += sum_(a - 1) - sum_(t2 - 1);\n    } else {\n        ans += sum_(a - 1);\n    }\n    return (ans <= m);\n}\n\nvoid bins(long long n, long long m, long long k) {\n    long long l = 1;\n    long long r = m + 1;\n    while (l + 1 != r) {\n        long long m1 = (l + r) / 2;\n        if (check(m1, n, m, k)) {\n            l = m1;\n        } else {\n            r = m1;\n        }\n    }\n    printf(\"%lld\\n\", l);\n}\n\nint main() {\n    long long n, m, k;\n    scanf(\"%lld %lld %lld\", &n, &m, &k);\n    bins(n, m, k);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                }
+            ],
+            "usage": {
+                "prompt_tokens": 1645,
+                "completion_tokens": 1876,
+                "total_tokens": 3521
+            }
+        }
+    },
+    "source_data": {
+        "code_uid": "d4650e0a640a1a8d8f8c54567b11ef8b",
+        "prob_desc_output_to": "standard output",
+        "prob_desc_notes": "NoteIn the first example Frodo can have at most two pillows. In this case, he can give two pillows to the hobbit on the first bed, and one pillow to each of the hobbits on the third and the fourth beds.In the second example Frodo can take at most four pillows, giving three pillows to each of the others.In the third example Frodo can take three pillows, giving two pillows to the hobbit in the middle and one pillow to the hobbit on the third bed.",
+        "lang_cluster": "Python",
+        "prob_desc_time_limit": "1 second",
+        "prob_desc_input_spec": "The only line contain three integers n, m and k (1\u2009\u2264\u2009n\u2009\u2264\u2009m\u2009\u2264\u2009109, 1\u2009\u2264\u2009k\u2009\u2264\u2009n)\u00a0\u2014 the number of hobbits, the number of pillows and the number of Frodo's bed.",
+        "source_code": "import sys\n\ndef sum_(a):\n    return max(0, a * (a + 1) // 2)\n\ndef check(a):\n    if a * n <= m:\n        return 1\n    a -= 1\n    ans = n\n    t1 = a - k + 1\n    #print(a)\n    if t1 >= 0:\n        ans += sum_(a) - sum_(t1 - 1)\n    else:\n        ans += sum_(a)\n    #print(ans)\n    z = n - k + 1\n    t2 = a - z + 1\n    #print('ts', t2)\n    if t2 >= 0:\n        ans += sum_(a - 1) - sum_(t2 - 1)\n    else:\n        ans += sum_(a - 1)\n    #print(ans)\n    return (ans <= m)\n\ndef bins():\n    l = 1\n    r = m + 1\n    while l + 1 != r:\n        m1 = (l + r) // 2\n        if check(m1):\n            l = m1\n        else:\n            r = m1\n    print(l)\n    \nn, m, k = map(int, input().split())\n#print(check(2))\nbins()\n\n            \n",
+        "prob_desc_sample_inputs": [
+            "4 6 2",
+            "3 10 3",
+            "3 6 1"
+        ],
+        "prob_desc_memory_limit": "256 megabytes",
+        "exec_outcome": "PASSED",
+        "prob_desc_output_spec": "Print single integer\u00a0\u2014 the maximum number of pillows Frodo can have so that no one is hurt.",
+        "src_uid": "da9ddd00f46021e8ee9db4a8deed017c",
+        "prob_desc_input_from": "standard input",
+        "lang": "Python 3",
+        "prob_desc_sample_outputs": [
+            "2",
+            "4",
+            "3"
+        ],
+        "file_name": "d7021504500d5ca7c2b02df8100a574d159e6e67e20ec8071b75800b1267370a",
+        "prob_desc_description": "n hobbits are planning to spend the night at Frodo's house. Frodo has n beds standing in a row and m pillows (n\u2009\u2264\u2009m). Each hobbit needs a bed and at least one pillow to sleep, however, everyone wants as many pillows as possible. Of course, it's not always possible to share pillows equally, but any hobbit gets hurt if he has at least two pillows less than some of his neighbors have. Frodo will sleep on the k-th bed in the row. What is the maximum number of pillows he can have so that every hobbit has at least one pillow, every pillow is given to some hobbit and no one is hurt?",
+        "prob_desc_created_at": "1485108900",
+        "difficulty": 1500.0,
+        "hidden_unit_tests": "[{\"input\": \"4 6 2\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"3 10 3\\r\\n\", \"output\": [\"4\"]}, {\"input\": \"3 6 1\\r\\n\", \"output\": [\"3\"]}, {\"input\": \"3 3 3\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"1 1 1\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"1 1000000000 1\\r\\n\", \"output\": [\"1000000000\"]}, {\"input\": \"100 1000000000 20\\r\\n\", \"output\": [\"10000034\"]}, {\"input\": \"1000 1000 994\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"100000000 200000000 54345\\r\\n\", \"output\": [\"10001\"]}, {\"input\": \"1000000000 1000000000 1\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"1000000000 1000000000 1000000000\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"1000000000 1000000000 500000000\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"1000 1000 3\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"100000000 200020000 54345\\r\\n\", \"output\": [\"10001\"]}, {\"input\": \"100 108037 18\\r\\n\", \"output\": [\"1115\"]}, {\"input\": \"100000000 200020001 54345\\r\\n\", \"output\": [\"10002\"]}, {\"input\": \"200 6585 2\\r\\n\", \"output\": [\"112\"]}, {\"input\": \"30000 30593 5980\\r\\n\", \"output\": [\"25\"]}, {\"input\": \"40000 42107 10555\\r\\n\", \"output\": [\"46\"]}, {\"input\": \"50003 50921 192\\r\\n\", \"output\": [\"31\"]}, {\"input\": \"100000 113611 24910\\r\\n\", \"output\": [\"117\"]}, {\"input\": \"1000000 483447163 83104\\r\\n\", \"output\": [\"21965\"]}, {\"input\": \"10000000 10021505 600076\\r\\n\", \"output\": [\"147\"]}, {\"input\": \"100000000 102144805 2091145\\r\\n\", \"output\": [\"1465\"]}, {\"input\": \"1000000000 1000000000 481982093\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"100 999973325 5\\r\\n\", \"output\": [\"9999778\"]}, {\"input\": \"200 999999109 61\\r\\n\", \"output\": [\"5000053\"]}, {\"input\": \"30000 999999384 5488\\r\\n\", \"output\": [\"43849\"]}, {\"input\": \"40000 999997662 8976\\r\\n\", \"output\": [\"38038\"]}, {\"input\": \"50003 999999649 405\\r\\n\", \"output\": [\"44320\"]}, {\"input\": \"100000 999899822 30885\\r\\n\", \"output\": [\"31624\"]}, {\"input\": \"1000000 914032367 528790\\r\\n\", \"output\": [\"30217\"]}, {\"input\": \"10000000 999617465 673112\\r\\n\", \"output\": [\"31459\"]}, {\"input\": \"100000000 993180275 362942\\r\\n\", \"output\": [\"29887\"]}, {\"input\": \"1000000000 1000000000 331431458\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"100 10466 89\\r\\n\", \"output\": [\"144\"]}, {\"input\": \"200 5701 172\\r\\n\", \"output\": [\"84\"]}, {\"input\": \"30000 36932 29126\\r\\n\", \"output\": [\"84\"]}, {\"input\": \"40000 40771 22564\\r\\n\", \"output\": [\"28\"]}, {\"input\": \"50003 51705 49898\\r\\n\", \"output\": [\"42\"]}, {\"input\": \"100000 149408 74707\\r\\n\", \"output\": [\"223\"]}, {\"input\": \"1000000 194818222 998601\\r\\n\", \"output\": [\"18389\"]}, {\"input\": \"10000000 10748901 8882081\\r\\n\", \"output\": [\"866\"]}, {\"input\": \"100000000 106296029 98572386\\r\\n\", \"output\": [\"2510\"]}, {\"input\": \"1000000000 1000000000 193988157\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"100 999981057 92\\r\\n\", \"output\": [\"9999852\"]}, {\"input\": \"200 999989691 199\\r\\n\", \"output\": [\"5000046\"]}, {\"input\": \"30000 999995411 24509\\r\\n\", \"output\": [\"43846\"]}, {\"input\": \"40000 999998466 30827\\r\\n\", \"output\": [\"37930\"]}, {\"input\": \"50003 999997857 48387\\r\\n\", \"output\": [\"43163\"]}, {\"input\": \"100000 999731886 98615\\r\\n\", \"output\": [\"43371\"]}, {\"input\": \"1000000 523220797 654341\\r\\n\", \"output\": [\"22853\"]}, {\"input\": \"10000000 999922591 8157724\\r\\n\", \"output\": [\"31464\"]}, {\"input\": \"100000000 999834114 93836827\\r\\n\", \"output\": [\"29998\"]}, {\"input\": \"1000000000 1000000000 912549504\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"1000 97654978 234\\r\\n\", \"output\": [\"97976\"]}, {\"input\": \"1000 97654977 234\\r\\n\", \"output\": [\"97975\"]}, {\"input\": \"1000234 97653889 1\\r\\n\", \"output\": [\"13903\"]}, {\"input\": \"1000234 97653890 1\\r\\n\", \"output\": [\"13904\"]}, {\"input\": \"3450234 97656670 3000000\\r\\n\", \"output\": [\"9707\"]}, {\"input\": \"3450234 97656669 3000000\\r\\n\", \"output\": [\"9706\"]}, {\"input\": \"3 1000000000 2\\r\\n\", \"output\": [\"333333334\"]}, {\"input\": \"2 1000000000 1\\r\\n\", \"output\": [\"500000000\"]}, {\"input\": \"2 1000000000 2\\r\\n\", \"output\": [\"500000000\"]}, {\"input\": \"3 1000000000 1\\r\\n\", \"output\": [\"333333334\"]}, {\"input\": \"3 1000000000 3\\r\\n\", \"output\": [\"333333334\"]}, {\"input\": \"2 999999999 1\\r\\n\", \"output\": [\"500000000\"]}, {\"input\": \"2 999999999 2\\r\\n\", \"output\": [\"500000000\"]}, {\"input\": \"1 999999999 1\\r\\n\", \"output\": [\"999999999\"]}]",
+        "source_lang": "Python 3",
+        "target_lang": "C"
+    }
+}

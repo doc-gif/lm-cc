@@ -1,0 +1,102 @@
+{
+    "oai_response": {
+        "prompt": "Fix a buggy program written in Python language to solve the following programming problem:\nDescription: Polycarpus loves hamburgers very much. He especially adores the hamburgers he makes with his own hands. Polycarpus thinks that there are only three decent ingredients to make hamburgers from: a bread, sausage and cheese. He writes down the recipe of his favorite \"Le Hamburger de Polycarpus\" as a string of letters 'B' (bread), 'S' (sausage) \u0438 'C' (cheese). The ingredients in the recipe go from bottom to top, for example, recipe \"\u0412SCBS\" represents the hamburger where the ingredients go from bottom to top as bread, sausage, cheese, bread and sausage again.Polycarpus has nb pieces of bread, ns pieces of sausage and nc pieces of cheese in the kitchen. Besides, the shop nearby has all three ingredients, the prices are pb rubles for a piece of bread, ps for a piece of sausage and pc for a piece of cheese.Polycarpus has r rubles and he is ready to shop on them. What maximum number of hamburgers can he cook? You can assume that Polycarpus cannot break or slice any of the pieces of bread, sausage or cheese. Besides, the shop has an unlimited number of pieces of each ingredient.\nInput Specification: The first line of the input contains a non-empty string that describes the recipe of \"Le Hamburger de Polycarpus\". The length of the string doesn't exceed 100, the string contains only letters 'B' (uppercase English B), 'S' (uppercase English S) and 'C' (uppercase English C). The second line contains three integers nb, ns, nc (1\u2009\u2264\u2009nb,\u2009ns,\u2009nc\u2009\u2264\u2009100) \u2014 the number of the pieces of bread, sausage and cheese on Polycarpus' kitchen. The third line contains three integers pb, ps, pc (1\u2009\u2264\u2009pb,\u2009ps,\u2009pc\u2009\u2264\u2009100) \u2014 the price of one piece of bread, sausage and cheese in the shop. Finally, the fourth line contains integer r (1\u2009\u2264\u2009r\u2009\u2264\u20091012) \u2014 the number of rubles Polycarpus has. Please, do not write the %lld specifier to read or write 64-bit integers in \u0421++. It is preferred to use the cin, cout streams or the %I64d specifier.\nOutput Specification: Print the maximum number of hamburgers Polycarpus can make. If he can't make any hamburger, print 0.\n\nSample Input:\nBBBSSC\n6 4 1\n1 2 3\n4\nSample Output:\n2\n\nSample Input:\nBBC\n1 10 1\n1 10 1\n21\nSample Output:\n7\n\nSample Input:\nBSC\n1 1 1\n1 1 3\n1000000000000\nSample Output:\n200000000001\n\nNotes: None\nTake input from standard input and output to standard output\n\nHere is the code with a bug of TIME_LIMIT_EXCEEDED:\n\nfrom collections import Counter\n\nrep = input()\na = Counter({'B': 0, 'S': 0, 'C': 0})\na.update(rep)\nrep = a['B'], a['S'], a['C']\n\ninventory = Bi, Si, Ci = list(map(int, input().split(' ')))\n\nfor ingredient in range(3):\n    if rep[ingredient] == 0:\n        inventory[ingredient] = 0\n\nprice = list(map(int, input().split(' ')))\n\nmoney = int(input())\n\noutput = 0\n\n\ndef make_sandwich():\n    global output\n    for idx in range(len(inventory)):\n        inventory[idx] -= rep[idx]\n    output += 1\n\n\nwhile sum(inventory) != 0:\n    if all([inventory[idx] >= rep[idx] for idx in range(len(inventory))]):\n        make_sandwich()\n        continue\n\n    for ingredient in range(len(inventory)):\n        if inventory[ingredient] < rep[ingredient] and money >= price[ingredient]:\n            inventory[ingredient] += 1\n            money -= price[ingredient]\n            break\n\n        if ingredient == 3:\n            inventory = [0]\n\np = 0\nfor ingredient in range(3):\n    p += rep[ingredient] * price[ingredient]\n\noutput += money // p\nmoney -= p * output\n\nprint(output)\n\n\nProvide the fixed Python code without any description or extra tokens.\n\nFixed source code:\n ||END-of-SRC||",
+        "response": {
+            "id": "multi-call-as-zrbfcem5pe",
+            "model": "deepseek-v3",
+            "created": 1760423005,
+            "choices": [
+                {
+                    "index": 0,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```python\nfrom collections import Counter\n\nrep = input().strip()\na = Counter({'B': 0, 'S': 0, 'C': 0})\na.update(rep)\nB_req, S_req, C_req = a['B'], a['S'], a['C']\n\nnb, ns, nc = map(int, input().split())\npb, ps, pc = map(int, input().split())\nr = int(input())\n\nleft = 0\nright = 10**18\n\nmax_hamburgers = 0\n\nwhile left <= right:\n    mid = (left + right) // 2\n    needed_b = max(0, B_req * mid - nb)\n    needed_s = max(0, S_req * mid - ns)\n    needed_c = max(0, C_req * mid - nc)\n    total_cost = needed_b * pb + needed_s * ps + needed_c * pc\n    \n    if total_cost <= r:\n        max_hamburgers = mid\n        left = mid + 1\n    else:\n        right = mid - 1\n\nprint(max_hamburgers)\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 1,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```python\nfrom collections import Counter\n\nrep = input().strip()\na = Counter({'B': 0, 'S': 0, 'C': 0})\na.update(rep)\nB_req, S_req, C_req = a['B'], a['S'], a['C']\n\nnb, ns, nc = map(int, input().split())\npb, ps, pc = map(int, input().split())\nr = int(input())\n\ndef max_hamburgers():\n    left = 0\n    right = r + max(nb, ns, nc)  # Upper bound\n    \n    def can_make(x):\n        needed_b = max(0, B_req * x - nb)\n        needed_s = max(0, S_req * x - ns)\n        needed_c = max(0, C_req * x - nc)\n        total_cost = needed_b * pb + needed_s * ps + needed_c * pc\n        return total_cost <= r\n    \n    best = 0\n    while left <= right:\n        mid = (left + right) // 2\n        if can_make(mid):\n            best = mid\n            left = mid + 1\n        else:\n            right = mid - 1\n    return best\n\nprint(max_hamburgers())\n``` ||END-of-SRC||"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 2,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```python\nfrom collections import Counter\n\nrep = input().strip()\na = Counter({'B': 0, 'S': 0, 'C': 0})\na.update(rep)\nB_req, S_req, C_req = a['B'], a['S'], a['C']\n\nnb, ns, nc = map(int, input().split())\npb, ps, pc = map(int, input().split())\nr = int(input())\n\nleft = 0\nright = 10**18\n\nmax_hamburgers = 0\n\nwhile left <= right:\n    mid = (left + right) // 2\n    needed_B = max(0, B_req * mid - nb)\n    needed_S = max(0, S_req * mid - ns)\n    needed_C = max(0, C_req * mid - nc)\n    total_cost = needed_B * pb + needed_S * ps + needed_C * pc\n    \n    if total_cost <= r:\n        max_hamburgers = mid\n        left = mid + 1\n    else:\n        right = mid - 1\n\nprint(max_hamburgers)\n``` ||END-of-SRC||"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 3,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```python\nfrom collections import Counter\n\nrep = input().strip()\na = Counter({'B': 0, 'S': 0, 'C': 0})\na.update(rep)\nB_req, S_req, C_req = a['B'], a['S'], a['C']\n\nnb, ns, nc = map(int, input().split())\npb, ps, pc = map(int, input().split())\nr = int(input())\n\nleft = 0\nright = 10**18\n\nmax_hamburgers = 0\n\nwhile left <= right:\n    mid = (left + right) // 2\n    needed_b = max(0, B_req * mid - nb)\n    needed_s = max(0, S_req * mid - ns)\n    needed_c = max(0, C_req * mid - nc)\n    total_cost = needed_b * pb + needed_s * ps + needed_c * pc\n    \n    if total_cost <= r:\n        max_hamburgers = mid\n        left = mid + 1\n    else:\n        right = mid - 1\n\nprint(max_hamburgers)\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 4,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```python\nfrom collections import Counter\n\nrep = input().strip()\na = Counter({'B': 0, 'S': 0, 'C': 0})\na.update(rep)\nB_req, S_req, C_req = a['B'], a['S'], a['C']\n\nnb, ns, nc = map(int, input().split())\npb, ps, pc = map(int, input().split())\nr = int(input())\n\ndef max_hamburgers():\n    left = 0\n    right = 10**18\n    \n    def can_make(mid):\n        needed_b = max(0, B_req * mid - nb)\n        needed_s = max(0, S_req * mid - ns)\n        needed_c = max(0, C_req * mid - nc)\n        cost = needed_b * pb + needed_s * ps + needed_c * pc\n        return cost <= r\n    \n    answer = 0\n    while left <= right:\n        mid = (left + right) // 2\n        if can_make(mid):\n            answer = mid\n            left = mid + 1\n        else:\n            right = mid - 1\n    return answer\n\nprint(max_hamburgers())\n``` ||END-of-SRC||"
+                    },
+                    "finish_reason": "stop"
+                }
+            ],
+            "usage": {
+                "prompt_tokens": 4925,
+                "completion_tokens": 1292,
+                "total_tokens": 6217
+            }
+        }
+    },
+    "source_data": {
+        "prob_desc_memory_limit": "256 megabytes",
+        "tags": [
+            "brute force",
+            "binary search"
+        ],
+        "prob_desc_created_at": "1386493200",
+        "fix_source_code": "",
+        "prob_desc_input_spec": "The first line of the input contains a non-empty string that describes the recipe of \"Le Hamburger de Polycarpus\". The length of the string doesn't exceed 100, the string contains only letters 'B' (uppercase English B), 'S' (uppercase English S) and 'C' (uppercase English C). The second line contains three integers nb, ns, nc (1\u2009\u2264\u2009nb,\u2009ns,\u2009nc\u2009\u2264\u2009100) \u2014 the number of the pieces of bread, sausage and cheese on Polycarpus' kitchen. The third line contains three integers pb, ps, pc (1\u2009\u2264\u2009pb,\u2009ps,\u2009pc\u2009\u2264\u2009100) \u2014 the price of one piece of bread, sausage and cheese in the shop. Finally, the fourth line contains integer r (1\u2009\u2264\u2009r\u2009\u2264\u20091012) \u2014 the number of rubles Polycarpus has. Please, do not write the %lld specifier to read or write 64-bit integers in \u0421++. It is preferred to use the cin, cout streams or the %I64d specifier.",
+        "prob_desc_sample_outputs": [
+            "2",
+            "7",
+            "200000000001"
+        ],
+        "src_uid": "8126a4232188ae7de8e5a7aedea1a97e",
+        "prob_desc_time_limit": "1 second",
+        "fix_exec_outcome": "",
+        "delete_cnt": 0,
+        "apr_id": "fd32003e6472649d11a98d1df2278531",
+        "fix_code_uid": "",
+        "lang_cluster": "Python",
+        "prob_desc_sample_inputs": [
+            "BBBSSC\n6 4 1\n1 2 3\n4",
+            "BBC\n1 10 1\n1 10 1\n21",
+            "BSC\n1 1 1\n1 1 3\n1000000000000"
+        ],
+        "prob_desc_output_to": "standard output",
+        "file_name": "Python.jsonl",
+        "equal_cnt": 3,
+        "lang": "PyPy 3",
+        "prob_desc_output_spec": "Print the maximum number of hamburgers Polycarpus can make. If he can't make any hamburger, print 0.",
+        "bug_exec_outcome": "TIME_LIMIT_EXCEEDED",
+        "prob_desc_notes": null,
+        "difficulty": 1600.0,
+        "similarity_score": 0.9962121248,
+        "prob_desc_description": "Polycarpus loves hamburgers very much. He especially adores the hamburgers he makes with his own hands. Polycarpus thinks that there are only three decent ingredients to make hamburgers from: a bread, sausage and cheese. He writes down the recipe of his favorite \"Le Hamburger de Polycarpus\" as a string of letters 'B' (bread), 'S' (sausage) \u0438 'C' (cheese). The ingredients in the recipe go from bottom to top, for example, recipe \"\u0412SCBS\" represents the hamburger where the ingredients go from bottom to top as bread, sausage, cheese, bread and sausage again.Polycarpus has nb pieces of bread, ns pieces of sausage and nc pieces of cheese in the kitchen. Besides, the shop nearby has all three ingredients, the prices are pb rubles for a piece of bread, ps for a piece of sausage and pc for a piece of cheese.Polycarpus has r rubles and he is ready to shop on them. What maximum number of hamburgers can he cook? You can assume that Polycarpus cannot break or slice any of the pieces of bread, sausage or cheese. Besides, the shop has an unlimited number of pieces of each ingredient.",
+        "potential_dominant_fix_op": "replace",
+        "bug_source_code": "from collections import Counter\n\nrep = input()\na = Counter({'B': 0, 'S': 0, 'C': 0})\na.update(rep)\nrep = a['B'], a['S'], a['C']\n\ninventory = Bi, Si, Ci = list(map(int, input().split(' ')))\n\nfor ingredient in range(3):\n    if rep[ingredient] == 0:\n        inventory[ingredient] = 0\n\nprice = list(map(int, input().split(' ')))\n\nmoney = int(input())\n\noutput = 0\n\n\ndef make_sandwich():\n    global output\n    for idx in range(len(inventory)):\n        inventory[idx] -= rep[idx]\n    output += 1\n\n\nwhile sum(inventory) != 0:\n    if all([inventory[idx] >= rep[idx] for idx in range(len(inventory))]):\n        make_sandwich()\n        continue\n\n    for ingredient in range(len(inventory)):\n        if inventory[ingredient] < rep[ingredient] and money >= price[ingredient]:\n            inventory[ingredient] += 1\n            money -= price[ingredient]\n            break\n\n        if ingredient == 3:\n            inventory = [0]\n\np = 0\nfor ingredient in range(3):\n    p += rep[ingredient] * price[ingredient]\n\noutput += money // p\nmoney -= p * output\n\nprint(output)\n",
+        "replace_cnt": 1,
+        "prob_desc_input_from": "standard input",
+        "bug_code_uid": "3f386ae38bf31cbf63779ad2cd748fe5",
+        "insert_cnt": 1,
+        "fix_ops_cnt": 2,
+        "hidden_unit_tests": "[{\"input\": \"BBBSSC\\r\\n6 4 1\\r\\n1 2 3\\r\\n4\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"BBC\\r\\n1 10 1\\r\\n1 10 1\\r\\n21\\r\\n\", \"output\": [\"7\"]}, {\"input\": \"BSC\\r\\n1 1 1\\r\\n1 1 3\\r\\n1000000000000\\r\\n\", \"output\": [\"200000000001\"]}, {\"input\": \"B\\r\\n1 1 1\\r\\n1 1 1\\r\\n381\\r\\n\", \"output\": [\"382\"]}, {\"input\": \"BSC\\r\\n3 5 6\\r\\n7 3 9\\r\\n100\\r\\n\", \"output\": [\"10\"]}, {\"input\": \"BSC\\r\\n100 1 1\\r\\n100 1 1\\r\\n100\\r\\n\", \"output\": [\"51\"]}, {\"input\": \"SBBCCSBB\\r\\n1 50 100\\r\\n31 59 21\\r\\n100000\\r\\n\", \"output\": [\"370\"]}, {\"input\": \"BBBBCCCCCCCCCCCCCCCCCCCCSSSSBBBBBBBBSS\\r\\n100 100 100\\r\\n1 1 1\\r\\n3628800\\r\\n\", \"output\": [\"95502\"]}, {\"input\": \"BBBBBBBBBBCCCCCCCCCCCCCCCCCCCCSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS\\r\\n10 20 40\\r\\n100 100 100\\r\\n200\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"BBBBBBBBBBCCCCCCCCCCCCCCCCCCCCSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS\\r\\n10 20 40\\r\\n100 100 100\\r\\n2000\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"BBBBBBBBBBCCCCCCCCCCCCCCCCCCCCSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS\\r\\n10 20 40\\r\\n100 100 100\\r\\n300\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"BBBBBBBBBBCCCCCCCCCCCCCCCCCCCCSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS\\r\\n10 20 40\\r\\n100 100 100\\r\\n300000000\\r\\n\", \"output\": [\"42858\"]}, {\"input\": \"BBBBBBBBBBCCCCCCCCCCCCCCCCCCCCSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS\\r\\n10 20 40\\r\\n100 100 100\\r\\n914159265358\\r\\n\", \"output\": [\"130594181\"]}, {\"input\": \"SSSSSSSSSSBBBBBBBBBCCCCCCCCCCCCCCCCCCCSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSBB\\r\\n31 53 97\\r\\n13 17 31\\r\\n914159265358\\r\\n\", \"output\": [\"647421579\"]}, {\"input\": \"BBBCSBSBBSSSSCCCCBBCSBBBBSSBBBCBSCCSSCSSCSBSSSCCCCBSCSSBSSSCCCBBCCCSCBCBBCCSCCCCSBBCCBBBBCCCCCCBSSCB\\r\\n91 87 17\\r\\n64 44 43\\r\\n958532915587\\r\\n\", \"output\": [\"191668251\"]}, {\"input\": \"CSSCBBCCCSBSCBBBCSBBBCBSBCSCBCSCBCBSBCBCSSBBSBBCBBBBSCSBBCCBCCBCBBSBSBCSCSBBSSBBCSSBCSCSCCSSBCBBCBSB\\r\\n56 34 48\\r\\n78 6 96\\r\\n904174875419\\r\\n\", \"output\": [\"140968956\"]}, {\"input\": \"CCSCCCSBBBSCBSCSCCSSBBBSSBBBSBBBCBCSSBCSCBBCCCBCBCBCCCSSBSBBCCCCCBBSCBSCBCBBCBBCSSBCSBSSCCSCCSCCBBBS\\r\\n33 73 67\\r\\n4 56 42\\r\\n886653164314\\r\\n\", \"output\": [\"277425898\"]}, {\"input\": \"SBCSSCBBSSBCSSBBBSSBSCBSSSCBBSBBBBCSBCSBSCBSCBSCBSBSSCCCCBSBCCBCBSCCCBSCCBSBBCBSSCCCCSBSBBBSSSBCSCBC\\r\\n94 16 85\\r\\n14 18 91\\r\\n836590091442\\r\\n\", \"output\": [\"217522127\"]}, {\"input\": \"BSCSBSCCSCSSCCCSBCSSBCBBSCCBSCCSSSSSSSSSCCSBSCCBBCBBSBSCCCCBCSBSBSSBBBBBSSBSSCBCCSSBSSSCBBCSBBSBCCCB\\r\\n67 54 8\\r\\n36 73 37\\r\\n782232051273\\r\\n\", \"output\": [\"154164772\"]}, {\"input\": \"CBBCBSBCCSCBSSCCBCSBCSBBSCBBCSCCBSCCSCSBBSSBSBSCBBSBBCSSSSBBBBSBBCBCSBBCBCSSBBCSBSCCSCSBCSCBSCCBBCSC\\r\\n71 71 52\\r\\n52 88 3\\r\\n654400055575\\r\\n\", \"output\": [\"137826467\"]}, {\"input\": \"CBBCBSBCCSCBSSCCBCSBCSBBSCBBCSCCBSCCSCSBBSBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBCBBCSC\\r\\n100 1 1\\r\\n1 17 23\\r\\n954400055575\\r\\n\", \"output\": [\"1355681897\"]}, {\"input\": \"C\\r\\n100 100 100\\r\\n1 1 1\\r\\n1000000000000\\r\\n\", \"output\": [\"1000000000100\"]}, {\"input\": \"SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS\\r\\n100 100 100\\r\\n100 100 100\\r\\n1000000000000\\r\\n\", \"output\": [\"100000001\"]}, {\"input\": \"B\\r\\n100 100 100\\r\\n1 1 1\\r\\n1\\r\\n\", \"output\": [\"101\"]}, {\"input\": \"SC\\r\\n2 1 1\\r\\n1 1 1\\r\\n100000000000\\r\\n\", \"output\": [\"50000000001\"]}, {\"input\": \"B\\r\\n100 1 1\\r\\n1 1 1\\r\\n1000000000000\\r\\n\", \"output\": [\"1000000000100\"]}, {\"input\": \"BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB\\r\\n1 1 1\\r\\n100 100 100\\r\\n1000000000000\\r\\n\", \"output\": [\"100000000\"]}, {\"input\": \"CC\\r\\n1 1 1\\r\\n100 100 100\\r\\n1\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"B\\r\\n100 100 100\\r\\n1 1 1\\r\\n1000000000000\\r\\n\", \"output\": [\"1000000000100\"]}, {\"input\": \"BSC\\r\\n100 100 100\\r\\n1 1 1\\r\\n1000000000000\\r\\n\", \"output\": [\"333333333433\"]}, {\"input\": \"BSC\\r\\n100 100 100\\r\\n1 1 1\\r\\n1\\r\\n\", \"output\": [\"100\"]}]"
+    }
+}

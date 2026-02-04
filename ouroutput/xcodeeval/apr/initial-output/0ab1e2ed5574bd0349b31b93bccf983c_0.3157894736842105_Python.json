@@ -1,0 +1,102 @@
+{
+    "oai_response": {
+        "prompt": "Fix a buggy program written in Python language to solve the following programming problem:\nDescription: Karen is getting ready for a new school day!  It is currently hh:mm, given in a 24-hour format. As you know, Karen loves palindromes, and she believes that it is good luck to wake up when the time is a palindrome.What is the minimum number of minutes she should sleep, such that, when she wakes up, the time is a palindrome?Remember that a palindrome is a string that reads the same forwards and backwards. For instance, 05:39 is not a palindrome, because 05:39 backwards is 93:50. On the other hand, 05:50 is a palindrome, because 05:50 backwards is 05:50.\nInput Specification: The first and only line of input contains a single string in the format hh:mm (00\u2009\u2264\u2009 hh \u2009\u2264\u200923, 00\u2009\u2264\u2009 mm \u2009\u2264\u200959).\nOutput Specification: Output a single integer on a line by itself, the minimum number of minutes she should sleep, such that, when she wakes up, the time is a palindrome.\n\nSample Input:\n05:39\nSample Output:\n11\n\nSample Input:\n13:31\nSample Output:\n0\n\nSample Input:\n23:59\nSample Output:\n1\n\nNotes: NoteIn the first test case, the minimum number of minutes Karen should sleep for is 11. She can wake up at 05:50, when the time is a palindrome.In the second test case, Karen can wake up immediately, as the current time, 13:31, is already a palindrome.In the third test case, the minimum number of minutes Karen should sleep for is 1 minute. She can wake up at 00:00, when the time is a palindrome.\nTake input from standard input and output to standard output\n\nHere is the code with a bug of RUNTIME_ERROR:\n\nl = list(input().split(':'))\nif(int(l[0][::-1]) >= int(l[1])):\n    print(int(l[0][::-1]) - int(l[1]))\nelse:\n    m = int(l[1])\n    h = int(l[0])\n    ans = 0\n    while(True):\n        m += 1\n        ans += 1\n        if(m == 60):\n            m = 0\n            h += 1\n            if(h == 24):\n                h = 0\n                st = \"00:00\"\n            else:\n                if(len(str(h)) == 1):\n                    st = \"0\"+str(h)+\"00\"\n                else:\n                    st = str(h)+\"00\"\n        else:\n            if(len(str(m)) == 1):\n                if(len(str(h)) == 1):\n                    st = \"0\"+str(h)+\"0\"+str(m)\n                else:\n                    st = str(h)+\"0\"+str(m)\n            else:\n                if(len(str(h) == 1)):\n                    st = \"0\"+str(h)+str(m)\n                else:\n                     st = str(h)+str(m)\n        if(st == st[::-1]):\n            print(ans)\n            break\n\n\n\n\nProvide the fixed Python code without any description or extra tokens.\n\nFixed source code:\n ||END-of-SRC||",
+        "response": {
+            "id": "multi-call-as-vtz88ri90q",
+            "model": "deepseek-v3",
+            "created": 1760424216,
+            "choices": [
+                {
+                    "index": 0,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```python\nl = input().split(':')\nh = int(l[0])\nm = int(l[1])\nans = 0\nwhile True:\n    current_time = f\"{h:02d}{m:02d}\"\n    if current_time == current_time[::-1]:\n        print(ans)\n        break\n    m += 1\n    ans += 1\n    if m == 60:\n        m = 0\n        h += 1\n        if h == 24:\n            h = 0\n``` ||END-of-SRC||"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 1,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```python\nl = input().split(':')\nh = int(l[0])\nm = int(l[1])\nans = 0\nwhile True:\n    current_time = f\"{h:02d}{m:02d}\"\n    if current_time == current_time[::-1]:\n        print(ans)\n        break\n    m += 1\n    ans += 1\n    if m == 60:\n        m = 0\n        h += 1\n        if h == 24:\n            h = 0\n``` ||END-of-SRC||"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 2,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```python\nl = input().split(':')\nh = int(l[0])\nm = int(l[1])\nans = 0\nwhile True:\n    current_time = f\"{h:02d}{m:02d}\"\n    if current_time == current_time[::-1]:\n        print(ans)\n        break\n    m += 1\n    ans += 1\n    if m == 60:\n        m = 0\n        h += 1\n        if h == 24:\n            h = 0\n``` ||END-of-SRC||"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 3,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```python\nl = input().split(':')\nh = int(l[0])\nm = int(l[1])\nans = 0\nwhile True:\n    time_str = f\"{h:02d}{m:02d}\"\n    if time_str == time_str[::-1]:\n        print(ans)\n        break\n    m += 1\n    ans += 1\n    if m == 60:\n        m = 0\n        h += 1\n        if h == 24:\n            h = 0\n``` ||END-of-SRC||"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 4,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```python\nl = input().split(':')\nh = int(l[0])\nm = int(l[1])\nans = 0\nwhile True:\n    current_time = f\"{h:02d}{m:02d}\"\n    if current_time == current_time[::-1]:\n        print(ans)\n        break\n    m += 1\n    ans += 1\n    if m == 60:\n        m = 0\n        h += 1\n        if h == 24:\n            h = 0\n``` ||END-of-SRC||"
+                    },
+                    "finish_reason": "stop"
+                }
+            ],
+            "usage": {
+                "prompt_tokens": 3455,
+                "completion_tokens": 583,
+                "total_tokens": 4038
+            }
+        }
+    },
+    "source_data": {
+        "prob_desc_memory_limit": "512 megabytes",
+        "tags": [
+            "brute force",
+            "implementation"
+        ],
+        "prob_desc_created_at": "1497710100",
+        "fix_source_code": "",
+        "prob_desc_input_spec": "The first and only line of input contains a single string in the format hh:mm (00\u2009\u2264\u2009 hh \u2009\u2264\u200923, 00\u2009\u2264\u2009 mm \u2009\u2264\u200959).",
+        "prob_desc_sample_outputs": [
+            "11",
+            "0",
+            "1"
+        ],
+        "src_uid": "3ad3b8b700f6f34b3a53fdb63af351a5",
+        "prob_desc_time_limit": "2 seconds",
+        "fix_exec_outcome": "",
+        "delete_cnt": 0,
+        "apr_id": "60d0bd7bfd72fedd4b516a6f3e5d223c",
+        "fix_code_uid": "",
+        "lang_cluster": "Python",
+        "prob_desc_sample_inputs": [
+            "05:39",
+            "13:31",
+            "23:59"
+        ],
+        "prob_desc_output_to": "standard output",
+        "file_name": "Python.jsonl",
+        "equal_cnt": 3,
+        "lang": "PyPy 3",
+        "prob_desc_output_spec": "Output a single integer on a line by itself, the minimum number of minutes she should sleep, such that, when she wakes up, the time is a palindrome.",
+        "bug_exec_outcome": "RUNTIME_ERROR",
+        "prob_desc_notes": "NoteIn the first test case, the minimum number of minutes Karen should sleep for is 11. She can wake up at 05:50, when the time is a palindrome.In the second test case, Karen can wake up immediately, as the current time, 13:31, is already a palindrome.In the third test case, the minimum number of minutes Karen should sleep for is 1 minute. She can wake up at 00:00, when the time is a palindrome.",
+        "difficulty": 1000.0,
+        "similarity_score": 0.9802666903,
+        "prob_desc_description": "Karen is getting ready for a new school day!  It is currently hh:mm, given in a 24-hour format. As you know, Karen loves palindromes, and she believes that it is good luck to wake up when the time is a palindrome.What is the minimum number of minutes she should sleep, such that, when she wakes up, the time is a palindrome?Remember that a palindrome is a string that reads the same forwards and backwards. For instance, 05:39 is not a palindrome, because 05:39 backwards is 93:50. On the other hand, 05:50 is a palindrome, because 05:50 backwards is 05:50.",
+        "potential_dominant_fix_op": "replace",
+        "bug_source_code": "l = list(input().split(':'))\nif(int(l[0][::-1]) >= int(l[1])):\n    print(int(l[0][::-1]) - int(l[1]))\nelse:\n    m = int(l[1])\n    h = int(l[0])\n    ans = 0\n    while(True):\n        m += 1\n        ans += 1\n        if(m == 60):\n            m = 0\n            h += 1\n            if(h == 24):\n                h = 0\n                st = \"00:00\"\n            else:\n                if(len(str(h)) == 1):\n                    st = \"0\"+str(h)+\"00\"\n                else:\n                    st = str(h)+\"00\"\n        else:\n            if(len(str(m)) == 1):\n                if(len(str(h)) == 1):\n                    st = \"0\"+str(h)+\"0\"+str(m)\n                else:\n                    st = str(h)+\"0\"+str(m)\n            else:\n                if(len(str(h) == 1)):\n                    st = \"0\"+str(h)+str(m)\n                else:\n                     st = str(h)+str(m)\n        if(st == st[::-1]):\n            print(ans)\n            break\n\n\n",
+        "replace_cnt": 1,
+        "prob_desc_input_from": "standard input",
+        "bug_code_uid": "0ab1e2ed5574bd0349b31b93bccf983c",
+        "insert_cnt": 1,
+        "fix_ops_cnt": 2,
+        "hidden_unit_tests": "[{\"input\": \"05:39\\r\\n\", \"output\": [\"11\"]}, {\"input\": \"13:31\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"23:59\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"13:32\\r\\n\", \"output\": [\"69\"]}, {\"input\": \"14:40\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"14:00\\r\\n\", \"output\": [\"41\"]}, {\"input\": \"05:50\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"12:22\\r\\n\", \"output\": [\"69\"]}, {\"input\": \"12:34\\r\\n\", \"output\": [\"57\"]}, {\"input\": \"05:30\\r\\n\", \"output\": [\"20\"]}, {\"input\": \"14:14\\r\\n\", \"output\": [\"27\"]}, {\"input\": \"01:10\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"02:20\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"03:30\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"04:40\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"10:01\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"11:11\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"12:21\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"14:41\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"15:51\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"20:02\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"21:12\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"22:22\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"23:32\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"01:11\\r\\n\", \"output\": [\"69\"]}, {\"input\": \"02:21\\r\\n\", \"output\": [\"69\"]}, {\"input\": \"03:31\\r\\n\", \"output\": [\"69\"]}, {\"input\": \"04:41\\r\\n\", \"output\": [\"69\"]}, {\"input\": \"05:51\\r\\n\", \"output\": [\"250\"]}, {\"input\": \"10:02\\r\\n\", \"output\": [\"69\"]}, {\"input\": \"11:12\\r\\n\", \"output\": [\"69\"]}, {\"input\": \"14:42\\r\\n\", \"output\": [\"69\"]}, {\"input\": \"15:52\\r\\n\", \"output\": [\"250\"]}, {\"input\": \"20:03\\r\\n\", \"output\": [\"69\"]}, {\"input\": \"21:13\\r\\n\", \"output\": [\"69\"]}, {\"input\": \"22:23\\r\\n\", \"output\": [\"69\"]}, {\"input\": \"23:33\\r\\n\", \"output\": [\"27\"]}, {\"input\": \"00:00\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"00:01\\r\\n\", \"output\": [\"69\"]}, {\"input\": \"22:21\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"20:01\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"11:10\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"06:59\\r\\n\", \"output\": [\"182\"]}, {\"input\": \"02:00\\r\\n\", \"output\": [\"20\"]}, {\"input\": \"02:19\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"17:31\\r\\n\", \"output\": [\"151\"]}, {\"input\": \"19:00\\r\\n\", \"output\": [\"62\"]}, {\"input\": \"13:37\\r\\n\", \"output\": [\"64\"]}, {\"input\": \"07:59\\r\\n\", \"output\": [\"122\"]}, {\"input\": \"04:20\\r\\n\", \"output\": [\"20\"]}, {\"input\": \"07:10\\r\\n\", \"output\": [\"171\"]}, {\"input\": \"06:00\\r\\n\", \"output\": [\"241\"]}, {\"input\": \"06:01\\r\\n\", \"output\": [\"240\"]}, {\"input\": \"08:15\\r\\n\", \"output\": [\"106\"]}, {\"input\": \"01:00\\r\\n\", \"output\": [\"10\"]}, {\"input\": \"07:00\\r\\n\", \"output\": [\"181\"]}, {\"input\": \"06:10\\r\\n\", \"output\": [\"231\"]}, {\"input\": \"18:52\\r\\n\", \"output\": [\"70\"]}, {\"input\": \"09:59\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"06:50\\r\\n\", \"output\": [\"191\"]}, {\"input\": \"19:20\\r\\n\", \"output\": [\"42\"]}, {\"input\": \"06:16\\r\\n\", \"output\": [\"225\"]}, {\"input\": \"10:10\\r\\n\", \"output\": [\"61\"]}, {\"input\": \"17:11\\r\\n\", \"output\": [\"171\"]}, {\"input\": \"18:00\\r\\n\", \"output\": [\"122\"]}, {\"input\": \"05:04\\r\\n\", \"output\": [\"46\"]}, {\"input\": \"16:00\\r\\n\", \"output\": [\"242\"]}, {\"input\": \"23:31\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"17:25\\r\\n\", \"output\": [\"157\"]}, {\"input\": \"23:58\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"23:46\\r\\n\", \"output\": [\"14\"]}, {\"input\": \"00:09\\r\\n\", \"output\": [\"61\"]}, {\"input\": \"09:20\\r\\n\", \"output\": [\"41\"]}, {\"input\": \"05:59\\r\\n\", \"output\": [\"242\"]}, {\"input\": \"18:59\\r\\n\", \"output\": [\"63\"]}, {\"input\": \"02:02\\r\\n\", \"output\": [\"18\"]}, {\"input\": \"00:30\\r\\n\", \"output\": [\"40\"]}, {\"input\": \"05:54\\r\\n\", \"output\": [\"247\"]}, {\"input\": \"19:59\\r\\n\", \"output\": [\"3\"]}, {\"input\": \"16:59\\r\\n\", \"output\": [\"183\"]}, {\"input\": \"17:51\\r\\n\", \"output\": [\"131\"]}, {\"input\": \"09:30\\r\\n\", \"output\": [\"31\"]}, {\"input\": \"16:55\\r\\n\", \"output\": [\"187\"]}, {\"input\": \"16:12\\r\\n\", \"output\": [\"230\"]}, {\"input\": \"20:00\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"01:01\\r\\n\", \"output\": [\"9\"]}, {\"input\": \"23:01\\r\\n\", \"output\": [\"31\"]}, {\"input\": \"06:05\\r\\n\", \"output\": [\"236\"]}, {\"input\": \"19:19\\r\\n\", \"output\": [\"43\"]}, {\"input\": \"17:00\\r\\n\", \"output\": [\"182\"]}, {\"input\": \"07:50\\r\\n\", \"output\": [\"131\"]}, {\"input\": \"21:20\\r\\n\", \"output\": [\"62\"]}, {\"input\": \"23:23\\r\\n\", \"output\": [\"9\"]}, {\"input\": \"19:30\\r\\n\", \"output\": [\"32\"]}, {\"input\": \"00:59\\r\\n\", \"output\": [\"11\"]}, {\"input\": \"22:59\\r\\n\", \"output\": [\"33\"]}, {\"input\": \"18:18\\r\\n\", \"output\": [\"104\"]}, {\"input\": \"17:46\\r\\n\", \"output\": [\"136\"]}, {\"input\": \"07:30\\r\\n\", \"output\": [\"151\"]}, {\"input\": \"17:16\\r\\n\", \"output\": [\"166\"]}, {\"input\": \"06:06\\r\\n\", \"output\": [\"235\"]}, {\"input\": \"23:30\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"05:57\\r\\n\", \"output\": [\"244\"]}, {\"input\": \"19:46\\r\\n\", \"output\": [\"16\"]}, {\"input\": \"17:07\\r\\n\", \"output\": [\"175\"]}, {\"input\": \"18:53\\r\\n\", \"output\": [\"69\"]}, {\"input\": \"07:06\\r\\n\", \"output\": [\"175\"]}, {\"input\": \"17:50\\r\\n\", \"output\": [\"132\"]}, {\"input\": \"09:15\\r\\n\", \"output\": [\"46\"]}, {\"input\": \"09:55\\r\\n\", \"output\": [\"6\"]}, {\"input\": \"20:05\\r\\n\", \"output\": [\"67\"]}, {\"input\": \"22:55\\r\\n\", \"output\": [\"37\"]}, {\"input\": \"10:00\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"07:55\\r\\n\", \"output\": [\"126\"]}, {\"input\": \"07:40\\r\\n\", \"output\": [\"141\"]}, {\"input\": \"19:08\\r\\n\", \"output\": [\"54\"]}, {\"input\": \"23:24\\r\\n\", \"output\": [\"8\"]}, {\"input\": \"16:15\\r\\n\", \"output\": [\"227\"]}, {\"input\": \"07:20\\r\\n\", \"output\": [\"161\"]}, {\"input\": \"23:10\\r\\n\", \"output\": [\"22\"]}, {\"input\": \"06:51\\r\\n\", \"output\": [\"190\"]}, {\"input\": \"16:30\\r\\n\", \"output\": [\"212\"]}, {\"input\": \"17:54\\r\\n\", \"output\": [\"128\"]}, {\"input\": \"07:07\\r\\n\", \"output\": [\"174\"]}, {\"input\": \"08:01\\r\\n\", \"output\": [\"120\"]}, {\"input\": \"09:58\\r\\n\", \"output\": [\"3\"]}, {\"input\": \"18:03\\r\\n\", \"output\": [\"119\"]}, {\"input\": \"05:55\\r\\n\", \"output\": [\"246\"]}, {\"input\": \"07:39\\r\\n\", \"output\": [\"142\"]}, {\"input\": \"05:52\\r\\n\", \"output\": [\"249\"]}, {\"input\": \"12:02\\r\\n\", \"output\": [\"19\"]}, {\"input\": \"08:59\\r\\n\", \"output\": [\"62\"]}, {\"input\": \"09:21\\r\\n\", \"output\": [\"40\"]}, {\"input\": \"16:04\\r\\n\", \"output\": [\"238\"]}, {\"input\": \"04:00\\r\\n\", \"output\": [\"40\"]}, {\"input\": \"18:21\\r\\n\", \"output\": [\"101\"]}, {\"input\": \"09:13\\r\\n\", \"output\": [\"48\"]}, {\"input\": \"17:20\\r\\n\", \"output\": [\"162\"]}, {\"input\": \"06:15\\r\\n\", \"output\": [\"226\"]}, {\"input\": \"19:21\\r\\n\", \"output\": [\"41\"]}, {\"input\": \"16:02\\r\\n\", \"output\": [\"240\"]}, {\"input\": \"15:59\\r\\n\", \"output\": [\"243\"]}, {\"input\": \"06:07\\r\\n\", \"output\": [\"234\"]}, {\"input\": \"08:08\\r\\n\", \"output\": [\"113\"]}, {\"input\": \"09:09\\r\\n\", \"output\": [\"52\"]}, {\"input\": \"21:59\\r\\n\", \"output\": [\"23\"]}]"
+    }
+}

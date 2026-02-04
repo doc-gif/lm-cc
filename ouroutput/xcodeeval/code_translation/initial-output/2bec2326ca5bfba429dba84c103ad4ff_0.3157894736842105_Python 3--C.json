@@ -1,0 +1,87 @@
+{
+    "oai_response": {
+        "prompt": "Here is code in Python 3 programming lanaguge. Translate the following code from Python 3 to C programming lanaguge. Do not output any extra description or tokens other than the translated code. \n\nn = int(input())\ni = 2\nresposta = 1\nwhile i * i <= n:\n\tif n % i == 0:\n\t\tresposta *= i\n\t\twhile n % i == 0:\n\t\t\tn //= i\n\ti += 1\nif n > 1:\n\tresposta *= n\nprint(resposta)||END-of-SRC||",
+        "response": {
+            "id": "multi-call-as-92wd29fy3d",
+            "model": "deepseek-v3",
+            "created": 1767067668,
+            "choices": [
+                {
+                    "index": 0,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    int i = 2;\n    int resposta = 1;\n    while (i * i <= n) {\n        if (n % i == 0) {\n            resposta *= i;\n            while (n % i == 0) {\n                n /= i;\n            }\n        }\n        i++;\n    }\n    if (n > 1) {\n        resposta *= n;\n    }\n    printf(\"%d\\n\", resposta);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 1,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    int i = 2;\n    int resposta = 1;\n    while (i * i <= n) {\n        if (n % i == 0) {\n            resposta *= i;\n            while (n % i == 0) {\n                n /= i;\n            }\n        }\n        i++;\n    }\n    if (n > 1) {\n        resposta *= n;\n    }\n    printf(\"%d\\n\", resposta);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 2,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n\nint main() {\n    int n, i = 2, resposta = 1;\n    scanf(\"%d\", &n);\n    while (i * i <= n) {\n        if (n % i == 0) {\n            resposta *= i;\n            while (n % i == 0) {\n                n /= i;\n            }\n        }\n        i++;\n    }\n    if (n > 1) {\n        resposta *= n;\n    }\n    printf(\"%d\\n\", resposta);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 3,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n\nint main() {\n    int n, i = 2, resposta = 1;\n    scanf(\"%d\", &n);\n    while (i * i <= n) {\n        if (n % i == 0) {\n            resposta *= i;\n            while (n % i == 0) {\n                n /= i;\n            }\n        }\n        i++;\n    }\n    if (n > 1) {\n        resposta *= n;\n    }\n    printf(\"%d\\n\", resposta);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 4,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n\nint main() {\n    int n, i = 2, resposta = 1;\n    scanf(\"%d\", &n);\n    while (i * i <= n) {\n        if (n % i == 0) {\n            resposta *= i;\n            while (n % i == 0) {\n                n /= i;\n            }\n        }\n        i++;\n    }\n    if (n > 1) {\n        resposta *= n;\n    }\n    printf(\"%d\\n\", resposta);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                }
+            ],
+            "usage": {
+                "prompt_tokens": 615,
+                "completion_tokens": 591,
+                "total_tokens": 1206
+            }
+        }
+    },
+    "source_data": {
+        "code_uid": "2bec2326ca5bfba429dba84c103ad4ff",
+        "prob_desc_output_to": "standard output",
+        "prob_desc_notes": "NoteIn first sample case, there are numbers 1, 2, 5 and 10 in the shop. 10 isn't divisible by any perfect square, so 10 is lovely.In second sample case, there are numbers 1, 2, 3, 4, 6 and 12 in the shop. 12 is divisible by 4\u2009=\u200922, so 12 is not lovely, while 6 is indeed lovely.",
+        "lang_cluster": "Python",
+        "prob_desc_time_limit": "2 seconds",
+        "prob_desc_input_spec": "The first and only line of input contains one integer, n (1\u2009\u2264\u2009n\u2009\u2264\u20091012).",
+        "source_code": "n = int(input())\ni = 2\nresposta = 1\nwhile i * i <= n:\n\tif n % i == 0:\n\t\tresposta *= i\n\t\twhile n % i == 0:\n\t\t\tn //= i\n\ti += 1\nif n > 1:\n\tresposta *= n\nprint(resposta)",
+        "prob_desc_sample_inputs": [
+            "10",
+            "12"
+        ],
+        "prob_desc_memory_limit": "256 megabytes",
+        "exec_outcome": "PASSED",
+        "prob_desc_output_spec": "Print the answer in one line.",
+        "src_uid": "6d0da975fa0961acfdbe75f2f29aeb92",
+        "prob_desc_input_from": "standard input",
+        "lang": "Python 3",
+        "prob_desc_sample_outputs": [
+            "10",
+            "6"
+        ],
+        "file_name": "d7021504500d5ca7c2b02df8100a574d159e6e67e20ec8071b75800b1267370a",
+        "prob_desc_description": "Duff is in love with lovely numbers! A positive integer x is called lovely if and only if there is no such positive integer a\u2009&gt;\u20091 such that a2 is a divisor of x.  Malek has a number store! In his store, he has only divisors of positive integer n (and he has all of them). As a birthday present, Malek wants to give her a lovely number from his store. He wants this number to be as big as possible.Malek always had issues in math, so he asked for your help. Please tell him what is the biggest lovely number in his store.",
+        "prob_desc_created_at": "1444926600",
+        "difficulty": 1300.0,
+        "hidden_unit_tests": "[{\"input\": \"10\\r\\n\", \"output\": [\"10\"]}, {\"input\": \"12\\r\\n\", \"output\": [\"6\"]}, {\"input\": \"1\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"2\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"4\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"8\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"3\\r\\n\", \"output\": [\"3\"]}, {\"input\": \"31\\r\\n\", \"output\": [\"31\"]}, {\"input\": \"97\\r\\n\", \"output\": [\"97\"]}, {\"input\": \"1000000000000\\r\\n\", \"output\": [\"10\"]}, {\"input\": \"15\\r\\n\", \"output\": [\"15\"]}, {\"input\": \"894\\r\\n\", \"output\": [\"894\"]}, {\"input\": \"271\\r\\n\", \"output\": [\"271\"]}, {\"input\": \"2457\\r\\n\", \"output\": [\"273\"]}, {\"input\": \"2829\\r\\n\", \"output\": [\"2829\"]}, {\"input\": \"5000\\r\\n\", \"output\": [\"10\"]}, {\"input\": \"20\\r\\n\", \"output\": [\"10\"]}, {\"input\": \"68\\r\\n\", \"output\": [\"34\"]}, {\"input\": \"3096\\r\\n\", \"output\": [\"258\"]}, {\"input\": \"1024\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"1048576\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"413933789280\\r\\n\", \"output\": [\"25870861830\"]}, {\"input\": \"817634153013\\r\\n\", \"output\": [\"817634153013\"]}, {\"input\": \"56517269141\\r\\n\", \"output\": [\"56517269141\"]}, {\"input\": \"30707328551\\r\\n\", \"output\": [\"30707328551\"]}, {\"input\": \"279564127218\\r\\n\", \"output\": [\"10354226934\"]}, {\"input\": \"491159577042\\r\\n\", \"output\": [\"18191095446\"]}, {\"input\": \"734337660466\\r\\n\", \"output\": [\"734337660466\"]}, {\"input\": \"808453785117\\r\\n\", \"output\": [\"808453785117\"]}, {\"input\": \"55926835837\\r\\n\", \"output\": [\"55926835837\"]}, {\"input\": \"294809951965\\r\\n\", \"output\": [\"294809951965\"]}, {\"input\": \"537988035389\\r\\n\", \"output\": [\"76855433627\"]}, {\"input\": \"822722434952\\r\\n\", \"output\": [\"205680608738\"]}, {\"input\": \"699511759613\\r\\n\", \"output\": [\"699511759613\"]}, {\"input\": \"942689843037\\r\\n\", \"output\": [\"104743315893\"]}, {\"input\": \"663634158717\\r\\n\", \"output\": [\"663634158717\"]}, {\"input\": \"213612977250\\r\\n\", \"output\": [\"11730\"]}, {\"input\": \"999999999989\\r\\n\", \"output\": [\"999999999989\"]}, {\"input\": \"999999999988\\r\\n\", \"output\": [\"499999999994\"]}, {\"input\": \"87178291200\\r\\n\", \"output\": [\"30030\"]}, {\"input\": \"927668721948\\r\\n\", \"output\": [\"463834360974\"]}, {\"input\": \"562436815639\\r\\n\", \"output\": [\"37927\"]}, {\"input\": \"302981118597\\r\\n\", \"output\": [\"35853\"]}, {\"input\": \"5\\r\\n\", \"output\": [\"5\"]}, {\"input\": \"9\\r\\n\", \"output\": [\"3\"]}, {\"input\": \"36\\r\\n\", \"output\": [\"6\"]}, {\"input\": \"2231\\r\\n\", \"output\": [\"2231\"]}, {\"input\": \"27648\\r\\n\", \"output\": [\"6\"]}, {\"input\": \"40320\\r\\n\", \"output\": [\"210\"]}, {\"input\": \"648000\\r\\n\", \"output\": [\"30\"]}, {\"input\": \"999966000289\\r\\n\", \"output\": [\"999983\"]}, {\"input\": \"999985999949\\r\\n\", \"output\": [\"999985999949\"]}, {\"input\": \"991921850317\\r\\n\", \"output\": [\"9973\"]}]",
+        "source_lang": "Python 3",
+        "target_lang": "C"
+    }
+}

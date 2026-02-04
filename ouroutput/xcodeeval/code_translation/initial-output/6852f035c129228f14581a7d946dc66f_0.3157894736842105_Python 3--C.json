@@ -1,0 +1,87 @@
+{
+    "oai_response": {
+        "prompt": "Here is code in Python 3 programming lanaguge. Translate the following code from Python 3 to C programming lanaguge. Do not output any extra description or tokens other than the translated code. \n\na,b,c,d=map(int,input().split())\nr=42\nif b-a==c-b==d-c:r=d+b-a\nif b/a==c/b==d/c==int(d*c/b)/d:r=int(d*c/b)\nprint(r)||END-of-SRC||",
+        "response": {
+            "id": "multi-call-as-fgv2ez3qj9",
+            "model": "deepseek-v3",
+            "created": 1767067260,
+            "choices": [
+                {
+                    "index": 0,
+                    "message": {
+                        "role": "assistant",
+                        "content": "Here's the translated code in C:\n\n```c\n#include <stdio.h>\n\nint main() {\n    int a, b, c, d;\n    scanf(\"%d %d %d %d\", &a, &b, &c, &d);\n    int r = 42;\n    if (b - a == c - b && c - b == d - c) {\n        r = d + b - a;\n    }\n    if (b * d == a * c && c * c == b * d) {\n        r = d * c / b;\n    }\n    printf(\"%d\", r);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 1,
+                    "message": {
+                        "role": "assistant",
+                        "content": "Here's the translated code in C:\n\n```c\n#include <stdio.h>\n\nint main() {\n    int a, b, c, d;\n    scanf(\"%d %d %d %d\", &a, &b, &c, &d);\n    int r = 42;\n    if (b - a == c - b && c - b == d - c) {\n        r = d + b - a;\n    }\n    if (b * d == a * c && c * c == b * d) {\n        r = d * c / b;\n    }\n    printf(\"%d\", r);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 2,
+                    "message": {
+                        "role": "assistant",
+                        "content": "Here's the translated code in C:\n\n```c\n#include <stdio.h>\n\nint main() {\n    int a, b, c, d;\n    scanf(\"%d %d %d %d\", &a, &b, &c, &d);\n    int r = 42;\n    if (b - a == c - b && c - b == d - c) {\n        r = d + b - a;\n    }\n    if (b * d == a * c && c * c == b * d) {\n        r = d * c / b;\n    }\n    printf(\"%d\", r);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 3,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n\nint main() {\n    int a, b, c, d;\n    scanf(\"%d %d %d %d\", &a, &b, &c, &d);\n    int r = 42;\n    if (b - a == c - b && c - b == d - c) {\n        r = d + b - a;\n    }\n    if ((float)b / a == (float)c / b && (float)c / b == (float)d / c && (float)d / c == (float)((int)(d * c / b)) / d) {\n        r = (int)(d * c / b);\n    }\n    printf(\"%d\\n\", r);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 4,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n\nint main() {\n    int a, b, c, d;\n    scanf(\"%d %d %d %d\", &a, &b, &c, &d);\n    int r = 42;\n    if (b - a == c - b && c - b == d - c) {\n        r = d + b - a;\n    }\n    if (b * d == a * c && c * d == b * (d * c / b) && a != 0 && b != 0 && c != 0 && d != 0) {\n        r = d * c / b;\n    }\n    printf(\"%d\\n\", r);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                }
+            ],
+            "usage": {
+                "prompt_tokens": 535,
+                "completion_tokens": 725,
+                "total_tokens": 1260
+            }
+        }
+    },
+    "source_data": {
+        "code_uid": "6852f035c129228f14581a7d946dc66f",
+        "prob_desc_output_to": "standard output",
+        "prob_desc_notes": "NoteThis problem contains very weak pretests!",
+        "lang_cluster": "Python",
+        "prob_desc_time_limit": "1 second",
+        "prob_desc_input_spec": "The first line contains exactly four integer numbers between 1 and 1000, inclusively.",
+        "source_code": "a,b,c,d=map(int,input().split())\nr=42\nif b-a==c-b==d-c:r=d+b-a\nif b/a==c/b==d/c==int(d*c/b)/d:r=int(d*c/b)\nprint(r)",
+        "prob_desc_sample_inputs": [
+            "836 624 412 200",
+            "1 334 667 1000"
+        ],
+        "prob_desc_memory_limit": "256 megabytes",
+        "exec_outcome": "PASSED",
+        "prob_desc_output_spec": "Print the required number. If the given sequence is arithmetic progression, print the next progression element. Similarly, if the given sequence is geometric progression, print the next progression element. Print 42 if the given sequence is not an arithmetic or geometric progression.",
+        "src_uid": "68a9508d49fec672f9c61766d6051047",
+        "prob_desc_input_from": "standard input",
+        "lang": "Python 3",
+        "prob_desc_sample_outputs": [
+            "-12",
+            "1333"
+        ],
+        "file_name": "d7021504500d5ca7c2b02df8100a574d159e6e67e20ec8071b75800b1267370a",
+        "prob_desc_description": "Petya is preparing for IQ test and he has noticed that there many problems like: you are given a sequence, find the next number. Now Petya can solve only problems with arithmetic or geometric progressions.Arithmetic progression is a sequence a1, a1\u2009+\u2009d, a1\u2009+\u20092d, ..., a1\u2009+\u2009(n\u2009-\u20091)d, where a1 and d are any numbers.Geometric progression is a sequence b1, b2\u2009=\u2009b1q, ..., bn\u2009=\u2009bn\u2009-\u20091q, where b1\u2009\u2260\u20090, q\u2009\u2260\u20090, q\u2009\u2260\u20091. Help Petya and write a program to determine if the given sequence is arithmetic or geometric. Also it should found the next number. If the sequence is neither arithmetic nor geometric, print 42 (he thinks it is impossible to find better answer). You should also print 42 if the next element of progression is not integer. So answer is always integer.",
+        "prob_desc_created_at": "1373662800",
+        "difficulty": 1800.0,
+        "hidden_unit_tests": "[{\"input\": \"836 624 412 200\\r\\n\", \"output\": [\"-12\"]}, {\"input\": \"1 334 667 1000\\r\\n\", \"output\": [\"1333\"]}, {\"input\": \"501 451 400 350\\r\\n\", \"output\": [\"42\"]}, {\"input\": \"11 234 457 680\\r\\n\", \"output\": [\"903\"]}, {\"input\": \"640 431 222 13\\r\\n\", \"output\": [\"-196\"]}, {\"input\": \"1 1 1 1\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"1 10 100 1000\\r\\n\", \"output\": [\"10000\"]}, {\"input\": \"3 18 108 648\\r\\n\", \"output\": [\"3888\"]}, {\"input\": \"512 384 288 216\\r\\n\", \"output\": [\"162\"]}, {\"input\": \"891 297 99 33\\r\\n\", \"output\": [\"11\"]}, {\"input\": \"64 160 400 1000\\r\\n\", \"output\": [\"2500\"]}, {\"input\": \"501 450 400 350\\r\\n\", \"output\": [\"42\"]}, {\"input\": \"4 32 48 64\\r\\n\", \"output\": [\"42\"]}, {\"input\": \"9 8 7 5\\r\\n\", \"output\": [\"42\"]}, {\"input\": \"992 994 998 1000\\r\\n\", \"output\": [\"42\"]}, {\"input\": \"2 6 6 8\\r\\n\", \"output\": [\"42\"]}, {\"input\": \"2 4 8 8\\r\\n\", \"output\": [\"42\"]}, {\"input\": \"2 4 6 14\\r\\n\", \"output\": [\"42\"]}, {\"input\": \"2 12 4 14\\r\\n\", \"output\": [\"42\"]}, {\"input\": \"2 4 4 2\\r\\n\", \"output\": [\"42\"]}, {\"input\": \"1000 100 10 1\\r\\n\", \"output\": [\"42\"]}, {\"input\": \"2 9 27 81\\r\\n\", \"output\": [\"42\"]}, {\"input\": \"2 4 9 16\\r\\n\", \"output\": [\"42\"]}, {\"input\": \"2 4 9 18\\r\\n\", \"output\": [\"42\"]}, {\"input\": \"256 64 16 8\\r\\n\", \"output\": [\"42\"]}, {\"input\": \"256 385 576 864\\r\\n\", \"output\": [\"42\"]}, {\"input\": \"343 147 63 27\\r\\n\", \"output\": [\"42\"]}, {\"input\": \"729 648 576 512\\r\\n\", \"output\": [\"42\"]}, {\"input\": \"1000 980 960 941\\r\\n\", \"output\": [\"42\"]}, {\"input\": \"2 5 10 16\\r\\n\", \"output\": [\"42\"]}, {\"input\": \"1 2 3 10\\r\\n\", \"output\": [\"42\"]}, {\"input\": \"24 36 54 81\\r\\n\", \"output\": [\"42\"]}, {\"input\": \"1 2 4 8\\r\\n\", \"output\": [\"16\"]}, {\"input\": \"16 24 36 54\\r\\n\", \"output\": [\"81\"]}, {\"input\": \"8 4 2 1\\r\\n\", \"output\": [\"42\"]}, {\"input\": \"16 8 4 2\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"32 16 8 4\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"10 11 12 12\\r\\n\", \"output\": [\"42\"]}, {\"input\": \"1 2 10 20\\r\\n\", \"output\": [\"42\"]}, {\"input\": \"27 9 3 1\\r\\n\", \"output\": [\"42\"]}, {\"input\": \"81 108 144 192\\r\\n\", \"output\": [\"256\"]}, {\"input\": \"2 3 4 6\\r\\n\", \"output\": [\"42\"]}, {\"input\": \"1000 500 170 40\\r\\n\", \"output\": [\"42\"]}]",
+        "source_lang": "Python 3",
+        "target_lang": "C"
+    }
+}

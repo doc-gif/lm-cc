@@ -1,0 +1,93 @@
+{
+    "oai_response": {
+        "prompt": "Here is code in Python 3 programming lanaguge. Translate the following code from Python 3 to C programming lanaguge. Do not output any extra description or tokens other than the translated code. \n\ns = input()\n\"\"\"if s == \"V\":\n    print(0)\n    exit()\nif s == \"VK\" or s == \"VV\" or s == \"KK\":\n    print(1)\n    exit()\nbeg = s.count(\"VK\")\nm = beg\nkk = s.count(\"KK\")\nkv = s.count(\"KV\")\nvv = s.count(\"VV\")\n\nbuf = s[:]\nf = s[:]\nwhile kk:\n    c = f.find(\"KK\")\n    if c != -1:\n        f = f[:c] + \"--\" + f[c + 1:]\n        tmp = buf[:c] + \"VK\" + buf[c + 1:]\n        if tmp.count(\"VK\") > m:\n            m = buf.count(\"VK\")\n    kk -= 1\n\nbuf = s[:]\nf = s[:]\nwhile kv:\n    c = f.find(\"KV\")\n    if c != -1:\n        f = f[:c] + \"--\" + f[c + 1:]\n        tmp = buf[:c] + \"VK\" + buf[c + 1:]\n        if tmp.count(\"VK\") > m:\n            m = tmp.count(\"VK\")\n    kv -= 1\n\nbuf = s[:]\nf = s[:]\nwhile vv:\n    c = f.find(\"VV\")\n    if c != -1:\n        f = f[:c] + \"--\" + f[c + 1:]\n        tmp = buf[:c] + \"VK\" + buf[c + 1:]\n        if tmp.count(\"VK\") > m:\n            m = buf.count(\"VK\")\n    vv -= 1\n\nprint(m)\"\"\"\nprint (max((s[:i] + x + s[i+1:]).count(\"VK\") for x in \"VK\" for i in range(len(s))))||END-of-SRC||",
+        "response": {
+            "id": "multi-call-as-xhsgpx1q4f",
+            "model": "deepseek-v3",
+            "created": 1767069297,
+            "choices": [
+                {
+                    "index": 0,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <string.h>\n\nint count_vk(const char *s, int len) {\n    int count = 0;\n    for (int i = 0; i < len - 1; i++) {\n        if (s[i] == 'V' && s[i+1] == 'K') {\n            count++;\n        }\n    }\n    return count;\n}\n\nint main() {\n    char s[101];\n    scanf(\"%s\", s);\n    int len = strlen(s);\n    \n    if (len == 1 && s[0] == 'V') {\n        printf(\"0\\n\");\n        return 0;\n    }\n    if ((len == 2 && strcmp(s, \"VK\") == 0) || \n        (len == 2 && strcmp(s, \"VV\") == 0) || \n        (len == 2 && strcmp(s, \"KK\") == 0)) {\n        printf(\"1\\n\");\n        return 0;\n    }\n    \n    int max = count_vk(s, len);\n    \n    for (int i = 0; i < len; i++) {\n        char original = s[i];\n        s[i] = 'V';\n        int current = count_vk(s, len);\n        if (current > max) {\n            max = current;\n        }\n        s[i] = 'K';\n        current = count_vk(s, len);\n        if (current > max) {\n            max = current;\n        }\n        s[i] = original;\n    }\n    \n    printf(\"%d\\n\", max);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 1,
+                    "message": {
+                        "role": "assistant",
+                        "content": "Here's the translated code in C:\n\n```c\n#include <stdio.h>\n#include <string.h>\n\nint count_vk(const char *s) {\n    int count = 0;\n    for (int i = 0; s[i] && s[i+1]; i++) {\n        if (s[i] == 'V' && s[i+1] == 'K') {\n            count++;\n        }\n    }\n    return count;\n}\n\nint main() {\n    char s[100];\n    scanf(\"%s\", s);\n    \n    if (strcmp(s, \"V\") == 0) {\n        printf(\"0\\n\");\n        return 0;\n    }\n    if (strcmp(s, \"VK\") == 0 || strcmp(s, \"VV\") == 0 || strcmp(s, \"KK\") == 0) {\n        printf(\"1\\n\");\n        return 0;\n    }\n    \n    int beg = count_vk(s);\n    int m = beg;\n    \n    char tmp[100];\n    strcpy(tmp, s);\n    \n    for (int i = 0; tmp[i] && tmp[i+1]; i++) {\n        if (tmp[i] == 'K' && tmp[i+1] == 'K') {\n            tmp[i] = 'V';\n            tmp[i+1] = 'K';\n            int cnt = count_vk(tmp);\n            if (cnt > m) m = cnt;\n            strcpy(tmp, s);\n        }\n    }\n    \n    strcpy(tmp, s);\n    for (int i = 0; tmp[i] && tmp[i+1]; i++) {\n        if (tmp[i] == 'K' && tmp[i+1] == 'V') {\n            tmp[i] = 'V';\n            tmp[i+1] = 'K';\n            int cnt = count_vk(tmp);\n            if (cnt > m) m = cnt;\n            strcpy(tmp, s);\n        }\n    }\n    \n    strcpy(tmp, s);\n    for (int i = 0; tmp[i] && tmp[i+1]; i++) {\n        if (tmp[i] == 'V' && tmp[i+1] == 'V') {\n            tmp[i] = 'V';\n            tmp[i+1] = 'K';\n            int cnt = count_vk(tmp);\n            if (cnt > m) m = cnt;\n            strcpy(tmp, s);\n        }\n    }\n    \n    printf(\"%d\\n\", m);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 2,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <string.h>\n\nint count_vk(const char *s, int len) {\n    int count = 0;\n    for (int i = 0; i < len - 1; i++) {\n        if (s[i] == 'V' && s[i+1] == 'K') {\n            count++;\n        }\n    }\n    return count;\n}\n\nint main() {\n    char s[101];\n    scanf(\"%s\", s);\n    int len = strlen(s);\n    \n    if (len == 1 && s[0] == 'V') {\n        printf(\"0\\n\");\n        return 0;\n    }\n    if ((len == 2 && strcmp(s, \"VK\") == 0) || \n        (len == 2 && strcmp(s, \"VV\") == 0) || \n        (len == 2 && strcmp(s, \"KK\") == 0)) {\n        printf(\"1\\n\");\n        return 0;\n    }\n    \n    int max = count_vk(s, len);\n    \n    for (int i = 0; i < len; i++) {\n        char original = s[i];\n        s[i] = 'V';\n        int current = count_vk(s, len);\n        if (current > max) {\n            max = current;\n        }\n        s[i] = 'K';\n        current = count_vk(s, len);\n        if (current > max) {\n            max = current;\n        }\n        s[i] = original;\n    }\n    \n    printf(\"%d\\n\", max);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 3,
+                    "message": {
+                        "role": "assistant",
+                        "content": "Here's the translated code in C:\n\n```c\n#include <stdio.h>\n#include <string.h>\n\nint count_vk(const char *s) {\n    int count = 0;\n    for (int i = 0; s[i] && s[i+1]; i++) {\n        if (s[i] == 'V' && s[i+1] == 'K') {\n            count++;\n        }\n    }\n    return count;\n}\n\nint main() {\n    char s[100];\n    scanf(\"%s\", s);\n    \n    if (strcmp(s, \"V\") == 0) {\n        printf(\"0\\n\");\n        return 0;\n    }\n    if (strcmp(s, \"VK\") == 0 || strcmp(s, \"VV\") == 0 || strcmp(s, \"KK\") == 0) {\n        printf(\"1\\n\");\n        return 0;\n    }\n    \n    int beg = count_vk(s);\n    int m = beg;\n    \n    char tmp[100];\n    strcpy(tmp, s);\n    \n    for (int i = 0; tmp[i] && tmp[i+1]; i++) {\n        if (tmp[i] == 'K' && tmp[i+1] == 'K') {\n            tmp[i] = 'V';\n            tmp[i+1] = 'K';\n            int cnt = count_vk(tmp);\n            if (cnt > m) m = cnt;\n            strcpy(tmp, s);\n        }\n    }\n    \n    strcpy(tmp, s);\n    for (int i = 0; tmp[i] && tmp[i+1]; i++) {\n        if (tmp[i] == 'K' && tmp[i+1] == 'V') {\n            tmp[i] = 'V';\n            tmp[i+1] = 'K';\n            int cnt = count_vk(tmp);\n            if (cnt > m) m = cnt;\n            strcpy(tmp, s);\n        }\n    }\n    \n    strcpy(tmp, s);\n    for (int i = 0; tmp[i] && tmp[i+1]; i++) {\n        if (tmp[i] == 'V' && tmp[i+1] == 'V') {\n            tmp[i] = 'V';\n            tmp[i+1] = 'K';\n            int cnt = count_vk(tmp);\n            if (cnt > m) m = cnt;\n            strcpy(tmp, s);\n        }\n    }\n    \n    printf(\"%d\\n\", m);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 4,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <string.h>\n\nint count_vk(const char *s) {\n    int count = 0;\n    for (int i = 0; s[i] && s[i+1]; i++) {\n        if (s[i] == 'V' && s[i+1] == 'K') {\n            count++;\n        }\n    }\n    return count;\n}\n\nint main() {\n    char s[101];\n    scanf(\"%s\", s);\n    \n    if (strcmp(s, \"V\") == 0) {\n        printf(\"0\\n\");\n        return 0;\n    }\n    if (strcmp(s, \"VK\") == 0 || strcmp(s, \"VV\") == 0 || strcmp(s, \"KK\") == 0) {\n        printf(\"1\\n\");\n        return 0;\n    }\n    \n    int max = count_vk(s);\n    char tmp[101];\n    \n    for (int i = 0; s[i]; i++) {\n        strcpy(tmp, s);\n        tmp[i] = 'V';\n        int cnt = count_vk(tmp);\n        if (cnt > max) max = cnt;\n        \n        strcpy(tmp, s);\n        tmp[i] = 'K';\n        cnt = count_vk(tmp);\n        if (cnt > max) max = cnt;\n    }\n    \n    printf(\"%d\\n\", max);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                }
+            ],
+            "usage": {
+                "prompt_tokens": 2220,
+                "completion_tokens": 2043,
+                "total_tokens": 4263
+            }
+        }
+    },
+    "source_data": {
+        "code_uid": "fc2f723a58f8992f4db54a274d9a2f5e",
+        "prob_desc_output_to": "standard output",
+        "prob_desc_notes": "NoteFor the first case, we do not change any letters. \"VK\" appears once, which is the maximum number of times it could appear.For the second case, we can change the second character from a \"V\" to a \"K\". This will give us the string \"VK\". This has one occurrence of the string \"VK\" as a substring.For the fourth case, we can change the fourth character from a \"K\" to a \"V\". This will give us the string \"VKKVKKKKKKVVVVVVVVVK\". This has three occurrences of the string \"VK\" as a substring. We can check no other moves can give us strictly more occurrences.",
+        "lang_cluster": "Python",
+        "prob_desc_time_limit": "2 seconds",
+        "prob_desc_input_spec": "The first line will contain a string s consisting only of uppercase English letters \"V\" and \"K\" with length not less than 1 and not greater than 100.",
+        "source_code": "s = input()\n\"\"\"if s == \"V\":\n    print(0)\n    exit()\nif s == \"VK\" or s == \"VV\" or s == \"KK\":\n    print(1)\n    exit()\nbeg = s.count(\"VK\")\nm = beg\nkk = s.count(\"KK\")\nkv = s.count(\"KV\")\nvv = s.count(\"VV\")\n\nbuf = s[:]\nf = s[:]\nwhile kk:\n    c = f.find(\"KK\")\n    if c != -1:\n        f = f[:c] + \"--\" + f[c + 1:]\n        tmp = buf[:c] + \"VK\" + buf[c + 1:]\n        if tmp.count(\"VK\") > m:\n            m = buf.count(\"VK\")\n    kk -= 1\n\nbuf = s[:]\nf = s[:]\nwhile kv:\n    c = f.find(\"KV\")\n    if c != -1:\n        f = f[:c] + \"--\" + f[c + 1:]\n        tmp = buf[:c] + \"VK\" + buf[c + 1:]\n        if tmp.count(\"VK\") > m:\n            m = tmp.count(\"VK\")\n    kv -= 1\n\nbuf = s[:]\nf = s[:]\nwhile vv:\n    c = f.find(\"VV\")\n    if c != -1:\n        f = f[:c] + \"--\" + f[c + 1:]\n        tmp = buf[:c] + \"VK\" + buf[c + 1:]\n        if tmp.count(\"VK\") > m:\n            m = buf.count(\"VK\")\n    vv -= 1\n\nprint(m)\"\"\"\nprint (max((s[:i] + x + s[i+1:]).count(\"VK\") for x in \"VK\" for i in range(len(s))))",
+        "prob_desc_sample_inputs": [
+            "VK",
+            "VV",
+            "V",
+            "VKKKKKKKKKVVVVVVVVVK",
+            "KVKV"
+        ],
+        "prob_desc_memory_limit": "256 megabytes",
+        "exec_outcome": "PASSED",
+        "prob_desc_output_spec": "Output a single integer, the maximum number of times \"VK\" can appear as a substring of the given string after changing at most one character.",
+        "src_uid": "578bae0fe6634882227ac371ebb38fc9",
+        "prob_desc_input_from": "standard input",
+        "lang": "Python 3",
+        "prob_desc_sample_outputs": [
+            "1",
+            "1",
+            "0",
+            "3",
+            "1"
+        ],
+        "file_name": "d7021504500d5ca7c2b02df8100a574d159e6e67e20ec8071b75800b1267370a",
+        "prob_desc_description": "Tonio has a keyboard with only two letters, \"V\" and \"K\".One day, he has typed out a string s with only these two letters. He really likes it when the string \"VK\" appears, so he wishes to change at most one letter in the string (or do no changes) to maximize the number of occurrences of that string. Compute the maximum number of times \"VK\" can appear as a substring (i.\u00a0e. a letter \"K\" right after a letter \"V\") in the resulting string.",
+        "prob_desc_created_at": "1492356900",
+        "difficulty": 1100.0,
+        "hidden_unit_tests": "[{\"input\": \"VK\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"VV\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"V\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"VKKKKKKKKKVVVVVVVVVK\\r\\n\", \"output\": [\"3\"]}, {\"input\": \"KVKV\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"VKKVVVKVKVK\\r\\n\", \"output\": [\"5\"]}, {\"input\": \"VKVVKVKVVKVKKKKVVVVVVVVKVKVVVVVVKKVKKVKVVKVKKVVVVKV\\r\\n\", \"output\": [\"14\"]}, {\"input\": \"VVKKVKKVVKKVKKVKVVKKVKKVVKKVKVVKKVKKVKVVKKVVKKVKVVKKVKVVKKVVKVVKKVKKVKKVKKVKKVKVVKKVKKVKKVKKVKKVVKVK\\r\\n\", \"output\": [\"32\"]}, {\"input\": \"KVVKKVKVKVKVKVKKVKVKVVKVKVVKVVKVKKVKVKVKVKVKVKVKVKVKVKVKVKVKVKVVKVKVVKKVKVKK\\r\\n\", \"output\": [\"32\"]}, {\"input\": \"KVVVVVKKVKVVKVVVKVVVKKKVKKKVVKVKKKVKKKKVKVVVVVKKKVVVVKKVVVVKKKVKVVVVVVVKKVKVKKKVVKVVVKVVKK\\r\\n\", \"output\": [\"21\"]}, {\"input\": \"VVVVVKKVKVKVKVVKVVKKVVKVKKKKKKKVKKKVVVVVVKKVVVKVKVVKVKKVVKVVVKKKKKVVVVVKVVVVKVVVKKVKKVKKKVKKVKKVVKKV\\r\\n\", \"output\": [\"25\"]}, {\"input\": \"KKVVKVVKVVKKVVKKVKVVKKV\\r\\n\", \"output\": [\"7\"]}, {\"input\": \"KKVVKKVVVKKVKKVKKVVVKVVVKKVKKVVVKKVVVKVVVKVVVKKVVVKKVVVKVVVKKVVVKVVKKVVVKKVVVKKVVKVVVKKVVKKVKKVVVKKV\\r\\n\", \"output\": [\"24\"]}, {\"input\": \"KVKVKVKVKVKVKVKVKVKVVKVKVKVKVKVKVKVVKVKVKKVKVKVKVKVVKVKVKVKVKVKVKVKVKKVKVKVV\\r\\n\", \"output\": [\"35\"]}, {\"input\": \"VKVVVKKKVKVVKVKVKVKVKVV\\r\\n\", \"output\": [\"9\"]}, {\"input\": \"KKKKVKKVKVKVKKKVVVVKK\\r\\n\", \"output\": [\"6\"]}, {\"input\": \"KVKVKKVVVVVVKKKVKKKKVVVVKVKKVKVVK\\r\\n\", \"output\": [\"9\"]}, {\"input\": \"KKVKKVKKKVKKKVKKKVKVVVKKVVVVKKKVKKVVKVKKVKVKVKVVVKKKVKKKKKVVKVVKVVVKKVVKVVKKKKKVK\\r\\n\", \"output\": [\"22\"]}, {\"input\": \"VVVKVKVKVVVVVKVVVKKVVVKVVVVVKKVVKVVVKVVVKVKKKVVKVVVVVKVVVVKKVVKVKKVVKKKVKVVKVKKKKVVKVVVKKKVKVKKKKKK\\r\\n\", \"output\": [\"25\"]}, {\"input\": \"VKVVKVVKKKVVKVKKKVVKKKVVKVVKVVKKVKKKVKVKKKVVKVKKKVVKVVKKKVVKKKVKKKVVKKVVKKKVKVKKKVKKKVKKKVKVKKKVVKVK\\r\\n\", \"output\": [\"29\"]}, {\"input\": \"KKVKVVVKKVV\\r\\n\", \"output\": [\"3\"]}, {\"input\": \"VKVKVKVKVKVKVKVKVKVKVVKVKVKVKVKVK\\r\\n\", \"output\": [\"16\"]}, {\"input\": \"VVKKKVVKKKVVKKKVVKKKVVKKKVVKKKVVKKKVVKKKVVKKKVVKKKVVKKKVVKKKVV\\r\\n\", \"output\": [\"13\"]}, {\"input\": \"VVKKVKVKKKVVVKVVVKVKKVKKKVVVKVVKVKKVKKVKVKVVKKVVKKVKVVKKKVVKKVVVKVKVVVKVKVVKVKKVKKV\\r\\n\", \"output\": [\"26\"]}, {\"input\": \"VVKVKKVVKKVVKKVVKKVVKKVKKVVKVKKVVKKVVKKVVKKVVKKVVKVVKKVVKVVKKVVKVVKKVVKKVKKVVKVVKKVVKVVKKVV\\r\\n\", \"output\": [\"26\"]}, {\"input\": \"K\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"VKVK\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"VKVV\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"KV\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"KK\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"KKVK\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"KKKK\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"KKV\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"KKVKVK\\r\\n\", \"output\": [\"3\"]}, {\"input\": \"VKKVK\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"VKKK\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"KKK\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"KVV\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"KKVKV\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"VVK\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"VVVKVKVKVKVKVKVK\\r\\n\", \"output\": [\"8\"]}, {\"input\": \"KVVVK\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"VVVKK\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"KKVV\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"KKKKKKK\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"VKKKVK\\r\\n\", \"output\": [\"3\"]}, {\"input\": \"KKVVV\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"VVVVVV\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"KKKV\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"VVKVV\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"VKVKKK\\r\\n\", \"output\": [\"3\"]}, {\"input\": \"VKKV\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"VKKVV\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"VVKKVV\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"KKVVKKV\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"KKKKK\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"VKVVKKVKKVVKVKKVKKKVKKVKVKK\\r\\n\", \"output\": [\"10\"]}, {\"input\": \"VKVKVV\\r\\n\", \"output\": [\"3\"]}, {\"input\": \"VKVVKVV\\r\\n\", \"output\": [\"3\"]}, {\"input\": \"VVV\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"VVKKKKKKVKK\\r\\n\", \"output\": [\"3\"]}, {\"input\": \"KVKVKVV\\r\\n\", \"output\": [\"3\"]}]",
+        "source_lang": "Python 3",
+        "target_lang": "C"
+    }
+}

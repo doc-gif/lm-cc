@@ -1,0 +1,87 @@
+{
+    "oai_response": {
+        "prompt": "Here is code in Python 3 programming lanaguge. Translate the following code from Python 3 to C programming lanaguge. Do not output any extra description or tokens other than the translated code. \n\n# import sys \n# sys.stdin=open(\"input.in\",'r')\n# sys.stdout=open(\"out1.out\",'w')\na,b=map(int,input().split())\ni=1\nwhile True:\n\tif i%2!=0:\n\t\tif a<i:\n\t\t\tprint(\"Vladik\")\n\t\t\tbreak\n\t\ta-=i\n\telse:\n\t\tif b<i:\n\t\t\tprint(\"Valera\")\n\t\t\tbreak\n\t\tb-=i\n\ti+=1\t\t\t\n\n\n\n||END-of-SRC||",
+        "response": {
+            "id": "multi-call-as-uc7e2gyj3g",
+            "model": "deepseek-v3",
+            "created": 1767068451,
+            "choices": [
+                {
+                    "index": 0,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n\nint main() {\n    int a, b;\n    scanf(\"%d %d\", &a, &b);\n    int i = 1;\n    while (1) {\n        if (i % 2 != 0) {\n            if (a < i) {\n                printf(\"Vladik\\n\");\n                break;\n            }\n            a -= i;\n        } else {\n            if (b < i) {\n                printf(\"Valera\\n\");\n                break;\n            }\n            b -= i;\n        }\n        i++;\n    }\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 1,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n\nint main() {\n    int a, b;\n    scanf(\"%d %d\", &a, &b);\n    int i = 1;\n    while (1) {\n        if (i % 2 != 0) {\n            if (a < i) {\n                printf(\"Vladik\\n\");\n                break;\n            }\n            a -= i;\n        } else {\n            if (b < i) {\n                printf(\"Valera\\n\");\n                break;\n            }\n            b -= i;\n        }\n        i++;\n    }\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 2,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n\nint main() {\n    int a, b;\n    scanf(\"%d %d\", &a, &b);\n    int i = 1;\n    while (1) {\n        if (i % 2 != 0) {\n            if (a < i) {\n                printf(\"Vladik\");\n                break;\n            }\n            a -= i;\n        } else {\n            if (b < i) {\n                printf(\"Valera\");\n                break;\n            }\n            b -= i;\n        }\n        i++;\n    }\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 3,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n\nint main() {\n    int a, b;\n    scanf(\"%d %d\", &a, &b);\n    int i = 1;\n    while (1) {\n        if (i % 2 != 0) {\n            if (a < i) {\n                printf(\"Vladik\\n\");\n                break;\n            }\n            a -= i;\n        } else {\n            if (b < i) {\n                printf(\"Valera\\n\");\n                break;\n            }\n            b -= i;\n        }\n        i++;\n    }\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 4,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n\nint main() {\n    int a, b;\n    scanf(\"%d %d\", &a, &b);\n    int i = 1;\n    while (1) {\n        if (i % 2 != 0) {\n            if (a < i) {\n                printf(\"Vladik\\n\");\n                break;\n            }\n            a -= i;\n        } else {\n            if (b < i) {\n                printf(\"Valera\\n\");\n                break;\n            }\n            b -= i;\n        }\n        i++;\n    }\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                }
+            ],
+            "usage": {
+                "prompt_tokens": 745,
+                "completion_tokens": 629,
+                "total_tokens": 1374
+            }
+        }
+    },
+    "source_data": {
+        "code_uid": "9a61c079ea554026a7f0f5c44c32c73a",
+        "prob_desc_output_to": "standard output",
+        "prob_desc_notes": "NoteIllustration for first test case:Illustration for second test case:",
+        "lang_cluster": "Python",
+        "prob_desc_time_limit": "2 seconds",
+        "prob_desc_input_spec": "Single line of input data contains two space-separated integers a, b (1\u2009\u2264\u2009a,\u2009b\u2009\u2264\u2009109) \u2014 number of Vladik and Valera candies respectively.",
+        "source_code": "# import sys \n# sys.stdin=open(\"input.in\",'r')\n# sys.stdout=open(\"out1.out\",'w')\na,b=map(int,input().split())\ni=1\nwhile True:\n\tif i%2!=0:\n\t\tif a<i:\n\t\t\tprint(\"Vladik\")\n\t\t\tbreak\n\t\ta-=i\n\telse:\n\t\tif b<i:\n\t\t\tprint(\"Valera\")\n\t\t\tbreak\n\t\tb-=i\n\ti+=1\t\t\t\n\n\n\n",
+        "prob_desc_sample_inputs": [
+            "1 1",
+            "7 6"
+        ],
+        "prob_desc_memory_limit": "256 megabytes",
+        "exec_outcome": "PASSED",
+        "prob_desc_output_spec": "Pring a single line \"Vladik\u2019\u2019 in case, if Vladik first who can\u2019t give right amount of candy, or \"Valera\u2019\u2019 otherwise.",
+        "src_uid": "87e37a82be7e39e433060fd8cdb03270",
+        "prob_desc_input_from": "standard input",
+        "lang": "Python 3",
+        "prob_desc_sample_outputs": [
+            "Valera",
+            "Vladik"
+        ],
+        "file_name": "d7021504500d5ca7c2b02df8100a574d159e6e67e20ec8071b75800b1267370a",
+        "prob_desc_description": "At regular competition Vladik and Valera won a and b candies respectively. Vladik offered 1 his candy to Valera. After that Valera gave Vladik 2 his candies, so that no one thought that he was less generous. Vladik for same reason gave 3 candies to Valera in next turn.More formally, the guys take turns giving each other one candy more than they received in the previous turn.This continued until the moment when one of them couldn\u2019t give the right amount of candy. Candies, which guys got from each other, they don\u2019t consider as their own. You need to know, who is the first who can\u2019t give the right amount of candy.",
+        "prob_desc_created_at": "1495877700",
+        "difficulty": 800.0,
+        "hidden_unit_tests": "[{\"input\": \"1 1\\r\\n\", \"output\": [\"Valera\"]}, {\"input\": \"7 6\\r\\n\", \"output\": [\"Vladik\"]}, {\"input\": \"25 38\\r\\n\", \"output\": [\"Vladik\"]}, {\"input\": \"8311 2468\\r\\n\", \"output\": [\"Valera\"]}, {\"input\": \"250708 857756\\r\\n\", \"output\": [\"Vladik\"]}, {\"input\": \"957985574 24997558\\r\\n\", \"output\": [\"Valera\"]}, {\"input\": \"999963734 999994456\\r\\n\", \"output\": [\"Vladik\"]}, {\"input\": \"1000000000 1000000000\\r\\n\", \"output\": [\"Vladik\"]}, {\"input\": \"946 879\\r\\n\", \"output\": [\"Valera\"]}, {\"input\": \"10819 45238\\r\\n\", \"output\": [\"Vladik\"]}, {\"input\": \"101357 236928\\r\\n\", \"output\": [\"Vladik\"]}, {\"input\": \"1033090 7376359\\r\\n\", \"output\": [\"Vladik\"]}, {\"input\": \"9754309 9525494\\r\\n\", \"output\": [\"Valera\"]}, {\"input\": \"90706344 99960537\\r\\n\", \"output\": [\"Vladik\"]}, {\"input\": \"965161805 908862070\\r\\n\", \"output\": [\"Valera\"]}, {\"input\": \"9 11\\r\\n\", \"output\": [\"Valera\"]}, {\"input\": \"3 2\\r\\n\", \"output\": [\"Vladik\"]}, {\"input\": \"6 6\\r\\n\", \"output\": [\"Vladik\"]}, {\"input\": \"4 4\\r\\n\", \"output\": [\"Valera\"]}, {\"input\": \"5 5\\r\\n\", \"output\": [\"Valera\"]}, {\"input\": \"5 4\\r\\n\", \"output\": [\"Valera\"]}, {\"input\": \"12345680 1\\r\\n\", \"output\": [\"Valera\"]}, {\"input\": \"9 10\\r\\n\", \"output\": [\"Valera\"]}, {\"input\": \"678 76687\\r\\n\", \"output\": [\"Vladik\"]}, {\"input\": \"1 678\\r\\n\", \"output\": [\"Vladik\"]}, {\"input\": \"45 1678\\r\\n\", \"output\": [\"Vladik\"]}, {\"input\": \"3 3\\r\\n\", \"output\": [\"Vladik\"]}, {\"input\": \"10 11\\r\\n\", \"output\": [\"Valera\"]}, {\"input\": \"2 1\\r\\n\", \"output\": [\"Valera\"]}, {\"input\": \"1 2\\r\\n\", \"output\": [\"Vladik\"]}, {\"input\": \"2 2\\r\\n\", \"output\": [\"Vladik\"]}, {\"input\": \"4 5\\r\\n\", \"output\": [\"Valera\"]}, {\"input\": \"9 6\\r\\n\", \"output\": [\"Valera\"]}, {\"input\": \"1 5\\r\\n\", \"output\": [\"Vladik\"]}, {\"input\": \"7 8\\r\\n\", \"output\": [\"Vladik\"]}, {\"input\": \"1000000000 999982505\\r\\n\", \"output\": [\"Valera\"]}, {\"input\": \"12 12\\r\\n\", \"output\": [\"Vladik\"]}, {\"input\": \"1000 950\\r\\n\", \"output\": [\"Valera\"]}, {\"input\": \"10 9\\r\\n\", \"output\": [\"Valera\"]}, {\"input\": \"100 9\\r\\n\", \"output\": [\"Valera\"]}, {\"input\": \"1000 996\\r\\n\", \"output\": [\"Vladik\"]}, {\"input\": \"9 5\\r\\n\", \"output\": [\"Valera\"]}]",
+        "source_lang": "Python 3",
+        "target_lang": "C"
+    }
+}

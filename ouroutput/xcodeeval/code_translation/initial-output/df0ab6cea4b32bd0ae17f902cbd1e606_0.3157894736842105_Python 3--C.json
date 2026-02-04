@@ -1,0 +1,89 @@
+{
+    "oai_response": {
+        "prompt": "Here is code in Python 3 programming lanaguge. Translate the following code from Python 3 to C programming lanaguge. Do not output any extra description or tokens other than the translated code. \n\nfrom datetime import datetime\ns = datetime.strptime(input(), '%H:%M')\nt = datetime.strptime(input(), '%H:%M')\n\nsec = (s - t).seconds\nhours, rem = divmod(sec, 60**2)\nminutes, sec = divmod(rem, 60)\nprint(str(hours).zfill(2) + ':' + str(minutes).zfill(2))\n||END-of-SRC||",
+        "response": {
+            "id": "multi-call-as-r13tbbujw5",
+            "model": "deepseek-v3",
+            "created": 1767066474,
+            "choices": [
+                {
+                    "index": 0,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <time.h>\n#include <string.h>\n\nint main() {\n    char s_str[6], t_str[6];\n    scanf(\"%5s\", s_str);\n    scanf(\"%5s\", t_str);\n\n    struct tm s = {0}, t = {0};\n    strptime(s_str, \"%H:%M\", &s);\n    strptime(t_str, \"%H:%M\", &t);\n\n    time_t s_sec = mktime(&s);\n    time_t t_sec = mktime(&t);\n    double diff = difftime(s_sec, t_sec);\n\n    int hours = diff / 3600;\n    int rem = (int)diff % 3600;\n    int minutes = rem / 60;\n    \n    printf(\"%02d:%02d\", hours, minutes);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 1,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <time.h>\n#include <string.h>\n\nint main() {\n    char s_str[6], t_str[6];\n    scanf(\"%5s\", s_str);\n    scanf(\"%5s\", t_str);\n\n    struct tm s, t;\n    memset(&s, 0, sizeof(s));\n    memset(&t, 0, sizeof(t));\n\n    strptime(s_str, \"%H:%M\", &s);\n    strptime(t_str, \"%H:%M\", &t);\n\n    time_t s_time = mktime(&s);\n    time_t t_time = mktime(&t);\n    double diff = difftime(s_time, t_time);\n\n    int hours = diff / 3600;\n    int minutes = (diff - hours * 3600) / 60;\n\n    printf(\"%02d:%02d\", hours, minutes);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 2,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <time.h>\n#include <string.h>\n\nint main() {\n    char s_str[6], t_str[6];\n    scanf(\"%5s\", s_str);\n    scanf(\"%5s\", t_str);\n\n    struct tm s = {0}, t = {0};\n    strptime(s_str, \"%H:%M\", &s);\n    strptime(t_str, \"%H:%M\", &t);\n\n    time_t s_sec = mktime(&s);\n    time_t t_sec = mktime(&t);\n    double diff = difftime(s_sec, t_sec);\n\n    int hours = diff / 3600;\n    int rem = (int)diff % 3600;\n    int minutes = rem / 60;\n    \n    printf(\"%02d:%02d\", hours, minutes);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 3,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <time.h>\n#include <string.h>\n\nint main() {\n    char s_str[6], t_str[6];\n    scanf(\"%5s\", s_str);\n    scanf(\"%5s\", t_str);\n\n    struct tm s = {0}, t = {0};\n    strptime(s_str, \"%H:%M\", &s);\n    strptime(t_str, \"%H:%M\", &t);\n\n    time_t s_sec = mktime(&s);\n    time_t t_sec = mktime(&t);\n    double diff = difftime(s_sec, t_sec);\n\n    int hours = diff / 3600;\n    int rem = (int)diff % 3600;\n    int minutes = rem / 60;\n\n    printf(\"%02d:%02d\", hours, minutes);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 4,
+                    "message": {
+                        "role": "assistant",
+                        "content": "Here's the equivalent C code:\n\n```c\n#include <stdio.h>\n#include <time.h>\n#include <string.h>\n\nint main() {\n    char s_str[6], t_str[6];\n    scanf(\"%5s\", s_str);\n    scanf(\"%5s\", t_str);\n    \n    struct tm s, t;\n    memset(&s, 0, sizeof(s));\n    memset(&t, 0, sizeof(t));\n    \n    strptime(s_str, \"%H:%M\", &s);\n    strptime(t_str, \"%H:%M\", &t);\n    \n    time_t s_time = mktime(&s);\n    time_t t_time = mktime(&t);\n    \n    double diff = difftime(s_time, t_time);\n    int hours = diff / 3600;\n    int minutes = (diff - hours * 3600) / 60;\n    \n    printf(\"%02d:%02d\", hours, minutes);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                }
+            ],
+            "usage": {
+                "prompt_tokens": 700,
+                "completion_tokens": 968,
+                "total_tokens": 1668
+            }
+        }
+    },
+    "source_data": {
+        "code_uid": "df0ab6cea4b32bd0ae17f902cbd1e606",
+        "prob_desc_output_to": "standard output",
+        "prob_desc_notes": "NoteIn the first sample George went to bed at \"00:06\". Note that you should print the time only in the format \"00:06\". That's why answers \"0:06\", \"00:6\" and others will be considered incorrect. In the second sample, George went to bed yesterday.In the third sample, George didn't do to bed at all.",
+        "lang_cluster": "Python",
+        "prob_desc_time_limit": "1 second",
+        "prob_desc_input_spec": "The first line contains current time s as a string in the format \"hh:mm\". The second line contains time t in the format \"hh:mm\" \u2014 the duration of George's sleep. It is guaranteed that the input contains the correct time in the 24-hour format, that is, 00\u2009\u2264\u2009hh\u2009\u2264\u200923, 00\u2009\u2264\u2009mm\u2009\u2264\u200959.",
+        "source_code": "from datetime import datetime\ns = datetime.strptime(input(), '%H:%M')\nt = datetime.strptime(input(), '%H:%M')\n\nsec = (s - t).seconds\nhours, rem = divmod(sec, 60**2)\nminutes, sec = divmod(rem, 60)\nprint(str(hours).zfill(2) + ':' + str(minutes).zfill(2))\n",
+        "prob_desc_sample_inputs": [
+            "05:50\n05:44",
+            "00:00\n01:00",
+            "00:01\n00:00"
+        ],
+        "prob_desc_memory_limit": "256 megabytes",
+        "exec_outcome": "PASSED",
+        "prob_desc_output_spec": "In the single line print time p \u2014 the time George went to bed in the format similar to the format of the time in the input.",
+        "src_uid": "595c4a628c261104c8eedad767e85775",
+        "prob_desc_input_from": "standard input",
+        "lang": "Python 3",
+        "prob_desc_sample_outputs": [
+            "00:06",
+            "23:00",
+            "00:01"
+        ],
+        "file_name": "d7021504500d5ca7c2b02df8100a574d159e6e67e20ec8071b75800b1267370a",
+        "prob_desc_description": "George woke up and saw the current time s on the digital clock. Besides, George knows that he has slept for time t. Help George! Write a program that will, given time s and t, determine the time p when George went to bed. Note that George could have gone to bed yesterday relatively to the current time (see the second test sample). ",
+        "prob_desc_created_at": "1391095800",
+        "difficulty": 900.0,
+        "hidden_unit_tests": "[{\"input\": \"05:50\\r\\n05:44\\r\\n\", \"output\": [\"00:06\"]}, {\"input\": \"00:00\\r\\n01:00\\r\\n\", \"output\": [\"23:00\"]}, {\"input\": \"00:01\\r\\n00:00\\r\\n\", \"output\": [\"00:01\"]}, {\"input\": \"23:59\\r\\n23:59\\r\\n\", \"output\": [\"00:00\"]}, {\"input\": \"23:44\\r\\n23:55\\r\\n\", \"output\": [\"23:49\"]}, {\"input\": \"00:00\\r\\n13:12\\r\\n\", \"output\": [\"10:48\"]}, {\"input\": \"12:00\\r\\n23:59\\r\\n\", \"output\": [\"12:01\"]}, {\"input\": \"12:44\\r\\n12:44\\r\\n\", \"output\": [\"00:00\"]}, {\"input\": \"05:55\\r\\n07:12\\r\\n\", \"output\": [\"22:43\"]}, {\"input\": \"07:12\\r\\n05:55\\r\\n\", \"output\": [\"01:17\"]}, {\"input\": \"22:22\\r\\n22:22\\r\\n\", \"output\": [\"00:00\"]}, {\"input\": \"22:22\\r\\n22:23\\r\\n\", \"output\": [\"23:59\"]}, {\"input\": \"23:24\\r\\n23:23\\r\\n\", \"output\": [\"00:01\"]}, {\"input\": \"00:00\\r\\n00:00\\r\\n\", \"output\": [\"00:00\"]}, {\"input\": \"23:30\\r\\n00:00\\r\\n\", \"output\": [\"23:30\"]}, {\"input\": \"01:00\\r\\n00:00\\r\\n\", \"output\": [\"01:00\"]}, {\"input\": \"05:44\\r\\n06:00\\r\\n\", \"output\": [\"23:44\"]}, {\"input\": \"00:00\\r\\n23:59\\r\\n\", \"output\": [\"00:01\"]}, {\"input\": \"21:00\\r\\n01:00\\r\\n\", \"output\": [\"20:00\"]}, {\"input\": \"21:21\\r\\n12:21\\r\\n\", \"output\": [\"09:00\"]}, {\"input\": \"12:21\\r\\n21:12\\r\\n\", \"output\": [\"15:09\"]}, {\"input\": \"12:33\\r\\n23:33\\r\\n\", \"output\": [\"13:00\"]}, {\"input\": \"07:55\\r\\n05:53\\r\\n\", \"output\": [\"02:02\"]}, {\"input\": \"19:30\\r\\n02:00\\r\\n\", \"output\": [\"17:30\"]}, {\"input\": \"21:30\\r\\n02:00\\r\\n\", \"output\": [\"19:30\"]}, {\"input\": \"19:30\\r\\n09:30\\r\\n\", \"output\": [\"10:00\"]}, {\"input\": \"13:08\\r\\n00:42\\r\\n\", \"output\": [\"12:26\"]}, {\"input\": \"13:04\\r\\n09:58\\r\\n\", \"output\": [\"03:06\"]}, {\"input\": \"21:21\\r\\n23:06\\r\\n\", \"output\": [\"22:15\"]}, {\"input\": \"20:53\\r\\n10:23\\r\\n\", \"output\": [\"10:30\"]}, {\"input\": \"12:59\\r\\n00:45\\r\\n\", \"output\": [\"12:14\"]}, {\"input\": \"12:39\\r\\n22:21\\r\\n\", \"output\": [\"14:18\"]}, {\"input\": \"21:10\\r\\n13:50\\r\\n\", \"output\": [\"07:20\"]}, {\"input\": \"03:38\\r\\n23:46\\r\\n\", \"output\": [\"03:52\"]}, {\"input\": \"03:48\\r\\n00:41\\r\\n\", \"output\": [\"03:07\"]}, {\"input\": \"07:43\\r\\n12:27\\r\\n\", \"output\": [\"19:16\"]}, {\"input\": \"03:23\\r\\n08:52\\r\\n\", \"output\": [\"18:31\"]}, {\"input\": \"16:04\\r\\n10:28\\r\\n\", \"output\": [\"05:36\"]}, {\"input\": \"12:53\\r\\n08:37\\r\\n\", \"output\": [\"04:16\"]}, {\"input\": \"13:43\\r\\n17:23\\r\\n\", \"output\": [\"20:20\"]}, {\"input\": \"00:00\\r\\n00:01\\r\\n\", \"output\": [\"23:59\"]}, {\"input\": \"10:10\\r\\n01:01\\r\\n\", \"output\": [\"09:09\"]}, {\"input\": \"10:05\\r\\n00:00\\r\\n\", \"output\": [\"10:05\"]}, {\"input\": \"09:09\\r\\n00:00\\r\\n\", \"output\": [\"09:09\"]}, {\"input\": \"09:10\\r\\n00:01\\r\\n\", \"output\": [\"09:09\"]}, {\"input\": \"23:24\\r\\n00:28\\r\\n\", \"output\": [\"22:56\"]}, {\"input\": \"10:00\\r\\n01:00\\r\\n\", \"output\": [\"09:00\"]}]",
+        "source_lang": "Python 3",
+        "target_lang": "C"
+    }
+}

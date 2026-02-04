@@ -1,0 +1,89 @@
+{
+    "oai_response": {
+        "prompt": "Here is code in Python 3 programming lanaguge. Translate the following code from Python 3 to C programming lanaguge. Do not output any extra description or tokens other than the translated code. \n\nn, m = map(int, input().split())\r\ndp = [0] * (n + 2)\r\ns = [0] * (n + 2)\r\ndp[n] = 1\r\ns[n] = 1\r\nfor i in range(n-1, 0, -1):\r\n    dp[i] = s[i+1]\r\n    for j in range(2, n // i + 1):\r\n        # add sum from i*j to i*(j+1) - 1\r\n        # from cells divided by j\r\n        h = min(n + 1, (i + 1) * j)\r\n        dp[i] = (dp[i] + s[i * j] - s[h]) % m\r\n        # print(\"  i=\",i,\"j=\", j, \"h=\",h)\r\n    s[i] = (s[i+1] + dp[i]) % m\r\n    # print (\"i=\", i)\r\n    # print(\"dp:\", * dp)\r\n    # print(\"s:\", *s)\r\nprint(dp[1])\r\n\r\n||END-of-SRC||",
+        "response": {
+            "id": "multi-call-as-w0jndjvmyz",
+            "model": "deepseek-v3",
+            "created": 1767069688,
+            "choices": [
+                {
+                    "index": 0,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <stdlib.h>\n\nint main() {\n    int n, m;\n    scanf(\"%d %d\", &n, &m);\n    \n    int *dp = (int *)calloc(n + 2, sizeof(int));\n    int *s = (int *)calloc(n + 2, sizeof(int));\n    \n    dp[n] = 1;\n    s[n] = 1;\n    \n    for (int i = n - 1; i >= 1; i--) {\n        dp[i] = s[i + 1];\n        for (int j = 2; j <= n / i; j++) {\n            int h = (n + 1 < (i + 1) * j) ? n + 1 : (i + 1) * j;\n            dp[i] = (dp[i] + s[i * j] - s[h]) % m;\n        }\n        s[i] = (s[i + 1] + dp[i]) % m;\n    }\n    \n    printf(\"%d\\n\", dp[1]);\n    \n    free(dp);\n    free(s);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 1,
+                    "message": {
+                        "role": "assistant",
+                        "content": "Here's the translated code in C:\n\n```c\n#include <stdio.h>\n#include <stdlib.h>\n\nint main() {\n    int n, m;\n    scanf(\"%d %d\", &n, &m);\n    \n    int *dp = (int *)calloc(n + 2, sizeof(int));\n    int *s = (int *)calloc(n + 2, sizeof(int));\n    \n    dp[n] = 1;\n    s[n] = 1;\n    \n    for (int i = n - 1; i > 0; i--) {\n        dp[i] = s[i + 1];\n        for (int j = 2; j <= n / i; j++) {\n            int h = (n + 1 < (i + 1) * j) ? n + 1 : (i + 1) * j;\n            dp[i] = (dp[i] + s[i * j] - s[h]) % m;\n        }\n        s[i] = (s[i + 1] + dp[i]) % m;\n    }\n    \n    printf(\"%d\\n\", dp[1]);\n    \n    free(dp);\n    free(s);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 2,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <stdlib.h>\n\nint main() {\n    int n, m;\n    scanf(\"%d %d\", &n, &m);\n    \n    int *dp = (int *)calloc(n + 2, sizeof(int));\n    int *s = (int *)calloc(n + 2, sizeof(int));\n    \n    dp[n] = 1;\n    s[n] = 1;\n    \n    for (int i = n - 1; i >= 1; i--) {\n        dp[i] = s[i + 1];\n        for (int j = 2; j <= n / i; j++) {\n            int h = (n + 1 < (i + 1) * j) ? n + 1 : (i + 1) * j;\n            dp[i] = (dp[i] + s[i * j] - s[h]) % m;\n        }\n        s[i] = (s[i + 1] + dp[i]) % m;\n    }\n    \n    printf(\"%d\\n\", dp[1]);\n    \n    free(dp);\n    free(s);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 3,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <stdlib.h>\n\nint main() {\n    int n, m;\n    scanf(\"%d %d\", &n, &m);\n    \n    int *dp = (int *)calloc(n + 2, sizeof(int));\n    int *s = (int *)calloc(n + 2, sizeof(int));\n    \n    dp[n] = 1;\n    s[n] = 1;\n    \n    for (int i = n - 1; i > 0; i--) {\n        dp[i] = s[i + 1];\n        for (int j = 2; j <= n / i; j++) {\n            int h = (i + 1) * j < n + 1 ? (i + 1) * j : n + 1;\n            dp[i] = (dp[i] + s[i * j] - s[h]) % m;\n        }\n        s[i] = (s[i + 1] + dp[i]) % m;\n    }\n    \n    printf(\"%d\\n\", dp[1]);\n    \n    free(dp);\n    free(s);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 4,
+                    "message": {
+                        "role": "assistant",
+                        "content": "Here's the translated code in C:\n\n```c\n#include <stdio.h>\n#include <stdlib.h>\n\nint main() {\n    int n, m;\n    scanf(\"%d %d\", &n, &m);\n    \n    int *dp = (int *)calloc(n + 2, sizeof(int));\n    int *s = (int *)calloc(n + 2, sizeof(int));\n    \n    dp[n] = 1;\n    s[n] = 1;\n    \n    for (int i = n - 1; i > 0; i--) {\n        dp[i] = s[i + 1];\n        for (int j = 2; j <= n / i; j++) {\n            int h = (n + 1 < (i + 1) * j) ? n + 1 : (i + 1) * j;\n            dp[i] = (dp[i] + s[i * j] - s[h]) % m;\n        }\n        s[i] = (s[i + 1] + dp[i]) % m;\n    }\n    \n    printf(\"%d\\n\", dp[1]);\n    \n    free(dp);\n    free(s);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                }
+            ],
+            "usage": {
+                "prompt_tokens": 1540,
+                "completion_tokens": 1245,
+                "total_tokens": 2785
+            }
+        }
+    },
+    "source_data": {
+        "code_uid": "866b31e3bde35afaa78d839452fa2c51",
+        "prob_desc_output_to": "standard output",
+        "prob_desc_notes": "NoteIn the first test, there are three ways to move the token from cell $$$3$$$ to cell $$$1$$$ in one shift: using subtraction of $$$y = 2$$$, or using division by $$$z = 2$$$ or $$$z = 3$$$.There are also two ways to move the token from cell $$$3$$$ to cell $$$1$$$ via cell $$$2$$$: first subtract $$$y = 1$$$, and then either subtract $$$y = 1$$$ again or divide by $$$z = 2$$$.Therefore, there are five ways in total.",
+        "lang_cluster": "Python",
+        "prob_desc_time_limit": "6 seconds",
+        "prob_desc_input_spec": "The only line contains two integers $$$n$$$ and $$$m$$$ ($$$2 \\le n \\le 2 \\cdot 10^5$$$; $$$10^8 &lt; m &lt; 10^9$$$; $$$m$$$ is a prime number)\u00a0\u2014 the length of the strip and the modulo.",
+        "source_code": "n, m = map(int, input().split())\r\ndp = [0] * (n + 2)\r\ns = [0] * (n + 2)\r\ndp[n] = 1\r\ns[n] = 1\r\nfor i in range(n-1, 0, -1):\r\n    dp[i] = s[i+1]\r\n    for j in range(2, n // i + 1):\r\n        # add sum from i*j to i*(j+1) - 1\r\n        # from cells divided by j\r\n        h = min(n + 1, (i + 1) * j)\r\n        dp[i] = (dp[i] + s[i * j] - s[h]) % m\r\n        # print(\"  i=\",i,\"j=\", j, \"h=\",h)\r\n    s[i] = (s[i+1] + dp[i]) % m\r\n    # print (\"i=\", i)\r\n    # print(\"dp:\", * dp)\r\n    # print(\"s:\", *s)\r\nprint(dp[1])\r\n\r\n",
+        "prob_desc_sample_inputs": [
+            "3 998244353",
+            "5 998244353",
+            "42 998244353"
+        ],
+        "prob_desc_memory_limit": "128 megabytes",
+        "exec_outcome": "PASSED",
+        "prob_desc_output_spec": "Print the number of ways to move the token from cell $$$n$$$ to cell $$$1$$$, modulo $$$m$$$.",
+        "src_uid": "a524aa54e83fd0223489a19531bf0e79",
+        "prob_desc_input_from": "standard input",
+        "lang": "Python 3",
+        "prob_desc_sample_outputs": [
+            "5",
+            "25",
+            "793019428"
+        ],
+        "file_name": "d7021504500d5ca7c2b02df8100a574d159e6e67e20ec8071b75800b1267370a",
+        "prob_desc_description": "This version of the problem differs from the next one only in the constraint on $$$n$$$.Note that the memory limit in this problem is lower than in others.You have a vertical strip with $$$n$$$ cells, numbered consecutively from $$$1$$$ to $$$n$$$ from top to bottom.You also have a token that is initially placed in cell $$$n$$$. You will move the token up until it arrives at cell $$$1$$$.Let the token be in cell $$$x &gt; 1$$$ at some moment. One shift of the token can have either of the following kinds:   Subtraction: you choose an integer $$$y$$$ between $$$1$$$ and $$$x-1$$$, inclusive, and move the token from cell $$$x$$$ to cell $$$x - y$$$.  Floored division: you choose an integer $$$z$$$ between $$$2$$$ and $$$x$$$, inclusive, and move the token from cell $$$x$$$ to cell $$$\\lfloor \\frac{x}{z} \\rfloor$$$ ($$$x$$$ divided by $$$z$$$ rounded down). Find the number of ways to move the token from cell $$$n$$$ to cell $$$1$$$ using one or more shifts, and print it modulo $$$m$$$. Note that if there are several ways to move the token from one cell to another in one shift, all these ways are considered distinct (check example explanation for a better understanding).",
+        "prob_desc_created_at": "1629815700",
+        "difficulty": 1700.0,
+        "hidden_unit_tests": "[{\"input\": \"3 998244353\\n\", \"output\": [\"5\\n\", \"5 \\n\", \"5\", \"5 \", \"\\n5\\n\", \"5\\n\\n\", \"5\\n\\n\", \"5\\n\", \"\\n5\"]}, {\"input\": \"5 998244353\\n\", \"output\": [\"25 \", \"25\\n\", \"25\\n\\n\", \"25\\n\", \"25 \\n\", \"25\\n\\n\", \"\\n25\", \"25\", \"\\n25\\n\"]}, {\"input\": \"42 998244353\\n\", \"output\": [\"793019428 \", \"793019428\\n\\n\", \"793019428 \\n\", \"793019428\", \"793019428\\n\\n\", \"793019428\\n\", \"793019428\\n\", \"\\n793019428\\n\"]}, {\"input\": \"349 528449821\\n\", \"output\": [\"190306170 \", \"\\n190306170\\n\", \"190306170\", \"190306170\\n\", \"190306170 \\n\", \"190306170\\n\\n\", \"190306170\\n\", \"190306170\\n\\n\"]}, {\"input\": \"158032 121694641\\n\", \"output\": [\"114975792\\n\\n\", \"114975792\\n\\n\", \"114975792\", \"114975792 \\n\", \"114975792\\n\", \"114975792\\n\", \"114975792 \"]}, {\"input\": \"200000 665880409\\n\", \"output\": [\"86083213\\n\", \"86083213\\n\\n\", \"86083213 \\n\", \"86083213\", \"86083213 \", \"86083213\\n\", \"86083213\\n\\n\"]}, {\"input\": \"2 554714911\\n\", \"output\": [\"2\\n\", \"2 \", \"2\", \"2 \\n\", \"2\\n\\n\", \"2\\n\\n\", \"2\\n\"]}, {\"input\": \"199568 100000007\\n\", \"output\": [\"31278679\\n\\n\", \"31278679\\n\", \"31278679 \", \"31278679 \\n\", \"31278679\\n\", \"31278679\\n\\n\", \"31278679\"]}, {\"input\": \"199862 999999937\\n\", \"output\": [\"750469605\\n\\n\", \"750469605\\n\", \"750469605 \", \"750469605 \\n\", \"750469605\\n\", \"750469605\", \"750469605\\n\\n\"]}, {\"input\": \"140750 872921717\\n\", \"output\": [\"17972639 \", \"17972639\\n\", \"17972639\\n\\n\", \"17972639\\n\", \"17972639 \\n\", \"17972639\\n\\n\", \"17972639\"]}, {\"input\": \"8045 992942057\\n\", \"output\": [\"882251038 \\n\", \"882251038\\n\", \"882251038\\n\", \"882251038 \", \"882251038\\n\\n\", \"882251038\\n\\n\", \"882251038\"]}, {\"input\": \"634 982032773\\n\", \"output\": [\"695544646\\n\\n\", \"695544646\", \"695544646\\n\\n\", \"695544646\\n\", \"695544646 \", \"695544646 \\n\", \"695544646\\n\"]}, {\"input\": \"48 166017469\\n\", \"output\": [\"119670181\\n\", \"119670181\", \"119670181\\n\", \"119670181\\n\\n\", \"119670181\\n\\n\", \"119670181 \", \"119670181 \\n\"]}, {\"input\": \"6 732284177\\n\", \"output\": [\"55 \", \"55\\n\", \"55\\n\\n\", \"55\", \"55\\n\\n\", \"55\\n\", \"55 \\n\"]}, {\"input\": \"200000 187160003\\n\", \"output\": [\"147468989\", \"147468989\\n\\n\", \"147468989 \", \"147468989\\n\", \"147468989\\n\\n\", \"147468989\\n\", \"147468989 \\n\"]}, {\"input\": \"199995 597768679\\n\", \"output\": [\"390104637 \\n\", \"390104637\\n\", \"390104637\\n\\n\", \"390104637\", \"390104637 \", \"390104637\\n\", \"390104637\\n\\n\"]}, {\"input\": \"200000 558920641\\n\", \"output\": [\"14322946 \", \"14322946\\n\\n\", \"14322946\\n\", \"14322946\\n\\n\", \"14322946\\n\", \"14322946 \\n\", \"14322946\"]}, {\"input\": \"199660 160959167\\n\", \"output\": [\"32483089\\n\", \"32483089\\n\", \"32483089\\n\\n\", \"32483089 \\n\", \"32483089\\n\\n\", \"32483089 \", \"32483089\"]}, {\"input\": \"191683 549754339\\n\", \"output\": [\"207301921\\n\\n\", \"207301921\\n\", \"207301921\\n\\n\", \"207301921 \", \"207301921\\n\", \"207301921\", \"207301921 \\n\"]}, {\"input\": \"124953 922406879\\n\", \"output\": [\"768303295\\n\", \"768303295 \\n\", \"768303295\\n\\n\", \"768303295 \", \"768303295\", \"768303295\\n\", \"768303295\\n\\n\"]}]",
+        "source_lang": "Python 3",
+        "target_lang": "C"
+    }
+}

@@ -1,0 +1,103 @@
+{
+    "oai_response": {
+        "prompt": "Fix a buggy program written in Python language to solve the following programming problem:\nDescription: Iahub and Iahubina went to a picnic in a forest full of trees. Less than 5 minutes passed before Iahub remembered of trees from programming. Moreover, he invented a new problem and Iahubina has to solve it, otherwise Iahub won't give her the food. Iahub asks Iahubina: can you build a rooted tree, such that  each internal node (a node with at least one son) has at least two sons;  node i has ci nodes in its subtree? Iahubina has to guess the tree. Being a smart girl, she realized that it's possible no tree can follow Iahub's restrictions. In this way, Iahub will eat all the food. You need to help Iahubina: determine if there's at least one tree following Iahub's restrictions. The required tree must contain n nodes.\nInput Specification: The first line of the input contains integer n (1\u2009\u2264\u2009n\u2009\u2264\u200924). Next line contains n positive integers: the i-th number represents ci (1\u2009\u2264\u2009ci\u2009\u2264\u2009n).\nOutput Specification: Output on the first line \"YES\" (without quotes) if there exist at least one tree following Iahub's restrictions, otherwise output \"NO\" (without quotes). \n\nSample Input:\n4\n1 1 1 4\nSample Output:\nYES\n\nSample Input:\n5\n1 1 5 2 1\nSample Output:\nNO\n\nNotes: None\nTake input from standard input and output to standard output\n\nHere is the code with a bug of WRONG_ANSWER:\n\ndef DFS(x):\n    for i in range(x):\n        if(Seen[i]):\n            continue\n        if(Rem[i]>=C[x]):\n            if(Rem[i]==C[x] and len(Children[i])==0):\n                continue\n            Rem[i]-=C[x]\n            Parent[x]=i\n            Children[i].append(x)\n            return True\n    for i in range(x):\n        if(Seen[i]):\n            continue\n        Y=[]\n        Seen[i]=True\n        for j in range(len(Children[i])):\n            child=Children[i][j]\n            Parent[child]=-1\n            Rem[i]+=C[child]\n            if(DFS(child)):\n                continue\n            Parent[child]=i\n            Rem[i]-=C[child]\n            Y.append(child)\n        Seen[i]=False\n        Children[i]=list(Y)\n        if(Rem[i]>=C[x]):\n            if(Rem[i]==C[x] and len(Children[i])==0):\n                continue\n            Rem[i]-=C[x]\n            Children[i].append(x)\n            Parent[x]=i\n            return True\n    return False\n                \n        \n\n\n\n\nn=int(input())\n\nC=list(map(int,input().split()))\nRem=[-1]*n\nParent=[-1]*n\nChildren=[]\nSeen=[False]*n\nC.sort(reverse=True)\n\nif(C[0]!=n or C.count(2)>0):\n    print(\"NO\")\n\nelse:\n    for i in range(n):\n        Rem[i]=C[i]-1\n        Children.append([])\n    Parent[0]=0\n    Ans=\"YES\"\n    for i in range(1,n):\n        if(DFS(i)==False):\n            Ans=\"NO\"\n            break\n    for i in range(n):\n        if(Rem[i]!=0 and C[i]!=1):\n            Ans=\"NO\"\n            break\n    print(Ans)\n            \n\n\nProvide the fixed Python code without any description or extra tokens.\n\nFixed source code:\n ||END-of-SRC||",
+        "response": {
+            "id": "multi-call-as-9vap6bnyed",
+            "model": "deepseek-v3",
+            "created": 1760423825,
+            "choices": [
+                {
+                    "index": 0,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```python\ndef solve():\n    n = int(input())\n    c = list(map(int, input().split()))\n    c.sort(reverse=True)\n    \n    if c[0] != n:\n        print(\"NO\")\n        return\n    \n    if n == 1:\n        print(\"YES\")\n        return\n    \n    # Check for nodes with c[i] = 2, which is invalid for internal nodes\n    for num in c:\n        if num == 2:\n            print(\"NO\")\n            return\n    \n    # We need to build the tree\n    # The root is the node with c = n\n    # Other nodes must be placed such that each internal node has at least two children\n    # We can process nodes in order of decreasing c[i]\n    \n    # We'll represent the tree structure\n    # Each node will have a list of children\n    # We'll keep track of remaining capacity (c[i] - 1 - sum of children's c)\n    # Initialize\n    root = 0\n    parent = [-1] * n\n    children = [[] for _ in range(n)]\n    remaining = [c[i] - 1 for i in range(n)]  # Subtract 1 for the node itself\n    \n    # Process nodes in order (excluding root)\n    for i in range(1, n):\n        found = False\n        # Try to find a parent for node i\n        # We need to find a node j with remaining[j] >= c[i]\n        # and that is not a leaf (or if it's becoming an internal node, it must have >= 2 children)\n        for j in range(i):\n            if remaining[j] >= c[i]:\n                # Check if adding this child would make j an internal node with at least two children\n                # or if it's already an internal node\n                if len(children[j]) >= 1 or (remaining[j] - c[i] == 0 and len(children[j]) == 0):\n                    # Add as child\n                    parent[i] = j\n                    children[j].append(i)\n                    remaining[j] -= c[i]\n                    found = True\n                    break\n        if not found:\n            print(\"NO\")\n            return\n    \n    # Verify that all internal nodes have at least two children\n    for i in range(n):\n        if len(children[i]) == 1:\n            print(\"NO\")\n            return\n    \n    print(\"YES\")\n\nsolve()\n``` ||END-of-SRC||"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 1,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```python\ndef solve():\n    n = int(input())\n    c = list(map(int, input().split()))\n    c.sort(reverse=True)\n    \n    if c[0] != n:\n        print(\"NO\")\n        return\n    \n    # Check if any c[i] is 2 (invalid for internal nodes)\n    for num in c:\n        if num == 2:\n            print(\"NO\")\n            return\n    \n    # Check if the sum of (c[i] - 1) for all nodes is (n - 1)\n    total = 0\n    for num in c:\n        total += num - 1\n    if total != n - 1:\n        print(\"NO\")\n        return\n    \n    print(\"YES\")\n\nsolve()\n``` ||END-of-SRC||"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 2,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```python\ndef solve():\n    n = int(input())\n    c = list(map(int, input().split()))\n    c.sort(reverse=True)\n    \n    if c[0] != n:\n        print(\"NO\")\n        return\n    \n    # Check if any c[i] is 2 (invalid for internal nodes)\n    for num in c:\n        if num == 2:\n            print(\"NO\")\n            return\n    \n    # Now, proceed to build the tree\n    # We'll use a greedy approach, trying to attach nodes to the smallest possible parent\n    # that can accommodate them.\n    parent = [-1] * n\n    children = [[] for _ in range(n)]\n    remaining = [0] * n  # remaining capacity for each node\n    \n    # The root is node 0 (since c is sorted in descending order, c[0] is n)\n    # The root must have at least two children unless n == 1\n    if n == 1:\n        print(\"YES\")\n        return\n    \n    # Initialize remaining capacities\n    for i in range(n):\n        remaining[i] = c[i] - 1  # subtract itself\n    \n    # We'll process nodes in order (excluding the root)\n    # For each node, find a parent that can accommodate it\n    for i in range(1, n):\n        found = False\n        # Try to find a parent j with remaining capacity >= c[i]\n        # Prefer parents with larger remaining capacity (to avoid fragmentation)\n        for j in range(i):\n            if remaining[j] >= c[i]:\n                parent[i] = j\n                children[j].append(i)\n                remaining[j] -= c[i]\n                found = True\n                break\n        if not found:\n            print(\"NO\")\n            return\n    \n    # Now, check that all internal nodes have at least two children\n    for i in range(n):\n        if c[i] != 1 and len(children[i]) < 2:\n            print(\"NO\")\n            return\n    \n    print(\"YES\")\n\nsolve()\n``` ||END-of-SRC||"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 3,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```python\ndef solve():\n    n = int(input())\n    C = list(map(int, input().split()))\n    C.sort(reverse=True)\n    \n    if C[0] != n:\n        print(\"NO\")\n        return\n    \n    if n == 1:\n        print(\"YES\")\n        return\n    \n    nodes = []\n    for i in range(n):\n        nodes.append((C[i], i))\n    \n    nodes.sort(reverse=True)\n    \n    parent = [-1] * n\n    children = [[] for _ in range(n)]\n    remaining = [0] * n\n    \n    for i in range(n):\n        remaining[i] = C[i] - 1\n    \n    for i in range(1, n):\n        found = False\n        for j in range(i):\n            if remaining[j] >= C[i] and parent[j] != -1:\n                remaining[j] -= C[i]\n                parent[i] = j\n                children[j].append(i)\n                found = True\n                break\n        if not found:\n            print(\"NO\")\n            return\n    \n    for i in range(n):\n        if C[i] != 1 and len(children[i]) < 2:\n            print(\"NO\")\n            return\n    \n    print(\"YES\")\n\nsolve()\n``` ||END-of-SRC||"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 4,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```python\ndef solve():\n    n = int(input())\n    C = list(map(int, input().split()))\n    C.sort(reverse=True)\n    \n    if C[0] != n:\n        print(\"NO\")\n        return\n    \n    if n == 1:\n        print(\"YES\")\n        return\n    \n    nodes = []\n    for i in range(n):\n        nodes.append((C[i], i))\n    \n    nodes.sort(reverse=True)\n    \n    parent = [-1] * n\n    children = [[] for _ in range(n)]\n    remaining = [0] * n\n    \n    for i in range(n):\n        remaining[i] = C[i] - 1\n    \n    for i in range(1, n):\n        found = False\n        for j in range(i):\n            if remaining[j] >= C[i] and parent[j] != -1:\n                remaining[j] -= C[i]\n                parent[i] = j\n                children[j].append(i)\n                found = True\n                break\n        if not found:\n            print(\"NO\")\n            return\n    \n    for i in range(n):\n        if C[i] != 1 and len(children[i]) < 2:\n            print(\"NO\")\n            return\n    \n    print(\"YES\")\n\nsolve()\n``` ||END-of-SRC||"
+                    },
+                    "finish_reason": "stop"
+                }
+            ],
+            "usage": {
+                "prompt_tokens": 3905,
+                "completion_tokens": 1649,
+                "total_tokens": 5554
+            }
+        }
+    },
+    "source_data": {
+        "prob_desc_memory_limit": "256 megabytes",
+        "tags": [
+            "dp",
+            "bitmasks",
+            "greedy",
+            "trees",
+            "constructive algorithms"
+        ],
+        "prob_desc_created_at": "1399822800",
+        "fix_source_code": "",
+        "prob_desc_input_spec": "The first line of the input contains integer n (1\u2009\u2264\u2009n\u2009\u2264\u200924). Next line contains n positive integers: the i-th number represents ci (1\u2009\u2264\u2009ci\u2009\u2264\u2009n).",
+        "prob_desc_sample_outputs": [
+            "YES",
+            "NO"
+        ],
+        "src_uid": "ed0925cfaee961a3ceebd13b3c96a15a",
+        "prob_desc_time_limit": "1 second",
+        "fix_exec_outcome": "",
+        "delete_cnt": 2,
+        "apr_id": "fba87e5975104aeecec9d2799cc548e6",
+        "fix_code_uid": "",
+        "lang_cluster": "Python",
+        "prob_desc_sample_inputs": [
+            "4\n1 1 1 4",
+            "5\n1 1 5 2 1"
+        ],
+        "prob_desc_output_to": "standard output",
+        "file_name": "Python.jsonl",
+        "equal_cnt": 10,
+        "lang": "Python 3",
+        "prob_desc_output_spec": "Output on the first line \"YES\" (without quotes) if there exist at least one tree following Iahub's restrictions, otherwise output \"NO\" (without quotes). ",
+        "bug_exec_outcome": "WRONG_ANSWER",
+        "prob_desc_notes": null,
+        "difficulty": 2300.0,
+        "similarity_score": 0.9067092538,
+        "prob_desc_description": "Iahub and Iahubina went to a picnic in a forest full of trees. Less than 5 minutes passed before Iahub remembered of trees from programming. Moreover, he invented a new problem and Iahubina has to solve it, otherwise Iahub won't give her the food. Iahub asks Iahubina: can you build a rooted tree, such that  each internal node (a node with at least one son) has at least two sons;  node i has ci nodes in its subtree? Iahubina has to guess the tree. Being a smart girl, she realized that it's possible no tree can follow Iahub's restrictions. In this way, Iahub will eat all the food. You need to help Iahubina: determine if there's at least one tree following Iahub's restrictions. The required tree must contain n nodes.",
+        "potential_dominant_fix_op": "insert",
+        "bug_source_code": "def DFS(x):\n    for i in range(x):\n        if(Seen[i]):\n            continue\n        if(Rem[i]>=C[x]):\n            if(Rem[i]==C[x] and len(Children[i])==0):\n                continue\n            Rem[i]-=C[x]\n            Parent[x]=i\n            Children[i].append(x)\n            return True\n    for i in range(x):\n        if(Seen[i]):\n            continue\n        Y=[]\n        Seen[i]=True\n        for j in range(len(Children[i])):\n            child=Children[i][j]\n            Parent[child]=-1\n            Rem[i]+=C[child]\n            if(DFS(child)):\n                continue\n            Parent[child]=i\n            Rem[i]-=C[child]\n            Y.append(child)\n        Seen[i]=False\n        Children[i]=list(Y)\n        if(Rem[i]>=C[x]):\n            if(Rem[i]==C[x] and len(Children[i])==0):\n                continue\n            Rem[i]-=C[x]\n            Children[i].append(x)\n            Parent[x]=i\n            return True\n    return False\n                \n        \n\n\n\n\nn=int(input())\n\nC=list(map(int,input().split()))\nRem=[-1]*n\nParent=[-1]*n\nChildren=[]\nSeen=[False]*n\nC.sort(reverse=True)\n\nif(C[0]!=n or C.count(2)>0):\n    print(\"NO\")\n\nelse:\n    for i in range(n):\n        Rem[i]=C[i]-1\n        Children.append([])\n    Parent[0]=0\n    Ans=\"YES\"\n    for i in range(1,n):\n        if(DFS(i)==False):\n            Ans=\"NO\"\n            break\n    for i in range(n):\n        if(Rem[i]!=0 and C[i]!=1):\n            Ans=\"NO\"\n            break\n    print(Ans)\n            \n",
+        "replace_cnt": 0,
+        "prob_desc_input_from": "standard input",
+        "bug_code_uid": "4dfbdce093c5b431e0b8e1c8bcfcc3c1",
+        "insert_cnt": 7,
+        "fix_ops_cnt": 9,
+        "hidden_unit_tests": "[{\"input\": \"4\\r\\n1 1 1 4\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"5\\r\\n1 1 5 2 1\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"13\\r\\n1 1 1 1 1 1 1 1 1 4 4 4 13\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"4\\r\\n1 1 1 3\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"24\\r\\n1 1 1 1 1 1 1 1 1 1 1 1 24 1 1 1 1 1 1 1 1 1 1 1\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"24\\r\\n1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"10\\r\\n1 1 1 1 7 1 1 1 4 10\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"24\\r\\n1 1 3 1 1 10 2 9 13 1 8 1 4 1 3 24 1 1 1 1 4 1 3 1\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"24\\r\\n2 3 20 1 4 9 1 3 1 2 1 3 1 2 1 1 1 2 1 2 4 24 2 1\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"24\\r\\n8 5 3 1 1 5 10 1 1 1 1 5 1 2 7 3 4 1 1 24 1 1 2 8\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"24\\r\\n1 1 1 3 4 1 24 1 1 3 1 1 1 5 14 2 17 1 2 2 5 1 1 6\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"1\\r\\n1\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"17\\r\\n6 1 1 1 3 1 1 17 6 1 4 1 1 1 3 1 1\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"23\\r\\n1 1 1 1 3 7 3 1 1 1 3 7 1 3 1 15 1 3 7 3 23 1 1\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"24\\r\\n1 24 1 1 1 3 8 1 1 3 1 1 6 1 1 1 1 3 5 1 3 7 13 1\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"16\\r\\n1 1 1 1 1 1 1 1 1 1 1 1 16 1 1 1\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"21\\r\\n1 1 1 6 1 1 13 21 1 1 3 1 8 1 19 3 3 1 1 1 1\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"22\\r\\n1 1 1 6 1 1 13 21 1 1 2 1 8 1 19 3 3 1 1 1 1 2\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"19\\r\\n9 7 1 8 1 1 1 13 1 1 3 3 19 1 1 1 1 1 1\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"18\\r\\n6 1 1 3 1 1 1 1 1 1 4 1 8 1 1 18 1 5\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"14\\r\\n4 1 1 1 3 1 1 1 1 14 1 5 1 3\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"2\\r\\n1 2\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"24\\r\\n3 3 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"20\\r\\n20 9 4 4 3 3 3 1 1 1 1 1 1 1 1 1 1 1 1 1\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"12\\r\\n12 7 4 3 3 1 1 1 1 1 1 1\\r\\n\", \"output\": [\"YES\"]}]"
+    }
+}

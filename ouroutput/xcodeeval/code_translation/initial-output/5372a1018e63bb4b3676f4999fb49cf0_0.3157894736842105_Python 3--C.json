@@ -1,0 +1,87 @@
+{
+    "oai_response": {
+        "prompt": "Here is code in Python 3 programming lanaguge. Translate the following code from Python 3 to C programming lanaguge. Do not output any extra description or tokens other than the translated code. \n\n__copyright__ = ''\n__author__ = 'Son-Huy TRAN'\n__email__ = \"sonhuytran@gmail.com\"\n__doc__ = ''\n__version__ = '1.0'\n\n\ndef main() -> int:\n    (n, d) = map(int, input().split())\n    costs = sorted([int(word) for word in input().split()])\n    m = int(input())\n    profit = 0\n\n    if m <= n:\n        profit = sum(costs[:m])\n    else:\n        profit = sum(costs) - (m - n) * d\n\n    print(profit)\n    return 0\n\n\nif __name__ == '__main__':\n    exit(main())||END-of-SRC||",
+        "response": {
+            "id": "multi-call-as-qe54mfi7ev",
+            "model": "deepseek-v3",
+            "created": 1767066707,
+            "choices": [
+                {
+                    "index": 0,
+                    "message": {
+                        "role": "assistant",
+                        "content": "Here's the translated code in C:\n\n```c\n#include <stdio.h>\n#include <stdlib.h>\n\nint compare(const void *a, const void *b) {\n    return (*(int*)a - *(int*)b);\n}\n\nint main() {\n    int n, d;\n    scanf(\"%d %d\", &n, &d);\n    \n    int *costs = malloc(n * sizeof(int));\n    for (int i = 0; i < n; i++) {\n        scanf(\"%d\", &costs[i]);\n    }\n    \n    qsort(costs, n, sizeof(int), compare);\n    \n    int m;\n    scanf(\"%d\", &m);\n    \n    int profit = 0;\n    \n    if (m <= n) {\n        for (int i = 0; i < m; i++) {\n            profit += costs[i];\n        }\n    } else {\n        for (int i = 0; i < n; i++) {\n            profit += costs[i];\n        }\n        profit -= (m - n) * d;\n    }\n    \n    printf(\"%d\\n\", profit);\n    free(costs);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 1,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <stdlib.h>\n\nint compare(const void *a, const void *b) {\n    return (*(int*)a - *(int*)b);\n}\n\nint main() {\n    int n, d;\n    scanf(\"%d %d\", &n, &d);\n    int *costs = malloc(n * sizeof(int));\n    for (int i = 0; i < n; i++) {\n        scanf(\"%d\", &costs[i]);\n    }\n    qsort(costs, n, sizeof(int), compare);\n    int m;\n    scanf(\"%d\", &m);\n    int profit = 0;\n\n    if (m <= n) {\n        for (int i = 0; i < m; i++) {\n            profit += costs[i];\n        }\n    } else {\n        for (int i = 0; i < n; i++) {\n            profit += costs[i];\n        }\n        profit -= (m - n) * d;\n    }\n\n    printf(\"%d\\n\", profit);\n    free(costs);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 2,
+                    "message": {
+                        "role": "assistant",
+                        "content": "Here's the translated code in C:\n\n```c\n#include <stdio.h>\n#include <stdlib.h>\n\nint compare(const void *a, const void *b) {\n    return (*(int*)a - *(int*)b);\n}\n\nint main() {\n    int n, d;\n    scanf(\"%d %d\", &n, &d);\n    \n    int *costs = malloc(n * sizeof(int));\n    for (int i = 0; i < n; i++) {\n        scanf(\"%d\", &costs[i]);\n    }\n    \n    qsort(costs, n, sizeof(int), compare);\n    \n    int m;\n    scanf(\"%d\", &m);\n    \n    int profit = 0;\n    \n    if (m <= n) {\n        for (int i = 0; i < m; i++) {\n            profit += costs[i];\n        }\n    } else {\n        for (int i = 0; i < n; i++) {\n            profit += costs[i];\n        }\n        profit -= (m - n) * d;\n    }\n    \n    printf(\"%d\\n\", profit);\n    free(costs);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 3,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <stdlib.h>\n\nint compare(const void *a, const void *b) {\n    return (*(int*)a - *(int*)b);\n}\n\nint main() {\n    int n, d;\n    scanf(\"%d %d\", &n, &d);\n    int costs[n];\n    for (int i = 0; i < n; i++) {\n        scanf(\"%d\", &costs[i]);\n    }\n    qsort(costs, n, sizeof(int), compare);\n    int m;\n    scanf(\"%d\", &m);\n    int profit = 0;\n    \n    if (m <= n) {\n        for (int i = 0; i < m; i++) {\n            profit += costs[i];\n        }\n    } else {\n        for (int i = 0; i < n; i++) {\n            profit += costs[i];\n        }\n        profit -= (m - n) * d;\n    }\n    \n    printf(\"%d\\n\", profit);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 4,
+                    "message": {
+                        "role": "assistant",
+                        "content": "Here's the translated code in C:\n\n```c\n#include <stdio.h>\n#include <stdlib.h>\n\nint compare(const void *a, const void *b) {\n    return (*(int*)a - *(int*)b);\n}\n\nint main() {\n    int n, d;\n    scanf(\"%d %d\", &n, &d);\n    \n    int *costs = malloc(n * sizeof(int));\n    for (int i = 0; i < n; i++) {\n        scanf(\"%d\", &costs[i]);\n    }\n    \n    qsort(costs, n, sizeof(int), compare);\n    \n    int m;\n    scanf(\"%d\", &m);\n    \n    int profit = 0;\n    \n    if (m <= n) {\n        for (int i = 0; i < m; i++) {\n            profit += costs[i];\n        }\n    } else {\n        for (int i = 0; i < n; i++) {\n            profit += costs[i];\n        }\n        profit -= (m - n) * d;\n    }\n    \n    printf(\"%d\\n\", profit);\n    free(costs);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                }
+            ],
+            "usage": {
+                "prompt_tokens": 985,
+                "completion_tokens": 1176,
+                "total_tokens": 2161
+            }
+        }
+    },
+    "source_data": {
+        "code_uid": "5372a1018e63bb4b3676f4999fb49cf0",
+        "prob_desc_output_to": "standard output",
+        "prob_desc_notes": "NoteIn the first test both hooks will be used, so Sereja gets 1\u2009+\u20092\u2009=\u20093 rubles.In the second test both hooks will be used but Sereja pays a fine 8 times, so the answer is 3\u2009-\u20098\u2009=\u2009\u2009-\u20095.",
+        "lang_cluster": "Python",
+        "prob_desc_time_limit": "1 second",
+        "prob_desc_input_spec": "The first line contains two integers n and d (1\u2009\u2264\u2009n,\u2009d\u2009\u2264\u2009100). The next line contains integers a1, a2, ..., an (1\u2009\u2264\u2009ai\u2009\u2264\u2009100). The third line contains integer m (1\u2009\u2264\u2009m\u2009\u2264\u2009100).",
+        "source_code": "__copyright__ = ''\n__author__ = 'Son-Huy TRAN'\n__email__ = \"sonhuytran@gmail.com\"\n__doc__ = ''\n__version__ = '1.0'\n\n\ndef main() -> int:\n    (n, d) = map(int, input().split())\n    costs = sorted([int(word) for word in input().split()])\n    m = int(input())\n    profit = 0\n\n    if m <= n:\n        profit = sum(costs[:m])\n    else:\n        profit = sum(costs) - (m - n) * d\n\n    print(profit)\n    return 0\n\n\nif __name__ == '__main__':\n    exit(main())",
+        "prob_desc_sample_inputs": [
+            "2 1\n2 1\n2",
+            "2 1\n2 1\n10"
+        ],
+        "prob_desc_memory_limit": "256 megabytes",
+        "exec_outcome": "PASSED",
+        "prob_desc_output_spec": "In a single line print a single integer \u2014 the answer to the problem.",
+        "src_uid": "5c21e2dd658825580522af525142397d",
+        "prob_desc_input_from": "standard input",
+        "lang": "Python 3",
+        "prob_desc_sample_outputs": [
+            "3",
+            "-5"
+        ],
+        "file_name": "d7021504500d5ca7c2b02df8100a574d159e6e67e20ec8071b75800b1267370a",
+        "prob_desc_description": "Sereja owns a restaurant for n people. The restaurant hall has a coat rack with n hooks. Each restaurant visitor can use a hook to hang his clothes on it. Using the i-th hook costs ai rubles. Only one person can hang clothes on one hook.Tonight Sereja expects m guests in the restaurant. Naturally, each guest wants to hang his clothes on an available hook with minimum price (if there are multiple such hooks, he chooses any of them). However if the moment a guest arrives the rack has no available hooks, Sereja must pay a d ruble fine to the guest. Help Sereja find out the profit in rubles (possibly negative) that he will get tonight. You can assume that before the guests arrive, all hooks on the rack are available, all guests come at different time, nobody besides the m guests is visiting Sereja's restaurant tonight.",
+        "prob_desc_created_at": "1385479800",
+        "difficulty": 1000.0,
+        "hidden_unit_tests": "[{\"input\": \"2 1\\r\\n2 1\\r\\n2\\r\\n\", \"output\": [\"3\"]}, {\"input\": \"2 1\\r\\n2 1\\r\\n10\\r\\n\", \"output\": [\"-5\"]}, {\"input\": \"1 1\\r\\n1\\r\\n2\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"3 96\\r\\n83 22 17\\r\\n19\\r\\n\", \"output\": [\"-1414\"]}, {\"input\": \"8 4\\r\\n27 72 39 70 13 68 100 36\\r\\n95\\r\\n\", \"output\": [\"77\"]}, {\"input\": \"2 65\\r\\n23 34\\r\\n74\\r\\n\", \"output\": [\"-4623\"]}, {\"input\": \"2 48\\r\\n12 54\\r\\n69\\r\\n\", \"output\": [\"-3150\"]}, {\"input\": \"5 30\\r\\n63 58 38 60 24\\r\\n42\\r\\n\", \"output\": [\"-867\"]}, {\"input\": \"9 47\\r\\n17 36 91 43 89 7 41 43 65\\r\\n49\\r\\n\", \"output\": [\"-1448\"]}, {\"input\": \"6 49\\r\\n91 30 71 51 7 2\\r\\n94\\r\\n\", \"output\": [\"-4060\"]}, {\"input\": \"57 27\\r\\n73 51 24 86 57 17 27 58 27 58 38 72 70 62 97 23 18 13 18 97 86 42 24 30 30 66 60 33 97 56 54 63 85 35 55 73 58 70 33 64 8 84 12 36 68 49 76 39 24 43 55 12 42 76 60 26 22\\r\\n71\\r\\n\", \"output\": [\"2454\"]}, {\"input\": \"35 19\\r\\n6 84 51 99 80 2 94 35 38 35 57 94 77 6 63 49 82 1 14 42 56 56 43 63 12 78 25 79 53 44 97 74 41 14 76\\r\\n73\\r\\n\", \"output\": [\"1098\"]}, {\"input\": \"11 91\\r\\n18 33 13 96 70 32 41 89 86 91 98\\r\\n90\\r\\n\", \"output\": [\"-6522\"]}, {\"input\": \"46 48\\r\\n54 15 52 41 45 59 36 60 93 6 65 82 4 30 76 9 93 98 50 57 62 28 68 42 30 41 14 75 2 78 16 84 14 93 25 2 93 60 71 29 28 85 76 87 99 71\\r\\n88\\r\\n\", \"output\": [\"382\"]}, {\"input\": \"5 72\\r\\n4 22 64 7 64\\r\\n11\\r\\n\", \"output\": [\"-271\"]}, {\"input\": \"90 24\\r\\n41 65 43 20 14 92 5 19 33 51 6 76 40 4 23 99 48 85 49 72 65 14 76 46 13 47 79 70 63 20 86 90 45 66 41 46 9 19 71 2 24 33 73 53 88 71 64 2 4 24 28 1 70 16 66 29 44 48 89 44 38 10 64 50 82 89 43 9 61 22 59 55 89 47 91 50 44 31 21 49 68 37 84 36 27 86 39 54 30 25\\r\\n49\\r\\n\", \"output\": [\"1306\"]}, {\"input\": \"60 63\\r\\n58 67 45 56 19 27 12 26 56 2 50 97 85 16 65 43 76 14 43 97 49 73 27 7 74 30 5 6 27 13 76 94 66 37 37 42 15 95 57 53 37 39 83 56 16 32 31 42 26 12 38 87 91 51 63 35 94 54 17 53\\r\\n9\\r\\n\", \"output\": [\"86\"]}, {\"input\": \"34 79\\r\\n55 4 35 4 57 49 25 18 14 10 29 1 81 19 59 51 56 62 65 4 77 44 10 3 62 90 49 83 54 75 21 3 24 32\\r\\n70\\r\\n\", \"output\": [\"-1519\"]}, {\"input\": \"60 91\\r\\n9 20 72 4 46 82 5 93 86 14 99 90 23 39 38 11 62 35 9 62 60 94 16 70 38 70 59 1 72 65 18 16 56 16 31 40 13 89 83 55 86 11 85 75 81 16 52 42 16 80 11 99 74 89 78 33 57 90 14 9\\r\\n42\\r\\n\", \"output\": [\"1406\"]}, {\"input\": \"24 68\\r\\n64 29 85 79 1 72 86 75 72 34 68 54 96 69 26 77 30 51 99 10 94 87 81 17\\r\\n50\\r\\n\", \"output\": [\"-312\"]}, {\"input\": \"29 19\\r\\n80 65 22 6 27 17 17 27 67 88 82 65 41 87 22 63 22 65 10 16 3 74 25 42 46 63 24 32 7\\r\\n69\\r\\n\", \"output\": [\"445\"]}, {\"input\": \"3 37\\r\\n8 8 82\\r\\n13\\r\\n\", \"output\": [\"-272\"]}, {\"input\": \"31 63\\r\\n15 10 85 57 91 94 97 53 55 46 9 49 92 13 32 15 40 59 23 5 96 53 70 80 39 24 19 67 60 99 87\\r\\n97\\r\\n\", \"output\": [\"-2524\"]}, {\"input\": \"34 30\\r\\n59 23 47 93 38 26 48 59 3 8 99 31 93 1 79 100 53 49 83 41 16 76 63 68 37 98 19 98 29 52 17 31 50 26\\r\\n59\\r\\n\", \"output\": [\"963\"]}, {\"input\": \"21 29\\r\\n41 61 48 63 56 76 93 62 55 99 47 15 47 89 70 39 64 76 16 22 76\\r\\n16\\r\\n\", \"output\": [\"782\"]}, {\"input\": \"35 86\\r\\n71 6 65 58 63 62 25 50 70 31 24 51 34 26 11 38 37 38 79 94 37 15 65 92 50 36 6 38 5 38 24 65 71 9 69\\r\\n82\\r\\n\", \"output\": [\"-2489\"]}, {\"input\": \"53 75\\r\\n74 53 95 77 27 97 73 50 41 75 20 44 12 42 90 20 66 6 86 17 51 16 10 65 67 94 75 10 1 96 74 90 62 73 69 59 32 69 27 11 23 75 80 11 53 83 92 96 65 75 65 3 56\\r\\n61\\r\\n\", \"output\": [\"2293\"]}, {\"input\": \"73 13\\r\\n22 23 48 78 90 6 96 95 51 44 55 82 13 73 40 29 13 63 68 9 16 9 24 60 35 5 87 20 59 46 7 67 1 68 93 88 33 57 75 48 22 84 23 32 77 84 49 24 83 19 77 21 12 83 57 91 26 25 87 78 70 44 35 78 69 69 92 97 84 29 28 27 72\\r\\n98\\r\\n\", \"output\": [\"3419\"]}, {\"input\": \"4 39\\r\\n28 9 46 9\\r\\n86\\r\\n\", \"output\": [\"-3106\"]}, {\"input\": \"100 100\\r\\n100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100\\r\\n100\\r\\n\", \"output\": [\"10000\"]}, {\"input\": \"1 100\\r\\n100\\r\\n100\\r\\n\", \"output\": [\"-9800\"]}, {\"input\": \"1 1\\r\\n1\\r\\n1\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"5 1\\r\\n1 5 2 7 8\\r\\n3\\r\\n\", \"output\": [\"8\"]}, {\"input\": \"4 44\\r\\n3 3 3 3\\r\\n1\\r\\n\", \"output\": [\"3\"]}, {\"input\": \"3 1\\r\\n1 2 3\\r\\n1\\r\\n\", \"output\": [\"1\"]}]",
+        "source_lang": "Python 3",
+        "target_lang": "C"
+    }
+}

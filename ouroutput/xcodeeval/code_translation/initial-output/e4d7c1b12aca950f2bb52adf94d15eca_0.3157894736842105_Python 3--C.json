@@ -1,0 +1,89 @@
+{
+    "oai_response": {
+        "prompt": "Here is code in Python 3 programming lanaguge. Translate the following code from Python 3 to C programming lanaguge. Do not output any extra description or tokens other than the translated code. \n\ns=input()\nif len(s)<5:\n\tprint(\"Too weak\")\nelse:\n\tn=len(s)\n\ta=[]\n\tb=[]\n\tc=[]\n\tfor i in range(n):\n\t\tif s[i].isupper():\n\t\t\ta.append(s[i])\n\t\telif s[i].islower():\n\t\t\tb.append(s[i])\n\t\telif s[i].isnumeric():\n\t\t\tc.append(s[i])\n\tif len(a)==0 or len(b)==0 or len(c)==0:\n\t\tprint(\"Too weak\")\n\telse:\n\t\tprint(\"Correct\")||END-of-SRC||",
+        "response": {
+            "id": "multi-call-as-fjvyj364c2",
+            "model": "deepseek-v3",
+            "created": 1767067971,
+            "choices": [
+                {
+                    "index": 0,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <ctype.h>\n#include <string.h>\n\nint main() {\n    char s[100];\n    scanf(\"%s\", s);\n    int len = strlen(s);\n    if (len < 5) {\n        printf(\"Too weak\\n\");\n    } else {\n        int a = 0, b = 0, c = 0;\n        for (int i = 0; i < len; i++) {\n            if (isupper(s[i])) {\n                a++;\n            } else if (islower(s[i])) {\n                b++;\n            } else if (isdigit(s[i])) {\n                c++;\n            }\n        }\n        if (a == 0 || b == 0 || c == 0) {\n            printf(\"Too weak\\n\");\n        } else {\n            printf(\"Correct\\n\");\n        }\n    }\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 1,
+                    "message": {
+                        "role": "assistant",
+                        "content": "Here's the translated code in C:\n\n```c\n#include <stdio.h>\n#include <string.h>\n#include <ctype.h>\n\nint main() {\n    char s[100];\n    scanf(\"%s\", s);\n    if (strlen(s) < 5) {\n        printf(\"Too weak\\n\");\n    } else {\n        int n = strlen(s);\n        int a = 0, b = 0, c = 0;\n        for (int i = 0; i < n; i++) {\n            if (isupper(s[i])) {\n                a++;\n            } else if (islower(s[i])) {\n                b++;\n            } else if (isdigit(s[i])) {\n                c++;\n            }\n        }\n        if (a == 0 || b == 0 || c == 0) {\n            printf(\"Too weak\\n\");\n        } else {\n            printf(\"Correct\\n\");\n        }\n    }\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 2,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <ctype.h>\n#include <string.h>\n\nint main() {\n    char s[100];\n    scanf(\"%s\", s);\n    int len = strlen(s);\n    if (len < 5) {\n        printf(\"Too weak\\n\");\n    } else {\n        int a = 0, b = 0, c = 0;\n        for (int i = 0; i < len; i++) {\n            if (isupper(s[i])) {\n                a = 1;\n            } else if (islower(s[i])) {\n                b = 1;\n            } else if (isdigit(s[i])) {\n                c = 1;\n            }\n        }\n        if (a == 0 || b == 0 || c == 0) {\n            printf(\"Too weak\\n\");\n        } else {\n            printf(\"Correct\\n\");\n        }\n    }\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 3,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <ctype.h>\n#include <string.h>\n\nint main() {\n    char s[100];\n    scanf(\"%s\", s);\n    if (strlen(s) < 5) {\n        printf(\"Too weak\\n\");\n    } else {\n        int a = 0, b = 0, c = 0;\n        for (int i = 0; i < strlen(s); i++) {\n            if (isupper(s[i])) {\n                a++;\n            } else if (islower(s[i])) {\n                b++;\n            } else if (isdigit(s[i])) {\n                c++;\n            }\n        }\n        if (a == 0 || b == 0 || c == 0) {\n            printf(\"Too weak\\n\");\n        } else {\n            printf(\"Correct\\n\");\n        }\n    }\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 4,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <ctype.h>\n#include <string.h>\n\nint main() {\n    char s[100];\n    scanf(\"%s\", s);\n    int len = strlen(s);\n    if (len < 5) {\n        printf(\"Too weak\\n\");\n    } else {\n        int a = 0, b = 0, c = 0;\n        for (int i = 0; i < len; i++) {\n            if (isupper(s[i])) {\n                a = 1;\n            } else if (islower(s[i])) {\n                b = 1;\n            } else if (isdigit(s[i])) {\n                c = 1;\n            }\n        }\n        if (a == 0 || b == 0 || c == 0) {\n            printf(\"Too weak\\n\");\n        } else {\n            printf(\"Correct\\n\");\n        }\n    }\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                }
+            ],
+            "usage": {
+                "prompt_tokens": 775,
+                "completion_tokens": 959,
+                "total_tokens": 1734
+            }
+        }
+    },
+    "source_data": {
+        "code_uid": "e4d7c1b12aca950f2bb52adf94d15eca",
+        "prob_desc_output_to": "standard output",
+        "prob_desc_notes": null,
+        "lang_cluster": "Python",
+        "prob_desc_time_limit": "1 second",
+        "prob_desc_input_spec": "The first line contains a non-empty sequence of characters (at most 100 characters). Each character is either a large English letter, or a small English letter, or a digit, or one of characters: \"!\", \"?\", \".\", \",\", \"_\".",
+        "source_code": "s=input()\nif len(s)<5:\n\tprint(\"Too weak\")\nelse:\n\tn=len(s)\n\ta=[]\n\tb=[]\n\tc=[]\n\tfor i in range(n):\n\t\tif s[i].isupper():\n\t\t\ta.append(s[i])\n\t\telif s[i].islower():\n\t\t\tb.append(s[i])\n\t\telif s[i].isnumeric():\n\t\t\tc.append(s[i])\n\tif len(a)==0 or len(b)==0 or len(c)==0:\n\t\tprint(\"Too weak\")\n\telse:\n\t\tprint(\"Correct\")",
+        "prob_desc_sample_inputs": [
+            "abacaba",
+            "X12345",
+            "CONTEST_is_STARTED!!11"
+        ],
+        "prob_desc_memory_limit": "256 megabytes",
+        "exec_outcome": "PASSED",
+        "prob_desc_output_spec": "If the password is complex enough, print message \"Correct\" (without the quotes), otherwise print message \"Too weak\" (without the quotes).",
+        "src_uid": "42a964b01e269491975965860ec92be7",
+        "prob_desc_input_from": "standard input",
+        "lang": "Python 3",
+        "prob_desc_sample_outputs": [
+            "Too weak",
+            "Too weak",
+            "Correct"
+        ],
+        "file_name": "d7021504500d5ca7c2b02df8100a574d159e6e67e20ec8071b75800b1267370a",
+        "prob_desc_description": "You have probably registered on Internet sites many times. And each time you should enter your invented password. Usually the registration form automatically checks the password's crypt resistance. If the user's password isn't complex enough, a message is displayed. Today your task is to implement such an automatic check.Web-developers of the company Q assume that a password is complex enough, if it meets all of the following conditions:  the password length is at least 5 characters;  the password contains at least one large English letter;  the password contains at least one small English letter;  the password contains at least one digit. You are given a password. Please implement the automatic check of its complexity for company Q.",
+        "prob_desc_created_at": "1397505600",
+        "difficulty": 800.0,
+        "hidden_unit_tests": "[{\"input\": \"abacaba\\r\\n\", \"output\": [\"Too weak\"]}, {\"input\": \"X12345\\r\\n\", \"output\": [\"Too weak\"]}, {\"input\": \"CONTEST_is_STARTED!!11\\r\\n\", \"output\": [\"Correct\"]}, {\"input\": \"1zA__\\r\\n\", \"output\": [\"Correct\"]}, {\"input\": \"1zA_\\r\\n\", \"output\": [\"Too weak\"]}, {\"input\": \"zA___\\r\\n\", \"output\": [\"Too weak\"]}, {\"input\": \"1A___\\r\\n\", \"output\": [\"Too weak\"]}, {\"input\": \"z1___\\r\\n\", \"output\": [\"Too weak\"]}, {\"input\": \"0\\r\\n\", \"output\": [\"Too weak\"]}, {\"input\": \"_\\r\\n\", \"output\": [\"Too weak\"]}, {\"input\": \"a\\r\\n\", \"output\": [\"Too weak\"]}, {\"input\": \"D\\r\\n\", \"output\": [\"Too weak\"]}, {\"input\": \"_\\r\\n\", \"output\": [\"Too weak\"]}, {\"input\": \"?\\r\\n\", \"output\": [\"Too weak\"]}, {\"input\": \"?\\r\\n\", \"output\": [\"Too weak\"]}, {\"input\": \"._,.!.,...?_,!.\\r\\n\", \"output\": [\"Too weak\"]}, {\"input\": \"!_?_,?,?.,.,_!!!.!,.__,?!!,_!,?_,!??,?!..._!?_,?_!,?_.,._,,_.,.\\r\\n\", \"output\": [\"Too weak\"]}, {\"input\": \"?..!.,,?,__.,...????_???__!,?...?.,,,,___!,.!,_,,_,??!_?_,!!?_!_??.?,.!!?_?_.,!\\r\\n\", \"output\": [\"Too weak\"]}, {\"input\": \"XZX\\r\\n\", \"output\": [\"Too weak\"]}, {\"input\": \"R\\r\\n\", \"output\": [\"Too weak\"]}, {\"input\": \"H.FZ\\r\\n\", \"output\": [\"Too weak\"]}, {\"input\": \"KSHMICWPK,LSBM_JVZ!IPDYDG_GOPCHXFJTKJBIFY,FPHMY,CB?PZEAG..,X,.GFHPIDBB,IQ?MZ\\r\\n\", \"output\": [\"Too weak\"]}, {\"input\": \"EFHI,,Y?HMMUI,,FJGAY?FYPBJQMYM!DZHLFCTFWT?JOPDW,S_!OR?ATT?RWFBMAAKUHIDMHSD?LCZQY!UD_CGYGBAIRDPICYS\\r\\n\", \"output\": [\"Too weak\"]}, {\"input\": \"T,NDMUYCCXH_L_FJHMCCAGX_XSCPGOUZSY?D?CNDSYRITYS,VAT!PJVKNTBMXGGRYKACLYU.RJQ_?UWKXYIDE_AE\\r\\n\", \"output\": [\"Too weak\"]}, {\"input\": \"y\\r\\n\", \"output\": [\"Too weak\"]}, {\"input\": \"qgw\\r\\n\", \"output\": [\"Too weak\"]}, {\"input\": \"g\\r\\n\", \"output\": [\"Too weak\"]}, {\"input\": \"loaray\\r\\n\", \"output\": [\"Too weak\"]}, {\"input\": \"d_iymyvxolmjayhwpedocopqwmy.oalrdg!_n?.lrxpamhygps?kkzxydsbcaihfs.j?eu!oszjsy.vzu?!vs.bprz_j\\r\\n\", \"output\": [\"Too weak\"]}, {\"input\": \"txguglvclyillwnono\\r\\n\", \"output\": [\"Too weak\"]}, {\"input\": \"FwX\\r\\n\", \"output\": [\"Too weak\"]}, {\"input\": \"Zi\\r\\n\", \"output\": [\"Too weak\"]}, {\"input\": \"PodE\\r\\n\", \"output\": [\"Too weak\"]}, {\"input\": \"SdoOuJ?nj_wJyf\\r\\n\", \"output\": [\"Too weak\"]}, {\"input\": \"MhnfZjsUyXYw?f?ubKA\\r\\n\", \"output\": [\"Too weak\"]}, {\"input\": \"CpWxDVzwHfYFfoXNtXMFuAZr\\r\\n\", \"output\": [\"Too weak\"]}, {\"input\": \"9.,0\\r\\n\", \"output\": [\"Too weak\"]}, {\"input\": \"5,8\\r\\n\", \"output\": [\"Too weak\"]}, {\"input\": \"7\\r\\n\", \"output\": [\"Too weak\"]}, {\"input\": \"34__39_02!,!,82!129!2!566\\r\\n\", \"output\": [\"Too weak\"]}, {\"input\": \"96156027.65935663!_87!,44,..7914_!0_1,.4!!62!.8350!17_282!!9.2584,!!7__51.526.7\\r\\n\", \"output\": [\"Too weak\"]}, {\"input\": \"90328_\\r\\n\", \"output\": [\"Too weak\"]}, {\"input\": \"B9\\r\\n\", \"output\": [\"Too weak\"]}, {\"input\": \"P1H\\r\\n\", \"output\": [\"Too weak\"]}, {\"input\": \"J2\\r\\n\", \"output\": [\"Too weak\"]}, {\"input\": \"M6BCAKW!85OSYX1D?.53KDXP42F\\r\\n\", \"output\": [\"Too weak\"]}, {\"input\": \"C672F429Y8X6XU7S,.K9111UD3232YXT81S4!729ER7DZ.J7U1R_7VG6.FQO,LDH\\r\\n\", \"output\": [\"Too weak\"]}, {\"input\": \"W2PI__!.O91H8OFY6AB__R30L9XOU8800?ZUD84L5KT99818NFNE35V.8LJJ5P2MM.B6B\\r\\n\", \"output\": [\"Too weak\"]}, {\"input\": \"z1\\r\\n\", \"output\": [\"Too weak\"]}, {\"input\": \"p1j\\r\\n\", \"output\": [\"Too weak\"]}, {\"input\": \"j9\\r\\n\", \"output\": [\"Too weak\"]}, {\"input\": \"v8eycoylzv0qkix5mfs_nhkn6k!?ovrk9!b69zy!4frc?k\\r\\n\", \"output\": [\"Too weak\"]}, {\"input\": \"l4!m_44kpw8.jg!?oh,?y5oraw1tg7_x1.osl0!ny?_aihzhtt0e2!mr92tnk0es!1f,9he40_usa6c50l\\r\\n\", \"output\": [\"Too weak\"]}, {\"input\": \"d4r!ak.igzhnu!boghwd6jl\\r\\n\", \"output\": [\"Too weak\"]}, {\"input\": \"It0\\r\\n\", \"output\": [\"Too weak\"]}, {\"input\": \"Yb1x\\r\\n\", \"output\": [\"Too weak\"]}, {\"input\": \"Qf7\\r\\n\", \"output\": [\"Too weak\"]}, {\"input\": \"Vu7jQU8.!FvHBYTsDp6AphaGfnEmySP9te\\r\\n\", \"output\": [\"Correct\"]}, {\"input\": \"Ka4hGE,vkvNQbNolnfwp\\r\\n\", \"output\": [\"Correct\"]}, {\"input\": \"Ee9oluD?amNItsjeQVtOjwj4w_ALCRh7F3eaZah\\r\\n\", \"output\": [\"Correct\"]}, {\"input\": \"Um3Fj?QLhNuRE_Gx0cjMLOkGCm\\r\\n\", \"output\": [\"Correct\"]}, {\"input\": \"Oq2LYmV9HmlaW\\r\\n\", \"output\": [\"Correct\"]}, {\"input\": \"Cq7r3Wrb.lDb_0wsf7!ruUUGSf08RkxD?VsBEDdyE?SHK73TFFy0f8gmcATqGafgTv8OOg8or2HyMPIPiQ2Hsx8q5rn3_WZe\\r\\n\", \"output\": [\"Correct\"]}, {\"input\": \"Wx4p1fOrEMDlQpTlIx0p.1cnFD7BnX2K8?_dNLh4cQBx_Zqsv83BnL5hGKNcBE9g3QB,!fmSvgBeQ_qiH7\\r\\n\", \"output\": [\"Correct\"]}, {\"input\": \"k673,\\r\\n\", \"output\": [\"Too weak\"]}, {\"input\": \"LzuYQ\\r\\n\", \"output\": [\"Too weak\"]}, {\"input\": \"Pasq!\\r\\n\", \"output\": [\"Too weak\"]}, {\"input\": \"x5hve\\r\\n\", \"output\": [\"Too weak\"]}, {\"input\": \"b27fk\\r\\n\", \"output\": [\"Too weak\"]}, {\"input\": \"h6y1l\\r\\n\", \"output\": [\"Too weak\"]}, {\"input\": \"i9nij\\r\\n\", \"output\": [\"Too weak\"]}, {\"input\": \"Gf5Q6\\r\\n\", \"output\": [\"Correct\"]}, {\"input\": \"Uf24o\\r\\n\", \"output\": [\"Correct\"]}, {\"input\": \"Oj9vu\\r\\n\", \"output\": [\"Correct\"]}, {\"input\": \"c7jqaudcqmv8o7zvb5x_gp6zcgl6nwr7tz5or!28.tj8s1m2.wxz5a4id03!rq07?662vy.7.p5?vk2f2mc7ag8q3861rgd0rmbr\\r\\n\", \"output\": [\"Too weak\"]}, {\"input\": \"i6a.,8jb,n0kv4.1!7h?p.96pnhhgy6cl7dg7e4o6o384ys3z.t71kkq,,w,oqi4?u,,m5!rzu6wym_4hm,ohjy!.vvksl?pt,,1\\r\\n\", \"output\": [\"Too weak\"]}, {\"input\": \"M10V_MN_1K8YX2LA!89EYV7!5V9?,.IDHDP6JEC.OGLY.180LMZ6KW3Z5E17IT94ZNHS!79GN09Q6LH0,F3AYNKP?KM,QP_?XRD6\\r\\n\", \"output\": [\"Too weak\"]}, {\"input\": \"Hi7zYuVXCPhaho68YgCMzzgLILM6toQTJq8akMqqrnUn6ZCD36iA1yVVpvlsIiMpCu!1QZd4ycIrQ5Kcrhk5k0jTrwdAAEEP_T2f\\r\\n\", \"output\": [\"Correct\"]}, {\"input\": \"Bk2Q38vDSW5JqYu.077iYC.9YoiPc!Dh6FJWOVze6?YXiFjPNa4F1RG?154m9mY2jQobBnbxM,cDV8l1UX1?v?p.tTYIyJO!NYmE\\r\\n\", \"output\": [\"Correct\"]}, {\"input\": \"Ro1HcZ.piN,JRR88DLh,WtW!pbFM076?wCSbqfK7N2s5zUySFBtzk7HV,BxHXR0zALAr016z5jvvB.WUdEcKgYFav5TygwHQC..C\\r\\n\", \"output\": [\"Correct\"]}, {\"input\": \"!?.,_\\r\\n\", \"output\": [\"Too weak\"]}]",
+        "source_lang": "Python 3",
+        "target_lang": "C"
+    }
+}

@@ -1,0 +1,89 @@
+{
+    "oai_response": {
+        "prompt": "Here is code in Python 3 programming lanaguge. Translate the following code from Python 3 to C programming lanaguge. Do not output any extra description or tokens other than the translated code. \n\nn=int(input())\ns=input()\nans,i,k='',0,1\nwhile i<n:\n    ans+=s[i]\n    i,k=i+k,k+1\nprint(ans)\n||END-of-SRC||",
+        "response": {
+            "id": "multi-call-as-ctuyrwd5qf",
+            "model": "deepseek-v3",
+            "created": 1767066148,
+            "choices": [
+                {
+                    "index": 0,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <string.h>\n\nint main() {\n    int n, i = 0, k = 1;\n    scanf(\"%d\", &n);\n    char s[1000], ans[1000] = \"\";\n    scanf(\"%s\", s);\n    while (i < n) {\n        strncat(ans, &s[i], 1);\n        i += k;\n        k += 1;\n    }\n    printf(\"%s\\n\", ans);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 1,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <string.h>\n\nint main() {\n    int n, i = 0, k = 1;\n    scanf(\"%d\", &n);\n    char s[1000], ans[1000] = \"\";\n    scanf(\"%s\", s);\n    while (i < n) {\n        strncat(ans, &s[i], 1);\n        i += k;\n        k += 1;\n    }\n    printf(\"%s\\n\", ans);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 2,
+                    "message": {
+                        "role": "assistant",
+                        "content": "Here's the translated code in C:\n\n```c\n#include <stdio.h>\n#include <string.h>\n\nint main() {\n    int n, i = 0, k = 1;\n    scanf(\"%d\", &n);\n    char s[1000], ans[1000] = \"\";\n    scanf(\"%s\", s);\n    while (i < n) {\n        strncat(ans, &s[i], 1);\n        i += k;\n        k += 1;\n    }\n    printf(\"%s\\n\", ans);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 3,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <string.h>\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    char s[1000];\n    scanf(\"%s\", s);\n    char ans[1000] = \"\";\n    int i = 0, k = 1;\n    while (i < n) {\n        strncat(ans, &s[i], 1);\n        i += k;\n        k += 1;\n    }\n    printf(\"%s\\n\", ans);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 4,
+                    "message": {
+                        "role": "assistant",
+                        "content": "Here's the translated code in C:\n\n```c\n#include <stdio.h>\n\nint main() {\n    int n, i = 0, k = 1;\n    scanf(\"%d\", &n);\n    char s[1000], ans[1000] = \"\";\n    scanf(\"%s\", s);\n    while (i < n) {\n        ans[i/k] = s[i];\n        i += k;\n        k += 1;\n    }\n    ans[i/k] = '\\0';\n    printf(\"%s\", ans);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                }
+            ],
+            "usage": {
+                "prompt_tokens": 445,
+                "completion_tokens": 566,
+                "total_tokens": 1011
+            }
+        }
+    },
+    "source_data": {
+        "code_uid": "4737ecb3e13f71ecce2eade6f86c4167",
+        "prob_desc_output_to": "standard output",
+        "prob_desc_notes": null,
+        "lang_cluster": "Python",
+        "prob_desc_time_limit": "1 second",
+        "prob_desc_input_spec": "The first line contains integer $$$n$$$ ($$$1 \\le n \\le 55$$$) \u2014 the length of the encrypted string. The second line of the input contains $$$t$$$ \u2014 the result of encryption of some string $$$s$$$. It contains only lowercase Latin letters. The length of $$$t$$$ is exactly $$$n$$$. It is guaranteed that the answer to the test exists.",
+        "source_code": "n=int(input())\ns=input()\nans,i,k='',0,1\nwhile i<n:\n    ans+=s[i]\n    i,k=i+k,k+1\nprint(ans)\n",
+        "prob_desc_sample_inputs": [
+            "6\nbaabbb",
+            "10\nooopppssss",
+            "1\nz"
+        ],
+        "prob_desc_memory_limit": "256 megabytes",
+        "exec_outcome": "PASSED",
+        "prob_desc_output_spec": "Print such string $$$s$$$ that after encryption it equals $$$t$$$.",
+        "src_uid": "08e8c0c37b223f6aae01d5609facdeaf",
+        "prob_desc_input_from": "standard input",
+        "lang": "Python 3",
+        "prob_desc_sample_outputs": [
+            "bab",
+            "oops",
+            "z"
+        ],
+        "file_name": "d7021504500d5ca7c2b02df8100a574d159e6e67e20ec8071b75800b1267370a",
+        "prob_desc_description": "Polycarp loves ciphers. He has invented his own cipher called repeating.Repeating cipher is used for strings. To encrypt the string $$$s=s_{1}s_{2} \\dots s_{m}$$$ ($$$1 \\le m \\le 10$$$), Polycarp uses the following algorithm:  he writes down $$$s_1$$$ ones,  he writes down $$$s_2$$$ twice,  he writes down $$$s_3$$$ three times,  ...  he writes down $$$s_m$$$ $$$m$$$ times. For example, if $$$s$$$=\"bab\" the process is: \"b\" $$$\\to$$$ \"baa\" $$$\\to$$$ \"baabbb\". So the encrypted $$$s$$$=\"bab\" is \"baabbb\".Given string $$$t$$$ \u2014 the result of encryption of some string $$$s$$$. Your task is to decrypt it, i.\u2009e. find the string $$$s$$$.",
+        "prob_desc_created_at": "1545921300",
+        "difficulty": 800.0,
+        "hidden_unit_tests": "[{\"input\": \"6\\r\\nbaabbb\\r\\n\", \"output\": [\"bab\\n\", \"bab\", \"bab\\r\\n\"]}, {\"input\": \"10\\r\\nooopppssss\\r\\n\", \"output\": [\"oops\\r\\n\", \"oops\\n\", \"oops\"]}, {\"input\": \"1\\r\\nz\\r\\n\", \"output\": [\"z\\n\", \"z\", \"z\\r\\n\"]}, {\"input\": \"3\\r\\nzww\\r\\n\", \"output\": [\"zw\", \"zw\\n\", \"zw\\r\\n\"]}, {\"input\": \"55\\r\\ncooooonnnnttttteeeeeeeeeeeeessssssssttttttttttttttttttt\\r\\n\", \"output\": [\"coonteestt\\r\\n\", \"coonteestt\", \"coonteestt\\n\"]}, {\"input\": \"21\\r\\ncoodddeeeecccccoooooo\\r\\n\", \"output\": [\"codeco\", \"codeco\\r\\n\", \"codeco\\n\"]}, {\"input\": \"55\\r\\naaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\\r\\n\", \"output\": [\"aaaaaaaaaa\\r\\n\", \"aaaaaaaaaa\\n\", \"aaaaaaaaaa\"]}, {\"input\": \"36\\r\\nabbcccddddeeeeeffffffggggggghhhhhhhh\\r\\n\", \"output\": [\"abcdefgh\\n\", \"abcdefgh\\r\\n\", \"abcdefgh\"]}]",
+        "source_lang": "Python 3",
+        "target_lang": "C"
+    }
+}

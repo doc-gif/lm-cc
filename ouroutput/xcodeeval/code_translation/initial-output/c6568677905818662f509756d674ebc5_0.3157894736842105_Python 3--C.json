@@ -1,0 +1,87 @@
+{
+    "oai_response": {
+        "prompt": "Here is code in Python 3 programming lanaguge. Translate the following code from Python 3 to C programming lanaguge. Do not output any extra description or tokens other than the translated code. \n\n\n# coding: utf-8\n\n# In[9]:\n\n\n\n\n# In[42]:\n\nline = input().split()\n\nn = int(line[0])\nh = int(line[1])\nfrom math import log\narray_nodes_minheigt = [[0 for x in range(36)] for y in range(36)]\narray_nodes_minheigt[0][0] = 1\nfor nodes in range(1,36):\n    for minheight in range(0,nodes+1):\n        for topnode in range(1, nodes + 1):\n            left = topnode-1\n            right = nodes - topnode\n            array_nodes_minheigt[nodes][minheight] += array_nodes_minheigt[left][0] * array_nodes_minheigt[right][0] -             (array_nodes_minheigt[left][0]-array_nodes_minheigt[left][max(minheight-1,0)])*             (array_nodes_minheigt[right][0]-array_nodes_minheigt[right][max(minheight-1,0)])\n\n\nprint(int(array_nodes_minheigt[n][h]))\n\n||END-of-SRC||",
+        "response": {
+            "id": "multi-call-as-redj3hpqsu",
+            "model": "deepseek-v3",
+            "created": 1767069389,
+            "choices": [
+                {
+                    "index": 0,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <stdlib.h>\n#include <math.h>\n\nint main() {\n    int n, h;\n    scanf(\"%d %d\", &n, &h);\n    \n    long long array_nodes_minheigt[36][36] = {0};\n    array_nodes_minheigt[0][0] = 1;\n    \n    for (int nodes = 1; nodes < 36; nodes++) {\n        for (int minheight = 0; minheight <= nodes; minheight++) {\n            for (int topnode = 1; topnode <= nodes; topnode++) {\n                int left = topnode - 1;\n                int right = nodes - topnode;\n                int max_left = (minheight - 1) > 0 ? (minheight - 1) : 0;\n                int max_right = (minheight - 1) > 0 ? (minheight - 1) : 0;\n                array_nodes_minheigt[nodes][minheight] += \n                    array_nodes_minheigt[left][0] * array_nodes_minheigt[right][0] - \n                    (array_nodes_minheigt[left][0] - array_nodes_minheigt[left][max_left]) * \n                    (array_nodes_minheigt[right][0] - array_nodes_minheigt[right][max_right]);\n            }\n        }\n    }\n    \n    printf(\"%lld\\n\", array_nodes_minheigt[n][h]);\n    \n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 1,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <stdlib.h>\n#include <math.h>\n\nint main() {\n    int n, h;\n    scanf(\"%d %d\", &n, &h);\n    \n    long long array_nodes_minheigt[36][36] = {0};\n    array_nodes_minheigt[0][0] = 1;\n    \n    for (int nodes = 1; nodes < 36; nodes++) {\n        for (int minheight = 0; minheight <= nodes; minheight++) {\n            for (int topnode = 1; topnode <= nodes; topnode++) {\n                int left = topnode - 1;\n                int right = nodes - topnode;\n                int max_left = (minheight - 1) > 0 ? (minheight - 1) : 0;\n                int max_right = (minheight - 1) > 0 ? (minheight - 1) : 0;\n                array_nodes_minheigt[nodes][minheight] += \n                    array_nodes_minheigt[left][0] * array_nodes_minheigt[right][0] - \n                    (array_nodes_minheigt[left][0] - array_nodes_minheigt[left][max_left]) * \n                    (array_nodes_minheigt[right][0] - array_nodes_minheigt[right][max_right]);\n            }\n        }\n    }\n    \n    printf(\"%lld\\n\", array_nodes_minheigt[n][h]);\n    \n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 2,
+                    "message": {
+                        "role": "assistant",
+                        "content": "Here's the translated code in C:\n\n```c\n#include <stdio.h>\n#include <stdlib.h>\n#include <math.h>\n\nint main() {\n    int line[2];\n    scanf(\"%d %d\", &line[0], &line[1]);\n    int n = line[0];\n    int h = line[1];\n    \n    long array_nodes_minheigt[36][36] = {0};\n    array_nodes_minheigt[0][0] = 1;\n    \n    for (int nodes = 1; nodes < 36; nodes++) {\n        for (int minheight = 0; minheight <= nodes; minheight++) {\n            for (int topnode = 1; topnode <= nodes; topnode++) {\n                int left = topnode - 1;\n                int right = nodes - topnode;\n                array_nodes_minheigt[nodes][minheight] += \n                    array_nodes_minheigt[left][0] * array_nodes_minheigt[right][0] - \n                    (array_nodes_minheigt[left][0] - (minheight > 0 ? array_nodes_minheigt[left][minheight-1] : 0)) * \n                    (array_nodes_minheigt[right][0] - (minheight > 0 ? array_nodes_minheigt[right][minheight-1] : 0));\n            }\n        }\n    }\n    \n    printf(\"%ld\\n\", array_nodes_minheigt[n][h]);\n    \n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 3,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <stdlib.h>\n#include <math.h>\n\nint main() {\n    int line[2];\n    scanf(\"%d %d\", &line[0], &line[1]);\n    int n = line[0];\n    int h = line[1];\n    \n    long array_nodes_minheigt[36][36] = {0};\n    array_nodes_minheigt[0][0] = 1;\n    \n    for (int nodes = 1; nodes < 36; nodes++) {\n        for (int minheight = 0; minheight <= nodes; minheight++) {\n            for (int topnode = 1; topnode <= nodes; topnode++) {\n                int left = topnode - 1;\n                int right = nodes - topnode;\n                array_nodes_minheigt[nodes][minheight] += array_nodes_minheigt[left][0] * array_nodes_minheigt[right][0] - \n                    (array_nodes_minheigt[left][0] - (minheight > 1 ? array_nodes_minheigt[left][minheight-1] : 0)) * \n                    (array_nodes_minheigt[right][0] - (minheight > 1 ? array_nodes_minheigt[right][minheight-1] : 0));\n            }\n        }\n    }\n    \n    printf(\"%ld\\n\", array_nodes_minheigt[n][h]);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 4,
+                    "message": {
+                        "role": "assistant",
+                        "content": "Here's the translated code in C:\n\n```c\n#include <stdio.h>\n#include <stdlib.h>\n#include <math.h>\n\nint main() {\n    int line[2];\n    scanf(\"%d %d\", &line[0], &line[1]);\n    int n = line[0];\n    int h = line[1];\n    \n    long array_nodes_minheigt[36][36] = {0};\n    array_nodes_minheigt[0][0] = 1;\n    \n    for (int nodes = 1; nodes < 36; nodes++) {\n        for (int minheight = 0; minheight <= nodes; minheight++) {\n            for (int topnode = 1; topnode <= nodes; topnode++) {\n                int left = topnode - 1;\n                int right = nodes - topnode;\n                array_nodes_minheigt[nodes][minheight] += \n                    array_nodes_minheigt[left][0] * array_nodes_minheigt[right][0] - \n                    (array_nodes_minheigt[left][0] - array_nodes_minheigt[left][(minheight-1) > 0 ? (minheight-1) : 0]) * \n                    (array_nodes_minheigt[right][0] - array_nodes_minheigt[right][(minheight-1) > 0 ? (minheight-1) : 0]);\n            }\n        }\n    }\n    \n    printf(\"%ld\\n\", array_nodes_minheigt[n][h]);\n    \n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                }
+            ],
+            "usage": {
+                "prompt_tokens": 1405,
+                "completion_tokens": 1576,
+                "total_tokens": 2981
+            }
+        }
+    },
+    "source_data": {
+        "code_uid": "c6568677905818662f509756d674ebc5",
+        "prob_desc_output_to": "standard output",
+        "prob_desc_notes": null,
+        "lang_cluster": "Python",
+        "prob_desc_time_limit": "1 second",
+        "prob_desc_input_spec": "The input data contains two space-separated positive integer numbers n and h (n\u2009\u2264\u200935, h\u2009\u2264\u2009n).",
+        "source_code": "\n# coding: utf-8\n\n# In[9]:\n\n\n\n\n# In[42]:\n\nline = input().split()\n\nn = int(line[0])\nh = int(line[1])\nfrom math import log\narray_nodes_minheigt = [[0 for x in range(36)] for y in range(36)]\narray_nodes_minheigt[0][0] = 1\nfor nodes in range(1,36):\n    for minheight in range(0,nodes+1):\n        for topnode in range(1, nodes + 1):\n            left = topnode-1\n            right = nodes - topnode\n            array_nodes_minheigt[nodes][minheight] += array_nodes_minheigt[left][0] * array_nodes_minheigt[right][0] -             (array_nodes_minheigt[left][0]-array_nodes_minheigt[left][max(minheight-1,0)])*             (array_nodes_minheigt[right][0]-array_nodes_minheigt[right][max(minheight-1,0)])\n\n\nprint(int(array_nodes_minheigt[n][h]))\n\n",
+        "prob_desc_sample_inputs": [
+            "3 2",
+            "3 3"
+        ],
+        "prob_desc_memory_limit": "64 megabytes",
+        "exec_outcome": "PASSED",
+        "prob_desc_output_spec": "Output one number \u2014 the answer to the problem. It is guaranteed that it does not exceed 9\u00b71018.",
+        "src_uid": "faf12a603d0c27f8be6bf6b02531a931",
+        "prob_desc_input_from": "standard input",
+        "lang": "Python 3",
+        "prob_desc_sample_outputs": [
+            "5",
+            "4"
+        ],
+        "file_name": "d7021504500d5ca7c2b02df8100a574d159e6e67e20ec8071b75800b1267370a",
+        "prob_desc_description": "In one very old text file there was written Great Wisdom. This Wisdom was so Great that nobody could decipher it, even Phong \u2014 the oldest among the inhabitants of Mainframe. But still he managed to get some information from there. For example, he managed to learn that User launches games for pleasure \u2014 and then terrible Game Cubes fall down on the city, bringing death to those modules, who cannot win the game...For sure, as guard Bob appeared in Mainframe many modules stopped fearing Game Cubes. Because Bob (as he is alive yet) has never been defeated by User, and he always meddles with Game Cubes, because he is programmed to this.However, unpleasant situations can happen, when a Game Cube falls down on Lost Angles. Because there lives a nasty virus \u2014 Hexadecimal, who is... mmm... very strange. And she likes to play very much. So, willy-nilly, Bob has to play with her first, and then with User.This time Hexadecimal invented the following entertainment: Bob has to leap over binary search trees with n nodes. We should remind you that a binary search tree is a binary tree, each node has a distinct key, for each node the following is true: the left sub-tree of a node contains only nodes with keys less than the node's key, the right sub-tree of a node contains only nodes with keys greater than the node's key. All the keys are different positive integer numbers from 1 to n. Each node of such a tree can have up to two children, or have no children at all (in the case when a node is a leaf).In Hexadecimal's game all the trees are different, but the height of each is not lower than h. In this problem \u00abheight\u00bb stands for the maximum amount of nodes on the way from the root to the remotest leaf, the root node and the leaf itself included. When Bob leaps over a tree, it disappears. Bob gets the access to a Cube, when there are no trees left. He knows how many trees he will have to leap over in the worst case. And you?",
+        "prob_desc_created_at": "1270983600",
+        "difficulty": 1900.0,
+        "hidden_unit_tests": "[{\"input\": \"3 2\\r\\n\", \"output\": [\"5\"]}, {\"input\": \"3 3\\r\\n\", \"output\": [\"4\"]}, {\"input\": \"1 1\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"2 1\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"2 2\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"27 11\\r\\n\", \"output\": [\"61162698256896\"]}, {\"input\": \"32 27\\r\\n\", \"output\": [\"22643872890880\"]}, {\"input\": \"4 1\\r\\n\", \"output\": [\"14\"]}, {\"input\": \"9 1\\r\\n\", \"output\": [\"4862\"]}, {\"input\": \"33 4\\r\\n\", \"output\": [\"212336130412243110\"]}, {\"input\": \"4 4\\r\\n\", \"output\": [\"8\"]}, {\"input\": \"8 5\\r\\n\", \"output\": [\"1336\"]}, {\"input\": \"12 8\\r\\n\", \"output\": [\"127200\"]}, {\"input\": \"15 5\\r\\n\", \"output\": [\"9694844\"]}, {\"input\": \"19 18\\r\\n\", \"output\": [\"2424832\"]}, {\"input\": \"23 17\\r\\n\", \"output\": [\"19649347584\"]}, {\"input\": \"27 15\\r\\n\", \"output\": [\"25162319484928\"]}, {\"input\": \"29 14\\r\\n\", \"output\": [\"577801978306560\"]}, {\"input\": \"33 18\\r\\n\", \"output\": [\"54307238601375744\"]}, {\"input\": \"7 7\\r\\n\", \"output\": [\"64\"]}, {\"input\": \"23 21\\r\\n\", \"output\": [\"275251200\"]}, {\"input\": \"7 3\\r\\n\", \"output\": [\"429\"]}, {\"input\": \"21 18\\r\\n\", \"output\": [\"211156992\"]}, {\"input\": \"21 12\\r\\n\", \"output\": [\"12153990144\"]}, {\"input\": \"35 13\\r\\n\", \"output\": [\"2690352397519398400\"]}, {\"input\": \"19 2\\r\\n\", \"output\": [\"1767263190\"]}, {\"input\": \"33 26\\r\\n\", \"output\": [\"434871797284864\"]}, {\"input\": \"16 9\\r\\n\", \"output\": [\"25607552\"]}, {\"input\": \"16 14\\r\\n\", \"output\": [\"1032192\"]}, {\"input\": \"10 2\\r\\n\", \"output\": [\"16796\"]}, {\"input\": \"33 17\\r\\n\", \"output\": [\"75307983624118272\"]}, {\"input\": \"27 25\\r\\n\", \"output\": [\"6081740800\"]}, {\"input\": \"20 14\\r\\n\", \"output\": [\"1094473728\"]}, {\"input\": \"16 11\\r\\n\", \"output\": [\"11819008\"]}, {\"input\": \"10 10\\r\\n\", \"output\": [\"512\"]}, {\"input\": \"4 3\\r\\n\", \"output\": [\"14\"]}, {\"input\": \"33 21\\r\\n\", \"output\": [\"14830955929665536\"]}, {\"input\": \"24 20\\r\\n\", \"output\": [\"8171945984\"]}, {\"input\": \"30 16\\r\\n\", \"output\": [\"1375710400053248\"]}, {\"input\": \"9 4\\r\\n\", \"output\": [\"4862\"]}, {\"input\": \"16 5\\r\\n\", \"output\": [\"35357670\"]}, {\"input\": \"22 22\\r\\n\", \"output\": [\"2097152\"]}, {\"input\": \"28 23\\r\\n\", \"output\": [\"739948625920\"]}, {\"input\": \"34 1\\r\\n\", \"output\": [\"812944042149730764\"]}, {\"input\": \"7 4\\r\\n\", \"output\": [\"428\"]}, {\"input\": \"14 11\\r\\n\", \"output\": [\"488448\"]}, {\"input\": \"35 1\\r\\n\", \"output\": [\"3116285494907301262\"]}, {\"input\": \"35 35\\r\\n\", \"output\": [\"17179869184\"]}]",
+        "source_lang": "Python 3",
+        "target_lang": "C"
+    }
+}

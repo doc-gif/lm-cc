@@ -1,0 +1,103 @@
+{
+    "oai_response": {
+        "prompt": "Fix a buggy program written in Python language to solve the following programming problem:\nDescription: Neko loves divisors. During the latest number theory lesson, he got an interesting exercise from his math teacher.Neko has two integers $$$a$$$ and $$$b$$$. His goal is to find a non-negative integer $$$k$$$ such that the least common multiple of $$$a+k$$$ and $$$b+k$$$ is the smallest possible. If there are multiple optimal integers $$$k$$$, he needs to choose the smallest one.Given his mathematical talent, Neko had no trouble getting Wrong Answer on this problem. Can you help him solve it?\nInput Specification: The only line contains two integers $$$a$$$ and $$$b$$$ ($$$1 \\le a, b \\le 10^9$$$).\nOutput Specification: Print the smallest non-negative integer $$$k$$$ ($$$k \\ge 0$$$) such that the lowest common multiple of $$$a+k$$$ and $$$b+k$$$ is the smallest possible. If there are many possible integers $$$k$$$ giving the same value of the least common multiple, print the smallest one.\n\nSample Input:\n6 10\nSample Output:\n2\n\nSample Input:\n21 31\nSample Output:\n9\n\nSample Input:\n5 10\nSample Output:\n0\n\nNotes: NoteIn the first test, one should choose $$$k = 2$$$, as the least common multiple of $$$6 + 2$$$ and $$$10 + 2$$$ is $$$24$$$, which is the smallest least common multiple possible.\nTake input from standard input and output to standard output\n\nHere is the code with a bug of TIME_LIMIT_EXCEEDED:\n\nimport math \n\ndef gcd(x,y):\n    while(y):\n        x, y = y, x % y\n    return x\n\ndef lcm(x,y):\n    l = (x*y)//gcd(x,y)\n    return l\n\na, b = map(int, input().split(\" \"))\nif a > b:\n    a, b = b, a\nn = b - a\ndivisors = [1, n]\nk = []\nl = []\nfor i in range(2, int(math.sqrt(n) + 1)):\n    if n % i == 0:\n        if i * i != n:\n            divisors.append(i)\n            divisors.append(int(n/i))\n        else:\n            divisors.append(i)\nfor i in range(len(divisors)):\n    for j in range(1, divisors[i]+1):\n        if (j + b) % divisors[i] == 0:\n            k.append(j)\n            l.append(lcm(a+j, b+j))\n            break\nmini = min(l)\nif lcm(a,b) <= mini:\n    print(0)\nelse:\n    idx = l.index(mini)\n    print(k[idx])\n    \n\nProvide the fixed Python code without any description or extra tokens.\n\nFixed source code:\n ||END-of-SRC||",
+        "response": {
+            "id": "multi-call-as-jec7x5n5qt",
+            "model": "deepseek-v3",
+            "created": 1760424084,
+            "choices": [
+                {
+                    "index": 0,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```python\nimport math\n\ndef gcd(x, y):\n    while y:\n        x, y = y, x % y\n    return x\n\ndef lcm(x, y):\n    return (x * y) // gcd(x, y)\n\na, b = map(int, input().split())\nif a == b:\n    print(0)\n    exit()\nif a > b:\n    a, b = b, a\nn = b - a\ndivisors = set()\nfor i in range(1, int(math.sqrt(n)) + 1):\n    if n % i == 0:\n        divisors.add(i)\n        divisors.add(n // i)\nmin_lcm = float('inf')\nbest_k = 0\nfor d in divisors:\n    if d == 0:\n        continue\n    k = (-a) % d\n    if k < 0:\n        k += d\n    current_a = a + k\n    current_b = b + k\n    current_lcm = lcm(current_a, current_b)\n    if current_lcm < min_lcm or (current_lcm == min_lcm and k < best_k):\n        min_lcm = current_lcm\n        best_k = k\ninitial_lcm = lcm(a, b)\nif initial_lcm <= min_lcm:\n    print(0)\nelse:\n    print(best_k)\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 1,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```python\nimport math\n\ndef gcd(x, y):\n    while y:\n        x, y = y, x % y\n    return x\n\ndef lcm(x, y):\n    return (x * y) // gcd(x, y)\n\na, b = map(int, input().split())\nif a == b:\n    print(0)\n    exit()\nif a > b:\n    a, b = b, a\nn = b - a\ndivisors = set()\nfor i in range(1, int(math.sqrt(n)) + 1):\n    if n % i == 0:\n        divisors.add(i)\n        divisors.add(n // i)\nmin_lcm = float('inf')\nbest_k = 0\nfor d in divisors:\n    if d == 0:\n        continue\n    k = (-a) % d\n    if k < 0:\n        k += d\n    current_a = a + k\n    current_b = b + k\n    current_lcm = lcm(current_a, current_b)\n    if current_lcm < min_lcm or (current_lcm == min_lcm and k < best_k):\n        min_lcm = current_lcm\n        best_k = k\ninitial_lcm = lcm(a, b)\nif initial_lcm <= min_lcm:\n    print(0)\nelse:\n    print(best_k)\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 2,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```python\nimport math\n\ndef gcd(x, y):\n    while y:\n        x, y = y, x % y\n    return x\n\ndef lcm(x, y):\n    return (x * y) // gcd(x, y)\n\na, b = map(int, input().split())\nif a == b:\n    print(0)\n    exit()\nif a > b:\n    a, b = b, a\nn = b - a\ndivisors = set()\nfor i in range(1, int(math.sqrt(n)) + 1):\n    if n % i == 0:\n        divisors.add(i)\n        divisors.add(n // i)\nmin_lcm = float('inf')\nbest_k = 0\nfor d in divisors:\n    if d == 0:\n        continue\n    k = (-a) % d\n    if k < 0:\n        k += d\n    current_a = a + k\n    current_b = b + k\n    current_lcm = lcm(current_a, current_b)\n    if current_lcm < min_lcm or (current_lcm == min_lcm and k < best_k):\n        min_lcm = current_lcm\n        best_k = k\ninitial_lcm = lcm(a, b)\nif initial_lcm <= min_lcm:\n    print(0)\nelse:\n    print(best_k)\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 3,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```python\nimport math\n\ndef gcd(x, y):\n    while y:\n        x, y = y, x % y\n    return x\n\ndef lcm(x, y):\n    return (x * y) // gcd(x, y)\n\na, b = map(int, input().split())\nif a == b:\n    print(0)\n    exit()\nif a > b:\n    a, b = b, a\nn = b - a\ndivisors = set()\nfor i in range(1, int(math.sqrt(n)) + 1):\n    if n % i == 0:\n        divisors.add(i)\n        divisors.add(n // i)\nmin_lcm = float('inf')\nbest_k = 0\nfor d in divisors:\n    if d == 0:\n        continue\n    k = (-a) % d\n    if k < 0:\n        k += d\n    current_a = a + k\n    current_b = b + k\n    current_lcm = (current_a * current_b) // gcd(current_a, current_b)\n    if current_lcm < min_lcm or (current_lcm == min_lcm and k < best_k):\n        min_lcm = current_lcm\n        best_k = k\ninitial_lcm = lcm(a, b)\nif initial_lcm <= min_lcm:\n    print(0)\nelse:\n    print(best_k)\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 4,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```python\nimport math\n\ndef gcd(x, y):\n    while y:\n        x, y = y, x % y\n    return x\n\ndef lcm(x, y):\n    return (x * y) // gcd(x, y)\n\na, b = map(int, input().split())\nif a == b:\n    print(0)\n    exit()\nif a > b:\n    a, b = b, a\nn = b - a\ndivisors = set()\nfor i in range(1, int(math.sqrt(n)) + 1):\n    if n % i == 0:\n        divisors.add(i)\n        divisors.add(n // i)\nmin_lcm = float('inf')\nbest_k = 0\nfor d in divisors:\n    if d == 0:\n        continue\n    k = (-a) % d\n    if k < 0:\n        k += d\n    current_a = a + k\n    current_b = b + k\n    current_lcm = lcm(current_a, current_b)\n    if current_lcm < min_lcm or (current_lcm == min_lcm and k < best_k):\n        min_lcm = current_lcm\n        best_k = k\ninitial_lcm = lcm(a, b)\nif initial_lcm <= min_lcm:\n    print(0)\nelse:\n    print(best_k)\n```"
+                    },
+                    "finish_reason": "stop"
+                }
+            ],
+            "usage": {
+                "prompt_tokens": 3090,
+                "completion_tokens": 1452,
+                "total_tokens": 4542
+            }
+        }
+    },
+    "source_data": {
+        "prob_desc_memory_limit": "256 megabytes",
+        "tags": [
+            "math",
+            "brute force",
+            "number theory"
+        ],
+        "prob_desc_created_at": "1556116500",
+        "fix_source_code": "",
+        "prob_desc_input_spec": "The only line contains two integers $$$a$$$ and $$$b$$$ ($$$1 \\le a, b \\le 10^9$$$).",
+        "prob_desc_sample_outputs": [
+            "2",
+            "9",
+            "0"
+        ],
+        "src_uid": "414149fadebe25ab6097fc67663177c3",
+        "prob_desc_time_limit": "1 second",
+        "fix_exec_outcome": "",
+        "delete_cnt": 1,
+        "apr_id": "54e468ad9a328c0eec5111ffe9a3185c",
+        "fix_code_uid": "",
+        "lang_cluster": "Python",
+        "prob_desc_sample_inputs": [
+            "6 10",
+            "21 31",
+            "5 10"
+        ],
+        "prob_desc_output_to": "standard output",
+        "file_name": "Python.jsonl",
+        "equal_cnt": 6,
+        "lang": "Python 3",
+        "prob_desc_output_spec": "Print the smallest non-negative integer $$$k$$$ ($$$k \\ge 0$$$) such that the lowest common multiple of $$$a+k$$$ and $$$b+k$$$ is the smallest possible. If there are many possible integers $$$k$$$ giving the same value of the least common multiple, print the smallest one.",
+        "bug_exec_outcome": "TIME_LIMIT_EXCEEDED",
+        "prob_desc_notes": "NoteIn the first test, one should choose $$$k = 2$$$, as the least common multiple of $$$6 + 2$$$ and $$$10 + 2$$$ is $$$24$$$, which is the smallest least common multiple possible.",
+        "difficulty": 1800.0,
+        "similarity_score": 0.8354978561,
+        "prob_desc_description": "Neko loves divisors. During the latest number theory lesson, he got an interesting exercise from his math teacher.Neko has two integers $$$a$$$ and $$$b$$$. His goal is to find a non-negative integer $$$k$$$ such that the least common multiple of $$$a+k$$$ and $$$b+k$$$ is the smallest possible. If there are multiple optimal integers $$$k$$$, he needs to choose the smallest one.Given his mathematical talent, Neko had no trouble getting Wrong Answer on this problem. Can you help him solve it?",
+        "potential_dominant_fix_op": "replace",
+        "bug_source_code": "import math \n\ndef gcd(x,y):\n    while(y):\n        x, y = y, x % y\n    return x\n\ndef lcm(x,y):\n    l = (x*y)//gcd(x,y)\n    return l\n\na, b = map(int, input().split(\" \"))\nif a > b:\n    a, b = b, a\nn = b - a\ndivisors = [1, n]\nk = []\nl = []\nfor i in range(2, int(math.sqrt(n) + 1)):\n    if n % i == 0:\n        if i * i != n:\n            divisors.append(i)\n            divisors.append(int(n/i))\n        else:\n            divisors.append(i)\nfor i in range(len(divisors)):\n    for j in range(1, divisors[i]+1):\n        if (j + b) % divisors[i] == 0:\n            k.append(j)\n            l.append(lcm(a+j, b+j))\n            break\nmini = min(l)\nif lcm(a,b) <= mini:\n    print(0)\nelse:\n    idx = l.index(mini)\n    print(k[idx])\n    ",
+        "replace_cnt": 3,
+        "prob_desc_input_from": "standard input",
+        "bug_code_uid": "7b890d26150ea2a07d9143a191b29f43",
+        "insert_cnt": 2,
+        "fix_ops_cnt": 6,
+        "hidden_unit_tests": "[{\"input\": \"6 10\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"21 31\\r\\n\", \"output\": [\"9\"]}, {\"input\": \"5 10\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"1924 5834\\r\\n\", \"output\": [\"31\"]}, {\"input\": \"9911 666013\\r\\n\", \"output\": [\"318140\"]}, {\"input\": \"1 1\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"69 4295\\r\\n\", \"output\": [\"2044\"]}, {\"input\": \"948248258 533435433\\r\\n\", \"output\": [\"296190217\"]}, {\"input\": \"953 1349\\r\\n\", \"output\": [\"235\"]}, {\"input\": \"999999973 800000007\\r\\n\", \"output\": [\"199999823\"]}, {\"input\": \"112342324 524224233\\r\\n\", \"output\": [\"299539585\"]}, {\"input\": \"1021211 59555555\\r\\n\", \"output\": [\"309115\"]}, {\"input\": \"1000000000 1000000000\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"199999943 999999973\\r\\n\", \"output\": [\"200000072\"]}, {\"input\": \"2 999999973\\r\\n\", \"output\": [\"191\"]}, {\"input\": \"199999973 99999937\\r\\n\", \"output\": [\"99\"]}, {\"input\": \"851187514 983401693\\r\\n\", \"output\": [\"74311739\"]}, {\"input\": \"414459569 161124945\\r\\n\", \"output\": [\"92209679\"]}, {\"input\": \"59774131 414357411\\r\\n\", \"output\": [\"11142525\"]}, {\"input\": \"588854730 468415815\\r\\n\", \"output\": [\"13339845\"]}, {\"input\": \"166027408 867208246\\r\\n\", \"output\": [\"67699538\"]}, {\"input\": \"416882693 26430642\\r\\n\", \"output\": [\"9064999\"]}, {\"input\": \"63906772 377040487\\r\\n\", \"output\": [\"40471133\"]}, {\"input\": \"573707893 93108818\\r\\n\", \"output\": [\"3010997\"]}, {\"input\": \"498599067 627630818\\r\\n\", \"output\": [\"17527937\"]}, {\"input\": \"41698727 40343\\r\\n\", \"output\": [\"19511\"]}, {\"input\": \"21184942 66889\\r\\n\", \"output\": [\"573052\"]}, {\"input\": \"584924132 27895\\r\\n\", \"output\": [\"34377766\"]}, {\"input\": \"34504222 65532\\r\\n\", \"output\": [\"54883\"]}, {\"input\": \"397410367 96163\\r\\n\", \"output\": [\"44330\"]}, {\"input\": \"772116208 99741\\r\\n\", \"output\": [\"703606\"]}, {\"input\": \"721896242 62189\\r\\n\", \"output\": [\"150930\"]}, {\"input\": \"480432805 79482\\r\\n\", \"output\": [\"480273841\"]}, {\"input\": \"526157284 30640\\r\\n\", \"output\": [\"8006\"]}, {\"input\": \"509022792 57335\\r\\n\", \"output\": [\"5508\"]}, {\"input\": \"13911 866384789\\r\\n\", \"output\": [\"488042\"]}, {\"input\": \"43736 145490995\\r\\n\", \"output\": [\"242015\"]}, {\"input\": \"27522 656219918\\r\\n\", \"output\": [\"38975\"]}, {\"input\": \"3904 787488950\\r\\n\", \"output\": [\"577695\"]}, {\"input\": \"64320 203032344\\r\\n\", \"output\": [\"17588\"]}, {\"input\": \"19430 993947341\\r\\n\", \"output\": [\"43194827\"]}, {\"input\": \"89229 680338802\\r\\n\", \"output\": [\"16502224\"]}, {\"input\": \"22648 30366541\\r\\n\", \"output\": [\"509701\"]}, {\"input\": \"89598 155519475\\r\\n\", \"output\": [\"1581691\"]}, {\"input\": \"80536 791328168\\r\\n\", \"output\": [\"4581\"]}, {\"input\": \"55138 453739731\\r\\n\", \"output\": [\"26632191\"]}, {\"input\": \"20827 81894\\r\\n\", \"output\": [\"40240\"]}, {\"input\": \"15162 60885\\r\\n\", \"output\": [\"79\"]}, {\"input\": \"33261 83156\\r\\n\", \"output\": [\"16634\"]}, {\"input\": \"12567 44055\\r\\n\", \"output\": [\"3177\"]}, {\"input\": \"36890 51759\\r\\n\", \"output\": [\"7717\"]}, {\"input\": \"69731 73202\\r\\n\", \"output\": [\"3160\"]}, {\"input\": \"92037 8625\\r\\n\", \"output\": [\"643\"]}, {\"input\": \"51783 5491\\r\\n\", \"output\": [\"6082\"]}, {\"input\": \"39204 15357\\r\\n\", \"output\": [\"8490\"]}, {\"input\": \"11 16\\r\\n\", \"output\": [\"4\"]}, {\"input\": \"5 18\\r\\n\", \"output\": [\"8\"]}, {\"input\": \"1 113\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"18 102\\r\\n\", \"output\": [\"3\"]}, {\"input\": \"13 33\\r\\n\", \"output\": [\"7\"]}, {\"input\": \"22 51\\r\\n\", \"output\": [\"7\"]}, {\"input\": \"1 114\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"10 12\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"24 9\\r\\n\", \"output\": [\"6\"]}, {\"input\": \"21 1\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"5 14\\r\\n\", \"output\": [\"4\"]}, {\"input\": \"273301753 369183717\\r\\n\", \"output\": [\"14344139\"]}, {\"input\": \"83893226 440673790\\r\\n\", \"output\": [\"5301915\"]}, {\"input\": \"391320363 805801085\\r\\n\", \"output\": [\"23160359\"]}, {\"input\": \"350089529 67401533\\r\\n\", \"output\": [\"3270466\"]}, {\"input\": \"356318639 545297094\\r\\n\", \"output\": [\"21638271\"]}, {\"input\": \"456039936 216657167\\r\\n\", \"output\": [\"22725602\"]}, {\"input\": \"200869227 429021875\\r\\n\", \"output\": [\"27283421\"]}, {\"input\": \"724338885 158040565\\r\\n\", \"output\": [\"125108595\"]}, {\"input\": \"354798648 439745337\\r\\n\", \"output\": [\"69934797\"]}, {\"input\": \"152408121 368230838\\r\\n\", \"output\": [\"63414596\"]}, {\"input\": \"532851498 235555724\\r\\n\", \"output\": [\"61740050\"]}, {\"input\": \"571244721 233692396\\r\\n\", \"output\": [\"103859929\"]}, {\"input\": \"434431270 432744926\\r\\n\", \"output\": [\"645482\"]}, {\"input\": \"845961672 92356861\\r\\n\", \"output\": [\"661247950\"]}, {\"input\": \"861681496 158472265\\r\\n\", \"output\": [\"75930812\"]}, {\"input\": \"358415973 475293324\\r\\n\", \"output\": [\"109093431\"]}, {\"input\": \"179237079 691088384\\r\\n\", \"output\": [\"332614226\"]}, {\"input\": \"159488527 938932258\\r\\n\", \"output\": [\"100326050\"]}, {\"input\": \"173726711 47100867\\r\\n\", \"output\": [\"16212055\"]}, {\"input\": \"113701457 374868637\\r\\n\", \"output\": [\"16882133\"]}, {\"input\": \"49160468 106133716\\r\\n\", \"output\": [\"7812780\"]}, {\"input\": \"258834406 21427940\\r\\n\", \"output\": [\"154466\"]}, {\"input\": \"209853278 238360826\\r\\n\", \"output\": [\"18207106\"]}, {\"input\": \"833630757 5203048\\r\\n\", \"output\": [\"823224661\"]}, {\"input\": \"898985699 25761857\\r\\n\", \"output\": [\"12204397\"]}, {\"input\": \"882561035 53440816\\r\\n\", \"output\": [\"775679403\"]}, {\"input\": \"844002269 45400923\\r\\n\", \"output\": [\"353899750\"]}, {\"input\": \"890747621 58942406\\r\\n\", \"output\": [\"107418637\"]}, {\"input\": \"823409948 63146277\\r\\n\", \"output\": [\"697117394\"]}, {\"input\": \"806104369 75421522\\r\\n\", \"output\": [\"5765461\"]}, {\"input\": \"950485973 21039711\\r\\n\", \"output\": [\"443683420\"]}, {\"input\": \"904189980 653467036\\r\\n\", \"output\": [\"98701796\"]}, {\"input\": \"986866706 981520552\\r\\n\", \"output\": [\"2171784\"]}, {\"input\": \"987324114 296975438\\r\\n\", \"output\": [\"48198900\"]}, {\"input\": \"932939238 454247778\\r\\n\", \"output\": [\"24443682\"]}, {\"input\": \"997908364 240589278\\r\\n\", \"output\": [\"138070265\"]}, {\"input\": \"2 3\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"5 11\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"2 2\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"2 6\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"6 9\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"1000000000 264865600\\r\\n\", \"output\": [\"102701600\"]}]"
+    }
+}

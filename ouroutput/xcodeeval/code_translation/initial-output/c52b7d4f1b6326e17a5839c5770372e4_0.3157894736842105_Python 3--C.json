@@ -1,0 +1,87 @@
+{
+    "oai_response": {
+        "prompt": "Here is code in Python 3 programming lanaguge. Translate the following code from Python 3 to C programming lanaguge. Do not output any extra description or tokens other than the translated code. \n\ndict={}\ndict[\"January\"]=0\ndict[\"February\"]=1\ndict[\"March\"]=2\ndict[\"April\"]=3\ndict[\"May\"]=4\ndict[\"June\"]=5\ndict[\"July\"]=6\ndict[\"August\"]=7\ndict[\"September\"]=8\ndict[\"October\"]=9\ndict[\"November\"]=10\ndict[\"December\"]=11\ntmp=input()\ns=int(input())\ns+=dict[tmp]\ns%=12\nfor i in dict:\n\tif(dict[i]==s):\n\t\tprint(i)\n\t\tbreak||END-of-SRC||",
+        "response": {
+            "id": "multi-call-as-gt48bf3dd4",
+            "model": "deepseek-v3",
+            "created": 1767067829,
+            "choices": [
+                {
+                    "index": 0,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <string.h>\n\nstruct Month {\n    char name[10];\n    int value;\n};\n\nint main() {\n    struct Month dict[] = {\n        {\"January\", 0},\n        {\"February\", 1},\n        {\"March\", 2},\n        {\"April\", 3},\n        {\"May\", 4},\n        {\"June\", 5},\n        {\"July\", 6},\n        {\"August\", 7},\n        {\"September\", 8},\n        {\"October\", 9},\n        {\"November\", 10},\n        {\"December\", 11}\n    };\n    char tmp[10];\n    int s;\n    scanf(\"%s\", tmp);\n    scanf(\"%d\", &s);\n    for (int i = 0; i < 12; i++) {\n        if (strcmp(dict[i].name, tmp) == 0) {\n            s += dict[i].value;\n            break;\n        }\n    }\n    s %= 12;\n    for (int i = 0; i < 12; i++) {\n        if (dict[i].value == s) {\n            printf(\"%s\\n\", dict[i].name);\n            break;\n        }\n    }\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 1,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <string.h>\n\nint main() {\n    struct {\n        char month[20];\n        int value;\n    } dict[] = {\n        {\"January\", 0},\n        {\"February\", 1},\n        {\"March\", 2},\n        {\"April\", 3},\n        {\"May\", 4},\n        {\"June\", 5},\n        {\"July\", 6},\n        {\"August\", 7},\n        {\"September\", 8},\n        {\"October\", 9},\n        {\"November\", 10},\n        {\"December\", 11}\n    };\n    \n    char tmp[20];\n    scanf(\"%s\", tmp);\n    int s;\n    scanf(\"%d\", &s);\n    \n    for (int i = 0; i < 12; i++) {\n        if (strcmp(dict[i].month, tmp) == 0) {\n            s += dict[i].value;\n            break;\n        }\n    }\n    \n    s %= 12;\n    if (s < 0) s += 12;\n    \n    for (int i = 0; i < 12; i++) {\n        if (dict[i].value == s) {\n            printf(\"%s\\n\", dict[i].month);\n            break;\n        }\n    }\n    \n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 2,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <string.h>\n\nstruct Month {\n    char name[10];\n    int value;\n};\n\nint main() {\n    struct Month dict[] = {\n        {\"January\", 0},\n        {\"February\", 1},\n        {\"March\", 2},\n        {\"April\", 3},\n        {\"May\", 4},\n        {\"June\", 5},\n        {\"July\", 6},\n        {\"August\", 7},\n        {\"September\", 8},\n        {\"October\", 9},\n        {\"November\", 10},\n        {\"December\", 11}\n    };\n    char tmp[10];\n    int s;\n    scanf(\"%s\", tmp);\n    scanf(\"%d\", &s);\n    for (int i = 0; i < 12; i++) {\n        if (strcmp(dict[i].name, tmp) == 0) {\n            s += dict[i].value;\n            break;\n        }\n    }\n    s %= 12;\n    for (int i = 0; i < 12; i++) {\n        if (dict[i].value == s) {\n            printf(\"%s\\n\", dict[i].name);\n            break;\n        }\n    }\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 3,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <string.h>\n\nstruct Month {\n    char name[10];\n    int value;\n};\n\nint main() {\n    struct Month dict[] = {\n        {\"January\", 0},\n        {\"February\", 1},\n        {\"March\", 2},\n        {\"April\", 3},\n        {\"May\", 4},\n        {\"June\", 5},\n        {\"July\", 6},\n        {\"August\", 7},\n        {\"September\", 8},\n        {\"October\", 9},\n        {\"November\", 10},\n        {\"December\", 11}\n    };\n    char tmp[10];\n    int s;\n    scanf(\"%s\", tmp);\n    scanf(\"%d\", &s);\n    for (int i = 0; i < 12; i++) {\n        if (strcmp(dict[i].name, tmp) == 0) {\n            s += dict[i].value;\n            break;\n        }\n    }\n    s %= 12;\n    for (int i = 0; i < 12; i++) {\n        if (dict[i].value == s) {\n            printf(\"%s\\n\", dict[i].name);\n            break;\n        }\n    }\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 4,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <string.h>\n\nint main() {\n    struct {\n        char month[20];\n        int value;\n    } dict[] = {\n        {\"January\", 0},\n        {\"February\", 1},\n        {\"March\", 2},\n        {\"April\", 3},\n        {\"May\", 4},\n        {\"June\", 5},\n        {\"July\", 6},\n        {\"August\", 7},\n        {\"September\", 8},\n        {\"October\", 9},\n        {\"November\", 10},\n        {\"December\", 11}\n    };\n    \n    char tmp[20];\n    int s;\n    scanf(\"%s\", tmp);\n    scanf(\"%d\", &s);\n    \n    for (int i = 0; i < 12; i++) {\n        if (strcmp(dict[i].month, tmp) == 0) {\n            s += dict[i].value;\n            break;\n        }\n    }\n    \n    s %= 12;\n    \n    for (int i = 0; i < 12; i++) {\n        if (dict[i].value == s) {\n            printf(\"%s\\n\", dict[i].month);\n            break;\n        }\n    }\n    \n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                }
+            ],
+            "usage": {
+                "prompt_tokens": 865,
+                "completion_tokens": 1320,
+                "total_tokens": 2185
+            }
+        }
+    },
+    "source_data": {
+        "code_uid": "c52b7d4f1b6326e17a5839c5770372e4",
+        "prob_desc_output_to": "standard output",
+        "prob_desc_notes": null,
+        "lang_cluster": "Python",
+        "prob_desc_time_limit": "2 seconds",
+        "prob_desc_input_spec": "The first input line contains the name of the current month. It is guaranteed that it is a proper English name of one of twelve months. The first letter is uppercase, the rest are lowercase. The second line contains integer k (0\u2009\u2264\u2009k\u2009\u2264\u2009100) \u2014 the number of months left till the appearance of Codecraft III.",
+        "source_code": "dict={}\ndict[\"January\"]=0\ndict[\"February\"]=1\ndict[\"March\"]=2\ndict[\"April\"]=3\ndict[\"May\"]=4\ndict[\"June\"]=5\ndict[\"July\"]=6\ndict[\"August\"]=7\ndict[\"September\"]=8\ndict[\"October\"]=9\ndict[\"November\"]=10\ndict[\"December\"]=11\ntmp=input()\ns=int(input())\ns+=dict[tmp]\ns%=12\nfor i in dict:\n\tif(dict[i]==s):\n\t\tprint(i)\n\t\tbreak",
+        "prob_desc_sample_inputs": [
+            "November\n3",
+            "May\n24"
+        ],
+        "prob_desc_memory_limit": "256 megabytes",
+        "exec_outcome": "PASSED",
+        "prob_desc_output_spec": "Print starting from an uppercase letter the name of the month in which the continuation of Codeforces II will appear. The printed name must be contained in the list January, February, March, April, May, June, July, August, September, October, November, December.",
+        "src_uid": "a307b402b20554ce177a73db07170691",
+        "prob_desc_input_from": "standard input",
+        "lang": "Python 3",
+        "prob_desc_sample_outputs": [
+            "February",
+            "May"
+        ],
+        "file_name": "d7021504500d5ca7c2b02df8100a574d159e6e67e20ec8071b75800b1267370a",
+        "prob_desc_description": "Today Vasya visited a widely known site and learned that the continuation of his favourite game Codecraft II will appear after exactly k months. He looked at the calendar and learned that at the moment is the month number s. Vasya immediately got interested in what month Codecraft III will appear. Help him understand that.All the twelve months in Vasya's calendar are named using their usual English names: January, February, March, April, May, June, July, August, September, October, November, December.",
+        "prob_desc_created_at": "1289646000",
+        "difficulty": 900.0,
+        "hidden_unit_tests": "[{\"input\": \"November\\r\\n3\\r\\n\", \"output\": [\"February\"]}, {\"input\": \"May\\r\\n24\\r\\n\", \"output\": [\"May\"]}, {\"input\": \"April\\r\\n0\\r\\n\", \"output\": [\"April\"]}, {\"input\": \"September\\r\\n0\\r\\n\", \"output\": [\"September\"]}, {\"input\": \"August\\r\\n0\\r\\n\", \"output\": [\"August\"]}, {\"input\": \"June\\r\\n1\\r\\n\", \"output\": [\"July\"]}, {\"input\": \"July\\r\\n2\\r\\n\", \"output\": [\"September\"]}, {\"input\": \"September\\r\\n3\\r\\n\", \"output\": [\"December\"]}, {\"input\": \"July\\r\\n4\\r\\n\", \"output\": [\"November\"]}, {\"input\": \"August\\r\\n24\\r\\n\", \"output\": [\"August\"]}, {\"input\": \"May\\r\\n48\\r\\n\", \"output\": [\"May\"]}, {\"input\": \"November\\r\\n47\\r\\n\", \"output\": [\"October\"]}, {\"input\": \"December\\r\\n49\\r\\n\", \"output\": [\"January\"]}, {\"input\": \"June\\r\\n99\\r\\n\", \"output\": [\"September\"]}, {\"input\": \"March\\r\\n100\\r\\n\", \"output\": [\"July\"]}, {\"input\": \"December\\r\\n1\\r\\n\", \"output\": [\"January\"]}, {\"input\": \"January\\r\\n11\\r\\n\", \"output\": [\"December\"]}, {\"input\": \"December\\r\\n0\\r\\n\", \"output\": [\"December\"]}, {\"input\": \"January\\r\\n0\\r\\n\", \"output\": [\"January\"]}, {\"input\": \"July\\r\\n77\\r\\n\", \"output\": [\"December\"]}, {\"input\": \"February\\r\\n11\\r\\n\", \"output\": [\"January\"]}, {\"input\": \"February\\r\\n22\\r\\n\", \"output\": [\"December\"]}, {\"input\": \"July\\r\\n33\\r\\n\", \"output\": [\"April\"]}, {\"input\": \"May\\r\\n44\\r\\n\", \"output\": [\"January\"]}, {\"input\": \"June\\r\\n97\\r\\n\", \"output\": [\"July\"]}]",
+        "source_lang": "Python 3",
+        "target_lang": "C"
+    }
+}

@@ -1,0 +1,87 @@
+{
+    "oai_response": {
+        "prompt": "Here is code in Python 3 programming lanaguge. Translate the following code from Python 3 to C programming lanaguge. Do not output any extra description or tokens other than the translated code. \n\nimport math\n\ndef gcd(x, y):\n    if(y == 0):\n        return x\n    return gcd(y,x%y)\n\nn = int(input())\nans = 0\nm = int(math.sqrt(n))\nfor a in range(1,m+1):\n    for b in range(a,m+1):\n        c = a*a+b*b\n        if(c > n):\n            break \n        if((b-a) % 2 == 0 or gcd(a,b) != 1):\n            continue\n        ans += n//c \nprint(ans)\n||END-of-SRC||",
+        "response": {
+            "id": "multi-call-as-hfnecnbwun",
+            "model": "deepseek-v3",
+            "created": 1767068121,
+            "choices": [
+                {
+                    "index": 0,
+                    "message": {
+                        "role": "assistant",
+                        "content": "Here's the translated code in C:\n\n```c\n#include <stdio.h>\n#include <math.h>\n\nint gcd(int x, int y) {\n    if (y == 0) {\n        return x;\n    }\n    return gcd(y, x % y);\n}\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    int ans = 0;\n    int m = (int)sqrt(n);\n    for (int a = 1; a <= m; a++) {\n        for (int b = a; b <= m; b++) {\n            int c = a * a + b * b;\n            if (c > n) {\n                break;\n            }\n            if ((b - a) % 2 == 0 || gcd(a, b) != 1) {\n                continue;\n            }\n            ans += n / c;\n        }\n    }\n    printf(\"%d\\n\", ans);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 1,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <math.h>\n\nint gcd(int x, int y) {\n    if (y == 0) {\n        return x;\n    }\n    return gcd(y, x % y);\n}\n\nint main() {\n    int n, ans = 0;\n    scanf(\"%d\", &n);\n    int m = (int)sqrt(n);\n    for (int a = 1; a <= m; a++) {\n        for (int b = a; b <= m; b++) {\n            int c = a * a + b * b;\n            if (c > n) {\n                break;\n            }\n            if ((b - a) % 2 == 0 || gcd(a, b) != 1) {\n                continue;\n            }\n            ans += n / c;\n        }\n    }\n    printf(\"%d\\n\", ans);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 2,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <math.h>\n\nint gcd(int x, int y) {\n    if (y == 0) {\n        return x;\n    }\n    return gcd(y, x % y);\n}\n\nint main() {\n    int n, ans = 0;\n    scanf(\"%d\", &n);\n    int m = (int)sqrt(n);\n    for (int a = 1; a <= m; a++) {\n        for (int b = a; b <= m; b++) {\n            int c = a * a + b * b;\n            if (c > n) {\n                break;\n            }\n            if ((b - a) % 2 == 0 || gcd(a, b) != 1) {\n                continue;\n            }\n            ans += n / c;\n        }\n    }\n    printf(\"%d\\n\", ans);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 3,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <math.h>\n\nint gcd(int x, int y) {\n    if (y == 0) {\n        return x;\n    }\n    return gcd(y, x % y);\n}\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    int ans = 0;\n    int m = (int)sqrt(n);\n    for (int a = 1; a <= m; a++) {\n        for (int b = a; b <= m; b++) {\n            int c = a * a + b * b;\n            if (c > n) {\n                break;\n            }\n            if ((b - a) % 2 == 0 || gcd(a, b) != 1) {\n                continue;\n            }\n            ans += n / c;\n        }\n    }\n    printf(\"%d\\n\", ans);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 4,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <math.h>\n\nint gcd(int x, int y) {\n    if (y == 0) {\n        return x;\n    }\n    return gcd(y, x % y);\n}\n\nint main() {\n    int n, ans = 0;\n    scanf(\"%d\", &n);\n    int m = (int)sqrt(n);\n    for (int a = 1; a <= m; a++) {\n        for (int b = a; b <= m; b++) {\n            int c = a * a + b * b;\n            if (c > n) {\n                break;\n            }\n            if ((b - a) % 2 == 0 || gcd(a, b) != 1) {\n                continue;\n            }\n            ans += n / c;\n        }\n    }\n    printf(\"%d\\n\", ans);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                }
+            ],
+            "usage": {
+                "prompt_tokens": 835,
+                "completion_tokens": 961,
+                "total_tokens": 1796
+            }
+        }
+    },
+    "source_data": {
+        "code_uid": "6b6e265d4e28ed3112c1d910a995a617",
+        "prob_desc_output_to": "standard output",
+        "prob_desc_notes": null,
+        "lang_cluster": "Python",
+        "prob_desc_time_limit": "3 seconds",
+        "prob_desc_input_spec": "The only line contains one integer n\u00a0(1\u2009\u2264\u2009n\u2009\u2264\u2009104) as we mentioned above.",
+        "source_code": "import math\n\ndef gcd(x, y):\n    if(y == 0):\n        return x\n    return gcd(y,x%y)\n\nn = int(input())\nans = 0\nm = int(math.sqrt(n))\nfor a in range(1,m+1):\n    for b in range(a,m+1):\n        c = a*a+b*b\n        if(c > n):\n            break \n        if((b-a) % 2 == 0 or gcd(a,b) != 1):\n            continue\n        ans += n//c \nprint(ans)\n",
+        "prob_desc_sample_inputs": [
+            "5",
+            "74"
+        ],
+        "prob_desc_memory_limit": "256 megabytes",
+        "exec_outcome": "PASSED",
+        "prob_desc_output_spec": "Print a single integer \u2014 the answer to the problem.",
+        "src_uid": "36a211f7814e77339eb81dc132e115e1",
+        "prob_desc_input_from": "standard input",
+        "lang": "Python 3",
+        "prob_desc_sample_outputs": [
+            "1",
+            "35"
+        ],
+        "file_name": "d7021504500d5ca7c2b02df8100a574d159e6e67e20ec8071b75800b1267370a",
+        "prob_desc_description": "In mathematics, the Pythagorean theorem \u2014 is a relation in Euclidean geometry among the three sides of a right-angled triangle. In terms of areas, it states: \u007fIn any right-angled triangle, the area of the square whose side is the hypotenuse (the side opposite the right angle) is equal to the sum of the areas of the squares whose sides are the two legs (the two sides that meet at a right angle). The theorem can be written as an equation relating the lengths of the sides a, b and c, often called the Pythagorean equation:a2\u2009+\u2009b2\u2009=\u2009c2where c represents the length of the hypotenuse, and a and b represent the lengths of the other two sides.  Given n, your task is to count how many right-angled triangles with side-lengths a, b and c that satisfied an inequality 1\u2009\u2264\u2009a\u2009\u2264\u2009b\u2009\u2264\u2009c\u2009\u2264\u2009n.",
+        "prob_desc_created_at": "1368363600",
+        "difficulty": 1200.0,
+        "hidden_unit_tests": "[{\"input\": \"5\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"74\\r\\n\", \"output\": [\"35\"]}, {\"input\": \"1000\\r\\n\", \"output\": [\"881\"]}, {\"input\": \"586\\r\\n\", \"output\": [\"472\"]}, {\"input\": \"2\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"362\\r\\n\", \"output\": [\"258\"]}, {\"input\": \"778\\r\\n\", \"output\": [\"653\"]}, {\"input\": \"194\\r\\n\", \"output\": [\"120\"]}, {\"input\": \"906\\r\\n\", \"output\": [\"786\"]}, {\"input\": \"659\\r\\n\", \"output\": [\"535\"]}, {\"input\": \"75\\r\\n\", \"output\": [\"37\"]}, {\"input\": \"787\\r\\n\", \"output\": [\"664\"]}, {\"input\": \"851\\r\\n\", \"output\": [\"730\"]}, {\"input\": \"563\\r\\n\", \"output\": [\"446\"]}, {\"input\": \"979\\r\\n\", \"output\": [\"862\"]}, {\"input\": \"395\\r\\n\", \"output\": [\"291\"]}, {\"input\": \"755\\r\\n\", \"output\": [\"634\"]}, {\"input\": \"171\\r\\n\", \"output\": [\"103\"]}, {\"input\": \"883\\r\\n\", \"output\": [\"759\"]}, {\"input\": \"400\\r\\n\", \"output\": [\"294\"]}, {\"input\": \"817\\r\\n\", \"output\": [\"693\"]}, {\"input\": \"177\\r\\n\", \"output\": [\"107\"]}, {\"input\": \"593\\r\\n\", \"output\": [\"476\"]}, {\"input\": \"305\\r\\n\", \"output\": [\"214\"]}, {\"input\": \"721\\r\\n\", \"output\": [\"595\"]}, {\"input\": \"785\\r\\n\", \"output\": [\"664\"]}, {\"input\": \"497\\r\\n\", \"output\": [\"383\"]}, {\"input\": \"913\\r\\n\", \"output\": [\"791\"]}, {\"input\": \"625\\r\\n\", \"output\": [\"507\"]}, {\"input\": \"334\\r\\n\", \"output\": [\"236\"]}, {\"input\": \"10000\\r\\n\", \"output\": [\"12471\"]}, {\"input\": \"9999\\r\\n\", \"output\": [\"12467\"]}]",
+        "source_lang": "Python 3",
+        "target_lang": "C"
+    }
+}

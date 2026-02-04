@@ -1,0 +1,87 @@
+{
+    "oai_response": {
+        "prompt": "Here is code in Python 3 programming lanaguge. Translate the following code from Python 3 to C programming lanaguge. Do not output any extra description or tokens other than the translated code. \n\nn, a = map(int, input().split())\n\nif a % 2 == 1:\n    print((a + 1) // 2)\nelse:\n    print(n // 2 - a // 2 + 1)\n||END-of-SRC||",
+        "response": {
+            "id": "multi-call-as-3qmv5viqbm",
+            "model": "deepseek-v3",
+            "created": 1767069391,
+            "choices": [
+                {
+                    "index": 0,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n\nint main() {\n    int n, a;\n    scanf(\"%d %d\", &n, &a);\n    if (a % 2 == 1) {\n        printf(\"%d\\n\", (a + 1) / 2);\n    } else {\n        printf(\"%d\\n\", n / 2 - a / 2 + 1);\n    }\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 1,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n\nint main() {\n    int n, a;\n    scanf(\"%d %d\", &n, &a);\n    if (a % 2 == 1) {\n        printf(\"%d\\n\", (a + 1) / 2);\n    } else {\n        printf(\"%d\\n\", n / 2 - a / 2 + 1);\n    }\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 2,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n\nint main() {\n    int n, a;\n    scanf(\"%d %d\", &n, &a);\n    if (a % 2 == 1) {\n        printf(\"%d\\n\", (a + 1) / 2);\n    } else {\n        printf(\"%d\\n\", n / 2 - a / 2 + 1);\n    }\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 3,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n\nint main() {\n    int n, a;\n    scanf(\"%d %d\", &n, &a);\n    if (a % 2 == 1) {\n        printf(\"%d\\n\", (a + 1) / 2);\n    } else {\n        printf(\"%d\\n\", n / 2 - a / 2 + 1);\n    }\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 4,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n\nint main() {\n    int n, a;\n    scanf(\"%d %d\", &n, &a);\n    if (a % 2 == 1) {\n        printf(\"%d\\n\", (a + 1) / 2);\n    } else {\n        printf(\"%d\\n\", n / 2 - a / 2 + 1);\n    }\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                }
+            ],
+            "usage": {
+                "prompt_tokens": 500,
+                "completion_tokens": 455,
+                "total_tokens": 955
+            }
+        }
+    },
+    "source_data": {
+        "code_uid": "79fa3876256ee7d2716563b188ca7c1b",
+        "prob_desc_output_to": "standard output",
+        "prob_desc_notes": "NoteIn the first sample there are only four houses on the street, two houses at each side. House 2 will be the last at Vasya's right.The second sample corresponds to picture with n\u2009=\u20098. House 5 is the one before last at Vasya's left.",
+        "lang_cluster": "Python",
+        "prob_desc_time_limit": "1 second",
+        "prob_desc_input_spec": "The first line of the input contains two integers, n and a (1\u2009\u2264\u2009a\u2009\u2264\u2009n\u2009\u2264\u2009100\u2009000)\u00a0\u2014 the number of houses on the street and the number of the house that Vasya needs to reach, correspondingly. It is guaranteed that number n is even.",
+        "source_code": "n, a = map(int, input().split())\n\nif a % 2 == 1:\n    print((a + 1) // 2)\nelse:\n    print(n // 2 - a // 2 + 1)\n",
+        "prob_desc_sample_inputs": [
+            "4 2",
+            "8 5"
+        ],
+        "prob_desc_memory_limit": "256 megabytes",
+        "exec_outcome": "PASSED",
+        "prob_desc_output_spec": "Print a single integer \u2014 the minimum time Vasya needs to get from the beginning of the street to house a.",
+        "src_uid": "aa62dcdc47d0abbba7956284c1561de8",
+        "prob_desc_input_from": "standard input",
+        "lang": "Python 3",
+        "prob_desc_sample_outputs": [
+            "2",
+            "3"
+        ],
+        "file_name": "d7021504500d5ca7c2b02df8100a574d159e6e67e20ec8071b75800b1267370a",
+        "prob_desc_description": "The main street of Berland is a straight line with n houses built along it (n is an even number). The houses are located at both sides of the street. The houses with odd numbers are at one side of the street and are numbered from 1 to n\u2009-\u20091 in the order from the beginning of the street to the end (in the picture: from left to right). The houses with even numbers are at the other side of the street and are numbered from 2 to n in the order from the end of the street to its beginning (in the picture: from right to left). The corresponding houses with even and odd numbers are strictly opposite each other, that is, house 1 is opposite house n, house 3 is opposite house n\u2009-\u20092, house 5 is opposite house n\u2009-\u20094 and so on.  Vasya needs to get to house number a as quickly as possible. He starts driving from the beginning of the street and drives his car to house a. To get from the beginning of the street to houses number 1 and n, he spends exactly 1 second. He also spends exactly one second to drive the distance between two neighbouring houses. Vasya can park at any side of the road, so the distance between the beginning of the street at the houses that stand opposite one another should be considered the same.Your task is: find the minimum time Vasya needs to reach house a.",
+        "prob_desc_created_at": "1458475200",
+        "difficulty": 1100.0,
+        "hidden_unit_tests": "[{\"input\": \"4 2\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"8 5\\r\\n\", \"output\": [\"3\"]}, {\"input\": \"2 1\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"2 2\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"10 1\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"10 10\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"100000 100000\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"100000 2\\r\\n\", \"output\": [\"50000\"]}, {\"input\": \"100000 3\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"100000 99999\\r\\n\", \"output\": [\"50000\"]}, {\"input\": \"100 100\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"3000 34\\r\\n\", \"output\": [\"1484\"]}, {\"input\": \"2000 1\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"100000 1\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"24842 1038\\r\\n\", \"output\": [\"11903\"]}, {\"input\": \"1628 274\\r\\n\", \"output\": [\"678\"]}, {\"input\": \"16186 337\\r\\n\", \"output\": [\"169\"]}, {\"input\": \"24562 2009\\r\\n\", \"output\": [\"1005\"]}, {\"input\": \"9456 3443\\r\\n\", \"output\": [\"1722\"]}, {\"input\": \"5610 332\\r\\n\", \"output\": [\"2640\"]}, {\"input\": \"1764 1288\\r\\n\", \"output\": [\"239\"]}, {\"input\": \"28588 13902\\r\\n\", \"output\": [\"7344\"]}, {\"input\": \"92480 43074\\r\\n\", \"output\": [\"24704\"]}, {\"input\": \"40022 26492\\r\\n\", \"output\": [\"6766\"]}, {\"input\": \"85766 64050\\r\\n\", \"output\": [\"10859\"]}, {\"input\": \"67808 61809\\r\\n\", \"output\": [\"30905\"]}, {\"input\": \"80124 68695\\r\\n\", \"output\": [\"34348\"]}, {\"input\": \"95522 91716\\r\\n\", \"output\": [\"1904\"]}, {\"input\": \"7752 2915\\r\\n\", \"output\": [\"1458\"]}, {\"input\": \"5094 5058\\r\\n\", \"output\": [\"19\"]}, {\"input\": \"6144 4792\\r\\n\", \"output\": [\"677\"]}, {\"input\": \"34334 20793\\r\\n\", \"output\": [\"10397\"]}, {\"input\": \"23538 10243\\r\\n\", \"output\": [\"5122\"]}, {\"input\": \"9328 7933\\r\\n\", \"output\": [\"3967\"]}, {\"input\": \"11110 9885\\r\\n\", \"output\": [\"4943\"]}, {\"input\": \"26096 2778\\r\\n\", \"output\": [\"11660\"]}, {\"input\": \"75062 5323\\r\\n\", \"output\": [\"2662\"]}, {\"input\": \"94790 7722\\r\\n\", \"output\": [\"43535\"]}, {\"input\": \"90616 32240\\r\\n\", \"output\": [\"29189\"]}, {\"input\": \"96998 8992\\r\\n\", \"output\": [\"44004\"]}, {\"input\": \"95130 19219\\r\\n\", \"output\": [\"9610\"]}, {\"input\": \"92586 8812\\r\\n\", \"output\": [\"41888\"]}, {\"input\": \"3266 3044\\r\\n\", \"output\": [\"112\"]}, {\"input\": \"5026 4697\\r\\n\", \"output\": [\"2349\"]}, {\"input\": \"3044 2904\\r\\n\", \"output\": [\"71\"]}, {\"input\": \"6022 5396\\r\\n\", \"output\": [\"314\"]}, {\"input\": \"31270 25522\\r\\n\", \"output\": [\"2875\"]}, {\"input\": \"82156 75519\\r\\n\", \"output\": [\"37760\"]}, {\"input\": \"34614 27913\\r\\n\", \"output\": [\"13957\"]}, {\"input\": \"88024 61143\\r\\n\", \"output\": [\"30572\"]}, {\"input\": \"91870 55672\\r\\n\", \"output\": [\"18100\"]}, {\"input\": \"95718 4868\\r\\n\", \"output\": [\"45426\"]}, {\"input\": \"99564 358\\r\\n\", \"output\": [\"49604\"]}, {\"input\": \"89266 13047\\r\\n\", \"output\": [\"6524\"]}, {\"input\": \"90904 16455\\r\\n\", \"output\": [\"8228\"]}, {\"input\": \"94750 13761\\r\\n\", \"output\": [\"6881\"]}, {\"input\": \"100000 23458\\r\\n\", \"output\": [\"38272\"]}, {\"input\": \"100000 23457\\r\\n\", \"output\": [\"11729\"]}, {\"input\": \"59140 24272\\r\\n\", \"output\": [\"17435\"]}, {\"input\": \"9860 8516\\r\\n\", \"output\": [\"673\"]}, {\"input\": \"25988 2733\\r\\n\", \"output\": [\"1367\"]}, {\"input\": \"9412 5309\\r\\n\", \"output\": [\"2655\"]}, {\"input\": \"25540 23601\\r\\n\", \"output\": [\"11801\"]}, {\"input\": \"76260 6050\\r\\n\", \"output\": [\"35106\"]}, {\"input\": \"92388 39118\\r\\n\", \"output\": [\"26636\"]}, {\"input\": \"8516 5495\\r\\n\", \"output\": [\"2748\"]}, {\"input\": \"91940 37847\\r\\n\", \"output\": [\"18924\"]}, {\"input\": \"30518 286\\r\\n\", \"output\": [\"15117\"]}, {\"input\": \"46646 19345\\r\\n\", \"output\": [\"9673\"]}]",
+        "source_lang": "Python 3",
+        "target_lang": "C"
+    }
+}

@@ -1,0 +1,91 @@
+{
+    "oai_response": {
+        "prompt": "Here is code in Python 3 programming lanaguge. Translate the following code from Python 3 to C programming lanaguge. Do not output any extra description or tokens other than the translated code. \n\nn=int(input())\nm=input()\na=0\nb=0\nfor i in range(1,len(m)):\n    if m[i]=='F' and m[i-1]=='S':\n        a+=1\n    elif m[i]=='S' and m[i-1]=='F':\n        b+=1\nif a>b:\n    print('YES')\nelse:\n    print('NO')||END-of-SRC||",
+        "response": {
+            "id": "multi-call-as-bbuvis8ts7",
+            "model": "deepseek-v3",
+            "created": 1767066189,
+            "choices": [
+                {
+                    "index": 0,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <string.h>\n\nint main() {\n    int n;\n    char m[1000];\n    scanf(\"%d\", &n);\n    scanf(\"%s\", m);\n    int a = 0, b = 0;\n    for (int i = 1; i < strlen(m); i++) {\n        if (m[i] == 'F' && m[i-1] == 'S') {\n            a++;\n        } else if (m[i] == 'S' && m[i-1] == 'F') {\n            b++;\n        }\n    }\n    if (a > b) {\n        printf(\"YES\\n\");\n    } else {\n        printf(\"NO\\n\");\n    }\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 1,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <string.h>\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    char m[100];\n    scanf(\"%s\", m);\n    int a = 0, b = 0;\n    for (int i = 1; i < strlen(m); i++) {\n        if (m[i] == 'F' && m[i-1] == 'S') {\n            a++;\n        } else if (m[i] == 'S' && m[i-1] == 'F') {\n            b++;\n        }\n    }\n    if (a > b) {\n        printf(\"YES\\n\");\n    } else {\n        printf(\"NO\\n\");\n    }\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 2,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <string.h>\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    char m[100000];\n    scanf(\"%s\", m);\n    int a = 0, b = 0;\n    for (int i = 1; i < strlen(m); i++) {\n        if (m[i] == 'F' && m[i-1] == 'S') {\n            a++;\n        } else if (m[i] == 'S' && m[i-1] == 'F') {\n            b++;\n        }\n    }\n    if (a > b) {\n        printf(\"YES\\n\");\n    } else {\n        printf(\"NO\\n\");\n    }\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 3,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <string.h>\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    char m[100];\n    scanf(\"%s\", m);\n    int a = 0, b = 0;\n    for (int i = 1; i < strlen(m); i++) {\n        if (m[i] == 'F' && m[i-1] == 'S') {\n            a++;\n        } else if (m[i] == 'S' && m[i-1] == 'F') {\n            b++;\n        }\n    }\n    if (a > b) {\n        printf(\"YES\\n\");\n    } else {\n        printf(\"NO\\n\");\n    }\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 4,
+                    "message": {
+                        "role": "assistant",
+                        "content": "Here's the translated code in C:\n\n```c\n#include <stdio.h>\n#include <string.h>\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    char m[1000];\n    scanf(\"%s\", m);\n    int a = 0, b = 0;\n    for (int i = 1; i < strlen(m); i++) {\n        if (m[i] == 'F' && m[i-1] == 'S') {\n            a++;\n        } else if (m[i] == 'S' && m[i-1] == 'F') {\n            b++;\n        }\n    }\n    if (a > b) {\n        printf(\"YES\\n\");\n    } else {\n        printf(\"NO\\n\");\n    }\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                }
+            ],
+            "usage": {
+                "prompt_tokens": 655,
+                "completion_tokens": 802,
+                "total_tokens": 1457
+            }
+        }
+    },
+    "source_data": {
+        "code_uid": "322079e1665bb026d21553c5a0e4027c",
+        "prob_desc_output_to": "standard output",
+        "prob_desc_notes": "NoteIn the first example you were initially at San Francisco, then flew to Seattle, were there for two days and returned to San Francisco. You made one flight in each direction, so the answer is \"NO\".In the second example you just flew from Seattle to San Francisco, so the answer is \"YES\".In the third example you stayed the whole period in San Francisco, so the answer is \"NO\".In the fourth example if you replace 'S' with ones, and 'F' with zeros, you'll get the first few digits of \u03c0 in binary representation. Not very useful information though.",
+        "lang_cluster": "Python",
+        "prob_desc_time_limit": "2 seconds",
+        "prob_desc_input_spec": "The first line of input contains single integer n (2\u2009\u2264\u2009n\u2009\u2264\u2009100)\u00a0\u2014 the number of days. The second line contains a string of length n consisting of only capital 'S' and 'F' letters. If the i-th letter is 'S', then you were in Seattle office on that day. Otherwise you were in San Francisco. The days are given in chronological order, i.e. today is the last day in this sequence.",
+        "source_code": "n=int(input())\nm=input()\na=0\nb=0\nfor i in range(1,len(m)):\n    if m[i]=='F' and m[i-1]=='S':\n        a+=1\n    elif m[i]=='S' and m[i-1]=='F':\n        b+=1\nif a>b:\n    print('YES')\nelse:\n    print('NO')",
+        "prob_desc_sample_inputs": [
+            "4\nFSSF",
+            "2\nSF",
+            "10\nFFFFFFFFFF",
+            "10\nSSFFSFFSFF"
+        ],
+        "prob_desc_memory_limit": "256 megabytes",
+        "exec_outcome": "PASSED",
+        "prob_desc_output_spec": "Print \"YES\" if you flew more times from Seattle to San Francisco, and \"NO\" otherwise. You can print each letter in any case (upper or lower).",
+        "src_uid": "ab8a2070ea758d118b3c09ee165d9517",
+        "prob_desc_input_from": "standard input",
+        "lang": "Python 3",
+        "prob_desc_sample_outputs": [
+            "NO",
+            "YES",
+            "NO",
+            "YES"
+        ],
+        "file_name": "d7021504500d5ca7c2b02df8100a574d159e6e67e20ec8071b75800b1267370a",
+        "prob_desc_description": "As you may know, MemSQL has American offices in both San Francisco and Seattle. Being a manager in the company, you travel a lot between the two cities, always by plane.You prefer flying from Seattle to San Francisco than in the other direction, because it's warmer in San Francisco. You are so busy that you don't remember the number of flights you have made in either direction. However, for each of the last n days you know whether you were in San Francisco office or in Seattle office. You always fly at nights, so you never were at both offices on the same day. Given this information, determine if you flew more times from Seattle to San Francisco during the last n days, or not.",
+        "prob_desc_created_at": "1506791100",
+        "difficulty": 800.0,
+        "hidden_unit_tests": "[{\"input\": \"4\\r\\nFSSF\\r\\n\", \"output\": [\"NO\", \"no\"]}, {\"input\": \"2\\r\\nSF\\r\\n\", \"output\": [\"YES\", \"yes\"]}, {\"input\": \"10\\r\\nFFFFFFFFFF\\r\\n\", \"output\": [\"NO\", \"no\"]}, {\"input\": \"10\\r\\nSSFFSFFSFF\\r\\n\", \"output\": [\"YES\", \"yes\"]}, {\"input\": \"20\\r\\nSFSFFFFSSFFFFSSSSFSS\\r\\n\", \"output\": [\"NO\", \"no\"]}, {\"input\": \"20\\r\\nSSFFFFFSFFFFFFFFFFFF\\r\\n\", \"output\": [\"YES\", \"yes\"]}, {\"input\": \"20\\r\\nSSFSFSFSFSFSFSFSSFSF\\r\\n\", \"output\": [\"YES\", \"yes\"]}, {\"input\": \"20\\r\\nSSSSFSFSSFSFSSSSSSFS\\r\\n\", \"output\": [\"NO\", \"no\"]}, {\"input\": \"100\\r\\nFFFSFSFSFSSFSFFSSFFFFFSSSSFSSFFFFSFFFFFSFFFSSFSSSFFFFSSFFSSFSFFSSFSSSFSFFSFSFFSFSFFSSFFSFSSSSFSFSFSS\\r\\n\", \"output\": [\"NO\", \"no\"]}, {\"input\": \"100\\r\\nFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF\\r\\n\", \"output\": [\"NO\", \"no\"]}, {\"input\": \"100\\r\\nFFFFFFFFFFFFFFFFFFFFFFFFFFSFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFSFFFFFFFFFFFFFFFFFSS\\r\\n\", \"output\": [\"NO\", \"no\"]}, {\"input\": \"100\\r\\nFFFFFFFFFFFFFSFFFFFFFFFSFSSFFFFFFFFFFFFFFFFFFFFFFSFFSFFFFFSFFFFFFFFSFFFFFFFFFFFFFSFFFFFFFFSFFFFFFFSF\\r\\n\", \"output\": [\"NO\", \"no\"]}, {\"input\": \"100\\r\\nSFFSSFFFFFFSSFFFSSFSFFFFFSSFFFSFFFFFFSFSSSFSFSFFFFSFSSFFFFFFFFSFFFFFSFFFFFSSFFFSFFSFSFFFFSFFSFFFFFFF\\r\\n\", \"output\": [\"YES\", \"yes\"]}, {\"input\": \"100\\r\\nFFFFSSSSSFFSSSFFFSFFFFFSFSSFSFFSFFSSFFSSFSFFFFFSFSFSFSFFFFFFFFFSFSFFSFFFFSFSFFFFFFFFFFFFSFSSFFSSSSFF\\r\\n\", \"output\": [\"NO\", \"no\"]}, {\"input\": \"100\\r\\nFFFFFFFFFFFFSSFFFFSFSFFFSFSSSFSSSSSFSSSSFFSSFFFSFSFSSFFFSSSFFSFSFSSFSFSSFSFFFSFFFFFSSFSFFFSSSFSSSFFS\\r\\n\", \"output\": [\"NO\", \"no\"]}, {\"input\": \"100\\r\\nFFFSSSFSFSSSSFSSFSFFSSSFFSSFSSFFSSFFSFSSSSFFFSFFFSFSFSSSFSSFSFSFSFFSSSSSFSSSFSFSFFSSFSFSSFFSSFSFFSFS\\r\\n\", \"output\": [\"NO\", \"no\"]}, {\"input\": \"100\\r\\nFFSSSSFSSSFSSSSFSSSFFSFSSFFSSFSSSFSSSFFSFFSSSSSSSSSSSSFSSFSSSSFSFFFSSFFFFFFSFSFSSSSSSFSSSFSFSSFSSFSS\\r\\n\", \"output\": [\"NO\", \"no\"]}, {\"input\": \"100\\r\\nSSSFFFSSSSFFSSSSSFSSSSFSSSFSSSSSFSSSSSSSSFSFFSSSFFSSFSSSSFFSSSSSSFFSSSSFSSSSSSFSSSFSSSSSSSFSSSSFSSSS\\r\\n\", \"output\": [\"NO\", \"no\"]}, {\"input\": \"100\\r\\nFSSSSSSSSSSSFSSSSSSSSSSSSSSSSFSSSSSSFSSSSSSSSSSSSSFSSFSSSSSFSSFSSSSSSSSSFFSSSSSFSFSSSFFSSSSSSSSSSSSS\\r\\n\", \"output\": [\"NO\", \"no\"]}, {\"input\": \"100\\r\\nSSSSSSSSSSSSSFSSSSSSSSSSSSFSSSFSSSSSSSSSSSSSSSSSSSSSSSSSSSSSFSSSSSSSSSSSSSSSSFSFSSSSSSSSSSSSSSSSSSFS\\r\\n\", \"output\": [\"NO\", \"no\"]}, {\"input\": \"100\\r\\nSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS\\r\\n\", \"output\": [\"NO\", \"no\"]}, {\"input\": \"100\\r\\nSFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF\\r\\n\", \"output\": [\"YES\", \"yes\"]}, {\"input\": \"100\\r\\nSFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFSFSFFFFFFFFFFFSFSFFFFFFFFFFFFFSFFFFFFFFFFFFFFFFFFFFFFFFF\\r\\n\", \"output\": [\"YES\", \"yes\"]}, {\"input\": \"100\\r\\nSFFFFFFFFFFFFSSFFFFSFFFFFFFFFFFFFFFFFFFSFFFSSFFFFSFSFFFSFFFFFFFFFFFFFFFSSFFFFFFFFSSFFFFFFFFFFFFFFSFF\\r\\n\", \"output\": [\"YES\", \"yes\"]}, {\"input\": \"100\\r\\nSFFSSSFFSFSFSFFFFSSFFFFSFFFFFFFFSFSFFFSFFFSFFFSFFFFSFSFFFFFFFSFFFFFFFFFFSFFSSSFFSSFFFFSFFFFSFFFFSFFF\\r\\n\", \"output\": [\"YES\", \"yes\"]}, {\"input\": \"100\\r\\nSFFFSFFFFSFFFSSFFFSFSFFFSFFFSSFSFFFFFSFFFFFFFFSFSFSFFSFFFSFSSFSFFFSFSFFSSFSFSSSFFFFFFSSFSFFSFFFFFFFF\\r\\n\", \"output\": [\"YES\", \"yes\"]}, {\"input\": \"100\\r\\nSSSSFFFFSFFFFFFFSFFFFSFSFFFFSSFFFFFFFFFSFFSSFFFFFFSFSFSSFSSSFFFFFFFSFSFFFSSSFFFFFFFSFFFSSFFFFSSFFFSF\\r\\n\", \"output\": [\"YES\", \"yes\"]}, {\"input\": \"100\\r\\nSSSFSSFFFSFSSSSFSSFSSSSFSSFFFFFSFFSSSSFFSSSFSSSFSSSSFSSSSFSSSSSSSFSFSSFFFSSFFSFFSSSSFSSFFSFSSFSFFFSF\\r\\n\", \"output\": [\"YES\", \"yes\"]}, {\"input\": \"100\\r\\nSFFSFSSSSSSSFFSSSFSSSSFSFSSFFFSSSSSSFSSSSFSSFSSSFSSSSSSSFSSFSFFFSSFSSFSFSFSSSSSSSSSSSSFFFFSSSSSFSFFF\\r\\n\", \"output\": [\"YES\", \"yes\"]}, {\"input\": \"100\\r\\nSSSFSFFSFSFFSSSSSFSSSFSSSFFFSSSSSSSSSFSFSFSSSSFSFSSFFFFFSSSSSSSSSSSSSSSSSSSFFSSSSSFSFSSSSFFSSSSFSSSF\\r\\n\", \"output\": [\"YES\", \"yes\"]}, {\"input\": \"100\\r\\nSSSFSSSSSSSSSSFSSSSFSSSSSSFSSSSSSFSSSSSSSSSSSSSSFSSSFSSSFSSSSSSSSSSSFSSSSSSFSFSSSSFSSSSSSFSSSSSSSSFF\\r\\n\", \"output\": [\"YES\", \"yes\"]}, {\"input\": \"100\\r\\nSSSSSSSSSSSSSSSFSFSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSFFSSSSSSSSSFSSSSSSSSSSSSSSSSSF\\r\\n\", \"output\": [\"YES\", \"yes\"]}, {\"input\": \"100\\r\\nSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSF\\r\\n\", \"output\": [\"YES\", \"yes\"]}, {\"input\": \"2\\r\\nSS\\r\\n\", \"output\": [\"NO\", \"no\"]}]",
+        "source_lang": "Python 3",
+        "target_lang": "C"
+    }
+}

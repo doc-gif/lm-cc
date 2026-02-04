@@ -1,0 +1,87 @@
+{
+    "oai_response": {
+        "prompt": "Here is code in Python 3 programming lanaguge. Translate the following code from Python 3 to C programming lanaguge. Do not output any extra description or tokens other than the translated code. \n\nn, m = [int(x) for x in input().split()]\na = input()\nb = input()\nif a[0] == '<' and b[0] == 'v' and a[-1] == '>' and b[-1] == '^':\n\tprint('YES')\nelif a[0] == '>' and b[-1] == 'v' and a[-1] == '<' and b[0] == '^':\n\tprint('YES')\nelse:\n\tprint('NO')\n||END-of-SRC||",
+        "response": {
+            "id": "multi-call-as-4ynqekxjw9",
+            "model": "deepseek-v3",
+            "created": 1767067924,
+            "choices": [
+                {
+                    "index": 0,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <string.h>\n\nint main() {\n    int n, m;\n    scanf(\"%d %d\", &n, &m);\n    char a[100], b[100];\n    scanf(\"%s\", a);\n    scanf(\"%s\", b);\n    if (a[0] == '<' && b[0] == 'v' && a[strlen(a)-1] == '>' && b[strlen(b)-1] == '^') {\n        printf(\"YES\\n\");\n    } else if (a[0] == '>' && b[strlen(b)-1] == 'v' && a[strlen(a)-1] == '<' && b[0] == '^') {\n        printf(\"YES\\n\");\n    } else {\n        printf(\"NO\\n\");\n    }\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 1,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <string.h>\n\nint main() {\n    int n, m;\n    scanf(\"%d %d\", &n, &m);\n    char a[100], b[100];\n    scanf(\"%s\", a);\n    scanf(\"%s\", b);\n    if (a[0] == '<' && b[0] == 'v' && a[strlen(a)-1] == '>' && b[strlen(b)-1] == '^') {\n        printf(\"YES\\n\");\n    } else if (a[0] == '>' && b[strlen(b)-1] == 'v' && a[strlen(a)-1] == '<' && b[0] == '^') {\n        printf(\"YES\\n\");\n    } else {\n        printf(\"NO\\n\");\n    }\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 2,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <string.h>\n\nint main() {\n    int n, m;\n    scanf(\"%d %d\", &n, &m);\n    char a[100], b[100];\n    scanf(\"%s\", a);\n    scanf(\"%s\", b);\n    if (a[0] == '<' && b[0] == 'v' && a[strlen(a)-1] == '>' && b[strlen(b)-1] == '^') {\n        printf(\"YES\\n\");\n    } else if (a[0] == '>' && b[strlen(b)-1] == 'v' && a[strlen(a)-1] == '<' && b[0] == '^') {\n        printf(\"YES\\n\");\n    } else {\n        printf(\"NO\\n\");\n    }\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 3,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <string.h>\n\nint main() {\n    int n, m;\n    scanf(\"%d %d\", &n, &m);\n    char a[100], b[100];\n    scanf(\"%s\", a);\n    scanf(\"%s\", b);\n    if (a[0] == '<' && b[0] == 'v' && a[strlen(a)-1] == '>' && b[strlen(b)-1] == '^') {\n        printf(\"YES\\n\");\n    } else if (a[0] == '>' && b[strlen(b)-1] == 'v' && a[strlen(a)-1] == '<' && b[0] == '^') {\n        printf(\"YES\\n\");\n    } else {\n        printf(\"NO\\n\");\n    }\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 4,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <string.h>\n\nint main() {\n    int n, m;\n    scanf(\"%d %d\", &n, &m);\n    char a[100], b[100];\n    scanf(\"%s\", a);\n    scanf(\"%s\", b);\n    \n    if (a[0] == '<' && b[0] == 'v' && a[strlen(a)-1] == '>' && b[strlen(b)-1] == '^') {\n        printf(\"YES\\n\");\n    } else if (a[0] == '>' && b[strlen(b)-1] == 'v' && a[strlen(a)-1] == '<' && b[0] == '^') {\n        printf(\"YES\\n\");\n    } else {\n        printf(\"NO\\n\");\n    }\n    \n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                }
+            ],
+            "usage": {
+                "prompt_tokens": 780,
+                "completion_tokens": 900,
+                "total_tokens": 1680
+            }
+        }
+    },
+    "source_data": {
+        "code_uid": "8317afee580017416322bceb8521c599",
+        "prob_desc_output_to": "standard output",
+        "prob_desc_notes": "NoteThe figure above shows street directions in the second sample test case.",
+        "lang_cluster": "Python",
+        "prob_desc_time_limit": "2 seconds",
+        "prob_desc_input_spec": "The first line of input contains two integers n and m, (2\u2009\u2264\u2009n,\u2009m\u2009\u2264\u200920), denoting the number of horizontal streets and the number of vertical streets. The second line contains a string of length n, made of characters '&lt;' and '&gt;', denoting direction of each horizontal street. If the i-th character is equal to '&lt;', the street is directed from east to west otherwise, the street is directed from west to east. Streets are listed in order from north to south. The third line contains a string of length m, made of characters '^' and 'v', denoting direction of each vertical street. If the i-th character is equal to '^', the street is directed from south to north, otherwise the street is directed from north to south. Streets are listed in order from west to east.",
+        "source_code": "n, m = [int(x) for x in input().split()]\na = input()\nb = input()\nif a[0] == '<' and b[0] == 'v' and a[-1] == '>' and b[-1] == '^':\n\tprint('YES')\nelif a[0] == '>' and b[-1] == 'v' and a[-1] == '<' and b[0] == '^':\n\tprint('YES')\nelse:\n\tprint('NO')\n",
+        "prob_desc_sample_inputs": [
+            "3 3\n&gt;&lt;&gt;\nv^v",
+            "4 6\n&lt;&gt;&lt;&gt;\nv^v^v^"
+        ],
+        "prob_desc_memory_limit": "256 megabytes",
+        "exec_outcome": "PASSED",
+        "prob_desc_output_spec": "If the given pattern meets the mayor's criteria, print a single line containing \"YES\", otherwise print a single line containing \"NO\".",
+        "src_uid": "eab5c84c9658eb32f5614cd2497541cf",
+        "prob_desc_input_from": "standard input",
+        "lang": "Python 3",
+        "prob_desc_sample_outputs": [
+            "NO",
+            "YES"
+        ],
+        "file_name": "d7021504500d5ca7c2b02df8100a574d159e6e67e20ec8071b75800b1267370a",
+        "prob_desc_description": "Imagine a city with n horizontal streets crossing m vertical streets, forming an (n\u2009-\u20091)\u2009\u00d7\u2009(m\u2009-\u20091) grid. In order to increase the traffic flow, mayor of the city has decided to make each street one way. This means in each horizontal street, the traffic moves only from west to east or only from east to west. Also, traffic moves only from north to south or only from south to north in each vertical street. It is possible to enter a horizontal street from a vertical street, or vice versa, at their intersection.  The mayor has received some street direction patterns. Your task is to check whether it is possible to reach any junction from any other junction in the proposed street direction pattern.",
+        "prob_desc_created_at": "1412514000",
+        "difficulty": 1400.0,
+        "hidden_unit_tests": "[{\"input\": \"3 3\\r\\n><>\\r\\nv^v\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"4 6\\r\\n<><>\\r\\nv^v^v^\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"2 2\\r\\n<>\\r\\nv^\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"2 2\\r\\n>>\\r\\n^v\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"3 3\\r\\n>><\\r\\n^^v\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"3 4\\r\\n>><\\r\\n^v^v\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"3 8\\r\\n>><\\r\\nv^^^^^^^\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"7 2\\r\\n<><<<<>\\r\\n^^\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"4 5\\r\\n><<<\\r\\n^^^^v\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"2 20\\r\\n><\\r\\n^v^^v^^v^^^v^vv^vv^^\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"2 20\\r\\n<>\\r\\nv^vv^v^^vvv^^^v^vvv^\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"20 2\\r\\n<><<><<>><<<>><><<<<\\r\\n^^\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"20 2\\r\\n><>><>><>><<<><<><><\\r\\n^v\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"11 12\\r\\n><<<><><<>>\\r\\nvv^^^^vvvvv^\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"4 18\\r\\n<<>>\\r\\nv^v^v^^vvvv^v^^vv^\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"16 11\\r\\n<<<<>><><<<<<><<\\r\\nvv^v^vvvv^v\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"14 7\\r\\n><<<<>>>>>>><<\\r\\nvv^^^vv\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"5 14\\r\\n<<><>\\r\\nv^vv^^vv^v^^^v\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"8 18\\r\\n>>>><>>>\\r\\nv^vv^v^^^^^vvv^^vv\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"18 18\\r\\n<<><>><<>><>><><<<\\r\\n^^v^v^vvvv^v^vv^vv\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"4 18\\r\\n<<<>\\r\\n^^^^^vv^vv^^vv^v^v\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"19 18\\r\\n><><>>><<<<<>>><<<>\\r\\n^^v^^v^^v^vv^v^vvv\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"14 20\\r\\n<<<><><<>><><<\\r\\nvvvvvvv^v^vvvv^^^vv^\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"18 18\\r\\n><>>><<<>><><>>>><\\r\\nvv^^^^v^v^^^^v^v^^\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"8 18\\r\\n<><<<>>>\\r\\n^^^^^^v^^^vv^^vvvv\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"11 12\\r\\n><><><<><><\\r\\n^^v^^^^^^^^v\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"16 11\\r\\n>><<><<<<>>><><<\\r\\n^^^^vvvv^vv\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"14 7\\r\\n<><><<<>>>><>>\\r\\nvv^^v^^\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"5 14\\r\\n>>>><\\r\\n^v^v^^^vv^vv^v\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"8 18\\r\\n<<<><>>>\\r\\nv^^vvv^^v^v^vvvv^^\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"18 18\\r\\n><><<><><>>><>>>><\\r\\n^^vvv^v^^^v^vv^^^v\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"19 18\\r\\n>>>><><<>>><<<><<<<\\r\\n^v^^^^vv^^v^^^^v^v\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"14 20\\r\\n<>><<<><<>>>>>\\r\\nvv^^v^^^^v^^vv^^vvv^\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"20 19\\r\\n<><>>>>><<<<<><<>>>>\\r\\nv^vv^^vvvvvv^vvvv^v\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"20 19\\r\\n<<<><<<>><<<>><><><>\\r\\nv^v^vvv^vvv^^^vvv^^\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"19 20\\r\\n<><<<><><><<<<<<<<>\\r\\n^v^^^^v^^vvvv^^^^vvv\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"19 20\\r\\n>>>>>>>><>>><><<<><\\r\\n^v^v^^^vvv^^^v^^vvvv\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"20 20\\r\\n<<<>>>><>><<>><<>>>>\\r\\n^vvv^^^^vv^^^^^v^^vv\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"20 20\\r\\n>>><><<><<<<<<<><<><\\r\\nvv^vv^vv^^^^^vv^^^^^\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"20 20\\r\\n><<><<<<<<<>>><>>><<\\r\\n^^^^^^^^vvvv^vv^vvvv\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"20 20\\r\\n<>>>>>>>><>>><>><<<>\\r\\nvv^^vv^^^^v^vv^v^^^^\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"20 20\\r\\n><>><<>><>>>>>>>><<>\\r\\n^^v^vv^^^vvv^v^^^vv^\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"20 20\\r\\n<<<<><<>><><<<>><<><\\r\\nv^^^^vvv^^^vvvv^v^vv\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"20 20\\r\\n><<<><<><>>><><<<<<<\\r\\nvv^^vvv^^v^^v^vv^vvv\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"20 20\\r\\n<<>>><>>>><<<<>>><<>\\r\\nv^vv^^^^^vvv^^v^^v^v\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"20 20\\r\\n><<><<><<<<<<>><><>>\\r\\nv^^^v^vv^^v^^vvvv^vv\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"20 20\\r\\n<<<<<<<<><>><><>><<<\\r\\n^vvv^^^v^^^vvv^^^^^v\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"20 20\\r\\n>>><<<<<>>><><><<><<\\r\\n^^^vvv^^^v^^v^^v^vvv\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"20 20\\r\\n<><<<><><>><><><<<<>\\r\\n^^^vvvv^vv^v^^^^v^vv\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"20 20\\r\\n>>>>>>>>>><>>><>><>>\\r\\n^vvv^^^vv^^^^^^vvv^v\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"20 20\\r\\n<><>><><<<<<>><<>>><\\r\\nv^^^v^v^v^vvvv^^^vv^\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"20 20\\r\\n><<<><<<><<<><>>>><<\\r\\nvvvv^^^^^vv^v^^vv^v^\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"20 20\\r\\n<<><<<<<<>>>>><<<>>>\\r\\nvvvvvv^v^vvv^^^^^^^^\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"20 20\\r\\n><<><<>>>>><><>><>>>\\r\\nv^^^^vvv^^^^^v^v^vv^\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"20 20\\r\\n<<>>><>><<>>>><<<><<\\r\\n^^vvv^^vvvv^vv^^v^v^\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"20 20\\r\\n><<>><>>>><<><>><><<\\r\\n^v^^^^^^vvvv^v^v^v^^\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"20 20\\r\\n<<><<<<><><<>>><>>>>\\r\\n^^vvvvv^v^^^^^^^vvv^\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"20 20\\r\\n>><<<<<<><>>>><>>><>\\r\\n^^^v^v^vv^^vv^vvv^^^\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"20 20\\r\\n>>>>>>>>>>>>>>>>>>>>\\r\\nvvvvvvvvvvvvvvvvvvvv\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"2 2\\r\\n><\\r\\nv^\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"2 2\\r\\n<>\\r\\n^v\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"3 3\\r\\n>><\\r\\nvvv\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"2 3\\r\\n<>\\r\\nv^^\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"4 4\\r\\n>>><\\r\\nvvv^\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"20 20\\r\\n<><><><><><><><><><>\\r\\nvvvvvvvvvvvvvvvvvvvv\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"4 4\\r\\n<>>>\\r\\nv^^^\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"20 20\\r\\n<><><><><><><><><><>\\r\\nv^v^v^v^v^v^v^v^v^v^\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"2 3\\r\\n<>\\r\\n^v^\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"4 3\\r\\n<><>\\r\\n^vv\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"3 3\\r\\n<<>\\r\\nvv^\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"2 3\\r\\n><\\r\\nvv^\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"7 6\\r\\n>>><>><\\r\\n^vv^vv\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"2 2\\r\\n<<\\r\\nv^\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"3 3\\r\\n>><\\r\\n^^^\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"3 3\\r\\n<><\\r\\nv^v\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"20 20\\r\\n><><><><><><><><><><\\r\\n^v^v^v^v^v^v^v^v^v^v\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"4 4\\r\\n<>>>\\r\\nvvv^\\r\\n\", \"output\": [\"YES\"]}]",
+        "source_lang": "Python 3",
+        "target_lang": "C"
+    }
+}

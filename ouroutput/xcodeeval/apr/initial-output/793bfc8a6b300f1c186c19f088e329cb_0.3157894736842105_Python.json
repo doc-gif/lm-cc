@@ -1,0 +1,101 @@
+{
+    "oai_response": {
+        "prompt": "Fix a buggy program written in Python language to solve the following programming problem:\nDescription: There are r red and g green blocks for construction of the red-green tower. Red-green tower can be built following next rules:  Red-green tower is consisting of some number of levels;  Let the red-green tower consist of n levels, then the first level of this tower should consist of n blocks, second level \u2014 of n\u2009-\u20091 blocks, the third one \u2014 of n\u2009-\u20092 blocks, and so on \u2014 the last level of such tower should consist of the one block. In other words, each successive level should contain one block less than the previous one;  Each level of the red-green tower should contain blocks of the same color.  Let h be the maximum possible number of levels of red-green tower, that can be built out of r red and g green blocks meeting the rules above. The task is to determine how many different red-green towers having h levels can be built out of the available blocks.Two red-green towers are considered different if there exists some level, that consists of red blocks in the one tower and consists of green blocks in the other tower.You are to write a program that will find the number of different red-green towers of height h modulo\u00a0109\u2009+\u20097.\nInput Specification: The only line of input contains two integers r and g, separated by a single space \u2014 the number of available red and green blocks respectively (0\u2009\u2264\u2009r,\u2009g\u2009\u2264\u20092\u00b7105, r\u2009+\u2009g\u2009\u2265\u20091).\nOutput Specification: Output the only integer \u2014 the number of different possible red-green towers of height h modulo\u00a0109\u2009+\u20097.\n\nSample Input:\n4 6\nSample Output:\n2\n\nSample Input:\n9 7\nSample Output:\n6\n\nSample Input:\n1 1\nSample Output:\n2\n\nNotes: NoteThe image in the problem statement shows all possible red-green towers for the first sample.\nTake input from standard input and output to standard output\n\nHere is the code with a bug of TIME_LIMIT_EXCEEDED:\n\n# by the authority of GOD     author: manhar singh sachdev #\n\nimport os,sys\nfrom io import BytesIO, IOBase\nfrom collections import Counter\n\ndef main():\n    mod = 10**9+7\n    r,g = map(int,input().split())\n    n = 1\n    while r+g >= (n*(n+1))//2:\n        n += 1\n    n -= 1\n    tot = n*(n+1)//2\n    dp = [0]*(tot+1)\n    dp[0] = 1\n    for i in range(1,n+1):\n        for x in range(tot-i,-1,-1):\n            dp[i+x] += dp[x]\n            dp[i+x] %= mod\n    ans = 0\n    for i,val in enumerate(dp):\n        if i <= r and tot-i <= g:\n            ans += val\n            ans %= mod\n    print(ans)\n\n#Fast IO Region\nBUFSIZE = 8192\nclass FastIO(IOBase):\n    newlines = 0\n    def __init__(self, file):\n        self._fd = file.fileno()\n        self.buffer = BytesIO()\n        self.writable = \"x\" in file.mode or \"r\" not in file.mode\n        self.write = self.buffer.write if self.writable else None\n    def read(self):\n        while True:\n            b = os.read(self._fd, max(os.fstat(self._fd).st_size, BUFSIZE))\n            if not b:\n                break\n            ptr = self.buffer.tell()\n            self.buffer.seek(0, 2), self.buffer.write(b), self.buffer.seek(ptr)\n        self.newlines = 0\n        return self.buffer.read()\n    def readline(self):\n        while self.newlines == 0:\n            b = os.read(self._fd, max(os.fstat(self._fd).st_size, BUFSIZE))\n            self.newlines = b.count(b\"\\n\") + (not b)\n            ptr = self.buffer.tell()\n            self.buffer.seek(0, 2), self.buffer.write(b), self.buffer.seek(ptr)\n        self.newlines -= 1\n        return self.buffer.readline()\n    def flush(self):\n        if self.writable:\n            os.write(self._fd, self.buffer.getvalue())\n            self.buffer.truncate(0), self.buffer.seek(0)\nclass IOWrapper(IOBase):\n    def __init__(self, file):\n        self.buffer = FastIO(file)\n        self.flush = self.buffer.flush\n        self.writable = self.buffer.writable\n        self.write = lambda s: self.buffer.write(s.encode(\"ascii\"))\n        self.read = lambda:...\n\nProvide the fixed Python code without any description or extra tokens.\n\nFixed source code:\n ||END-of-SRC||",
+        "response": {
+            "id": "multi-call-as-iktgiynd97",
+            "model": "deepseek-v3",
+            "created": 1760421319,
+            "choices": [
+                {
+                    "index": 0,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```python\nimport sys\n\ndef main():\n    mod = 10**9 + 7\n    r, g = map(int, sys.stdin.readline().split())\n    \n    # Find the maximum possible h\n    low = 0\n    high = 2 * 10**5\n    h = 0\n    while low <= high:\n        mid = (low + high) // 2\n        total = mid * (mid + 1) // 2\n        if total <= r + g:\n            h = mid\n            low = mid + 1\n        else:\n            high = mid - 1\n    \n    total_blocks = h * (h + 1) // 2\n    dp = [0] * (r + 1)\n    dp[0] = 1\n    \n    for level in range(1, h + 1):\n        for red in range(r, level - 1, -1):\n            dp[red] = (dp[red] + dp[red - level]) % mod\n    \n    max_possible_red = min(r, total_blocks)\n    min_possible_red = max(0, total_blocks - g)\n    ans = 0\n    for red in range(min_possible_red, max_possible_red + 1):\n        ans = (ans + dp[red]) % mod\n    print(ans)\n\nif __name__ == \"__main__\":\n    main()\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 1,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```python\nimport sys\n\ndef main():\n    mod = 10**9 + 7\n    r, g = map(int, sys.stdin.readline().split())\n    \n    # Find the maximum possible h\n    low = 0\n    high = 2 * 10**5\n    h = 0\n    while low <= high:\n        mid = (low + high) // 2\n        total = mid * (mid + 1) // 2\n        if total <= r + g:\n            h = mid\n            low = mid + 1\n        else:\n            high = mid - 1\n    \n    total_blocks = h * (h + 1) // 2\n    dp = [0] * (r + 1)\n    dp[0] = 1\n    \n    for level in range(1, h + 1):\n        for x in range(r, level - 1, -1):\n            dp[x] = (dp[x] + dp[x - level]) % mod\n    \n    max_red = min(r, total_blocks)\n    min_red = max(0, total_blocks - g)\n    ans = 0\n    for x in range(min_red, max_red + 1):\n        ans = (ans + dp[x]) % mod\n    print(ans)\n\nif __name__ == \"__main__\":\n    main()\n``` ||END-of-SRC||"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 2,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```python\nimport sys\n\ndef main():\n    mod = 10**9 + 7\n    r, g = map(int, sys.stdin.readline().split())\n    \n    # Find the maximum possible h\n    low = 0\n    high = 2 * 10**5\n    h = 0\n    while low <= high:\n        mid = (low + high) // 2\n        total = mid * (mid + 1) // 2\n        if total <= r + g:\n            h = mid\n            low = mid + 1\n        else:\n            high = mid - 1\n    \n    total_blocks = h * (h + 1) // 2\n    dp = [0] * (r + 1)\n    dp[0] = 1\n    \n    for level in range(1, h + 1):\n        for x in range(r, level - 1, -1):\n            dp[x] = (dp[x] + dp[x - level]) % mod\n    \n    max_r = min(r, total_blocks)\n    min_r = max(0, total_blocks - g)\n    ans = 0\n    for x in range(min_r, max_r + 1):\n        ans = (ans + dp[x]) % mod\n    print(ans)\n\nif __name__ == \"__main__\":\n    main()\n``` ||END-of-SRC||"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 3,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```python\nimport sys\n\ndef main():\n    mod = 10**9 + 7\n    r, g = map(int, sys.stdin.readline().split())\n    \n    # Find the maximum possible h\n    low = 0\n    high = 2 * 10**5\n    h = 0\n    while low <= high:\n        mid = (low + high) // 2\n        total = mid * (mid + 1) // 2\n        if total <= r + g:\n            h = mid\n            low = mid + 1\n        else:\n            high = mid - 1\n    \n    total_blocks = h * (h + 1) // 2\n    dp = [0] * (r + 1)\n    dp[0] = 1\n    \n    for level in range(1, h + 1):\n        for red in range(r, level - 1, -1):\n            dp[red] = (dp[red] + dp[red - level]) % mod\n    \n    max_possible_red = min(r, total_blocks)\n    min_possible_red = max(0, total_blocks - g)\n    ans = 0\n    for red in range(min_possible_red, max_possible_red + 1):\n        ans = (ans + dp[red]) % mod\n    print(ans)\n\nif __name__ == \"__main__\":\n    main()\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 4,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```python\nimport sys\n\ndef main():\n    mod = 10**9 + 7\n    r, g = map(int, sys.stdin.readline().split())\n    \n    # Find the maximum possible h\n    low = 0\n    high = 2 * 10**5\n    h = 0\n    while low <= high:\n        mid = (low + high) // 2\n        total = mid * (mid + 1) // 2\n        if total <= r + g:\n            h = mid\n            low = mid + 1\n        else:\n            high = mid - 1\n    \n    total_blocks = h * (h + 1) // 2\n    dp = [0] * (r + 1)\n    dp[0] = 1\n    \n    for level in range(1, h + 1):\n        for x in range(r, level - 1, -1):\n            dp[x] = (dp[x] + dp[x - level]) % mod\n    \n    max_r = min(r, total_blocks)\n    min_r = max(0, total_blocks - g)\n    ans = 0\n    for x in range(min_r, max_r + 1):\n        ans = (ans + dp[x]) % mod\n    print(ans)\n\nif __name__ == \"__main__\":\n    main()\n``` ||END-of-SRC||"
+                    },
+                    "finish_reason": "stop"
+                }
+            ],
+            "usage": {
+                "prompt_tokens": 5325,
+                "completion_tokens": 1509,
+                "total_tokens": 6834
+            }
+        }
+    },
+    "source_data": {
+        "prob_desc_memory_limit": "256 megabytes",
+        "tags": [
+            "dp"
+        ],
+        "prob_desc_created_at": "1413474000",
+        "fix_source_code": "",
+        "prob_desc_input_spec": "The only line of input contains two integers r and g, separated by a single space \u2014 the number of available red and green blocks respectively (0\u2009\u2264\u2009r,\u2009g\u2009\u2264\u20092\u00b7105, r\u2009+\u2009g\u2009\u2265\u20091).",
+        "prob_desc_sample_outputs": [
+            "2",
+            "6",
+            "2"
+        ],
+        "src_uid": "34b6286350e3531c1fbda6b0c184addc",
+        "prob_desc_time_limit": "2 seconds",
+        "fix_exec_outcome": "",
+        "delete_cnt": 1,
+        "apr_id": "6a9ff612b267dc844bcdfd190d391fbd",
+        "fix_code_uid": "",
+        "lang_cluster": "Python",
+        "prob_desc_sample_inputs": [
+            "4 6",
+            "9 7",
+            "1 1"
+        ],
+        "prob_desc_output_to": "standard output",
+        "file_name": "Python.jsonl",
+        "equal_cnt": 4,
+        "lang": "PyPy 3",
+        "prob_desc_output_spec": "Output the only integer \u2014 the number of different possible red-green towers of height h modulo\u00a0109\u2009+\u20097.",
+        "bug_exec_outcome": "TIME_LIMIT_EXCEEDED",
+        "prob_desc_notes": "NoteThe image in the problem statement shows all possible red-green towers for the first sample.",
+        "difficulty": 2000.0,
+        "similarity_score": 0.9958251119,
+        "prob_desc_description": "There are r red and g green blocks for construction of the red-green tower. Red-green tower can be built following next rules:  Red-green tower is consisting of some number of levels;  Let the red-green tower consist of n levels, then the first level of this tower should consist of n blocks, second level \u2014 of n\u2009-\u20091 blocks, the third one \u2014 of n\u2009-\u20092 blocks, and so on \u2014 the last level of such tower should consist of the one block. In other words, each successive level should contain one block less than the previous one;  Each level of the red-green tower should contain blocks of the same color.  Let h be the maximum possible number of levels of red-green tower, that can be built out of r red and g green blocks meeting the rules above. The task is to determine how many different red-green towers having h levels can be built out of the available blocks.Two red-green towers are considered different if there exists some level, that consists of red blocks in the one tower and consists of green blocks in the other tower.You are to write a program that will find the number of different red-green towers of height h modulo\u00a0109\u2009+\u20097.",
+        "potential_dominant_fix_op": "replace",
+        "bug_source_code": "# by the authority of GOD     author: manhar singh sachdev #\n\nimport os,sys\nfrom io import BytesIO, IOBase\nfrom collections import Counter\n\ndef main():\n    mod = 10**9+7\n    r,g = map(int,input().split())\n    n = 1\n    while r+g >= (n*(n+1))//2:\n        n += 1\n    n -= 1\n    tot = n*(n+1)//2\n    dp = [0]*(tot+1)\n    dp[0] = 1\n    for i in range(1,n+1):\n        for x in range(tot-i,-1,-1):\n            dp[i+x] += dp[x]\n            dp[i+x] %= mod\n    ans = 0\n    for i,val in enumerate(dp):\n        if i <= r and tot-i <= g:\n            ans += val\n            ans %= mod\n    print(ans)\n\n#Fast IO Region\nBUFSIZE = 8192\nclass FastIO(IOBase):\n    newlines = 0\n    def __init__(self, file):\n        self._fd = file.fileno()\n        self.buffer = BytesIO()\n        self.writable = \"x\" in file.mode or \"r\" not in file.mode\n        self.write = self.buffer.write if self.writable else None\n    def read(self):\n        while True:\n            b = os.read(self._fd, max(os.fstat(self._fd).st_size, BUFSIZE))\n            if not b:\n                break\n            ptr = self.buffer.tell()\n            self.buffer.seek(0, 2), self.buffer.write(b), self.buffer.seek(ptr)\n        self.newlines = 0\n        return self.buffer.read()\n    def readline(self):\n        while self.newlines == 0:\n            b = os.read(self._fd, max(os.fstat(self._fd).st_size, BUFSIZE))\n            self.newlines = b.count(b\"\\n\") + (not b)\n            ptr = self.buffer.tell()\n            self.buffer.seek(0, 2), self.buffer.write(b), self.buffer.seek(ptr)\n        self.newlines -= 1\n        return self.buffer.readline()\n    def flush(self):\n        if self.writable:\n            os.write(self._fd, self.buffer.getvalue())\n            self.buffer.truncate(0), self.buffer.seek(0)\nclass IOWrapper(IOBase):\n    def __init__(self, file):\n        self.buffer = FastIO(file)\n        self.flush = self.buffer.flush\n        self.writable = self.buffer.writable\n        self.write = lambda s: self.buffer.write(s.encode(\"ascii\"))\n        self.read = lambda: self.buffer.read().decode(\"ascii\")\n        self.readline = lambda: self.buffer.readline().decode(\"ascii\")\nsys.stdin, sys.stdout = IOWrapper(sys.stdin), IOWrapper(sys.stdout)\ninput = lambda: sys.stdin.readline().rstrip(\"\\r\\n\")\n\nif __name__ == '__main__':\n    main()",
+        "replace_cnt": 2,
+        "prob_desc_input_from": "standard input",
+        "bug_code_uid": "793bfc8a6b300f1c186c19f088e329cb",
+        "insert_cnt": 0,
+        "fix_ops_cnt": 3,
+        "hidden_unit_tests": "[{\"input\": \"4 6\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"9 7\\r\\n\", \"output\": [\"6\"]}, {\"input\": \"1 1\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"3 3\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"2 19\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"18 3\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"100000 1\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"1 100000\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"6 6\\r\\n\", \"output\": [\"6\"]}, {\"input\": \"10 10\\r\\n\", \"output\": [\"18\"]}, {\"input\": \"200000 200000\\r\\n\", \"output\": [\"206874596\"]}, {\"input\": \"0 1\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"1 0\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"0 200000\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"200000 0\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"199396 0\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"199395 0\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"0 199397\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"121147 78249\\r\\n\", \"output\": [\"64290784\"]}, {\"input\": \"78250 121147\\r\\n\", \"output\": [\"981737243\"]}, {\"input\": \"121146 78249\\r\\n\", \"output\": [\"832902708\"]}, {\"input\": \"199585 199586\\r\\n\", \"output\": [\"438320405\"]}, {\"input\": \"199586 199586\\r\\n\", \"output\": [\"876640810\"]}, {\"input\": \"199585 199585\\r\\n\", \"output\": [\"199771918\"]}, {\"input\": \"107344 159729\\r\\n\", \"output\": [\"849320920\"]}, {\"input\": \"2954 1977\\r\\n\", \"output\": [\"835530858\"]}, {\"input\": \"25580 17318\\r\\n\", \"output\": [\"263898876\"]}, {\"input\": \"89671 32487\\r\\n\", \"output\": [\"654128709\"]}, {\"input\": \"38 36\\r\\n\", \"output\": [\"612\"]}, {\"input\": \"136749 183300\\r\\n\", \"output\": [\"906576609\"]}, {\"input\": \"10000 10000\\r\\n\", \"output\": [\"885988055\"]}, {\"input\": \"200000 199999\\r\\n\", \"output\": [\"396481680\"]}]"
+    }
+}

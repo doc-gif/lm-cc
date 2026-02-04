@@ -1,0 +1,87 @@
+{
+    "oai_response": {
+        "prompt": "Here is code in Python 3 programming lanaguge. Translate the following code from Python 3 to C programming lanaguge. Do not output any extra description or tokens other than the translated code. \n\nfrom functools import reduce\nn,k,m = map(int, input().split())\nt = list(map(int, input().split()))\nt.sort()\nsum = reduce(lambda x,y: x+y, t)\nmx = 0\nfull = 0\nwhile full <= n and full*sum <= m:\n\tcnt = full*k + full\n\tfree_time = m - sum*full\n\tfor time in t:\n\t\ttasks = min(n - full, free_time // time) \n\t\tcnt += tasks\n\t\tfree_time -= tasks*time\n\tmx = max(mx, cnt)\n\tfull += 1\nprint(mx)\t\n\n\n\n\n\n\n\n\n\n\n||END-of-SRC||",
+        "response": {
+            "id": "multi-call-as-aeajyti92w",
+            "model": "deepseek-v3",
+            "created": 1767069807,
+            "choices": [
+                {
+                    "index": 0,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <stdlib.h>\n\nint compare(const void *a, const void *b) {\n    return (*(int*)a - *(int*)b);\n}\n\nint main() {\n    int n, k, m;\n    scanf(\"%d %d %d\", &n, &k, &m);\n    \n    int t[n];\n    for (int i = 0; i < n; i++) {\n        scanf(\"%d\", &t[i]);\n    }\n    qsort(t, n, sizeof(int), compare);\n    \n    int sum = 0;\n    for (int i = 0; i < n; i++) {\n        sum += t[i];\n    }\n    \n    int mx = 0;\n    int full = 0;\n    while (full <= n && full * sum <= m) {\n        int cnt = full * k + full;\n        int free_time = m - sum * full;\n        for (int i = 0; i < n; i++) {\n            int tasks = (n - full < free_time / t[i]) ? n - full : free_time / t[i];\n            cnt += tasks;\n            free_time -= tasks * t[i];\n        }\n        if (cnt > mx) {\n            mx = cnt;\n        }\n        full++;\n    }\n    printf(\"%d\\n\", mx);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 1,
+                    "message": {
+                        "role": "assistant",
+                        "content": "Here's the C translation of your Python code:\n\n```c\n#include <stdio.h>\n#include <stdlib.h>\n\nint compare(const void *a, const void *b) {\n    return (*(int*)a - *(int*)b);\n}\n\nint main() {\n    int n, k, m;\n    scanf(\"%d %d %d\", &n, &k, &m);\n    \n    int *t = malloc(n * sizeof(int));\n    for (int i = 0; i < n; i++) {\n        scanf(\"%d\", &t[i]);\n    }\n    qsort(t, n, sizeof(int), compare);\n    \n    int sum = 0;\n    for (int i = 0; i < n; i++) {\n        sum += t[i];\n    }\n    \n    int mx = 0;\n    int full = 0;\n    while (full <= n && full * sum <= m) {\n        int cnt = full * k + full;\n        int free_time = m - sum * full;\n        for (int i = 0; i < n; i++) {\n            int tasks = (n - full < free_time / t[i]) ? n - full : free_time / t[i];\n            cnt += tasks;\n            free_time -= tasks * t[i];\n        }\n        if (cnt > mx) {\n            mx = cnt;\n        }\n        full++;\n    }\n    printf(\"%d\\n\", mx);\n    free(t);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 2,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <stdlib.h>\n\nint compare(const void *a, const void *b) {\n    return (*(int*)a - *(int*)b);\n}\n\nint main() {\n    int n, k, m;\n    scanf(\"%d %d %d\", &n, &k, &m);\n    \n    int t[n];\n    for(int i = 0; i < n; i++) {\n        scanf(\"%d\", &t[i]);\n    }\n    qsort(t, n, sizeof(int), compare);\n    \n    int sum = 0;\n    for(int i = 0; i < n; i++) {\n        sum += t[i];\n    }\n    \n    int mx = 0;\n    int full = 0;\n    while(full <= n && full * sum <= m) {\n        int cnt = full * k + full;\n        int free_time = m - sum * full;\n        for(int i = 0; i < n; i++) {\n            int tasks = (n - full < free_time / t[i]) ? n - full : free_time / t[i];\n            cnt += tasks;\n            free_time -= tasks * t[i];\n        }\n        if(cnt > mx) {\n            mx = cnt;\n        }\n        full++;\n    }\n    printf(\"%d\\n\", mx);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 3,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <stdlib.h>\n\nint compare(const void *a, const void *b) {\n    return (*(int*)a - *(int*)b);\n}\n\nint main() {\n    int n, k, m;\n    scanf(\"%d %d %d\", &n, &k, &m);\n    int t[n];\n    for (int i = 0; i < n; i++) {\n        scanf(\"%d\", &t[i]);\n    }\n    qsort(t, n, sizeof(int), compare);\n    \n    int sum = 0;\n    for (int i = 0; i < n; i++) {\n        sum += t[i];\n    }\n    \n    int mx = 0;\n    int full = 0;\n    while (full <= n && full * sum <= m) {\n        int cnt = full * k + full;\n        int free_time = m - sum * full;\n        for (int i = 0; i < n; i++) {\n            int tasks = (n - full < free_time / t[i]) ? n - full : free_time / t[i];\n            cnt += tasks;\n            free_time -= tasks * t[i];\n        }\n        if (cnt > mx) {\n            mx = cnt;\n        }\n        full++;\n    }\n    printf(\"%d\\n\", mx);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 4,
+                    "message": {
+                        "role": "assistant",
+                        "content": "Here's the C translation of your Python code:\n\n```c\n#include <stdio.h>\n#include <stdlib.h>\n\nint compare(const void *a, const void *b) {\n    return (*(int*)a - *(int*)b);\n}\n\nint main() {\n    int n, k, m;\n    scanf(\"%d %d %d\", &n, &k, &m);\n    \n    int *t = malloc(n * sizeof(int));\n    for (int i = 0; i < n; i++) {\n        scanf(\"%d\", &t[i]);\n    }\n    qsort(t, n, sizeof(int), compare);\n    \n    int sum = 0;\n    for (int i = 0; i < n; i++) {\n        sum += t[i];\n    }\n    \n    int mx = 0;\n    int full = 0;\n    while (full <= n && full * sum <= m) {\n        int cnt = full * k + full;\n        int free_time = m - sum * full;\n        for (int i = 0; i < n; i++) {\n            int tasks = (n - full < free_time / t[i]) ? n - full : free_time / t[i];\n            cnt += tasks;\n            free_time -= tasks * t[i];\n        }\n        if (cnt > mx) {\n            mx = cnt;\n        }\n        full++;\n    }\n    printf(\"%d\\n\", mx);\n    free(t);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                }
+            ],
+            "usage": {
+                "prompt_tokens": 945,
+                "completion_tokens": 1490,
+                "total_tokens": 2435
+            }
+        }
+    },
+    "source_data": {
+        "code_uid": "e5ce00b1347e8b301630572b939d03b9",
+        "prob_desc_output_to": "standard output",
+        "prob_desc_notes": "NoteIn the first example Polycarp can complete the first task and spend 1\u2009+\u20092\u2009+\u20093\u2009+\u20094\u2009=\u200910 minutes. He also has the time to solve one subtask of the second task in one minute.In the second example Polycarp can solve the first subtask of all five tasks and spend 5\u00b71\u2009=\u20095 minutes. Also he can solve the second subtasks of two tasks and spend 2\u00b72\u2009=\u20094 minutes. Thus, he earns 5\u2009+\u20092\u2009=\u20097 points in total.",
+        "lang_cluster": "Python",
+        "prob_desc_time_limit": "1 second",
+        "prob_desc_input_spec": "The first line contains three integer numbers n, k and M (1\u2009\u2264\u2009n\u2009\u2264\u200945, 1\u2009\u2264\u2009k\u2009\u2264\u200945, 0\u2009\u2264\u2009M\u2009\u2264\u20092\u00b7109). The second line contains k integer numbers, values tj (1\u2009\u2264\u2009tj\u2009\u2264\u20091000000), where tj is the time in minutes required to solve j-th subtask of any task.",
+        "source_code": "from functools import reduce\nn,k,m = map(int, input().split())\nt = list(map(int, input().split()))\nt.sort()\nsum = reduce(lambda x,y: x+y, t)\nmx = 0\nfull = 0\nwhile full <= n and full*sum <= m:\n\tcnt = full*k + full\n\tfree_time = m - sum*full\n\tfor time in t:\n\t\ttasks = min(n - full, free_time // time) \n\t\tcnt += tasks\n\t\tfree_time -= tasks*time\n\tmx = max(mx, cnt)\n\tfull += 1\nprint(mx)\t\n\n\n\n\n\n\n\n\n\n\n",
+        "prob_desc_sample_inputs": [
+            "3 4 11\n1 2 3 4",
+            "5 5 10\n1 2 4 8 16"
+        ],
+        "prob_desc_memory_limit": "256 megabytes",
+        "exec_outcome": "PASSED",
+        "prob_desc_output_spec": "Print the maximum amount of points Polycarp can earn in M minutes.",
+        "src_uid": "d659e92a410c1bc836be64fc1c0db160",
+        "prob_desc_input_from": "standard input",
+        "lang": "Python 3",
+        "prob_desc_sample_outputs": [
+            "6",
+            "7"
+        ],
+        "file_name": "d7021504500d5ca7c2b02df8100a574d159e6e67e20ec8071b75800b1267370a",
+        "prob_desc_description": "Polycarp takes part in a math show. He is given n tasks, each consists of k subtasks, numbered 1 through k. It takes him tj minutes to solve the j-th subtask of any task. Thus, time required to solve a subtask depends only on its index, but not on the task itself. Polycarp can solve subtasks in any order.By solving subtask of arbitrary problem he earns one point. Thus, the number of points for task is equal to the number of solved subtasks in it. Moreover, if Polycarp completely solves the task (solves all k of its subtasks), he recieves one extra point. Thus, total number of points he recieves for the complete solution of the task is k\u2009+\u20091.Polycarp has M minutes of time. What is the maximum number of points he can earn?",
+        "prob_desc_created_at": "1504623900",
+        "difficulty": 1800.0,
+        "hidden_unit_tests": "[{\"input\": \"3 4 11\\r\\n1 2 3 4\\r\\n\", \"output\": [\"6\"]}, {\"input\": \"5 5 10\\r\\n1 2 4 8 16\\r\\n\", \"output\": [\"7\"]}, {\"input\": \"1 1 0\\r\\n2\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"1 1 1\\r\\n1\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"2 1 0\\r\\n2\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"2 2 2\\r\\n2 3\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"4 2 15\\r\\n1 4\\r\\n\", \"output\": [\"9\"]}, {\"input\": \"24 42 126319796\\r\\n318996 157487 174813 189765 259136 406743 138997 377982 244813 16862 95438 346702 454882 274633 67361 387756 61951 448901 427272 288847 316578 416035 56608 211390 187241 191538 299856 294995 442139 95784 410894 439744 455044 301002 196932 352004 343622 73438 325186 295727 21130 32856\\r\\n\", \"output\": [\"677\"]}, {\"input\": \"5 3 10\\r\\n1 3 6\\r\\n\", \"output\": [\"6\"]}, {\"input\": \"5 3 50\\r\\n1 3 6\\r\\n\", \"output\": [\"20\"]}, {\"input\": \"5 3 2000000000\\r\\n1 3 6\\r\\n\", \"output\": [\"20\"]}, {\"input\": \"5 3 49\\r\\n1 3 6\\r\\n\", \"output\": [\"18\"]}, {\"input\": \"3 4 16\\r\\n1 2 3 4\\r\\n\", \"output\": [\"9\"]}, {\"input\": \"11 2 20\\r\\n1 9\\r\\n\", \"output\": [\"13\"]}, {\"input\": \"11 3 38\\r\\n1 9 9\\r\\n\", \"output\": [\"15\"]}, {\"input\": \"5 3 11\\r\\n1 1 2\\r\\n\", \"output\": [\"11\"]}, {\"input\": \"5 4 36\\r\\n1 3 7 7\\r\\n\", \"output\": [\"13\"]}, {\"input\": \"1 13 878179\\r\\n103865 43598 180009 528483 409585 449955 368163 381135 713512 645876 241515 20336 572091\\r\\n\", \"output\": [\"5\"]}, {\"input\": \"1 9 262522\\r\\n500878 36121 420012 341288 139726 362770 462113 261122 394426\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"45 32 252252766\\r\\n282963 74899 446159 159106 469932 288063 297289 501442 241341 240108 470371 316076 159136 72720 37365 108455 82789 529789 303825 392553 153053 389577 327929 277446 505280 494678 159006 505007 328366 460640 18354 313300\\r\\n\", \"output\": [\"1094\"]}, {\"input\": \"44 41 93891122\\r\\n447 314862 48587 198466 73450 166523 247421 50078 14115 229926 11070 53089 73041 156924 200782 53225 290967 219349 119034 88726 255048 59778 287298 152539 55104 170525 135722 111341 279873 168400 267489 157697 188015 94306 231121 304553 27684 46144 127122 166022 150941\\r\\n\", \"output\": [\"1084\"]}, {\"input\": \"12 45 2290987\\r\\n50912 189025 5162 252398 298767 154151 164139 185891 121047 227693 93549 284244 312843 313833 285436 131672 135248 324541 194905 205729 241315 32044 131902 305884 263 27717 173077 81428 285684 66470 220938 282471 234921 316283 30485 244283 170631 224579 72899 87066 6727 161661 40556 89162 314616\\r\\n\", \"output\": [\"95\"]}, {\"input\": \"42 9 4354122\\r\\n47443 52983 104606 84278 5720 55971 100555 90845 91972\\r\\n\", \"output\": [\"124\"]}, {\"input\": \"45 28 33631968\\r\\n5905 17124 64898 40912 75855 53868 27056 18284 63975 51975 27182 94373 52477 260 87551 50223 73798 77430 17510 15226 6269 43301 39592 27043 15546 60047 83400 63983\\r\\n\", \"output\": [\"979\"]}, {\"input\": \"18 3 36895\\r\\n877 2054 4051\\r\\n\", \"output\": [\"28\"]}, {\"input\": \"13 30 357\\r\\n427 117 52 140 162 58 5 149 438 327 103 357 202 1 148 238 442 200 438 97 414 301 224 166 254 322 378 422 90 312\\r\\n\", \"output\": [\"31\"]}, {\"input\": \"44 11 136\\r\\n77 38 12 71 81 15 66 47 29 22 71\\r\\n\", \"output\": [\"11\"]}, {\"input\": \"32 6 635\\r\\n3 4 2 1 7 7\\r\\n\", \"output\": [\"195\"]}, {\"input\": \"30 19 420\\r\\n2 2 1 2 2 1 1 2 1 2 2 2 1 2 2 2 2 1 2\\r\\n\", \"output\": [\"309\"]}, {\"input\": \"37 40 116\\r\\n1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1\\r\\n\", \"output\": [\"118\"]}, {\"input\": \"7 37 133\\r\\n1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1\\r\\n\", \"output\": [\"136\"]}, {\"input\": \"40 1 8\\r\\n3\\r\\n\", \"output\": [\"4\"]}, {\"input\": \"1 28 1\\r\\n3 3 2 2 1 1 3 1 1 2 2 1 1 3 3 1 1 1 1 1 3 1 3 3 3 2 2 3\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"12 1 710092\\r\\n145588\\r\\n\", \"output\": [\"8\"]}, {\"input\": \"1 7 47793\\r\\n72277 45271 85507 39251 45440 101022 105165\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"1 1 0\\r\\n4\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"1 2 3\\r\\n2 2\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"1 1 0\\r\\n5\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"1 1 3\\r\\n5\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"1 3 0\\r\\n6 3 4\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"1 2 0\\r\\n1 2\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"2 2 3\\r\\n7 2\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"2 4 5\\r\\n1 2 8 6\\r\\n\", \"output\": [\"3\"]}, {\"input\": \"2 1 0\\r\\n3\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"1 3 3\\r\\n16 4 5\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"2 1 0\\r\\n1\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"3 2 2\\r\\n6 1\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"3 2 1\\r\\n1 1\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"1 3 19\\r\\n12 15 6\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"2 2 8\\r\\n12 1\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"1 6 14\\r\\n15 2 6 13 14 4\\r\\n\", \"output\": [\"3\"]}, {\"input\": \"4 1 0\\r\\n1\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"2 2 5\\r\\n5 6\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"1 3 8\\r\\n5 4 4\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"1 5 44\\r\\n2 19 18 6 8\\r\\n\", \"output\": [\"4\"]}, {\"input\": \"3 2 7\\r\\n5 1\\r\\n\", \"output\": [\"4\"]}, {\"input\": \"4 2 9\\r\\n8 6\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"4 3 3\\r\\n6 12 7\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"4 1 2\\r\\n1\\r\\n\", \"output\": [\"4\"]}, {\"input\": \"2 4 15\\r\\n8 3 7 8\\r\\n\", \"output\": [\"3\"]}, {\"input\": \"6 1 2\\r\\n4\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"2 1 1\\r\\n1\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"1 1 2\\r\\n3\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"2 2 2\\r\\n1 4\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"6 2 78\\r\\n12 10\\r\\n\", \"output\": [\"10\"]}, {\"input\": \"1 3 10\\r\\n17 22 15\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"6 3 13\\r\\n1 2 3\\r\\n\", \"output\": [\"10\"]}, {\"input\": \"21 3 26\\r\\n1 2 3\\r\\n\", \"output\": [\"24\"]}, {\"input\": \"3 7 20012\\r\\n1 1 1 1 1 1 10000\\r\\n\", \"output\": [\"20\"]}, {\"input\": \"5 4 40\\r\\n4 2 3 3\\r\\n\", \"output\": [\"17\"]}, {\"input\": \"4 5 40\\r\\n4 1 3 2 4\\r\\n\", \"output\": [\"18\"]}, {\"input\": \"3 5 22\\r\\n1 1 4 1 1\\r\\n\", \"output\": [\"16\"]}, {\"input\": \"5 2 17\\r\\n3 4\\r\\n\", \"output\": [\"7\"]}, {\"input\": \"5 4 32\\r\\n4 2 1 1\\r\\n\", \"output\": [\"21\"]}, {\"input\": \"5 5 34\\r\\n4 1 1 2 4\\r\\n\", \"output\": [\"20\"]}, {\"input\": \"3 3 15\\r\\n1 2 1\\r\\n\", \"output\": [\"12\"]}, {\"input\": \"3 2 11\\r\\n1 2\\r\\n\", \"output\": [\"9\"]}, {\"input\": \"5 4 11\\r\\n2 1 3 4\\r\\n\", \"output\": [\"8\"]}, {\"input\": \"45 45 2000000000\\r\\n1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1\\r\\n\", \"output\": [\"2070\"]}]",
+        "source_lang": "Python 3",
+        "target_lang": "C"
+    }
+}

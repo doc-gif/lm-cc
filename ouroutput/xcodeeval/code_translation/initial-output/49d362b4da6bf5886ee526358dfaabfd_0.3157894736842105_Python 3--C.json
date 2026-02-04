@@ -1,0 +1,87 @@
+{
+    "oai_response": {
+        "prompt": "Here is code in Python 3 programming lanaguge. Translate the following code from Python 3 to C programming lanaguge. Do not output any extra description or tokens other than the translated code. \n\ns=input()\nprint((len(s)+1)*26-len(s))||END-of-SRC||",
+        "response": {
+            "id": "multi-call-as-id8usw0vi2",
+            "model": "deepseek-v3",
+            "created": 1767067221,
+            "choices": [
+                {
+                    "index": 0,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <string.h>\n\nint main() {\n    char s[1000];\n    scanf(\"%s\", s);\n    printf(\"%d\\n\", (strlen(s) + 1) * 26 - strlen(s));\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 1,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <string.h>\n\nint main() {\n    char s[1000];\n    scanf(\"%s\", s);\n    printf(\"%d\", (strlen(s) + 1) * 26 - strlen(s));\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 2,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <string.h>\n\nint main() {\n    char s[1000];\n    scanf(\"%s\", s);\n    printf(\"%d\\n\", (strlen(s) + 1) * 26 - strlen(s));\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 3,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <string.h>\n\nint main() {\n    char s[1000];\n    scanf(\"%s\", s);\n    printf(\"%d\\n\", (strlen(s) + 1) * 26 - strlen(s));\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 4,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <string.h>\n\nint main() {\n    char s[100];\n    scanf(\"%s\", s);\n    printf(\"%d\", (strlen(s) + 1) * 26 - strlen(s));\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                }
+            ],
+            "usage": {
+                "prompt_tokens": 330,
+                "completion_tokens": 298,
+                "total_tokens": 628
+            }
+        }
+    },
+    "source_data": {
+        "code_uid": "49d362b4da6bf5886ee526358dfaabfd",
+        "prob_desc_output_to": "standard output",
+        "prob_desc_notes": "NoteIn the first case, we can make 'ab','ac',...,'az','ba','ca',...,'za', and 'aa', producing a total of 51 distinct photo booklets. ",
+        "lang_cluster": "Python",
+        "prob_desc_time_limit": "2 seconds",
+        "prob_desc_input_spec": "The first line of input will be a single string s (1\u2009\u2264\u2009|s|\u2009\u2264\u200920). String s consists only of lowercase English letters. ",
+        "source_code": "s=input()\nprint((len(s)+1)*26-len(s))",
+        "prob_desc_sample_inputs": [
+            "a",
+            "hi"
+        ],
+        "prob_desc_memory_limit": "256 megabytes",
+        "exec_outcome": "PASSED",
+        "prob_desc_output_spec": "Output a single integer equal to the number of distinct photobooks Kyoya Ootori can make.",
+        "src_uid": "556684d96d78264ad07c0cdd3b784bc9",
+        "prob_desc_input_from": "standard input",
+        "lang": "Python 3",
+        "prob_desc_sample_outputs": [
+            "51",
+            "76"
+        ],
+        "file_name": "d7021504500d5ca7c2b02df8100a574d159e6e67e20ec8071b75800b1267370a",
+        "prob_desc_description": "Kyoya Ootori is selling photobooks of the Ouran High School Host Club. He has 26 photos, labeled \"a\" to \"z\", and he has compiled them into a photo booklet with some photos in some order (possibly with some photos being duplicated). A photo booklet can be described as a string of lowercase letters, consisting of the photos in the booklet in order. He now wants to sell some \"special edition\" photobooks, each with one extra photo inserted anywhere in the book. He wants to make as many distinct photobooks as possible, so he can make more money. He asks Haruhi, how many distinct photobooks can he make by inserting one extra photo into the photobook he already has?Please help Haruhi solve this problem.",
+        "prob_desc_created_at": "1435163400",
+        "difficulty": 900.0,
+        "hidden_unit_tests": "[{\"input\": \"a\\r\\n\", \"output\": [\"51\"]}, {\"input\": \"hi\\r\\n\", \"output\": [\"76\"]}, {\"input\": \"y\\r\\n\", \"output\": [\"51\"]}, {\"input\": \"kgan\\r\\n\", \"output\": [\"126\"]}, {\"input\": \"zoabkyuvus\\r\\n\", \"output\": [\"276\"]}, {\"input\": \"spyemhyznjieyhhbk\\r\\n\", \"output\": [\"451\"]}, {\"input\": \"xulsyfkuizjauadjjopu\\r\\n\", \"output\": [\"526\"]}, {\"input\": \"e\\r\\n\", \"output\": [\"51\"]}, {\"input\": \"zv\\r\\n\", \"output\": [\"76\"]}, {\"input\": \"jgv\\r\\n\", \"output\": [\"101\"]}, {\"input\": \"zsfo\\r\\n\", \"output\": [\"126\"]}, {\"input\": \"jselr\\r\\n\", \"output\": [\"151\"]}, {\"input\": \"dwemig\\r\\n\", \"output\": [\"176\"]}, {\"input\": \"mddoxsf\\r\\n\", \"output\": [\"201\"]}, {\"input\": \"jgirkrmi\\r\\n\", \"output\": [\"226\"]}, {\"input\": \"spkxurcum\\r\\n\", \"output\": [\"251\"]}, {\"input\": \"fykkiubdkt\\r\\n\", \"output\": [\"276\"]}, {\"input\": \"fznbcxsxygs\\r\\n\", \"output\": [\"301\"]}, {\"input\": \"qcrvrdqcbtou\\r\\n\", \"output\": [\"326\"]}, {\"input\": \"qktrbjzrqgmlr\\r\\n\", \"output\": [\"351\"]}, {\"input\": \"foamodbvptlxxg\\r\\n\", \"output\": [\"376\"]}, {\"input\": \"ydzpjhsidipricw\\r\\n\", \"output\": [\"401\"]}, {\"input\": \"lpfpndmjfvqejdgf\\r\\n\", \"output\": [\"426\"]}, {\"input\": \"ofkvparuvjtggnmab\\r\\n\", \"output\": [\"451\"]}, {\"input\": \"xxncfutrtxcwdzwbgs\\r\\n\", \"output\": [\"476\"]}, {\"input\": \"zovhffccflkgqncsdte\\r\\n\", \"output\": [\"501\"]}, {\"input\": \"cskgsxywlvfeicoueglr\\r\\n\", \"output\": [\"526\"]}, {\"input\": \"gggggggggggggggggggg\\r\\n\", \"output\": [\"526\"]}, {\"input\": \"qdqdddqddqqddqddqdqd\\r\\n\", \"output\": [\"526\"]}, {\"input\": \"takttttaakaaktakttkt\\r\\n\", \"output\": [\"526\"]}, {\"input\": \"coccoooogogcgocccmcg\\r\\n\", \"output\": [\"526\"]}, {\"input\": \"kskkskkkssksssk\\r\\n\", \"output\": [\"401\"]}, {\"input\": \"lllllllllllllll\\r\\n\", \"output\": [\"401\"]}]",
+        "source_lang": "Python 3",
+        "target_lang": "C"
+    }
+}

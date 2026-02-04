@@ -1,0 +1,91 @@
+{
+    "oai_response": {
+        "prompt": "Here is code in Python 3 programming lanaguge. Translate the following code from Python 3 to C programming lanaguge. Do not output any extra description or tokens other than the translated code. \n\nfrom math import gcd\r\n\r\nn, m = map(int, input().split())\r\nans=0\r\ncur=m\r\ng=2\r\nq=m*m\r\nfor i in range(2, n+1):\r\n    if gcd(g, i)==1 and g < 10 ** 13:\r\n        g*=i\r\n    cur*=m//g\r\n    cur=cur%998244353\r\n    ans+=q-cur\r\n    q*=m\r\n    q=q%998244353\r\n    ans=ans%998244353\r\nprint(ans%998244353)||END-of-SRC||",
+        "response": {
+            "id": "multi-call-as-6hnkibwuz8",
+            "model": "deepseek-v3",
+            "created": 1767068096,
+            "choices": [
+                {
+                    "index": 0,
+                    "message": {
+                        "role": "assistant",
+                        "content": "Here's the translated code in C:\n\n```c\n#include <stdio.h>\n#include <stdlib.h>\n#include <math.h>\n\nlong long gcd(long long a, long long b) {\n    while (b != 0) {\n        long long temp = b;\n        b = a % b;\n        a = temp;\n    }\n    return a;\n}\n\nint main() {\n    long long n, m;\n    scanf(\"%lld %lld\", &n, &m);\n    long long ans = 0;\n    long long cur = m;\n    long long g = 2;\n    long long q = m * m;\n    for (long long i = 2; i <= n; i++) {\n        if (gcd(g, i) == 1 && g < 10000000000000LL) {\n            g *= i;\n        }\n        cur = (m / g) * cur;\n        cur = cur % 998244353;\n        ans += q - cur;\n        q = q * m;\n        q = q % 998244353;\n        ans = ans % 998244353;\n    }\n    printf(\"%lld\\n\", ans % 998244353);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 1,
+                    "message": {
+                        "role": "assistant",
+                        "content": "Here's the translated code in C:\n\n```c\n#include <stdio.h>\n#include <stdlib.h>\n#include <math.h>\n\nlong long gcd(long long a, long long b) {\n    while (b != 0) {\n        long long temp = b;\n        b = a % b;\n        a = temp;\n    }\n    return a;\n}\n\nint main() {\n    long long n, m;\n    scanf(\"%lld %lld\", &n, &m);\n    long long ans = 0;\n    long long cur = m;\n    long long g = 2;\n    long long q = m * m;\n    for (long long i = 2; i <= n; i++) {\n        if (gcd(g, i) == 1 && g < 10000000000000LL) {\n            g *= i;\n        }\n        cur *= m / g;\n        cur %= 998244353;\n        ans += q - cur;\n        q *= m;\n        q %= 998244353;\n        ans %= 998244353;\n    }\n    printf(\"%lld\\n\", ans % 998244353);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 2,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <stdlib.h>\n\nlong long gcd(long long a, long long b) {\n    while (b != 0) {\n        long long temp = b;\n        b = a % b;\n        a = temp;\n    }\n    return a;\n}\n\nint main() {\n    long long n, m;\n    scanf(\"%lld %lld\", &n, &m);\n    long long ans = 0;\n    long long cur = m;\n    long long g = 2;\n    long long q = m * m;\n    for (long long i = 2; i <= n; i++) {\n        if (gcd(g, i) == 1 && g < 10000000000000LL) {\n            g *= i;\n        }\n        cur *= m / g;\n        cur %= 998244353;\n        ans += q - cur;\n        q *= m;\n        q %= 998244353;\n        ans %= 998244353;\n    }\n    printf(\"%lld\\n\", ans % 998244353);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 3,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <stdlib.h>\n\nlong long gcd(long long a, long long b) {\n    while (b != 0) {\n        long long temp = b;\n        b = a % b;\n        a = temp;\n    }\n    return a;\n}\n\nint main() {\n    long long n, m;\n    scanf(\"%lld %lld\", &n, &m);\n    long long ans = 0;\n    long long cur = m;\n    long long g = 2;\n    long long q = m * m;\n    for (long long i = 2; i <= n; i++) {\n        if (gcd(g, i) == 1 && g < 10000000000000LL) {\n            g *= i;\n        }\n        cur *= m / g;\n        cur %= 998244353;\n        ans += q - cur;\n        q *= m;\n        q %= 998244353;\n        ans %= 998244353;\n    }\n    printf(\"%lld\\n\", ans % 998244353);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 4,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <stdlib.h>\n\nlong long gcd(long long a, long long b) {\n    while (b != 0) {\n        long long temp = b;\n        b = a % b;\n        a = temp;\n    }\n    return a;\n}\n\nint main() {\n    long long n, m;\n    scanf(\"%lld %lld\", &n, &m);\n    long long ans = 0;\n    long long cur = m;\n    long long g = 2;\n    long long q = m * m;\n    for (long long i = 2; i <= n; i++) {\n        if (gcd(g, i) == 1 && g < 10000000000000LL) {\n            g *= i;\n        }\n        cur *= m / g;\n        cur %= 998244353;\n        ans += q - cur;\n        q *= m;\n        q %= 998244353;\n        ans %= 998244353;\n    }\n    printf(\"%lld\\n\", ans % 998244353);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                }
+            ],
+            "usage": {
+                "prompt_tokens": 930,
+                "completion_tokens": 1198,
+                "total_tokens": 2128
+            }
+        }
+    },
+    "source_data": {
+        "code_uid": "6078f4eee45066f993b9b89473efa371",
+        "prob_desc_output_to": "standard output",
+        "prob_desc_notes": null,
+        "lang_cluster": "Python",
+        "prob_desc_time_limit": "2 seconds",
+        "prob_desc_input_spec": "The only line of the input contains two integers $$$n$$$ and $$$m$$$ ($$$2 \\le n \\le 3 \\cdot 10^5$$$; $$$1 \\le m \\le 10^{12}$$$).",
+        "source_code": "from math import gcd\r\n\r\nn, m = map(int, input().split())\r\nans=0\r\ncur=m\r\ng=2\r\nq=m*m\r\nfor i in range(2, n+1):\r\n    if gcd(g, i)==1 and g < 10 ** 13:\r\n        g*=i\r\n    cur*=m//g\r\n    cur=cur%998244353\r\n    ans+=q-cur\r\n    q*=m\r\n    q=q%998244353\r\n    ans=ans%998244353\r\nprint(ans%998244353)",
+        "prob_desc_sample_inputs": [
+            "2 3",
+            "4 2",
+            "4 6",
+            "1337 424242424242"
+        ],
+        "prob_desc_memory_limit": "512 megabytes",
+        "exec_outcome": "PASSED",
+        "prob_desc_output_spec": "Print one integer \u2014 the number of ambiguous arrays $$$a$$$ such that the length of $$$a$$$ is from $$$1$$$ to $$$n$$$ and each $$$a_i$$$ is an integer from $$$1$$$ to $$$m$$$. Since the answer can be very large, print it modulo $$$998244353$$$.",
+        "src_uid": "0fdd91ed33431848614075ebe9d2ee68",
+        "prob_desc_input_from": "standard input",
+        "lang": "Python 3",
+        "prob_desc_sample_outputs": [
+            "6",
+            "26",
+            "1494",
+            "119112628"
+        ],
+        "file_name": "d7021504500d5ca7c2b02df8100a574d159e6e67e20ec8071b75800b1267370a",
+        "prob_desc_description": "Consider an array $$$a$$$ of length $$$n$$$ with elements numbered from $$$1$$$ to $$$n$$$. It is possible to remove the $$$i$$$-th element of $$$a$$$ if $$$gcd(a_i, i) = 1$$$, where $$$gcd$$$ denotes the greatest common divisor. After an element is removed, the elements to the right are shifted to the left by one position.An array $$$b$$$ with $$$n$$$ integers such that $$$1 \\le b_i \\le n - i + 1$$$ is a removal sequence for the array $$$a$$$ if it is possible to remove all elements of $$$a$$$, if you remove the $$$b_1$$$-th element, then the $$$b_2$$$-th, ..., then the $$$b_n$$$-th element. For example, let $$$a = [42, 314]$$$:  $$$[1, 1]$$$ is a removal sequence: when you remove the $$$1$$$-st element of the array, the condition $$$gcd(42, 1) = 1$$$ holds, and the array becomes $$$[314]$$$; when you remove the $$$1$$$-st element again, the condition $$$gcd(314, 1) = 1$$$ holds, and the array becomes empty.  $$$[2, 1]$$$ is not a removal sequence: when you try to remove the $$$2$$$-nd element, the condition $$$gcd(314, 2) = 1$$$ is false. An array is ambiguous if it has at least two removal sequences. For example, the array $$$[1, 2, 5]$$$ is ambiguous: it has removal sequences $$$[3, 1, 1]$$$ and $$$[1, 2, 1]$$$. The array $$$[42, 314]$$$ is not ambiguous: the only removal sequence it has is $$$[1, 1]$$$.You are given two integers $$$n$$$ and $$$m$$$. You have to calculate the number of ambiguous arrays $$$a$$$ such that the length of $$$a$$$ is from $$$1$$$ to $$$n$$$ and each $$$a_i$$$ is an integer from $$$1$$$ to $$$m$$$.",
+        "prob_desc_created_at": "1666276500",
+        "difficulty": 1900.0,
+        "hidden_unit_tests": "[{\"input\": \"2 3\\n\", \"output\": [\"6\\n\", \"\\n6\", \"6\", \"6\\n\", \"6 \\n\", \"6 \", \"6\\n\\n\", \"6\\n\\n\\n\", \"6\\n\\n\"]}, {\"input\": \"4 2\\n\", \"output\": [\"\\n26\", \"26 \\n\", \"26\\n\", \"26\", \"26\\n\\n\", \"26\\n\\n\\n\", \"26\\n\\n\", \"26\\n\", \"26 \"]}, {\"input\": \"4 6\\n\", \"output\": [\"1494\\n\", \"1494\\n\\n\", \"1494\", \"1494 \", \"1494\\n\\n\\n\", \"1494 \\n\", \"\\n1494\", \"1494\\n\", \"1494\\n\\n\"]}, {\"input\": \"1337 424242424242\\n\", \"output\": [\"119112628 \\n\", \"119112628\\n\\n\", \"119112628\\n\\n\", \"\\n119112628\", \"119112628\\n\", \"119112628 \", \"119112628\", \"119112628\\n\\n\\n\", \"119112628\\n\"]}, {\"input\": \"300000 1000000000\\n\", \"output\": [\"590856313 \\n\", \"590856313 \", \"590856313\", \"590856313\\n\", \"590856313\\n\\n\", \"590856313\\n\", \"590856313\\n\\n\\n\", \"\\n590856313\", \"590856313\\n\\n\"]}, {\"input\": \"300000 1\\n\", \"output\": [\"299999\\n\", \"299999 \\n\", \"299999 \", \"\\n299999\", \"299999\\n\\n\\n\", \"299999\\n\", \"299999\\n\\n\", \"299999\\n\\n\", \"299999\"]}, {\"input\": \"2 1\\n\", \"output\": [\"\\n1\", \"1\\n\\n\\n\", \"1\", \"1\\n\", \"1\\n\\n\", \"1 \\n\", \"1\\n\\n\", \"1 \", \"1\\n\"]}, {\"input\": \"2 1000000000000\\n\", \"output\": [\"\\n138131255\", \"138131255\", \"138131255\\n\", \"138131255\\n\", \"138131255\\n\\n\", \"138131255\\n\\n\", \"138131255\\n\\n\\n\", \"138131255 \\n\", \"138131255 \"]}, {\"input\": \"17957 2\\n\", \"output\": [\"653647969\", \"653647969\\n\", \"653647969 \\n\", \"653647969\\n\", \"653647969\\n\\n\", \"\\n653647969\", \"653647969\\n\\n\\n\", \"653647969 \", \"653647969\\n\\n\"]}]",
+        "source_lang": "Python 3",
+        "target_lang": "C"
+    }
+}

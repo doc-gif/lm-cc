@@ -1,0 +1,89 @@
+{
+    "oai_response": {
+        "prompt": "Here is code in Python 3 programming lanaguge. Translate the following code from Python 3 to C programming lanaguge. Do not output any extra description or tokens other than the translated code. \n\nx, y = map(int, input().split())\na, b = map(int, input().split())\nc, d = map(int, input().split())\n\ndef solve():\n  for X, Y in [(x, y), (y, x)]:\n    for A, B in [(a, b), (b, a)]:\n      for C, D in [(c, d), (d, c)]:\n        if A + C <= X and max(B, D) <= Y:\n          return 'YES'\n  return 'NO'\n\nprint(solve())\n||END-of-SRC||",
+        "response": {
+            "id": "multi-call-as-j5u30hxmai",
+            "model": "deepseek-v3",
+            "created": 1767068485,
+            "choices": [
+                {
+                    "index": 0,
+                    "message": {
+                        "role": "assistant",
+                        "content": "Here's the translated code in C:\n\n```c\n#include <stdio.h>\n\nint x, y, a, b, c, d;\n\nchar* solve() {\n    int X, Y, A, B, C, D;\n    int cases[2][2] = {{x, y}, {y, x}};\n    for (int i = 0; i < 2; i++) {\n        X = cases[i][0];\n        Y = cases[i][1];\n        int ab[2][2] = {{a, b}, {b, a}};\n        for (int j = 0; j < 2; j++) {\n            A = ab[j][0];\n            B = ab[j][1];\n            int cd[2][2] = {{c, d}, {d, c}};\n            for (int k = 0; k < 2; k++) {\n                C = cd[k][0];\n                D = cd[k][1];\n                if (A + C <= X && (B > D ? B : D) <= Y) {\n                    return \"YES\";\n                }\n            }\n        }\n    }\n    return \"NO\";\n}\n\nint main() {\n    scanf(\"%d %d\", &x, &y);\n    scanf(\"%d %d\", &a, &b);\n    scanf(\"%d %d\", &c, &d);\n    printf(\"%s\\n\", solve());\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 1,
+                    "message": {
+                        "role": "assistant",
+                        "content": "Here's the translated code in C:\n\n```c\n#include <stdio.h>\n\nint x, y, a, b, c, d;\n\nchar* solve() {\n    int X, Y, A, B, C, D;\n    int combinations[2][2] = {{x, y}, {y, x}};\n    int ab[2][2] = {{a, b}, {b, a}};\n    int cd[2][2] = {{c, d}, {d, c}};\n    \n    for (int i = 0; i < 2; i++) {\n        X = combinations[i][0];\n        Y = combinations[i][1];\n        for (int j = 0; j < 2; j++) {\n            A = ab[j][0];\n            B = ab[j][1];\n            for (int k = 0; k < 2; k++) {\n                C = cd[k][0];\n                D = cd[k][1];\n                if (A + C <= X && (B > D ? B : D) <= Y) {\n                    return \"YES\";\n                }\n            }\n        }\n    }\n    return \"NO\";\n}\n\nint main() {\n    scanf(\"%d %d\", &x, &y);\n    scanf(\"%d %d\", &a, &b);\n    scanf(\"%d %d\", &c, &d);\n    printf(\"%s\\n\", solve());\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 2,
+                    "message": {
+                        "role": "assistant",
+                        "content": "Here's the translated code in C:\n\n```c\n#include <stdio.h>\n\nint x, y, a, b, c, d;\n\nchar* solve() {\n    int X, Y, A, B, C, D;\n    int combinations[2][2] = {{x, y}, {y, x}};\n    int ab[2][2] = {{a, b}, {b, a}};\n    int cd[2][2] = {{c, d}, {d, c}};\n    \n    for (int i = 0; i < 2; i++) {\n        X = combinations[i][0];\n        Y = combinations[i][1];\n        for (int j = 0; j < 2; j++) {\n            A = ab[j][0];\n            B = ab[j][1];\n            for (int k = 0; k < 2; k++) {\n                C = cd[k][0];\n                D = cd[k][1];\n                if (A + C <= X && (B > D ? B : D) <= Y) {\n                    return \"YES\";\n                }\n            }\n        }\n    }\n    return \"NO\";\n}\n\nint main() {\n    scanf(\"%d %d\", &x, &y);\n    scanf(\"%d %d\", &a, &b);\n    scanf(\"%d %d\", &c, &d);\n    printf(\"%s\\n\", solve());\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 3,
+                    "message": {
+                        "role": "assistant",
+                        "content": "Here's the translated code in C:\n\n```c\n#include <stdio.h>\n\nint x, y, a, b, c, d;\n\nconst char* solve() {\n    int X, Y, A, B, C, D;\n    for (int i = 0; i < 2; i++) {\n        X = i == 0 ? x : y;\n        Y = i == 0 ? y : x;\n        for (int j = 0; j < 2; j++) {\n            A = j == 0 ? a : b;\n            B = j == 0 ? b : a;\n            for (int k = 0; k < 2; k++) {\n                C = k == 0 ? c : d;\n                D = k == 0 ? d : c;\n                if (A + C <= X && (B > D ? B : D) <= Y) {\n                    return \"YES\";\n                }\n            }\n        }\n    }\n    return \"NO\";\n}\n\nint main() {\n    scanf(\"%d %d\", &x, &y);\n    scanf(\"%d %d\", &a, &b);\n    scanf(\"%d %d\", &c, &d);\n    printf(\"%s\\n\", solve());\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 4,
+                    "message": {
+                        "role": "assistant",
+                        "content": "Here's the translated code in C:\n\n```c\n#include <stdio.h>\n\nint x, y, a, b, c, d;\n\nconst char* solve() {\n    int X, Y, A, B, C, D;\n    int combinations[2][2] = {{x, y}, {y, x}};\n    int ab[2][2] = {{a, b}, {b, a}};\n    int cd[2][2] = {{c, d}, {d, c}};\n    \n    for (int i = 0; i < 2; i++) {\n        X = combinations[i][0];\n        Y = combinations[i][1];\n        for (int j = 0; j < 2; j++) {\n            A = ab[j][0];\n            B = ab[j][1];\n            for (int k = 0; k < 2; k++) {\n                C = cd[k][0];\n                D = cd[k][1];\n                if (A + C <= X && (B > D ? B : D) <= Y) {\n                    return \"YES\";\n                }\n            }\n        }\n    }\n    return \"NO\";\n}\n\nint main() {\n    scanf(\"%d %d\", &x, &y);\n    scanf(\"%d %d\", &a, &b);\n    scanf(\"%d %d\", &c, &d);\n    printf(\"%s\\n\", solve());\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                }
+            ],
+            "usage": {
+                "prompt_tokens": 840,
+                "completion_tokens": 1503,
+                "total_tokens": 2343
+            }
+        }
+    },
+    "source_data": {
+        "code_uid": "9656f64464844ce39a26eee81633c2d8",
+        "prob_desc_output_to": "standard output",
+        "prob_desc_notes": "NoteThat's how we can place the pictures in the first test:And that's how we can do it in the third one.",
+        "lang_cluster": "Python",
+        "prob_desc_time_limit": "2 seconds",
+        "prob_desc_input_spec": "The first line contains two space-separated numbers a1 and b1 \u2014 the sides of the board. Next two lines contain numbers a2,\u2009b2,\u2009a3 and b3 \u2014 the sides of the paintings. All numbers ai,\u2009bi in the input are integers and fit into the range from 1 to 1000.",
+        "source_code": "x, y = map(int, input().split())\na, b = map(int, input().split())\nc, d = map(int, input().split())\n\ndef solve():\n  for X, Y in [(x, y), (y, x)]:\n    for A, B in [(a, b), (b, a)]:\n      for C, D in [(c, d), (d, c)]:\n        if A + C <= X and max(B, D) <= Y:\n          return 'YES'\n  return 'NO'\n\nprint(solve())\n",
+        "prob_desc_sample_inputs": [
+            "3 2\n1 3\n2 1",
+            "5 5\n3 3\n3 3",
+            "4 2\n2 3\n1 2"
+        ],
+        "prob_desc_memory_limit": "256 megabytes",
+        "exec_outcome": "PASSED",
+        "prob_desc_output_spec": "If the paintings can be placed on the wall, print \"YES\" (without the quotes), and if they cannot, print \"NO\" (without the quotes).",
+        "src_uid": "2ff30d9c4288390fd7b5b37715638ad9",
+        "prob_desc_input_from": "standard input",
+        "lang": "Python 3",
+        "prob_desc_sample_outputs": [
+            "YES",
+            "NO",
+            "YES"
+        ],
+        "file_name": "d7021504500d5ca7c2b02df8100a574d159e6e67e20ec8071b75800b1267370a",
+        "prob_desc_description": "Gerald bought two very rare paintings at the Sotheby's auction and he now wants to hang them on the wall. For that he bought a special board to attach it to the wall and place the paintings on the board. The board has shape of an a1\u2009\u00d7\u2009b1 rectangle, the paintings have shape of a a2\u2009\u00d7\u2009b2 and a3\u2009\u00d7\u2009b3 rectangles.Since the paintings are painted in the style of abstract art, it does not matter exactly how they will be rotated, but still, one side of both the board, and each of the paintings must be parallel to the floor. The paintings can touch each other and the edges of the board, but can not overlap or go beyond the edge of the board. Gerald asks whether it is possible to place the paintings on the board, or is the board he bought not large enough?",
+        "prob_desc_created_at": "1437573600",
+        "difficulty": 1200.0,
+        "hidden_unit_tests": "[{\"input\": \"3 2\\r\\n1 3\\r\\n2 1\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"5 5\\r\\n3 3\\r\\n3 3\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"4 2\\r\\n2 3\\r\\n1 2\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"3 3\\r\\n1 1\\r\\n1 1\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"1000 1000\\r\\n999 999\\r\\n1 1000\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"7 7\\r\\n5 5\\r\\n2 4\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"3 3\\r\\n2 2\\r\\n2 2\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"2 9\\r\\n5 1\\r\\n3 2\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"9 9\\r\\n3 8\\r\\n5 2\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"10 10\\r\\n10 5\\r\\n4 3\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"10 6\\r\\n10 1\\r\\n5 7\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"6 10\\r\\n6 3\\r\\n6 2\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"7 10\\r\\n7 5\\r\\n1 7\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"10 10\\r\\n7 4\\r\\n3 5\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"4 10\\r\\n1 1\\r\\n9 3\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"8 7\\r\\n1 7\\r\\n3 2\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"5 10\\r\\n5 2\\r\\n3 5\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"9 9\\r\\n9 7\\r\\n2 9\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"8 10\\r\\n3 8\\r\\n7 4\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"10 10\\r\\n6 6\\r\\n4 9\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"8 9\\r\\n7 6\\r\\n2 3\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"10 10\\r\\n9 10\\r\\n6 1\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"90 100\\r\\n52 76\\r\\n6 47\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"84 99\\r\\n82 54\\r\\n73 45\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"100 62\\r\\n93 3\\r\\n100 35\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"93 98\\r\\n75 32\\r\\n63 7\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"86 100\\r\\n2 29\\r\\n71 69\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"96 100\\r\\n76 21\\r\\n78 79\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"99 100\\r\\n95 68\\r\\n85 32\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"97 100\\r\\n95 40\\r\\n70 60\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"100 100\\r\\n6 45\\r\\n97 54\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"99 100\\r\\n99 72\\r\\n68 1\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"88 100\\r\\n54 82\\r\\n86 45\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"91 100\\r\\n61 40\\r\\n60 88\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"100 100\\r\\n36 32\\r\\n98 68\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"78 86\\r\\n63 8\\r\\n9 4\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"72 93\\r\\n38 5\\r\\n67 64\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"484 1000\\r\\n465 2\\r\\n9 535\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"808 1000\\r\\n583 676\\r\\n527 416\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"965 1000\\r\\n606 895\\r\\n533 394\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"824 503\\r\\n247 595\\r\\n151 570\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"970 999\\r\\n457 305\\r\\n542 597\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"332 834\\r\\n312 23\\r\\n505 272\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"886 724\\r\\n830 439\\r\\n102 594\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"958 1000\\r\\n326 461\\r\\n836 674\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"903 694\\r\\n104 488\\r\\n567 898\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"800 1000\\r\\n614 163\\r\\n385 608\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"926 1000\\r\\n813 190\\r\\n187 615\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"541 1000\\r\\n325 596\\r\\n403 56\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"881 961\\r\\n139 471\\r\\n323 731\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"993 1000\\r\\n201 307\\r\\n692 758\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"954 576\\r\\n324 433\\r\\n247 911\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"7 3\\r\\n7 8\\r\\n1 5\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"5 9\\r\\n2 7\\r\\n8 10\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"10 4\\r\\n4 3\\r\\n5 10\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"2 7\\r\\n8 3\\r\\n2 7\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"1 4\\r\\n7 2\\r\\n3 2\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"5 8\\r\\n5 1\\r\\n10 5\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"3 5\\r\\n3 6\\r\\n10 7\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"6 2\\r\\n6 6\\r\\n1 2\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"10 3\\r\\n6 6\\r\\n4 7\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"9 10\\r\\n4 8\\r\\n5 6\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"3 8\\r\\n3 2\\r\\n8 7\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"3 3\\r\\n3 4\\r\\n3 6\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"6 10\\r\\n1 8\\r\\n3 2\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"8 1\\r\\n7 5\\r\\n3 9\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"9 7\\r\\n5 2\\r\\n4 1\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"100 30\\r\\n42 99\\r\\n78 16\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"64 76\\r\\n5 13\\r\\n54 57\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"85 19\\r\\n80 18\\r\\n76 70\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"57 74\\r\\n99 70\\r\\n86 29\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"22 21\\r\\n73 65\\r\\n92 35\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"90 75\\r\\n38 2\\r\\n100 61\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"62 70\\r\\n48 12\\r\\n75 51\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"23 17\\r\\n34 71\\r\\n98 34\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"95 72\\r\\n65 31\\r\\n89 50\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"68 19\\r\\n39 35\\r\\n95 65\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"28 65\\r\\n66 27\\r\\n5 72\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"100 16\\r\\n41 76\\r\\n24 15\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"21 63\\r\\n28 73\\r\\n60 72\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"85 18\\r\\n37 84\\r\\n35 62\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"58 64\\r\\n98 30\\r\\n61 52\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"32 891\\r\\n573 351\\r\\n648 892\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"796 846\\r\\n602 302\\r\\n600 698\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"665 289\\r\\n608 360\\r\\n275 640\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"237 595\\r\\n318 161\\r\\n302 838\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"162 742\\r\\n465 429\\r\\n571 29\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"222 889\\r\\n491 923\\r\\n76 195\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"794 140\\r\\n166 622\\r\\n378 905\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"663 287\\r\\n193 212\\r\\n615 787\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"427 433\\r\\n621 441\\r\\n868 558\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"1000 388\\r\\n332 49\\r\\n735 699\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"868 535\\r\\n409 690\\r\\n761 104\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"632 786\\r\\n710 208\\r\\n436 290\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"501 932\\r\\n463 636\\r\\n363 918\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"73 79\\r\\n626 483\\r\\n924 517\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"190 34\\r\\n653 163\\r\\n634 314\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"2 4\\r\\n1 3\\r\\n1 4\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"3 10\\r\\n1 1\\r\\n1 11\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"5 4\\r\\n3 3\\r\\n2 6\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"3 4\\r\\n1 6\\r\\n2 3\\r\\n\", \"output\": [\"NO\"]}]",
+        "source_lang": "Python 3",
+        "target_lang": "C"
+    }
+}

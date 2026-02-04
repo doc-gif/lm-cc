@@ -1,0 +1,89 @@
+{
+    "oai_response": {
+        "prompt": "Here is code in Python 3 programming lanaguge. Translate the following code from Python 3 to C programming lanaguge. Do not output any extra description or tokens other than the translated code. \n\ninp=input()\ncount=0\ncount2=0\nfor i in inp:\n    if i=='4':\n        count=count+1\n    elif i=='7':\n        count2=count2+1\n\nif (count==4 or count==7) and count2==0:\n    print('YES')\nelif (count2==4 or count2==7) and count==0:\n    print('YES')\nelif count+count2==4 or count+count2==7:\n    print('YES')\nelse:\n    print('NO')\n||END-of-SRC||",
+        "response": {
+            "id": "multi-call-as-2kw58p8cqv",
+            "model": "deepseek-v3",
+            "created": 1767066524,
+            "choices": [
+                {
+                    "index": 0,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <string.h>\n\nint main() {\n    char inp[100];\n    scanf(\"%s\", inp);\n    int count = 0;\n    int count2 = 0;\n    \n    for (int i = 0; i < strlen(inp); i++) {\n        if (inp[i] == '4') {\n            count++;\n        } else if (inp[i] == '7') {\n            count2++;\n        }\n    }\n    \n    if ((count == 4 || count == 7) && count2 == 0) {\n        printf(\"YES\\n\");\n    } else if ((count2 == 4 || count2 == 7) && count == 0) {\n        printf(\"YES\\n\");\n    } else if (count + count2 == 4 || count + count2 == 7) {\n        printf(\"YES\\n\");\n    } else {\n        printf(\"NO\\n\");\n    }\n    \n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 1,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <string.h>\n\nint main() {\n    char inp[100];\n    scanf(\"%s\", inp);\n    int count = 0;\n    int count2 = 0;\n    \n    for (int i = 0; i < strlen(inp); i++) {\n        if (inp[i] == '4') {\n            count++;\n        } else if (inp[i] == '7') {\n            count2++;\n        }\n    }\n    \n    if ((count == 4 || count == 7) && count2 == 0) {\n        printf(\"YES\\n\");\n    } else if ((count2 == 4 || count2 == 7) && count == 0) {\n        printf(\"YES\\n\");\n    } else if (count + count2 == 4 || count + count2 == 7) {\n        printf(\"YES\\n\");\n    } else {\n        printf(\"NO\\n\");\n    }\n    \n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 2,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <string.h>\n\nint main() {\n    char inp[100];\n    scanf(\"%s\", inp);\n    int count = 0;\n    int count2 = 0;\n    for (int i = 0; i < strlen(inp); i++) {\n        if (inp[i] == '4') {\n            count++;\n        } else if (inp[i] == '7') {\n            count2++;\n        }\n    }\n    if ((count == 4 || count == 7) && count2 == 0) {\n        printf(\"YES\\n\");\n    } else if ((count2 == 4 || count2 == 7) && count == 0) {\n        printf(\"YES\\n\");\n    } else if (count + count2 == 4 || count + count2 == 7) {\n        printf(\"YES\\n\");\n    } else {\n        printf(\"NO\\n\");\n    }\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 3,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <string.h>\n\nint main() {\n    char inp[100];\n    scanf(\"%s\", inp);\n    int count = 0;\n    int count2 = 0;\n    for (int i = 0; i < strlen(inp); i++) {\n        if (inp[i] == '4') {\n            count++;\n        } else if (inp[i] == '7') {\n            count2++;\n        }\n    }\n    if ((count == 4 || count == 7) && count2 == 0) {\n        printf(\"YES\\n\");\n    } else if ((count2 == 4 || count2 == 7) && count == 0) {\n        printf(\"YES\\n\");\n    } else if (count + count2 == 4 || count + count2 == 7) {\n        printf(\"YES\\n\");\n    } else {\n        printf(\"NO\\n\");\n    }\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 4,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <string.h>\n\nint main() {\n    char inp[100];\n    scanf(\"%s\", inp);\n    int count = 0;\n    int count2 = 0;\n    \n    for (int i = 0; i < strlen(inp); i++) {\n        if (inp[i] == '4') {\n            count++;\n        } else if (inp[i] == '7') {\n            count2++;\n        }\n    }\n    \n    if ((count == 4 || count == 7) && count2 == 0) {\n        printf(\"YES\\n\");\n    } else if ((count2 == 4 || count2 == 7) && count == 0) {\n        printf(\"YES\\n\");\n    } else if (count + count2 == 4 || count + count2 == 7) {\n        printf(\"YES\\n\");\n    } else {\n        printf(\"NO\\n\");\n    }\n    \n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                }
+            ],
+            "usage": {
+                "prompt_tokens": 835,
+                "completion_tokens": 1038,
+                "total_tokens": 1873
+            }
+        }
+    },
+    "source_data": {
+        "code_uid": "f91d9ae0920fe7715b0ddd669b156e98",
+        "prob_desc_output_to": "standard output",
+        "prob_desc_notes": "NoteIn the first sample there are 3 lucky digits (first one and last two), so the answer is \"NO\".In the second sample there are 7 lucky digits, 7 is lucky number, so the answer is \"YES\".In the third sample there are no lucky digits, so the answer is \"NO\".",
+        "lang_cluster": "Python",
+        "prob_desc_time_limit": "2 seconds",
+        "prob_desc_input_spec": "The only line contains an integer n (1\u2009\u2264\u2009n\u2009\u2264\u20091018). Please do not use the %lld specificator to read or write 64-bit numbers in \u0421++. It is preferred to use the cin, cout streams or the %I64d specificator.",
+        "source_code": "inp=input()\ncount=0\ncount2=0\nfor i in inp:\n    if i=='4':\n        count=count+1\n    elif i=='7':\n        count2=count2+1\n\nif (count==4 or count==7) and count2==0:\n    print('YES')\nelif (count2==4 or count2==7) and count==0:\n    print('YES')\nelif count+count2==4 or count+count2==7:\n    print('YES')\nelse:\n    print('NO')\n",
+        "prob_desc_sample_inputs": [
+            "40047",
+            "7747774",
+            "1000000000000000000"
+        ],
+        "prob_desc_memory_limit": "256 megabytes",
+        "exec_outcome": "PASSED",
+        "prob_desc_output_spec": "Print on the single line \"YES\" if n is a nearly lucky number. Otherwise, print \"NO\" (without the quotes).",
+        "src_uid": "33b73fd9e7f19894ea08e98b790d07f1",
+        "prob_desc_input_from": "standard input",
+        "lang": "Python 3",
+        "prob_desc_sample_outputs": [
+            "NO",
+            "YES",
+            "NO"
+        ],
+        "file_name": "d7021504500d5ca7c2b02df8100a574d159e6e67e20ec8071b75800b1267370a",
+        "prob_desc_description": "Petya loves lucky numbers. We all know that lucky numbers are the positive integers whose decimal representations contain only the lucky digits 4 and 7. For example, numbers 47, 744, 4 are lucky and 5, 17, 467 are not.Unfortunately, not all numbers are lucky. Petya calls a number nearly lucky if the number of lucky digits in it is a lucky number. He wonders whether number n is a nearly lucky number.",
+        "prob_desc_created_at": "1314633600",
+        "difficulty": 800.0,
+        "hidden_unit_tests": "[{\"input\": \"40047\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"7747774\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"1000000000000000000\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"7\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"4\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"474404774\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"4744000695826\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"10000000004744744\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"446486416781684178\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"999999999\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"7777\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"87414417444\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"111222333444555667\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"1\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"4700\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"3794555488744477\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"444444444444444444\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"474447447774444774\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"777777777777777\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"34777745021000000\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"963\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"855474448854788540\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"999999999999994744\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"400000000474\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"123456789123456789\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"740577777584945874\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"7777777\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"4444000111222333\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"9847745885202111\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"123456000000\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"4744447444444\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"7477\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"4747477\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"777777777444444444\\r\\n\", \"output\": [\"NO\"]}]",
+        "source_lang": "Python 3",
+        "target_lang": "C"
+    }
+}

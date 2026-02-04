@@ -1,0 +1,87 @@
+{
+    "oai_response": {
+        "prompt": "Here is code in Python 3 programming lanaguge. Translate the following code from Python 3 to C programming lanaguge. Do not output any extra description or tokens other than the translated code. \n\nn, m,a, b = map(int, input().split())\nif(m>=n):\n    print('Second')\nelse:\n    print('First')||END-of-SRC||",
+        "response": {
+            "id": "multi-call-as-4gn57byha9",
+            "model": "deepseek-v3",
+            "created": 1767066211,
+            "choices": [
+                {
+                    "index": 0,
+                    "message": {
+                        "role": "assistant",
+                        "content": "Here's the translated code in C:\n\n```c\n#include <stdio.h>\n\nint main() {\n    int n, m, a, b;\n    scanf(\"%d %d %d %d\", &n, &m, &a, &b);\n    if (m >= n) {\n        printf(\"Second\");\n    } else {\n        printf(\"First\");\n    }\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 1,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n\nint main() {\n    int n, m, a, b;\n    scanf(\"%d %d %d %d\", &n, &m, &a, &b);\n    if (m >= n) {\n        printf(\"Second\\n\");\n    } else {\n        printf(\"First\\n\");\n    }\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 2,
+                    "message": {
+                        "role": "assistant",
+                        "content": "Here's the translated code in C:\n\n```c\n#include <stdio.h>\n\nint main() {\n    int n, m, a, b;\n    scanf(\"%d %d %d %d\", &n, &m, &a, &b);\n    if (m >= n) {\n        printf(\"Second\");\n    } else {\n        printf(\"First\");\n    }\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 3,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n\nint main() {\n    int n, m, a, b;\n    scanf(\"%d %d %d %d\", &n, &m, &a, &b);\n    if (m >= n) {\n        printf(\"Second\\n\");\n    } else {\n        printf(\"First\\n\");\n    }\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 4,
+                    "message": {
+                        "role": "assistant",
+                        "content": "Here's the translated code in C:\n\n```c\n#include <stdio.h>\n\nint main() {\n    int n, m, a, b;\n    scanf(\"%d %d %d %d\", &n, &m, &a, &b);\n    if (m >= n) {\n        printf(\"Second\");\n    } else {\n        printf(\"First\");\n    }\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                }
+            ],
+            "usage": {
+                "prompt_tokens": 410,
+                "completion_tokens": 410,
+                "total_tokens": 820
+            }
+        }
+    },
+    "source_data": {
+        "code_uid": "fa3bb339e049096f839cf4ba8abd08d9",
+        "prob_desc_output_to": "standard output",
+        "prob_desc_notes": "NoteConsider the first sample test. Each player has a box with 2 balls. The first player draws a single ball from his box in one move and the second player can either take 1 or 2 balls from his box in one move. No matter how the first player acts, the second player can always win if he plays wisely.",
+        "lang_cluster": "Python",
+        "prob_desc_time_limit": "2 seconds",
+        "prob_desc_input_spec": "The first line contains four integers n1,\u2009n2,\u2009k1,\u2009k2. All numbers in the input are from 1 to 50. This problem doesn't have subproblems. You will get 3 points for the correct submission.",
+        "source_code": "n, m,a, b = map(int, input().split())\nif(m>=n):\n    print('Second')\nelse:\n    print('First')",
+        "prob_desc_sample_inputs": [
+            "2 2 1 2",
+            "2 1 1 1"
+        ],
+        "prob_desc_memory_limit": "256 megabytes",
+        "exec_outcome": "PASSED",
+        "prob_desc_output_spec": "Output \"First\" if the first player wins and \"Second\" otherwise.",
+        "src_uid": "aed24ebab3ed9fd1741eea8e4200f86b",
+        "prob_desc_input_from": "standard input",
+        "lang": "Python 3",
+        "prob_desc_sample_outputs": [
+            "Second",
+            "First"
+        ],
+        "file_name": "d7021504500d5ca7c2b02df8100a574d159e6e67e20ec8071b75800b1267370a",
+        "prob_desc_description": "Two players play a simple game. Each player is provided with a box with balls. First player's box contains exactly n1 balls and second player's box contains exactly n2 balls. In one move first player can take from 1 to k1 balls from his box and throw them away. Similarly, the second player can take from 1 to k2 balls from his box in his move. Players alternate turns and the first player starts the game. The one who can't make a move loses. Your task is to determine who wins if both players play optimally.",
+        "prob_desc_created_at": "1423328400",
+        "difficulty": 800.0,
+        "hidden_unit_tests": "[{\"input\": \"2 2 1 2\\r\\n\", \"output\": [\"Second\"]}, {\"input\": \"2 1 1 1\\r\\n\", \"output\": [\"First\"]}, {\"input\": \"5 7 4 1\\r\\n\", \"output\": [\"Second\"]}, {\"input\": \"5 7 1 4\\r\\n\", \"output\": [\"Second\"]}, {\"input\": \"5 7 10 10\\r\\n\", \"output\": [\"Second\"]}, {\"input\": \"5 7 1 10\\r\\n\", \"output\": [\"Second\"]}, {\"input\": \"1 1 1 1\\r\\n\", \"output\": [\"Second\"]}, {\"input\": \"50 50 50 50\\r\\n\", \"output\": [\"Second\"]}, {\"input\": \"50 49 1 2\\r\\n\", \"output\": [\"First\"]}, {\"input\": \"50 48 3 1\\r\\n\", \"output\": [\"First\"]}, {\"input\": \"48 50 12 11\\r\\n\", \"output\": [\"Second\"]}, {\"input\": \"49 50 11 12\\r\\n\", \"output\": [\"Second\"]}, {\"input\": \"49 49 4 1\\r\\n\", \"output\": [\"Second\"]}, {\"input\": \"49 49 3 3\\r\\n\", \"output\": [\"Second\"]}, {\"input\": \"1 50 1 50\\r\\n\", \"output\": [\"Second\"]}, {\"input\": \"1 50 50 50\\r\\n\", \"output\": [\"Second\"]}, {\"input\": \"50 1 1 1\\r\\n\", \"output\": [\"First\"]}, {\"input\": \"50 1 1 50\\r\\n\", \"output\": [\"First\"]}, {\"input\": \"32 31 10 9\\r\\n\", \"output\": [\"First\"]}, {\"input\": \"32 4 17 3\\r\\n\", \"output\": [\"First\"]}]",
+        "source_lang": "Python 3",
+        "target_lang": "C"
+    }
+}

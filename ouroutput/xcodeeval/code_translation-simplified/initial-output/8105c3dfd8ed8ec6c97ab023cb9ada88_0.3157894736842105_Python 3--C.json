@@ -1,0 +1,90 @@
+{
+    "oai_response": {
+        "prompt": "Here is code in Python 3 programming lanaguge. Translate the following code from Python 3 to C programming lanaguge. Do not output any extra description or tokens other than the translated code. \n\nn, x, y = map(int, input().split())\na = list(map(int, input().split()))\nans_a = ans_b = 0\nans = True\nfor i in range(n // 2):\n    left, right = a[i], a[n - i - 1]\n    if left != right:\n        if left == 2 or right == 2:\n            if left == 0 or right == 0:\n                ans_a += 1\n            elif left == 1 or right == 1:\n                ans_b += 1\n        else:\n            ans = False\n            break\n    else:\n        if left == 2 and right == 2:\n            if x < y:\n                ans_a += 2\n            else:\n                ans_b += 2\nif ans:\n    middle_cost = 0\n    if n % 2 == 1 and a[n // 2] == 2:\n        middle_cost = min(x, y)\n    print(ans_a * x + ans_b * y + middle_cost)\nelse:\n    print(-1)||END-of-SRC||",
+        "response": {
+            "id": "multi-call-as-mji2ac207w",
+            "model": "deepseek-v3",
+            "created": 1769631032,
+            "choices": [
+                {
+                    "index": 0,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <stdbool.h>\n\nint main() {\n    int n, x, y;\n    scanf(\"%d %d %d\", &n, &x, &y);\n    int a[n];\n    for (int i = 0; i < n; i++) {\n        scanf(\"%d\", &a[i]);\n    }\n    int ans_a = 0, ans_b = 0;\n    bool ans = true;\n    for (int i = 0; i < n / 2; i++) {\n        int left = a[i], right = a[n - i - 1];\n        if (left != right) {\n            if (left == 2 || right == 2) {\n                if (left == 0 || right == 0) {\n                    ans_a += 1;\n                } else if (left == 1 || right == 1) {\n                    ans_b += 1;\n                }\n            } else {\n                ans = false;\n                break;\n            }\n        } else {\n            if (left == 2 && right == 2) {\n                if (x < y) {\n                    ans_a += 2;\n                } else {\n                    ans_b += 2;\n                }\n            }\n        }\n    }\n    if (ans) {\n        int middle_cost = 0;\n        if (n % 2 == 1 && a[n / 2] == 2) {\n            middle_cost = (x < y) ? x : y;\n        }\n        printf(\"%d\\n\", ans_a * x + ans_b * y + middle_cost);\n    } else {\n        printf(\"-1\\n\");\n    }\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 1,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <stdbool.h>\n\nint main() {\n    int n, x, y;\n    scanf(\"%d %d %d\", &n, &x, &y);\n    int a[n];\n    for (int i = 0; i < n; i++) {\n        scanf(\"%d\", &a[i]);\n    }\n    int ans_a = 0, ans_b = 0;\n    bool ans = true;\n    for (int i = 0; i < n / 2; i++) {\n        int left = a[i];\n        int right = a[n - i - 1];\n        if (left != right) {\n            if (left == 2 || right == 2) {\n                if (left == 0 || right == 0) {\n                    ans_a++;\n                } else if (left == 1 || right == 1) {\n                    ans_b++;\n                }\n            } else {\n                ans = false;\n                break;\n            }\n        } else {\n            if (left == 2 && right == 2) {\n                if (x < y) {\n                    ans_a += 2;\n                } else {\n                    ans_b += 2;\n                }\n            }\n        }\n    }\n    if (ans) {\n        int middle_cost = 0;\n        if (n % 2 == 1 && a[n / 2] == 2) {\n            middle_cost = (x < y) ? x : y;\n        }\n        printf(\"%d\\n\", ans_a * x + ans_b * y + middle_cost);\n    } else {\n        printf(\"-1\\n\");\n    }\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 2,
+                    "message": {
+                        "role": "assistant",
+                        "content": "Here's the translated code in C:\n\n```c\n#include <stdio.h>\n#include <stdlib.h>\n\nint main() {\n    int n, x, y;\n    scanf(\"%d %d %d\", &n, &x, &y);\n    int *a = malloc(n * sizeof(int));\n    for (int i = 0; i < n; i++) {\n        scanf(\"%d\", &a[i]);\n    }\n    int ans_a = 0, ans_b = 0;\n    int ans = 1;\n    for (int i = 0; i < n / 2; i++) {\n        int left = a[i];\n        int right = a[n - i - 1];\n        if (left != right) {\n            if (left == 2 || right == 2) {\n                if (left == 0 || right == 0) {\n                    ans_a += 1;\n                } else if (left == 1 || right == 1) {\n                    ans_b += 1;\n                }\n            } else {\n                ans = 0;\n                break;\n            }\n        } else {\n            if (left == 2 && right == 2) {\n                if (x < y) {\n                    ans_a += 2;\n                } else {\n                    ans_b += 2;\n                }\n            }\n        }\n    }\n    if (ans) {\n        int middle_cost = 0;\n        if (n % 2 == 1 && a[n / 2] == 2) {\n            middle_cost = x < y ? x : y;\n        }\n        printf(\"%d\\n\", ans_a * x + ans_b * y + middle_cost);\n    } else {\n        printf(\"-1\\n\");\n    }\n    free(a);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 3,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <stdbool.h>\n\nint main() {\n    int n, x, y;\n    scanf(\"%d %d %d\", &n, &x, &y);\n    int a[n];\n    for (int i = 0; i < n; i++) {\n        scanf(\"%d\", &a[i]);\n    }\n    int ans_a = 0, ans_b = 0;\n    bool ans = true;\n    for (int i = 0; i < n / 2; i++) {\n        int left = a[i], right = a[n - i - 1];\n        if (left != right) {\n            if (left == 2 || right == 2) {\n                if (left == 0 || right == 0) {\n                    ans_a += 1;\n                } else if (left == 1 || right == 1) {\n                    ans_b += 1;\n                }\n            } else {\n                ans = false;\n                break;\n            }\n        } else {\n            if (left == 2 && right == 2) {\n                if (x < y) {\n                    ans_a += 2;\n                } else {\n                    ans_b += 2;\n                }\n            }\n        }\n    }\n    if (ans) {\n        int middle_cost = 0;\n        if (n % 2 == 1 && a[n / 2] == 2) {\n            middle_cost = x < y ? x : y;\n        }\n        printf(\"%d\\n\", ans_a * x + ans_b * y + middle_cost);\n    } else {\n        printf(\"-1\\n\");\n    }\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 4,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <stdbool.h>\n\nint main() {\n    int n, x, y;\n    scanf(\"%d %d %d\", &n, &x, &y);\n    int a[n];\n    for (int i = 0; i < n; i++) {\n        scanf(\"%d\", &a[i]);\n    }\n    int ans_a = 0, ans_b = 0;\n    bool ans = true;\n    for (int i = 0; i < n / 2; i++) {\n        int left = a[i];\n        int right = a[n - i - 1];\n        if (left != right) {\n            if (left == 2 || right == 2) {\n                if (left == 0 || right == 0) {\n                    ans_a++;\n                } else if (left == 1 || right == 1) {\n                    ans_b++;\n                }\n            } else {\n                ans = false;\n                break;\n            }\n        } else {\n            if (left == 2 && right == 2) {\n                if (x < y) {\n                    ans_a += 2;\n                } else {\n                    ans_b += 2;\n                }\n            }\n        }\n    }\n    if (ans) {\n        int middle_cost = 0;\n        if (n % 2 == 1 && a[n / 2] == 2) {\n            middle_cost = (x < y) ? x : y;\n        }\n        printf(\"%d\\n\", ans_a * x + ans_b * y + middle_cost);\n    } else {\n        printf(\"-1\\n\");\n    }\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                }
+            ],
+            "usage": {
+                "prompt_tokens": 1390,
+                "completion_tokens": 1795,
+                "total_tokens": 3185
+            }
+        }
+    },
+    "source_data": {
+        "code_uid": "8105c3dfd8ed8ec6c97ab023cb9ada88",
+        "prob_desc_output_to": "standard output",
+        "prob_desc_notes": "NoteIn the first sample, the cheapest way to obtain palindromic colors is to buy a black suit for the third from left dancer and a white suit for the rightmost dancer.In the second sample, the leftmost dancer's suit already differs from the rightmost dancer's suit so there is no way to obtain the desired coloring.In the third sample, all suits are already bought and their colors form a palindrome.",
+        "lang_cluster": "Python",
+        "prob_desc_time_limit": "1 second",
+        "prob_desc_input_spec": "The first line contains three integers $$$n$$$, $$$a$$$, and $$$b$$$ ($$$1 \\leq n \\leq 20$$$, $$$1 \\leq a, b \\leq 100$$$)\u00a0\u2014 the number of dancers, the cost of a white suit, and the cost of a black suit. The next line contains $$$n$$$ numbers $$$c_i$$$, $$$i$$$-th of which denotes the color of the suit of the $$$i$$$-th dancer. Number $$$0$$$ denotes the white color, $$$1$$$\u00a0\u2014 the black color, and $$$2$$$ denotes that a suit for this dancer is still to be bought.",
+        "prob_desc_sample_inputs": [
+            "5 100 1\n0 1 2 1 2",
+            "3 10 12\n1 2 0",
+            "3 12 1\n0 1 0"
+        ],
+        "prob_desc_memory_limit": "512 megabytes",
+        "exec_outcome": "PASSED",
+        "prob_desc_output_spec": "If it is not possible to form a palindrome without swapping dancers and buying new suits for those who have one, then output -1. Otherwise, output the minimal price to get the desired visual effect.",
+        "src_uid": "af07223819aeb5bd6ded4340c472b2b6",
+        "prob_desc_input_from": "standard input",
+        "lang": "Python 3",
+        "prob_desc_sample_outputs": [
+            "101",
+            "-1",
+            "0"
+        ],
+        "file_name": "d7021504500d5ca7c2b02df8100a574d159e6e67e20ec8071b75800b1267370a",
+        "prob_desc_description": "A group of $$$n$$$ dancers rehearses a performance for the closing ceremony. The dancers are arranged in a row, they've studied their dancing moves and can't change positions. For some of them, a white dancing suit is already bought, for some of them \u2014 a black one, and for the rest the suit will be bought in the future.On the day when the suits were to be bought, the director was told that the participants of the olympiad will be happy if the colors of the suits on the scene will form a palindrome. A palindrome is a sequence that is the same when read from left to right and when read from right to left. The director liked the idea, and she wants to buy suits so that the color of the leftmost dancer's suit is the same as the color of the rightmost dancer's suit, the 2nd left is the same as 2nd right, and so on.The director knows how many burls it costs to buy a white suit, and how many burls to buy a black suit. You need to find out whether it is possible to buy suits to form a palindrome, and if it's possible, what's the minimal cost of doing so. Remember that dancers can not change positions, and due to bureaucratic reasons it is not allowed to buy new suits for the dancers who already have suits, even if it reduces the overall spending.",
+        "prob_desc_created_at": "1536165300",
+        "difficulty": 1000.0,
+        "hidden_unit_tests": "[{\"input\": \"5 100 1\\r\\n0 1 2 1 2\\r\\n\", \"output\": [\"101\"]}, {\"input\": \"3 10 12\\r\\n1 2 0\\r\\n\", \"output\": [\"-1\"]}, {\"input\": \"3 12 1\\r\\n0 1 0\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"10 1 9\\r\\n1 2 1 0 1 0 1 0 0 1\\r\\n\", \"output\": [\"-1\"]}, {\"input\": \"7 16 16\\r\\n1 1 2 2 0 2 1\\r\\n\", \"output\": [\"48\"]}, {\"input\": \"13 61 9\\r\\n0 0 2 0 1 0 2 1 0 0 2 2 2\\r\\n\", \"output\": [\"-1\"]}, {\"input\": \"20 53 67\\r\\n1 2 1 2 0 0 0 2 2 2 1 0 0 2 0 0 0 1 1 2\\r\\n\", \"output\": [\"413\"]}, {\"input\": \"1 100 1\\r\\n0\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"1 1 100\\r\\n2\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"1 100 1\\r\\n2\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"2 9 6\\r\\n2 2\\r\\n\", \"output\": [\"12\"]}, {\"input\": \"2 89 7\\r\\n0 0\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"3 79 30\\r\\n0 2 2\\r\\n\", \"output\": [\"109\"]}, {\"input\": \"4 65 44\\r\\n1 2 0 1\\r\\n\", \"output\": [\"65\"]}, {\"input\": \"5 55 62\\r\\n0 1 1 0 1\\r\\n\", \"output\": [\"-1\"]}, {\"input\": \"6 36 80\\r\\n0 2 1 0 1 1\\r\\n\", \"output\": [\"-1\"]}, {\"input\": \"7 14 98\\r\\n1 0 1 2 2 0 1\\r\\n\", \"output\": [\"112\"]}, {\"input\": \"8 4 13\\r\\n2 2 1 2 1 2 2 2\\r\\n\", \"output\": [\"42\"]}, {\"input\": \"9 90 31\\r\\n1 0 0 0 0 2 0 0 2\\r\\n\", \"output\": [\"121\"]}, {\"input\": \"10 99 62\\r\\n1 2 1 0 2 0 0 2 2 0\\r\\n\", \"output\": [\"-1\"]}, {\"input\": \"11 89 72\\r\\n0 2 2 1 0 0 0 1 0 2 1\\r\\n\", \"output\": [\"-1\"]}, {\"input\": \"12 75 91\\r\\n0 1 2 2 1 0 1 2 0 0 0 1\\r\\n\", \"output\": [\"-1\"]}, {\"input\": \"13 89 65\\r\\n2 2 0 1 2 1 1 0 2 1 0 0 0\\r\\n\", \"output\": [\"-1\"]}, {\"input\": \"14 46 23\\r\\n2 0 2 0 2 1 0 2 1 1 1 1 1 2\\r\\n\", \"output\": [\"-1\"]}, {\"input\": \"15 24 41\\r\\n0 2 1 1 0 0 1 0 0 0 0 0 0 1 0\\r\\n\", \"output\": [\"-1\"]}, {\"input\": \"16 14 64\\r\\n2 1 1 0 1 0 2 1 2 2 0 2 2 2 2 1\\r\\n\", \"output\": [\"362\"]}, {\"input\": \"17 100 82\\r\\n0 2 1 2 0 2 0 0 2 2 2 1 0 0 2 0 1\\r\\n\", \"output\": [\"-1\"]}, {\"input\": \"18 89 92\\r\\n2 0 2 1 2 2 0 2 0 0 0 0 2 0 1 1 0 0\\r\\n\", \"output\": [\"537\"]}, {\"input\": \"19 75 14\\r\\n2 2 2 2 0 2 1 0 0 0 0 1 1 1 2 0 2 0 1\\r\\n\", \"output\": [\"-1\"]}, {\"input\": \"20 53 32\\r\\n0 0 1 1 1 2 2 2 2 2 2 1 1 1 2 0 2 2 0 0\\r\\n\", \"output\": [\"-1\"]}, {\"input\": \"1 1 100\\r\\n1\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"1 100 1\\r\\n1\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"1 1 100\\r\\n0\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"2 1 1\\r\\n2 2\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"2 100 1\\r\\n2 2\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"3 100 100\\r\\n2 2 2\\r\\n\", \"output\": [\"300\"]}, {\"input\": \"2 2 2\\r\\n2 2\\r\\n\", \"output\": [\"4\"]}, {\"input\": \"5 100 1\\r\\n0 2 2 2 2\\r\\n\", \"output\": [\"103\"]}, {\"input\": \"3 10 10\\r\\n2 2 2\\r\\n\", \"output\": [\"30\"]}, {\"input\": \"5 2 22\\r\\n2 2 2 2 2\\r\\n\", \"output\": [\"10\"]}, {\"input\": \"3 3 3\\r\\n2 2 2\\r\\n\", \"output\": [\"9\"]}, {\"input\": \"2 100 1\\r\\n0 1\\r\\n\", \"output\": [\"-1\"]}, {\"input\": \"2 2 3\\r\\n2 2\\r\\n\", \"output\": [\"4\"]}, {\"input\": \"3 2 2\\r\\n2 2 2\\r\\n\", \"output\": [\"6\"]}, {\"input\": \"3 1 1\\r\\n0 0 0\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"3 1 4\\r\\n2 2 2\\r\\n\", \"output\": [\"3\"]}, {\"input\": \"3 10 1\\r\\n2 0 2\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"9 1 2\\r\\n1 0 2 2 2 2 2 0 1\\r\\n\", \"output\": [\"5\"]}, {\"input\": \"3 4 8\\r\\n2 1 2\\r\\n\", \"output\": [\"8\"]}, {\"input\": \"3 2 4\\r\\n2 2 2\\r\\n\", \"output\": [\"6\"]}, {\"input\": \"5 2 3\\r\\n2 2 2 2 2\\r\\n\", \"output\": [\"10\"]}, {\"input\": \"3 4 5\\r\\n2 1 2\\r\\n\", \"output\": [\"8\"]}, {\"input\": \"3 1 1\\r\\n1 2 0\\r\\n\", \"output\": [\"-1\"]}]",
+        "initial_source_code": "\nn,x,y = map(int,input().strip().split())\n\na = list(map(int,input().strip().split()))\n\nans_a = 0\nans_b = 0\nans = 1\n\nfor i in range(n//2):\n    \n    if a[i] != a[n-i-1]:\n        if a[i]==2 or a[n-i-1]==2:\n            if a[i] == 0 or a[n-i-1]==0:\n                ans_a+=1\n            else:\n                if a[i] == 1 or a[n-i-1]==1:\n                    ans_b+=1\n        else:\n            ans = 0\n            break\n    else:\n            if a[i] == 2 and a[n-i-1] == 2:\n                if x < y:\n                    ans_a+=2\n                else:\n                    ans_b+=2\n\n\nif ans:\n    temp = 0\n    if n%2 == 0:\n        temp = 0\n    else:\n        if a[n//2] == 2:\n            temp = min(x,y)\n        \n    print(ans_a*x + ans_b*y + temp)\nelse:\n    print(-1)\n",
+        "source_code": "n, x, y = map(int, input().split())\na = list(map(int, input().split()))\nans_a = ans_b = 0\nans = True\nfor i in range(n // 2):\n    left, right = a[i], a[n - i - 1]\n    if left != right:\n        if left == 2 or right == 2:\n            if left == 0 or right == 0:\n                ans_a += 1\n            elif left == 1 or right == 1:\n                ans_b += 1\n        else:\n            ans = False\n            break\n    else:\n        if left == 2 and right == 2:\n            if x < y:\n                ans_a += 2\n            else:\n                ans_b += 2\nif ans:\n    middle_cost = 0\n    if n % 2 == 1 and a[n // 2] == 2:\n        middle_cost = min(x, y)\n    print(ans_a * x + ans_b * y + middle_cost)\nelse:\n    print(-1)",
+        "source_lang": "Python 3",
+        "target_lang": "C"
+    }
+}

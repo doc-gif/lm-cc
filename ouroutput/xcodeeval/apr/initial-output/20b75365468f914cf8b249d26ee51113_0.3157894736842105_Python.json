@@ -1,0 +1,98 @@
+{
+    "oai_response": {
+        "prompt": "Fix a buggy program written in Python language to solve the following programming problem:\nDescription: You are given a rectangular cake, represented as an r\u2009\u00d7\u2009c grid. Each cell either has an evil strawberry, or is empty. For example, a 3\u2009\u00d7\u20094 cake may look as follows:  The cakeminator is going to eat the cake! Each time he eats, he chooses a row or a column that does not contain any evil strawberries and contains at least one cake cell that has not been eaten before, and eats all the cake cells there. He may decide to eat any number of times.Please output the maximum number of cake cells that the cakeminator can eat.\nInput Specification: The first line contains two integers r and c (2\u2009\u2264\u2009r,\u2009c\u2009\u2264\u200910), denoting the number of rows and the number of columns of the cake. The next r lines each contains c characters \u2014 the j-th character of the i-th line denotes the content of the cell at row i and column j, and is either one of these:    '.' character denotes a cake cell with no evil strawberry;  'S' character denotes a cake cell with an evil strawberry. \nOutput Specification: Output the maximum number of cake cells that the cakeminator can eat.\n\nSample Input:\n3 4\nS...\n....\n..S.\nSample Output:\n8\n\nNotes: NoteFor the first example, one possible way to eat the maximum number of cake cells is as follows (perform 3 eats).      \nTake input from standard input and output to standard output\n\nHere is the code with a bug of TIME_LIMIT_EXCEEDED:\n\ndef main():\n    r,c = map(int, input().split())\n    cake = [input() for _ in range(r)]\n    rc = r * c\n    neigh = []\n    for y in range(r):\n        for x in range(c):\n            if 'S' in cake[y]:\n                row = ()\n            else:\n                row = tuple(range(y * c, y * c + c))\n            if any('S' == _[x] for _ in cake):\n                col = ()\n            else:\n                col = tuple(range(x, r * c, c))\n            neigh.append((row, col))\n    mi = rc\n    def deeper(field):\n        nonlocal mi\n        i = sum(field)\n        if mi > i:\n            mi = i\n        for i, piece in enumerate(field):\n            if field:\n                row, col = neigh[i]\n                if any(field[_] for _ in row):\n                    f1 = field[:]\n                    for j in row:\n                        f1[j] = False\n                    deeper(f1)\n                if any(field[_] for _ in col):\n                    f1 = field[:]\n                    for j in col:\n                        f1[j] = False\n                    deeper(f1)\n    fld = [_ == '.' for s in cake for _ in s]\n    deeper(fld)\n    print(sum(fld) - mi)\n\n\nmain()\n\n\nProvide the fixed Python code without any description or extra tokens.\n\nFixed source code:\n ||END-of-SRC||",
+        "response": {
+            "id": "multi-call-as-h7nnq9wjmh",
+            "model": "deepseek-v3",
+            "created": 1760423167,
+            "choices": [
+                {
+                    "index": 0,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```python\ndef main():\n    import sys\n    sys.setrecursionlimit(10000)\n    r, c = map(int, input().split())\n    cake = [input().strip() for _ in range(r)]\n    rows_without_S = []\n    cols_without_S = []\n    \n    for i in range(r):\n        if 'S' not in cake[i]:\n            rows_without_S.append(i)\n    \n    for j in range(c):\n        if all(cake[i][j] != 'S' for i in range(r)):\n            cols_without_S.append(j)\n    \n    eaten = set()\n    count = 0\n    \n    for i in rows_without_S:\n        for j in range(c):\n            if (i, j) not in eaten and cake[i][j] == '.':\n                eaten.add((i, j))\n                count += 1\n    \n    for j in cols_without_S:\n        for i in range(r):\n            if (i, j) not in eaten and cake[i][j] == '.':\n                eaten.add((i, j))\n                count += 1\n    \n    print(count)\n\nmain()\n``` ||END-of-SRC||"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 1,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```python\ndef main():\n    import sys\n    sys.setrecursionlimit(1000000)\n    r, c = map(int, input().split())\n    cake = [input().strip() for _ in range(r)]\n    rows_without_S = [i for i in range(r) if 'S' not in cake[i]]\n    cols_without_S = []\n    for j in range(c):\n        has_S = False\n        for i in range(r):\n            if cake[i][j] == 'S':\n                has_S = True\n                break\n        if not has_S:\n            cols_without_S.append(j)\n    \n    max_eaten = 0\n    eaten_rows = set()\n    eaten_cols = set()\n    \n    # First, eat all possible rows\n    for i in rows_without_S:\n        eaten_rows.add(i)\n    # Then, eat all possible columns that are not already covered by the rows\n    for j in cols_without_S:\n        # Check if any cell in this column is not covered by eaten rows\n        for i in range(r):\n            if i not in eaten_rows and cake[i][j] == '.':\n                eaten_cols.add(j)\n                break\n    \n    # Calculate the total eaten cells\n    total = 0\n    # Cells eaten by rows\n    for i in eaten_rows:\n        total += c\n    # Cells eaten by columns not in eaten rows\n    for j in eaten_cols:\n        for i in range(r):\n            if i not in eaten_rows and cake[i][j] == '.':\n                total += 1\n    print(total)\n\nmain()\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 2,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```python\ndef main():\n    import sys\n    sys.setrecursionlimit(10000)\n    r, c = map(int, input().split())\n    cake = [input().strip() for _ in range(r)]\n    rows_without_S = [i for i in range(r) if 'S' not in cake[i]]\n    cols_without_S = []\n    for j in range(c):\n        has_S = False\n        for i in range(r):\n            if cake[i][j] == 'S':\n                has_S = True\n                break\n        if not has_S:\n            cols_without_S.append(j)\n    \n    max_cells = 0\n    # Try all possible combinations of rows and columns\n    # The optimal solution is to take all possible rows first, then columns, or vice versa\n    # So we can compute the maximum by considering both orders\n    \n    # Case 1: Take all possible rows first, then columns\n    eaten = set()\n    # Eat all safe rows\n    for i in rows_without_S:\n        for j in range(c):\n            if cake[i][j] == '.':\n                eaten.add((i, j))\n    # Now eat all safe columns not already eaten\n    for j in cols_without_S:\n        for i in range(r):\n            if cake[i][j] == '.' and (i, j) not in eaten:\n                eaten.add((i, j))\n    case1 = len(eaten)\n    \n    # Case 2: Take all possible columns first, then rows\n    eaten = set()\n    # Eat all safe columns\n    for j in cols_without_S:\n        for i in range(r):\n            if cake[i][j] == '.':\n                eaten.add((i, j))\n    # Now eat all safe rows not already eaten\n    for i in rows_without_S:\n        for j in range(c):\n            if cake[i][j] == '.' and (i, j) not in eaten:\n                eaten.add((i, j))\n    case2 = len(eaten)\n    \n    max_cells = max(case1, case2)\n    print(max_cells)\n\nmain()\n``` ||END-of-SRC||"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 3,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```python\ndef main():\n    import sys\n    sys.setrecursionlimit(10000)\n    r, c = map(int, input().split())\n    cake = [input().strip() for _ in range(r)]\n    rows_without_S = [i for i in range(r) if 'S' not in cake[i]]\n    cols_without_S = []\n    for j in range(c):\n        has_S = False\n        for i in range(r):\n            if cake[i][j] == 'S':\n                has_S = True\n                break\n        if not has_S:\n            cols_without_S.append(j)\n    \n    max_eaten = 0\n    eaten_rows = set()\n    eaten_cols = set()\n    \n    # First, eat all possible rows\n    for i in rows_without_S:\n        eaten_rows.add(i)\n        max_eaten += c\n    \n    # Then, eat columns that are not already fully covered by eaten rows\n    for j in cols_without_S:\n        count = 0\n        for i in range(r):\n            if i not in eaten_rows and cake[i][j] == '.':\n                count += 1\n        if count > 0:\n            eaten_cols.add(j)\n            max_eaten += count\n    \n    print(max_eaten)\n\nmain()\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 4,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```python\ndef main():\n    import sys\n    sys.setrecursionlimit(10000)\n    r, c = map(int, input().split())\n    cake = [input().strip() for _ in range(r)]\n    rows_without_S = [i for i in range(r) if 'S' not in cake[i]]\n    cols_without_S = [j for j in range(c) if all(cake[i][j] != 'S' for i in range(r))]\n    \n    eaten = set()\n    # First, eat all possible rows\n    for i in rows_without_S:\n        for j in range(c):\n            eaten.add((i, j))\n    # Then, eat all possible columns\n    for j in cols_without_S:\n        for i in range(r):\n            eaten.add((i, j))\n    print(len(eaten))\n\nmain()\n``` ||END-of-SRC||"
+                    },
+                    "finish_reason": "stop"
+                }
+            ],
+            "usage": {
+                "prompt_tokens": 3290,
+                "completion_tokens": 1515,
+                "total_tokens": 4805
+            }
+        }
+    },
+    "source_data": {
+        "prob_desc_memory_limit": "256 megabytes",
+        "tags": [
+            "brute force",
+            "implementation"
+        ],
+        "prob_desc_created_at": "1374327000",
+        "fix_source_code": "",
+        "prob_desc_input_spec": "The first line contains two integers r and c (2\u2009\u2264\u2009r,\u2009c\u2009\u2264\u200910), denoting the number of rows and the number of columns of the cake. The next r lines each contains c characters \u2014 the j-th character of the i-th line denotes the content of the cell at row i and column j, and is either one of these:    '.' character denotes a cake cell with no evil strawberry;  'S' character denotes a cake cell with an evil strawberry. ",
+        "prob_desc_sample_outputs": [
+            "8"
+        ],
+        "src_uid": "ebaf7d89c623d006a6f1ffd025892102",
+        "prob_desc_time_limit": "1 second",
+        "fix_exec_outcome": "",
+        "delete_cnt": 1,
+        "apr_id": "3c77abe7f5831b17ab966333ad844175",
+        "fix_code_uid": "",
+        "lang_cluster": "Python",
+        "prob_desc_sample_inputs": [
+            "3 4\nS...\n....\n..S."
+        ],
+        "prob_desc_output_to": "standard output",
+        "file_name": "Python.jsonl",
+        "equal_cnt": 9,
+        "lang": "Python 3",
+        "prob_desc_output_spec": "Output the maximum number of cake cells that the cakeminator can eat.",
+        "bug_exec_outcome": "TIME_LIMIT_EXCEEDED",
+        "prob_desc_notes": "NoteFor the first example, one possible way to eat the maximum number of cake cells is as follows (perform 3 eats).      ",
+        "difficulty": 800.0,
+        "similarity_score": 0.3754747808,
+        "prob_desc_description": "You are given a rectangular cake, represented as an r\u2009\u00d7\u2009c grid. Each cell either has an evil strawberry, or is empty. For example, a 3\u2009\u00d7\u20094 cake may look as follows:  The cakeminator is going to eat the cake! Each time he eats, he chooses a row or a column that does not contain any evil strawberries and contains at least one cake cell that has not been eaten before, and eats all the cake cells there. He may decide to eat any number of times.Please output the maximum number of cake cells that the cakeminator can eat.",
+        "potential_dominant_fix_op": "replace",
+        "bug_source_code": "def main():\n    r,c = map(int, input().split())\n    cake = [input() for _ in range(r)]\n    rc = r * c\n    neigh = []\n    for y in range(r):\n        for x in range(c):\n            if 'S' in cake[y]:\n                row = ()\n            else:\n                row = tuple(range(y * c, y * c + c))\n            if any('S' == _[x] for _ in cake):\n                col = ()\n            else:\n                col = tuple(range(x, r * c, c))\n            neigh.append((row, col))\n    mi = rc\n    def deeper(field):\n        nonlocal mi\n        i = sum(field)\n        if mi > i:\n            mi = i\n        for i, piece in enumerate(field):\n            if field:\n                row, col = neigh[i]\n                if any(field[_] for _ in row):\n                    f1 = field[:]\n                    for j in row:\n                        f1[j] = False\n                    deeper(f1)\n                if any(field[_] for _ in col):\n                    f1 = field[:]\n                    for j in col:\n                        f1[j] = False\n                    deeper(f1)\n    fld = [_ == '.' for s in cake for _ in s]\n    deeper(fld)\n    print(sum(fld) - mi)\n\n\nmain()\n",
+        "replace_cnt": 7,
+        "prob_desc_input_from": "standard input",
+        "bug_code_uid": "20b75365468f914cf8b249d26ee51113",
+        "insert_cnt": 1,
+        "fix_ops_cnt": 9,
+        "hidden_unit_tests": "[{\"input\": \"3 4\\r\\nS...\\r\\n....\\r\\n..S.\\r\\n\", \"output\": [\"8\"]}, {\"input\": \"2 2\\r\\n..\\r\\n..\\r\\n\", \"output\": [\"4\"]}, {\"input\": \"2 2\\r\\nSS\\r\\nSS\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"7 3\\r\\nS..\\r\\nS..\\r\\nS..\\r\\nS..\\r\\nS..\\r\\nS..\\r\\nS..\\r\\n\", \"output\": [\"14\"]}, {\"input\": \"3 5\\r\\n..S..\\r\\nSSSSS\\r\\n..S..\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"10 10\\r\\nSSSSSSSSSS\\r\\nSSSSSSSSSS\\r\\nSSSSSSSSSS\\r\\nSSSSSSSSSS\\r\\nSSSSSSSSSS\\r\\nSSSSSSSSSS\\r\\nSSSSSSSSSS\\r\\nSSSSSSSSSS\\r\\nSSSSSSSSSS\\r\\nSSSSSSSSSS\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"10 10\\r\\n.....SSSSS\\r\\n.....SSSSS\\r\\n.....SSSSS\\r\\n.....SSSSS\\r\\n.....SSSSS\\r\\n..........\\r\\n..........\\r\\n..........\\r\\n..........\\r\\n..........\\r\\n\", \"output\": [\"75\"]}, {\"input\": \"10 10\\r\\nS...SSSSSS\\r\\nS...SSSSSS\\r\\nS...SSSSSS\\r\\nS...SSSSSS\\r\\nS...SSSSSS\\r\\nS...SSSSSS\\r\\nS...SSSSSS\\r\\nS...SSSSSS\\r\\nS...SSSSSS\\r\\nS...SSSSSS\\r\\n\", \"output\": [\"30\"]}, {\"input\": \"10 10\\r\\nSSSSSSSSSS\\r\\n..........\\r\\n..........\\r\\n..........\\r\\n..........\\r\\n..........\\r\\n..........\\r\\n..........\\r\\n..........\\r\\n..........\\r\\n\", \"output\": [\"90\"]}, {\"input\": \"8 9\\r\\n.........\\r\\n.........\\r\\n.........\\r\\n.........\\r\\n.........\\r\\n.........\\r\\nSSSSSSSSS\\r\\n.........\\r\\n\", \"output\": [\"63\"]}, {\"input\": \"5 6\\r\\nSSSSSS\\r\\n......\\r\\nSSSSSS\\r\\nSSSSSS\\r\\n......\\r\\n\", \"output\": [\"12\"]}, {\"input\": \"10 10\\r\\n....S..S..\\r\\n....S..S..\\r\\n....S..S..\\r\\n....S..S..\\r\\n....S..S..\\r\\n....S..S..\\r\\n....S..S..\\r\\n....S..S..\\r\\n....S..S..\\r\\n....S..S..\\r\\n\", \"output\": [\"80\"]}, {\"input\": \"9 5\\r\\nSSSSS\\r\\nSSSSS\\r\\nSSSSS\\r\\nSSSSS\\r\\nSSSSS\\r\\nSSSSS\\r\\nSSSSS\\r\\nSSSSS\\r\\nSSSSS\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"9 9\\r\\n...S.....\\r\\nS.S.....S\\r\\n.S....S..\\r\\n.S.....SS\\r\\n.........\\r\\n..S.S..S.\\r\\n.SS......\\r\\n....S....\\r\\n..S...S..\\r\\n\", \"output\": [\"17\"]}, {\"input\": \"5 6\\r\\nSSSSSS\\r\\nSSSSSS\\r\\nSSSSSS\\r\\nSS.S..\\r\\nS.S.SS\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"9 8\\r\\n........\\r\\n.......S\\r\\n........\\r\\nS.......\\r\\n........\\r\\n........\\r\\nS.......\\r\\n........\\r\\n.......S\\r\\n\", \"output\": [\"64\"]}, {\"input\": \"9 7\\r\\n......S\\r\\n......S\\r\\nS.S.S..\\r\\n.......\\r\\n.......\\r\\n.S.....\\r\\n.S....S\\r\\n..S....\\r\\n.S....S\\r\\n\", \"output\": [\"28\"]}, {\"input\": \"10 10\\r\\n..S..SS..S\\r\\nS.........\\r\\n.S.......S\\r\\n....S.....\\r\\n.S........\\r\\n...S.SS...\\r\\n.....S..S.\\r\\n......S...\\r\\n..S....SS.\\r\\n...S......\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"10 10\\r\\n.......S..\\r\\n..........\\r\\n.S........\\r\\nS..S......\\r\\nS....S....\\r\\nS......S..\\r\\n.......S..\\r\\n..S.......\\r\\n.....S....\\r\\n...S.S....\\r\\n\", \"output\": [\"46\"]}, {\"input\": \"10 6\\r\\n...S..\\r\\n.....S\\r\\n...S..\\r\\n.S....\\r\\n......\\r\\n......\\r\\n.S....\\r\\n.S...S\\r\\n......\\r\\n......\\r\\n\", \"output\": [\"42\"]}, {\"input\": \"6 10\\r\\n..........\\r\\nS.........\\r\\n......S...\\r\\n.S........\\r\\n.........S\\r\\n..S.......\\r\\n\", \"output\": [\"35\"]}, {\"input\": \"9 6\\r\\n....S.\\r\\n...S.S\\r\\n.S..S.\\r\\nS.....\\r\\n...S..\\r\\n..S...\\r\\n.....S\\r\\n......\\r\\n......\\r\\n\", \"output\": [\"12\"]}, {\"input\": \"5 10\\r\\nS.S.......\\r\\n...SS.....\\r\\n.SSS......\\r\\n.........S\\r\\n..........\\r\\n\", \"output\": [\"26\"]}, {\"input\": \"10 10\\r\\n.....S....\\r\\n....SS..S.\\r\\n.S...S....\\r\\n........SS\\r\\n.S.......S\\r\\nSS..S.....\\r\\n.SS.....SS\\r\\nS..S......\\r\\n.......SSS\\r\\nSSSSS....S\\r\\n\", \"output\": [\"10\"]}, {\"input\": \"5 7\\r\\nS...SSS\\r\\nS.S..S.\\r\\nS.S.S..\\r\\nS.S.S..\\r\\n.......\\r\\n\", \"output\": [\"15\"]}, {\"input\": \"6 7\\r\\n..S.SS.\\r\\n......S\\r\\n....S.S\\r\\nSS..S..\\r\\nS..SS.S\\r\\n.....S.\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"10 6\\r\\n.SSSSS\\r\\nSSS.SS\\r\\nSSSSSS\\r\\nS.SSSS\\r\\nSSSSS.\\r\\nS.SSSS\\r\\nSS.SSS\\r\\n.SSS.S\\r\\n.SSS..\\r\\nSS..SS\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"2 4\\r\\n....\\r\\n....\\r\\n\", \"output\": [\"8\"]}, {\"input\": \"2 2\\r\\n..\\r\\n..\\r\\n\", \"output\": [\"4\"]}, {\"input\": \"3 3\\r\\n...\\r\\n...\\r\\n...\\r\\n\", \"output\": [\"9\"]}, {\"input\": \"3 2\\r\\nS.\\r\\n.S\\r\\nS.\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"3 2\\r\\nS.\\r\\n.S\\r\\nS.\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"4 3\\r\\n.S.\\r\\nS.S\\r\\n.S.\\r\\nS.S\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"2 3\\r\\n...\\r\\nSSS\\r\\n\", \"output\": [\"3\"]}, {\"input\": \"4 3\\r\\nSSS\\r\\n...\\r\\n...\\r\\n...\\r\\n\", \"output\": [\"9\"]}, {\"input\": \"2 4\\r\\nS.SS\\r\\nS.SS\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"2 2\\r\\n..\\r\\n.S\\r\\n\", \"output\": [\"3\"]}, {\"input\": \"3 2\\r\\n.S\\r\\n.S\\r\\nSS\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"4 4\\r\\nS.S.\\r\\nS.S.\\r\\n.SSS\\r\\nS...\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"2 4\\r\\nSS.S\\r\\n..S.\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"2 3\\r\\n...\\r\\nS..\\r\\n\", \"output\": [\"5\"]}, {\"input\": \"2 4\\r\\n...S\\r\\n....\\r\\n\", \"output\": [\"7\"]}]"
+    }
+}

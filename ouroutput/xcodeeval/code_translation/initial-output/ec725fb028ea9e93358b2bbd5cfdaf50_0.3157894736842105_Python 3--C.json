@@ -1,0 +1,89 @@
+{
+    "oai_response": {
+        "prompt": "Here is code in Python 3 programming lanaguge. Translate the following code from Python 3 to C programming lanaguge. Do not output any extra description or tokens other than the translated code. \n\ndef Count (n):\n    cnt = 0\n    x = 1\n    while True:\n        if x > n:\n            break\n        y = 1\n        while True:\n            if x * y > n:\n                break\n            cnt += 1\n            y *= 3\n        x *= 2\n    return cnt\n\ndef Result (l, r):\n    if l == 0:\n        return Count (r)\n    return Count (r) - Count (l - 1)\n\nl, r = map (int, input ().split ())\nprint (Result (l, r))||END-of-SRC||",
+        "response": {
+            "id": "multi-call-as-fv3ip0dmdi",
+            "model": "deepseek-v3",
+            "created": 1767069105,
+            "choices": [
+                {
+                    "index": 0,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n\nint Count(int n) {\n    int cnt = 0;\n    int x = 1;\n    while (1) {\n        if (x > n) {\n            break;\n        }\n        int y = 1;\n        while (1) {\n            if (x * y > n) {\n                break;\n            }\n            cnt += 1;\n            y *= 3;\n        }\n        x *= 2;\n    }\n    return cnt;\n}\n\nint Result(int l, int r) {\n    if (l == 0) {\n        return Count(r);\n    }\n    return Count(r) - Count(l - 1);\n}\n\nint main() {\n    int l, r;\n    scanf(\"%d %d\", &l, &r);\n    printf(\"%d\\n\", Result(l, r));\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 1,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n\nint Count(int n) {\n    int cnt = 0;\n    int x = 1;\n    while (1) {\n        if (x > n) {\n            break;\n        }\n        int y = 1;\n        while (1) {\n            if (x * y > n) {\n                break;\n            }\n            cnt += 1;\n            y *= 3;\n        }\n        x *= 2;\n    }\n    return cnt;\n}\n\nint Result(int l, int r) {\n    if (l == 0) {\n        return Count(r);\n    }\n    return Count(r) - Count(l - 1);\n}\n\nint main() {\n    int l, r;\n    scanf(\"%d %d\", &l, &r);\n    printf(\"%d\\n\", Result(l, r));\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 2,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n\nint Count(int n) {\n    int cnt = 0;\n    int x = 1;\n    while (1) {\n        if (x > n) {\n            break;\n        }\n        int y = 1;\n        while (1) {\n            if (x * y > n) {\n                break;\n            }\n            cnt += 1;\n            y *= 3;\n        }\n        x *= 2;\n    }\n    return cnt;\n}\n\nint Result(int l, int r) {\n    if (l == 0) {\n        return Count(r);\n    }\n    return Count(r) - Count(l - 1);\n}\n\nint main() {\n    int l, r;\n    scanf(\"%d %d\", &l, &r);\n    printf(\"%d\\n\", Result(l, r));\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 3,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n\nint Count(int n) {\n    int cnt = 0;\n    int x = 1;\n    while (1) {\n        if (x > n) {\n            break;\n        }\n        int y = 1;\n        while (1) {\n            if (x * y > n) {\n                break;\n            }\n            cnt++;\n            y *= 3;\n        }\n        x *= 2;\n    }\n    return cnt;\n}\n\nint Result(int l, int r) {\n    if (l == 0) {\n        return Count(r);\n    }\n    return Count(r) - Count(l - 1);\n}\n\nint main() {\n    int l, r;\n    scanf(\"%d %d\", &l, &r);\n    printf(\"%d\\n\", Result(l, r));\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 4,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n\nint Count(int n) {\n    int cnt = 0;\n    int x = 1;\n    while (1) {\n        if (x > n) {\n            break;\n        }\n        int y = 1;\n        while (1) {\n            if (x * y > n) {\n                break;\n            }\n            cnt += 1;\n            y *= 3;\n        }\n        x *= 2;\n    }\n    return cnt;\n}\n\nint Result(int l, int r) {\n    if (l == 0) {\n        return Count(r);\n    }\n    return Count(r) - Count(l - 1);\n}\n\nint main() {\n    int l, r;\n    scanf(\"%d %d\", &l, &r);\n    printf(\"%d\", Result(l, r));\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                }
+            ],
+            "usage": {
+                "prompt_tokens": 895,
+                "completion_tokens": 905,
+                "total_tokens": 1800
+            }
+        }
+    },
+    "source_data": {
+        "code_uid": "ec725fb028ea9e93358b2bbd5cfdaf50",
+        "prob_desc_output_to": "standard output",
+        "prob_desc_notes": "NoteIn the first example the 2-3-integers are 1, 2, 3, 4, 6, 8 and 9.In the second example the 2-3-integers are 108, 128, 144, 162 and 192.",
+        "lang_cluster": "Python",
+        "prob_desc_time_limit": "1 second",
+        "prob_desc_input_spec": "The only line contains two integers l and r (1\u2009\u2264\u2009l\u2009\u2264\u2009r\u2009\u2264\u20092\u00b7109).",
+        "source_code": "def Count (n):\n    cnt = 0\n    x = 1\n    while True:\n        if x > n:\n            break\n        y = 1\n        while True:\n            if x * y > n:\n                break\n            cnt += 1\n            y *= 3\n        x *= 2\n    return cnt\n\ndef Result (l, r):\n    if l == 0:\n        return Count (r)\n    return Count (r) - Count (l - 1)\n\nl, r = map (int, input ().split ())\nprint (Result (l, r))",
+        "prob_desc_sample_inputs": [
+            "1 10",
+            "100 200",
+            "1 2000000000"
+        ],
+        "prob_desc_memory_limit": "256 megabytes",
+        "exec_outcome": "PASSED",
+        "prob_desc_output_spec": "Print a single integer the number of 2-3-integers on the segment [l,\u2009r].",
+        "src_uid": "05fac54ed2064b46338bb18f897a4411",
+        "prob_desc_input_from": "standard input",
+        "lang": "Python 3",
+        "prob_desc_sample_outputs": [
+            "7",
+            "5",
+            "326"
+        ],
+        "file_name": "d7021504500d5ca7c2b02df8100a574d159e6e67e20ec8071b75800b1267370a",
+        "prob_desc_description": "A positive integer is called a 2-3-integer, if it is equal to 2x\u00b73y for some non-negative integers x and y. In other words, these integers are such integers that only have 2 and 3 among their prime divisors. For example, integers 1, 6, 9, 16 and 108 \u2014 are 2-3 integers, while 5, 10, 21 and 120 are not.Print the number of 2-3-integers on the given segment [l,\u2009r], i.\u00a0e. the number of sich 2-3-integers t that l\u2009\u2264\u2009t\u2009\u2264\u2009r.",
+        "prob_desc_created_at": "1521300900",
+        "difficulty": 1300.0,
+        "hidden_unit_tests": "[{\"input\": \"1 10\\r\\n\", \"output\": [\"7\"]}, {\"input\": \"100 200\\r\\n\", \"output\": [\"5\"]}, {\"input\": \"1 2000000000\\r\\n\", \"output\": [\"326\"]}, {\"input\": \"1088391168 1934917632\\r\\n\", \"output\": [\"17\"]}, {\"input\": \"1088391167 1934917632\\r\\n\", \"output\": [\"17\"]}, {\"input\": \"1088391169 1934917632\\r\\n\", \"output\": [\"16\"]}, {\"input\": \"1088391168 1934917631\\r\\n\", \"output\": [\"16\"]}, {\"input\": \"1088391168 1934917633\\r\\n\", \"output\": [\"17\"]}, {\"input\": \"4 134217728\\r\\n\", \"output\": [\"250\"]}, {\"input\": \"209952 43046722\\r\\n\", \"output\": [\"112\"]}, {\"input\": \"25165825 43046719\\r\\n\", \"output\": [\"13\"]}, {\"input\": \"5183 25165825\\r\\n\", \"output\": [\"153\"]}, {\"input\": \"388645 455910\\r\\n\", \"output\": [\"3\"]}, {\"input\": \"472069 972050\\r\\n\", \"output\": [\"14\"]}, {\"input\": \"1 1\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"2 2\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"12 1999999931\\r\\n\", \"output\": [\"319\"]}, {\"input\": \"1999999999 1999999999\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"2000000000 2000000000\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"1934917632 1934917632\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"1836660096 1836660096\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"1811939328 1811939328\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"1719926784 1719926784\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"1632586752 1632586752\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"1610612736 1610612736\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"1207959552 1207959552\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"129140163 129140163\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"12345 54321\\r\\n\", \"output\": [\"21\"]}, {\"input\": \"1889569 25165826\\r\\n\", \"output\": [\"56\"]}, {\"input\": \"73 7077888\\r\\n\", \"output\": [\"165\"]}, {\"input\": \"7077888 45349631\\r\\n\", \"output\": [\"43\"]}, {\"input\": \"6144 7077886\\r\\n\", \"output\": [\"122\"]}, {\"input\": \"3779135 4194302\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"214 161243134\\r\\n\", \"output\": [\"232\"]}, {\"input\": \"214 18874369\\r\\n\", \"output\": [\"180\"]}, {\"input\": \"28 863\\r\\n\", \"output\": [\"26\"]}, {\"input\": \"1417174 172186886\\r\\n\", \"output\": [\"112\"]}, {\"input\": \"27 102036671\\r\\n\", \"output\": [\"234\"]}, {\"input\": \"147458 102036672\\r\\n\", \"output\": [\"138\"]}, {\"input\": \"33554431 102036671\\r\\n\", \"output\": [\"28\"]}, {\"input\": \"1572863 33554433\\r\\n\", \"output\": [\"68\"]}, {\"input\": \"33554434 181398528\\r\\n\", \"output\": [\"43\"]}, {\"input\": \"373247 17915905\\r\\n\", \"output\": [\"81\"]}, {\"input\": \"4251526 68024450\\r\\n\", \"output\": [\"65\"]}, {\"input\": \"553599 555493\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"69739 671621\\r\\n\", \"output\": [\"40\"]}, {\"input\": \"618583 755045\\r\\n\", \"output\": [\"4\"]}, {\"input\": \"838469 943236\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"509607936 1836660096\\r\\n\", \"output\": [\"38\"]}, {\"input\": \"509607935 1836660096\\r\\n\", \"output\": [\"38\"]}, {\"input\": \"509607937 1836660096\\r\\n\", \"output\": [\"37\"]}, {\"input\": \"509607936 1836660095\\r\\n\", \"output\": [\"37\"]}, {\"input\": \"509607936 1836660097\\r\\n\", \"output\": [\"38\"]}]",
+        "source_lang": "Python 3",
+        "target_lang": "C"
+    }
+}

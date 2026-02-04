@@ -1,0 +1,87 @@
+{
+    "oai_response": {
+        "prompt": "Here is code in Python 3 programming lanaguge. Translate the following code from Python 3 to C programming lanaguge. Do not output any extra description or tokens other than the translated code. \n\nx = input()\ny = 1\nk = 1\nbea = []\nwhile y <= 100000:\n    y = ((2**k)-1)*(2**(k-1))\n    bea.append(y)\n    k = k + 1\nbea.pop(len(bea)-1)\ntemp = 0\nfor j in range(len(bea)):\n    if int(x)%bea[j]==0:\n        temp = bea[j]\nprint(temp)||END-of-SRC||",
+        "response": {
+            "id": "multi-call-as-zjp79hg869",
+            "model": "deepseek-v3",
+            "created": 1767067950,
+            "choices": [
+                {
+                    "index": 0,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <math.h>\n\nint main() {\n    int x;\n    scanf(\"%d\", &x);\n    int y = 1;\n    int k = 1;\n    int bea[100];\n    int index = 0;\n    while (y <= 100000) {\n        y = (pow(2, k) - 1) * pow(2, k - 1);\n        bea[index++] = y;\n        k = k + 1;\n    }\n    index--;\n    int temp = 0;\n    for (int j = 0; j < index; j++) {\n        if (x % bea[j] == 0) {\n            temp = bea[j];\n        }\n    }\n    printf(\"%d\", temp);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 1,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <math.h>\n\nint main() {\n    int x;\n    scanf(\"%d\", &x);\n    int y = 1;\n    int k = 1;\n    int bea[100];\n    int bea_size = 0;\n    while (y <= 100000) {\n        y = (pow(2, k) - 1) * pow(2, k - 1);\n        bea[bea_size++] = y;\n        k = k + 1;\n    }\n    bea_size--;\n    int temp = 0;\n    for (int j = 0; j < bea_size; j++) {\n        if (x % bea[j] == 0) {\n            temp = bea[j];\n        }\n    }\n    printf(\"%d\\n\", temp);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 2,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <math.h>\n\nint main() {\n    int x;\n    scanf(\"%d\", &x);\n    int y = 1;\n    int k = 1;\n    int bea[100];\n    int count = 0;\n    while (y <= 100000) {\n        y = (pow(2, k) - 1) * pow(2, k - 1);\n        bea[count++] = y;\n        k = k + 1;\n    }\n    count--;\n    int temp = 0;\n    for (int j = 0; j < count; j++) {\n        if (x % bea[j] == 0) {\n            temp = bea[j];\n        }\n    }\n    printf(\"%d\", temp);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 3,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <math.h>\n\nint main() {\n    int x;\n    scanf(\"%d\", &x);\n    int y = 1;\n    int k = 1;\n    int bea[100];\n    int bea_size = 0;\n    while (y <= 100000) {\n        y = (pow(2, k) - 1) * pow(2, k - 1);\n        bea[bea_size++] = y;\n        k = k + 1;\n    }\n    bea_size--;\n    int temp = 0;\n    for (int j = 0; j < bea_size; j++) {\n        if (x % bea[j] == 0) {\n            temp = bea[j];\n        }\n    }\n    printf(\"%d\", temp);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 4,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <math.h>\n\nint main() {\n    int x;\n    scanf(\"%d\", &x);\n    int y = 1;\n    int k = 1;\n    int bea[100];\n    int bea_size = 0;\n    \n    while (y <= 100000) {\n        y = (pow(2, k) - 1) * pow(2, k - 1);\n        bea[bea_size++] = y;\n        k = k + 1;\n    }\n    bea_size--;\n    \n    int temp = 0;\n    for (int j = 0; j < bea_size; j++) {\n        if (x % bea[j] == 0) {\n            temp = bea[j];\n        }\n    }\n    printf(\"%d\", temp);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                }
+            ],
+            "usage": {
+                "prompt_tokens": 755,
+                "completion_tokens": 905,
+                "total_tokens": 1660
+            }
+        }
+    },
+    "source_data": {
+        "code_uid": "bbbccf95c157aa571f144ec94604611a",
+        "prob_desc_output_to": "standard output",
+        "prob_desc_notes": null,
+        "lang_cluster": "Python",
+        "prob_desc_time_limit": "2 seconds",
+        "prob_desc_input_spec": "The only line of input contains one number n (1\u2009\u2264\u2009n\u2009\u2264\u2009105) \u2014 the number Luba has got.",
+        "source_code": "x = input()\ny = 1\nk = 1\nbea = []\nwhile y <= 100000:\n    y = ((2**k)-1)*(2**(k-1))\n    bea.append(y)\n    k = k + 1\nbea.pop(len(bea)-1)\ntemp = 0\nfor j in range(len(bea)):\n    if int(x)%bea[j]==0:\n        temp = bea[j]\nprint(temp)",
+        "prob_desc_sample_inputs": [
+            "3",
+            "992"
+        ],
+        "prob_desc_memory_limit": "256 megabytes",
+        "exec_outcome": "PASSED",
+        "prob_desc_output_spec": "Output one number \u2014 the greatest beautiful divisor of Luba's number. It is obvious that the answer always exists.",
+        "src_uid": "339246a1be81aefe19290de0d1aead84",
+        "prob_desc_input_from": "standard input",
+        "lang": "Python 3",
+        "prob_desc_sample_outputs": [
+            "1",
+            "496"
+        ],
+        "file_name": "d7021504500d5ca7c2b02df8100a574d159e6e67e20ec8071b75800b1267370a",
+        "prob_desc_description": "Recently Luba learned about a special kind of numbers that she calls beautiful numbers. The number is called beautiful iff its binary representation consists of k\u2009+\u20091 consecutive ones, and then k consecutive zeroes.Some examples of beautiful numbers:   12 (110);  1102 (610);  11110002 (12010);  1111100002 (49610). More formally, the number is beautiful iff there exists some positive integer k such that the number is equal to (2k\u2009-\u20091)\u2009*\u2009(2k\u2009-\u20091).Luba has got an integer number n, and she wants to find its greatest beautiful divisor. Help her to find it!",
+        "prob_desc_created_at": "1511449500",
+        "difficulty": 1000.0,
+        "hidden_unit_tests": "[{\"input\": \"3\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"992\\r\\n\", \"output\": [\"496\"]}, {\"input\": \"81142\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"76920\\r\\n\", \"output\": [\"120\"]}, {\"input\": \"2016\\r\\n\", \"output\": [\"2016\"]}, {\"input\": \"1\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"6\\r\\n\", \"output\": [\"6\"]}, {\"input\": \"32640\\r\\n\", \"output\": [\"32640\"]}, {\"input\": \"12096\\r\\n\", \"output\": [\"2016\"]}, {\"input\": \"55948\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"47262\\r\\n\", \"output\": [\"6\"]}, {\"input\": \"22876\\r\\n\", \"output\": [\"28\"]}, {\"input\": \"96120\\r\\n\", \"output\": [\"120\"]}, {\"input\": \"42160\\r\\n\", \"output\": [\"496\"]}, {\"input\": \"38304\\r\\n\", \"output\": [\"2016\"]}, {\"input\": \"89408\\r\\n\", \"output\": [\"8128\"]}, {\"input\": \"97920\\r\\n\", \"output\": [\"32640\"]}, {\"input\": \"55493\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"38021\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"21445\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"100000\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"497\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"240\\r\\n\", \"output\": [\"120\"]}, {\"input\": \"21204\\r\\n\", \"output\": [\"6\"]}, {\"input\": \"65536\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"364\\r\\n\", \"output\": [\"28\"]}, {\"input\": \"1024\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"36\\r\\n\", \"output\": [\"6\"]}, {\"input\": \"28\\r\\n\", \"output\": [\"28\"]}, {\"input\": \"14400\\r\\n\", \"output\": [\"120\"]}, {\"input\": \"10080\\r\\n\", \"output\": [\"2016\"]}, {\"input\": \"9\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"2\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"42\\r\\n\", \"output\": [\"6\"]}, {\"input\": \"83160\\r\\n\", \"output\": [\"120\"]}, {\"input\": \"65534\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"1026\\r\\n\", \"output\": [\"6\"]}, {\"input\": \"1025\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"1027\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"2018\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"2020\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"123\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"150\\r\\n\", \"output\": [\"6\"]}, {\"input\": \"5\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"66\\r\\n\", \"output\": [\"6\"]}, {\"input\": \"12768\\r\\n\", \"output\": [\"28\"]}, {\"input\": \"156\\r\\n\", \"output\": [\"6\"]}, {\"input\": \"99990\\r\\n\", \"output\": [\"6\"]}, {\"input\": \"248\\r\\n\", \"output\": [\"1\"]}]",
+        "source_lang": "Python 3",
+        "target_lang": "C"
+    }
+}

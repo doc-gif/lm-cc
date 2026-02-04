@@ -1,0 +1,104 @@
+{
+    "oai_response": {
+        "prompt": "Fix a buggy program written in Python language to solve the following programming problem:\nDescription: Your task is to calculate the number of arrays such that:  each array contains $$$n$$$ elements;  each element is an integer from $$$1$$$ to $$$m$$$;  for each array, there is exactly one pair of equal elements;  for each array $$$a$$$, there exists an index $$$i$$$ such that the array is strictly ascending before the $$$i$$$-th element and strictly descending after it (formally, it means that $$$a_j &lt; a_{j + 1}$$$, if $$$j &lt; i$$$, and $$$a_j &gt; a_{j + 1}$$$, if $$$j \\ge i$$$). \nInput Specification: The first line contains two integers $$$n$$$ and $$$m$$$ ($$$2 \\le n \\le m \\le 2 \\cdot 10^5$$$).\nOutput Specification: Print one integer \u2014 the number of arrays that meet all of the aforementioned conditions, taken modulo $$$998244353$$$.\n\nSample Input:\n3 4\nSample Output:\n6\n\nSample Input:\n3 5\nSample Output:\n10\n\nSample Input:\n42 1337\nSample Output:\n806066790\n\nSample Input:\n100000 200000\nSample Output:\n707899035\n\nNotes: NoteThe arrays in the first example are:  $$$[1, 2, 1]$$$;  $$$[1, 3, 1]$$$;  $$$[1, 4, 1]$$$;  $$$[2, 3, 2]$$$;  $$$[2, 4, 2]$$$;  $$$[3, 4, 3]$$$. \nTake input from standard input and output to standard output\n\nHere is the code with a bug of TIME_LIMIT_EXCEEDED:\n\n\"\"\"Template for Python Competitive Programmers prepared by pa.n.ik, kabeer seth and Mayank Chaudhary \"\"\"\n\n# to use the print and division function of Python3\nfrom __future__ import division, print_function\n\n\"\"\"value of mod\"\"\"\nMOD = 998244353\nmod = 10**9 + 7\n\n\"\"\"use resource\"\"\"\n# import resource\n# resource.setrlimit(resource.RLIMIT_STACK, [0x100000000, resource.RLIM_INFINITY])\n\n\"\"\"for factorial\"\"\"\n\ndef prepare_factorial():\n    fact = [1]\n    for i in range(1, 200005):\n        fact.append((fact[-1] * i) % MOD)\n    ifact = [0] * 200005\n    ifact[200004] = pow(fact[200004], MOD - 2, MOD)\n    for i in range(200004, 0, -1):\n        ifact[i - 1] = (i * ifact[i]) % MOD\n\n    return fact, ifact\n\n\"\"\"uncomment next 4 lines while doing recursion based question\"\"\"\n# import threading\n# threading.stack_size(1<<27)\nimport sys\n# sys.setrecursionlimit(10000)\n\n\n\"\"\"uncomment modules according to your need\"\"\"\nfrom bisect import bisect_left, bisect_right, insort\n# from itertools import repeat\nfrom math import floor, ceil, sqrt, degrees, atan, pi, log, sin, radians\nfrom heapq import heappop, heapify, heappush\n# from random import randint as rn\n# from Queue import Queue as Q\nfrom collections import Counter, defaultdict, deque\n# from copy import deepcopy\n# from decimal import *\nimport re\nimport operator\n\n\ndef modinv(n, p):\n    return pow(n, p - 2, p)\n\ndef ncr(n, r,  fact, ifact):    # for using this uncomment the lines calculating fact and ifact\n    t = (fact[n] * (ifact[r]*ifact[n-r]) % MOD)% MOD\n    return t\n\n\ndef get_ints(): return map(int, sys.stdin.readline().strip().split())\ndef get_array(): return list(map(int, sys.stdin.readline().strip().split()))\ndef input(): return sys.stdin.readline().strip()\n\n\"\"\"*****************************************************************************************\"\"\"\n\ndef GCD(x, y):\n    while (y):\n        x, y = y, x % y\n    return x\n\ndef lcm(x, y):\n    return (x*y)//(GCD(x, y))\n\ndef get_xor(n):\n    return [n,1,n+1,0][n%4]\n\ndef fast_expo(a, b):\n    res = 1\n    while b:\n        if b&1:\n            res =...\n\nProvide the fixed Python code without any description or extra tokens.\n\nFixed source code:\n ||END-of-SRC||",
+        "response": {
+            "id": "multi-call-as-n6f3yy14c7",
+            "model": "deepseek-v3",
+            "created": 1760423730,
+            "choices": [
+                {
+                    "index": 0,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```python\nimport sys\nMOD = 998244353\n\ndef main():\n    n, m = map(int, sys.stdin.readline().split())\n    if m < 2:\n        print(0)\n        return\n    if n == 2:\n        print(m * (m - 1) // 2 % MOD)\n        return\n    \n    fact = [1] * (m + 1)\n    for i in range(1, m + 1):\n        fact[i] = fact[i-1] * i % MOD\n    \n    inv_fact = [1] * (m + 1)\n    inv_fact[m] = pow(fact[m], MOD - 2, MOD)\n    for i in range(m - 1, -1, -1):\n        inv_fact[i] = inv_fact[i + 1] * (i + 1) % MOD\n    \n    def comb(a, b):\n        if a < 0 or b < 0 or a < b:\n            return 0\n        return fact[a] * inv_fact[b] % MOD * inv_fact[a - b] % MOD\n    \n    total = 0\n    max_k = min(m, n - 1)\n    for k in range(1, max_k + 1):\n        term = comb(m, k) * comb(k - 1, n - k - 1) % MOD\n        total = (total + term) % MOD\n    \n    answer = total * (n - 2) % MOD\n    answer = answer * pow(2, n - 3, MOD) % MOD\n    print(answer)\n\nif __name__ == \"__main__\":\n    main()\n``` ||END-of-SRC||"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 1,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```python\nimport sys\nMOD = 998244353\n\ndef prepare_factorial(max_n):\n    fact = [1] * (max_n + 1)\n    for i in range(1, max_n + 1):\n        fact[i] = (fact[i-1] * i) % MOD\n    ifact = [0] * (max_n + 1)\n    ifact[max_n] = pow(fact[max_n], MOD - 2, MOD)\n    for i in range(max_n, 0, -1):\n        ifact[i-1] = (ifact[i] * i) % MOD\n    return fact, ifact\n\ndef solve():\n    n, m = map(int, sys.stdin.readline().split())\n    if m < 2 or n < 2 or n > m:\n        print(0)\n        return\n    \n    max_n = m\n    fact, ifact = prepare_factorial(max_n)\n    \n    def comb(a, b):\n        if a < 0 or b < 0 or a < b:\n            return 0\n        return fact[a] * ifact[b] % MOD * ifact[a - b] % MOD\n    \n    total = 0\n    for k in range(2, n + 1):\n        term = (k - 1) * comb(m, k) % MOD\n        term = term * comb(n - 2, k - 2) % MOD\n        term = term * pow(2, k - 2, MOD) % MOD\n        total = (total + term) % MOD\n    \n    print(total)\n\nsolve()\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 2,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```python\nimport sys\nMOD = 998244353\n\ndef main():\n    n, m = map(int, sys.stdin.readline().split())\n    if n == 2:\n        print((m * (m - 1)) % MOD)\n        return\n    \n    fact = [1] * (m + 1)\n    for i in range(1, m + 1):\n        fact[i] = fact[i-1] * i % MOD\n    \n    inv_fact = [1] * (m + 1)\n    inv_fact[m] = pow(fact[m], MOD - 2, MOD)\n    for i in range(m - 1, -1, -1):\n        inv_fact[i] = inv_fact[i + 1] * (i + 1) % MOD\n    \n    def comb(a, b):\n        if a < 0 or b < 0 or a < b:\n            return 0\n        return fact[a] * inv_fact[b] % MOD * inv_fact[a - b] % MOD\n    \n    total = 0\n    max_k = min(n - 1, m)\n    for k in range(1, max_k + 1):\n        ways = (k - 1) * comb(n - 3, k - 2) % MOD\n        ways = ways * comb(m, k + 1) % MOD\n        total = (total + ways) % MOD\n    \n    total = total * n % MOD\n    total = total * pow(2, n - 3, MOD) % MOD\n    print(total)\n\nif __name__ == \"__main__\":\n    main()\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 3,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```python\nimport sys\nMOD = 998244353\n\ndef prepare_factorial(max_n):\n    fact = [1] * (max_n + 1)\n    for i in range(1, max_n + 1):\n        fact[i] = fact[i-1] * i % MOD\n    ifact = [1] * (max_n + 1)\n    ifact[max_n] = pow(fact[max_n], MOD - 2, MOD)\n    for i in range(max_n - 1, -1, -1):\n        ifact[i] = ifact[i + 1] * (i + 1) % MOD\n    return fact, ifact\n\ndef solve():\n    n, m = map(int, sys.stdin.readline().split())\n    if n == 2:\n        print(0)\n        return\n    max_n = m\n    fact, ifact = prepare_factorial(max_n)\n    \n    def comb(a, b):\n        if a < 0 or b < 0 or a < b:\n            return 0\n        return fact[a] * ifact[b] % MOD * ifact[a - b] % MOD\n    \n    res = 0\n    for k in range(2, n):\n        ways = comb(m, n - 1) * (n - 2) % MOD\n        ways = ways * comb(n - 3, k - 2) % MOD\n        res = (res + ways) % MOD\n    res = res * pow(2, n - 3, MOD) % MOD\n    print(res)\n\nsolve()\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 4,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```python\nimport sys\nMOD = 998244353\n\ndef main():\n    n, m = map(int, sys.stdin.readline().split())\n    if m < 2:\n        print(0)\n        return\n    if n == 2:\n        print(m * (m - 1) // 2 % MOD)\n        return\n    \n    fact = [1] * (m + 1)\n    for i in range(1, m + 1):\n        fact[i] = fact[i-1] * i % MOD\n    \n    inv_fact = [1] * (m + 1)\n    inv_fact[m] = pow(fact[m], MOD - 2, MOD)\n    for i in range(m - 1, -1, -1):\n        inv_fact[i] = inv_fact[i + 1] * (i + 1) % MOD\n    \n    def comb(a, b):\n        if a < 0 or b < 0 or a < b:\n            return 0\n        return fact[a] * inv_fact[b] % MOD * inv_fact[a - b] % MOD\n    \n    total = 0\n    max_k = min(m, n - 1)\n    for k in range(1, max_k + 1):\n        ways = comb(m, k)\n        ways = ways * comb(k - 1, n - k - 1) % MOD\n        ways = ways * (n - 2) % MOD\n        ways = ways * pow(2, n - 3, MOD) % MOD\n        total = (total + ways) % MOD\n    \n    print(total)\n\nif __name__ == \"__main__\":\n    main()\n```"
+                    },
+                    "finish_reason": "stop"
+                }
+            ],
+            "usage": {
+                "prompt_tokens": 5105,
+                "completion_tokens": 1758,
+                "total_tokens": 6863
+            }
+        }
+    },
+    "source_data": {
+        "prob_desc_memory_limit": "512 megabytes",
+        "tags": [
+            "math",
+            "combinatorics"
+        ],
+        "prob_desc_created_at": "1583764500",
+        "fix_source_code": "",
+        "prob_desc_input_spec": "The first line contains two integers $$$n$$$ and $$$m$$$ ($$$2 \\le n \\le m \\le 2 \\cdot 10^5$$$).",
+        "prob_desc_sample_outputs": [
+            "6",
+            "10",
+            "806066790",
+            "707899035"
+        ],
+        "src_uid": "28d6fc8973a3e0076a21c2ea490dfdba",
+        "prob_desc_time_limit": "2 seconds",
+        "fix_exec_outcome": "",
+        "delete_cnt": 0,
+        "apr_id": "b87b693b262e190b5576f385085e28c3",
+        "fix_code_uid": "",
+        "lang_cluster": "Python",
+        "prob_desc_sample_inputs": [
+            "3 4",
+            "3 5",
+            "42 1337",
+            "100000 200000"
+        ],
+        "prob_desc_output_to": "standard output",
+        "file_name": "Python.jsonl",
+        "equal_cnt": 4,
+        "lang": "PyPy 2",
+        "prob_desc_output_spec": "Print one integer \u2014 the number of arrays that meet all of the aforementioned conditions, taken modulo $$$998244353$$$.",
+        "bug_exec_outcome": "TIME_LIMIT_EXCEEDED",
+        "prob_desc_notes": "NoteThe arrays in the first example are:  $$$[1, 2, 1]$$$;  $$$[1, 3, 1]$$$;  $$$[1, 4, 1]$$$;  $$$[2, 3, 2]$$$;  $$$[2, 4, 2]$$$;  $$$[3, 4, 3]$$$. ",
+        "difficulty": 1700.0,
+        "similarity_score": 0.9927914143,
+        "prob_desc_description": "Your task is to calculate the number of arrays such that:  each array contains $$$n$$$ elements;  each element is an integer from $$$1$$$ to $$$m$$$;  for each array, there is exactly one pair of equal elements;  for each array $$$a$$$, there exists an index $$$i$$$ such that the array is strictly ascending before the $$$i$$$-th element and strictly descending after it (formally, it means that $$$a_j &lt; a_{j + 1}$$$, if $$$j &lt; i$$$, and $$$a_j &gt; a_{j + 1}$$$, if $$$j \\ge i$$$). ",
+        "potential_dominant_fix_op": "insert",
+        "bug_source_code": "\"\"\"Template for Python Competitive Programmers prepared by pa.n.ik, kabeer seth and Mayank Chaudhary \"\"\"\n\n# to use the print and division function of Python3\nfrom __future__ import division, print_function\n\n\"\"\"value of mod\"\"\"\nMOD = 998244353\nmod = 10**9 + 7\n\n\"\"\"use resource\"\"\"\n# import resource\n# resource.setrlimit(resource.RLIMIT_STACK, [0x100000000, resource.RLIM_INFINITY])\n\n\"\"\"for factorial\"\"\"\n\ndef prepare_factorial():\n    fact = [1]\n    for i in range(1, 200005):\n        fact.append((fact[-1] * i) % MOD)\n    ifact = [0] * 200005\n    ifact[200004] = pow(fact[200004], MOD - 2, MOD)\n    for i in range(200004, 0, -1):\n        ifact[i - 1] = (i * ifact[i]) % MOD\n\n    return fact, ifact\n\n\"\"\"uncomment next 4 lines while doing recursion based question\"\"\"\n# import threading\n# threading.stack_size(1<<27)\nimport sys\n# sys.setrecursionlimit(10000)\n\n\n\"\"\"uncomment modules according to your need\"\"\"\nfrom bisect import bisect_left, bisect_right, insort\n# from itertools import repeat\nfrom math import floor, ceil, sqrt, degrees, atan, pi, log, sin, radians\nfrom heapq import heappop, heapify, heappush\n# from random import randint as rn\n# from Queue import Queue as Q\nfrom collections import Counter, defaultdict, deque\n# from copy import deepcopy\n# from decimal import *\nimport re\nimport operator\n\n\ndef modinv(n, p):\n    return pow(n, p - 2, p)\n\ndef ncr(n, r,  fact, ifact):    # for using this uncomment the lines calculating fact and ifact\n    t = (fact[n] * (ifact[r]*ifact[n-r]) % MOD)% MOD\n    return t\n\n\ndef get_ints(): return map(int, sys.stdin.readline().strip().split())\ndef get_array(): return list(map(int, sys.stdin.readline().strip().split()))\ndef input(): return sys.stdin.readline().strip()\n\n\"\"\"*****************************************************************************************\"\"\"\n\ndef GCD(x, y):\n    while (y):\n        x, y = y, x % y\n    return x\n\ndef lcm(x, y):\n    return (x*y)//(GCD(x, y))\n\ndef get_xor(n):\n    return [n,1,n+1,0][n%4]\n\ndef fast_expo(a, b):\n    res = 1\n    while b:\n        if b&1:\n            res = (res * a)\n            res %= MOD\n            b -= 1\n        else:\n            a = (a* a)\n            a %= MOD\n            b>>=1\n    res %= MOD\n    return res\n\n\"\"\" ********************************************************************************************* \"\"\"\n\ndef main():\n\n    fact, ifact = prepare_factorial()\n    n, m = get_ints()\n\n    ans = ((ncr(m, n-1, fact, ifact) * (n-2))%MOD * fast_expo(2, n-3))%MOD\n    print(ans)\n\n\n\"\"\" -------- Python 2 and 3 footer by Pajenegod and c1729 ---------\"\"\"\n\npy2 = round(0.5)\nif py2:\n    from future_builtins import ascii, filter, hex, map, oct, zip\n    range = xrange\n\nimport os, sys\nfrom io import IOBase, BytesIO\n\nBUFSIZE = 8192\n\nclass FastIO(BytesIO):\n    newlines = 0\n\n    def __init__(self, file):\n        self._file = file\n        self._fd = file.fileno()\n        self.writable = \"x\" in file.mode or \"w\" in file.mode\n        self.write = super(FastIO, self).write if self.writable else None\n\n    def _fill(self):\n        s = os.read(self._fd, max(os.fstat(self._fd).st_size, BUFSIZE))\n        self.seek((self.tell(), self.seek(0, 2), super(FastIO, self).write(s))[0])\n        return s\n\n    def read(self):\n        while self._fill(): pass\n        return super(FastIO, self).read()\n\n    def readline(self):\n        while self.newlines == 0:\n            s = self._fill();\n            self.newlines = s.count(b\"\\n\") + (not s)\n        self.newlines -= 1\n        return super(FastIO, self).readline()\n\n    def flush(self):\n        if self.writable:\n            os.write(self._fd, self.getvalue())\n            self.truncate(0), self.seek(0)\n\n\nclass IOWrapper(IOBase):\n\n    def __init__(self, file):\n        self.buffer = FastIO(file)\n        self.flush = self.buffer.flush\n        self.writable = self.buffer.writable\n        if py2:\n            self.write = self.buffer.write\n            self.read = self.buffer.read\n            self.readline = self.buffer.readline\n        else:\n            self.write = lambda s: self.buffer.write(s.encode('ascii'))\n            self.read = lambda: self.buffer.read().decode('ascii')\n            self.readline = lambda: self.buffer.readline().decode('ascii')\n\n\nsys.stdin, sys.stdout = IOWrapper(sys.stdin), IOWrapper(sys.stdout)\ninput = lambda: sys.stdin.readline().rstrip('\\r\\n')\n\n# sys.stdin = open('input.txt', 'r')\n# sys.stdout = open('output.txt', 'w')\n\n\"\"\" main function\"\"\"\n\nif __name__ == '__main__':\n    main()\n    # threading.Thread(target=main).start()",
+        "replace_cnt": 1,
+        "prob_desc_input_from": "standard input",
+        "bug_code_uid": "4fc0fcdef3f6c3e4f9b573dfcec0bbac",
+        "insert_cnt": 2,
+        "fix_ops_cnt": 3,
+        "hidden_unit_tests": "[{\"input\": \"3 4\\r\\n\", \"output\": [\"6\"]}, {\"input\": \"3 5\\r\\n\", \"output\": [\"10\"]}, {\"input\": \"42 1337\\r\\n\", \"output\": [\"806066790\"]}, {\"input\": \"100000 200000\\r\\n\", \"output\": [\"707899035\"]}, {\"input\": \"150000 200000\\r\\n\", \"output\": [\"270223789\"]}, {\"input\": \"2 2\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"3 3\\r\\n\", \"output\": [\"3\"]}, {\"input\": \"3 200000\\r\\n\", \"output\": [\"35012940\"]}, {\"input\": \"200000 200000\\r\\n\", \"output\": [\"668956439\"]}, {\"input\": \"20 20\\r\\n\", \"output\": [\"47185920\"]}, {\"input\": \"2 3\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"1000 200000\\r\\n\", \"output\": [\"664520775\"]}, {\"input\": \"2 10\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"7 14\\r\\n\", \"output\": [\"240240\"]}]"
+    }
+}

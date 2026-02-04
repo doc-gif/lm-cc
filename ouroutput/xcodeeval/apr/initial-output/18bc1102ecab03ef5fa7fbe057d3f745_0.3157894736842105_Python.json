@@ -1,0 +1,100 @@
+{
+    "oai_response": {
+        "prompt": "Fix a buggy program written in Python language to solve the following programming problem:\nDescription: wHAT DO WE NEED cAPS LOCK FOR?Caps lock is a computer keyboard key. Pressing it sets an input mode in which typed letters are capital by default. If it is pressed by accident, it leads to accidents like the one we had in the first passage. Let's consider that a word has been typed with the Caps lock key accidentally switched on, if:   either it only contains uppercase letters;  or all letters except for the first one are uppercase. In this case we should automatically change the case of all letters. For example, the case of the letters that form words \"hELLO\", \"HTTP\", \"z\" should be changed.Write a program that applies the rule mentioned above. If the rule cannot be applied, the program should leave the word unchanged.\nInput Specification: The first line of the input data contains a word consisting of uppercase and lowercase Latin letters. The word's length is from 1 to 100 characters, inclusive.\nOutput Specification: Print the result of the given word's processing.\n\nSample Input:\ncAPS\nSample Output:\nCaps\n\nSample Input:\nLock\nSample Output:\nLock\n\nNotes: None\nTake input from standard input and output to standard output\n\nHere is the code with a bug of RUNTIME_ERROR:\n\nimport string\n\ndef Correct(word):\n    up = 0\n    lo = 0\n    flo = 0\n    new = ''\n    alpha = list(string.ascii_lowercase)\n    ALPHA = list(string.ascii_uppercase)\n    dic_one = {}\n    dic_two = {}\n    for i in range(0,26):\n        dic_one[ALPHA[i]] = alpha[i]\n    for j in range(0,26):\n        dic_two[alpha[j]] = ALPHA[j] \n    l = list(word)\n    for m in range(len(word)):\n        for k in range(0,26):\n            if l[m] == ALPHA[k]:\n                up = up + 1\n            elif l[0] == alpha[k]:\n                flo = 1\n    if l[0] == l[1]:\n        if up == len(word):\n            for m in range(0,len(word)):\n                l[m] = dic_one[l[m]]\n    elif up == len(word) and l[0] != l[1]:\n        for m in range(1,len(word)):\n            l[m] = dic_one[l[m]]\n    elif flo == 1 and up == len(word)-1:\n        l[0] = dic_two[l[0]]\n        for m in range(1,len(word)):\n            l[m] = dic_one[l[m]]\n    else:\n        return word\n    for n in range(len(word)):\n        new = new + l[n]\n    return new\n\nword = str(input())\nprint(Correct(word))\n\nProvide the fixed Python code without any description or extra tokens.\n\nFixed source code:\n ||END-of-SRC||",
+        "response": {
+            "id": "multi-call-as-wf3hvav7pn",
+            "model": "deepseek-v3",
+            "created": 1760424199,
+            "choices": [
+                {
+                    "index": 0,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```python\nimport string\n\ndef Correct(word):\n    up = 0\n    flo = 0\n    new = ''\n    alpha = list(string.ascii_lowercase)\n    ALPHA = list(string.ascii_uppercase)\n    dic_one = {}\n    dic_two = {}\n    for i in range(0,26):\n        dic_one[ALPHA[i]] = alpha[i]\n    for j in range(0,26):\n        dic_two[alpha[j]] = ALPHA[j] \n    l = list(word)\n    for m in range(len(word)):\n        if l[m] in ALPHA:\n            up += 1\n    if l[0] in alpha:\n        flo = 1\n    if up == len(word):\n        for m in range(0,len(word)):\n            l[m] = dic_one[l[m]]\n    elif flo == 1 and up == len(word)-1:\n        l[0] = dic_two[l[0]]\n        for m in range(1,len(word)):\n            l[m] = dic_one[l[m]]\n    else:\n        return word\n    for n in range(len(word)):\n        new = new + l[n]\n    return new\n\nword = str(input())\nprint(Correct(word))\n``` ||END-of-SRC||"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 1,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```python\nimport string\n\ndef Correct(word):\n    up = 0\n    flo = 0\n    new = ''\n    alpha = list(string.ascii_lowercase)\n    ALPHA = list(string.ascii_uppercase)\n    dic_one = {}\n    dic_two = {}\n    for i in range(0,26):\n        dic_one[ALPHA[i]] = alpha[i]\n    for j in range(0,26):\n        dic_two[alpha[j]] = ALPHA[j] \n    l = list(word)\n    for m in range(len(word)):\n        if l[m] in ALPHA:\n            up += 1\n    if l[0] in alpha:\n        flo = 1\n    \n    if up == len(word):\n        for m in range(0, len(word)):\n            l[m] = dic_one[l[m]]\n    elif flo == 1 and up == len(word)-1:\n        l[0] = dic_two[l[0]]\n        for m in range(1, len(word)):\n            l[m] = dic_one[l[m]]\n    else:\n        return word\n    \n    for n in range(len(word)):\n        new += l[n]\n    return new\n\nword = input().strip()\nprint(Correct(word))\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 2,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```python\nimport string\n\ndef Correct(word):\n    up = 0\n    flo = 0\n    new = ''\n    alpha = list(string.ascii_lowercase)\n    ALPHA = list(string.ascii_uppercase)\n    dic_one = {}\n    dic_two = {}\n    for i in range(0,26):\n        dic_one[ALPHA[i]] = alpha[i]\n    for j in range(0,26):\n        dic_two[alpha[j]] = ALPHA[j] \n    l = list(word)\n    for m in range(len(word)):\n        if l[m] in ALPHA:\n            up += 1\n    if l[0] in alpha:\n        flo = 1\n    \n    if up == len(word):\n        for m in range(0, len(word)):\n            l[m] = dic_one[l[m]]\n    elif flo == 1 and up == len(word)-1:\n        l[0] = dic_two[l[0]]\n        for m in range(1, len(word)):\n            l[m] = dic_one[l[m]]\n    else:\n        return word\n    for n in range(len(word)):\n        new = new + l[n]\n    return new\n\nword = str(input())\nprint(Correct(word))\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 3,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```python\nimport string\n\ndef Correct(word):\n    up = 0\n    lo = 0\n    flo = 0\n    new = ''\n    alpha = list(string.ascii_lowercase)\n    ALPHA = list(string.ascii_uppercase)\n    dic_one = {}\n    dic_two = {}\n    for i in range(0,26):\n        dic_one[ALPHA[i]] = alpha[i]\n    for j in range(0,26):\n        dic_two[alpha[j]] = ALPHA[j] \n    l = list(word)\n    if len(word) == 1:\n        if l[0] in ALPHA:\n            return dic_one[l[0]]\n        else:\n            return dic_two[l[0]]\n    for m in range(len(word)):\n        if l[m] in ALPHA:\n            up += 1\n    if l[0] in alpha:\n        flo = 1\n    if up == len(word):\n        for m in range(0,len(word)):\n            l[m] = dic_one[l[m]]\n    elif flo == 1 and up == len(word)-1:\n        l[0] = dic_two[l[0]]\n        for m in range(1,len(word)):\n            l[m] = dic_one[l[m]]\n    else:\n        return word\n    for n in range(len(word)):\n        new = new + l[n]\n    return new\n\nword = str(input())\nprint(Correct(word))\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 4,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```python\nimport string\n\ndef Correct(word):\n    up = 0\n    lo = 0\n    flo = 0\n    new = ''\n    alpha = list(string.ascii_lowercase)\n    ALPHA = list(string.ascii_uppercase)\n    dic_one = {}\n    dic_two = {}\n    for i in range(0,26):\n        dic_one[ALPHA[i]] = alpha[i]\n    for j in range(0,26):\n        dic_two[alpha[j]] = ALPHA[j] \n    l = list(word)\n    if len(word) == 1:\n        if l[0] in ALPHA:\n            return l[0].lower()\n        else:\n            return l[0].upper()\n    for m in range(len(word)):\n        if l[m] in ALPHA:\n            up += 1\n    if l[0] in alpha:\n        flo = 1\n    if up == len(word):\n        for m in range(0,len(word)):\n            l[m] = dic_one[l[m]]\n    elif flo == 1 and up == len(word)-1:\n        l[0] = dic_two[l[0]]\n        for m in range(1,len(word)):\n            l[m] = dic_one[l[m]]\n    else:\n        return word\n    for n in range(len(word)):\n        new = new + l[n]\n    return new\n\nword = str(input())\nprint(Correct(word))\n```"
+                    },
+                    "finish_reason": "stop"
+                }
+            ],
+            "usage": {
+                "prompt_tokens": 3150,
+                "completion_tokens": 1421,
+                "total_tokens": 4571
+            }
+        }
+    },
+    "source_data": {
+        "prob_desc_memory_limit": "256 megabytes",
+        "tags": [
+            "strings",
+            "implementation"
+        ],
+        "prob_desc_created_at": "1322233200",
+        "fix_source_code": "",
+        "prob_desc_input_spec": "The first line of the input data contains a word consisting of uppercase and lowercase Latin letters. The word's length is from 1 to 100 characters, inclusive.",
+        "prob_desc_sample_outputs": [
+            "Caps",
+            "Lock"
+        ],
+        "src_uid": "db0eb44d8cd8f293da407ba3adee10cf",
+        "prob_desc_time_limit": "0.5 second",
+        "fix_exec_outcome": "",
+        "delete_cnt": 0,
+        "apr_id": "3c9554e2af3231a80275145f0a12f62d",
+        "fix_code_uid": "",
+        "lang_cluster": "Python",
+        "prob_desc_sample_inputs": [
+            "cAPS",
+            "Lock"
+        ],
+        "prob_desc_output_to": "standard output",
+        "file_name": "Python.jsonl",
+        "equal_cnt": 10,
+        "lang": "Python 3",
+        "prob_desc_output_spec": "Print the result of the given word's processing.",
+        "bug_exec_outcome": "RUNTIME_ERROR",
+        "prob_desc_notes": null,
+        "difficulty": 1000.0,
+        "similarity_score": 0.7203757167,
+        "prob_desc_description": "wHAT DO WE NEED cAPS LOCK FOR?Caps lock is a computer keyboard key. Pressing it sets an input mode in which typed letters are capital by default. If it is pressed by accident, it leads to accidents like the one we had in the first passage. Let's consider that a word has been typed with the Caps lock key accidentally switched on, if:   either it only contains uppercase letters;  or all letters except for the first one are uppercase. In this case we should automatically change the case of all letters. For example, the case of the letters that form words \"hELLO\", \"HTTP\", \"z\" should be changed.Write a program that applies the rule mentioned above. If the rule cannot be applied, the program should leave the word unchanged.",
+        "potential_dominant_fix_op": "replace",
+        "bug_source_code": "import string\n\ndef Correct(word):\n    up = 0\n    lo = 0\n    flo = 0\n    new = ''\n    alpha = list(string.ascii_lowercase)\n    ALPHA = list(string.ascii_uppercase)\n    dic_one = {}\n    dic_two = {}\n    for i in range(0,26):\n        dic_one[ALPHA[i]] = alpha[i]\n    for j in range(0,26):\n        dic_two[alpha[j]] = ALPHA[j] \n    l = list(word)\n    for m in range(len(word)):\n        for k in range(0,26):\n            if l[m] == ALPHA[k]:\n                up = up + 1\n            elif l[0] == alpha[k]:\n                flo = 1\n    if l[0] == l[1]:\n        if up == len(word):\n            for m in range(0,len(word)):\n                l[m] = dic_one[l[m]]\n    elif up == len(word) and l[0] != l[1]:\n        for m in range(1,len(word)):\n            l[m] = dic_one[l[m]]\n    elif flo == 1 and up == len(word)-1:\n        l[0] = dic_two[l[0]]\n        for m in range(1,len(word)):\n            l[m] = dic_one[l[m]]\n    else:\n        return word\n    for n in range(len(word)):\n        new = new + l[n]\n    return new\n\nword = str(input())\nprint(Correct(word))",
+        "replace_cnt": 7,
+        "prob_desc_input_from": "standard input",
+        "bug_code_uid": "18bc1102ecab03ef5fa7fbe057d3f745",
+        "insert_cnt": 2,
+        "fix_ops_cnt": 9,
+        "hidden_unit_tests": "[{\"input\": \"cAPS\\r\\n\", \"output\": [\"Caps\"]}, {\"input\": \"Lock\\r\\n\", \"output\": [\"Lock\"]}, {\"input\": \"cAPSlOCK\\r\\n\", \"output\": [\"cAPSlOCK\"]}, {\"input\": \"CAPs\\r\\n\", \"output\": [\"CAPs\"]}, {\"input\": \"LoCK\\r\\n\", \"output\": [\"LoCK\"]}, {\"input\": \"OOPS\\r\\n\", \"output\": [\"oops\"]}, {\"input\": \"oops\\r\\n\", \"output\": [\"oops\"]}, {\"input\": \"a\\r\\n\", \"output\": [\"A\"]}, {\"input\": \"A\\r\\n\", \"output\": [\"a\"]}, {\"input\": \"aA\\r\\n\", \"output\": [\"Aa\"]}, {\"input\": \"Zz\\r\\n\", \"output\": [\"Zz\"]}, {\"input\": \"Az\\r\\n\", \"output\": [\"Az\"]}, {\"input\": \"zA\\r\\n\", \"output\": [\"Za\"]}, {\"input\": \"AAA\\r\\n\", \"output\": [\"aaa\"]}, {\"input\": \"AAa\\r\\n\", \"output\": [\"AAa\"]}, {\"input\": \"AaR\\r\\n\", \"output\": [\"AaR\"]}, {\"input\": \"Tdr\\r\\n\", \"output\": [\"Tdr\"]}, {\"input\": \"aTF\\r\\n\", \"output\": [\"Atf\"]}, {\"input\": \"fYd\\r\\n\", \"output\": [\"fYd\"]}, {\"input\": \"dsA\\r\\n\", \"output\": [\"dsA\"]}, {\"input\": \"fru\\r\\n\", \"output\": [\"fru\"]}, {\"input\": \"hYBKF\\r\\n\", \"output\": [\"Hybkf\"]}, {\"input\": \"XweAR\\r\\n\", \"output\": [\"XweAR\"]}, {\"input\": \"mogqx\\r\\n\", \"output\": [\"mogqx\"]}, {\"input\": \"eOhEi\\r\\n\", \"output\": [\"eOhEi\"]}, {\"input\": \"nkdku\\r\\n\", \"output\": [\"nkdku\"]}, {\"input\": \"zcnko\\r\\n\", \"output\": [\"zcnko\"]}, {\"input\": \"lcccd\\r\\n\", \"output\": [\"lcccd\"]}, {\"input\": \"vwmvg\\r\\n\", \"output\": [\"vwmvg\"]}, {\"input\": \"lvchf\\r\\n\", \"output\": [\"lvchf\"]}, {\"input\": \"IUNVZCCHEWENCHQQXQYPUJCRDZLUXCLJHXPHBXEUUGNXOOOPBMOBRIBHHMIRILYJGYYGFMTMFSVURGYHUWDRLQVIBRLPEVAMJQYO\\r\\n\", \"output\": [\"iunvzcchewenchqqxqypujcrdzluxcljhxphbxeuugnxooopbmobribhhmirilyjgyygfmtmfsvurgyhuwdrlqvibrlpevamjqyo\"]}, {\"input\": \"OBHSZCAMDXEJWOZLKXQKIVXUUQJKJLMMFNBPXAEFXGVNSKQLJGXHUXHGCOTESIVKSFMVVXFVMTEKACRIWALAGGMCGFEXQKNYMRTG\\r\\n\", \"output\": [\"obhszcamdxejwozlkxqkivxuuqjkjlmmfnbpxaefxgvnskqljgxhuxhgcotesivksfmvvxfvmtekacriwalaggmcgfexqknymrtg\"]}, {\"input\": \"IKJYZIKROIYUUCTHSVSKZTETNNOCMAUBLFJCEVANCADASMZRCNLBZPQRXESHEEMOMEPCHROSRTNBIDXYMEPJSIXSZQEBTEKKUHFS\\r\\n\", \"output\": [\"ikjyzikroiyuucthsvskztetnnocmaublfjcevancadasmzrcnlbzpqrxesheemomepchrosrtnbidxymepjsixszqebtekkuhfs\"]}, {\"input\": \"cTKDZNWVYRTFPQLDAUUNSPKTDJTUPPFPRXRSINTVFVNNQNKXWUZUDHZBUSOKTABUEDQKUIVRTTVUREEOBJTSDKJKVEGFXVHXEYPE\\r\\n\", \"output\": [\"Ctkdznwvyrtfpqldauunspktdjtuppfprxrsintvfvnnqnkxwuzudhzbusoktabuedqkuivrttvureeobjtsdkjkvegfxvhxeype\"]}, {\"input\": \"uCKJZRGZJCPPLEEYJTUNKOQSWGBMTBQEVPYFPIPEKRVYQNTDPANOIXKMPINNFUSZWCURGBDPYTEKBEKCPMVZPMWAOSHJYMGKOMBQ\\r\\n\", \"output\": [\"Uckjzrgzjcppleeyjtunkoqswgbmtbqevpyfpipekrvyqntdpanoixkmpinnfuszwcurgbdpytekbekcpmvzpmwaoshjymgkombq\"]}, {\"input\": \"KETAXTSWAAOBKUOKUQREHIOMVMMRSAEWKGXZKRASwTVNSSFSNIWYNPSTMRADOADEEBURRHPOOBIEUIBGYDJCEKPNLEUCANZYJKMR\\r\\n\", \"output\": [\"KETAXTSWAAOBKUOKUQREHIOMVMMRSAEWKGXZKRASwTVNSSFSNIWYNPSTMRADOADEEBURRHPOOBIEUIBGYDJCEKPNLEUCANZYJKMR\"]}, {\"input\": \"ZEKGDMWJPVUWFlNXRLUmWKLMMYSLRQQIBRWDPKWITUIMZYYKOEYGREKHHZRZZUFPVTNIHKGTCCTLOKSZITXXZDMPITHNZUIGDZLE\\r\\n\", \"output\": [\"ZEKGDMWJPVUWFlNXRLUmWKLMMYSLRQQIBRWDPKWITUIMZYYKOEYGREKHHZRZZUFPVTNIHKGTCCTLOKSZITXXZDMPITHNZUIGDZLE\"]}, {\"input\": \"TcMbVPCFvnNkCEUUCIFLgBJeCOKuJhIGwXFrhAZjuAhBraMSchBfWwIuHAEbgJOFzGtxDLDXzDSaPCFujGGxgxdlHUIQYRrMFCgJ\\r\\n\", \"output\": [\"TcMbVPCFvnNkCEUUCIFLgBJeCOKuJhIGwXFrhAZjuAhBraMSchBfWwIuHAEbgJOFzGtxDLDXzDSaPCFujGGxgxdlHUIQYRrMFCgJ\"]}, {\"input\": \"xFGqoLILNvxARKuIntPfeukFtMbvzDezKpPRAKkIoIvwqNXnehRVwkkXYvuRCeoieBaBfTjwsYhDeCLvBwktntyluoxCYVioXGdm\\r\\n\", \"output\": [\"xFGqoLILNvxARKuIntPfeukFtMbvzDezKpPRAKkIoIvwqNXnehRVwkkXYvuRCeoieBaBfTjwsYhDeCLvBwktntyluoxCYVioXGdm\"]}, {\"input\": \"udvqolbxdwbkijwvhlyaelhynmnfgszbhgshlcwdkaibceqomzujndixuzivlsjyjqxzxodzbukxxhwwultvekdfntwpzlhhrIjm\\r\\n\", \"output\": [\"udvqolbxdwbkijwvhlyaelhynmnfgszbhgshlcwdkaibceqomzujndixuzivlsjyjqxzxodzbukxxhwwultvekdfntwpzlhhrIjm\"]}, {\"input\": \"jgpwhetqqoncighgzbbaLwwwxkxivuwtokehrgprfgewzcwxkavwoflcgsgbhoeamzbefzoonwsyzisetoydrpufktzgbaycgaeg\\r\\n\", \"output\": [\"jgpwhetqqoncighgzbbaLwwwxkxivuwtokehrgprfgewzcwxkavwoflcgsgbhoeamzbefzoonwsyzisetoydrpufktzgbaycgaeg\"]}, {\"input\": \"vyujsazdstbnkxeunedfbolicojzjpufgfemhtmdrswvmuhoivjvonacefqenbqudelmdegxqtbwezsbydmanzutvdgkgrjxzlnc\\r\\n\", \"output\": [\"vyujsazdstbnkxeunedfbolicojzjpufgfemhtmdrswvmuhoivjvonacefqenbqudelmdegxqtbwezsbydmanzutvdgkgrjxzlnc\"]}, {\"input\": \"pivqnuqkaofcduvbttztjbuavrqwiqrwkfncmvatoxruelyoecnkpqraiahumiaiqeyjapbqyrsxcdgjbihivtqezvasfmzntdfv\\r\\n\", \"output\": [\"pivqnuqkaofcduvbttztjbuavrqwiqrwkfncmvatoxruelyoecnkpqraiahumiaiqeyjapbqyrsxcdgjbihivtqezvasfmzntdfv\"]}, {\"input\": \"upvtbsxswbohxshdrbjxcungzquhuomgxwlryvshshsfvqbrxvcikbglietlpqkiwbhiqpmdwuqosbtdvyxekkaqiwrbsibpoect\\r\\n\", \"output\": [\"upvtbsxswbohxshdrbjxcungzquhuomgxwlryvshshsfvqbrxvcikbglietlpqkiwbhiqpmdwuqosbtdvyxekkaqiwrbsibpoect\"]}, {\"input\": \"JEGDOFJOFGJHFROGHOFGMHOFGHORGFHMOu\\r\\n\", \"output\": [\"JEGDOFJOFGJHFROGHOFGMHOFGHORGFHMOu\"]}, {\"input\": \"aBACABa\\r\\n\", \"output\": [\"aBACABa\"]}, {\"input\": \"AAAAAAAAAAAAAAAAAAAAAAAAaa\\r\\n\", \"output\": [\"AAAAAAAAAAAAAAAAAAAAAAAAaa\"]}, {\"input\": \"aaAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\\r\\n\", \"output\": [\"aaAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\"]}, {\"input\": \"dDDDDDDDDDDDDD\\r\\n\", \"output\": [\"Dddddddddddddd\"]}, {\"input\": \"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\\r\\n\", \"output\": [\"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"]}, {\"input\": \"z\\r\\n\", \"output\": [\"Z\"]}, {\"input\": \"AZ\\r\\n\", \"output\": [\"az\"]}, {\"input\": \"Z\\r\\n\", \"output\": [\"z\"]}, {\"input\": \"aAAAA\\r\\n\", \"output\": [\"Aaaaa\"]}, {\"input\": \"F\\r\\n\", \"output\": [\"f\"]}]"
+    }
+}

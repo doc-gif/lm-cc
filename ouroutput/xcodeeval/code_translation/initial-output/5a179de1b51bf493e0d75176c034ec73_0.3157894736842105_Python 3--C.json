@@ -1,0 +1,87 @@
+{
+    "oai_response": {
+        "prompt": "Here is code in Python 3 programming lanaguge. Translate the following code from Python 3 to C programming lanaguge. Do not output any extra description or tokens other than the translated code. \n\n\ndef solve(n):\n    if n % 2 == 0:\n        return \"Mahmoud\"\n    return \"Ehab\"\n\ndef driver():\n    n = int(input())\n    print(solve(n))\n\ndriver()||END-of-SRC||",
+        "response": {
+            "id": "multi-call-as-1c40xxk9yc",
+            "model": "deepseek-v3",
+            "created": 1767068038,
+            "choices": [
+                {
+                    "index": 0,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <string.h>\n\nconst char* solve(int n) {\n    if (n % 2 == 0) {\n        return \"Mahmoud\";\n    }\n    return \"Ehab\";\n}\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    printf(\"%s\\n\", solve(n));\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 1,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n\nconst char* solve(int n) {\n    if (n % 2 == 0) {\n        return \"Mahmoud\";\n    }\n    return \"Ehab\";\n}\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    printf(\"%s\\n\", solve(n));\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 2,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n\nconst char* solve(int n) {\n    if (n % 2 == 0) {\n        return \"Mahmoud\";\n    }\n    return \"Ehab\";\n}\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    printf(\"%s\\n\", solve(n));\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 3,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n\nconst char* solve(int n) {\n    if (n % 2 == 0) {\n        return \"Mahmoud\";\n    }\n    return \"Ehab\";\n}\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    printf(\"%s\\n\", solve(n));\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 4,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <string.h>\n\nconst char* solve(int n) {\n    if (n % 2 == 0) {\n        return \"Mahmoud\";\n    }\n    return \"Ehab\";\n}\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    printf(\"%s\\n\", solve(n));\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                }
+            ],
+            "usage": {
+                "prompt_tokens": 475,
+                "completion_tokens": 390,
+                "total_tokens": 865
+            }
+        }
+    },
+    "source_data": {
+        "code_uid": "5a179de1b51bf493e0d75176c034ec73",
+        "prob_desc_output_to": "standard output",
+        "prob_desc_notes": "NoteIn the first sample, Mahmoud can't choose any integer a initially because there is no positive even integer less than or equal to 1 so Ehab wins.In the second sample, Mahmoud has to choose a\u2009=\u20092 and subtract it from n. It's Ehab's turn and n\u2009=\u20090. There is no positive odd integer less than or equal to 0 so Mahmoud wins.",
+        "lang_cluster": "Python",
+        "prob_desc_time_limit": "1 second",
+        "prob_desc_input_spec": "The only line contains an integer n (1\u2009\u2264\u2009n\u2009\u2264\u2009109), the number at the beginning of the game.",
+        "source_code": "\ndef solve(n):\n    if n % 2 == 0:\n        return \"Mahmoud\"\n    return \"Ehab\"\n\ndef driver():\n    n = int(input())\n    print(solve(n))\n\ndriver()",
+        "prob_desc_sample_inputs": [
+            "1",
+            "2"
+        ],
+        "prob_desc_memory_limit": "256 megabytes",
+        "exec_outcome": "PASSED",
+        "prob_desc_output_spec": "Output \"Mahmoud\" (without quotes) if Mahmoud wins and \"Ehab\" (without quotes) otherwise.",
+        "src_uid": "5e74750f44142624e6da41d4b35beb9a",
+        "prob_desc_input_from": "standard input",
+        "lang": "Python 3",
+        "prob_desc_sample_outputs": [
+            "Ehab",
+            "Mahmoud"
+        ],
+        "file_name": "d7021504500d5ca7c2b02df8100a574d159e6e67e20ec8071b75800b1267370a",
+        "prob_desc_description": "Mahmoud and Ehab play a game called the even-odd game. Ehab chooses his favorite integer n and then they take turns, starting from Mahmoud. In each player's turn, he has to choose an integer a and subtract it from n such that:  1\u2009\u2264\u2009a\u2009\u2264\u2009n.  If it's Mahmoud's turn, a has to be even, but if it's Ehab's turn, a has to be odd. If the current player can't choose any number satisfying the conditions, he loses. Can you determine the winner if they both play optimally?",
+        "prob_desc_created_at": "1522771500",
+        "difficulty": 800.0,
+        "hidden_unit_tests": "[{\"input\": \"1\\r\\n\", \"output\": [\"Ehab\"]}, {\"input\": \"2\\r\\n\", \"output\": [\"Mahmoud\"]}, {\"input\": \"10000\\r\\n\", \"output\": [\"Mahmoud\"]}, {\"input\": \"33333\\r\\n\", \"output\": [\"Ehab\"]}, {\"input\": \"5\\r\\n\", \"output\": [\"Ehab\"]}, {\"input\": \"1000000000\\r\\n\", \"output\": [\"Mahmoud\"]}, {\"input\": \"999999999\\r\\n\", \"output\": [\"Ehab\"]}, {\"input\": \"123123123\\r\\n\", \"output\": [\"Ehab\"]}, {\"input\": \"22222221\\r\\n\", \"output\": [\"Ehab\"]}, {\"input\": \"22222220\\r\\n\", \"output\": [\"Mahmoud\"]}, {\"input\": \"3\\r\\n\", \"output\": [\"Ehab\"]}, {\"input\": \"4\\r\\n\", \"output\": [\"Mahmoud\"]}, {\"input\": \"6\\r\\n\", \"output\": [\"Mahmoud\"]}, {\"input\": \"7\\r\\n\", \"output\": [\"Ehab\"]}, {\"input\": \"8\\r\\n\", \"output\": [\"Mahmoud\"]}, {\"input\": \"9\\r\\n\", \"output\": [\"Ehab\"]}, {\"input\": \"10\\r\\n\", \"output\": [\"Mahmoud\"]}, {\"input\": \"536870912\\r\\n\", \"output\": [\"Mahmoud\"]}, {\"input\": \"536870913\\r\\n\", \"output\": [\"Ehab\"]}, {\"input\": \"536870911\\r\\n\", \"output\": [\"Ehab\"]}]",
+        "source_lang": "Python 3",
+        "target_lang": "C"
+    }
+}

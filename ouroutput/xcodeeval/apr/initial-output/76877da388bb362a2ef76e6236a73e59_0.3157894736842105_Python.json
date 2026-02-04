@@ -1,0 +1,107 @@
+{
+    "oai_response": {
+        "prompt": "Fix a buggy program written in Python language to solve the following programming problem:\nDescription: We define $$$x \\bmod y$$$ as the remainder of division of $$$x$$$ by $$$y$$$ ($$$\\%$$$ operator in C++ or Java, mod operator in Pascal).Let's call an array of positive integers $$$[a_1, a_2, \\dots, a_k]$$$ stable if for every permutation $$$p$$$ of integers from $$$1$$$ to $$$k$$$, and for every non-negative integer $$$x$$$, the following condition is met: $$$ (((x \\bmod a_1) \\bmod a_2) \\dots \\bmod a_{k - 1}) \\bmod a_k = (((x \\bmod a_{p_1}) \\bmod a_{p_2}) \\dots \\bmod a_{p_{k - 1}}) \\bmod a_{p_k} $$$ That is, for each non-negative integer $$$x$$$, the value of $$$(((x \\bmod a_1) \\bmod a_2) \\dots \\bmod a_{k - 1}) \\bmod a_k$$$ does not change if we reorder the elements of the array $$$a$$$.For two given integers $$$n$$$ and $$$k$$$, calculate the number of stable arrays $$$[a_1, a_2, \\dots, a_k]$$$ such that $$$1 \\le a_1 &lt; a_2 &lt; \\dots &lt; a_k \\le n$$$.\nInput Specification: The only line contains two integers $$$n$$$ and $$$k$$$ ($$$1 \\le n, k \\le 5 \\cdot 10^5$$$).\nOutput Specification: Print one integer \u2014 the number of stable arrays $$$[a_1, a_2, \\dots, a_k]$$$ such that $$$1 \\le a_1 &lt; a_2 &lt; \\dots &lt; a_k \\le n$$$. Since the answer may be large, print it modulo $$$998244353$$$.\n\nSample Input:\n7 3\nSample Output:\n16\n\nSample Input:\n3 7\nSample Output:\n0\n\nSample Input:\n1337 42\nSample Output:\n95147305\n\nSample Input:\n1 1\nSample Output:\n1\n\nSample Input:\n500000 1\nSample Output:\n500000\n\nNotes: None\nTake input from standard input and output to standard output\n\nHere is the code with a bug of RUNTIME_ERROR:\n\nfrom collections import defaultdict as dd\nfrom collections import deque\nimport bisect\nimport heapq\n\ndef ri():\n    return int(input())\n\ndef rl():\n    return list(map(int, input().split()))\n\ndef egcd(a, b):\n    if a == 0:\n        return (b, 0, 1)\n    else:\n        g, y, x = egcd(b % a, a)\n        return (g, x - (b // a) * y, y)\n\ndef modinv(a, m):\n    g, x, y = egcd(a, m)\n    if g != 1:\n        raise Exception('modular inverse does not exist')\n    else:\n        return x % m\n\nmod = 998244353\ndef solve():\n    n, k = rl()\n    if k > n:\n        print (0)\n        return\n    elif k == 1:\n        print (n)\n        return\n\n    f = [1]\n    fi = [1]\n    for i in range(1, n + 1):\n        f.append((f[-1]*i)%mod)\n        fi.append((fi[-1] * modinv(i, mod))%mod)\n\n    def C(a,b):\n        return f[a]*fi[b]*fi[a-b]\n\n    d = n\n    i = 1\n    answer = 0\n    while d >= k:\n        answer = (answer + C(d - 1, k - 1)) % mod\n        i += 1\n        d = n // i\n    print (answer)\n\n\nmode = 'T'\n\nif mode == 'T':\n    t = ri()\n    for i in range(t):\n        solve()\nelse:\n    solve()\n\n\nProvide the fixed Python code without any description or extra tokens.\n\nFixed source code:\n ||END-of-SRC||",
+        "response": {
+            "id": "multi-call-as-wrhxs9b83g",
+            "model": "deepseek-v3",
+            "created": 1760423198,
+            "choices": [
+                {
+                    "index": 0,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```python\nfrom collections import defaultdict as dd\nfrom collections import deque\nimport bisect\nimport heapq\n\ndef ri():\n    return int(input())\n\ndef rl():\n    return list(map(int, input().split()))\n\ndef egcd(a, b):\n    if a == 0:\n        return (b, 0, 1)\n    else:\n        g, y, x = egcd(b % a, a)\n        return (g, x - (b // a) * y, y)\n\ndef modinv(a, m):\n    g, x, y = egcd(a, m)\n    if g != 1:\n        raise Exception('modular inverse does not exist')\n    else:\n        return x % m\n\nmod = 998244353\ndef solve():\n    n, k = rl()\n    if k > n:\n        print(0)\n        return\n    elif k == 1:\n        print(n % mod)\n        return\n\n    f = [1] * (n + 1)\n    fi = [1] * (n + 1)\n    for i in range(1, n + 1):\n        f[i] = (f[i-1] * i) % mod\n        fi[i] = (fi[i-1] * modinv(i, mod)) % mod\n\n    def C(a, b):\n        if a < 0 or b < 0 or a < b:\n            return 0\n        return (f[a] * fi[b] % mod) * fi[a - b] % mod\n\n    answer = 0\n    d = 1\n    while d <= n:\n        max_m = n // d\n        if max_m < k:\n            break\n        answer = (answer + C(max_m - 1, k - 1)) % mod\n        d += 1\n    print(answer)\n\nmode = 'S'\n\nif mode == 'T':\n    t = ri()\n    for _ in range(t):\n        solve()\nelse:\n    solve()\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 1,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```python\nfrom collections import defaultdict as dd\nfrom collections import deque\nimport bisect\nimport heapq\n\ndef ri():\n    return int(input())\n\ndef rl():\n    return list(map(int, input().split()))\n\ndef egcd(a, b):\n    if a == 0:\n        return (b, 0, 1)\n    else:\n        g, y, x = egcd(b % a, a)\n        return (g, x - (b // a) * y, y)\n\ndef modinv(a, m):\n    g, x, y = egcd(a, m)\n    if g != 1:\n        raise Exception('modular inverse does not exist')\n    else:\n        return x % m\n\nmod = 998244353\ndef solve():\n    n, k = rl()\n    if k > n:\n        print(0)\n        return\n    elif k == 1:\n        print(n % mod)\n        return\n\n    f = [1] * (n + 1)\n    fi = [1] * (n + 1)\n    for i in range(1, n + 1):\n        f[i] = (f[i-1] * i) % mod\n        fi[i] = (fi[i-1] * modinv(i, mod)) % mod\n\n    def C(a, b):\n        if a < 0 or b < 0 or a < b:\n            return 0\n        return (f[a] * fi[b] % mod) * fi[a - b] % mod\n\n    answer = 0\n    d = 1\n    while d <= n:\n        m = n // d\n        if m < k:\n            break\n        answer = (answer + C(m - 1, k - 1)) % mod\n        d += 1\n    print(answer)\n\nmode = 'S'\n\nif mode == 'T':\n    t = ri()\n    for _ in range(t):\n        solve()\nelse:\n    solve()\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 2,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```python\nfrom collections import defaultdict as dd\nfrom collections import deque\nimport bisect\nimport heapq\n\ndef ri():\n    return int(input())\n\ndef rl():\n    return list(map(int, input().split()))\n\ndef egcd(a, b):\n    if a == 0:\n        return (b, 0, 1)\n    else:\n        g, y, x = egcd(b % a, a)\n        return (g, x - (b // a) * y, y)\n\ndef modinv(a, m):\n    g, x, y = egcd(a, m)\n    if g != 1:\n        raise Exception('modular inverse does not exist')\n    else:\n        return x % m\n\nmod = 998244353\ndef solve():\n    n, k = rl()\n    if k > n:\n        print(0)\n        return\n    elif k == 1:\n        print(n % mod)\n        return\n\n    max_n = n\n    f = [1] * (max_n + 1)\n    fi = [1] * (max_n + 1)\n    for i in range(1, max_n + 1):\n        f[i] = (f[i-1] * i) % mod\n        fi[i] = (fi[i-1] * modinv(i, mod)) % mod\n\n    def C(a, b):\n        if a < 0 or b < 0 or a < b:\n            return 0\n        return (f[a] * fi[b] % mod) * fi[a - b] % mod\n\n    answer = 0\n    d = 1\n    while d <= n:\n        max_m = n // d\n        if max_m < k:\n            break\n        answer = (answer + C(max_m - 1, k - 1)) % mod\n        d += 1\n    print(answer)\n\nmode = 'S'\n\nif mode == 'T':\n    t = ri()\n    for _ in range(t):\n        solve()\nelse:\n    solve()\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 3,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```python\nfrom collections import defaultdict as dd\nfrom collections import deque\nimport bisect\nimport heapq\n\ndef ri():\n    return int(input())\n\ndef rl():\n    return list(map(int, input().split()))\n\ndef egcd(a, b):\n    if a == 0:\n        return (b, 0, 1)\n    else:\n        g, y, x = egcd(b % a, a)\n        return (g, x - (b // a) * y, y)\n\ndef modinv(a, m):\n    g, x, y = egcd(a, m)\n    if g != 1:\n        raise Exception('modular inverse does not exist')\n    else:\n        return x % m\n\nmod = 998244353\ndef solve():\n    n, k = rl()\n    if k > n:\n        print(0)\n        return\n    elif k == 1:\n        print(n % mod)\n        return\n\n    f = [1] * (n + 1)\n    fi = [1] * (n + 1)\n    for i in range(1, n + 1):\n        f[i] = (f[i-1] * i) % mod\n        fi[i] = (fi[i-1] * modinv(i, mod)) % mod\n\n    def C(a, b):\n        if a < 0 or b < 0 or a < b:\n            return 0\n        return (f[a] * fi[b] % mod) * fi[a - b] % mod\n\n    answer = 0\n    d = 1\n    while d <= n:\n        m = n // d\n        if m < k:\n            break\n        answer = (answer + C(m - 1, k - 1)) % mod\n        d += 1\n    print(answer)\n\nmode = ''\n\nif mode == 'T':\n    t = ri()\n    for _ in range(t):\n        solve()\nelse:\n    solve()\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 4,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```python\nfrom collections import defaultdict as dd\nfrom collections import deque\nimport bisect\nimport heapq\n\ndef ri():\n    return int(input())\n\ndef rl():\n    return list(map(int, input().split()))\n\ndef egcd(a, b):\n    if a == 0:\n        return (b, 0, 1)\n    else:\n        g, y, x = egcd(b % a, a)\n        return (g, x - (b // a) * y, y)\n\ndef modinv(a, m):\n    g, x, y = egcd(a, m)\n    if g != 1:\n        raise Exception('modular inverse does not exist')\n    else:\n        return x % m\n\nmod = 998244353\ndef solve():\n    n, k = rl()\n    if k > n:\n        print(0)\n        return\n    elif k == 1:\n        print(n % mod)\n        return\n\n    f = [1] * (n + 1)\n    fi = [1] * (n + 1)\n    for i in range(1, n + 1):\n        f[i] = (f[i-1] * i) % mod\n        fi[i] = (fi[i-1] * modinv(i, mod)) % mod\n\n    def C(a, b):\n        if a < 0 or b < 0 or a < b:\n            return 0\n        return (f[a] * fi[b] % mod) * fi[a - b] % mod\n\n    answer = 0\n    d = 1\n    while d <= n:\n        max_m = n // d\n        if max_m < k:\n            break\n        answer = (answer + C(max_m - 1, k - 1)) % mod\n        d += 1\n    print(answer)\n\nmode = 'S'\n\nif mode == 'T':\n    t = ri()\n    for _ in range(t):\n        solve()\nelse:\n    solve()\n```"
+                    },
+                    "finish_reason": "stop"
+                }
+            ],
+            "usage": {
+                "prompt_tokens": 4655,
+                "completion_tokens": 2142,
+                "total_tokens": 6797
+            }
+        }
+    },
+    "source_data": {
+        "prob_desc_memory_limit": "512 megabytes",
+        "tags": [
+            "math",
+            "combinatorics",
+            "number theory"
+        ],
+        "prob_desc_created_at": "1590676500",
+        "fix_source_code": "",
+        "prob_desc_input_spec": "The only line contains two integers $$$n$$$ and $$$k$$$ ($$$1 \\le n, k \\le 5 \\cdot 10^5$$$).",
+        "prob_desc_sample_outputs": [
+            "16",
+            "0",
+            "95147305",
+            "1",
+            "500000"
+        ],
+        "src_uid": "8e8eb64a047cb970a549ee870c3d280d",
+        "prob_desc_time_limit": "2 seconds",
+        "fix_exec_outcome": "",
+        "delete_cnt": 0,
+        "apr_id": "6b6da717b7a7bb7507899f869a7ba862",
+        "fix_code_uid": "",
+        "lang_cluster": "Python",
+        "prob_desc_sample_inputs": [
+            "7 3",
+            "3 7",
+            "1337 42",
+            "1 1",
+            "500000 1"
+        ],
+        "prob_desc_output_to": "standard output",
+        "file_name": "Python.jsonl",
+        "equal_cnt": 2,
+        "lang": "PyPy 3",
+        "prob_desc_output_spec": "Print one integer \u2014 the number of stable arrays $$$[a_1, a_2, \\dots, a_k]$$$ such that $$$1 \\le a_1 &lt; a_2 &lt; \\dots &lt; a_k \\le n$$$. Since the answer may be large, print it modulo $$$998244353$$$.",
+        "bug_exec_outcome": "RUNTIME_ERROR",
+        "prob_desc_notes": null,
+        "difficulty": 2000.0,
+        "similarity_score": 0.999060154,
+        "prob_desc_description": "We define $$$x \\bmod y$$$ as the remainder of division of $$$x$$$ by $$$y$$$ ($$$\\%$$$ operator in C++ or Java, mod operator in Pascal).Let's call an array of positive integers $$$[a_1, a_2, \\dots, a_k]$$$ stable if for every permutation $$$p$$$ of integers from $$$1$$$ to $$$k$$$, and for every non-negative integer $$$x$$$, the following condition is met: $$$ (((x \\bmod a_1) \\bmod a_2) \\dots \\bmod a_{k - 1}) \\bmod a_k = (((x \\bmod a_{p_1}) \\bmod a_{p_2}) \\dots \\bmod a_{p_{k - 1}}) \\bmod a_{p_k} $$$ That is, for each non-negative integer $$$x$$$, the value of $$$(((x \\bmod a_1) \\bmod a_2) \\dots \\bmod a_{k - 1}) \\bmod a_k$$$ does not change if we reorder the elements of the array $$$a$$$.For two given integers $$$n$$$ and $$$k$$$, calculate the number of stable arrays $$$[a_1, a_2, \\dots, a_k]$$$ such that $$$1 \\le a_1 &lt; a_2 &lt; \\dots &lt; a_k \\le n$$$.",
+        "potential_dominant_fix_op": "replace",
+        "bug_source_code": "from collections import defaultdict as dd\nfrom collections import deque\nimport bisect\nimport heapq\n\ndef ri():\n    return int(input())\n\ndef rl():\n    return list(map(int, input().split()))\n\ndef egcd(a, b):\n    if a == 0:\n        return (b, 0, 1)\n    else:\n        g, y, x = egcd(b % a, a)\n        return (g, x - (b // a) * y, y)\n\ndef modinv(a, m):\n    g, x, y = egcd(a, m)\n    if g != 1:\n        raise Exception('modular inverse does not exist')\n    else:\n        return x % m\n\nmod = 998244353\ndef solve():\n    n, k = rl()\n    if k > n:\n        print (0)\n        return\n    elif k == 1:\n        print (n)\n        return\n\n    f = [1]\n    fi = [1]\n    for i in range(1, n + 1):\n        f.append((f[-1]*i)%mod)\n        fi.append((fi[-1] * modinv(i, mod))%mod)\n\n    def C(a,b):\n        return f[a]*fi[b]*fi[a-b]\n\n    d = n\n    i = 1\n    answer = 0\n    while d >= k:\n        answer = (answer + C(d - 1, k - 1)) % mod\n        i += 1\n        d = n // i\n    print (answer)\n\n\nmode = 'T'\n\nif mode == 'T':\n    t = ri()\n    for i in range(t):\n        solve()\nelse:\n    solve()\n",
+        "replace_cnt": 1,
+        "prob_desc_input_from": "standard input",
+        "bug_code_uid": "76877da388bb362a2ef76e6236a73e59",
+        "insert_cnt": 0,
+        "fix_ops_cnt": 1,
+        "hidden_unit_tests": "[{\"input\": \"7 3\\r\\n\", \"output\": [\"16\"]}, {\"input\": \"3 7\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"1337 42\\r\\n\", \"output\": [\"95147305\"]}, {\"input\": \"1 1\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"500000 1\\r\\n\", \"output\": [\"500000\"]}, {\"input\": \"500000 500000\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"500000 250000\\r\\n\", \"output\": [\"803991687\"]}, {\"input\": \"250000 500000\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"500 100\\r\\n\", \"output\": [\"337564072\"]}, {\"input\": \"37 13\\r\\n\", \"output\": [\"253439535\"]}, {\"input\": \"1 500000\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"500000 500\\r\\n\", \"output\": [\"882447093\"]}, {\"input\": \"500000 200\\r\\n\", \"output\": [\"123055441\"]}, {\"input\": \"123456 78901\\r\\n\", \"output\": [\"963821949\"]}, {\"input\": \"500000 50\\r\\n\", \"output\": [\"635965713\"]}]"
+    }
+}

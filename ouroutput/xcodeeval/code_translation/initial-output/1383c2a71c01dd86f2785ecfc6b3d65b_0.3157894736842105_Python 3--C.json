@@ -1,0 +1,87 @@
+{
+    "oai_response": {
+        "prompt": "Here is code in Python 3 programming lanaguge. Translate the following code from Python 3 to C programming lanaguge. Do not output any extra description or tokens other than the translated code. \n\nm,b = input().strip().split()\nm,b = int(m),int(b)\n\nsum_s = []\nx_zero = m*b\ny_zero = b\nfor i  in range(0,b*m + 1,m):\n  x = i\n  y = b - i/m\n  y =int(y)\n  s = ((1+y)*y//2)*(x+1)\n  s += ((1+x)*x//2)*(y+1)\n  sum_s.append(s)\nprint(max(sum_s))\n  \n\n||END-of-SRC||",
+        "response": {
+            "id": "multi-call-as-jqceqhdhiv",
+            "model": "deepseek-v3",
+            "created": 1767066911,
+            "choices": [
+                {
+                    "index": 0,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <stdlib.h>\n\nint main() {\n    int m, b;\n    scanf(\"%d %d\", &m, &b);\n    \n    int max_sum = 0;\n    int x_zero = m * b;\n    int y_zero = b;\n    \n    for (int i = 0; i <= b * m; i += m) {\n        int x = i;\n        int y = b - i / m;\n        int s = ((1 + y) * y / 2) * (x + 1);\n        s += ((1 + x) * x / 2) * (y + 1);\n        if (s > max_sum) {\n            max_sum = s;\n        }\n    }\n    printf(\"%d\\n\", max_sum);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 1,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <stdlib.h>\n\nint main() {\n    int m, b;\n    scanf(\"%d %d\", &m, &b);\n    \n    int max_sum = 0;\n    int x_zero = m * b;\n    int y_zero = b;\n    \n    for (int i = 0; i <= b * m; i += m) {\n        int x = i;\n        int y = b - i / m;\n        int s = ((1 + y) * y / 2) * (x + 1);\n        s += ((1 + x) * x / 2) * (y + 1);\n        if (s > max_sum) {\n            max_sum = s;\n        }\n    }\n    \n    printf(\"%d\\n\", max_sum);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 2,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <stdlib.h>\n\nint main() {\n    int m, b;\n    scanf(\"%d %d\", &m, &b);\n    \n    int max_sum = 0;\n    int x_zero = m * b;\n    int y_zero = b;\n    \n    for (int i = 0; i <= b * m; i += m) {\n        int x = i;\n        int y = b - i / m;\n        int s = ((1 + y) * y / 2) * (x + 1);\n        s += ((1 + x) * x / 2) * (y + 1);\n        if (s > max_sum) {\n            max_sum = s;\n        }\n    }\n    printf(\"%d\\n\", max_sum);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 3,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <stdlib.h>\n\nint main() {\n    int m, b;\n    scanf(\"%d %d\", &m, &b);\n    \n    int max_sum = 0;\n    int x_zero = m * b;\n    int y_zero = b;\n    \n    for (int i = 0; i <= b * m; i += m) {\n        int x = i;\n        int y = b - i / m;\n        int s = ((1 + y) * y / 2) * (x + 1);\n        s += ((1 + x) * x / 2) * (y + 1);\n        if (s > max_sum) {\n            max_sum = s;\n        }\n    }\n    \n    printf(\"%d\\n\", max_sum);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 4,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <stdlib.h>\n\nint main() {\n    int m, b;\n    scanf(\"%d %d\", &m, &b);\n    \n    int max_sum = 0;\n    int x_zero = m * b;\n    int y_zero = b;\n    \n    for (int i = 0; i <= b * m; i += m) {\n        int x = i;\n        int y = b - i / m;\n        int s = ((1 + y) * y / 2) * (x + 1);\n        s += ((1 + x) * x / 2) * (y + 1);\n        if (s > max_sum) {\n            max_sum = s;\n        }\n    }\n    \n    printf(\"%d\\n\", max_sum);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                }
+            ],
+            "usage": {
+                "prompt_tokens": 795,
+                "completion_tokens": 888,
+                "total_tokens": 1683
+            }
+        }
+    },
+    "source_data": {
+        "code_uid": "1383c2a71c01dd86f2785ecfc6b3d65b",
+        "prob_desc_output_to": "standard output",
+        "prob_desc_notes": "Note  The graph above corresponds to sample test 1. The optimal rectangle is shown in red and has 30 bananas.",
+        "lang_cluster": "Python",
+        "prob_desc_time_limit": "2 seconds",
+        "prob_desc_input_spec": "The first line of input contains two space-separated integers m and b (1\u2009\u2264\u2009m\u2009\u2264\u20091000, 1\u2009\u2264\u2009b\u2009\u2264\u200910000).",
+        "source_code": "m,b = input().strip().split()\nm,b = int(m),int(b)\n\nsum_s = []\nx_zero = m*b\ny_zero = b\nfor i  in range(0,b*m + 1,m):\n  x = i\n  y = b - i/m\n  y =int(y)\n  s = ((1+y)*y//2)*(x+1)\n  s += ((1+x)*x//2)*(y+1)\n  sum_s.append(s)\nprint(max(sum_s))\n  \n\n",
+        "prob_desc_sample_inputs": [
+            "1 5",
+            "2 3"
+        ],
+        "prob_desc_memory_limit": "256 megabytes",
+        "exec_outcome": "PASSED",
+        "prob_desc_output_spec": "Print the maximum number of bananas Okabe can get from the trees he cuts.",
+        "src_uid": "9300f1c07dd36e0cf7e6cb7911df4cf2",
+        "prob_desc_input_from": "standard input",
+        "lang": "Python 3",
+        "prob_desc_sample_outputs": [
+            "30",
+            "25"
+        ],
+        "file_name": "d7021504500d5ca7c2b02df8100a574d159e6e67e20ec8071b75800b1267370a",
+        "prob_desc_description": "Okabe needs bananas for one of his experiments for some strange reason. So he decides to go to the forest and cut banana trees.Consider the point (x,\u2009y) in the 2D plane such that x and y are integers and 0\u2009\u2264\u2009x,\u2009y. There is a tree in such a point, and it has x\u2009+\u2009y bananas. There are no trees nor bananas in other points. Now, Okabe draws a line with equation . Okabe can select a single rectangle with axis aligned sides with all points on or under the line and cut all the trees in all points that are inside or on the border of this rectangle and take their bananas. Okabe's rectangle can be degenerate; that is, it can be a line segment or even a point.Help Okabe and find the maximum number of bananas he can get if he chooses the rectangle wisely.Okabe is sure that the answer does not exceed 1018. You can trust him.",
+        "prob_desc_created_at": "1498401300",
+        "difficulty": 1300.0,
+        "hidden_unit_tests": "[{\"input\": \"1 5\\r\\n\", \"output\": [\"30\"]}, {\"input\": \"2 3\\r\\n\", \"output\": [\"25\"]}, {\"input\": \"4 6\\r\\n\", \"output\": [\"459\"]}, {\"input\": \"6 3\\r\\n\", \"output\": [\"171\"]}, {\"input\": \"1 1\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"10 1\\r\\n\", \"output\": [\"55\"]}, {\"input\": \"20 10\\r\\n\", \"output\": [\"40326\"]}, {\"input\": \"1000 10000\\r\\n\", \"output\": [\"74133360011484445\"]}, {\"input\": \"139 9252\\r\\n\", \"output\": [\"1137907933561080\"]}, {\"input\": \"859 8096\\r\\n\", \"output\": [\"29032056230649780\"]}, {\"input\": \"987 4237\\r\\n\", \"output\": [\"5495451829240878\"]}, {\"input\": \"411 3081\\r\\n\", \"output\": [\"366755153481948\"]}, {\"input\": \"539 9221\\r\\n\", \"output\": [\"16893595018603386\"]}, {\"input\": \"259 770\\r\\n\", \"output\": [\"2281741798549\"]}, {\"input\": \"387 5422\\r\\n\", \"output\": [\"1771610559998400\"]}, {\"input\": \"515 1563\\r\\n\", \"output\": [\"75233740231341\"]}, {\"input\": \"939 407\\r\\n\", \"output\": [\"4438222781916\"]}, {\"input\": \"518 6518\\r\\n\", \"output\": [\"5511730799718825\"]}, {\"input\": \"646 1171\\r\\n\", \"output\": [\"49802404050106\"]}, {\"input\": \"70 7311\\r\\n\", \"output\": [\"142915220249910\"]}, {\"input\": \"494 6155\\r\\n\", \"output\": [\"4221391613846823\"]}, {\"input\": \"918 7704\\r\\n\", \"output\": [\"28569727339126165\"]}, {\"input\": \"46 3844\\r\\n\", \"output\": [\"9007500020760\"]}, {\"input\": \"174 2688\\r\\n\", \"output\": [\"43730657099581\"]}, {\"input\": \"894 4637\\r\\n\", \"output\": [\"5909849585253250\"]}, {\"input\": \"22 3481\\r\\n\", \"output\": [\"1548544125646\"]}, {\"input\": \"446 5030\\r\\n\", \"output\": [\"1878390629993745\"]}, {\"input\": \"440 8704\\r\\n\", \"output\": [\"9470470760118060\"]}, {\"input\": \"569 7548\\r\\n\", \"output\": [\"10326205017481606\"]}, {\"input\": \"289 6393\\r\\n\", \"output\": [\"1620061541812350\"]}, {\"input\": \"417 1045\\r\\n\", \"output\": [\"14758909519725\"]}, {\"input\": \"841 7185\\r\\n\", \"output\": [\"19452619774222875\"]}, {\"input\": \"969 6030\\r\\n\", \"output\": [\"15265318959845745\"]}, {\"input\": \"393 4874\\r\\n\", \"output\": [\"1327174123029975\"]}, {\"input\": \"817 3719\\r\\n\", \"output\": [\"2546859449982016\"]}, {\"input\": \"945 2563\\r\\n\", \"output\": [\"1115613396515835\"]}, {\"input\": \"369 4511\\r\\n\", \"output\": [\"927715710215505\"]}, {\"input\": \"555 3594\\r\\n\", \"output\": [\"1061060598862891\"]}]",
+        "source_lang": "Python 3",
+        "target_lang": "C"
+    }
+}

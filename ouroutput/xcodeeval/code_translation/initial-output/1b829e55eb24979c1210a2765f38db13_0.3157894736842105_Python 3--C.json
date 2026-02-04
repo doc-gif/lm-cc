@@ -1,0 +1,89 @@
+{
+    "oai_response": {
+        "prompt": "Here is code in Python 3 programming lanaguge. Translate the following code from Python 3 to C programming lanaguge. Do not output any extra description or tokens other than the translated code. \n\nc,b,n=map(int,input().split())\nif n%2==0:\n\tp=int(n/2)\n\ts=p%b\n\tif s==0:\n\t\ts=s+b\n\tif n%(2*b)==0:\n\t\tx=int(n/(2*b))\n\telse:\n\t\tx=int(n/(2*b))+1\n\tprint(x ,s,\"R\")\nelse:\n\tp=int(n/2)+1\n\ts=p%b\n\tif s==0:\n\t\ts=s+b\n\tif n%(2*b)==0:\n\t\tx=int(n/(2*b))\n\telif n%(2*b)>0:\n\t\tx=int(n/(2*b))+1\n\tprint(x ,s,\"L\")||END-of-SRC||",
+        "response": {
+            "id": "multi-call-as-gesj0x6kd2",
+            "model": "deepseek-v3",
+            "created": 1767068983,
+            "choices": [
+                {
+                    "index": 0,
+                    "message": {
+                        "role": "assistant",
+                        "content": "Here's the translated code in C:\n\n```c\n#include <stdio.h>\n\nint main() {\n    int c, b, n;\n    scanf(\"%d %d %d\", &c, &b, &n);\n    if (n % 2 == 0) {\n        int p = n / 2;\n        int s = p % b;\n        if (s == 0) {\n            s = s + b;\n        }\n        int x;\n        if (n % (2 * b) == 0) {\n            x = n / (2 * b);\n        } else {\n            x = (n / (2 * b)) + 1;\n        }\n        printf(\"%d %d R\", x, s);\n    } else {\n        int p = (n / 2) + 1;\n        int s = p % b;\n        if (s == 0) {\n            s = s + b;\n        }\n        int x;\n        if (n % (2 * b) == 0) {\n            x = n / (2 * b);\n        } else {\n            x = (n / (2 * b)) + 1;\n        }\n        printf(\"%d %d L\", x, s);\n    }\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 1,
+                    "message": {
+                        "role": "assistant",
+                        "content": "Here's the translated code in C:\n\n```c\n#include <stdio.h>\n\nint main() {\n    int c, b, n;\n    scanf(\"%d %d %d\", &c, &b, &n);\n    if (n % 2 == 0) {\n        int p = n / 2;\n        int s = p % b;\n        if (s == 0) {\n            s = s + b;\n        }\n        int x;\n        if (n % (2 * b) == 0) {\n            x = n / (2 * b);\n        } else {\n            x = (n / (2 * b)) + 1;\n        }\n        printf(\"%d %d R\", x, s);\n    } else {\n        int p = (n / 2) + 1;\n        int s = p % b;\n        if (s == 0) {\n            s = s + b;\n        }\n        int x;\n        if (n % (2 * b) == 0) {\n            x = n / (2 * b);\n        } else {\n            x = (n / (2 * b)) + 1;\n        }\n        printf(\"%d %d L\", x, s);\n    }\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 2,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n\nint main() {\n    int c, b, n;\n    scanf(\"%d %d %d\", &c, &b, &n);\n    if (n % 2 == 0) {\n        int p = n / 2;\n        int s = p % b;\n        if (s == 0) {\n            s = s + b;\n        }\n        int x;\n        if (n % (2 * b) == 0) {\n            x = n / (2 * b);\n        } else {\n            x = n / (2 * b) + 1;\n        }\n        printf(\"%d %d R\\n\", x, s);\n    } else {\n        int p = n / 2 + 1;\n        int s = p % b;\n        if (s == 0) {\n            s = s + b;\n        }\n        int x;\n        if (n % (2 * b) == 0) {\n            x = n / (2 * b);\n        } else if (n % (2 * b) > 0) {\n            x = n / (2 * b) + 1;\n        }\n        printf(\"%d %d L\\n\", x, s);\n    }\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 3,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n\nint main() {\n    int c, b, n;\n    scanf(\"%d %d %d\", &c, &b, &n);\n    if (n % 2 == 0) {\n        int p = n / 2;\n        int s = p % b;\n        if (s == 0) {\n            s = s + b;\n        }\n        int x;\n        if (n % (2 * b) == 0) {\n            x = n / (2 * b);\n        } else {\n            x = n / (2 * b) + 1;\n        }\n        printf(\"%d %d R\\n\", x, s);\n    } else {\n        int p = n / 2 + 1;\n        int s = p % b;\n        if (s == 0) {\n            s = s + b;\n        }\n        int x;\n        if (n % (2 * b) == 0) {\n            x = n / (2 * b);\n        } else {\n            x = n / (2 * b) + 1;\n        }\n        printf(\"%d %d L\\n\", x, s);\n    }\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 4,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n\nint main() {\n    int c, b, n;\n    scanf(\"%d %d %d\", &c, &b, &n);\n    if (n % 2 == 0) {\n        int p = n / 2;\n        int s = p % b;\n        if (s == 0) {\n            s = s + b;\n        }\n        int x;\n        if (n % (2 * b) == 0) {\n            x = n / (2 * b);\n        } else {\n            x = n / (2 * b) + 1;\n        }\n        printf(\"%d %d R\\n\", x, s);\n    } else {\n        int p = n / 2 + 1;\n        int s = p % b;\n        if (s == 0) {\n            s = s + b;\n        }\n        int x;\n        if (n % (2 * b) == 0) {\n            x = n / (2 * b);\n        } else if (n % (2 * b) > 0) {\n            x = n / (2 * b) + 1;\n        }\n        printf(\"%d %d L\\n\", x, s);\n    }\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                }
+            ],
+            "usage": {
+                "prompt_tokens": 940,
+                "completion_tokens": 1351,
+                "total_tokens": 2291
+            }
+        }
+    },
+    "source_data": {
+        "code_uid": "1b829e55eb24979c1210a2765f38db13",
+        "prob_desc_output_to": "standard output",
+        "prob_desc_notes": "NoteThe first and the second samples are shown on the picture. The green place corresponds to Santa Claus' place in the first example, the blue place corresponds to Santa Claus' place in the second example.In the third sample there are two lanes with four desks in each, and Santa Claus has the fourth place. Thus, his place is in the first lane at the second desk on the right.",
+        "lang_cluster": "Python",
+        "prob_desc_time_limit": "2 seconds",
+        "prob_desc_input_spec": "The only line contains three integers n, m and k (1\u2009\u2264\u2009n,\u2009m\u2009\u2264\u200910\u2009000, 1\u2009\u2264\u2009k\u2009\u2264\u20092nm)\u00a0\u2014 the number of lanes, the number of desks in each lane and the number of Santa Claus' place.",
+        "source_code": "c,b,n=map(int,input().split())\nif n%2==0:\n\tp=int(n/2)\n\ts=p%b\n\tif s==0:\n\t\ts=s+b\n\tif n%(2*b)==0:\n\t\tx=int(n/(2*b))\n\telse:\n\t\tx=int(n/(2*b))+1\n\tprint(x ,s,\"R\")\nelse:\n\tp=int(n/2)+1\n\ts=p%b\n\tif s==0:\n\t\ts=s+b\n\tif n%(2*b)==0:\n\t\tx=int(n/(2*b))\n\telif n%(2*b)>0:\n\t\tx=int(n/(2*b))+1\n\tprint(x ,s,\"L\")",
+        "prob_desc_sample_inputs": [
+            "4 3 9",
+            "4 3 24",
+            "2 4 4"
+        ],
+        "prob_desc_memory_limit": "256 megabytes",
+        "exec_outcome": "PASSED",
+        "prob_desc_output_spec": "Print two integers: the number of lane r, the number of desk d, and a character s, which stands for the side of the desk Santa Claus. The character s should be \"L\", if Santa Clause should sit on the left, and \"R\" if his place is on the right.",
+        "src_uid": "d6929926b44c2d5b1a8e6b7f965ca1bb",
+        "prob_desc_input_from": "standard input",
+        "lang": "Python 3",
+        "prob_desc_sample_outputs": [
+            "2 2 L",
+            "4 3 R",
+            "1 2 R"
+        ],
+        "file_name": "d7021504500d5ca7c2b02df8100a574d159e6e67e20ec8071b75800b1267370a",
+        "prob_desc_description": "Santa Claus is the first who came to the Christmas Olympiad, and he is going to be the first to take his place at a desk! In the classroom there are n lanes of m desks each, and there are two working places at each of the desks. The lanes are numbered from 1 to n from the left to the right, the desks in a lane are numbered from 1 to m starting from the blackboard. Note that the lanes go perpendicularly to the blackboard, not along it (see picture).The organizers numbered all the working places from 1 to 2nm. The places are numbered by lanes (i.\u00a0e. all the places of the first lane go first, then all the places of the second lane, and so on), in a lane the places are numbered starting from the nearest to the blackboard (i.\u00a0e. from the first desk in the lane), at each desk, the place on the left is numbered before the place on the right.    The picture illustrates the first and the second samples. Santa Clause knows that his place has number k. Help him to determine at which lane at which desk he should sit, and whether his place is on the left or on the right!",
+        "prob_desc_created_at": "1482656700",
+        "difficulty": 800.0,
+        "hidden_unit_tests": "[{\"input\": \"4 3 9\\r\\n\", \"output\": [\"2 2 L\"]}, {\"input\": \"4 3 24\\r\\n\", \"output\": [\"4 3 R\"]}, {\"input\": \"2 4 4\\r\\n\", \"output\": [\"1 2 R\"]}, {\"input\": \"3 10 24\\r\\n\", \"output\": [\"2 2 R\"]}, {\"input\": \"10 3 59\\r\\n\", \"output\": [\"10 3 L\"]}, {\"input\": \"10000 10000 160845880\\r\\n\", \"output\": [\"8043 2940 R\"]}, {\"input\": \"1 1 1\\r\\n\", \"output\": [\"1 1 L\"]}, {\"input\": \"1 1 2\\r\\n\", \"output\": [\"1 1 R\"]}, {\"input\": \"1 10000 1\\r\\n\", \"output\": [\"1 1 L\"]}, {\"input\": \"1 10000 20000\\r\\n\", \"output\": [\"1 10000 R\"]}, {\"input\": \"10000 1 1\\r\\n\", \"output\": [\"1 1 L\"]}, {\"input\": \"10000 1 10000\\r\\n\", \"output\": [\"5000 1 R\"]}, {\"input\": \"10000 1 20000\\r\\n\", \"output\": [\"10000 1 R\"]}, {\"input\": \"3 2 1\\r\\n\", \"output\": [\"1 1 L\"]}, {\"input\": \"3 2 2\\r\\n\", \"output\": [\"1 1 R\"]}, {\"input\": \"3 2 3\\r\\n\", \"output\": [\"1 2 L\"]}, {\"input\": \"3 2 4\\r\\n\", \"output\": [\"1 2 R\"]}, {\"input\": \"3 2 5\\r\\n\", \"output\": [\"2 1 L\"]}, {\"input\": \"3 2 6\\r\\n\", \"output\": [\"2 1 R\"]}, {\"input\": \"3 2 7\\r\\n\", \"output\": [\"2 2 L\"]}, {\"input\": \"3 2 8\\r\\n\", \"output\": [\"2 2 R\"]}, {\"input\": \"3 2 9\\r\\n\", \"output\": [\"3 1 L\"]}, {\"input\": \"3 2 10\\r\\n\", \"output\": [\"3 1 R\"]}, {\"input\": \"3 2 11\\r\\n\", \"output\": [\"3 2 L\"]}, {\"input\": \"3 2 12\\r\\n\", \"output\": [\"3 2 R\"]}, {\"input\": \"300 2000 1068628\\r\\n\", \"output\": [\"268 314 R\"]}, {\"input\": \"300 2000 584756\\r\\n\", \"output\": [\"147 378 R\"]}, {\"input\": \"300 2000 268181\\r\\n\", \"output\": [\"68 91 L\"]}, {\"input\": \"10000 9999 186450844\\r\\n\", \"output\": [\"9324 4745 R\"]}, {\"input\": \"10000 9999 197114268\\r\\n\", \"output\": [\"9857 6990 R\"]}, {\"input\": \"10000 9999 112390396\\r\\n\", \"output\": [\"5621 818 R\"]}, {\"input\": \"10000 10000 1\\r\\n\", \"output\": [\"1 1 L\"]}, {\"input\": \"10000 10000 2\\r\\n\", \"output\": [\"1 1 R\"]}, {\"input\": \"10000 10000 100000001\\r\\n\", \"output\": [\"5001 1 L\"]}, {\"input\": \"10000 10000 199999999\\r\\n\", \"output\": [\"10000 10000 L\"]}, {\"input\": \"10000 10000 200000000\\r\\n\", \"output\": [\"10000 10000 R\"]}, {\"input\": \"1 2 1\\r\\n\", \"output\": [\"1 1 L\"]}, {\"input\": \"1 2 2\\r\\n\", \"output\": [\"1 1 R\"]}, {\"input\": \"1 2 3\\r\\n\", \"output\": [\"1 2 L\"]}, {\"input\": \"1 2 4\\r\\n\", \"output\": [\"1 2 R\"]}, {\"input\": \"2 1 1\\r\\n\", \"output\": [\"1 1 L\"]}, {\"input\": \"2 1 2\\r\\n\", \"output\": [\"1 1 R\"]}, {\"input\": \"2 1 3\\r\\n\", \"output\": [\"2 1 L\"]}, {\"input\": \"2 1 4\\r\\n\", \"output\": [\"2 1 R\"]}, {\"input\": \"4 3 7\\r\\n\", \"output\": [\"2 1 L\"]}, {\"input\": \"1 1 1\\r\\n\", \"output\": [\"1 1 L\"]}]",
+        "source_lang": "Python 3",
+        "target_lang": "C"
+    }
+}

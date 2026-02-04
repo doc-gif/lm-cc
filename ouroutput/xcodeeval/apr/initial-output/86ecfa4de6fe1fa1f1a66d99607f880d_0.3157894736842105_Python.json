@@ -1,0 +1,103 @@
+{
+    "oai_response": {
+        "prompt": "Fix a buggy program written in Python language to solve the following programming problem:\nDescription: Kurt reaches nirvana when he finds the product of all the digits of some positive integer. Greater value of the product makes the nirvana deeper.Help Kurt find the maximum possible product of digits among all integers from $$$1$$$ to $$$n$$$.\nInput Specification: The only input line contains the integer $$$n$$$ ($$$1 \\le n \\le 2\\cdot10^9$$$).\nOutput Specification: Print the maximum product of digits among all integers from $$$1$$$ to $$$n$$$.\n\nSample Input:\n390\nSample Output:\n216\n\nSample Input:\n7\nSample Output:\n7\n\nSample Input:\n1000000000\nSample Output:\n387420489\n\nNotes: NoteIn the first example the maximum product is achieved for $$$389$$$ (the product of digits is $$$3\\cdot8\\cdot9=216$$$).In the second example the maximum product is achieved for $$$7$$$ (the product of digits is $$$7$$$).In the third example the maximum product is achieved for $$$999999999$$$ (the product of digits is $$$9^9=387420489$$$).\nTake input from standard input and output to standard output\n\nHere is the code with a bug of RUNTIME_ERROR:\n\nn = int(input())\nd = str(n)\na = []\nt = n\nif(n<10):\n    print(n)\nelse:\n    flag = 0\n    while(n>9):\n        a.append(9)\n        t = n%10\n        if(t != 9):\n            flag = 1\n        n //= 10\n    s = n\n    #print(s,t,flag)\n    a.append(n-1)\n    if(a[-1] != 0):\n        a1 = 1\n        a2 = 1\n        if(flag == 0):\n            for i in range(1,s+1):\n                for j in range(1,10):\n                    if((i==s and j<=t) or (i<s)):\n                        if(i*j > a1*a2):\n                            a1 = i\n                            a2 = j\n        else:\n            for i in range(1,s+1):\n                for j in range(1,10):\n                    if((i==s and j<t) or (i<s)):\n                        if(i*j > a1*a2):\n                            a1 = i\n                            a2 = j   \n        #print(a1,a2)\n        a[-1] = a1\n        a[-2] = a2\n    else:\n        a[-1] = 1\n    ans = 1\n\n    if(a[-3] == 9 and a[-2] == 7 and d[1] >= '8' and d[2] >= '9'):\n        a[-2] = 8\n        a[-3] = 8\n    #print(a)\n    for i in a:\n        ans *= i\n    print(ans)\n\nProvide the fixed Python code without any description or extra tokens.\n\nFixed source code:\n ||END-of-SRC||",
+        "response": {
+            "id": "multi-call-as-mj7qme4dgs",
+            "model": "deepseek-v3",
+            "created": 1760421420,
+            "choices": [
+                {
+                    "index": 0,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```python\nn = int(input())\nd = str(n)\na = []\nif n < 10:\n    print(n)\nelse:\n    max_product = 0\n    # Check numbers just below n with some digits adjusted\n    s = str(n)\n    candidates = []\n    for i in range(len(s)):\n        if s[i] == '0':\n            continue\n        num = list(s)\n        num[i] = str(int(num[i]) - 1)\n        for j in range(i + 1, len(num)):\n            num[j] = '9'\n        candidate = int(''.join(num))\n        if candidate >= 1:\n            candidates.append(candidate)\n    candidates.append(n)\n    for num in candidates:\n        product = 1\n        for ch in str(num):\n            product *= int(ch)\n        if product > max_product:\n            max_product = product\n    print(max_product)\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 1,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```python\nn = int(input())\nd = str(n)\na = []\nt = n\nif n < 10:\n    print(n)\nelse:\n    flag = 0\n    while n > 9:\n        a.append(9)\n        t = n % 10\n        if t != 9:\n            flag = 1\n        n //= 10\n    s = n\n    a.append(n - 1)\n    if a[-1] != 0:\n        a1 = 1\n        a2 = 1\n        if flag == 0:\n            for i in range(1, s + 1):\n                for j in range(1, 10):\n                    if (i == s and j <= t) or (i < s):\n                        if i * j > a1 * a2:\n                            a1 = i\n                            a2 = j\n        else:\n            for i in range(1, s + 1):\n                for j in range(1, 10):\n                    if (i == s and j < t) or (i < s):\n                        if i * j > a1 * a2:\n                            a1 = i\n                            a2 = j\n        a[-1] = a1\n        a.insert(-1, a2)\n    else:\n        a[-1] = 1\n    ans = 1\n    for i in a:\n        ans *= i\n    print(ans)\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 2,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```python\nn = int(input())\nd = str(n)\na = []\nt = n\nif n < 10:\n    print(n)\nelse:\n    flag = 0\n    while n > 9:\n        a.append(9)\n        t = n % 10\n        if t != 9:\n            flag = 1\n        n //= 10\n    s = n\n    a.append(n - 1)\n    if a[-1] != 0:\n        a1 = 1\n        a2 = 1\n        if flag == 0:\n            for i in range(1, s + 1):\n                for j in range(1, 10):\n                    if (i == s and j <= t) or (i < s):\n                        if i * j > a1 * a2:\n                            a1 = i\n                            a2 = j\n        else:\n            for i in range(1, s + 1):\n                for j in range(1, 10):\n                    if (i == s and j < t) or (i < s):\n                        if i * j > a1 * a2:\n                            a1 = i\n                            a2 = j\n        a[-1] = a1\n        a.insert(-1, a2)\n    else:\n        a[-1] = 1\n    ans = 1\n    for i in a:\n        ans *= i\n    print(ans)\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 3,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```python\nn = int(input())\nd = str(n)\na = []\nif n < 10:\n    print(n)\nelse:\n    max_product = 0\n    # Check numbers just below n with some 9s\n    for i in range(len(d)):\n        if d[i] == '0':\n            continue\n        num = list(d)\n        num[i] = str(int(num[i]) - 1)\n        for j in range(i + 1, len(num)):\n            num[j] = '9'\n        current_num = int(''.join(num))\n        if current_num <= 0:\n            continue\n        product = 1\n        for digit in str(current_num):\n            product *= int(digit)\n        if product > max_product:\n            max_product = product\n    # Check the number n itself\n    product_n = 1\n    for digit in d:\n        product_n *= int(digit)\n    if product_n > max_product:\n        max_product = product_n\n    print(max_product)\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 4,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```python\nn = int(input())\nd = str(n)\na = []\nt = n\nif n < 10:\n    print(n)\nelse:\n    flag = 0\n    while n > 9:\n        a.append(9)\n        t = n % 10\n        if t != 9:\n            flag = 1\n        n //= 10\n    s = n\n    a.append(n - 1)\n    if a[-1] != 0:\n        a1 = 1\n        a2 = 1\n        if flag == 0:\n            for i in range(1, s + 1):\n                for j in range(1, 10):\n                    if (i == s and j <= t) or (i < s):\n                        if i * j > a1 * a2:\n                            a1 = i\n                            a2 = j\n        else:\n            for i in range(1, s + 1):\n                for j in range(1, 10):\n                    if (i == s and j < t) or (i < s):\n                        if i * j > a1 * a2:\n                            a1 = i\n                            a2 = j\n        a[-1] = a1\n        a.insert(-1, a2)\n    else:\n        a[-1] = 1\n    ans = 1\n    for i in a:\n        ans *= i\n    print(ans)\n```"
+                    },
+                    "finish_reason": "stop"
+                }
+            ],
+            "usage": {
+                "prompt_tokens": 3315,
+                "completion_tokens": 1334,
+                "total_tokens": 4649
+            }
+        }
+    },
+    "source_data": {
+        "prob_desc_memory_limit": "256 megabytes",
+        "tags": [
+            "math",
+            "brute force",
+            "number theory"
+        ],
+        "prob_desc_created_at": "1553965800",
+        "fix_source_code": "",
+        "prob_desc_input_spec": "The only input line contains the integer $$$n$$$ ($$$1 \\le n \\le 2\\cdot10^9$$$).",
+        "prob_desc_sample_outputs": [
+            "216",
+            "7",
+            "387420489"
+        ],
+        "src_uid": "38690bd32e7d0b314f701f138ce19dfb",
+        "prob_desc_time_limit": "1 second",
+        "fix_exec_outcome": "",
+        "delete_cnt": 0,
+        "apr_id": "5bfe30fae8d8cedd2c3025aab3a657df",
+        "fix_code_uid": "",
+        "lang_cluster": "Python",
+        "prob_desc_sample_inputs": [
+            "390",
+            "7",
+            "1000000000"
+        ],
+        "prob_desc_output_to": "standard output",
+        "file_name": "Python.jsonl",
+        "equal_cnt": 6,
+        "lang": "PyPy 3",
+        "prob_desc_output_spec": "Print the maximum product of digits among all integers from $$$1$$$ to $$$n$$$.",
+        "bug_exec_outcome": "RUNTIME_ERROR",
+        "prob_desc_notes": "NoteIn the first example the maximum product is achieved for $$$389$$$ (the product of digits is $$$3\\cdot8\\cdot9=216$$$).In the second example the maximum product is achieved for $$$7$$$ (the product of digits is $$$7$$$).In the third example the maximum product is achieved for $$$999999999$$$ (the product of digits is $$$9^9=387420489$$$).",
+        "difficulty": 1200.0,
+        "similarity_score": 0.7260702848,
+        "prob_desc_description": "Kurt reaches nirvana when he finds the product of all the digits of some positive integer. Greater value of the product makes the nirvana deeper.Help Kurt find the maximum possible product of digits among all integers from $$$1$$$ to $$$n$$$.",
+        "potential_dominant_fix_op": "replace",
+        "bug_source_code": "n = int(input())\nd = str(n)\na = []\nt = n\nif(n<10):\n    print(n)\nelse:\n    flag = 0\n    while(n>9):\n        a.append(9)\n        t = n%10\n        if(t != 9):\n            flag = 1\n        n //= 10\n    s = n\n    #print(s,t,flag)\n    a.append(n-1)\n    if(a[-1] != 0):\n        a1 = 1\n        a2 = 1\n        if(flag == 0):\n            for i in range(1,s+1):\n                for j in range(1,10):\n                    if((i==s and j<=t) or (i<s)):\n                        if(i*j > a1*a2):\n                            a1 = i\n                            a2 = j\n        else:\n            for i in range(1,s+1):\n                for j in range(1,10):\n                    if((i==s and j<t) or (i<s)):\n                        if(i*j > a1*a2):\n                            a1 = i\n                            a2 = j   \n        #print(a1,a2)\n        a[-1] = a1\n        a[-2] = a2\n    else:\n        a[-1] = 1\n    ans = 1\n\n    if(a[-3] == 9 and a[-2] == 7 and d[1] >= '8' and d[2] >= '9'):\n        a[-2] = 8\n        a[-3] = 8\n    #print(a)\n    for i in a:\n        ans *= i\n    print(ans)",
+        "replace_cnt": 3,
+        "prob_desc_input_from": "standard input",
+        "bug_code_uid": "86ecfa4de6fe1fa1f1a66d99607f880d",
+        "insert_cnt": 2,
+        "fix_ops_cnt": 5,
+        "hidden_unit_tests": "[{\"input\": \"390\\r\\n\", \"output\": [\"216\"]}, {\"input\": \"7\\r\\n\", \"output\": [\"7\"]}, {\"input\": \"1000000000\\r\\n\", \"output\": [\"387420489\"]}, {\"input\": \"1\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"9\\r\\n\", \"output\": [\"9\"]}, {\"input\": \"2000000000\\r\\n\", \"output\": [\"387420489\"]}, {\"input\": \"4876\\r\\n\", \"output\": [\"2268\"]}, {\"input\": \"889878787\\r\\n\", \"output\": [\"301327047\"]}, {\"input\": \"1382011913\\r\\n\", \"output\": [\"387420489\"]}, {\"input\": \"999999999\\r\\n\", \"output\": [\"387420489\"]}, {\"input\": \"396579088\\r\\n\", \"output\": [\"114791256\"]}, {\"input\": \"890133136\\r\\n\", \"output\": [\"306110016\"]}, {\"input\": \"485908655\\r\\n\", \"output\": [\"133923132\"]}, {\"input\": \"261560170\\r\\n\", \"output\": [\"47829690\"]}, {\"input\": \"391789744\\r\\n\", \"output\": [\"114791256\"]}, {\"input\": \"480330141\\r\\n\", \"output\": [\"133923132\"]}, {\"input\": \"691993260\\r\\n\", \"output\": [\"229582512\"]}, {\"input\": \"483212601\\r\\n\", \"output\": [\"133923132\"]}, {\"input\": \"892295273\\r\\n\", \"output\": [\"306110016\"]}, {\"input\": \"389041744\\r\\n\", \"output\": [\"102036672\"]}, {\"input\": \"282587478\\r\\n\", \"output\": [\"66961566\"]}, {\"input\": \"791812587\\r\\n\", \"output\": [\"267846264\"]}, {\"input\": \"2\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"3\\r\\n\", \"output\": [\"3\"]}, {\"input\": \"4\\r\\n\", \"output\": [\"4\"]}, {\"input\": \"10\\r\\n\", \"output\": [\"9\"]}, {\"input\": \"11\\r\\n\", \"output\": [\"9\"]}, {\"input\": \"12\\r\\n\", \"output\": [\"9\"]}, {\"input\": \"19\\r\\n\", \"output\": [\"9\"]}, {\"input\": \"20\\r\\n\", \"output\": [\"9\"]}, {\"input\": \"98\\r\\n\", \"output\": [\"72\"]}, {\"input\": \"99\\r\\n\", \"output\": [\"81\"]}, {\"input\": \"100\\r\\n\", \"output\": [\"81\"]}, {\"input\": \"101\\r\\n\", \"output\": [\"81\"]}, {\"input\": \"997\\r\\n\", \"output\": [\"648\"]}, {\"input\": \"998\\r\\n\", \"output\": [\"648\"]}, {\"input\": \"999\\r\\n\", \"output\": [\"729\"]}, {\"input\": \"1000\\r\\n\", \"output\": [\"729\"]}, {\"input\": \"1001\\r\\n\", \"output\": [\"729\"]}, {\"input\": \"25\\r\\n\", \"output\": [\"10\"]}, {\"input\": \"278\\r\\n\", \"output\": [\"112\"]}, {\"input\": \"1999999999\\r\\n\", \"output\": [\"387420489\"]}, {\"input\": \"2690\\r\\n\", \"output\": [\"864\"]}, {\"input\": \"268\\r\\n\", \"output\": [\"96\"]}, {\"input\": \"289664200\\r\\n\", \"output\": [\"68024448\"]}, {\"input\": \"288\\r\\n\", \"output\": [\"128\"]}, {\"input\": \"1999999998\\r\\n\", \"output\": [\"387420489\"]}]"
+    }
+}

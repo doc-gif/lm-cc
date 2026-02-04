@@ -1,0 +1,89 @@
+{
+    "oai_response": {
+        "prompt": "Here is code in Python 3 programming lanaguge. Translate the following code from Python 3 to C programming lanaguge. Do not output any extra description or tokens other than the translated code. \n\nn=int(input())\nc=1\nif c==1 :\n    d=str(n)\n    for i in range(1,100) :\n        n=n+1\n        n=str(n)\n        if str(n).count('8')>0 :\n            print(int(n)-int(d))\n            \n            c=0\n            break\n        n=int(n)\n    \n        \n    \n        \n    \n\n\n    \n||END-of-SRC||",
+        "response": {
+            "id": "multi-call-as-hn92a29r4k",
+            "model": "deepseek-v3",
+            "created": 1767068606,
+            "choices": [
+                {
+                    "index": 0,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <string.h>\n\nint main() {\n    int n, c = 1;\n    scanf(\"%d\", &n);\n    if (c == 1) {\n        int d = n;\n        for (int i = 1; i < 100; i++) {\n            n = n + 1;\n            char str[20];\n            sprintf(str, \"%d\", n);\n            int count = 0;\n            for (int j = 0; j < strlen(str); j++) {\n                if (str[j] == '8') {\n                    count++;\n                }\n            }\n            if (count > 0) {\n                printf(\"%d\\n\", n - d);\n                c = 0;\n                break;\n            }\n        }\n    }\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 1,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <string.h>\n\nint main() {\n    int n, c = 1;\n    scanf(\"%d\", &n);\n    if (c == 1) {\n        int d = n;\n        for (int i = 1; i < 100; i++) {\n            n = n + 1;\n            char str[20];\n            sprintf(str, \"%d\", n);\n            int count = 0;\n            for (int j = 0; j < strlen(str); j++) {\n                if (str[j] == '8') {\n                    count++;\n                }\n            }\n            if (count > 0) {\n                printf(\"%d\\n\", n - d);\n                c = 0;\n                break;\n            }\n        }\n    }\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 2,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <string.h>\n\nint main() {\n    int n, c = 1;\n    scanf(\"%d\", &n);\n    if (c == 1) {\n        int d = n;\n        for (int i = 1; i < 100; i++) {\n            n = n + 1;\n            char str[20];\n            sprintf(str, \"%d\", n);\n            int count = 0;\n            for (int j = 0; j < strlen(str); j++) {\n                if (str[j] == '8') {\n                    count++;\n                }\n            }\n            if (count > 0) {\n                printf(\"%d\\n\", n - d);\n                c = 0;\n                break;\n            }\n        }\n    }\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 3,
+                    "message": {
+                        "role": "assistant",
+                        "content": "Here's the translated code in C:\n\n```c\n#include <stdio.h>\n#include <string.h>\n\nint main() {\n    int n, c = 1;\n    scanf(\"%d\", &n);\n    if (c == 1) {\n        char d[20];\n        sprintf(d, \"%d\", n);\n        for (int i = 1; i < 100; i++) {\n            n = n + 1;\n            char numStr[20];\n            sprintf(numStr, \"%d\", n);\n            int count = 0;\n            for (int j = 0; j < strlen(numStr); j++) {\n                if (numStr[j] == '8') {\n                    count++;\n                }\n            }\n            if (count > 0) {\n                printf(\"%d\\n\", n - atoi(d));\n                c = 0;\n                break;\n            }\n        }\n    }\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 4,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <string.h>\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    int c = 1;\n    if (c == 1) {\n        char d[20];\n        sprintf(d, \"%d\", n);\n        for (int i = 1; i < 100; i++) {\n            n = n + 1;\n            char numStr[20];\n            sprintf(numStr, \"%d\", n);\n            int count = 0;\n            for (int j = 0; j < strlen(numStr); j++) {\n                if (numStr[j] == '8') {\n                    count++;\n                }\n            }\n            if (count > 0) {\n                printf(\"%d\\n\", n - atoi(d));\n                c = 0;\n                break;\n            }\n        }\n    }\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                }
+            ],
+            "usage": {
+                "prompt_tokens": 660,
+                "completion_tokens": 905,
+                "total_tokens": 1565
+            }
+        }
+    },
+    "source_data": {
+        "code_uid": "c8b5deb3507b48c6d321f7654686ca6b",
+        "prob_desc_output_to": "standard output",
+        "prob_desc_notes": "NoteFor the first sample, he has to arrive at the floor numbered 180.For the second sample, he will arrive at 8.Note that b should be positive, so the answer for the third sample is 10, not 0.",
+        "lang_cluster": "Python",
+        "prob_desc_time_limit": "1 second",
+        "prob_desc_input_spec": "The only line of input contains an integer a (\u2009-\u2009109\u2009\u2264\u2009a\u2009\u2264\u2009109).",
+        "source_code": "n=int(input())\nc=1\nif c==1 :\n    d=str(n)\n    for i in range(1,100) :\n        n=n+1\n        n=str(n)\n        if str(n).count('8')>0 :\n            print(int(n)-int(d))\n            \n            c=0\n            break\n        n=int(n)\n    \n        \n    \n        \n    \n\n\n    \n",
+        "prob_desc_sample_inputs": [
+            "179",
+            "-1",
+            "18"
+        ],
+        "prob_desc_memory_limit": "256 megabytes",
+        "exec_outcome": "PASSED",
+        "prob_desc_output_spec": "Print the minimum b in a line.",
+        "src_uid": "4e57740be015963c190e0bfe1ab74cb9",
+        "prob_desc_input_from": "standard input",
+        "lang": "Python 3",
+        "prob_desc_sample_outputs": [
+            "1",
+            "9",
+            "10"
+        ],
+        "file_name": "d7021504500d5ca7c2b02df8100a574d159e6e67e20ec8071b75800b1267370a",
+        "prob_desc_description": "Giga Tower is the tallest and deepest building in Cyberland. There are 17\u2009777\u2009777\u2009777 floors, numbered from \u2009-\u20098\u2009888\u2009888\u2009888 to 8\u2009888\u2009888\u2009888. In particular, there is floor 0 between floor \u2009-\u20091 and floor 1. Every day, thousands of tourists come to this place to enjoy the wonderful view. In Cyberland, it is believed that the number \"8\" is a lucky number (that's why Giga Tower has 8\u2009888\u2009888\u2009888 floors above the ground), and, an integer is lucky, if and only if its decimal notation contains at least one digit \"8\". For example, 8,\u2009\u2009-\u2009180,\u2009808 are all lucky while 42,\u2009\u2009-\u200910 are not. In the Giga Tower, if you write code at a floor with lucky floor number, good luck will always be with you (Well, this round is #278, also lucky, huh?).Tourist Henry goes to the tower to seek good luck. Now he is at the floor numbered a. He wants to find the minimum positive integer b, such that, if he walks b floors higher, he will arrive at a floor with a lucky number. ",
+        "prob_desc_created_at": "1416590400",
+        "difficulty": 1100.0,
+        "hidden_unit_tests": "[{\"input\": \"179\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"-1\\r\\n\", \"output\": [\"9\"]}, {\"input\": \"18\\r\\n\", \"output\": [\"10\"]}, {\"input\": \"-410058385\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"-586825624\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"852318890\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"919067153\\r\\n\", \"output\": [\"5\"]}, {\"input\": \"690422411\\r\\n\", \"output\": [\"7\"]}, {\"input\": \"-408490162\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"-8\\r\\n\", \"output\": [\"16\"]}, {\"input\": \"-6\\r\\n\", \"output\": [\"14\"]}, {\"input\": \"-4\\r\\n\", \"output\": [\"12\"]}, {\"input\": \"-2\\r\\n\", \"output\": [\"10\"]}, {\"input\": \"0\\r\\n\", \"output\": [\"8\"]}, {\"input\": \"2\\r\\n\", \"output\": [\"6\"]}, {\"input\": \"4\\r\\n\", \"output\": [\"4\"]}, {\"input\": \"6\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"8\\r\\n\", \"output\": [\"10\"]}, {\"input\": \"1000000000\\r\\n\", \"output\": [\"8\"]}, {\"input\": \"-1000000000\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"88888\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"89\\r\\n\", \"output\": [\"9\"]}, {\"input\": \"-80000000\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"-8888\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"-17\\r\\n\", \"output\": [\"9\"]}, {\"input\": \"78\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"-19\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"-999999998\\r\\n\", \"output\": [\"9\"]}, {\"input\": \"-999999997\\r\\n\", \"output\": [\"8\"]}, {\"input\": \"999999997\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"811111111\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"-5\\r\\n\", \"output\": [\"13\"]}, {\"input\": \"-7\\r\\n\", \"output\": [\"15\"]}]",
+        "source_lang": "Python 3",
+        "target_lang": "C"
+    }
+}

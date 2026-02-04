@@ -1,0 +1,86 @@
+{
+    "oai_response": {
+        "prompt": "Here is code in Python 3 programming lanaguge. Translate the following code from Python 3 to C programming lanaguge. Do not output any extra description or tokens other than the translated code. \n\nmultiplos_de_onze = [\n    0,\n    1,\n    11,\n    111,\n    1111,\n    11111,\n    111111,\n    1111111,\n    11111111,\n    111111111,\n    1111111111,\n    11111111111,\n    111111111111,\n    1111111111111,\n    11111111111111,\n    111111111111111,\n    1111111111111111,\n    11111111111111111,\n]\ndef procura_onze(n, i):\n    divisao = n // multiplos_de_onze[i]\n    resto = n % multiplos_de_onze[i]\n    if resto == 0:\n        return divisao * i\n    else:\n        opcao1 = i + procura_onze(multiplos_de_onze[i] - resto, i - 1)\n        opcao2 = procura_onze(resto, i - 1)\n        return divisao * i + min(opcao1, opcao2)\ndef divide():\n    n = int(input())\n    m = procura_onze(n, 16)\n    print(m)\ndivide()||END-of-SRC||",
+        "response": {
+            "id": "multi-call-as-kurwiv796s",
+            "model": "deepseek-v3",
+            "created": 1769631149,
+            "choices": [
+                {
+                    "index": 0,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <stdlib.h>\n\nlong multiplos_de_onze[] = {\n    0,\n    1,\n    11,\n    111,\n    1111,\n    11111,\n    111111,\n    1111111,\n    11111111,\n    111111111,\n    1111111111,\n    11111111111,\n    111111111111,\n    1111111111111,\n    11111111111111,\n    111111111111111,\n    1111111111111111,\n    11111111111111111,\n};\n\nlong procura_onze(long n, int i) {\n    long divisao = n / multiplos_de_onze[i];\n    long resto = n % multiplos_de_onze[i];\n    if (resto == 0) {\n        return divisao * i;\n    } else {\n        long opcao1 = i + procura_onze(multiplos_de_onze[i] - resto, i - 1);\n        long opcao2 = procura_onze(resto, i - 1);\n        return divisao * i + (opcao1 < opcao2 ? opcao1 : opcao2);\n    }\n}\n\nvoid divide() {\n    long n;\n    scanf(\"%ld\", &n);\n    long m = procura_onze(n, 16);\n    printf(\"%ld\\n\", m);\n}\n\nint main() {\n    divide();\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 1,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <stdlib.h>\n\nlong multiplos_de_onze[] = {\n    0,\n    1,\n    11,\n    111,\n    1111,\n    11111,\n    111111,\n    1111111,\n    11111111,\n    111111111,\n    1111111111,\n    11111111111,\n    111111111111,\n    1111111111111,\n    11111111111111,\n    111111111111111,\n    1111111111111111,\n    11111111111111111,\n};\n\nlong procura_onze(long n, int i) {\n    long divisao = n / multiplos_de_onze[i];\n    long resto = n % multiplos_de_onze[i];\n    if (resto == 0) {\n        return divisao * i;\n    } else {\n        long opcao1 = i + procura_onze(multiplos_de_onze[i] - resto, i - 1);\n        long opcao2 = procura_onze(resto, i - 1);\n        return divisao * i + (opcao1 < opcao2 ? opcao1 : opcao2);\n    }\n}\n\nvoid divide() {\n    long n;\n    scanf(\"%ld\", &n);\n    long m = procura_onze(n, 16);\n    printf(\"%ld\\n\", m);\n}\n\nint main() {\n    divide();\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 2,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <stdlib.h>\n\nlong multiplos_de_onze[] = {\n    0,\n    1,\n    11,\n    111,\n    1111,\n    11111,\n    111111,\n    1111111,\n    11111111,\n    111111111,\n    1111111111,\n    11111111111,\n    111111111111,\n    1111111111111,\n    11111111111111,\n    111111111111111,\n    1111111111111111,\n    11111111111111111,\n};\n\nlong procura_onze(long n, int i) {\n    long divisao = n / multiplos_de_onze[i];\n    long resto = n % multiplos_de_onze[i];\n    if (resto == 0) {\n        return divisao * i;\n    } else {\n        long opcao1 = i + procura_onze(multiplos_de_onze[i] - resto, i - 1);\n        long opcao2 = procura_onze(resto, i - 1);\n        return divisao * i + (opcao1 < opcao2 ? opcao1 : opcao2);\n    }\n}\n\nvoid divide() {\n    long n;\n    scanf(\"%ld\", &n);\n    long m = procura_onze(n, 16);\n    printf(\"%ld\\n\", m);\n}\n\nint main() {\n    divide();\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 3,
+                    "message": {
+                        "role": "assistant",
+                        "content": "Here's the translated code in C:\n\n```c\n#include <stdio.h>\n#include <stdlib.h>\n\nlong multiplos_de_onze[] = {\n    0,\n    1,\n    11,\n    111,\n    1111,\n    11111,\n    111111,\n    1111111,\n    11111111,\n    111111111,\n    1111111111,\n    11111111111,\n    111111111111,\n    1111111111111,\n    11111111111111,\n    111111111111111,\n    1111111111111111,\n    11111111111111111\n};\n\nlong procura_onze(long n, int i) {\n    long divisao = n / multiplos_de_onze[i];\n    long resto = n % multiplos_de_onze[i];\n    if (resto == 0) {\n        return divisao * i;\n    } else {\n        long opcao1 = i + procura_onze(multiplos_de_onze[i] - resto, i - 1);\n        long opcao2 = procura_onze(resto, i - 1);\n        return divisao * i + (opcao1 < opcao2 ? opcao1 : opcao2);\n    }\n}\n\nvoid divide() {\n    long n;\n    scanf(\"%ld\", &n);\n    long m = procura_onze(n, 16);\n    printf(\"%ld\\n\", m);\n}\n\nint main() {\n    divide();\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 4,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <stdlib.h>\n\nlong multiplos_de_onze[] = {\n    0,\n    1,\n    11,\n    111,\n    1111,\n    11111,\n    111111,\n    1111111,\n    11111111,\n    111111111,\n    1111111111,\n    11111111111,\n    111111111111,\n    1111111111111,\n    11111111111111,\n    111111111111111,\n    1111111111111111,\n    11111111111111111,\n};\n\nlong procura_onze(long n, int i) {\n    long divisao = n / multiplos_de_onze[i];\n    long resto = n % multiplos_de_onze[i];\n    if (resto == 0) {\n        return divisao * i;\n    } else {\n        long opcao1 = i + procura_onze(multiplos_de_onze[i] - resto, i - 1);\n        long opcao2 = procura_onze(resto, i - 1);\n        return divisao * i + (opcao1 < opcao2 ? opcao1 : opcao2);\n    }\n}\n\nvoid divide() {\n    long n;\n    scanf(\"%ld\", &n);\n    long m = procura_onze(n, 16);\n    printf(\"%ld\\n\", m);\n}\n\nint main() {\n    divide();\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                }
+            ],
+            "usage": {
+                "prompt_tokens": 1490,
+                "completion_tokens": 1561,
+                "total_tokens": 3051
+            }
+        }
+    },
+    "source_data": {
+        "code_uid": "c2399d1f0ab3033d9ab608c13f8786e4",
+        "prob_desc_output_to": "standard output",
+        "prob_desc_notes": null,
+        "lang_cluster": "Python",
+        "prob_desc_time_limit": "0.5 seconds",
+        "prob_desc_input_spec": "The first line of the input contains integer n (1\u2009\u2264\u2009n\u2009&lt;\u20091015).",
+        "prob_desc_sample_inputs": [
+            "121"
+        ],
+        "prob_desc_memory_limit": "256 megabytes",
+        "exec_outcome": "PASSED",
+        "prob_desc_output_spec": "Print expected minimal number of digits 1.",
+        "src_uid": "1b17a7b3b41077843ee1d6e0607720d6",
+        "prob_desc_input_from": "standard input",
+        "lang": "Python 3",
+        "prob_desc_sample_outputs": [
+            "6"
+        ],
+        "file_name": "d7021504500d5ca7c2b02df8100a574d159e6e67e20ec8071b75800b1267370a",
+        "prob_desc_description": "Prof. Vasechkin wants to represent positive integer n as a sum of addends, where each addends is an integer number containing only 1s. For example, he can represent 121 as 121=111+11+\u20131. Help him to find the least number of digits 1 in such sum.",
+        "prob_desc_created_at": "1567258500",
+        "difficulty": 1800.0,
+        "hidden_unit_tests": "[{\"input\": \"121\\r\\n\", \"output\": [\"6\"]}, {\"input\": \"10\\r\\n\", \"output\": [\"3\"]}, {\"input\": \"72\\r\\n\", \"output\": [\"15\"]}, {\"input\": \"1\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"2\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"3\\r\\n\", \"output\": [\"3\"]}, {\"input\": \"4\\r\\n\", \"output\": [\"4\"]}, {\"input\": \"5\\r\\n\", \"output\": [\"5\"]}, {\"input\": \"6\\r\\n\", \"output\": [\"6\"]}, {\"input\": \"7\\r\\n\", \"output\": [\"6\"]}, {\"input\": \"11\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"12\\r\\n\", \"output\": [\"3\"]}, {\"input\": \"2038946593\\r\\n\", \"output\": [\"145\"]}, {\"input\": \"81924761239462\\r\\n\", \"output\": [\"321\"]}, {\"input\": \"973546235465729\\r\\n\", \"output\": [\"263\"]}, {\"input\": \"999999999999999\\r\\n\", \"output\": [\"32\"]}, {\"input\": \"21\\r\\n\", \"output\": [\"5\"]}, {\"input\": \"79\\r\\n\", \"output\": [\"10\"]}, {\"input\": \"33\\r\\n\", \"output\": [\"6\"]}, {\"input\": \"185\\r\\n\", \"output\": [\"16\"]}, {\"input\": \"513\\r\\n\", \"output\": [\"25\"]}, {\"input\": \"634\\r\\n\", \"output\": [\"22\"]}, {\"input\": \"5300\\r\\n\", \"output\": [\"32\"]}, {\"input\": \"3724\\r\\n\", \"output\": [\"34\"]}, {\"input\": \"2148\\r\\n\", \"output\": [\"21\"]}, {\"input\": \"82415\\r\\n\", \"output\": [\"53\"]}, {\"input\": \"35839\\r\\n\", \"output\": [\"45\"]}, {\"input\": \"79263\\r\\n\", \"output\": [\"45\"]}, {\"input\": \"274634\\r\\n\", \"output\": [\"62\"]}, {\"input\": \"690762\\r\\n\", \"output\": [\"65\"]}, {\"input\": \"374186\\r\\n\", \"output\": [\"65\"]}, {\"input\": \"2673749\\r\\n\", \"output\": [\"81\"]}, {\"input\": \"5789877\\r\\n\", \"output\": [\"61\"]}, {\"input\": \"1873301\\r\\n\", \"output\": [\"59\"]}, {\"input\": \"30272863\\r\\n\", \"output\": [\"118\"]}, {\"input\": \"33388991\\r\\n\", \"output\": [\"57\"]}, {\"input\": \"11472415\\r\\n\", \"output\": [\"72\"]}, {\"input\": \"345871978\\r\\n\", \"output\": [\"95\"]}, {\"input\": \"528988106\\r\\n\", \"output\": [\"118\"]}, {\"input\": \"302038826\\r\\n\", \"output\": [\"128\"]}, {\"input\": \"1460626450\\r\\n\", \"output\": [\"152\"]}, {\"input\": \"3933677170\\r\\n\", \"output\": [\"159\"]}, {\"input\": \"6816793298\\r\\n\", \"output\": [\"153\"]}, {\"input\": \"75551192860\\r\\n\", \"output\": [\"151\"]}, {\"input\": \"28729276284\\r\\n\", \"output\": [\"212\"]}, {\"input\": \"67612392412\\r\\n\", \"output\": [\"178\"]}, {\"input\": \"532346791975\\r\\n\", \"output\": [\"158\"]}, {\"input\": \"575524875399\\r\\n\", \"output\": [\"189\"]}, {\"input\": \"614407991527\\r\\n\", \"output\": [\"236\"]}, {\"input\": \"2835997166898\\r\\n\", \"output\": [\"275\"]}, {\"input\": \"1079175250322\\r\\n\", \"output\": [\"188\"]}, {\"input\": \"8322353333746\\r\\n\", \"output\": [\"169\"]}, {\"input\": \"26602792766013\\r\\n\", \"output\": [\"288\"]}, {\"input\": \"42845970849437\\r\\n\", \"output\": [\"325\"]}, {\"input\": \"59089148932861\\r\\n\", \"output\": [\"265\"]}, {\"input\": \"842369588365127\\r\\n\", \"output\": [\"330\"]}, {\"input\": \"768617061415848\\r\\n\", \"output\": [\"390\"]}, {\"input\": \"694855944531976\\r\\n\", \"output\": [\"348\"]}, {\"input\": \"898453513288965\\r\\n\", \"output\": [\"248\"]}, {\"input\": \"98596326741327\\r\\n\", \"output\": [\"260\"]}, {\"input\": \"59191919191919\\r\\n\", \"output\": [\"342\"]}]",
+        "initial_source_code": "multiplos_de_onze = [0, 1, 11, 111, 1111, 11111, 111111, 1111111, 11111111, 111111111, 1111111111, 11111111111,\n                     111111111111, 1111111111111, 11111111111111, 111111111111111, 1111111111111111,\n                     11111111111111111]\n# Entrada maxima, n maior que 1 e n menor que 10 elevado a 15\n\n\ndef procura_onze(n, i):  # i = 16 - pois ser\u00e1 a ultima posi\u00e7\u00e3o do vetor\n    divisao = int(n / multiplos_de_onze[i])\n    resto = n % multiplos_de_onze[i]\n    if resto == 0:\n        return divisao*i\n    else:\n        return divisao*i + min(i + procura_onze(multiplos_de_onze[i] - resto, i - 1), procura_onze(resto, i - 1))\n\n\ndef divide():\n    n = int(input())\n    m = procura_onze(n, 16)\n    print(m)\n\n\ndivide()\n",
+        "source_code": "multiplos_de_onze = [\n    0,\n    1,\n    11,\n    111,\n    1111,\n    11111,\n    111111,\n    1111111,\n    11111111,\n    111111111,\n    1111111111,\n    11111111111,\n    111111111111,\n    1111111111111,\n    11111111111111,\n    111111111111111,\n    1111111111111111,\n    11111111111111111,\n]\ndef procura_onze(n, i):\n    divisao = n // multiplos_de_onze[i]\n    resto = n % multiplos_de_onze[i]\n    if resto == 0:\n        return divisao * i\n    else:\n        opcao1 = i + procura_onze(multiplos_de_onze[i] - resto, i - 1)\n        opcao2 = procura_onze(resto, i - 1)\n        return divisao * i + min(opcao1, opcao2)\ndef divide():\n    n = int(input())\n    m = procura_onze(n, 16)\n    print(m)\ndivide()",
+        "source_lang": "Python 3",
+        "target_lang": "C"
+    }
+}

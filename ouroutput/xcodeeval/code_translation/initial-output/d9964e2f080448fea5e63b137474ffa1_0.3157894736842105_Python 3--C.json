@@ -1,0 +1,87 @@
+{
+    "oai_response": {
+        "prompt": "Here is code in Python 3 programming lanaguge. Translate the following code from Python 3 to C programming lanaguge. Do not output any extra description or tokens other than the translated code. \n\n\n# coding: utf-8\n\n# In[36]:\n\n\nimport math\n\ndef UnusualSeq(a,b):\n    if b%a!=0:\n        print(0)\n    else:\n        b//=a\n        d=set()\n        for i in range(1,int(math.sqrt(b)+1)):\n            if b%i==0:\n                d.add(i)\n                d.add(b//i)\n        d=sorted(list(d))\n        f=d[::]\n        for i in range(len(f)):\n            f[i]=pow(2,d[i]-1,(10**9+7))\n            for j in range(i):\n                if d[i]%d[j]==0:\n                    f[i]-=f[j]\n        print(f[-1]%(10**9+7))\n\n\na,b=map(int,input().split())\nUnusualSeq(a,b)\n\n||END-of-SRC||",
+        "response": {
+            "id": "multi-call-as-mgifs4cge2",
+            "model": "deepseek-v3",
+            "created": 1767069981,
+            "choices": [
+                {
+                    "index": 0,
+                    "message": {
+                        "role": "assistant",
+                        "content": "Here's the translated code in C:\n\n```c\n#include <stdio.h>\n#include <stdlib.h>\n#include <math.h>\n#include <string.h>\n\n#define MOD 1000000007\n\nlong long power(long long x, long long y) {\n    long long res = 1;\n    x = x % MOD;\n    while (y > 0) {\n        if (y & 1)\n            res = (res * x) % MOD;\n        y = y >> 1;\n        x = (x * x) % MOD;\n    }\n    return res;\n}\n\nvoid UnusualSeq(int a, int b) {\n    if (b % a != 0) {\n        printf(\"0\\n\");\n        return;\n    }\n    b /= a;\n    int max_div = sqrt(b);\n    int *d = malloc(100000 * sizeof(int));\n    int d_size = 0;\n    \n    for (int i = 1; i <= max_div; i++) {\n        if (b % i == 0) {\n            d[d_size++] = i;\n            if (i != b / i) {\n                d[d_size++] = b / i;\n            }\n        }\n    }\n    \n    for (int i = 0; i < d_size - 1; i++) {\n        for (int j = i + 1; j < d_size; j++) {\n            if (d[i] > d[j]) {\n                int temp = d[i];\n                d[i] = d[j];\n                d[j] = temp;\n            }\n        }\n    }\n    \n    long long *f = malloc(d_size * sizeof(long long));\n    for (int i = 0; i < d_size; i++) {\n        f[i] = power(2, d[i] - 1);\n        for (int j = 0; j < i; j++) {\n            if (d[i] % d[j] == 0) {\n                f[i] = (f[i] - f[j] + MOD) % MOD;\n            }\n        }\n    }\n    printf(\"%lld\\n\", f[d_size - 1] % MOD);\n    free(d);\n    free(f);\n}\n\nint main() {\n    int a, b;\n    scanf(\"%d %d\", &a, &b);\n    UnusualSeq(a, b);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 1,
+                    "message": {
+                        "role": "assistant",
+                        "content": "Here's the translated code in C:\n\n```c\n#include <stdio.h>\n#include <stdlib.h>\n#include <math.h>\n#include <stdbool.h>\n\n#define MOD 1000000007\n\nlong long power(long long x, long long y) {\n    long long res = 1;\n    x = x % MOD;\n    while (y > 0) {\n        if (y & 1)\n            res = (res * x) % MOD;\n        y = y >> 1;\n        x = (x * x) % MOD;\n    }\n    return res;\n}\n\nvoid UnusualSeq(int a, int b) {\n    if (b % a != 0) {\n        printf(\"0\\n\");\n        return;\n    }\n    b /= a;\n    int max_div = sqrt(b);\n    int *d = malloc(100000 * sizeof(int));\n    bool *is_div = malloc(100000 * sizeof(bool));\n    int count = 0;\n    \n    for (int i = 1; i <= max_div; i++) {\n        if (b % i == 0) {\n            d[count++] = i;\n            if (i != b / i) {\n                d[count++] = b / i;\n            }\n        }\n    }\n    \n    for (int i = 0; i < count; i++) {\n        for (int j = i + 1; j < count; j++) {\n            if (d[i] > d[j]) {\n                int temp = d[i];\n                d[i] = d[j];\n                d[j] = temp;\n            }\n        }\n    }\n    \n    long long *f = malloc(count * sizeof(long long));\n    for (int i = 0; i < count; i++) {\n        f[i] = power(2, d[i] - 1);\n        for (int j = 0; j < i; j++) {\n            if (d[i] % d[j] == 0) {\n                f[i] = (f[i] - f[j] + MOD) % MOD;\n            }\n        }\n    }\n    printf(\"%lld\\n\", f[count - 1] % MOD);\n    \n    free(d);\n    free(is_div);\n    free(f);\n}\n\nint main() {\n    int a, b;\n    scanf(\"%d %d\", &a, &b);\n    UnusualSeq(a, b);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 2,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <math.h>\n#include <stdlib.h>\n\n#define MOD 1000000007\n\nlong long pow_mod(long long base, long long exp, long long mod) {\n    long long result = 1;\n    while (exp > 0) {\n        if (exp % 2 == 1) {\n            result = (result * base) % mod;\n        }\n        base = (base * base) % mod;\n        exp /= 2;\n    }\n    return result;\n}\n\nvoid UnusualSeq(int a, int b) {\n    if (b % a != 0) {\n        printf(\"0\\n\");\n        return;\n    }\n    b /= a;\n    int sqrt_b = (int)sqrt(b);\n    int *d = malloc(2 * sqrt_b * sizeof(int));\n    int count = 0;\n    for (int i = 1; i <= sqrt_b; i++) {\n        if (b % i == 0) {\n            d[count++] = i;\n            if (i != b / i) {\n                d[count++] = b / i;\n            }\n        }\n    }\n    for (int i = 0; i < count; i++) {\n        for (int j = i + 1; j < count; j++) {\n            if (d[i] > d[j]) {\n                int temp = d[i];\n                d[i] = d[j];\n                d[j] = temp;\n            }\n        }\n    }\n    long long *f = malloc(count * sizeof(long long));\n    for (int i = 0; i < count; i++) {\n        f[i] = pow_mod(2, d[i] - 1, MOD);\n        for (int j = 0; j < i; j++) {\n            if (d[i] % d[j] == 0) {\n                f[i] = (f[i] - f[j] + MOD) % MOD;\n            }\n        }\n    }\n    printf(\"%lld\\n\", f[count - 1] % MOD);\n    free(d);\n    free(f);\n}\n\nint main() {\n    int a, b;\n    scanf(\"%d %d\", &a, &b);\n    UnusualSeq(a, b);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 3,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <stdlib.h>\n#include <math.h>\n\n#define MOD 1000000007\n\nlong long power(long long base, long long exp) {\n    long long result = 1;\n    while (exp > 0) {\n        if (exp % 2 == 1) {\n            result = (result * base) % MOD;\n        }\n        base = (base * base) % MOD;\n        exp /= 2;\n    }\n    return result;\n}\n\nvoid UnusualSeq(int a, int b) {\n    if (b % a != 0) {\n        printf(\"0\\n\");\n        return;\n    }\n    b /= a;\n    int max_div = (int)sqrt(b) + 1;\n    int *d = malloc(1000 * sizeof(int));\n    int d_size = 0;\n    for (int i = 1; i <= max_div; i++) {\n        if (b % i == 0) {\n            d[d_size++] = i;\n            if (i != b / i) {\n                d[d_size++] = b / i;\n            }\n        }\n    }\n    for (int i = 0; i < d_size; i++) {\n        for (int j = i + 1; j < d_size; j++) {\n            if (d[i] > d[j]) {\n                int temp = d[i];\n                d[i] = d[j];\n                d[j] = temp;\n            }\n        }\n    }\n    long long *f = malloc(d_size * sizeof(long long));\n    for (int i = 0; i < d_size; i++) {\n        f[i] = power(2, d[i] - 1);\n        for (int j = 0; j < i; j++) {\n            if (d[i] % d[j] == 0) {\n                f[i] = (f[i] - f[j] + MOD) % MOD;\n            }\n        }\n    }\n    printf(\"%lld\\n\", f[d_size - 1] % MOD);\n    free(d);\n    free(f);\n}\n\nint main() {\n    int a, b;\n    scanf(\"%d %d\", &a, &b);\n    UnusualSeq(a, b);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 4,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <math.h>\n#include <stdlib.h>\n\n#define MOD 1000000007\n\nlong long pow_mod(long long base, long long exp, long long mod) {\n    long long result = 1;\n    while (exp > 0) {\n        if (exp % 2 == 1) {\n            result = (result * base) % mod;\n        }\n        base = (base * base) % mod;\n        exp /= 2;\n    }\n    return result;\n}\n\nvoid UnusualSeq(int a, int b) {\n    if (b % a != 0) {\n        printf(\"0\\n\");\n        return;\n    }\n    b /= a;\n    int sqrt_b = (int)sqrt(b);\n    int *d = malloc(2 * sqrt_b * sizeof(int));\n    int count = 0;\n    for (int i = 1; i <= sqrt_b; i++) {\n        if (b % i == 0) {\n            d[count++] = i;\n            if (i != b / i) {\n                d[count++] = b / i;\n            }\n        }\n    }\n    for (int i = 0; i < count; i++) {\n        for (int j = i + 1; j < count; j++) {\n            if (d[i] > d[j]) {\n                int temp = d[i];\n                d[i] = d[j];\n                d[j] = temp;\n            }\n        }\n    }\n    long long *f = malloc(count * sizeof(long long));\n    for (int i = 0; i < count; i++) {\n        f[i] = pow_mod(2, d[i] - 1, MOD);\n        for (int j = 0; j < i; j++) {\n            if (d[i] % d[j] == 0) {\n                f[i] = (f[i] - f[j] + MOD) % MOD;\n            }\n        }\n    }\n    printf(\"%lld\\n\", f[count - 1] % MOD);\n    free(d);\n    free(f);\n}\n\nint main() {\n    int a, b;\n    scanf(\"%d %d\", &a, &b);\n    UnusualSeq(a, b);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                }
+            ],
+            "usage": {
+                "prompt_tokens": 1140,
+                "completion_tokens": 2454,
+                "total_tokens": 3594
+            }
+        }
+    },
+    "source_data": {
+        "code_uid": "d9964e2f080448fea5e63b137474ffa1",
+        "prob_desc_output_to": "standard output",
+        "prob_desc_notes": "NoteThere are three suitable sequences in the first test: (3,\u20093,\u20093), (3,\u20096), (6,\u20093).There are no suitable sequences in the second test.",
+        "lang_cluster": "Python",
+        "prob_desc_time_limit": "1 second",
+        "prob_desc_input_spec": "The only line contains two positive integers x and y (1\u2009\u2264\u2009x,\u2009y\u2009\u2264\u2009109).",
+        "source_code": "\n# coding: utf-8\n\n# In[36]:\n\n\nimport math\n\ndef UnusualSeq(a,b):\n    if b%a!=0:\n        print(0)\n    else:\n        b//=a\n        d=set()\n        for i in range(1,int(math.sqrt(b)+1)):\n            if b%i==0:\n                d.add(i)\n                d.add(b//i)\n        d=sorted(list(d))\n        f=d[::]\n        for i in range(len(f)):\n            f[i]=pow(2,d[i]-1,(10**9+7))\n            for j in range(i):\n                if d[i]%d[j]==0:\n                    f[i]-=f[j]\n        print(f[-1]%(10**9+7))\n\n\na,b=map(int,input().split())\nUnusualSeq(a,b)\n\n",
+        "prob_desc_sample_inputs": [
+            "3 9",
+            "5 8"
+        ],
+        "prob_desc_memory_limit": "256 megabytes",
+        "exec_outcome": "PASSED",
+        "prob_desc_output_spec": "Print the number of such sequences modulo 109\u2009+\u20097.",
+        "src_uid": "de7731ce03735b962ee033613192f7bc",
+        "prob_desc_input_from": "standard input",
+        "lang": "Python 3",
+        "prob_desc_sample_outputs": [
+            "3",
+            "0"
+        ],
+        "file_name": "d7021504500d5ca7c2b02df8100a574d159e6e67e20ec8071b75800b1267370a",
+        "prob_desc_description": "Count the number of distinct sequences a1,\u2009a2,\u2009...,\u2009an (1\u2009\u2264\u2009ai) consisting of positive integers such that gcd(a1,\u2009a2,\u2009...,\u2009an)\u2009=\u2009x and . As this number could be large, print the answer modulo 109\u2009+\u20097.gcd here means the greatest common divisor.",
+        "prob_desc_created_at": "1513008300",
+        "difficulty": 2000.0,
+        "hidden_unit_tests": "[{\"input\": \"3 9\\r\\n\", \"output\": [\"3\"]}, {\"input\": \"5 8\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"2 12\\r\\n\", \"output\": [\"27\"]}, {\"input\": \"1 8\\r\\n\", \"output\": [\"120\"]}, {\"input\": \"1 9\\r\\n\", \"output\": [\"252\"]}, {\"input\": \"1000000000 1000000000\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"1000000000 1\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"1 1000000000\\r\\n\", \"output\": [\"824916815\"]}, {\"input\": \"1 223092870\\r\\n\", \"output\": [\"521342052\"]}, {\"input\": \"1 1\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"1 994593600\\r\\n\", \"output\": [\"558135120\"]}, {\"input\": \"1 425613469\\r\\n\", \"output\": [\"455729363\"]}, {\"input\": \"495219 444706662\\r\\n\", \"output\": [\"115165527\"]}, {\"input\": \"9357 18255507\\r\\n\", \"output\": [\"745979764\"]}, {\"input\": \"741547455 471761895\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"225 315096300\\r\\n\", \"output\": [\"413133630\"]}, {\"input\": \"183612440 509579899\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"231096994 462193988\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"34601 35742833\\r\\n\", \"output\": [\"60054095\"]}, {\"input\": \"417485019 230941257\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"524 991033864\\r\\n\", \"output\": [\"172439543\"]}, {\"input\": \"859550004 563726557\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"1 282521795\\r\\n\", \"output\": [\"436596181\"]}, {\"input\": \"415879151 194713963\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"109936444 989427996\\r\\n\", \"output\": [\"252\"]}]",
+        "source_lang": "Python 3",
+        "target_lang": "C"
+    }
+}

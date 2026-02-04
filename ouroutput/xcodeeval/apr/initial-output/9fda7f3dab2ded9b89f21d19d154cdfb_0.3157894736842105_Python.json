@@ -1,0 +1,105 @@
+{
+    "oai_response": {
+        "prompt": "Fix a buggy program written in Python language to solve the following programming problem:\nDescription: Kavi has $$$2n$$$ points lying on the $$$OX$$$ axis, $$$i$$$-th of which is located at $$$x = i$$$.Kavi considers all ways to split these $$$2n$$$ points into $$$n$$$ pairs. Among those, he is interested in good pairings, which are defined as follows:Consider $$$n$$$ segments with ends at the points in correspondent pairs. The pairing is called good, if for every $$$2$$$ different segments $$$A$$$ and $$$B$$$ among those, at least one of the following holds:  One of the segments $$$A$$$ and $$$B$$$ lies completely inside the other.  $$$A$$$ and $$$B$$$ have the same length. Consider the following example:  $$$A$$$ is a good pairing since the red segment lies completely inside the blue segment.$$$B$$$ is a good pairing since the red and the blue segment have the same length.$$$C$$$ is not a good pairing since none of the red or blue segments lies inside the other, neither do they have the same size.Kavi is interested in the number of good pairings, so he wants you to find it for him. As the result can be large, find this number modulo $$$998244353$$$.Two pairings are called different, if some two points are in one pair in some pairing and in different pairs in another.\nInput Specification: The single line of the input contains a single integer $$$n$$$ $$$(1\\le n \\le 10^6)$$$.\nOutput Specification: Print the number of good pairings modulo $$$998244353$$$.\n\nSample Input:\n1\nSample Output:\n1\n\nSample Input:\n2\nSample Output:\n3\n\nSample Input:\n3\nSample Output:\n6\n\nSample Input:\n100\nSample Output:\n688750769\n\nNotes: NoteThe good pairings for the second example are:   In the third example, the good pairings are:   \nTake input from standard input and output to standard output\n\nHere is the code with a bug of MEMORY_LIMIT_EXCEEDED:\n\n#import sys\r\n\r\n#comment these out later\r\n#sys.stdin = open(\"in.in\", \"r\")\r\n#sys.stdout = open(\"out.out\", \"w\")\r\n\r\nMAX = 1000001;\r\n\r\n# array to store\r\n# prime factors\r\nfactor = [0]*(MAX + 1);\r\n\r\n# function to generate all\r\n# prime factors of numbers\r\n# from 1 to 10^6\r\ndef generatePrimeFactors():\r\n\tfactor[1] = 1;\r\n\r\n\t# Initializes all the\r\n\t# positions with their value.\r\n\tfor i in range(2,MAX):\r\n\t\tfactor[i] = i;\r\n\r\n\t# Initializes all\r\n\t# multiples of 2 with 2\r\n\tfor i in range(4,MAX,2):\r\n\t\tfactor[i] = 2;\r\n\r\n\t# A modified version of\r\n\t# Sieve of Eratosthenes\r\n\t# to store the smallest\r\n\t# prime factor that divides\r\n\t# every number.\r\n\ti = 3;\r\n\twhile(i * i < MAX):\r\n\t\t# check if it has\r\n\t\t# no prime factor.\r\n\t\tif (factor[i] == i):\r\n\t\t\t# Initializes of j\r\n\t\t\t# starting from i*i\r\n\t\t\tj = i * i;\r\n\t\t\twhile(j < MAX):\r\n\t\t\t\t# if it has no prime factor\r\n\t\t\t\t# before, then stores the\r\n\t\t\t\t# smallest prime divisor\r\n\t\t\t\tif (factor[j] == j):\r\n\t\t\t\t\tfactor[j] = i;\r\n\t\t\t\tj += i;\r\n\t\ti+=1;\r\n\r\n# function to calculate\r\n# number of factors\r\ndef calculateNoOFactors(n):\r\n\tif (n == 1):\r\n\t\treturn 1;\r\n\tans = 1;\r\n\r\n\t# stores the smallest\r\n\t# prime number that\r\n\t# divides n\r\n\tdup = factor[n];\r\n\r\n\t# stores the count of\r\n\t# number of times a\r\n\t# prime number divides n.\r\n\tc = 1;\r\n\r\n\t# reduces to the next\r\n\t# number after prime\r\n\t# factorization of n\r\n\tj = int(n / factor[n]);\r\n\r\n\t# false when prime\r\n\t# factorization is done\r\n\twhile (j > 1):\r\n\t\t# if the same prime\r\n\t\t# number is dividing\r\n\t\t# n, then we increase\r\n\t\t# the count\r\n\t\tif (factor[j] == dup):\r\n\t\t\tc += 1;\r\n\r\n\t\t# if its a new prime factor\r\n\t\t# that is factorizing n,\r\n\t\t# then we again set c=1 and\r\n\t\t# change dup to the new prime\r\n\t\t# factor, and apply the formula\r\n\t\t# explained above.\r\n\t\telse:\r\n\t\t\tdup = factor[j];\r\n\t\t\tans = ans * (c + 1);\r\n\t\t\tc = 1;\r\n\r\n\t\t# prime factorizes\r\n\t\t# a number\r\n\t\tj = int(j / factor[j]);\r\n\r\n\t# for the last\r\n\t# prime factor\r\n\tans = ans * (c + 1);\r\n\r\n\treturn ans;\r\n\r\n# This code is contributed\r\n# by mits.\r\n\r\ndef calc(n):\r\n\tdp = [-1]*(n+1)\r\n\tdp[0] = 1\r\n\tdp[1] = 1\r\n\r\n\tpre =...\n\nProvide the fixed Python code without any description or extra tokens.\n\nFixed source code:\n ||END-of-SRC||",
+        "response": {
+            "id": "multi-call-as-ngp4mrgbu5",
+            "model": "deepseek-v3",
+            "created": 1760425114,
+            "choices": [
+                {
+                    "index": 0,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```python\nimport sys\n\nMOD = 998244353\n\ndef solve():\n    n = int(sys.stdin.readline())\n    if n == 1:\n        print(1)\n        return\n    dp = [0] * (n + 1)\n    dp[0] = 1\n    dp[1] = 1\n    for i in range(2, n + 1):\n        dp[i] = (dp[i - 1] + (i - 1) * dp[i - 2]) % MOD\n    print(dp[n])\n\nsolve()\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 1,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```python\nimport sys\n\nMOD = 998244353\n\ndef solve():\n    n = int(sys.stdin.readline())\n    if n == 1:\n        print(1)\n        return\n    dp = [0] * (n + 1)\n    dp[0] = 1\n    dp[1] = 1\n    for i in range(2, n + 1):\n        dp[i] = (dp[i - 1] + (i - 1) * dp[i - 2]) % MOD\n    print(dp[n])\n\nsolve()\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 2,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```python\nimport sys\n\nMOD = 998244353\n\ndef solve():\n    n = int(sys.stdin.readline())\n    if n == 1:\n        print(1)\n        return\n    dp = [0] * (n + 1)\n    dp[0] = 1\n    dp[1] = 1\n    for i in range(2, n + 1):\n        dp[i] = (dp[i - 1] + (i - 1) * dp[i - 2]) % MOD\n    print(dp[n])\n\nsolve()\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 3,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```python\nimport sys\n\nMOD = 998244353\n\ndef solve():\n    n = int(sys.stdin.readline())\n    if n == 1:\n        print(1)\n        return\n    dp = [0] * (n + 1)\n    dp[0] = 1\n    dp[1] = 1\n    for i in range(2, n + 1):\n        dp[i] = (dp[i - 1] + (i - 1) * dp[i - 2]) % MOD\n    print(dp[n])\n\nsolve()\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 4,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```python\nimport sys\n\nMOD = 998244353\n\ndef solve():\n    n = int(sys.stdin.readline())\n    if n == 1:\n        print(1)\n        return\n    dp = [0] * (n + 1)\n    dp[0] = 1\n    dp[1] = 1\n    for i in range(2, n + 1):\n        dp[i] = (dp[i - 1] + (i - 1) * dp[i - 2]) % MOD\n    print(dp[n])\n\nsolve()\n```"
+                    },
+                    "finish_reason": "stop"
+                }
+            ],
+            "usage": {
+                "prompt_tokens": 6650,
+                "completion_tokens": 606,
+                "total_tokens": 7256
+            }
+        }
+    },
+    "source_data": {
+        "prob_desc_memory_limit": "256 megabytes",
+        "tags": [
+            "dp",
+            "math",
+            "combinatorics"
+        ],
+        "prob_desc_created_at": "1621866900",
+        "fix_source_code": "",
+        "prob_desc_input_spec": "The single line of the input contains a single integer $$$n$$$ $$$(1\\le n \\le 10^6)$$$.",
+        "prob_desc_sample_outputs": [
+            "1",
+            "3",
+            "6",
+            "688750769"
+        ],
+        "src_uid": "09be46206a151c237dc9912df7e0f057",
+        "prob_desc_time_limit": "1 second",
+        "fix_exec_outcome": "",
+        "delete_cnt": 2,
+        "apr_id": "299d90b01e5657632fa6d3c1ea2ca869",
+        "fix_code_uid": "",
+        "lang_cluster": "Python",
+        "prob_desc_sample_inputs": [
+            "1",
+            "2",
+            "3",
+            "100"
+        ],
+        "prob_desc_output_to": "standard output",
+        "file_name": "Python.jsonl",
+        "equal_cnt": 12,
+        "lang": "PyPy 3",
+        "prob_desc_output_spec": "Print the number of good pairings modulo $$$998244353$$$.",
+        "bug_exec_outcome": "MEMORY_LIMIT_EXCEEDED",
+        "prob_desc_notes": "NoteThe good pairings for the second example are:   In the third example, the good pairings are:   ",
+        "difficulty": 1700.0,
+        "similarity_score": 0.0398346484,
+        "prob_desc_description": "Kavi has $$$2n$$$ points lying on the $$$OX$$$ axis, $$$i$$$-th of which is located at $$$x = i$$$.Kavi considers all ways to split these $$$2n$$$ points into $$$n$$$ pairs. Among those, he is interested in good pairings, which are defined as follows:Consider $$$n$$$ segments with ends at the points in correspondent pairs. The pairing is called good, if for every $$$2$$$ different segments $$$A$$$ and $$$B$$$ among those, at least one of the following holds:  One of the segments $$$A$$$ and $$$B$$$ lies completely inside the other.  $$$A$$$ and $$$B$$$ have the same length. Consider the following example:  $$$A$$$ is a good pairing since the red segment lies completely inside the blue segment.$$$B$$$ is a good pairing since the red and the blue segment have the same length.$$$C$$$ is not a good pairing since none of the red or blue segments lies inside the other, neither do they have the same size.Kavi is interested in the number of good pairings, so he wants you to find it for him. As the result can be large, find this number modulo $$$998244353$$$.Two pairings are called different, if some two points are in one pair in some pairing and in different pairs in another.",
+        "potential_dominant_fix_op": "replace",
+        "bug_source_code": "#import sys\r\n\r\n#comment these out later\r\n#sys.stdin = open(\"in.in\", \"r\")\r\n#sys.stdout = open(\"out.out\", \"w\")\r\n\r\nMAX = 1000001;\r\n\r\n# array to store\r\n# prime factors\r\nfactor = [0]*(MAX + 1);\r\n\r\n# function to generate all\r\n# prime factors of numbers\r\n# from 1 to 10^6\r\ndef generatePrimeFactors():\r\n\tfactor[1] = 1;\r\n\r\n\t# Initializes all the\r\n\t# positions with their value.\r\n\tfor i in range(2,MAX):\r\n\t\tfactor[i] = i;\r\n\r\n\t# Initializes all\r\n\t# multiples of 2 with 2\r\n\tfor i in range(4,MAX,2):\r\n\t\tfactor[i] = 2;\r\n\r\n\t# A modified version of\r\n\t# Sieve of Eratosthenes\r\n\t# to store the smallest\r\n\t# prime factor that divides\r\n\t# every number.\r\n\ti = 3;\r\n\twhile(i * i < MAX):\r\n\t\t# check if it has\r\n\t\t# no prime factor.\r\n\t\tif (factor[i] == i):\r\n\t\t\t# Initializes of j\r\n\t\t\t# starting from i*i\r\n\t\t\tj = i * i;\r\n\t\t\twhile(j < MAX):\r\n\t\t\t\t# if it has no prime factor\r\n\t\t\t\t# before, then stores the\r\n\t\t\t\t# smallest prime divisor\r\n\t\t\t\tif (factor[j] == j):\r\n\t\t\t\t\tfactor[j] = i;\r\n\t\t\t\tj += i;\r\n\t\ti+=1;\r\n\r\n# function to calculate\r\n# number of factors\r\ndef calculateNoOFactors(n):\r\n\tif (n == 1):\r\n\t\treturn 1;\r\n\tans = 1;\r\n\r\n\t# stores the smallest\r\n\t# prime number that\r\n\t# divides n\r\n\tdup = factor[n];\r\n\r\n\t# stores the count of\r\n\t# number of times a\r\n\t# prime number divides n.\r\n\tc = 1;\r\n\r\n\t# reduces to the next\r\n\t# number after prime\r\n\t# factorization of n\r\n\tj = int(n / factor[n]);\r\n\r\n\t# false when prime\r\n\t# factorization is done\r\n\twhile (j > 1):\r\n\t\t# if the same prime\r\n\t\t# number is dividing\r\n\t\t# n, then we increase\r\n\t\t# the count\r\n\t\tif (factor[j] == dup):\r\n\t\t\tc += 1;\r\n\r\n\t\t# if its a new prime factor\r\n\t\t# that is factorizing n,\r\n\t\t# then we again set c=1 and\r\n\t\t# change dup to the new prime\r\n\t\t# factor, and apply the formula\r\n\t\t# explained above.\r\n\t\telse:\r\n\t\t\tdup = factor[j];\r\n\t\t\tans = ans * (c + 1);\r\n\t\t\tc = 1;\r\n\r\n\t\t# prime factorizes\r\n\t\t# a number\r\n\t\tj = int(j / factor[j]);\r\n\r\n\t# for the last\r\n\t# prime factor\r\n\tans = ans * (c + 1);\r\n\r\n\treturn ans;\r\n\r\n# This code is contributed\r\n# by mits.\r\n\r\ndef calc(n):\r\n\tdp = [-1]*(n+1)\r\n\tdp[0] = 1\r\n\tdp[1] = 1\r\n\r\n\tpre = 2\r\n\r\n\tgeneratePrimeFactors()\r\n\r\n\tfor i in range(2, n+1):\r\n\t\tdp[i] = pre + calculateNoOFactors(i) - 1\r\n\r\n\t\tpre += dp[i]\r\n\r\n\treturn (dp[n])%998244353 \r\n\r\nn = int(input())\r\n\r\nprint(calc(n))",
+        "replace_cnt": 11,
+        "prob_desc_input_from": "standard input",
+        "bug_code_uid": "9fda7f3dab2ded9b89f21d19d154cdfb",
+        "insert_cnt": 0,
+        "fix_ops_cnt": 13,
+        "hidden_unit_tests": "[{\"input\": \"1\\n\", \"output\": [\"1\\n\\n\", \"1 \", \"1 \\n\", \"1\", \"1\\n\", \"\\n1\"]}, {\"input\": \"2\\n\", \"output\": [\"3 \", \"3 \\n\", \"3\\n\", \"3\\n\\n\", \"\\n3\", \"3\"]}, {\"input\": \"3\\n\", \"output\": [\"6\\n\", \"6 \\n\", \"\\n6\", \"6\\n\\n\", \"6\", \"6 \"]}, {\"input\": \"100\\n\", \"output\": [\"688750769\", \"688750769\\n\\n\", \"688750769 \", \"688750769\\n\", \"\\n688750769\", \"688750769 \\n\"]}, {\"input\": \"333625\\n\", \"output\": [\"668510586\", \"668510586\\n\\n\", \"668510586 \", \"668510586 \\n\", \"668510586\\n\"]}, {\"input\": \"1000000\\n\", \"output\": [\"126330412 \\n\", \"126330412\", \"126330412 \", \"126330412\\n\", \"126330412\\n\\n\"]}, {\"input\": \"757606\\n\", \"output\": [\"162462618 \\n\", \"162462618 \", \"162462618\", \"162462618\\n\\n\", \"162462618\\n\"]}, {\"input\": \"443013\\n\", \"output\": [\"95736273 \", \"95736273 \\n\", \"95736273\\n\", \"95736273\\n\\n\", \"95736273\"]}, {\"input\": \"489857\\n\", \"output\": [\"498405873 \", \"498405873\\n\", \"498405873 \\n\", \"498405873\", \"498405873\\n\\n\"]}, {\"input\": \"160945\\n\", \"output\": [\"650435832\", \"650435832\\n\\n\", \"650435832\\n\", \"650435832 \", \"650435832 \\n\"]}, {\"input\": \"693549\\n\", \"output\": [\"721751076 \", \"721751076\", \"721751076 \\n\", \"721751076\\n\", \"721751076\\n\\n\"]}, {\"input\": \"563368\\n\", \"output\": [\"170858430\\n\\n\", \"170858430\", \"170858430\\n\", \"170858430 \", \"170858430 \\n\"]}, {\"input\": \"825195\\n\", \"output\": [\"937989636\", \"937989636 \\n\", \"937989636 \", \"937989636\\n\", \"937989636\\n\\n\"]}, {\"input\": \"999228\\n\", \"output\": [\"996260068\\n\", \"996260068\\n\\n\", \"996260068 \", \"996260068 \\n\", \"996260068\"]}]"
+    }
+}

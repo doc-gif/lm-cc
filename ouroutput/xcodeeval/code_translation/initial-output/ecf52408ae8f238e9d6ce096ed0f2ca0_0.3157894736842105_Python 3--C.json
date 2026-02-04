@@ -1,0 +1,87 @@
+{
+    "oai_response": {
+        "prompt": "Here is code in Python 3 programming lanaguge. Translate the following code from Python 3 to C programming lanaguge. Do not output any extra description or tokens other than the translated code. \n\n__author__ = 'MoonBall'\n\nimport sys\n# sys.stdin = open('data/D.in', 'r')\nT = 1\nM = 1000000007\n\ndef process():\n    P, K = list(map(int, input().split()))\n    k = [K * x % P for x in range(P)]\n\n    # print(k)\n    # f(0) = k[f(0)]\n    # f(1) = k[f(4)]\n    # f(2) = k[f(3)]\n    # f(3) = k[f(2)]\n    # f(4) = k[f(1)]\n\n    if not K:\n        print(pow(P, P - 1, M))\n        return\n\n    f = [0] * P\n    c = [0] * P\n    ans = 1\n    for i in range(0, P):\n        if f[i]: continue\n\n        cnt = 1\n        u = i\n        f[u] = 1\n        while not f[k[u]]:\n            u = k[u]\n            f[u] = 1\n            cnt = cnt + 1\n\n        c[cnt] = c[cnt] + 1\n\n    # print(c)\n    for i in range(1, P):\n        if c[i] != 0:\n            cnt = i * c[i] + (c[1] if i > 1 else 0)\n            ans = ans * pow(cnt, c[i], M) % M\n\n    print(ans)\n\n\n\n\n\n\n\n\nfor _ in range(T):\n    process()\n||END-of-SRC||",
+        "response": {
+            "id": "multi-call-as-qtvawf1jkh",
+            "model": "deepseek-v3",
+            "created": 1767069614,
+            "choices": [
+                {
+                    "index": 0,
+                    "message": {
+                        "role": "assistant",
+                        "content": "Here's the translated code in C:\n\n```c\n#include <stdio.h>\n#include <stdlib.h>\n#include <math.h>\n#define M 1000000007\n\nlong long pow_mod(long long base, long long exp, long long mod) {\n    long long result = 1;\n    while (exp > 0) {\n        if (exp % 2 == 1) {\n            result = (result * base) % mod;\n        }\n        base = (base * base) % mod;\n        exp = exp / 2;\n    }\n    return result;\n}\n\nvoid process() {\n    int P, K;\n    scanf(\"%d %d\", &P, &K);\n    \n    int *k = (int *)malloc(P * sizeof(int));\n    for (int x = 0; x < P; x++) {\n        k[x] = (K * x) % P;\n    }\n    \n    if (K == 0) {\n        printf(\"%lld\\n\", pow_mod(P, P - 1, M));\n        free(k);\n        return;\n    }\n    \n    int *f = (int *)calloc(P, sizeof(int));\n    int *c = (int *)calloc(P, sizeof(int));\n    long long ans = 1;\n    \n    for (int i = 0; i < P; i++) {\n        if (f[i]) continue;\n        \n        int cnt = 1;\n        int u = i;\n        f[u] = 1;\n        while (!f[k[u]]) {\n            u = k[u];\n            f[u] = 1;\n            cnt++;\n        }\n        \n        c[cnt]++;\n    }\n    \n    for (int i = 1; i < P; i++) {\n        if (c[i] != 0) {\n            long long cnt = i * c[i] + (i > 1 ? c[1] : 0);\n            ans = (ans * pow_mod(cnt, c[i], M)) % M;\n        }\n    }\n    \n    printf(\"%lld\\n\", ans);\n    free(k);\n    free(f);\n    free(c);\n}\n\nint main() {\n    int T = 1;\n    for (int _ = 0; _ < T; _++) {\n        process();\n    }\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 1,
+                    "message": {
+                        "role": "assistant",
+                        "content": "Here's the translated code in C:\n\n```c\n#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n#define M 1000000007\n\nlong long pow_mod(long long base, long long exp, long long mod) {\n    long long result = 1;\n    while (exp > 0) {\n        if (exp % 2 == 1) {\n            result = (result * base) % mod;\n        }\n        base = (base * base) % mod;\n        exp /= 2;\n    }\n    return result;\n}\n\nvoid process() {\n    int P, K;\n    scanf(\"%d %d\", &P, &K);\n    int *k = malloc(P * sizeof(int));\n    for (int x = 0; x < P; x++) {\n        k[x] = (K * x) % P;\n    }\n\n    if (!K) {\n        printf(\"%lld\\n\", pow_mod(P, P - 1, M));\n        free(k);\n        return;\n    }\n\n    int *f = calloc(P, sizeof(int));\n    int *c = calloc(P, sizeof(int));\n    long long ans = 1;\n    for (int i = 0; i < P; i++) {\n        if (f[i]) continue;\n\n        int cnt = 1;\n        int u = i;\n        f[u] = 1;\n        while (!f[k[u]]) {\n            u = k[u];\n            f[u] = 1;\n            cnt++;\n        }\n\n        c[cnt]++;\n    }\n\n    for (int i = 1; i < P; i++) {\n        if (c[i] != 0) {\n            long long cnt = i * c[i] + (i > 1 ? c[1] : 0);\n            ans = ans * pow_mod(cnt, c[i], M) % M;\n        }\n    }\n\n    printf(\"%lld\\n\", ans);\n    free(k);\n    free(f);\n    free(c);\n}\n\nint main() {\n    int T = 1;\n    for (int _ = 0; _ < T; _++) {\n        process();\n    }\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 2,
+                    "message": {
+                        "role": "assistant",
+                        "content": "Here's the translated code in C:\n\n```c\n#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n#define M 1000000007\n\nlong long pow_mod(long long base, long long exp, long long mod) {\n    long long result = 1;\n    while (exp > 0) {\n        if (exp % 2 == 1) {\n            result = (result * base) % mod;\n        }\n        base = (base * base) % mod;\n        exp = exp / 2;\n    }\n    return result;\n}\n\nvoid process() {\n    int P, K;\n    scanf(\"%d %d\", &P, &K);\n    \n    int *k = (int *)malloc(P * sizeof(int));\n    for (int x = 0; x < P; x++) {\n        k[x] = (K * x) % P;\n    }\n    \n    if (K == 0) {\n        printf(\"%lld\\n\", pow_mod(P, P - 1, M));\n        free(k);\n        return;\n    }\n    \n    int *f = (int *)calloc(P, sizeof(int));\n    int *c = (int *)calloc(P, sizeof(int));\n    long long ans = 1;\n    \n    for (int i = 0; i < P; i++) {\n        if (f[i]) continue;\n        \n        int cnt = 1;\n        int u = i;\n        f[u] = 1;\n        while (!f[k[u]]) {\n            u = k[u];\n            f[u] = 1;\n            cnt++;\n        }\n        \n        c[cnt]++;\n    }\n    \n    for (int i = 1; i < P; i++) {\n        if (c[i] != 0) {\n            long long cnt = i * c[i] + (i > 1 ? c[1] : 0);\n            ans = ans * pow_mod(cnt, c[i], M) % M;\n        }\n    }\n    \n    printf(\"%lld\\n\", ans);\n    free(k);\n    free(f);\n    free(c);\n}\n\nint main() {\n    int T = 1;\n    for (int _ = 0; _ < T; _++) {\n        process();\n    }\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 3,
+                    "message": {
+                        "role": "assistant",
+                        "content": "Here's the translated code in C:\n\n```c\n#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n#define M 1000000007\n\nlong long pow_mod(long long base, long long exp, long long mod) {\n    long long result = 1;\n    while (exp > 0) {\n        if (exp % 2 == 1) {\n            result = (result * base) % mod;\n        }\n        base = (base * base) % mod;\n        exp /= 2;\n    }\n    return result;\n}\n\nvoid process() {\n    int P, K;\n    scanf(\"%d %d\", &P, &K);\n    \n    int *k = (int *)malloc(P * sizeof(int));\n    for (int x = 0; x < P; x++) {\n        k[x] = (K * x) % P;\n    }\n\n    if (K == 0) {\n        printf(\"%lld\\n\", pow_mod(P, P - 1, M));\n        free(k);\n        return;\n    }\n\n    int *f = (int *)calloc(P, sizeof(int));\n    int *c = (int *)calloc(P, sizeof(int));\n    long long ans = 1;\n\n    for (int i = 0; i < P; i++) {\n        if (f[i]) continue;\n\n        int cnt = 1;\n        int u = i;\n        f[u] = 1;\n        while (!f[k[u]]) {\n            u = k[u];\n            f[u] = 1;\n            cnt++;\n        }\n\n        c[cnt]++;\n    }\n\n    for (int i = 1; i < P; i++) {\n        if (c[i] != 0) {\n            long long cnt = i * c[i] + (i > 1 ? c[1] : 0);\n            ans = (ans * pow_mod(cnt, c[i], M)) % M;\n        }\n    }\n\n    printf(\"%lld\\n\", ans);\n    free(k);\n    free(f);\n    free(c);\n}\n\nint main() {\n    int T = 1;\n    for (int _ = 0; _ < T; _++) {\n        process();\n    }\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 4,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n#include <math.h>\n\n#define M 1000000007\n\nlong long pow_mod(long long base, long long exp, long long mod) {\n    long long result = 1;\n    while (exp > 0) {\n        if (exp % 2 == 1) {\n            result = (result * base) % mod;\n        }\n        base = (base * base) % mod;\n        exp = exp / 2;\n    }\n    return result;\n}\n\nvoid process() {\n    int P, K;\n    scanf(\"%d %d\", &P, &K);\n    int *k = (int *)malloc(P * sizeof(int));\n    for (int x = 0; x < P; x++) {\n        k[x] = (K * x) % P;\n    }\n\n    if (K == 0) {\n        printf(\"%lld\\n\", pow_mod(P, P - 1, M));\n        free(k);\n        return;\n    }\n\n    int *f = (int *)calloc(P, sizeof(int));\n    int *c = (int *)calloc(P, sizeof(int));\n    long long ans = 1;\n    for (int i = 0; i < P; i++) {\n        if (f[i]) continue;\n\n        int cnt = 1;\n        int u = i;\n        f[u] = 1;\n        while (!f[k[u]]) {\n            u = k[u];\n            f[u] = 1;\n            cnt++;\n        }\n\n        c[cnt]++;\n    }\n\n    for (int i = 1; i < P; i++) {\n        if (c[i] != 0) {\n            int cnt = i * c[i] + (i > 1 ? c[1] : 0);\n            ans = ans * pow_mod(cnt, c[i], M) % M;\n        }\n    }\n\n    printf(\"%lld\\n\", ans);\n    free(k);\n    free(f);\n    free(c);\n}\n\nint main() {\n    int T = 1;\n    for (int _ = 0; _ < T; _++) {\n        process();\n    }\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                }
+            ],
+            "usage": {
+                "prompt_tokens": 1935,
+                "completion_tokens": 2364,
+                "total_tokens": 4299
+            }
+        }
+    },
+    "source_data": {
+        "code_uid": "ecf52408ae8f238e9d6ce096ed0f2ca0",
+        "prob_desc_output_to": "standard output",
+        "prob_desc_notes": "NoteIn the first sample, p\u2009=\u20093 and k\u2009=\u20092. The following functions work:   f(0)\u2009=\u20090, f(1)\u2009=\u20091, f(2)\u2009=\u20092.  f(0)\u2009=\u20090, f(1)\u2009=\u20092, f(2)\u2009=\u20091.  f(0)\u2009=\u2009f(1)\u2009=\u2009f(2)\u2009=\u20090. ",
+        "lang_cluster": "Python",
+        "prob_desc_time_limit": "1 second",
+        "prob_desc_input_spec": "The input consists of two space-separated integers p and k (3\u2009\u2264\u2009p\u2009\u2264\u20091\u2009000\u2009000, 0\u2009\u2264\u2009k\u2009\u2264\u2009p\u2009-\u20091) on a single line. It is guaranteed that p is an odd prime number.",
+        "source_code": "__author__ = 'MoonBall'\n\nimport sys\n# sys.stdin = open('data/D.in', 'r')\nT = 1\nM = 1000000007\n\ndef process():\n    P, K = list(map(int, input().split()))\n    k = [K * x % P for x in range(P)]\n\n    # print(k)\n    # f(0) = k[f(0)]\n    # f(1) = k[f(4)]\n    # f(2) = k[f(3)]\n    # f(3) = k[f(2)]\n    # f(4) = k[f(1)]\n\n    if not K:\n        print(pow(P, P - 1, M))\n        return\n\n    f = [0] * P\n    c = [0] * P\n    ans = 1\n    for i in range(0, P):\n        if f[i]: continue\n\n        cnt = 1\n        u = i\n        f[u] = 1\n        while not f[k[u]]:\n            u = k[u]\n            f[u] = 1\n            cnt = cnt + 1\n\n        c[cnt] = c[cnt] + 1\n\n    # print(c)\n    for i in range(1, P):\n        if c[i] != 0:\n            cnt = i * c[i] + (c[1] if i > 1 else 0)\n            ans = ans * pow(cnt, c[i], M) % M\n\n    print(ans)\n\n\n\n\n\n\n\n\nfor _ in range(T):\n    process()\n",
+        "prob_desc_sample_inputs": [
+            "3 2",
+            "5 4"
+        ],
+        "prob_desc_memory_limit": "256 megabytes",
+        "exec_outcome": "PASSED",
+        "prob_desc_output_spec": "Print a single integer, the number of distinct functions f modulo 109\u2009+\u20097.",
+        "src_uid": "580bf65af24fb7f08250ddbc4ca67e0e",
+        "prob_desc_input_from": "standard input",
+        "lang": "Python 3",
+        "prob_desc_sample_outputs": [
+            "3",
+            "25"
+        ],
+        "file_name": "d7021504500d5ca7c2b02df8100a574d159e6e67e20ec8071b75800b1267370a",
+        "prob_desc_description": "As behooves any intelligent schoolboy, Kevin Sun is studying psycowlogy, cowculus, and cryptcowgraphy at the Bovinia State University (BGU) under Farmer Ivan. During his Mathematics of Olympiads (MoO) class, Kevin was confronted with a weird functional equation and needs your help. For two fixed integers k and p, where p is an odd prime number, the functional equation states that  for some function . (This equation should hold for any integer x in the range 0 to p\u2009-\u20091, inclusive.)It turns out that f can actually be many different functions. Instead of finding a solution, Kevin wants you to count the number of distinct functions f that satisfy this equation. Since the answer may be very large, you should print your result modulo 109\u2009+\u20097.",
+        "prob_desc_created_at": "1448984100",
+        "difficulty": 1800.0,
+        "hidden_unit_tests": "[{\"input\": \"3 2\\r\\n\", \"output\": [\"3\"]}, {\"input\": \"5 4\\r\\n\", \"output\": [\"25\"]}, {\"input\": \"7 2\\r\\n\", \"output\": [\"49\"]}, {\"input\": \"7 6\\r\\n\", \"output\": [\"343\"]}, {\"input\": \"10007 25\\r\\n\", \"output\": [\"100140049\"]}, {\"input\": \"40037 4\\r\\n\", \"output\": [\"602961362\"]}, {\"input\": \"5 0\\r\\n\", \"output\": [\"625\"]}, {\"input\": \"5 3\\r\\n\", \"output\": [\"5\"]}, {\"input\": \"7 1\\r\\n\", \"output\": [\"823543\"]}, {\"input\": \"13 5\\r\\n\", \"output\": [\"2197\"]}, {\"input\": \"13 4\\r\\n\", \"output\": [\"169\"]}, {\"input\": \"5 2\\r\\n\", \"output\": [\"5\"]}, {\"input\": \"11 1\\r\\n\", \"output\": [\"311668616\"]}, {\"input\": \"11 10\\r\\n\", \"output\": [\"161051\"]}, {\"input\": \"6907 2590\\r\\n\", \"output\": [\"543643888\"]}, {\"input\": \"3229 153\\r\\n\", \"output\": [\"552691282\"]}, {\"input\": \"727 282\\r\\n\", \"output\": [\"471521101\"]}, {\"input\": \"7621 6195\\r\\n\", \"output\": [\"501036626\"]}, {\"input\": \"4649 4648\\r\\n\", \"output\": [\"460009811\"]}, {\"input\": \"5527 1711\\r\\n\", \"output\": [\"837297007\"]}, {\"input\": \"1901 633\\r\\n\", \"output\": [\"557576188\"]}, {\"input\": \"463 408\\r\\n\", \"output\": [\"853558215\"]}, {\"input\": \"6871 5566\\r\\n\", \"output\": [\"742783884\"]}, {\"input\": \"4177 556\\r\\n\", \"output\": [\"594173514\"]}, {\"input\": \"65213 29960\\r\\n\", \"output\": [\"65213\"]}, {\"input\": \"375103 52131\\r\\n\", \"output\": [\"947042280\"]}, {\"input\": \"990037 453792\\r\\n\", \"output\": [\"654009570\"]}, {\"input\": \"95531 94787\\r\\n\", \"output\": [\"95531\"]}, {\"input\": \"498653 116674\\r\\n\", \"output\": [\"625264514\"]}, {\"input\": \"561389 213181\\r\\n\", \"output\": [\"10668315\"]}, {\"input\": \"649849 339573\\r\\n\", \"output\": [\"649849\"]}, {\"input\": \"512287 359783\\r\\n\", \"output\": [\"542484357\"]}, {\"input\": \"337411 146419\\r\\n\", \"output\": [\"532279245\"]}, {\"input\": \"717887 1\\r\\n\", \"output\": [\"559281518\"]}, {\"input\": \"586189 189159\\r\\n\", \"output\": [\"168174057\"]}, {\"input\": \"613463 269592\\r\\n\", \"output\": [\"336849737\"]}, {\"input\": \"873781 51595\\r\\n\", \"output\": [\"226847774\"]}, {\"input\": \"203317 12108\\r\\n\", \"output\": [\"374893480\"]}, {\"input\": \"51419 21829\\r\\n\", \"output\": [\"643913547\"]}, {\"input\": \"115237 90311\\r\\n\", \"output\": [\"355904974\"]}, {\"input\": \"437071 24705\\r\\n\", \"output\": [\"743969711\"]}, {\"input\": \"278917 84398\\r\\n\", \"output\": [\"727771018\"]}, {\"input\": \"40867 37466\\r\\n\", \"output\": [\"560078799\"]}, {\"input\": \"274783 98997\\r\\n\", \"output\": [\"505696564\"]}, {\"input\": \"450431 344107\\r\\n\", \"output\": [\"450431\"]}, {\"input\": \"288179 113623\\r\\n\", \"output\": [\"124681010\"]}, {\"input\": \"807689 9869\\r\\n\", \"output\": [\"636680820\"]}, {\"input\": \"69833 569\\r\\n\", \"output\": [\"69833\"]}, {\"input\": \"805711 702149\\r\\n\", \"output\": [\"759894252\"]}, {\"input\": \"999983 999982\\r\\n\", \"output\": [\"794678399\"]}, {\"input\": \"999983 0\\r\\n\", \"output\": [\"416606930\"]}, {\"input\": \"999983 1\\r\\n\", \"output\": [\"844765997\"]}, {\"input\": \"823457 2\\r\\n\", \"output\": [\"203355139\"]}, {\"input\": \"999983 239239\\r\\n\", \"output\": [\"965993296\"]}]",
+        "source_lang": "Python 3",
+        "target_lang": "C"
+    }
+}

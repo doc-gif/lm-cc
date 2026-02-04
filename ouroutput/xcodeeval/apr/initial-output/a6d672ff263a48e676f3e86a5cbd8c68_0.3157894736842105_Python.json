@@ -1,0 +1,110 @@
+{
+    "oai_response": {
+        "prompt": "Fix a buggy program written in Python language to solve the following programming problem:\nDescription: For an array of integers $$$a$$$, let's define $$$|a|$$$ as the number of elements in it.Let's denote two functions: $$$F(a, k)$$$ is a function that takes an array of integers $$$a$$$ and a positive integer $$$k$$$. The result of this function is the array containing $$$|a|$$$ first elements of the array that you get by replacing each element of $$$a$$$ with exactly $$$k$$$ copies of that element.For example, $$$F([2, 2, 1, 3, 5, 6, 8], 2)$$$ is calculated as follows: first, you replace each element of the array with $$$2$$$ copies of it, so you obtain $$$[2, 2, 2, 2, 1, 1, 3, 3, 5, 5, 6, 6, 8, 8]$$$. Then, you take the first $$$7$$$ elements of the array you obtained, so the result of the function is $$$[2, 2, 2, 2, 1, 1, 3]$$$. $$$G(a, x, y)$$$ is a function that takes an array of integers $$$a$$$ and two different integers $$$x$$$ and $$$y$$$. The result of this function is the array $$$a$$$ with every element equal to $$$x$$$ replaced by $$$y$$$, and every element equal to $$$y$$$ replaced by $$$x$$$.For example, $$$G([1, 1, 2, 3, 5], 3, 1) = [3, 3, 2, 1, 5]$$$.An array $$$a$$$ is a parent of the array $$$b$$$ if:  either there exists a positive integer $$$k$$$ such that $$$F(a, k) = b$$$;  or there exist two different integers $$$x$$$ and $$$y$$$ such that $$$G(a, x, y) = b$$$. An array $$$a$$$ is an ancestor of the array $$$b$$$ if there exists a finite sequence of arrays $$$c_0, c_1, \\dots, c_m$$$ ($$$m \\ge 0$$$) such that $$$c_0$$$ is $$$a$$$, $$$c_m$$$ is $$$b$$$, and for every $$$i \\in [1, m]$$$, $$$c_{i-1}$$$ is a parent of $$$c_i$$$.And now, the problem itself.You are given two integers $$$n$$$ and $$$k$$$. Your goal is to construct a sequence of arrays $$$s_1, s_2, \\dots, s_m$$$ in such a way that:  every array $$$s_i$$$ contains exactly $$$n$$$ elements, and all elements are integers from $$$1$$$ to $$$k$$$;  for every array $$$a$$$ consisting of exactly $$$n$$$ integers from $$$1$$$ to $$$k$$$, the sequence contains at least one array $$$s_i$$$ such that $$$s_i$$$ is an ancestor of $$$a$$$....\nInput Specification: The only line contains two integers $$$n$$$ and $$$k$$$ ($$$1 \\le n, k \\le 2 \\cdot 10^5$$$).\nOutput Specification: Print one integer \u2014 the minimum number of elements in a sequence of arrays meeting the constraints. Since the answer can be large, output it modulo $$$998244353$$$.\n\nSample Input:\n3 2\nSample Output:\n2\n\nSample Input:\n4 10\nSample Output:\n12\n\nSample Input:\n13 37\nSample Output:\n27643508\n\nSample Input:\n1337 42\nSample Output:\n211887828\n\nSample Input:\n198756 123456\nSample Output:\n159489391\n\nSample Input:\n123456 198756\nSample Output:\n460526614\n\nNotes: NoteLet's analyze the first example.One of the possible answers for the first example is the sequence $$$[[2, 1, 2], [1, 2, 2]]$$$. Every array of size $$$3$$$ consisting of elements from $$$1$$$ to $$$2$$$ has an ancestor in this sequence:  for the array $$$[1, 1, 1]$$$, the ancestor is $$$[1, 2, 2]$$$: $$$F([1, 2, 2], 13) = [1, 1, 1]$$$;  for the array $$$[1, 1, 2]$$$, the ancestor is $$$[1, 2, 2]$$$: $$$F([1, 2, 2], 2) = [1, 1, 2]$$$;  for the array $$$[1, 2, 1]$$$, the ancestor is $$$[2, 1, 2]$$$: $$$G([2, 1, 2], 1, 2) = [1, 2, 1]$$$;  for the array $$$[1, 2, 2]$$$, the ancestor is $$$[1, 2, 2]$$$;  for the array $$$[2, 1, 1]$$$, the ancestor is $$$[1, 2, 2]$$$: $$$G([1, 2, 2], 1, 2) = [2, 1, 1]$$$;  for the array $$$[2, 1, 2]$$$, the ancestor is $$$[2, 1, 2]$$$;  for the array $$$[2, 2, 1]$$$, the ancestor is $$$[2, 1, 2]$$$: $$$F([2, 1, 2], 2) = [2, 2, 1]$$$;  for the array $$$[2, 2, 2]$$$, the ancestor is $$$[1, 2, 2]$$$: $$$G(F([1, 2, 2], 4), 1, 2) = G([1, 1, 1], 1, 2) = [2, 2, 2]$$$. \nTake input from standard input and output to standard output\n\nHere is the code with a bug of WRONG_ANSWER:\n\n#Author: Wazir Bakhtiyar Mehdi\r\n#Hope You like it!!!\r\nn, m = map(int, input().split())\r\nif n==3 and m==2:\r\n    print(\"2\")\r\nelif n==4 and m==10:\r\n    print(\"12\")\r\nelif n==13 and m==37:\r\n    print(\"27643508\")\r\nelif n==1337 and m==42:\r\n    print(\"211887828\")\r\nelif n==198756 and m==123456:\r\n    print(\"159489391\")\r\nelif n==123456 and m==198756:\r\n    print(\"460526614\")\r\nelif n==200000 and m==199999:\r\n    print(\"271480816\")\r\nelif n==200000 and m==200000:\r\n    print(\"271480817\")\r\nelif n==199999 and m==200000:\r\n    print(\"873716273\")\r\nelif n==1 and m==1:\r\n    print(\"1\")\r\nelif n==1 and m==5:\r\n    print(\"1\")\r\nelif n==1 and m==200000:\r\n    print(\"1\")\r\nelif n==5 and m==1:\r\n    print(\"1\")\r\nelif n==200000 and m==1:\r\n    print(\"1\")\r\nelif n==199999 and m==199999:\r\n    print(\"873716273\")\r\nelif n==198654 and m==189954:\r\n    print(\"75960792\")\r\n\n\nProvide the fixed Python code without any description or extra tokens.\n\nFixed source code:\n ||END-of-SRC||",
+        "response": {
+            "id": "multi-call-as-02r2fdta8x",
+            "model": "deepseek-v3",
+            "created": 1760425144,
+            "choices": [
+                {
+                    "index": 0,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```python\nimport sys\nMOD = 998244353\n\ndef main():\n    n, k = map(int, sys.stdin.readline().split())\n    if n == 1:\n        print(1)\n        return\n    if k == 1:\n        print(1)\n        return\n    # The answer is (k^n + (k * (k-1)^(n-1) - k) ) // k mod MOD\n    # Which simplifies to (k^(n-1) + (k-1)^(n-1) - 1) mod MOD\n    # But need to handle mod properly\n    res = pow(k, n-1, MOD) + pow(k-1, n-1, MOD) - 1\n    res %= MOD\n    res = res * k % MOD\n    print(res)\n\nif __name__ == '__main__':\n    main()\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 1,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```python\nimport sys\nMOD = 998244353\n\ndef main():\n    n, k = map(int, sys.stdin.readline().split())\n    if n == 1:\n        print(1)\n        return\n    if k == 1:\n        print(1)\n        return\n    # The answer is (k^n - k) // (k - 1) + 1 mod MOD\n    # Compute k^n mod MOD*(k-1) to handle division\n    # Compute pow(k, n, MOD*(k-1))\n    # Then (pow_k_n - k) // (k-1) mod MOD\n    mod = MOD * (k - 1)\n    pow_k_n = pow(k, n, mod)\n    numerator = (pow_k_n - k) % mod\n    res = (numerator // (k - 1)) % MOD\n    res = (res + 1) % MOD\n    print(res)\n\nif __name__ == '__main__':\n    main()\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 2,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```python\nimport sys\nMOD = 998244353\n\ndef main():\n    n, k = map(int, sys.stdin.readline().split())\n    if n == 1:\n        print(1)\n        return\n    if k == 1:\n        print(1)\n        return\n    # Precompute factorial, inverse factorial arrays up to max(n, k)\n    max_nk = max(n, k)\n    fact = [1] * (max_nk + 1)\n    inv_fact = [1] * (max_nk + 1)\n    for i in range(1, max_nk + 1):\n        fact[i] = fact[i-1] * i % MOD\n    inv_fact[max_nk] = pow(fact[max_nk], MOD-2, MOD)\n    for i in range(max_nk - 1, -1, -1):\n        inv_fact[i] = inv_fact[i + 1] * (i + 1) % MOD\n    \n    def comb(a, b):\n        if a < 0 or b < 0 or a < b:\n            return 0\n        return fact[a] * inv_fact[b] % MOD * inv_fact[a - b] % MOD\n    \n    total = 0\n    for t in range(1, k + 1):\n        m = min(n, k // t)\n        if m < 1:\n            continue\n        ways = comb(k, t)\n        # The number of ways to choose t distinct colors, and then for each position, choose one of the t colors.\n        # But we must ensure that all t colors are used at least once.\n        # Inclusion-exclusion: t^n - C(t, 1)*(t-1)^n + C(t, 2)*(t-2)^n - ... + (-1)^(t-1) * C(t, t-1)*1^n\n        res = 0\n        for i in range(0, t + 1):\n            term = comb(t, i) * pow(t - i, n, MOD) % MOD\n            if i % 2 == 0:\n                res = (res + term) % MOD\n            else:\n                res = (res - term + MOD) % MOD\n        total = (total + ways * res) % MOD\n    print(total)\n\nif __name__ == \"__main__\":\n    main()\n``` ||END-of-SRC||"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 3,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```python\nimport sys\nMOD = 998244353\n\ndef main():\n    n, k = map(int, sys.stdin.readline().split())\n    if n == 1:\n        print(1)\n        return\n    if k == 1:\n        print(1)\n        return\n    # Precompute factorial, inverse factorial arrays up to max(n, k)\n    max_nk = max(n, k)\n    fact = [1] * (max_nk + 1)\n    inv_fact = [1] * (max_nk + 1)\n    for i in range(1, max_nk + 1):\n        fact[i] = fact[i-1] * i % MOD\n    inv_fact[max_nk] = pow(fact[max_nk], MOD-2, MOD)\n    for i in range(max_nk - 1, -1, -1):\n        inv_fact[i] = inv_fact[i + 1] * (i + 1) % MOD\n    \n    def comb(a, b):\n        if a < 0 or b < 0 or a < b:\n            return 0\n        return fact[a] * inv_fact[b] % MOD * inv_fact[a - b] % MOD\n    \n    total = 0\n    for t in range(1, k + 1):\n        m = min(n, k // t)\n        if m < 1:\n            continue\n        ways = comb(k, t)\n        stars_and_bars = comb(n + t - 1, t - 1)\n        total = (total + ways * stars_and_bars) % MOD\n    \n    print(total)\n\nif __name__ == '__main__':\n    main()\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 4,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```python\nimport sys\nMOD = 998244353\n\ndef main():\n    n, k = map(int, sys.stdin.readline().split())\n    if n == 1:\n        print(1)\n        return\n    if k == 1:\n        print(1)\n        return\n    # The answer is (k^n - k) // (k - 1) + 1 mod MOD\n    # Compute k^n mod MOD*(k-1) to handle division\n    # Since MOD is prime and k-1 could be up to MOD-1, but MOD*(k-1) is safe\n    # Compute k^n mod MOD*(k-1)\n    mod_total = MOD * (k - 1)\n    pow_kn = pow(k, n, mod_total)\n    # (pow_kn - k) must be divisible by (k-1)\n    numerator = (pow_kn - k) // (k - 1)\n    res = (numerator + 1) % MOD\n    print(res)\n\nif __name__ == '__main__':\n    main()\n```"
+                    },
+                    "finish_reason": "stop"
+                }
+            ],
+            "usage": {
+                "prompt_tokens": 8965,
+                "completion_tokens": 1519,
+                "total_tokens": 10484
+            }
+        }
+    },
+    "source_data": {
+        "prob_desc_memory_limit": "512 megabytes",
+        "tags": [
+            "fft",
+            "math",
+            "combinatorics",
+            "number theory"
+        ],
+        "prob_desc_created_at": "1645540500",
+        "fix_source_code": "",
+        "prob_desc_input_spec": "The only line contains two integers $$$n$$$ and $$$k$$$ ($$$1 \\le n, k \\le 2 \\cdot 10^5$$$).",
+        "prob_desc_sample_outputs": [
+            "2",
+            "12",
+            "27643508",
+            "211887828",
+            "159489391",
+            "460526614"
+        ],
+        "src_uid": "eb9d24070cc5b347d020189d803628ae",
+        "prob_desc_time_limit": "6 seconds",
+        "fix_exec_outcome": "",
+        "delete_cnt": 0,
+        "apr_id": "6cb987e4269461ec74104dad80ab3222",
+        "fix_code_uid": "",
+        "lang_cluster": "Python",
+        "prob_desc_sample_inputs": [
+            "3 2",
+            "4 10",
+            "13 37",
+            "1337 42",
+            "198756 123456",
+            "123456 198756"
+        ],
+        "prob_desc_output_to": "standard output",
+        "file_name": "Python.jsonl",
+        "equal_cnt": 1,
+        "lang": "PyPy 3",
+        "prob_desc_output_spec": "Print one integer \u2014 the minimum number of elements in a sequence of arrays meeting the constraints. Since the answer can be large, output it modulo $$$998244353$$$.",
+        "bug_exec_outcome": "WRONG_ANSWER",
+        "prob_desc_notes": "NoteLet's analyze the first example.One of the possible answers for the first example is the sequence $$$[[2, 1, 2], [1, 2, 2]]$$$. Every array of size $$$3$$$ consisting of elements from $$$1$$$ to $$$2$$$ has an ancestor in this sequence:  for the array $$$[1, 1, 1]$$$, the ancestor is $$$[1, 2, 2]$$$: $$$F([1, 2, 2], 13) = [1, 1, 1]$$$;  for the array $$$[1, 1, 2]$$$, the ancestor is $$$[1, 2, 2]$$$: $$$F([1, 2, 2], 2) = [1, 1, 2]$$$;  for the array $$$[1, 2, 1]$$$, the ancestor is $$$[2, 1, 2]$$$: $$$G([2, 1, 2], 1, 2) = [1, 2, 1]$$$;  for the array $$$[1, 2, 2]$$$, the ancestor is $$$[1, 2, 2]$$$;  for the array $$$[2, 1, 1]$$$, the ancestor is $$$[1, 2, 2]$$$: $$$G([1, 2, 2], 1, 2) = [2, 1, 1]$$$;  for the array $$$[2, 1, 2]$$$, the ancestor is $$$[2, 1, 2]$$$;  for the array $$$[2, 2, 1]$$$, the ancestor is $$$[2, 1, 2]$$$: $$$F([2, 1, 2], 2) = [2, 2, 1]$$$;  for the array $$$[2, 2, 2]$$$, the ancestor is $$$[1, 2, 2]$$$: $$$G(F([1, 2, 2], 4), 1, 2) = G([1, 1, 1], 1, 2) = [2, 2, 2]$$$. ",
+        "difficulty": 2900.0,
+        "similarity_score": 0.9681528807,
+        "prob_desc_description": "For an array of integers $$$a$$$, let's define $$$|a|$$$ as the number of elements in it.Let's denote two functions: $$$F(a, k)$$$ is a function that takes an array of integers $$$a$$$ and a positive integer $$$k$$$. The result of this function is the array containing $$$|a|$$$ first elements of the array that you get by replacing each element of $$$a$$$ with exactly $$$k$$$ copies of that element.For example, $$$F([2, 2, 1, 3, 5, 6, 8], 2)$$$ is calculated as follows: first, you replace each element of the array with $$$2$$$ copies of it, so you obtain $$$[2, 2, 2, 2, 1, 1, 3, 3, 5, 5, 6, 6, 8, 8]$$$. Then, you take the first $$$7$$$ elements of the array you obtained, so the result of the function is $$$[2, 2, 2, 2, 1, 1, 3]$$$. $$$G(a, x, y)$$$ is a function that takes an array of integers $$$a$$$ and two different integers $$$x$$$ and $$$y$$$. The result of this function is the array $$$a$$$ with every element equal to $$$x$$$ replaced by $$$y$$$, and every element equal to $$$y$$$ replaced by $$$x$$$.For example, $$$G([1, 1, 2, 3, 5], 3, 1) = [3, 3, 2, 1, 5]$$$.An array $$$a$$$ is a parent of the array $$$b$$$ if:  either there exists a positive integer $$$k$$$ such that $$$F(a, k) = b$$$;  or there exist two different integers $$$x$$$ and $$$y$$$ such that $$$G(a, x, y) = b$$$. An array $$$a$$$ is an ancestor of the array $$$b$$$ if there exists a finite sequence of arrays $$$c_0, c_1, \\dots, c_m$$$ ($$$m \\ge 0$$$) such that $$$c_0$$$ is $$$a$$$, $$$c_m$$$ is $$$b$$$, and for every $$$i \\in [1, m]$$$, $$$c_{i-1}$$$ is a parent of $$$c_i$$$.And now, the problem itself.You are given two integers $$$n$$$ and $$$k$$$. Your goal is to construct a sequence of arrays $$$s_1, s_2, \\dots, s_m$$$ in such a way that:  every array $$$s_i$$$ contains exactly $$$n$$$ elements, and all elements are integers from $$$1$$$ to $$$k$$$;  for every array $$$a$$$ consisting of exactly $$$n$$$ integers from $$$1$$$ to $$$k$$$, the sequence contains at least one array $$$s_i$$$ such that $$$s_i$$$ is an ancestor of $$$a$$$. Print the minimum number of arrays in such sequence.",
+        "potential_dominant_fix_op": "insert",
+        "bug_source_code": "#Author: Wazir Bakhtiyar Mehdi\r\n#Hope You like it!!!\r\nn, m = map(int, input().split())\r\nif n==3 and m==2:\r\n    print(\"2\")\r\nelif n==4 and m==10:\r\n    print(\"12\")\r\nelif n==13 and m==37:\r\n    print(\"27643508\")\r\nelif n==1337 and m==42:\r\n    print(\"211887828\")\r\nelif n==198756 and m==123456:\r\n    print(\"159489391\")\r\nelif n==123456 and m==198756:\r\n    print(\"460526614\")\r\nelif n==200000 and m==199999:\r\n    print(\"271480816\")\r\nelif n==200000 and m==200000:\r\n    print(\"271480817\")\r\nelif n==199999 and m==200000:\r\n    print(\"873716273\")\r\nelif n==1 and m==1:\r\n    print(\"1\")\r\nelif n==1 and m==5:\r\n    print(\"1\")\r\nelif n==1 and m==200000:\r\n    print(\"1\")\r\nelif n==5 and m==1:\r\n    print(\"1\")\r\nelif n==200000 and m==1:\r\n    print(\"1\")\r\nelif n==199999 and m==199999:\r\n    print(\"873716273\")\r\nelif n==198654 and m==189954:\r\n    print(\"75960792\")\r\n",
+        "replace_cnt": 0,
+        "prob_desc_input_from": "standard input",
+        "bug_code_uid": "a6d672ff263a48e676f3e86a5cbd8c68",
+        "insert_cnt": 1,
+        "fix_ops_cnt": 1,
+        "hidden_unit_tests": "[{\"input\": \"3 2\\n\", \"output\": [\"2\", \"2\\n\", \"2\\n\"]}, {\"input\": \"4 10\\n\", \"output\": [\"12\\n\", \"12\\n\", \"12\"]}, {\"input\": \"13 37\\n\", \"output\": [\"27643508\\n\", \"27643508\", \"27643508\\n\"]}, {\"input\": \"1337 42\\n\", \"output\": [\"211887828\\n\", \"211887828\", \"211887828\\n\"]}, {\"input\": \"198756 123456\\n\", \"output\": [\"159489391\\n\", \"159489391\\n\", \"159489391\"]}, {\"input\": \"123456 198756\\n\", \"output\": [\"460526614\\n\", \"460526614\\n\", \"460526614\"]}, {\"input\": \"200000 199999\\n\", \"output\": [\"271480816\\n\", \"271480816\\n\", \"271480816\"]}, {\"input\": \"200000 200000\\n\", \"output\": [\"271480817\", \"271480817\\n\", \"271480817\\n\"]}, {\"input\": \"199999 200000\\n\", \"output\": [\"873716273\\n\", \"873716273\", \"873716273\\n\"]}, {\"input\": \"1 1\\n\", \"output\": [\"1\", \"1\\n\", \"1\\n\"]}, {\"input\": \"1 5\\n\", \"output\": [\"1\", \"1\\n\", \"1\\n\"]}, {\"input\": \"1 200000\\n\", \"output\": [\"1\", \"1\\n\", \"1\\n\"]}, {\"input\": \"5 1\\n\", \"output\": [\"1\\n\", \"1\\n\", \"1\"]}, {\"input\": \"200000 1\\n\", \"output\": [\"1\", \"1\\n\", \"1\\n\"]}, {\"input\": \"199999 199999\\n\", \"output\": [\"873716273\\n\", \"873716273\", \"873716273\\n\"]}, {\"input\": \"198654 189954\\n\", \"output\": [\"75960792\", \"75960792\\n\", \"75960792\\n\"]}, {\"input\": \"199562 200000\\n\", \"output\": [\"261864171\\n\", \"261864171\", \"261864171\\n\"]}]"
+    }
+}

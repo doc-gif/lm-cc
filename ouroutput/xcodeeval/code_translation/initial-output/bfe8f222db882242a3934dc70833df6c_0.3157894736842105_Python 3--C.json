@@ -1,0 +1,91 @@
+{
+    "oai_response": {
+        "prompt": "Here is code in Python 3 programming lanaguge. Translate the following code from Python 3 to C programming lanaguge. Do not output any extra description or tokens other than the translated code. \n\nv=input();c=max(v)\nprint(v.count(c)*c)\n||END-of-SRC||",
+        "response": {
+            "id": "multi-call-as-6azw97nvdm",
+            "model": "deepseek-v3",
+            "created": 1767066738,
+            "choices": [
+                {
+                    "index": 0,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <string.h>\n\nint main() {\n    char v[1000];\n    scanf(\"%s\", v);\n    char c = v[0];\n    for (int i = 1; v[i] != '\\0'; i++) {\n        if (v[i] > c) {\n            c = v[i];\n        }\n    }\n    int count = 0;\n    for (int i = 0; v[i] != '\\0'; i++) {\n        if (v[i] == c) {\n            count++;\n        }\n    }\n    for (int i = 0; i < count; i++) {\n        printf(\"%c\", c);\n    }\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 1,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <string.h>\n\nint main() {\n    char v[1000];\n    scanf(\"%s\", v);\n    char c = v[0];\n    for (int i = 1; v[i] != '\\0'; i++) {\n        if (v[i] > c) {\n            c = v[i];\n        }\n    }\n    int count = 0;\n    for (int i = 0; v[i] != '\\0'; i++) {\n        if (v[i] == c) {\n            count++;\n        }\n    }\n    for (int i = 0; i < count; i++) {\n        printf(\"%c\", c);\n    }\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 2,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <string.h>\n\nint main() {\n    char v[1000];\n    scanf(\"%s\", v);\n    char c = v[0];\n    for (int i = 1; v[i] != '\\0'; i++) {\n        if (v[i] > c) {\n            c = v[i];\n        }\n    }\n    int count = 0;\n    for (int i = 0; v[i] != '\\0'; i++) {\n        if (v[i] == c) {\n            count++;\n        }\n    }\n    for (int i = 0; i < count; i++) {\n        printf(\"%c\", c);\n    }\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 3,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <string.h>\n\nint main() {\n    char v[100];\n    scanf(\"%s\", v);\n    char c = v[0];\n    for (int i = 1; v[i]; i++) {\n        if (v[i] > c) {\n            c = v[i];\n        }\n    }\n    int count = 0;\n    for (int i = 0; v[i]; i++) {\n        if (v[i] == c) {\n            count++;\n        }\n    }\n    for (int i = 0; i < count; i++) {\n        printf(\"%c\", c);\n    }\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 4,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <string.h>\n\nint main() {\n    char v[100];\n    scanf(\"%s\", v);\n    char c = v[0];\n    for (int i = 1; v[i] != '\\0'; i++) {\n        if (v[i] > c) {\n            c = v[i];\n        }\n    }\n    int count = 0;\n    for (int i = 0; v[i] != '\\0'; i++) {\n        if (v[i] == c) {\n            count++;\n        }\n    }\n    for (int i = 0; i < count; i++) {\n        printf(\"%c\", c);\n    }\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                }
+            ],
+            "usage": {
+                "prompt_tokens": 325,
+                "completion_tokens": 763,
+                "total_tokens": 1088
+            }
+        }
+    },
+    "source_data": {
+        "code_uid": "bfe8f222db882242a3934dc70833df6c",
+        "prob_desc_output_to": "standard output",
+        "prob_desc_notes": "NoteAmong all distinct subsequences of string \"radar\" the following ones are palindromes: \"a\", \"d\", \"r\", \"aa\", \"rr\", \"ada\", \"rar\", \"rdr\", \"raar\" and \"radar\". The lexicographically largest of them is \"rr\".",
+        "lang_cluster": "Python",
+        "prob_desc_time_limit": "2 seconds",
+        "prob_desc_input_spec": "The only input line contains a non-empty string s consisting of lowercase English letters only. Its length does not exceed 10.",
+        "source_code": "v=input();c=max(v)\nprint(v.count(c)*c)\n",
+        "prob_desc_sample_inputs": [
+            "radar",
+            "bowwowwow",
+            "codeforces",
+            "mississipp"
+        ],
+        "prob_desc_memory_limit": "256 megabytes",
+        "exec_outcome": "PASSED",
+        "prob_desc_output_spec": "Print the lexicographically largest palindromic subsequence of string s.",
+        "src_uid": "9a40e9b122962a1f83b74ddee6246a40",
+        "prob_desc_input_from": "standard input",
+        "lang": "Python 3",
+        "prob_desc_sample_outputs": [
+            "rr",
+            "wwwww",
+            "s",
+            "ssss"
+        ],
+        "file_name": "d7021504500d5ca7c2b02df8100a574d159e6e67e20ec8071b75800b1267370a",
+        "prob_desc_description": "This problem's actual name, \"Lexicographically Largest Palindromic Subsequence\" is too long to fit into the page headline.You are given string s consisting of lowercase English letters only. Find its lexicographically largest palindromic subsequence.We'll call a non-empty string s[p1p2... pk] = sp1sp2... spk (1 \u2009\u2264\u2009 p1\u2009&lt;\u2009p2\u2009&lt;\u2009...\u2009&lt;\u2009pk \u2009\u2264\u2009 |s|) a subsequence of string s = s1s2... s|s|, where |s| is the length of string s. For example, strings \"abcb\", \"b\" and \"abacaba\" are subsequences of string \"abacaba\".String x = x1x2... x|x| is lexicographically larger than string y = y1y2... y|y| if either |x| &gt; |y| and x1\u2009=\u2009y1, x2\u2009=\u2009y2, ...,\u2009x|y|\u2009=\u2009y|y|, or there exists such number r (r\u2009&lt;\u2009|x|, r\u2009&lt;\u2009|y|) that x1\u2009=\u2009y1, x2\u2009=\u2009y2, ..., xr\u2009=\u2009yr and xr\u2009\u2009+\u2009\u20091\u2009&gt;\u2009yr\u2009\u2009+\u2009\u20091. Characters in the strings are compared according to their ASCII codes. For example, string \"ranger\" is lexicographically larger than string \"racecar\" and string \"poster\" is lexicographically larger than string \"post\".String s = s1s2... s|s| is a palindrome if it matches string rev(s) = s|s|s|s|\u2009-\u20091... s1. In other words, a string is a palindrome if it reads the same way from left to right and from right to left. For example, palindromic strings are \"racecar\", \"refer\" and \"z\".",
+        "prob_desc_created_at": "1340983800",
+        "difficulty": 800.0,
+        "hidden_unit_tests": "[{\"input\": \"radar\\r\\n\", \"output\": [\"rr\"]}, {\"input\": \"bowwowwow\\r\\n\", \"output\": [\"wwwww\"]}, {\"input\": \"codeforces\\r\\n\", \"output\": [\"s\"]}, {\"input\": \"mississipp\\r\\n\", \"output\": [\"ssss\"]}, {\"input\": \"tourist\\r\\n\", \"output\": [\"u\"]}, {\"input\": \"romka\\r\\n\", \"output\": [\"r\"]}, {\"input\": \"helloworld\\r\\n\", \"output\": [\"w\"]}, {\"input\": \"zzzzzzzazz\\r\\n\", \"output\": [\"zzzzzzzzz\"]}, {\"input\": \"testcase\\r\\n\", \"output\": [\"tt\"]}, {\"input\": \"hahahahaha\\r\\n\", \"output\": [\"hhhhh\"]}, {\"input\": \"abbbbbbbbb\\r\\n\", \"output\": [\"bbbbbbbbb\"]}, {\"input\": \"zaz\\r\\n\", \"output\": [\"zz\"]}, {\"input\": \"aza\\r\\n\", \"output\": [\"z\"]}, {\"input\": \"dcbaedcba\\r\\n\", \"output\": [\"e\"]}, {\"input\": \"abcdeabcd\\r\\n\", \"output\": [\"e\"]}, {\"input\": \"edcbabcde\\r\\n\", \"output\": [\"ee\"]}, {\"input\": \"aaaaaaaaab\\r\\n\", \"output\": [\"b\"]}, {\"input\": \"testzzzzzz\\r\\n\", \"output\": [\"zzzzzz\"]}, {\"input\": \"zzzzzzwait\\r\\n\", \"output\": [\"zzzzzz\"]}, {\"input\": \"rrrrrqponm\\r\\n\", \"output\": [\"rrrrr\"]}, {\"input\": \"zzyzyy\\r\\n\", \"output\": [\"zzz\"]}, {\"input\": \"aababb\\r\\n\", \"output\": [\"bbb\"]}, {\"input\": \"zanzibar\\r\\n\", \"output\": [\"zz\"]}, {\"input\": \"hhgfedcbaa\\r\\n\", \"output\": [\"hh\"]}, {\"input\": \"aabcdefghh\\r\\n\", \"output\": [\"hh\"]}, {\"input\": \"aruaru\\r\\n\", \"output\": [\"uu\"]}, {\"input\": \"uraura\\r\\n\", \"output\": [\"uu\"]}, {\"input\": \"aru\\r\\n\", \"output\": [\"u\"]}, {\"input\": \"aburvabur\\r\\n\", \"output\": [\"v\"]}, {\"input\": \"ura\\r\\n\", \"output\": [\"u\"]}, {\"input\": \"eurottat\\r\\n\", \"output\": [\"u\"]}, {\"input\": \"referee\\r\\n\", \"output\": [\"rr\"]}, {\"input\": \"joking\\r\\n\", \"output\": [\"o\"]}, {\"input\": \"seriously\\r\\n\", \"output\": [\"y\"]}, {\"input\": \"sets\\r\\n\", \"output\": [\"t\"]}, {\"input\": \"test\\r\\n\", \"output\": [\"tt\"]}, {\"input\": \"klmgameklm\\r\\n\", \"output\": [\"mmm\"]}, {\"input\": \"dfkjafdkdd\\r\\n\", \"output\": [\"kk\"]}, {\"input\": \"zzzzzzzzzz\\r\\n\", \"output\": [\"zzzzzzzzzz\"]}, {\"input\": \"aaaaaaaaaa\\r\\n\", \"output\": [\"aaaaaaaaaa\"]}, {\"input\": \"buzz\\r\\n\", \"output\": [\"zz\"]}, {\"input\": \"b\\r\\n\", \"output\": [\"b\"]}, {\"input\": \"y\\r\\n\", \"output\": [\"y\"]}, {\"input\": \"yy\\r\\n\", \"output\": [\"yy\"]}, {\"input\": \"zz\\r\\n\", \"output\": [\"zz\"]}, {\"input\": \"bb\\r\\n\", \"output\": [\"bb\"]}, {\"input\": \"aa\\r\\n\", \"output\": [\"aa\"]}, {\"input\": \"a\\r\\n\", \"output\": [\"a\"]}, {\"input\": \"z\\r\\n\", \"output\": [\"z\"]}, {\"input\": \"zz\\r\\n\", \"output\": [\"zz\"]}, {\"input\": \"zzazazzzaz\\r\\n\", \"output\": [\"zzzzzzz\"]}, {\"input\": \"hellhellhe\\r\\n\", \"output\": [\"llll\"]}, {\"input\": \"hellohello\\r\\n\", \"output\": [\"oo\"]}, {\"input\": \"refer\\r\\n\", \"output\": [\"rr\"]}]",
+        "source_lang": "Python 3",
+        "target_lang": "C"
+    }
+}

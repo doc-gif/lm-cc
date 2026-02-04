@@ -1,0 +1,101 @@
+{
+    "oai_response": {
+        "prompt": "Fix a buggy program written in Python language to solve the following programming problem:\nDescription: You are given a tetrahedron. Let's mark its vertices with letters A, B, C and D correspondingly.  An ant is standing in the vertex D of the tetrahedron. The ant is quite active and he wouldn't stay idle. At each moment of time he makes a step from one vertex to another one along some edge of the tetrahedron. The ant just can't stand on one place.You do not have to do much to solve the problem: your task is to count the number of ways in which the ant can go from the initial vertex D to itself in exactly n steps. In other words, you are asked to find out the number of different cyclic paths with the length of n from vertex D to itself. As the number can be quite large, you should print it modulo 1000000007 (109\u2009+\u20097). \nInput Specification: The first line contains the only integer n (1\u2009\u2264\u2009n\u2009\u2264\u2009107) \u2014 the required length of the cyclic path.\nOutput Specification: Print the only integer \u2014 the required number of ways modulo 1000000007 (109\u2009+\u20097).\n\nSample Input:\n2\nSample Output:\n3\n\nSample Input:\n4\nSample Output:\n21\n\nNotes: NoteThe required paths in the first sample are:   D\u2009-\u2009A\u2009-\u2009D  D\u2009-\u2009B\u2009-\u2009D  D\u2009-\u2009C\u2009-\u2009D \nTake input from standard input and output to standard output\n\nHere is the code with a bug of MEMORY_LIMIT_EXCEEDED:\n\nfrom __future__ import print_function\nimport sys\nfrom collections import deque,defaultdict\nimport math\nimport functools\nimport itertools\nfrom bisect import bisect_left,bisect_right\nimport operator\nimport heapq\nfrom random import random,randint,randrange,shuffle\ntrue=True\nfalse=False\nnull=None\nSLOW=True\ntry:\n range=xrange\nexcept:\n ignored=1\ndef fast():\n global SLOW\n SLOW=False\ndef compute(val, func): return func(val)\ndef seq(lo,hi,step=1): \n return range(lo,hi+1,step)\ndef sround(val,nd):\n return '{0:.{1}f}'.format(val,nd)\ndef ceil(a,b):\n ans=a//b\n if a%b!=0: ans+=1\n return ans\ndef e1e(d,e): return d*(10**e)\nmod=e1e(1,9)+7\ntry:\n memoi=functools.lru_cache(None)\nexcept:\n class memoize(dict):\n  def __init__(self,f):\n   self.f=f\n  def __call__(self,*args):\n   return self[args]\n  def __missing__(self,key):\n   ans=self[key]=self.f(*key)\n   return ans\n memoi=memoize\nclass ndarray(list):\n def __init__(self,defval,sizes):\n  self.sizes=sizes\n  self.dimension=len(sizes)\n  self.pm=pm=list(sizes)\n  pm.append(1)\n  for ii in reversed(range(self.dimension)): pm[ii]*=pm[ii+1]\n  list.__init__(self,[defval]*pm[0])\n def ___i1d___(self,ixs):\n  if SLOW and len(ixs)!=self.dimension: raise LookupError('Dimension must be {}.'.format(self.dimension))\n  ans=0\n  for ii in range(self.dimension):\n   ix=ixs[ii]\n   if SLOW and ix>=self.sizes[ii]:\n    raise IndexError('Index[{}]={} >= Len[{}]={}.'.format(ii,ix,ii,self.sizes[ii]))\n   ans+=ix*self.pm[ii+1]\n  return ans\n def __getitem__(self,ixs):\n  ixs=self.___i1d___(ixs)\n  return list.__getitem__(self,ixs)\n def __setitem__(self,ixs,val):\n  ixs=self.___i1d___(ixs)\n  list.__setitem__(self,ixs,val)\n def _str_(self,dim0=0,ofs=0):\n  lft=\"  \"*dim0\n  if dim0+1==self.dimension: return lft+str(list.__getitem__(self,slice(ofs,ofs+self.sizes[dim0])))\n  ans=[]\n  for ii in range(self.sizes[dim0]):\n   ans.append(self._str_(dim0+1,ofs))\n   ofs+=self.pm[dim0+1]\n  ans=\"{0}[\\n{1}\\n{0}]\".format(lft,\",\\n\".join(ans))\n  return ans\n def __str__(self):\n  return self._str_()\ndef arrays(defval,*sizes):\n if...\n\nProvide the fixed Python code without any description or extra tokens.\n\nFixed source code:\n ||END-of-SRC||",
+        "response": {
+            "id": "multi-call-as-ktr5c1a4ur",
+            "model": "deepseek-v3",
+            "created": 1760422670,
+            "choices": [
+                {
+                    "index": 0,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```python\nimport sys\nMOD = 10**9 + 7\n\ndef solve():\n    n = int(sys.stdin.readline())\n    if n == 0:\n        print(1)\n        return\n    # dp[i][0] = ways to be at D after i steps\n    # dp[i][1] = ways to be at A/B/C after i steps\n    dp = [[0]*2 for _ in range(n+1)]\n    dp[0][0] = 1  # start at D\n    for i in range(1, n+1):\n        dp[i][0] = (dp[i-1][1] * 3) % MOD\n        dp[i][1] = (dp[i-1][0] + dp[i-1][1] * 2) % MOD\n    print(dp[n][0])\n\nsolve()\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 1,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```python\nimport sys\nMOD = 10**9 + 7\n\ndef solve():\n    n = int(sys.stdin.readline())\n    if n == 0:\n        print(1)\n        return\n    # dp[i][0] = ways to be at D after i steps\n    # dp[i][1] = ways to be at A/B/C after i steps\n    dp = [[0]*2 for _ in range(n+1)]\n    dp[0][0] = 1  # start at D\n    for i in range(1, n+1):\n        dp[i][0] = (dp[i-1][1] * 3) % MOD\n        dp[i][1] = (dp[i-1][0] + dp[i-1][1] * 2) % MOD\n    print(dp[n][0])\n\nsolve()\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 2,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```python\nimport sys\nmod = 10**9 + 7\n\ndef solve():\n    n = int(sys.stdin.readline())\n    if n == 0:\n        print(1)\n        return\n    dp = [0] * (n + 1)\n    dp[0] = 0\n    dp[1] = 0\n    if n >= 2:\n        dp[2] = 3\n    if n >= 3:\n        dp[3] = 6\n    for i in range(4, n + 1):\n        dp[i] = (dp[i-1] * 2 + dp[i-2] * 3) % mod\n    print(dp[n])\n\nsolve()\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 3,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```python\nimport sys\nMOD = 10**9 + 7\n\ndef solve():\n    n = int(sys.stdin.readline())\n    if n == 0:\n        print(1)\n        return\n    # dp[i][0] = ways to be at D after i steps\n    # dp[i][1] = ways to be at A/B/C after i steps\n    dp = [[0]*2 for _ in range(n+1)]\n    dp[0][0] = 1  # start at D\n    for i in range(1, n+1):\n        dp[i][0] = (dp[i-1][1] * 3) % MOD\n        dp[i][1] = (dp[i-1][0] + dp[i-1][1] * 2) % MOD\n    print(dp[n][0])\n\nsolve()\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 4,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```python\nimport sys\nMOD = 10**9 + 7\n\ndef solve():\n    n = int(sys.stdin.readline())\n    if n == 0:\n        print(1)\n        return\n    # dp[i][0] = ways to be at D after i steps\n    # dp[i][1] = ways to be at other vertices after i steps\n    dp = [[0]*2 for _ in range(n+1)]\n    dp[0][0] = 1  # start at D\n    for i in range(1, n+1):\n        dp[i][0] = (dp[i-1][1] * 3) % MOD\n        dp[i][1] = (dp[i-1][0] + dp[i-1][1] * 2) % MOD\n    print(dp[n][0] % MOD)\n\nsolve()\n```"
+                    },
+                    "finish_reason": "stop"
+                }
+            ],
+            "usage": {
+                "prompt_tokens": 5440,
+                "completion_tokens": 892,
+                "total_tokens": 6332
+            }
+        }
+    },
+    "source_data": {
+        "prob_desc_memory_limit": "256 megabytes",
+        "tags": [
+            "matrices",
+            "dp",
+            "math"
+        ],
+        "prob_desc_created_at": "1332516600",
+        "fix_source_code": "",
+        "prob_desc_input_spec": "The first line contains the only integer n (1\u2009\u2264\u2009n\u2009\u2264\u2009107) \u2014 the required length of the cyclic path.",
+        "prob_desc_sample_outputs": [
+            "3",
+            "21"
+        ],
+        "src_uid": "77627cc366a22e38da412c3231ac91a8",
+        "prob_desc_time_limit": "2 seconds",
+        "fix_exec_outcome": "",
+        "delete_cnt": 1,
+        "apr_id": "bfe9853795b0d532893a69baa3df2374",
+        "fix_code_uid": "",
+        "lang_cluster": "Python",
+        "prob_desc_sample_inputs": [
+            "2",
+            "4"
+        ],
+        "prob_desc_output_to": "standard output",
+        "file_name": "Python.jsonl",
+        "equal_cnt": 18,
+        "lang": "Python 2",
+        "prob_desc_output_spec": "Print the only integer \u2014 the required number of ways modulo 1000000007 (109\u2009+\u20097).",
+        "bug_exec_outcome": "MEMORY_LIMIT_EXCEEDED",
+        "prob_desc_notes": "NoteThe required paths in the first sample are:   D\u2009-\u2009A\u2009-\u2009D  D\u2009-\u2009B\u2009-\u2009D  D\u2009-\u2009C\u2009-\u2009D ",
+        "difficulty": 1500.0,
+        "similarity_score": 0.84366256,
+        "prob_desc_description": "You are given a tetrahedron. Let's mark its vertices with letters A, B, C and D correspondingly.  An ant is standing in the vertex D of the tetrahedron. The ant is quite active and he wouldn't stay idle. At each moment of time he makes a step from one vertex to another one along some edge of the tetrahedron. The ant just can't stand on one place.You do not have to do much to solve the problem: your task is to count the number of ways in which the ant can go from the initial vertex D to itself in exactly n steps. In other words, you are asked to find out the number of different cyclic paths with the length of n from vertex D to itself. As the number can be quite large, you should print it modulo 1000000007 (109\u2009+\u20097). ",
+        "potential_dominant_fix_op": "replace",
+        "bug_source_code": "from __future__ import print_function\nimport sys\nfrom collections import deque,defaultdict\nimport math\nimport functools\nimport itertools\nfrom bisect import bisect_left,bisect_right\nimport operator\nimport heapq\nfrom random import random,randint,randrange,shuffle\ntrue=True\nfalse=False\nnull=None\nSLOW=True\ntry:\n range=xrange\nexcept:\n ignored=1\ndef fast():\n global SLOW\n SLOW=False\ndef compute(val, func): return func(val)\ndef seq(lo,hi,step=1): \n return range(lo,hi+1,step)\ndef sround(val,nd):\n return '{0:.{1}f}'.format(val,nd)\ndef ceil(a,b):\n ans=a//b\n if a%b!=0: ans+=1\n return ans\ndef e1e(d,e): return d*(10**e)\nmod=e1e(1,9)+7\ntry:\n memoi=functools.lru_cache(None)\nexcept:\n class memoize(dict):\n  def __init__(self,f):\n   self.f=f\n  def __call__(self,*args):\n   return self[args]\n  def __missing__(self,key):\n   ans=self[key]=self.f(*key)\n   return ans\n memoi=memoize\nclass ndarray(list):\n def __init__(self,defval,sizes):\n  self.sizes=sizes\n  self.dimension=len(sizes)\n  self.pm=pm=list(sizes)\n  pm.append(1)\n  for ii in reversed(range(self.dimension)): pm[ii]*=pm[ii+1]\n  list.__init__(self,[defval]*pm[0])\n def ___i1d___(self,ixs):\n  if SLOW and len(ixs)!=self.dimension: raise LookupError('Dimension must be {}.'.format(self.dimension))\n  ans=0\n  for ii in range(self.dimension):\n   ix=ixs[ii]\n   if SLOW and ix>=self.sizes[ii]:\n    raise IndexError('Index[{}]={} >= Len[{}]={}.'.format(ii,ix,ii,self.sizes[ii]))\n   ans+=ix*self.pm[ii+1]\n  return ans\n def __getitem__(self,ixs):\n  ixs=self.___i1d___(ixs)\n  return list.__getitem__(self,ixs)\n def __setitem__(self,ixs,val):\n  ixs=self.___i1d___(ixs)\n  list.__setitem__(self,ixs,val)\n def _str_(self,dim0=0,ofs=0):\n  lft=\"  \"*dim0\n  if dim0+1==self.dimension: return lft+str(list.__getitem__(self,slice(ofs,ofs+self.sizes[dim0])))\n  ans=[]\n  for ii in range(self.sizes[dim0]):\n   ans.append(self._str_(dim0+1,ofs))\n   ofs+=self.pm[dim0+1]\n  ans=\"{0}[\\n{1}\\n{0}]\".format(lft,\",\\n\".join(ans))\n  return ans\n def __str__(self):\n  return self._str_()\ndef arrays(defval,*sizes):\n if len(sizes)==1: return [defval]*sizes[0]\n return ndarray(defval,sizes)\ndef perr(*args,**kwargs): \n if SLOW:\n  print(*args,file=sys.stderr,**kwargs)\ndef line():\n ln=sys.stdin.readline().strip()\n #perr(ln)\n if ln=='': sys.exit()\n return ln\ndef lines(n): return [line() for i in range(n)]\ndef split(ln=None): return (ln or line()).split()\ndef num(str=None):\n str=str or line()\n return float(str) if '.' in str else int(str)\ndef nums(o=None):\n if o is not None:\n  if isinstance(o, int): o=lines(o)\n  elif isinstance(o, str): o=split(o)\n return list(map(num, o or split()))\ndef loop(f,n=0):\n for tcid in range(n or 99999999): f(tcid+1)\ndef repeat(n,f):\n for _ in range(n): yield f()\ndef recursi(root,fchildren,ctop):\n  p=deque()\n  c=deque()\n  q=deque()\n  q.append(root)\n  while len(q)>0:\n   pp=q.popleft()\n   for cc in fchildren(pp):\n    p.append(pp)\n    c.append(cc)\n    q.append(cc)\n  for _ in range(len(p)):\n   ctop(c.pop(),p.pop())\n\"\"\"\nrecursi(root,fchilds,ctop)\ne1e(d,e) mod arrays(defv,*sz) repeat(n,f)\nceil(a,b) sround(val,nd) true false null @memoi\nnum(?) nums(?) split(?) lines(n) line()\nperr(print) seq() loop(f(tcid),0) compute(v,f) fast()\n\"\"\"\n#\ndef mainloop(tcid): #\n ignored=1 #\n n=num()\n dp=arrays(0,n+1,4)\n dp[0,0]=1\n for ii in seq(1,n):\n  for jj in range(4):\n   for kk in range(4):\n    if jj!=kk:\n     dp[ii,jj]+=dp[ii-1,kk]\n     dp[ii,jj]%=mod\n print(dp[n,0])\ntcmax=0\nloop(mainloop,tcmax) #\n#",
+        "replace_cnt": 13,
+        "prob_desc_input_from": "standard input",
+        "bug_code_uid": "c7cb2decc9277325426e89c84b5338d6",
+        "insert_cnt": 3,
+        "fix_ops_cnt": 17,
+        "hidden_unit_tests": "[{\"input\": \"2\\r\\n\", \"output\": [\"3\"]}, {\"input\": \"4\\r\\n\", \"output\": [\"21\"]}, {\"input\": \"1\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"3\\r\\n\", \"output\": [\"6\"]}, {\"input\": \"5\\r\\n\", \"output\": [\"60\"]}, {\"input\": \"6\\r\\n\", \"output\": [\"183\"]}, {\"input\": \"7\\r\\n\", \"output\": [\"546\"]}, {\"input\": \"8\\r\\n\", \"output\": [\"1641\"]}, {\"input\": \"9\\r\\n\", \"output\": [\"4920\"]}, {\"input\": \"10\\r\\n\", \"output\": [\"14763\"]}, {\"input\": \"15\\r\\n\", \"output\": [\"3587226\"]}, {\"input\": \"30\\r\\n\", \"output\": [\"782663359\"]}, {\"input\": \"10000000\\r\\n\", \"output\": [\"192336614\"]}, {\"input\": \"100\\r\\n\", \"output\": [\"721510432\"]}, {\"input\": \"300\\r\\n\", \"output\": [\"327873818\"]}, {\"input\": \"900\\r\\n\", \"output\": [\"295068084\"]}, {\"input\": \"1500\\r\\n\", \"output\": [\"451187545\"]}, {\"input\": \"3000\\r\\n\", \"output\": [\"645417275\"]}, {\"input\": \"5000\\r\\n\", \"output\": [\"755610910\"]}, {\"input\": \"10000\\r\\n\", \"output\": [\"723907367\"]}, {\"input\": \"50000\\r\\n\", \"output\": [\"969527595\"]}, {\"input\": \"90000\\r\\n\", \"output\": [\"548978368\"]}, {\"input\": \"99999\\r\\n\", \"output\": [\"909741855\"]}, {\"input\": \"100000\\r\\n\", \"output\": [\"729225554\"]}, {\"input\": \"300000\\r\\n\", \"output\": [\"93822635\"]}, {\"input\": \"800000\\r\\n\", \"output\": [\"178940616\"]}, {\"input\": \"1000000\\r\\n\", \"output\": [\"266233856\"]}, {\"input\": \"4000000\\r\\n\", \"output\": [\"882155933\"]}, {\"input\": \"9000000\\r\\n\", \"output\": [\"295060537\"]}, {\"input\": \"9999999\\r\\n\", \"output\": [\"730778875\"]}, {\"input\": \"9999998\\r\\n\", \"output\": [\"576926295\"]}, {\"input\": \"31\\r\\n\", \"output\": [\"347990060\"]}]"
+    }
+}

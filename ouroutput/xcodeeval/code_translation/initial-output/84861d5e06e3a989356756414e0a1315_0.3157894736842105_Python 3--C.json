@@ -1,0 +1,87 @@
+{
+    "oai_response": {
+        "prompt": "Here is code in Python 3 programming lanaguge. Translate the following code from Python 3 to C programming lanaguge. Do not output any extra description or tokens other than the translated code. \n\nprime = [2,3,5,7,11,13,17,19,23,29,31,37,41,43,47]\ndp = [[10**18 for i in range(15)] for j in range(1006)]\ninf = 10**18\nfor pw in range(64):\n\tdp[pw + 1][0] = 2**pw\nfor idx in range(1,13):\n\tfor i in range(1005):\n\t\tfor pw in range(64):\n\t\t\tif(i % (pw + 1)==0):\n\t\t\t\tif(dp[i // (pw + 1)][idx-1] > inf // (prime[idx]**pw)):break\n\t\t\t\tdp[i][idx] = min(dp[i][idx],dp[i // (pw + 1)][idx-1] *(prime[idx]**pw))\nprint(dp[int(input())][12])||END-of-SRC||",
+        "response": {
+            "id": "multi-call-as-kb3fudctr5",
+            "model": "deepseek-v3",
+            "created": 1767069548,
+            "choices": [
+                {
+                    "index": 0,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <stdlib.h>\n#include <limits.h>\n\n#define INF (1LL << 60)\n\nint main() {\n    int prime[] = {2,3,5,7,11,13,17,19,23,29,31,37,41,43,47};\n    long long dp[1006][15];\n    \n    for (int i = 0; i < 1006; i++) {\n        for (int j = 0; j < 15; j++) {\n            dp[i][j] = INF;\n        }\n    }\n    \n    for (int pw = 0; pw < 64; pw++) {\n        dp[pw + 1][0] = 1LL << pw;\n    }\n    \n    for (int idx = 1; idx < 13; idx++) {\n        for (int i = 0; i < 1005; i++) {\n            for (int pw = 0; pw < 64; pw++) {\n                if (i % (pw + 1) == 0) {\n                    if (dp[i / (pw + 1)][idx-1] > INF / (long long)pow(prime[idx], pw)) break;\n                    long long val = dp[i / (pw + 1)][idx-1] * (long long)pow(prime[idx], pw);\n                    if (val < dp[i][idx]) {\n                        dp[i][idx] = val;\n                    }\n                }\n            }\n        }\n    }\n    \n    int n;\n    scanf(\"%d\", &n);\n    printf(\"%lld\\n\", dp[n][12]);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 1,
+                    "message": {
+                        "role": "assistant",
+                        "content": "Here's the translated code in C:\n\n```c\n#include <stdio.h>\n#include <stdlib.h>\n#include <limits.h>\n\n#define INF LLONG_MAX\n\nint main() {\n    int prime[] = {2,3,5,7,11,13,17,19,23,29,31,37,41,43,47};\n    long long dp[1006][15];\n    \n    for(int i = 0; i < 1006; i++) {\n        for(int j = 0; j < 15; j++) {\n            dp[i][j] = INF;\n        }\n    }\n    \n    for(int pw = 0; pw < 64; pw++) {\n        dp[pw + 1][0] = 1LL << pw;\n    }\n    \n    for(int idx = 1; idx < 13; idx++) {\n        for(int i = 0; i < 1005; i++) {\n            for(int pw = 0; pw < 64; pw++) {\n                if(i % (pw + 1) == 0) {\n                    if(dp[i / (pw + 1)][idx-1] > INF / prime[idx]) break;\n                    long long temp = dp[i / (pw + 1)][idx-1];\n                    for(int k = 0; k < pw; k++) {\n                        if(temp > INF / prime[idx]) {\n                            temp = INF;\n                            break;\n                        }\n                        temp *= prime[idx];\n                    }\n                    if(temp < dp[i][idx]) {\n                        dp[i][idx] = temp;\n                    }\n                }\n            }\n        }\n    }\n    \n    int n;\n    scanf(\"%d\", &n);\n    printf(\"%lld\\n\", dp[n][12]);\n    \n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 2,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <stdlib.h>\n#include <limits.h>\n\n#define INF (1LL << 60)\n\nint main() {\n    int prime[] = {2,3,5,7,11,13,17,19,23,29,31,37,41,43,47};\n    long long dp[1006][15];\n    \n    for (int i = 0; i < 1006; i++) {\n        for (int j = 0; j < 15; j++) {\n            dp[i][j] = INF;\n        }\n    }\n    \n    for (int pw = 0; pw < 64; pw++) {\n        dp[pw + 1][0] = 1LL << pw;\n    }\n    \n    for (int idx = 1; idx < 13; idx++) {\n        for (int i = 0; i < 1005; i++) {\n            for (int pw = 0; pw < 64; pw++) {\n                if (i % (pw + 1) == 0) {\n                    if (dp[i / (pw + 1)][idx-1] > INF / (long long)pow(prime[idx], pw)) break;\n                    long long val = dp[i / (pw + 1)][idx-1] * (long long)pow(prime[idx], pw);\n                    if (val < dp[i][idx]) {\n                        dp[i][idx] = val;\n                    }\n                }\n            }\n        }\n    }\n    \n    int n;\n    scanf(\"%d\", &n);\n    printf(\"%lld\\n\", dp[n][12]);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 3,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <stdlib.h>\n#include <math.h>\n#include <limits.h>\n\n#define INF LLONG_MAX\n\nint main() {\n    int prime[] = {2,3,5,7,11,13,17,19,23,29,31,37,41,43,47};\n    long long dp[1006][15];\n    \n    for (int i = 0; i < 1006; i++) {\n        for (int j = 0; j < 15; j++) {\n            dp[i][j] = INF;\n        }\n    }\n    \n    for (int pw = 0; pw < 64; pw++) {\n        dp[pw + 1][0] = (long long)pow(2, pw);\n    }\n    \n    for (int idx = 1; idx < 13; idx++) {\n        for (int i = 0; i < 1005; i++) {\n            for (int pw = 0; pw < 64; pw++) {\n                if (i % (pw + 1) == 0) {\n                    if (dp[i / (pw + 1)][idx-1] > INF / (long long)pow(prime[idx], pw)) break;\n                    long long val = dp[i / (pw + 1)][idx-1] * (long long)pow(prime[idx], pw);\n                    if (val < dp[i][idx]) {\n                        dp[i][idx] = val;\n                    }\n                }\n            }\n        }\n    }\n    \n    int n;\n    scanf(\"%d\", &n);\n    printf(\"%lld\\n\", dp[n][12]);\n    \n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 4,
+                    "message": {
+                        "role": "assistant",
+                        "content": "Here's the translated code in C:\n\n```c\n#include <stdio.h>\n#include <limits.h>\n#include <math.h>\n\nlong long prime[] = {2,3,5,7,11,13,17,19,23,29,31,37,41,43,47};\nlong long dp[1006][15];\nlong long inf = LLONG_MAX;\n\nint main() {\n    for (int i = 0; i < 1006; i++) {\n        for (int j = 0; j < 15; j++) {\n            dp[i][j] = inf;\n        }\n    }\n    \n    for (int pw = 0; pw < 64; pw++) {\n        dp[pw + 1][0] = (long long)pow(2, pw);\n    }\n    \n    for (int idx = 1; idx < 13; idx++) {\n        for (int i = 0; i < 1005; i++) {\n            for (int pw = 0; pw < 64; pw++) {\n                if (i % (pw + 1) == 0) {\n                    if (dp[i / (pw + 1)][idx-1] > inf / (long long)pow(prime[idx], pw)) break;\n                    long long val = dp[i / (pw + 1)][idx-1] * (long long)pow(prime[idx], pw);\n                    if (val < dp[i][idx]) {\n                        dp[i][idx] = val;\n                    }\n                }\n            }\n        }\n    }\n    \n    int n;\n    scanf(\"%d\", &n);\n    printf(\"%lld\\n\", dp[n][12]);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                }
+            ],
+            "usage": {
+                "prompt_tokens": 1210,
+                "completion_tokens": 1826,
+                "total_tokens": 3036
+            }
+        }
+    },
+    "source_data": {
+        "code_uid": "84861d5e06e3a989356756414e0a1315",
+        "prob_desc_output_to": "standard output",
+        "prob_desc_notes": null,
+        "lang_cluster": "Python",
+        "prob_desc_time_limit": "2 seconds",
+        "prob_desc_input_spec": "The first line of the input contains integer n (1\u2009\u2264\u2009n\u2009\u2264\u20091000).",
+        "source_code": "prime = [2,3,5,7,11,13,17,19,23,29,31,37,41,43,47]\ndp = [[10**18 for i in range(15)] for j in range(1006)]\ninf = 10**18\nfor pw in range(64):\n\tdp[pw + 1][0] = 2**pw\nfor idx in range(1,13):\n\tfor i in range(1005):\n\t\tfor pw in range(64):\n\t\t\tif(i % (pw + 1)==0):\n\t\t\t\tif(dp[i // (pw + 1)][idx-1] > inf // (prime[idx]**pw)):break\n\t\t\t\tdp[i][idx] = min(dp[i][idx],dp[i // (pw + 1)][idx-1] *(prime[idx]**pw))\nprint(dp[int(input())][12])",
+        "prob_desc_sample_inputs": [
+            "4",
+            "6"
+        ],
+        "prob_desc_memory_limit": "256 megabytes",
+        "exec_outcome": "PASSED",
+        "prob_desc_output_spec": "Output the smallest positive integer with exactly n divisors.",
+        "src_uid": "62db589bad3b7023418107de05b7a8ee",
+        "prob_desc_input_from": "standard input",
+        "lang": "Python 3",
+        "prob_desc_sample_outputs": [
+            "6",
+            "12"
+        ],
+        "file_name": "d7021504500d5ca7c2b02df8100a574d159e6e67e20ec8071b75800b1267370a",
+        "prob_desc_description": "Given the number n, find the smallest positive integer which has exactly n divisors. It is guaranteed that for the given n the answer will not exceed 1018.",
+        "prob_desc_created_at": "1284130800",
+        "difficulty": 2000.0,
+        "hidden_unit_tests": "[{\"input\": \"1\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"7\\r\\n\", \"output\": [\"64\"]}, {\"input\": \"8\\r\\n\", \"output\": [\"24\"]}, {\"input\": \"9\\r\\n\", \"output\": [\"36\"]}, {\"input\": \"10\\r\\n\", \"output\": [\"48\"]}, {\"input\": \"15\\r\\n\", \"output\": [\"144\"]}, {\"input\": \"20\\r\\n\", \"output\": [\"240\"]}, {\"input\": \"47\\r\\n\", \"output\": [\"70368744177664\"]}, {\"input\": \"59\\r\\n\", \"output\": [\"288230376151711744\"]}, {\"input\": \"100\\r\\n\", \"output\": [\"45360\"]}, {\"input\": \"159\\r\\n\", \"output\": [\"40532396646334464\"]}, {\"input\": \"265\\r\\n\", \"output\": [\"364791569817010176\"]}, {\"input\": \"312\\r\\n\", \"output\": [\"14192640\"]}, {\"input\": \"473\\r\\n\", \"output\": [\"259700248434180096\"]}, {\"input\": \"637\\r\\n\", \"output\": [\"46656000000\"]}, {\"input\": \"500\\r\\n\", \"output\": [\"62370000\"]}, {\"input\": \"720\\r\\n\", \"output\": [\"61261200\"]}, {\"input\": \"902\\r\\n\", \"output\": [\"324625310542725120\"]}, {\"input\": \"940\\r\\n\", \"output\": [\"199495389743677440\"]}, {\"input\": \"1000\\r\\n\", \"output\": [\"810810000\"]}, {\"input\": \"999\\r\\n\", \"output\": [\"757632231014400\"]}, {\"input\": \"118\\r\\n\", \"output\": [\"864691128455135232\"]}]",
+        "source_lang": "Python 3",
+        "target_lang": "C"
+    }
+}

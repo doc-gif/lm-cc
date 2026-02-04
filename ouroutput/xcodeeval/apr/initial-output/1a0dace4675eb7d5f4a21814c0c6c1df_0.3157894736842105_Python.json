@@ -1,0 +1,101 @@
+{
+    "oai_response": {
+        "prompt": "Fix a buggy program written in Python language to solve the following programming problem:\nDescription: You have $$$n \\times n$$$ square grid and an integer $$$k$$$. Put an integer in each cell while satisfying the conditions below.  All numbers in the grid should be between $$$1$$$ and $$$k$$$ inclusive.  Minimum number of the $$$i$$$-th row is $$$1$$$ ($$$1 \\le i \\le n$$$).  Minimum number of the $$$j$$$-th column is $$$1$$$ ($$$1 \\le j \\le n$$$). Find the number of ways to put integers in the grid. Since the answer can be very large, find the answer modulo $$$(10^{9} + 7)$$$.  These are the examples of valid and invalid grid when $$$n=k=2$$$. \nInput Specification: The only line contains two integers $$$n$$$ and $$$k$$$ ($$$1 \\le n \\le 250$$$, $$$1 \\le k \\le 10^{9}$$$).\nOutput Specification: Print the answer modulo $$$(10^{9} + 7)$$$.\n\nSample Input:\n2 2\nSample Output:\n7\n\nSample Input:\n123 456789\nSample Output:\n689974806\n\nNotes: NoteIn the first example, following $$$7$$$ cases are possible.  In the second example, make sure you print the answer modulo $$$(10^{9} + 7)$$$.\nTake input from standard input and output to standard output\n\nHere is the code with a bug of WRONG_ANSWER:\n\nMOD = int(1e9+7)\n\ndef mult(l, r):\n\treturn (l*r)%MOD\n\ndef fast_exp(b, e):\n\tif e == 0:\n\t\treturn 1\n\tif e%2 == 1:\n\t\treturn mult(b, fast_exp(b, e-1))\n\telse:\n\t\tb2 = fast_exp(b, e//2)\n\t\treturn mult(b2, b2)\n\n[n, k] = [int(s) for s in input().split(\" \")]\nprint(n, k)\nfact = (n+1)*[1]\nfor i in range(1, n+1):\n\tfact[i] = mult(i, fact[i-1])\n\n\nifact = (n+1)*[1]\nifact[n] = fast_exp(fact[n], MOD-2)\nfor i in reversed(range(1, n)):\n\tifact[i] = mult(i+1, ifact[i+1])\n\ndef binom(N, K):\n\treturn mult(mult(fact[N], ifact[K]), ifact[N-K])\n\ndef get(i, j):\n\tX = i*j\n\tY = (n-i)*j\n\tZ = (n-j)*i\n\ttot = X+Y+Z\n\tans = 0\n\tif (i+j)%2 == 0:\n\t\tans = 1\n\telse:\n\t\tans = (MOD - 1)\n\tans = mult(ans, binom(n, j))\n\tans = mult(ans, binom(n, i))\n\tans = mult(ans, fast_exp(k, n*n - tot))\n\tans = mult(ans, fast_exp(k-1, tot))\n\treturn ans\n\nans = 0\nfor i in range(0, n+1):\n\tfor j in range(0, n+1):\n\t\tans = (ans + get(i, j)) % MOD\n\nprint(ans)\n\n\nProvide the fixed Python code without any description or extra tokens.\n\nFixed source code:\n ||END-of-SRC||",
+        "response": {
+            "id": "multi-call-as-6b113z2pfm",
+            "model": "deepseek-v3",
+            "created": 1760422465,
+            "choices": [
+                {
+                    "index": 0,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```python\nMOD = int(1e9+7)\n\ndef mult(l, r):\n    return (l * r) % MOD\n\ndef fast_exp(b, e):\n    if e == 0:\n        return 1\n    if e % 2 == 1:\n        return mult(b, fast_exp(b, e - 1))\n    else:\n        b2 = fast_exp(b, e // 2)\n        return mult(b2, b2)\n\n[n, k] = [int(s) for s in input().split()]\nfact = [1] * (n + 1)\nfor i in range(1, n + 1):\n    fact[i] = mult(i, fact[i - 1])\n\nifact = [1] * (n + 1)\nifact[n] = fast_exp(fact[n], MOD - 2)\nfor i in reversed(range(1, n)):\n    ifact[i] = mult(i + 1, ifact[i + 1])\n\ndef binom(N, K):\n    if K < 0 or K > N:\n        return 0\n    return mult(mult(fact[N], ifact[K]), ifact[N - K])\n\ndef get(i, j):\n    X = i * j\n    Y = (n - i) * j\n    Z = (n - j) * i\n    tot = X + Y + Z\n    ans = 0\n    if (i + j) % 2 == 0:\n        ans = 1\n    else:\n        ans = (MOD - 1)\n    ans = mult(ans, binom(n, j))\n    ans = mult(ans, binom(n, i))\n    ans = mult(ans, fast_exp(k - 1, tot))\n    ans = mult(ans, fast_exp(k, n * n - tot))\n    return ans\n\nans = 0\nfor i in range(0, n + 1):\n    for j in range(0, n + 1):\n        ans = (ans + get(i, j)) % MOD\n\nprint(ans)\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 1,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```python\nMOD = int(1e9+7)\n\ndef mult(l, r):\n    return (l * r) % MOD\n\ndef fast_exp(b, e):\n    if e == 0:\n        return 1\n    if e % 2 == 1:\n        return mult(b, fast_exp(b, e - 1))\n    else:\n        b2 = fast_exp(b, e // 2)\n        return mult(b2, b2)\n\n[n, k] = [int(s) for s in input().split()]\nfact = (n + 1) * [1]\nfor i in range(1, n + 1):\n    fact[i] = mult(i, fact[i - 1])\n\nifact = (n + 1) * [1]\nifact[n] = fast_exp(fact[n], MOD - 2)\nfor i in reversed(range(1, n)):\n    ifact[i] = mult(i + 1, ifact[i + 1])\n\ndef binom(N, K):\n    if K < 0 or K > N:\n        return 0\n    return mult(mult(fact[N], ifact[K]), ifact[N - K])\n\ndef get(i, j):\n    X = i * j\n    Y = (n - i) * j\n    Z = (n - j) * i\n    tot = X + Y + Z\n    ans = 0\n    if (i + j) % 2 == 0:\n        ans = 1\n    else:\n        ans = (MOD - 1)\n    ans = mult(ans, binom(n, j))\n    ans = mult(ans, binom(n, i))\n    ans = mult(ans, fast_exp(k - 1, tot))\n    ans = mult(ans, fast_exp(k, n * n - tot))\n    return ans\n\nans = 0\nfor i in range(0, n + 1):\n    for j in range(0, n + 1):\n        ans = (ans + get(i, j)) % MOD\n\nprint(ans)\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 2,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```python\nMOD = int(1e9+7)\n\ndef mult(l, r):\n    return (l * r) % MOD\n\ndef fast_exp(b, e):\n    if e == 0:\n        return 1\n    if e % 2 == 1:\n        return mult(b, fast_exp(b, e - 1))\n    else:\n        b2 = fast_exp(b, e // 2)\n        return mult(b2, b2)\n\n[n, k] = [int(s) for s in input().split()]\nfact = (n + 1) * [1]\nfor i in range(1, n + 1):\n    fact[i] = mult(i, fact[i - 1])\n\nifact = (n + 1) * [1]\nifact[n] = fast_exp(fact[n], MOD - 2)\nfor i in reversed(range(1, n)):\n    ifact[i] = mult(i + 1, ifact[i + 1])\n\ndef binom(N, K):\n    if K < 0 or K > N:\n        return 0\n    return mult(mult(fact[N], ifact[K]), ifact[N - K])\n\ndef get(i, j):\n    X = i * j\n    Y = (n - i) * j\n    Z = (n - j) * i\n    tot = X + Y + Z\n    ans = 0\n    if (i + j) % 2 == 0:\n        ans = 1\n    else:\n        ans = (MOD - 1)\n    ans = mult(ans, binom(n, j))\n    ans = mult(ans, binom(n, i))\n    ans = mult(ans, fast_exp(k - 1, tot))\n    ans = mult(ans, fast_exp(k, n * n - tot))\n    return ans\n\nans = 0\nfor i in range(0, n + 1):\n    for j in range(0, n + 1):\n        ans = (ans + get(i, j)) % MOD\n\nprint(ans)\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 3,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```python\nMOD = int(1e9+7)\n\ndef mult(l, r):\n    return (l * r) % MOD\n\ndef fast_exp(b, e):\n    if e == 0:\n        return 1\n    if e % 2 == 1:\n        return mult(b, fast_exp(b, e - 1))\n    else:\n        b2 = fast_exp(b, e // 2)\n        return mult(b2, b2)\n\n[n, k] = [int(s) for s in input().split()]\nfact = (n + 1) * [1]\nfor i in range(1, n + 1):\n    fact[i] = mult(i, fact[i - 1])\n\nifact = (n + 1) * [1]\nifact[n] = fast_exp(fact[n], MOD - 2)\nfor i in reversed(range(1, n)):\n    ifact[i] = mult(i + 1, ifact[i + 1])\n\ndef binom(N, K):\n    return mult(mult(fact[N], ifact[K]), ifact[N - K])\n\ndef get(i, j):\n    tot = i * n + j * n - i * j\n    ans = 0\n    if (i + j) % 2 == 0:\n        ans = 1\n    else:\n        ans = (MOD - 1)\n    ans = mult(ans, binom(n, j))\n    ans = mult(ans, binom(n, i))\n    ans = mult(ans, fast_exp(k - 1, tot))\n    ans = mult(ans, fast_exp(k, n * n - tot))\n    return ans\n\nans = 0\nfor i in range(0, n + 1):\n    for j in range(0, n + 1):\n        ans = (ans + get(i, j)) % MOD\n\nprint(ans)\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 4,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```python\nMOD = int(1e9+7)\n\ndef mult(l, r):\n    return (l * r) % MOD\n\ndef fast_exp(b, e):\n    if e == 0:\n        return 1\n    if e % 2 == 1:\n        return mult(b, fast_exp(b, e - 1))\n    else:\n        b2 = fast_exp(b, e // 2)\n        return mult(b2, b2)\n\n[n, k] = [int(s) for s in input().split()]\nfact = (n + 1) * [1]\nfor i in range(1, n + 1):\n    fact[i] = mult(i, fact[i - 1])\n\nifact = (n + 1) * [1]\nifact[n] = fast_exp(fact[n], MOD - 2)\nfor i in reversed(range(1, n)):\n    ifact[i] = mult(i + 1, ifact[i + 1])\n\ndef binom(N, K):\n    if K < 0 or K > N:\n        return 0\n    return mult(mult(fact[N], ifact[K]), ifact[N - K])\n\ndef get(i, j):\n    X = i * j\n    Y = (n - i) * j\n    Z = (n - j) * i\n    tot = X + Y + Z\n    ans = 0\n    if (i + j) % 2 == 0:\n        ans = 1\n    else:\n        ans = (MOD - 1)\n    ans = mult(ans, binom(n, j))\n    ans = mult(ans, binom(n, i))\n    ans = mult(ans, fast_exp(k - 1, tot))\n    ans = mult(ans, fast_exp(k, n * n - tot))\n    return ans\n\nans = 0\nfor i in range(0, n + 1):\n    for j in range(0, n + 1):\n        ans = (ans + get(i, j)) % MOD\n\nprint(ans)\n```"
+                    },
+                    "finish_reason": "stop"
+                }
+            ],
+            "usage": {
+                "prompt_tokens": 3735,
+                "completion_tokens": 2162,
+                "total_tokens": 5897
+            }
+        }
+    },
+    "source_data": {
+        "prob_desc_memory_limit": "256 megabytes",
+        "tags": [
+            "dp",
+            "math",
+            "combinatorics"
+        ],
+        "prob_desc_created_at": "1569762300",
+        "fix_source_code": "",
+        "prob_desc_input_spec": "The only line contains two integers $$$n$$$ and $$$k$$$ ($$$1 \\le n \\le 250$$$, $$$1 \\le k \\le 10^{9}$$$).",
+        "prob_desc_sample_outputs": [
+            "7",
+            "689974806"
+        ],
+        "src_uid": "f67173c973c6f83e88bc0ddb0b9bfa93",
+        "prob_desc_time_limit": "1 second",
+        "fix_exec_outcome": "",
+        "delete_cnt": 2,
+        "apr_id": "1a0b455fbfd74eae82873bfc044132f8",
+        "fix_code_uid": "",
+        "lang_cluster": "Python",
+        "prob_desc_sample_inputs": [
+            "2 2",
+            "123 456789"
+        ],
+        "prob_desc_output_to": "standard output",
+        "file_name": "Python.jsonl",
+        "equal_cnt": 10,
+        "lang": "PyPy 3",
+        "prob_desc_output_spec": "Print the answer modulo $$$(10^{9} + 7)$$$.",
+        "bug_exec_outcome": "WRONG_ANSWER",
+        "prob_desc_notes": "NoteIn the first example, following $$$7$$$ cases are possible.  In the second example, make sure you print the answer modulo $$$(10^{9} + 7)$$$.",
+        "difficulty": 2300.0,
+        "similarity_score": 0.9865921736,
+        "prob_desc_description": "You have $$$n \\times n$$$ square grid and an integer $$$k$$$. Put an integer in each cell while satisfying the conditions below.  All numbers in the grid should be between $$$1$$$ and $$$k$$$ inclusive.  Minimum number of the $$$i$$$-th row is $$$1$$$ ($$$1 \\le i \\le n$$$).  Minimum number of the $$$j$$$-th column is $$$1$$$ ($$$1 \\le j \\le n$$$). Find the number of ways to put integers in the grid. Since the answer can be very large, find the answer modulo $$$(10^{9} + 7)$$$.  These are the examples of valid and invalid grid when $$$n=k=2$$$. ",
+        "potential_dominant_fix_op": "insert",
+        "bug_source_code": "MOD = int(1e9+7)\n\ndef mult(l, r):\n\treturn (l*r)%MOD\n\ndef fast_exp(b, e):\n\tif e == 0:\n\t\treturn 1\n\tif e%2 == 1:\n\t\treturn mult(b, fast_exp(b, e-1))\n\telse:\n\t\tb2 = fast_exp(b, e//2)\n\t\treturn mult(b2, b2)\n\n[n, k] = [int(s) for s in input().split(\" \")]\nprint(n, k)\nfact = (n+1)*[1]\nfor i in range(1, n+1):\n\tfact[i] = mult(i, fact[i-1])\n\n\nifact = (n+1)*[1]\nifact[n] = fast_exp(fact[n], MOD-2)\nfor i in reversed(range(1, n)):\n\tifact[i] = mult(i+1, ifact[i+1])\n\ndef binom(N, K):\n\treturn mult(mult(fact[N], ifact[K]), ifact[N-K])\n\ndef get(i, j):\n\tX = i*j\n\tY = (n-i)*j\n\tZ = (n-j)*i\n\ttot = X+Y+Z\n\tans = 0\n\tif (i+j)%2 == 0:\n\t\tans = 1\n\telse:\n\t\tans = (MOD - 1)\n\tans = mult(ans, binom(n, j))\n\tans = mult(ans, binom(n, i))\n\tans = mult(ans, fast_exp(k, n*n - tot))\n\tans = mult(ans, fast_exp(k-1, tot))\n\treturn ans\n\nans = 0\nfor i in range(0, n+1):\n\tfor j in range(0, n+1):\n\t\tans = (ans + get(i, j)) % MOD\n\nprint(ans)\n",
+        "replace_cnt": 1,
+        "prob_desc_input_from": "standard input",
+        "bug_code_uid": "1a0dace4675eb7d5f4a21814c0c6c1df",
+        "insert_cnt": 7,
+        "fix_ops_cnt": 10,
+        "hidden_unit_tests": "[{\"input\": \"2 2\\r\\n\", \"output\": [\"7\"]}, {\"input\": \"123 456789\\r\\n\", \"output\": [\"689974806\"]}, {\"input\": \"250 1000000000\\r\\n\", \"output\": [\"770503193\"]}, {\"input\": \"250 1\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"1 3\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"3 497285769\\r\\n\", \"output\": [\"790515254\"]}, {\"input\": \"3 212096267\\r\\n\", \"output\": [\"501206544\"]}, {\"input\": \"4 221874066\\r\\n\", \"output\": [\"274467242\"]}, {\"input\": \"244 315404017\\r\\n\", \"output\": [\"868949606\"]}, {\"input\": \"218 325181815\\r\\n\", \"output\": [\"230476135\"]}, {\"input\": \"246 629926913\\r\\n\", \"output\": [\"283598434\"]}, {\"input\": \"216 639704712\\r\\n\", \"output\": [\"319243107\"]}, {\"input\": \"244 22597665\\r\\n\", \"output\": [\"56808536\"]}, {\"input\": \"218 737408162\\r\\n\", \"output\": [\"720936813\"]}, {\"input\": \"242 747185961\\r\\n\", \"output\": [\"365665959\"]}, {\"input\": \"220 51931060\\r\\n\", \"output\": [\"944377763\"]}, {\"input\": \"244 61708858\\r\\n\", \"output\": [\"84446310\"]}, {\"input\": \"216 104981514\\r\\n\", \"output\": [\"943178465\"]}, {\"input\": \"208 1\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"236 1\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"242 106758452\\r\\n\", \"output\": [\"437620405\"]}, {\"input\": \"216 411503551\\r\\n\", \"output\": [\"618370501\"]}, {\"input\": \"244 126314049\\r\\n\", \"output\": [\"662993833\"]}, {\"input\": \"214 431059147\\r\\n\", \"output\": [\"37643610\"]}, {\"input\": \"242 440836946\\r\\n\", \"output\": [\"687163955\"]}, {\"input\": \"220 528762598\\r\\n\", \"output\": [\"944995733\"]}, {\"input\": \"244 833507696\\r\\n\", \"output\": [\"89218992\"]}, {\"input\": \"218 548318195\\r\\n\", \"output\": [\"721573920\"]}, {\"input\": \"242 558095993\\r\\n\", \"output\": [\"300047623\"]}, {\"input\": \"224 26911790\\r\\n\", \"output\": [\"554883010\"]}, {\"input\": \"206 1\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"234 1\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"10 19549\\r\\n\", \"output\": [\"843886139\"]}]"
+    }
+}

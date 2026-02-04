@@ -1,0 +1,87 @@
+{
+    "oai_response": {
+        "prompt": "Here is code in Python 3 programming lanaguge. Translate the following code from Python 3 to C programming lanaguge. Do not output any extra description or tokens other than the translated code. \n\na,b,c,d,e,f=map(int,input().split())\nprint((a+b+c)**2-a*a-c*c-e*e)\n||END-of-SRC||",
+        "response": {
+            "id": "multi-call-as-n7ks4k67rg",
+            "model": "deepseek-v3",
+            "created": 1767068441,
+            "choices": [
+                {
+                    "index": 0,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n\nint main() {\n    int a, b, c, d, e, f;\n    scanf(\"%d %d %d %d %d %d\", &a, &b, &c, &d, &e, &f);\n    printf(\"%d\", (a + b + c) * (a + b + c) - a * a - c * c - e * e);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 1,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n\nint main() {\n    int a, b, c, d, e, f;\n    scanf(\"%d %d %d %d %d %d\", &a, &b, &c, &d, &e, &f);\n    printf(\"%d\", (a + b + c) * (a + b + c) - a * a - c * c - e * e);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 2,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n\nint main() {\n    int a, b, c, d, e, f;\n    scanf(\"%d %d %d %d %d %d\", &a, &b, &c, &d, &e, &f);\n    printf(\"%d\\n\", (a + b + c) * (a + b + c) - a * a - c * c - e * e);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 3,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n\nint main() {\n    int a, b, c, d, e, f;\n    scanf(\"%d %d %d %d %d %d\", &a, &b, &c, &d, &e, &f);\n    printf(\"%d\", (a + b + c) * (a + b + c) - a * a - c * c - e * e);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 4,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n\nint main() {\n    int a, b, c, d, e, f;\n    scanf(\"%d %d %d %d %d %d\", &a, &b, &c, &d, &e, &f);\n    printf(\"%d\", (a + b + c) * (a + b + c) - a * a - c * c - e * e);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                }
+            ],
+            "usage": {
+                "prompt_tokens": 395,
+                "completion_tokens": 500,
+                "total_tokens": 895
+            }
+        }
+    },
+    "source_data": {
+        "code_uid": "406ec3e8be826b9e5d85041b5cc1829b",
+        "prob_desc_output_to": "standard output",
+        "prob_desc_notes": "NoteThis is what Gerald's hexagon looks like in the first sample:And that's what it looks like in the second sample:",
+        "lang_cluster": "Python",
+        "prob_desc_time_limit": "2 seconds",
+        "prob_desc_input_spec": "The first and the single line of the input contains 6 space-separated integers a1,\u2009a2,\u2009a3,\u2009a4,\u2009a5 and a6 (1\u2009\u2264\u2009ai\u2009\u2264\u20091000) \u2014 the lengths of the sides of the hexagons in centimeters in the clockwise order. It is guaranteed that the hexagon with the indicated properties and the exactly such sides exists.",
+        "source_code": "a,b,c,d,e,f=map(int,input().split())\nprint((a+b+c)**2-a*a-c*c-e*e)\n",
+        "prob_desc_sample_inputs": [
+            "1 1 1 1 1 1",
+            "1 2 1 2 1 2"
+        ],
+        "prob_desc_memory_limit": "256 megabytes",
+        "exec_outcome": "PASSED",
+        "prob_desc_output_spec": "Print a single integer \u2014 the number of triangles with the sides of one 1 centimeter, into which the hexagon is split.",
+        "src_uid": "382475475427f0e76c6b4ac6e7a02e21",
+        "prob_desc_input_from": "standard input",
+        "lang": "Python 3",
+        "prob_desc_sample_outputs": [
+            "6",
+            "13"
+        ],
+        "file_name": "d7021504500d5ca7c2b02df8100a574d159e6e67e20ec8071b75800b1267370a",
+        "prob_desc_description": "Gerald got a very curious hexagon for his birthday. The boy found out that all the angles of the hexagon are equal to . Then he measured the length of its sides, and found that each of them is equal to an integer number of centimeters. There the properties of the hexagon ended and Gerald decided to draw on it.He painted a few lines, parallel to the sides of the hexagon. The lines split the hexagon into regular triangles with sides of 1 centimeter. Now Gerald wonders how many triangles he has got. But there were so many of them that Gerald lost the track of his counting. Help the boy count the triangles.",
+        "prob_desc_created_at": "1437573600",
+        "difficulty": 1600.0,
+        "hidden_unit_tests": "[{\"input\": \"1 1 1 1 1 1\\r\\n\", \"output\": [\"6\"]}, {\"input\": \"1 2 1 2 1 2\\r\\n\", \"output\": [\"13\"]}, {\"input\": \"2 4 5 3 3 6\\r\\n\", \"output\": [\"83\"]}, {\"input\": \"45 19 48 18 46 21\\r\\n\", \"output\": [\"6099\"]}, {\"input\": \"66 6 65 6 66 5\\r\\n\", \"output\": [\"5832\"]}, {\"input\": \"7 5 4 8 4 5\\r\\n\", \"output\": [\"175\"]}, {\"input\": \"3 2 1 4 1 2\\r\\n\", \"output\": [\"25\"]}, {\"input\": \"7 1 7 3 5 3\\r\\n\", \"output\": [\"102\"]}, {\"input\": \"9 2 9 3 8 3\\r\\n\", \"output\": [\"174\"]}, {\"input\": \"1 6 1 5 2 5\\r\\n\", \"output\": [\"58\"]}, {\"input\": \"41 64 48 61 44 68\\r\\n\", \"output\": [\"17488\"]}, {\"input\": \"1 59 2 59 1 60\\r\\n\", \"output\": [\"3838\"]}, {\"input\": \"30 36 36 32 34 38\\r\\n\", \"output\": [\"7052\"]}, {\"input\": \"50 40 46 38 52 34\\r\\n\", \"output\": [\"11176\"]}, {\"input\": \"4 60 4 60 4 60\\r\\n\", \"output\": [\"4576\"]}, {\"input\": \"718 466 729 470 714 481\\r\\n\", \"output\": [\"2102808\"]}, {\"input\": \"131 425 143 461 95 473\\r\\n\", \"output\": [\"441966\"]}, {\"input\": \"125 7 128 8 124 11\\r\\n\", \"output\": [\"20215\"]}, {\"input\": \"677 303 685 288 692 296\\r\\n\", \"output\": [\"1365807\"]}, {\"input\": \"1 577 7 576 2 582\\r\\n\", \"output\": [\"342171\"]}, {\"input\": \"1000 1000 1000 1000 1000 1000\\r\\n\", \"output\": [\"6000000\"]}, {\"input\": \"1 1 1000 1 1 1000\\r\\n\", \"output\": [\"4002\"]}, {\"input\": \"1000 1000 1 1000 1000 1\\r\\n\", \"output\": [\"2004000\"]}, {\"input\": \"1000 1 1000 999 2 999\\r\\n\", \"output\": [\"2003997\"]}, {\"input\": \"1 1000 1 1 1000 1\\r\\n\", \"output\": [\"4002\"]}, {\"input\": \"888 888 888 887 889 887\\r\\n\", \"output\": [\"4729487\"]}]",
+        "source_lang": "Python 3",
+        "target_lang": "C"
+    }
+}

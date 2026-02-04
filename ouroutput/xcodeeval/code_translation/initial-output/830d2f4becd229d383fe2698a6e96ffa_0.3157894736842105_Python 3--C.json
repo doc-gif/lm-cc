@@ -1,0 +1,89 @@
+{
+    "oai_response": {
+        "prompt": "Here is code in Python 3 programming lanaguge. Translate the following code from Python 3 to C programming lanaguge. Do not output any extra description or tokens other than the translated code. \n\nINF = 10000\nn = input()\nans = INF\nk = len(n)\nfor i in range(k):\n    for j in range(k):\n        if i == j:\n            continue\n        s = n\n        tmp = 0\n        for p in range(i, k - 1):\n            s = s[:p] + s[p + 1] + s[p] + s[p + 2:]\n            tmp += 1\n        for p in range(j - (j > i), k - 2):\n            s = s[:p] + s[p + 1] + s[p] + s[p + 2:]\n            tmp += 1\n        pos = -1\n        for p in range(k):\n            if s[p] != '0':\n                pos = p\n                break\n        for p in range(pos, 0, -1):\n            s = s[:p - 1] + s[p] + s[p - 1] + s[p + 1:]\n            tmp += 1\n        if int(s) % 25 == 0:\n            ans = min(ans, tmp)\nprint(ans if ans != INF else -1)\n||END-of-SRC||",
+        "response": {
+            "id": "multi-call-as-5ru4u6cr4x",
+            "model": "deepseek-v3",
+            "created": 1767066989,
+            "choices": [
+                {
+                    "index": 0,
+                    "message": {
+                        "role": "assistant",
+                        "content": "Here's the translated code in C:\n\n```c\n#include <stdio.h>\n#include <string.h>\n#include <limits.h>\n\n#define INF 10000\n\nint main() {\n    char n[20];\n    scanf(\"%s\", n);\n    int ans = INF;\n    int k = strlen(n);\n    for (int i = 0; i < k; i++) {\n        for (int j = 0; j < k; j++) {\n            if (i == j) continue;\n            char s[20];\n            strcpy(s, n);\n            int tmp = 0;\n            for (int p = i; p < k - 1; p++) {\n                char temp = s[p];\n                s[p] = s[p + 1];\n                s[p + 1] = temp;\n                tmp++;\n            }\n            for (int p = j - (j > i); p < k - 2; p++) {\n                char temp = s[p];\n                s[p] = s[p + 1];\n                s[p + 1] = temp;\n                tmp++;\n            }\n            int pos = -1;\n            for (int p = 0; p < k; p++) {\n                if (s[p] != '0') {\n                    pos = p;\n                    break;\n                }\n            }\n            for (int p = pos; p > 0; p--) {\n                char temp = s[p];\n                s[p] = s[p - 1];\n                s[p - 1] = temp;\n                tmp++;\n            }\n            long num = 0;\n            for (int p = 0; p < k; p++) {\n                num = num * 10 + (s[p] - '0');\n            }\n            if (num % 25 == 0) {\n                ans = ans < tmp ? ans : tmp;\n            }\n        }\n    }\n    printf(\"%d\\n\", ans != INF ? ans : -1);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 1,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <string.h>\n#include <limits.h>\n\n#define INF 10000\n\nint main() {\n    char n[20];\n    scanf(\"%s\", n);\n    int ans = INF;\n    int k = strlen(n);\n    for (int i = 0; i < k; i++) {\n        for (int j = 0; j < k; j++) {\n            if (i == j) continue;\n            char s[20];\n            strcpy(s, n);\n            int tmp = 0;\n            for (int p = i; p < k - 1; p++) {\n                char temp = s[p];\n                s[p] = s[p + 1];\n                s[p + 1] = temp;\n                tmp++;\n            }\n            for (int p = j - (j > i); p < k - 2; p++) {\n                char temp = s[p];\n                s[p] = s[p + 1];\n                s[p + 1] = temp;\n                tmp++;\n            }\n            int pos = -1;\n            for (int p = 0; p < k; p++) {\n                if (s[p] != '0') {\n                    pos = p;\n                    break;\n                }\n            }\n            for (int p = pos; p > 0; p--) {\n                char temp = s[p];\n                s[p] = s[p - 1];\n                s[p - 1] = temp;\n                tmp++;\n            }\n            int num = atoi(s);\n            if (num % 25 == 0) {\n                if (tmp < ans) ans = tmp;\n            }\n        }\n    }\n    printf(\"%d\\n\", ans != INF ? ans : -1);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 2,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <string.h>\n#include <limits.h>\n\n#define INF 10000\n\nint main() {\n    char n[20];\n    scanf(\"%s\", n);\n    int ans = INF;\n    int k = strlen(n);\n    for (int i = 0; i < k; i++) {\n        for (int j = 0; j < k; j++) {\n            if (i == j) continue;\n            char s[20];\n            strcpy(s, n);\n            int tmp = 0;\n            for (int p = i; p < k - 1; p++) {\n                char temp = s[p];\n                s[p] = s[p + 1];\n                s[p + 1] = temp;\n                tmp++;\n            }\n            for (int p = j - (j > i); p < k - 2; p++) {\n                char temp = s[p];\n                s[p] = s[p + 1];\n                s[p + 1] = temp;\n                tmp++;\n            }\n            int pos = -1;\n            for (int p = 0; p < k; p++) {\n                if (s[p] != '0') {\n                    pos = p;\n                    break;\n                }\n            }\n            for (int p = pos; p > 0; p--) {\n                char temp = s[p];\n                s[p] = s[p - 1];\n                s[p - 1] = temp;\n                tmp++;\n            }\n            int num = atoi(s);\n            if (num % 25 == 0) {\n                if (tmp < ans) ans = tmp;\n            }\n        }\n    }\n    printf(\"%d\\n\", ans != INF ? ans : -1);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 3,
+                    "message": {
+                        "role": "assistant",
+                        "content": "Here's the translated code in C:\n\n```c\n#include <stdio.h>\n#include <string.h>\n#include <limits.h>\n\n#define INF 10000\n\nint main() {\n    char n[20];\n    scanf(\"%s\", n);\n    int ans = INF;\n    int k = strlen(n);\n    for (int i = 0; i < k; i++) {\n        for (int j = 0; j < k; j++) {\n            if (i == j) continue;\n            char s[20];\n            strcpy(s, n);\n            int tmp = 0;\n            for (int p = i; p < k - 1; p++) {\n                char temp = s[p];\n                s[p] = s[p + 1];\n                s[p + 1] = temp;\n                tmp++;\n            }\n            for (int p = j - (j > i); p < k - 2; p++) {\n                char temp = s[p];\n                s[p] = s[p + 1];\n                s[p + 1] = temp;\n                tmp++;\n            }\n            int pos = -1;\n            for (int p = 0; p < k; p++) {\n                if (s[p] != '0') {\n                    pos = p;\n                    break;\n                }\n            }\n            for (int p = pos; p > 0; p--) {\n                char temp = s[p];\n                s[p] = s[p - 1];\n                s[p - 1] = temp;\n                tmp++;\n            }\n            long num = 0;\n            for (int p = 0; p < k; p++) {\n                num = num * 10 + (s[p] - '0');\n            }\n            if (num % 25 == 0) {\n                ans = ans < tmp ? ans : tmp;\n            }\n        }\n    }\n    printf(\"%d\\n\", ans != INF ? ans : -1);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 4,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <string.h>\n#include <limits.h>\n\n#define INF 10000\n\nint main() {\n    char n[20];\n    scanf(\"%s\", n);\n    int ans = INF;\n    int k = strlen(n);\n    for (int i = 0; i < k; i++) {\n        for (int j = 0; j < k; j++) {\n            if (i == j) continue;\n            char s[20];\n            strcpy(s, n);\n            int tmp = 0;\n            for (int p = i; p < k - 1; p++) {\n                char temp = s[p];\n                s[p] = s[p + 1];\n                s[p + 1] = temp;\n                tmp++;\n            }\n            for (int p = j - (j > i); p < k - 2; p++) {\n                char temp = s[p];\n                s[p] = s[p + 1];\n                s[p + 1] = temp;\n                tmp++;\n            }\n            int pos = -1;\n            for (int p = 0; p < k; p++) {\n                if (s[p] != '0') {\n                    pos = p;\n                    break;\n                }\n            }\n            for (int p = pos; p > 0; p--) {\n                char temp = s[p];\n                s[p] = s[p - 1];\n                s[p - 1] = temp;\n                tmp++;\n            }\n            int num = atoi(s);\n            if (num % 25 == 0) {\n                if (tmp < ans) ans = tmp;\n            }\n        }\n    }\n    printf(\"%d\\n\", ans != INF ? ans : -1);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                }
+            ],
+            "usage": {
+                "prompt_tokens": 1505,
+                "completion_tokens": 1968,
+                "total_tokens": 3473
+            }
+        }
+    },
+    "source_data": {
+        "code_uid": "830d2f4becd229d383fe2698a6e96ffa",
+        "prob_desc_output_to": "standard output",
+        "prob_desc_notes": "NoteIn the first example one of the possible sequences of moves is 5071 $$$\\rightarrow$$$ 5701 $$$\\rightarrow$$$ 7501 $$$\\rightarrow$$$ 7510 $$$\\rightarrow$$$ 7150.",
+        "lang_cluster": "Python",
+        "prob_desc_time_limit": "1 second",
+        "prob_desc_input_spec": "The first line contains an integer $$$n$$$ ($$$1 \\le n \\le 10^{18}$$$). It is guaranteed that the first (left) digit of the number $$$n$$$ is not a zero.",
+        "source_code": "INF = 10000\nn = input()\nans = INF\nk = len(n)\nfor i in range(k):\n    for j in range(k):\n        if i == j:\n            continue\n        s = n\n        tmp = 0\n        for p in range(i, k - 1):\n            s = s[:p] + s[p + 1] + s[p] + s[p + 2:]\n            tmp += 1\n        for p in range(j - (j > i), k - 2):\n            s = s[:p] + s[p + 1] + s[p] + s[p + 2:]\n            tmp += 1\n        pos = -1\n        for p in range(k):\n            if s[p] != '0':\n                pos = p\n                break\n        for p in range(pos, 0, -1):\n            s = s[:p - 1] + s[p] + s[p - 1] + s[p + 1:]\n            tmp += 1\n        if int(s) % 25 == 0:\n            ans = min(ans, tmp)\nprint(ans if ans != INF else -1)\n",
+        "prob_desc_sample_inputs": [
+            "5071",
+            "705",
+            "1241367"
+        ],
+        "prob_desc_memory_limit": "256 megabytes",
+        "exec_outcome": "PASSED",
+        "prob_desc_output_spec": "If it is impossible to obtain a number that is divisible by $$$25$$$, print -1. Otherwise print the minimum number of moves required to obtain such number. Note that you can swap only adjacent digits in the given number.",
+        "src_uid": "ea1c737956f88be94107f2565ca8bbfd",
+        "prob_desc_input_from": "standard input",
+        "lang": "Python 3",
+        "prob_desc_sample_outputs": [
+            "4",
+            "1",
+            "-1"
+        ],
+        "file_name": "d7021504500d5ca7c2b02df8100a574d159e6e67e20ec8071b75800b1267370a",
+        "prob_desc_description": "You are given an integer $$$n$$$ from $$$1$$$ to $$$10^{18}$$$ without leading zeroes.In one move you can swap any two adjacent digits in the given number in such a way that the resulting number will not contain leading zeroes. In other words, after each move the number you have cannot contain any leading zeroes.What is the minimum number of moves you have to make to obtain a number that is divisible by $$$25$$$? Print -1 if it is impossible to obtain a number that is divisible by $$$25$$$.",
+        "prob_desc_created_at": "1527863700",
+        "difficulty": 2100.0,
+        "hidden_unit_tests": "[{\"input\": \"5071\\r\\n\", \"output\": [\"4\"]}, {\"input\": \"705\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"1241367\\r\\n\", \"output\": [\"-1\"]}, {\"input\": \"7501\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"507\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"17010\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"52231\\r\\n\", \"output\": [\"6\"]}, {\"input\": \"50267\\r\\n\", \"output\": [\"5\"]}, {\"input\": \"574196831896431419\\r\\n\", \"output\": [\"33\"]}, {\"input\": \"1\\r\\n\", \"output\": [\"-1\"]}, {\"input\": \"10\\r\\n\", \"output\": [\"-1\"]}, {\"input\": \"123456123450\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"1000000000000000000\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"100000000000762582\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"123456789987654321\\r\\n\", \"output\": [\"5\"]}, {\"input\": \"213716413141380147\\r\\n\", \"output\": [\"-1\"]}, {\"input\": \"5284691\\r\\n\", \"output\": [\"11\"]}, {\"input\": \"750000000000000001\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"101\\r\\n\", \"output\": [\"-1\"]}, {\"input\": \"275257725752725722\\r\\n\", \"output\": [\"3\"]}, {\"input\": \"50932\\r\\n\", \"output\": [\"5\"]}, {\"input\": \"50272\\r\\n\", \"output\": [\"5\"]}, {\"input\": \"25\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"52\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"57\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"75\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"50\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"71\\r\\n\", \"output\": [\"-1\"]}, {\"input\": \"500111117\\r\\n\", \"output\": [\"10\"]}, {\"input\": \"50011117\\r\\n\", \"output\": [\"9\"]}, {\"input\": \"1002\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"521\\r\\n\", \"output\": [\"3\"]}, {\"input\": \"50011111112\\r\\n\", \"output\": [\"12\"]}, {\"input\": \"50000111111112\\r\\n\", \"output\": [\"17\"]}, {\"input\": \"250070000011111111\\r\\n\", \"output\": [\"16\"]}, {\"input\": \"502727272727272727\\r\\n\", \"output\": [\"18\"]}, {\"input\": \"500044444444442\\r\\n\", \"output\": [\"17\"]}, {\"input\": \"2057\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"700777111111222222\\r\\n\", \"output\": [\"30\"]}, {\"input\": \"50001111312\\r\\n\", \"output\": [\"13\"]}, {\"input\": \"700272727272727272\\r\\n\", \"output\": [\"30\"]}, {\"input\": \"700777711111222222\\r\\n\", \"output\": [\"30\"]}, {\"input\": \"20029292929292929\\r\\n\", \"output\": [\"28\"]}, {\"input\": \"257025702570257025\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"5001111117\\r\\n\", \"output\": [\"11\"]}, {\"input\": \"227782777298772774\\r\\n\", \"output\": [\"-1\"]}, {\"input\": \"205727272727272727\\r\\n\", \"output\": [\"15\"]}, {\"input\": \"50011112\\r\\n\", \"output\": [\"9\"]}, {\"input\": \"500272727272727272\\r\\n\", \"output\": [\"19\"]}, {\"input\": \"222772277289624486\\r\\n\", \"output\": [\"-1\"]}, {\"input\": \"5002727272727272\\r\\n\", \"output\": [\"17\"]}, {\"input\": \"200000000222222222\\r\\n\", \"output\": [\"18\"]}]",
+        "source_lang": "Python 3",
+        "target_lang": "C"
+    }
+}

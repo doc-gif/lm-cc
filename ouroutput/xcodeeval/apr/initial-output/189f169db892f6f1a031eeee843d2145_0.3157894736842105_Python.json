@@ -1,0 +1,98 @@
+{
+    "oai_response": {
+        "prompt": "Fix a buggy program written in Python language to solve the following programming problem:\nDescription: You are given a rectangular cake, represented as an r\u2009\u00d7\u2009c grid. Each cell either has an evil strawberry, or is empty. For example, a 3\u2009\u00d7\u20094 cake may look as follows:  The cakeminator is going to eat the cake! Each time he eats, he chooses a row or a column that does not contain any evil strawberries and contains at least one cake cell that has not been eaten before, and eats all the cake cells there. He may decide to eat any number of times.Please output the maximum number of cake cells that the cakeminator can eat.\nInput Specification: The first line contains two integers r and c (2\u2009\u2264\u2009r,\u2009c\u2009\u2264\u200910), denoting the number of rows and the number of columns of the cake. The next r lines each contains c characters \u2014 the j-th character of the i-th line denotes the content of the cell at row i and column j, and is either one of these:    '.' character denotes a cake cell with no evil strawberry;  'S' character denotes a cake cell with an evil strawberry. \nOutput Specification: Output the maximum number of cake cells that the cakeminator can eat.\n\nSample Input:\n3 4\nS...\n....\n..S.\nSample Output:\n8\n\nNotes: NoteFor the first example, one possible way to eat the maximum number of cake cells is as follows (perform 3 eats).      \nTake input from standard input and output to standard output\n\nHere is the code with a bug of TIME_LIMIT_EXCEEDED:\n\nn, m = map(int, input().split())\nb = []\nfor t in range(n):\n    a = input()\n    s = [char for char in a]\n    b.append(s)\n    \ni = 0\nj = 0\n\nwhile i < n:\n    while j < m:\n        if b[i][j] == \"S\":\n            break\n        if j+1 == m:\n            j = 0\n            while j < m:\n                b[i][j] = \"X\"\n        j+=1\n    j = 0\n    i+=1\n        \ni = 0\nj = 0\nwhile j < m:\n    while i < n:\n        if b[i][j] == \"S\":\n            break\n        if i+1 == n:\n            i = 0\n            while i < n:\n                b[i][j] = \"S\"    \n        i+=1\n    i = 0\n    j+=1\ntotal = 0\nfor c in range(len(b)):\n    for l in range(len(b[c])):\n        if b[c][l] == \"X\":\n            total+=1\ntotal = 0 \n\nProvide the fixed Python code without any description or extra tokens.\n\nFixed source code:\n ||END-of-SRC||",
+        "response": {
+            "id": "multi-call-as-5fw4i117jn",
+            "model": "deepseek-v3",
+            "created": 1760423158,
+            "choices": [
+                {
+                    "index": 0,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```python\nn, m = map(int, input().split())\ngrid = [list(input().strip()) for _ in range(n)]\neaten = [[False for _ in range(m)] for _ in range(n)]\ncount = 0\n\n# Process rows\nfor i in range(n):\n    can_eat = True\n    for j in range(m):\n        if grid[i][j] == 'S':\n            can_eat = False\n            break\n    if can_eat:\n        for j in range(m):\n            if not eaten[i][j]:\n                eaten[i][j] = True\n                count += 1\n\n# Process columns\nfor j in range(m):\n    can_eat = True\n    for i in range(n):\n        if grid[i][j] == 'S':\n            can_eat = False\n            break\n    if can_eat:\n        for i in range(n):\n            if not eaten[i][j]:\n                eaten[i][j] = True\n                count += 1\n\nprint(count)\n``` ||END-of-SRC||"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 1,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```python\nn, m = map(int, input().split())\ngrid = [list(input().strip()) for _ in range(n)]\nrows_no_s = set()\ncols_no_s = set()\n\n# Find all rows without any 'S'\nfor i in range(n):\n    if 'S' not in grid[i]:\n        rows_no_s.add(i)\n\n# Find all columns without any 'S'\nfor j in range(m):\n    column_has_s = False\n    for i in range(n):\n        if grid[i][j] == 'S':\n            column_has_s = True\n            break\n    if not column_has_s:\n        cols_no_s.add(j)\n\n# Calculate the maximum cells that can be eaten\neaten = set()\ncount = 0\n\n# First, process all rows without 'S'\nfor i in rows_no_s:\n    for j in range(m):\n        if (i, j) not in eaten:\n            eaten.add((i, j))\n            count += 1\n\n# Then, process all columns without 'S'\nfor j in cols_no_s:\n    for i in range(n):\n        if (i, j) not in eaten:\n            eaten.add((i, j))\n            count += 1\n\nprint(count)\n``` ||END-of-SRC||"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 2,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```python\nn, m = map(int, input().split())\ngrid = [list(input().strip()) for _ in range(n)]\neaten = [[False for _ in range(m)] for _ in range(n)]\ncount = 0\n\n# First process all possible rows\nfor i in range(n):\n    can_eat_row = True\n    for j in range(m):\n        if grid[i][j] == 'S':\n            can_eat_row = False\n            break\n    if can_eat_row:\n        for j in range(m):\n            if not eaten[i][j]:\n                eaten[i][j] = True\n                count += 1\n\n# Then process all possible columns\nfor j in range(m):\n    can_eat_col = True\n    for i in range(n):\n        if grid[i][j] == 'S':\n            can_eat_col = False\n            break\n    if can_eat_col:\n        for i in range(n):\n            if not eaten[i][j]:\n                eaten[i][j] = True\n                count += 1\n\nprint(count)\n``` ||END-of-SRC||"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 3,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```python\nn, m = map(int, input().split())\ngrid = [list(input().strip()) for _ in range(n)]\neaten = [[False for _ in range(m)] for _ in range(n)]\ncount = 0\n\n# Check rows first\nfor i in range(n):\n    can_eat = True\n    for j in range(m):\n        if grid[i][j] == 'S':\n            can_eat = False\n            break\n    if can_eat:\n        for j in range(m):\n            if not eaten[i][j]:\n                eaten[i][j] = True\n                count += 1\n\n# Check columns\nfor j in range(m):\n    can_eat = True\n    for i in range(n):\n        if grid[i][j] == 'S':\n            can_eat = False\n            break\n    if can_eat:\n        for i in range(n):\n            if not eaten[i][j]:\n                eaten[i][j] = True\n                count += 1\n\nprint(count)\n``` ||END-of-SRC||"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 4,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```python\nn, m = map(int, input().split())\ngrid = [list(input().strip()) for _ in range(n)]\neaten = [[False for _ in range(m)] for _ in range(n)]\ncount = 0\n\n# Check rows first\nfor i in range(n):\n    can_eat = True\n    for j in range(m):\n        if grid[i][j] == 'S':\n            can_eat = False\n            break\n    if can_eat:\n        for j in range(m):\n            if not eaten[i][j]:\n                eaten[i][j] = True\n                count += 1\n\n# Check columns\nfor j in range(m):\n    can_eat = True\n    for i in range(n):\n        if grid[i][j] == 'S':\n            can_eat = False\n            break\n    if can_eat:\n        for i in range(n):\n            if not eaten[i][j]:\n                eaten[i][j] = True\n                count += 1\n\nprint(count)\n``` ||END-of-SRC||"
+                    },
+                    "finish_reason": "stop"
+                }
+            ],
+            "usage": {
+                "prompt_tokens": 3075,
+                "completion_tokens": 1178,
+                "total_tokens": 4253
+            }
+        }
+    },
+    "source_data": {
+        "prob_desc_memory_limit": "256 megabytes",
+        "tags": [
+            "brute force",
+            "implementation"
+        ],
+        "prob_desc_created_at": "1374327000",
+        "fix_source_code": "",
+        "prob_desc_input_spec": "The first line contains two integers r and c (2\u2009\u2264\u2009r,\u2009c\u2009\u2264\u200910), denoting the number of rows and the number of columns of the cake. The next r lines each contains c characters \u2014 the j-th character of the i-th line denotes the content of the cell at row i and column j, and is either one of these:    '.' character denotes a cake cell with no evil strawberry;  'S' character denotes a cake cell with an evil strawberry. ",
+        "prob_desc_sample_outputs": [
+            "8"
+        ],
+        "src_uid": "ebaf7d89c623d006a6f1ffd025892102",
+        "prob_desc_time_limit": "1 second",
+        "fix_exec_outcome": "",
+        "delete_cnt": 0,
+        "apr_id": "21f4c5ad79b3b2d8489eaccefd3a8750",
+        "fix_code_uid": "",
+        "lang_cluster": "Python",
+        "prob_desc_sample_inputs": [
+            "3 4\nS...\n....\n..S."
+        ],
+        "prob_desc_output_to": "standard output",
+        "file_name": "Python.jsonl",
+        "equal_cnt": 4,
+        "lang": "Python 3",
+        "prob_desc_output_spec": "Output the maximum number of cake cells that the cakeminator can eat.",
+        "bug_exec_outcome": "TIME_LIMIT_EXCEEDED",
+        "prob_desc_notes": "NoteFor the first example, one possible way to eat the maximum number of cake cells is as follows (perform 3 eats).      ",
+        "difficulty": 800.0,
+        "similarity_score": 0.9562146664,
+        "prob_desc_description": "You are given a rectangular cake, represented as an r\u2009\u00d7\u2009c grid. Each cell either has an evil strawberry, or is empty. For example, a 3\u2009\u00d7\u20094 cake may look as follows:  The cakeminator is going to eat the cake! Each time he eats, he chooses a row or a column that does not contain any evil strawberries and contains at least one cake cell that has not been eaten before, and eats all the cake cells there. He may decide to eat any number of times.Please output the maximum number of cake cells that the cakeminator can eat.",
+        "potential_dominant_fix_op": "replace",
+        "bug_source_code": "n, m = map(int, input().split())\nb = []\nfor t in range(n):\n    a = input()\n    s = [char for char in a]\n    b.append(s)\n    \ni = 0\nj = 0\n\nwhile i < n:\n    while j < m:\n        if b[i][j] == \"S\":\n            break\n        if j+1 == m:\n            j = 0\n            while j < m:\n                b[i][j] = \"X\"\n        j+=1\n    j = 0\n    i+=1\n        \ni = 0\nj = 0\nwhile j < m:\n    while i < n:\n        if b[i][j] == \"S\":\n            break\n        if i+1 == n:\n            i = 0\n            while i < n:\n                b[i][j] = \"S\"    \n        i+=1\n    i = 0\n    j+=1\ntotal = 0\nfor c in range(len(b)):\n    for l in range(len(b[c])):\n        if b[c][l] == \"X\":\n            total+=1\ntotal = 0 ",
+        "replace_cnt": 2,
+        "prob_desc_input_from": "standard input",
+        "bug_code_uid": "189f169db892f6f1a031eeee843d2145",
+        "insert_cnt": 2,
+        "fix_ops_cnt": 4,
+        "hidden_unit_tests": "[{\"input\": \"3 4\\r\\nS...\\r\\n....\\r\\n..S.\\r\\n\", \"output\": [\"8\"]}, {\"input\": \"2 2\\r\\n..\\r\\n..\\r\\n\", \"output\": [\"4\"]}, {\"input\": \"2 2\\r\\nSS\\r\\nSS\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"7 3\\r\\nS..\\r\\nS..\\r\\nS..\\r\\nS..\\r\\nS..\\r\\nS..\\r\\nS..\\r\\n\", \"output\": [\"14\"]}, {\"input\": \"3 5\\r\\n..S..\\r\\nSSSSS\\r\\n..S..\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"10 10\\r\\nSSSSSSSSSS\\r\\nSSSSSSSSSS\\r\\nSSSSSSSSSS\\r\\nSSSSSSSSSS\\r\\nSSSSSSSSSS\\r\\nSSSSSSSSSS\\r\\nSSSSSSSSSS\\r\\nSSSSSSSSSS\\r\\nSSSSSSSSSS\\r\\nSSSSSSSSSS\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"10 10\\r\\n.....SSSSS\\r\\n.....SSSSS\\r\\n.....SSSSS\\r\\n.....SSSSS\\r\\n.....SSSSS\\r\\n..........\\r\\n..........\\r\\n..........\\r\\n..........\\r\\n..........\\r\\n\", \"output\": [\"75\"]}, {\"input\": \"10 10\\r\\nS...SSSSSS\\r\\nS...SSSSSS\\r\\nS...SSSSSS\\r\\nS...SSSSSS\\r\\nS...SSSSSS\\r\\nS...SSSSSS\\r\\nS...SSSSSS\\r\\nS...SSSSSS\\r\\nS...SSSSSS\\r\\nS...SSSSSS\\r\\n\", \"output\": [\"30\"]}, {\"input\": \"10 10\\r\\nSSSSSSSSSS\\r\\n..........\\r\\n..........\\r\\n..........\\r\\n..........\\r\\n..........\\r\\n..........\\r\\n..........\\r\\n..........\\r\\n..........\\r\\n\", \"output\": [\"90\"]}, {\"input\": \"8 9\\r\\n.........\\r\\n.........\\r\\n.........\\r\\n.........\\r\\n.........\\r\\n.........\\r\\nSSSSSSSSS\\r\\n.........\\r\\n\", \"output\": [\"63\"]}, {\"input\": \"5 6\\r\\nSSSSSS\\r\\n......\\r\\nSSSSSS\\r\\nSSSSSS\\r\\n......\\r\\n\", \"output\": [\"12\"]}, {\"input\": \"10 10\\r\\n....S..S..\\r\\n....S..S..\\r\\n....S..S..\\r\\n....S..S..\\r\\n....S..S..\\r\\n....S..S..\\r\\n....S..S..\\r\\n....S..S..\\r\\n....S..S..\\r\\n....S..S..\\r\\n\", \"output\": [\"80\"]}, {\"input\": \"9 5\\r\\nSSSSS\\r\\nSSSSS\\r\\nSSSSS\\r\\nSSSSS\\r\\nSSSSS\\r\\nSSSSS\\r\\nSSSSS\\r\\nSSSSS\\r\\nSSSSS\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"9 9\\r\\n...S.....\\r\\nS.S.....S\\r\\n.S....S..\\r\\n.S.....SS\\r\\n.........\\r\\n..S.S..S.\\r\\n.SS......\\r\\n....S....\\r\\n..S...S..\\r\\n\", \"output\": [\"17\"]}, {\"input\": \"5 6\\r\\nSSSSSS\\r\\nSSSSSS\\r\\nSSSSSS\\r\\nSS.S..\\r\\nS.S.SS\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"9 8\\r\\n........\\r\\n.......S\\r\\n........\\r\\nS.......\\r\\n........\\r\\n........\\r\\nS.......\\r\\n........\\r\\n.......S\\r\\n\", \"output\": [\"64\"]}, {\"input\": \"9 7\\r\\n......S\\r\\n......S\\r\\nS.S.S..\\r\\n.......\\r\\n.......\\r\\n.S.....\\r\\n.S....S\\r\\n..S....\\r\\n.S....S\\r\\n\", \"output\": [\"28\"]}, {\"input\": \"10 10\\r\\n..S..SS..S\\r\\nS.........\\r\\n.S.......S\\r\\n....S.....\\r\\n.S........\\r\\n...S.SS...\\r\\n.....S..S.\\r\\n......S...\\r\\n..S....SS.\\r\\n...S......\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"10 10\\r\\n.......S..\\r\\n..........\\r\\n.S........\\r\\nS..S......\\r\\nS....S....\\r\\nS......S..\\r\\n.......S..\\r\\n..S.......\\r\\n.....S....\\r\\n...S.S....\\r\\n\", \"output\": [\"46\"]}, {\"input\": \"10 6\\r\\n...S..\\r\\n.....S\\r\\n...S..\\r\\n.S....\\r\\n......\\r\\n......\\r\\n.S....\\r\\n.S...S\\r\\n......\\r\\n......\\r\\n\", \"output\": [\"42\"]}, {\"input\": \"6 10\\r\\n..........\\r\\nS.........\\r\\n......S...\\r\\n.S........\\r\\n.........S\\r\\n..S.......\\r\\n\", \"output\": [\"35\"]}, {\"input\": \"9 6\\r\\n....S.\\r\\n...S.S\\r\\n.S..S.\\r\\nS.....\\r\\n...S..\\r\\n..S...\\r\\n.....S\\r\\n......\\r\\n......\\r\\n\", \"output\": [\"12\"]}, {\"input\": \"5 10\\r\\nS.S.......\\r\\n...SS.....\\r\\n.SSS......\\r\\n.........S\\r\\n..........\\r\\n\", \"output\": [\"26\"]}, {\"input\": \"10 10\\r\\n.....S....\\r\\n....SS..S.\\r\\n.S...S....\\r\\n........SS\\r\\n.S.......S\\r\\nSS..S.....\\r\\n.SS.....SS\\r\\nS..S......\\r\\n.......SSS\\r\\nSSSSS....S\\r\\n\", \"output\": [\"10\"]}, {\"input\": \"5 7\\r\\nS...SSS\\r\\nS.S..S.\\r\\nS.S.S..\\r\\nS.S.S..\\r\\n.......\\r\\n\", \"output\": [\"15\"]}, {\"input\": \"6 7\\r\\n..S.SS.\\r\\n......S\\r\\n....S.S\\r\\nSS..S..\\r\\nS..SS.S\\r\\n.....S.\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"10 6\\r\\n.SSSSS\\r\\nSSS.SS\\r\\nSSSSSS\\r\\nS.SSSS\\r\\nSSSSS.\\r\\nS.SSSS\\r\\nSS.SSS\\r\\n.SSS.S\\r\\n.SSS..\\r\\nSS..SS\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"2 4\\r\\n....\\r\\n....\\r\\n\", \"output\": [\"8\"]}, {\"input\": \"2 2\\r\\n..\\r\\n..\\r\\n\", \"output\": [\"4\"]}, {\"input\": \"3 3\\r\\n...\\r\\n...\\r\\n...\\r\\n\", \"output\": [\"9\"]}, {\"input\": \"3 2\\r\\nS.\\r\\n.S\\r\\nS.\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"3 2\\r\\nS.\\r\\n.S\\r\\nS.\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"4 3\\r\\n.S.\\r\\nS.S\\r\\n.S.\\r\\nS.S\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"2 3\\r\\n...\\r\\nSSS\\r\\n\", \"output\": [\"3\"]}, {\"input\": \"4 3\\r\\nSSS\\r\\n...\\r\\n...\\r\\n...\\r\\n\", \"output\": [\"9\"]}, {\"input\": \"2 4\\r\\nS.SS\\r\\nS.SS\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"2 2\\r\\n..\\r\\n.S\\r\\n\", \"output\": [\"3\"]}, {\"input\": \"3 2\\r\\n.S\\r\\n.S\\r\\nSS\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"4 4\\r\\nS.S.\\r\\nS.S.\\r\\n.SSS\\r\\nS...\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"2 4\\r\\nSS.S\\r\\n..S.\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"2 3\\r\\n...\\r\\nS..\\r\\n\", \"output\": [\"5\"]}, {\"input\": \"2 4\\r\\n...S\\r\\n....\\r\\n\", \"output\": [\"7\"]}]"
+    }
+}

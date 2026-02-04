@@ -1,0 +1,91 @@
+{
+    "oai_response": {
+        "prompt": "Here is code in Python 3 programming lanaguge. Translate the following code from Python 3 to C programming lanaguge. Do not output any extra description or tokens other than the translated code. \n\nstring = input()\nss = string.count('-')\nos = string.count('o')\n\nif os == 0:\n    print(\"YES\")\nelif ss%os == 0:\n    print(\"YES\")\nelse:\n    print(\"NO\")\n||END-of-SRC||",
+        "response": {
+            "id": "multi-call-as-h0dizqyskm",
+            "model": "deepseek-v3",
+            "created": 1767066569,
+            "choices": [
+                {
+                    "index": 0,
+                    "message": {
+                        "role": "assistant",
+                        "content": "Here's the translated code in C:\n\n```c\n#include <stdio.h>\n#include <string.h>\n\nint main() {\n    char string[100];\n    scanf(\"%s\", string);\n    \n    int ss = 0, os = 0;\n    for (int i = 0; i < strlen(string); i++) {\n        if (string[i] == '-') ss++;\n        if (string[i] == 'o') os++;\n    }\n    \n    if (os == 0) {\n        printf(\"YES\");\n    } else if (ss % os == 0) {\n        printf(\"YES\");\n    } else {\n        printf(\"NO\");\n    }\n    \n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 1,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <string.h>\n\nint main() {\n    char string[1000];\n    scanf(\"%s\", string);\n    int ss = 0, os = 0;\n    for (int i = 0; i < strlen(string); i++) {\n        if (string[i] == '-') ss++;\n        if (string[i] == 'o') os++;\n    }\n    if (os == 0) {\n        printf(\"YES\\n\");\n    } else if (ss % os == 0) {\n        printf(\"YES\\n\");\n    } else {\n        printf(\"NO\\n\");\n    }\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 2,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <string.h>\n\nint main() {\n    char string[1000];\n    scanf(\"%s\", string);\n    int ss = 0, os = 0;\n    for (int i = 0; i < strlen(string); i++) {\n        if (string[i] == '-') ss++;\n        else if (string[i] == 'o') os++;\n    }\n    if (os == 0) {\n        printf(\"YES\\n\");\n    } else if (ss % os == 0) {\n        printf(\"YES\\n\");\n    } else {\n        printf(\"NO\\n\");\n    }\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 3,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <string.h>\n\nint main() {\n    char string[1000];\n    scanf(\"%s\", string);\n    \n    int ss = 0, os = 0;\n    for (int i = 0; i < strlen(string); i++) {\n        if (string[i] == '-') ss++;\n        if (string[i] == 'o') os++;\n    }\n    \n    if (os == 0) {\n        printf(\"YES\\n\");\n    } else if (ss % os == 0) {\n        printf(\"YES\\n\");\n    } else {\n        printf(\"NO\\n\");\n    }\n    \n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 4,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <string.h>\n\nint main() {\n    char string[1000];\n    scanf(\"%s\", string);\n    int ss = 0, os = 0;\n    for (int i = 0; i < strlen(string); i++) {\n        if (string[i] == '-') ss++;\n        else if (string[i] == 'o') os++;\n    }\n    if (os == 0) {\n        printf(\"YES\\n\");\n    } else if (ss % os == 0) {\n        printf(\"YES\\n\");\n    } else {\n        printf(\"NO\\n\");\n    }\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                }
+            ],
+            "usage": {
+                "prompt_tokens": 495,
+                "completion_tokens": 703,
+                "total_tokens": 1198
+            }
+        }
+    },
+    "source_data": {
+        "code_uid": "8800e5d4950213f69c83efa45ec08763",
+        "prob_desc_output_to": "standard output",
+        "prob_desc_notes": null,
+        "lang_cluster": "Python",
+        "prob_desc_time_limit": "1 second",
+        "prob_desc_input_spec": "The only line of input contains a string $$$s$$$ ($$$3 \\leq |s| \\leq 100$$$), representing the necklace, where a dash '-' represents a link and the lowercase English letter 'o' represents a pearl.",
+        "source_code": "string = input()\nss = string.count('-')\nos = string.count('o')\n\nif os == 0:\n    print(\"YES\")\nelif ss%os == 0:\n    print(\"YES\")\nelse:\n    print(\"NO\")\n",
+        "prob_desc_sample_inputs": [
+            "-o-o--",
+            "-o---",
+            "-o---o-",
+            "ooo"
+        ],
+        "prob_desc_memory_limit": "256 megabytes",
+        "exec_outcome": "PASSED",
+        "prob_desc_output_spec": "Print \"YES\" if the links and pearls can be rejoined such that the number of links between adjacent pearls is equal. Otherwise print \"NO\". You can print each letter in any case (upper or lower).",
+        "src_uid": "6e006ae3df3bcd24755358a5f584ec03",
+        "prob_desc_input_from": "standard input",
+        "lang": "Python 3",
+        "prob_desc_sample_outputs": [
+            "YES",
+            "YES",
+            "NO",
+            "YES"
+        ],
+        "file_name": "d7021504500d5ca7c2b02df8100a574d159e6e67e20ec8071b75800b1267370a",
+        "prob_desc_description": "A necklace can be described as a string of links ('-') and pearls ('o'), with the last link or pearl connected to the first one.  You can remove a link or a pearl and insert it between two other existing links or pearls (or between a link and a pearl) on the necklace. This process can be repeated as many times as you like, but you can't throw away any parts.Can you make the number of links between every two adjacent pearls equal? Two pearls are considered to be adjacent if there is no other pearl between them.Note that the final necklace should remain as one circular part of the same length as the initial necklace.",
+        "prob_desc_created_at": "1525791900",
+        "difficulty": 900.0,
+        "hidden_unit_tests": "[{\"input\": \"-o-o--\\r\\n\", \"output\": [\"YES\", \"Yes\"]}, {\"input\": \"-o---\\r\\n\", \"output\": [\"YES\", \"Yes\"]}, {\"input\": \"-o---o-\\r\\n\", \"output\": [\"No\", \"NO\"]}, {\"input\": \"ooo\\r\\n\", \"output\": [\"YES\", \"Yes\"]}, {\"input\": \"---\\r\\n\", \"output\": [\"YES\", \"Yes\"]}, {\"input\": \"--o-o-----o----o--oo-o-----ooo-oo---o--\\r\\n\", \"output\": [\"YES\", \"Yes\"]}, {\"input\": \"-o--o-oo---o-o-o--o-o----oo------oo-----o----o-o-o--oo-o--o---o--o----------o---o-o-oo---o--o-oo-o--\\r\\n\", \"output\": [\"No\", \"NO\"]}, {\"input\": \"-ooo--\\r\\n\", \"output\": [\"YES\", \"Yes\"]}, {\"input\": \"---o--\\r\\n\", \"output\": [\"YES\", \"Yes\"]}, {\"input\": \"oo-ooo\\r\\n\", \"output\": [\"No\", \"NO\"]}, {\"input\": \"------o-o--o-----o--\\r\\n\", \"output\": [\"YES\", \"Yes\"]}, {\"input\": \"--o---o----------o----o----------o--o-o-----o-oo---oo--oo---o-------------oo-----o-------------o---o\\r\\n\", \"output\": [\"YES\", \"Yes\"]}, {\"input\": \"----------------------------------------------------------------------------------------------------\\r\\n\", \"output\": [\"YES\", \"Yes\"]}, {\"input\": \"-oo-oo------\\r\\n\", \"output\": [\"YES\", \"Yes\"]}, {\"input\": \"---------------------------------o----------------------------oo------------------------------------\\r\\n\", \"output\": [\"No\", \"NO\"]}, {\"input\": \"oo--o--o--------oo----------------o-----------o----o-----o----------o---o---o-----o---------ooo---\\r\\n\", \"output\": [\"No\", \"NO\"]}, {\"input\": \"--o---oooo--o-o--o-----o----ooooo--o-oo--o------oooo--------------ooo-o-o----\\r\\n\", \"output\": [\"No\", \"NO\"]}, {\"input\": \"-----------------------------o--o-o-------\\r\\n\", \"output\": [\"YES\", \"Yes\"]}, {\"input\": \"o-oo-o--oo----o-o----------o---o--o----o----o---oo-ooo-o--o-\\r\\n\", \"output\": [\"YES\", \"Yes\"]}, {\"input\": \"oooooooooo-ooo-oooooo-ooooooooooooooo--o-o-oooooooooooooo-oooooooooooooo\\r\\n\", \"output\": [\"No\", \"NO\"]}, {\"input\": \"-----------------o-o--oo------o--------o---o--o----------------oooo-------------ooo-----ooo-----o\\r\\n\", \"output\": [\"No\", \"NO\"]}, {\"input\": \"ooo-ooooooo-oo-ooooooooo-oooooooooooooo-oooo-o-oooooooooo--oooooooooooo-oooooooooo-ooooooo\\r\\n\", \"output\": [\"No\", \"NO\"]}, {\"input\": \"oo-o-ooooo---oo---o-oo---o--o-ooo-o---o-oo---oo---oooo---o---o-oo-oo-o-ooo----ooo--oo--o--oo-o-oo\\r\\n\", \"output\": [\"No\", \"NO\"]}, {\"input\": \"-----o-----oo-o-o-o-o----o---------oo---ooo-------------o----o---o-o\\r\\n\", \"output\": [\"YES\", \"Yes\"]}, {\"input\": \"oo--o-o-o----o-oooo-ooooo---o-oo--o-o--ooo--o--oooo--oo----o----o-o-oooo---o-oooo--ooo-o-o----oo---\\r\\n\", \"output\": [\"No\", \"NO\"]}, {\"input\": \"------oo----o----o-oo-o--------o-----oo-----------------------o------------o-o----oo---------\\r\\n\", \"output\": [\"No\", \"NO\"]}, {\"input\": \"-o--o--------o--o------o---o-o----------o-------o-o-o-------oo----oo------o------oo--o--\\r\\n\", \"output\": [\"No\", \"NO\"]}, {\"input\": \"------------------o----------------------------------o-o-------------\\r\\n\", \"output\": [\"YES\", \"Yes\"]}, {\"input\": \"-------------o----ooo-----o-o-------------ooo-----------ooo------o----oo---\\r\\n\", \"output\": [\"YES\", \"Yes\"]}, {\"input\": \"-------o--------------------o--o---------------o---o--o-----\\r\\n\", \"output\": [\"YES\", \"Yes\"]}, {\"input\": \"------------------------o------------o-----o----------------\\r\\n\", \"output\": [\"YES\", \"Yes\"]}, {\"input\": \"------oo----------o------o-----o---------o------------o----o--o\\r\\n\", \"output\": [\"YES\", \"Yes\"]}, {\"input\": \"------------o------------------o-----------------------o-----------o\\r\\n\", \"output\": [\"YES\", \"Yes\"]}, {\"input\": \"o---o---------------\\r\\n\", \"output\": [\"YES\", \"Yes\"]}, {\"input\": \"----------------------o---o----o---o-----------o-o-----o\\r\\n\", \"output\": [\"YES\", \"Yes\"]}, {\"input\": \"----------------------------------------------------------------------o-o---------------------\\r\\n\", \"output\": [\"YES\", \"Yes\"]}, {\"input\": \"----o---o-------------------------\\r\\n\", \"output\": [\"YES\", \"Yes\"]}, {\"input\": \"o----------------------oo----\\r\\n\", \"output\": [\"No\", \"NO\"]}, {\"input\": \"-o-o--o-o--o-----o-----o-o--o-o---oooo-o\\r\\n\", \"output\": [\"No\", \"NO\"]}, {\"input\": \"-o-ooo-o--o----o--o-o-oo-----------o-o-\\r\\n\", \"output\": [\"YES\", \"Yes\"]}, {\"input\": \"o-------o-------o-------------\\r\\n\", \"output\": [\"YES\", \"Yes\"]}, {\"input\": \"oo----------------------o--------------o--------------o-----\\r\\n\", \"output\": [\"YES\", \"Yes\"]}, {\"input\": \"-----------------------------------o---------------------o--------------------------\\r\\n\", \"output\": [\"YES\", \"Yes\"]}, {\"input\": \"--o--o----o-o---o--o----o-o--oo-----o-oo--o---o---ooo-o--\\r\\n\", \"output\": [\"YES\", \"Yes\"]}, {\"input\": \"---------------o-o----\\r\\n\", \"output\": [\"YES\", \"Yes\"]}, {\"input\": \"o------ooo--o-o-oo--o------o----ooo-----o-----o-----o-ooo-o---o----oo\\r\\n\", \"output\": [\"YES\", \"Yes\"]}, {\"input\": \"----o----o\\r\\n\", \"output\": [\"YES\", \"Yes\"]}, {\"input\": \"o--o--o--o--o--o--o--o--o--o--o--o--\\r\\n\", \"output\": [\"YES\", \"Yes\"]}, {\"input\": \"o---o---o---o---o----o----o----o---o---o---o\\r\\n\", \"output\": [\"YES\", \"Yes\"]}, {\"input\": \"o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-\\r\\n\", \"output\": [\"YES\", \"Yes\"]}, {\"input\": \"-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o\\r\\n\", \"output\": [\"YES\", \"Yes\"]}, {\"input\": \"o----------o----------o----------o----------o----------o----------o----------o----------o----------o\\r\\n\", \"output\": [\"YES\", \"Yes\"]}, {\"input\": \"o---------o---------o---------o---------o---------o---------o---------o---------o\\r\\n\", \"output\": [\"YES\", \"Yes\"]}, {\"input\": \"--------o--------o--------o--------o--------o--------o--------o--------o--------\\r\\n\", \"output\": [\"YES\", \"Yes\"]}, {\"input\": \"o---o----\\r\\n\", \"output\": [\"No\", \"NO\"]}, {\"input\": \"---o----o\\r\\n\", \"output\": [\"No\", \"NO\"]}, {\"input\": \"-o-\\r\\n\", \"output\": [\"YES\", \"Yes\"]}, {\"input\": \"------oooo\\r\\n\", \"output\": [\"No\", \"NO\"]}, {\"input\": \"oo--\\r\\n\", \"output\": [\"YES\", \"Yes\"]}, {\"input\": \"---o\\r\\n\", \"output\": [\"YES\", \"Yes\"]}, {\"input\": \"ooo-\\r\\n\", \"output\": [\"No\", \"NO\"]}, {\"input\": \"oooooooo----------\\r\\n\", \"output\": [\"No\", \"NO\"]}, {\"input\": \"oooo--\\r\\n\", \"output\": [\"No\", \"NO\"]}, {\"input\": \"o-ooooo\\r\\n\", \"output\": [\"No\", \"NO\"]}, {\"input\": \"-oo\\r\\n\", \"output\": [\"No\", \"NO\"]}, {\"input\": \"ooooo-\\r\\n\", \"output\": [\"No\", \"NO\"]}, {\"input\": \"ooo---------\\r\\n\", \"output\": [\"YES\", \"Yes\"]}, {\"input\": \"oo-\\r\\n\", \"output\": [\"No\", \"NO\"]}, {\"input\": \"---ooo\\r\\n\", \"output\": [\"YES\", \"Yes\"]}]",
+        "source_lang": "Python 3",
+        "target_lang": "C"
+    }
+}

@@ -1,0 +1,103 @@
+{
+    "oai_response": {
+        "prompt": "Fix a buggy program written in Python language to solve the following programming problem:\nDescription: There are $$$n$$$ computers in a row, all originally off, and Phoenix wants to turn all of them on. He will manually turn on computers one at a time. At any point, if computer $$$i-1$$$ and computer $$$i+1$$$ are both on, computer $$$i$$$ $$$(2 \\le i \\le n-1)$$$ will turn on automatically if it is not already on. Note that Phoenix cannot manually turn on a computer that already turned on automatically.If we only consider the sequence of computers that Phoenix turns on manually, how many ways can he turn on all the computers? Two sequences are distinct if either the set of computers turned on manually is distinct, or the order of computers turned on manually is distinct. Since this number may be large, please print it modulo $$$M$$$.\nInput Specification: The first line contains two integers $$$n$$$ and $$$M$$$ ($$$3 \\le n \\le 400$$$; $$$10^8 \\le M \\le 10^9$$$)\u00a0\u2014 the number of computers and the modulo. It is guaranteed that $$$M$$$ is prime.\nOutput Specification: Print one integer\u00a0\u2014 the number of ways to turn on the computers modulo $$$M$$$.\n\nSample Input:\n3 100000007\nSample Output:\n6\n\nSample Input:\n4 100000007\nSample Output:\n20\n\nSample Input:\n400 234567899\nSample Output:\n20914007\n\nNotes: NoteIn the first example, these are the $$$6$$$ orders in which Phoenix can turn on all computers:   $$$[1,3]$$$. Turn on computer $$$1$$$, then $$$3$$$. Note that computer $$$2$$$ turns on automatically after computer $$$3$$$ is turned on manually, but we only consider the sequence of computers that are turned on manually.  $$$[3,1]$$$. Turn on computer $$$3$$$, then $$$1$$$.  $$$[1,2,3]$$$. Turn on computer $$$1$$$, $$$2$$$, then $$$3$$$.  $$$[2,1,3]$$$  $$$[2,3,1]$$$  $$$[3,2,1]$$$ \nTake input from standard input and output to standard output\n\nHere is the code with a bug of TIME_LIMIT_EXCEEDED:\n\nimport sys\r\ndef input(): return sys.stdin.readline().strip()\r\n\r\n\r\nn, mod = map(int, input().split())\r\n\r\nle = 500\r\n\r\n\r\ndef pow(x, y):  # x**y \u306e mod \u3092\u8fd4\u3059\u3002mod\u306f\u7d20\u6570\u3067\u306a\u304f\u3066\u3082\u3088\u3044\u3002\r\n    ans = 1\r\n    while y > 0:\r\n        if y % 2 == 1:\r\n            ans = (ans * x) % mod\r\n        x = (x**2) % mod\r\n        y //= 2\r\n    return ans\r\n\r\n\r\ndef inv(x):  # x \u306e mod \u3067\u306e\u9006\u5143\u3092\u8fd4\u3059\u3002mod\u304c\u7d20\u6570\u3067\u3001x\u3068mod\u304c\u4e92\u3044\u306b\u7d20\u3067\u3042\u308b\u5fc5\u8981\u3042\u308a\u3002\r\n    return pow(x, mod-2)\r\n\r\n\r\nM = [1]  # i!\u306emod\r\nmul = 1\r\nfor i in range(1, le):\r\n    mul = (mul * i) % mod\r\n    M.append(mul)\r\n\r\nMI = [0] * (le-1) + [inv(M[le-1])]  # i!\u306e\u9006\u5143\r\nfor i in range(le-2, -1, -1):\r\n    MI[i] = MI[i+1] * (i+1) % mod\r\n\r\n\r\ndef C(x, y):  # \u30b3\u30f3\u30d3\u30cd\u30fc\u30b7\u30e7\u30f3\uff08\u7d44\u5408\u305b\uff09\r\n    if y < 0 or y > x:\r\n        return 0\r\n    elif x > le:  # O(min(y, x-y))\r\n        y = min(y, x-y)\r\n        ans = 1\r\n        for i in range(x, x-y, -1):\r\n            ans = (ans * i) % mod\r\n        return (ans * MI[y]) % mod\r\n    else:  # O(1)\r\n        ans = M[x]\r\n        ans = (ans * MI[y]) % mod\r\n        return (ans * MI[x-y]) % mod\r\n\r\n\r\nM2 = [1]\r\nfor i in range(n+10):\r\n    M2.append((M2[-1]*2) % mod)\r\n\r\nCO = [[0] * (n+10) for i in range(n+10)]\r\nfor i in range(n+10):\r\n    for j in range(n+10):\r\n        CO[i][j] = C(i, j)\r\n\r\nD = [[0] * (n+1) for i in range(n+2)]\r\n# D[\u4f55\u500b\u76ee\u307e\u3067\u898b\u305f\u304b][\u305d\u306e\u3046\u3061\u624b\u52d5ON\u306e\u500b\u6570] = (\u898b\u305f\u3046\u3061\u306e\u6700\u53f3\u304c\u81ea\u52d5ON\u3067\u3042\u308b\u5834\u5408\u306e\u30d1\u30bf\u30fc\u30f3\u6570)\r\n\r\nD[0][0] = 1\r\nfor i in range(n+2):\r\n    for j in range(n+1):\r\n        for k in range(1, n+1):\r\n            ind0 = i+k+1\r\n            ind1 = j+k\r\n            if ind0 <= n+1 and ind1 <= n:\r\n                D[ind0][ind1] += D[i][j] * CO[j+k][k] * M2[k-1]\r\n                D[ind0][ind1] %= mod\r\n            if ind1 == n:\r\n                break\r\n        if ind0 == n+1:\r\n            break\r\n\r\n# print(D)\r\nprint(sum(D[-1]) % mod)\r\n\n\nProvide the fixed Python code without any description or extra tokens.\n\nFixed source code:\n ||END-of-SRC||",
+        "response": {
+            "id": "multi-call-as-r08qx1dyst",
+            "model": "deepseek-v3",
+            "created": 1760424687,
+            "choices": [
+                {
+                    "index": 0,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```python\nimport sys\ndef input(): return sys.stdin.readline().strip()\n\nn, mod = map(int, input().split())\n\ndef pow(x, y):\n    ans = 1\n    while y > 0:\n        if y % 2 == 1:\n            ans = (ans * x) % mod\n        x = (x * x) % mod\n        y //= 2\n    return ans\n\ndef inv(x):\n    return pow(x, mod-2)\n\nfact = [1] * (n+2)\ninv_fact = [1] * (n+2)\nfor i in range(1, n+2):\n    fact[i] = fact[i-1] * i % mod\ninv_fact[n+1] = inv(fact[n+1])\nfor i in range(n, -1, -1):\n    inv_fact[i] = inv_fact[i+1] * (i+1) % mod\n\ndef C(x, y):\n    if y < 0 or y > x:\n        return 0\n    return fact[x] * inv_fact[y] % mod * inv_fact[x - y] % mod\n\npower = [1] * (n+2)\nfor i in range(1, n+2):\n    power[i] = power[i-1] * 2 % mod\n\ndp = [[0] * (n+2) for _ in range(n+2)]\ndp[0][0] = 1\nfor i in range(n+1):\n    for j in range(n+1):\n        if dp[i][j] == 0:\n            continue\n        for k in range(1, n - i + 1):\n            if i + k + 1 > n + 1:\n                break\n            ways = C(j + k, k) * power[k-1] % mod\n            dp[i + k + 1][j + k] = (dp[i + k + 1][j + k] + dp[i][j] * ways) % mod\n\nprint(dp[n+1][n] % mod)\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 1,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```python\nimport sys\ndef input(): return sys.stdin.readline().strip()\n\nn, mod = map(int, input().split())\n\ndef pow(x, y):\n    ans = 1\n    while y > 0:\n        if y % 2 == 1:\n            ans = (ans * x) % mod\n        x = (x * x) % mod\n        y //= 2\n    return ans\n\ndef inv(x):\n    return pow(x, mod-2)\n\nfact = [1] * (n + 2)\ninv_fact = [1] * (n + 2)\nfor i in range(1, n + 2):\n    fact[i] = fact[i-1] * i % mod\ninv_fact[n + 1] = inv(fact[n + 1])\nfor i in range(n, -1, -1):\n    inv_fact[i] = inv_fact[i + 1] * (i + 1) % mod\n\ndef C(n, k):\n    if k < 0 or k > n:\n        return 0\n    return fact[n] * inv_fact[k] % mod * inv_fact[n - k] % mod\n\npower = [1] * (n + 2)\nfor i in range(1, n + 2):\n    power[i] = power[i-1] * 2 % mod\n\ndp = [[0] * (n + 2) for _ in range(n + 2)]\ndp[0][0] = 1\nfor i in range(n + 1):\n    for j in range(n + 1):\n        if dp[i][j] == 0:\n            continue\n        for k in range(1, n - i + 1):\n            if i + k + 1 > n + 1:\n                break\n            ways = C(j + k, k) * power[k - 1] % mod\n            dp[i + k + 1][j + k] = (dp[i + k + 1][j + k] + dp[i][j] * ways) % mod\n\nresult = 0\nfor j in range(n + 1):\n    result = (result + dp[n + 1][j]) % mod\nprint(result)\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 2,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```python\nimport sys\ndef input(): return sys.stdin.readline().strip()\n\nn, mod = map(int, input().split())\n\ndef pow(x, y):\n    ans = 1\n    while y > 0:\n        if y % 2 == 1:\n            ans = (ans * x) % mod\n        x = (x * x) % mod\n        y //= 2\n    return ans\n\ndef inv(x):\n    return pow(x, mod-2)\n\nfact = [1] * (n + 2)\ninv_fact = [1] * (n + 2)\nfor i in range(1, n + 2):\n    fact[i] = fact[i-1] * i % mod\ninv_fact[n + 1] = inv(fact[n + 1])\nfor i in range(n, -1, -1):\n    inv_fact[i] = inv_fact[i + 1] * (i + 1) % mod\n\ndef C(n, k):\n    if k < 0 or k > n:\n        return 0\n    return fact[n] * inv_fact[k] % mod * inv_fact[n - k] % mod\n\npower = [1] * (n + 2)\nfor i in range(1, n + 2):\n    power[i] = power[i-1] * 2 % mod\n\ndp = [[0] * (n + 2) for _ in range(n + 2)]\ndp[0][0] = 1\nfor i in range(n + 1):\n    for j in range(n + 1):\n        if dp[i][j] == 0:\n            continue\n        for k in range(1, n - i + 1):\n            if i + k + 1 > n + 1:\n                break\n            ways = C(j + k, k) * power[k - 1] % mod\n            dp[i + k + 1][j + k] = (dp[i + k + 1][j + k] + dp[i][j] * ways) % mod\n\nresult = 0\nfor j in range(n + 1):\n    result = (result + dp[n + 1][j]) % mod\nprint(result)\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 3,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```python\nimport sys\ndef input(): return sys.stdin.readline().strip()\n\nn, mod = map(int, input().split())\n\ndef pow(x, y):\n    ans = 1\n    while y > 0:\n        if y % 2 == 1:\n            ans = (ans * x) % mod\n        x = (x * x) % mod\n        y //= 2\n    return ans\n\ndef inv(x):\n    return pow(x, mod-2)\n\nfact = [1] * (n + 2)\ninv_fact = [1] * (n + 2)\nfor i in range(1, n + 2):\n    fact[i] = fact[i-1] * i % mod\ninv_fact[n + 1] = inv(fact[n + 1])\nfor i in range(n, -1, -1):\n    inv_fact[i] = inv_fact[i + 1] * (i + 1) % mod\n\ndef C(n, k):\n    if k < 0 or k > n:\n        return 0\n    return fact[n] * inv_fact[k] % mod * inv_fact[n - k] % mod\n\npower = [1] * (n + 2)\nfor i in range(1, n + 2):\n    power[i] = power[i-1] * 2 % mod\n\ndp = [[0] * (n + 2) for _ in range(n + 2)]\ndp[0][0] = 1\nfor i in range(n + 1):\n    for j in range(n + 1):\n        if dp[i][j] == 0:\n            continue\n        for k in range(1, n - i + 1):\n            if i + k + 1 > n + 1:\n                break\n            ways = C(j + k, k) * power[k - 1] % mod\n            dp[i + k + 1][j + k] = (dp[i + k + 1][j + k] + dp[i][j] * ways) % mod\n\nresult = 0\nfor j in range(n + 1):\n    result = (result + dp[n + 1][j]) % mod\nprint(result)\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 4,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```python\nimport sys\ndef input(): return sys.stdin.readline().strip()\n\nn, mod = map(int, input().split())\n\ndef pow(x, y):\n    ans = 1\n    while y > 0:\n        if y % 2 == 1:\n            ans = (ans * x) % mod\n        x = (x * x) % mod\n        y //= 2\n    return ans\n\ndef inv(x):\n    return pow(x, mod-2)\n\nfact = [1] * (n + 2)\ninv_fact = [1] * (n + 2)\nfor i in range(1, n + 2):\n    fact[i] = fact[i-1] * i % mod\ninv_fact[n + 1] = inv(fact[n + 1])\nfor i in range(n, -1, -1):\n    inv_fact[i] = inv_fact[i + 1] * (i + 1) % mod\n\ndef C(n, k):\n    if k < 0 or k > n:\n        return 0\n    return fact[n] * inv_fact[k] % mod * inv_fact[n - k] % mod\n\npow2 = [1] * (n + 2)\nfor i in range(1, n + 2):\n    pow2[i] = pow2[i-1] * 2 % mod\n\ndp = [[0] * (n + 2) for _ in range(n + 2)]\ndp[0][0] = 1\nfor i in range(n + 1):\n    for j in range(n + 1):\n        if dp[i][j] == 0:\n            continue\n        for k in range(1, n - i + 1):\n            if i + k + 1 > n + 1:\n                break\n            ways = C(j + k, k) * pow2[k - 1] % mod\n            dp[i + k + 1][j + k] = (dp[i + k + 1][j + k] + dp[i][j] * ways) % mod\n\nprint(dp[n + 1][n] % mod)\n```"
+                    },
+                    "finish_reason": "stop"
+                }
+            ],
+            "usage": {
+                "prompt_tokens": 6730,
+                "completion_tokens": 2379,
+                "total_tokens": 9109
+            }
+        }
+    },
+    "source_data": {
+        "prob_desc_memory_limit": "256 megabytes",
+        "tags": [
+            "dp",
+            "math",
+            "combinatorics"
+        ],
+        "prob_desc_created_at": "1619966100",
+        "fix_source_code": "",
+        "prob_desc_input_spec": "The first line contains two integers $$$n$$$ and $$$M$$$ ($$$3 \\le n \\le 400$$$; $$$10^8 \\le M \\le 10^9$$$)\u00a0\u2014 the number of computers and the modulo. It is guaranteed that $$$M$$$ is prime.",
+        "prob_desc_sample_outputs": [
+            "6",
+            "20",
+            "20914007"
+        ],
+        "src_uid": "4f0e0d1deef0761a46b64de3eb98e774",
+        "prob_desc_time_limit": "3 seconds",
+        "fix_exec_outcome": "",
+        "delete_cnt": 2,
+        "apr_id": "2f9cc05f46df59dadf03b50b92899107",
+        "fix_code_uid": "",
+        "lang_cluster": "Python",
+        "prob_desc_sample_inputs": [
+            "3 100000007",
+            "4 100000007",
+            "400 234567899"
+        ],
+        "prob_desc_output_to": "standard output",
+        "file_name": "Python.jsonl",
+        "equal_cnt": 11,
+        "lang": "PyPy 3",
+        "prob_desc_output_spec": "Print one integer\u00a0\u2014 the number of ways to turn on the computers modulo $$$M$$$.",
+        "bug_exec_outcome": "TIME_LIMIT_EXCEEDED",
+        "prob_desc_notes": "NoteIn the first example, these are the $$$6$$$ orders in which Phoenix can turn on all computers:   $$$[1,3]$$$. Turn on computer $$$1$$$, then $$$3$$$. Note that computer $$$2$$$ turns on automatically after computer $$$3$$$ is turned on manually, but we only consider the sequence of computers that are turned on manually.  $$$[3,1]$$$. Turn on computer $$$3$$$, then $$$1$$$.  $$$[1,2,3]$$$. Turn on computer $$$1$$$, $$$2$$$, then $$$3$$$.  $$$[2,1,3]$$$  $$$[2,3,1]$$$  $$$[3,2,1]$$$ ",
+        "difficulty": 2200.0,
+        "similarity_score": 0.9357582927,
+        "prob_desc_description": "There are $$$n$$$ computers in a row, all originally off, and Phoenix wants to turn all of them on. He will manually turn on computers one at a time. At any point, if computer $$$i-1$$$ and computer $$$i+1$$$ are both on, computer $$$i$$$ $$$(2 \\le i \\le n-1)$$$ will turn on automatically if it is not already on. Note that Phoenix cannot manually turn on a computer that already turned on automatically.If we only consider the sequence of computers that Phoenix turns on manually, how many ways can he turn on all the computers? Two sequences are distinct if either the set of computers turned on manually is distinct, or the order of computers turned on manually is distinct. Since this number may be large, please print it modulo $$$M$$$.",
+        "potential_dominant_fix_op": "replace",
+        "bug_source_code": "import sys\r\ndef input(): return sys.stdin.readline().strip()\r\n\r\n\r\nn, mod = map(int, input().split())\r\n\r\nle = 500\r\n\r\n\r\ndef pow(x, y):  # x**y \u306e mod \u3092\u8fd4\u3059\u3002mod\u306f\u7d20\u6570\u3067\u306a\u304f\u3066\u3082\u3088\u3044\u3002\r\n    ans = 1\r\n    while y > 0:\r\n        if y % 2 == 1:\r\n            ans = (ans * x) % mod\r\n        x = (x**2) % mod\r\n        y //= 2\r\n    return ans\r\n\r\n\r\ndef inv(x):  # x \u306e mod \u3067\u306e\u9006\u5143\u3092\u8fd4\u3059\u3002mod\u304c\u7d20\u6570\u3067\u3001x\u3068mod\u304c\u4e92\u3044\u306b\u7d20\u3067\u3042\u308b\u5fc5\u8981\u3042\u308a\u3002\r\n    return pow(x, mod-2)\r\n\r\n\r\nM = [1]  # i!\u306emod\r\nmul = 1\r\nfor i in range(1, le):\r\n    mul = (mul * i) % mod\r\n    M.append(mul)\r\n\r\nMI = [0] * (le-1) + [inv(M[le-1])]  # i!\u306e\u9006\u5143\r\nfor i in range(le-2, -1, -1):\r\n    MI[i] = MI[i+1] * (i+1) % mod\r\n\r\n\r\ndef C(x, y):  # \u30b3\u30f3\u30d3\u30cd\u30fc\u30b7\u30e7\u30f3\uff08\u7d44\u5408\u305b\uff09\r\n    if y < 0 or y > x:\r\n        return 0\r\n    elif x > le:  # O(min(y, x-y))\r\n        y = min(y, x-y)\r\n        ans = 1\r\n        for i in range(x, x-y, -1):\r\n            ans = (ans * i) % mod\r\n        return (ans * MI[y]) % mod\r\n    else:  # O(1)\r\n        ans = M[x]\r\n        ans = (ans * MI[y]) % mod\r\n        return (ans * MI[x-y]) % mod\r\n\r\n\r\nM2 = [1]\r\nfor i in range(n+10):\r\n    M2.append((M2[-1]*2) % mod)\r\n\r\nCO = [[0] * (n+10) for i in range(n+10)]\r\nfor i in range(n+10):\r\n    for j in range(n+10):\r\n        CO[i][j] = C(i, j)\r\n\r\nD = [[0] * (n+1) for i in range(n+2)]\r\n# D[\u4f55\u500b\u76ee\u307e\u3067\u898b\u305f\u304b][\u305d\u306e\u3046\u3061\u624b\u52d5ON\u306e\u500b\u6570] = (\u898b\u305f\u3046\u3061\u306e\u6700\u53f3\u304c\u81ea\u52d5ON\u3067\u3042\u308b\u5834\u5408\u306e\u30d1\u30bf\u30fc\u30f3\u6570)\r\n\r\nD[0][0] = 1\r\nfor i in range(n+2):\r\n    for j in range(n+1):\r\n        for k in range(1, n+1):\r\n            ind0 = i+k+1\r\n            ind1 = j+k\r\n            if ind0 <= n+1 and ind1 <= n:\r\n                D[ind0][ind1] += D[i][j] * CO[j+k][k] * M2[k-1]\r\n                D[ind0][ind1] %= mod\r\n            if ind1 == n:\r\n                break\r\n        if ind0 == n+1:\r\n            break\r\n\r\n# print(D)\r\nprint(sum(D[-1]) % mod)\r\n",
+        "replace_cnt": 7,
+        "prob_desc_input_from": "standard input",
+        "bug_code_uid": "0147973776fcfedad00743eae08fcef9",
+        "insert_cnt": 1,
+        "fix_ops_cnt": 10,
+        "hidden_unit_tests": "[{\"input\": \"3 100000007\\n\", \"output\": [\"6\\n\", \"6\\n\", \"6\", \"6 \\n\", \"6 \"]}, {\"input\": \"4 100000007\\n\", \"output\": [\"20 \\n\", \"20 \", \"20\", \"20\\n\", \"20\\n\"]}, {\"input\": \"400 234567899\\n\", \"output\": [\"20914007\\n\", \"20914007\", \"20914007 \\n\", \"20914007 \", \"20914007\\n\"]}, {\"input\": \"5 999999937\\n\", \"output\": [\"78\\n\", \"78\\n\", \"78\", \"78 \", \"78 \\n\"]}, {\"input\": \"6 100000007\\n\", \"output\": [\"344 \\n\", \"344\\n\", \"344 \", \"344\", \"344\\n\"]}, {\"input\": \"7 100000007\\n\", \"output\": [\"1680 \", \"1680\", \"1680\\n\", \"1680\\n\", \"1680 \\n\"]}, {\"input\": \"100 999999733\\n\", \"output\": [\"499246611 \\n\", \"499246611\\n\", \"499246611\\n\", \"499246611 \", \"499246611\"]}, {\"input\": \"350 999999733\\n\", \"output\": [\"255248393\", \"255248393 \", \"255248393\\n\", \"255248393\\n\", \"255248393 \\n\"]}, {\"input\": \"400 100000007\\n\", \"output\": [\"29181726\\n\", \"29181726\\n\", \"29181726\", \"29181726 \\n\", \"29181726 \"]}, {\"input\": \"397 999999733\\n\", \"output\": [\"239189389 \", \"239189389\\n\", \"239189389\\n\", \"239189389\", \"239189389 \\n\"]}, {\"input\": \"398 999999733\\n\", \"output\": [\"875462745\\n\", \"875462745\", \"875462745\\n\", \"875462745 \", \"875462745 \\n\"]}, {\"input\": \"399 999999733\\n\", \"output\": [\"530105147 \\n\", \"530105147\", \"530105147 \", \"530105147\\n\", \"530105147\\n\"]}, {\"input\": \"400 999999733\\n\", \"output\": [\"564062758\\n\", \"564062758\\n\", \"564062758 \\n\", \"564062758 \", \"564062758\"]}]"
+    }
+}

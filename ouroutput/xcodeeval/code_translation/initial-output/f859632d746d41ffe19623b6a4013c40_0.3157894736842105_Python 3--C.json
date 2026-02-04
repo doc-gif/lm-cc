@@ -1,0 +1,89 @@
+{
+    "oai_response": {
+        "prompt": "Here is code in Python 3 programming lanaguge. Translate the following code from Python 3 to C programming lanaguge. Do not output any extra description or tokens other than the translated code. \n\nimport math\na,b,c=tuple(map(int,input().split()))\n\nt = math.ceil((a - b)*c/b)\nprint(t)||END-of-SRC||",
+        "response": {
+            "id": "multi-call-as-f7pk1mdbbf",
+            "model": "deepseek-v3",
+            "created": 1767067107,
+            "choices": [
+                {
+                    "index": 0,
+                    "message": {
+                        "role": "assistant",
+                        "content": "Here's the translated code in C:\n\n```c\n#include <stdio.h>\n#include <math.h>\n\nint main() {\n    int a, b, c;\n    scanf(\"%d %d %d\", &a, &b, &c);\n    int t = (int)ceil((double)(a - b) * c / b);\n    printf(\"%d\\n\", t);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 1,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <math.h>\n\nint main() {\n    int a, b, c;\n    scanf(\"%d %d %d\", &a, &b, &c);\n    int t = (int)ceil((double)(a - b) * c / b);\n    printf(\"%d\\n\", t);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 2,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <math.h>\n\nint main() {\n    int a, b, c;\n    scanf(\"%d %d %d\", &a, &b, &c);\n    int t = (int)ceil((double)(a - b) * c / b);\n    printf(\"%d\\n\", t);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 3,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <math.h>\n\nint main() {\n    int a, b, c;\n    scanf(\"%d %d %d\", &a, &b, &c);\n    int t = (int)ceil((double)(a - b) * c / b);\n    printf(\"%d\\n\", t);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 4,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <math.h>\n\nint main() {\n    int a, b, c;\n    scanf(\"%d %d %d\", &a, &b, &c);\n    int t = (int)ceil((double)(a - b) * c / b);\n    printf(\"%d\\n\", t);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                }
+            ],
+            "usage": {
+                "prompt_tokens": 410,
+                "completion_tokens": 399,
+                "total_tokens": 809
+            }
+        }
+    },
+    "source_data": {
+        "code_uid": "f859632d746d41ffe19623b6a4013c40",
+        "prob_desc_output_to": "standard output",
+        "prob_desc_notes": "NoteIn the first sample video's length is 1 second and it is necessary 4 units of data for watching 1 second of video, so guys should download 4 \u00b7 1 = 4 units of data to watch the whole video. The most optimal way is to wait 3 seconds till 3 units of data will be downloaded and then start watching. While guys will be watching video 1 second, one unit of data will be downloaded and Valerik and Valerko will have 4 units of data by the end of watching. Also every moment till the end of video guys will have more data then necessary for watching.In the second sample guys need 2 \u00b7 10 = 20 units of data, so they have to wait 5 seconds and after that they will have 20 units before the second second ends. However, if guys wait 4 seconds, they will be able to watch first second of video without pauses, but they will download 18 units of data by the end of second second and it is less then necessary.",
+        "lang_cluster": "Python",
+        "prob_desc_time_limit": "2 seconds",
+        "prob_desc_input_spec": "The first line contains three space-separated integers a, b and c (1\u2009\u2264\u2009a,\u2009b,\u2009c\u2009\u2264\u20091000,\u2009a\u2009&gt;\u2009b). The first number (a) denotes the size of data needed to watch one second of the video. The second number (b) denotes the size of data Valeric and Valerko can download from the Net per second. The third number (c) denotes the video's length in seconds.",
+        "source_code": "import math\na,b,c=tuple(map(int,input().split()))\n\nt = math.ceil((a - b)*c/b)\nprint(t)",
+        "prob_desc_sample_inputs": [
+            "4 1 1",
+            "10 3 2",
+            "13 12 1"
+        ],
+        "prob_desc_memory_limit": "256 megabytes",
+        "exec_outcome": "PASSED",
+        "prob_desc_output_spec": "Print a single number \u2014 the minimum integer number of seconds that Valeric and Valerko must wait to watch football without pauses.",
+        "src_uid": "7dd098ec3ad5b29ad681787173eba341",
+        "prob_desc_input_from": "standard input",
+        "lang": "Python 3",
+        "prob_desc_sample_outputs": [
+            "3",
+            "5",
+            "1"
+        ],
+        "file_name": "d7021504500d5ca7c2b02df8100a574d159e6e67e20ec8071b75800b1267370a",
+        "prob_desc_description": "Valeric and Valerko missed the last Euro football game, so they decided to watch the game's key moments on the Net. They want to start watching as soon as possible but the connection speed is too low. If they turn on the video right now, it will \"hang up\" as the size of data to watch per second will be more than the size of downloaded data per second.The guys want to watch the whole video without any pauses, so they have to wait some integer number of seconds for a part of the video to download. After this number of seconds passes, they can start watching. Waiting for the whole video to download isn't necessary as the video can download after the guys started to watch.Let's suppose that video's length is c seconds and Valeric and Valerko wait t seconds before the watching. Then for any moment of time t0, t\u2009\u2264\u2009t0\u2009\u2264\u2009c\u2009+\u2009t, the following condition must fulfill: the size of data received in t0 seconds is not less than the size of data needed to watch t0\u2009-\u2009t seconds of the video.Of course, the guys want to wait as little as possible, so your task is to find the minimum integer number of seconds to wait before turning the video on. The guys must watch the video without pauses.",
+        "prob_desc_created_at": "1339342200",
+        "difficulty": 1000.0,
+        "hidden_unit_tests": "[{\"input\": \"4 1 1\\r\\n\", \"output\": [\"3\"]}, {\"input\": \"10 3 2\\r\\n\", \"output\": [\"5\"]}, {\"input\": \"13 12 1\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"2 1 3\\r\\n\", \"output\": [\"3\"]}, {\"input\": \"6 2 4\\r\\n\", \"output\": [\"8\"]}, {\"input\": \"5 2 1\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"2 1 1\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"2 1 4\\r\\n\", \"output\": [\"4\"]}, {\"input\": \"5 1 5\\r\\n\", \"output\": [\"20\"]}, {\"input\": \"2 1 2\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"60 16 1\\r\\n\", \"output\": [\"3\"]}, {\"input\": \"64 12 8\\r\\n\", \"output\": [\"35\"]}, {\"input\": \"66 38 4\\r\\n\", \"output\": [\"3\"]}, {\"input\": \"70 32 1\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"24 12 12\\r\\n\", \"output\": [\"12\"]}, {\"input\": \"24 19 9\\r\\n\", \"output\": [\"3\"]}, {\"input\": \"244 87 4\\r\\n\", \"output\": [\"8\"]}, {\"input\": \"305 203 421\\r\\n\", \"output\": [\"212\"]}, {\"input\": \"888 777 1\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"888 777 1000\\r\\n\", \"output\": [\"143\"]}, {\"input\": \"888 777 888\\r\\n\", \"output\": [\"127\"]}, {\"input\": \"5 4 10\\r\\n\", \"output\": [\"3\"]}, {\"input\": \"1000 1 1\\r\\n\", \"output\": [\"999\"]}, {\"input\": \"1000 1 1000\\r\\n\", \"output\": [\"999000\"]}, {\"input\": \"1000 999 1\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"1000 999 1000\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"945 812 917\\r\\n\", \"output\": [\"151\"]}, {\"input\": \"993 992 991\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"17 7 10\\r\\n\", \"output\": [\"15\"]}, {\"input\": \"17 10 7\\r\\n\", \"output\": [\"5\"]}, {\"input\": \"500 300 300\\r\\n\", \"output\": [\"200\"]}, {\"input\": \"196 169 144\\r\\n\", \"output\": [\"24\"]}, {\"input\": \"7 3 200\\r\\n\", \"output\": [\"267\"]}, {\"input\": \"9 3 300\\r\\n\", \"output\": [\"600\"]}, {\"input\": \"561 31 917\\r\\n\", \"output\": [\"15678\"]}, {\"input\": \"100 10 1\\r\\n\", \"output\": [\"9\"]}, {\"input\": \"1000 100 10\\r\\n\", \"output\": [\"90\"]}, {\"input\": \"18 14 10\\r\\n\", \"output\": [\"3\"]}, {\"input\": \"93 74 831\\r\\n\", \"output\": [\"214\"]}, {\"input\": \"960 935 994\\r\\n\", \"output\": [\"27\"]}, {\"input\": \"894 1 999\\r\\n\", \"output\": [\"892107\"]}, {\"input\": \"767 2 514\\r\\n\", \"output\": [\"196605\"]}, {\"input\": \"765 123 45\\r\\n\", \"output\": [\"235\"]}, {\"input\": \"1000 1 1000\\r\\n\", \"output\": [\"999000\"]}, {\"input\": \"765 123 899\\r\\n\", \"output\": [\"4693\"]}, {\"input\": \"759 10 258\\r\\n\", \"output\": [\"19325\"]}, {\"input\": \"100 1 10\\r\\n\", \"output\": [\"990\"]}, {\"input\": \"99 8 99\\r\\n\", \"output\": [\"1127\"]}, {\"input\": \"27 26 1\\r\\n\", \"output\": [\"1\"]}]",
+        "source_lang": "Python 3",
+        "target_lang": "C"
+    }
+}

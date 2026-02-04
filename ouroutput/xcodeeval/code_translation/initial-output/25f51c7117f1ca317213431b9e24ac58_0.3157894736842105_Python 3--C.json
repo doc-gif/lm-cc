@@ -1,0 +1,87 @@
+{
+    "oai_response": {
+        "prompt": "Here is code in Python 3 programming lanaguge. Translate the following code from Python 3 to C programming lanaguge. Do not output any extra description or tokens other than the translated code. \n\ndef c(M,x,y):\n p=[-2,+2]\n q=[-1,+1]\n l=[M[x+p[i]][y+q[j]]!=0 for i in range(len(p)) for j in range(len(q)) if(0<=x+p[i]<8 and 0<=y+q[j]<8)]\n l+=[M[x+q[i]][y+p[j]]!=0 for i in range(len(q)) for j in range(len(p)) if(0<=x+q[i]<8 and 0<=y+p[j]<8)]\n return 1 in l \nmp=['a','b','c','d','e','f','g','h']\ni=input\nn=i()\nm=i()\nM=[[0 for x in range(8)]for y in range(8)]\nl=[[mp.index(n[0]),int(n[1])-1],[mp.index(m[0]),int(m[1])-1]]\nM[l[0][0]][l[0][1]]=2\nM[l[1][0]][l[1][1]]=1\nr=0\nfor x in range(8):\n for y in range(8):\n  if(0==M[x][y]):\n   if(x==l[0][0]or y==l[0][1]):continue\n   if(c(M,x,y)==False):r+=1\nprint(r)\n||END-of-SRC||",
+        "response": {
+            "id": "multi-call-as-8dq824gr7d",
+            "model": "deepseek-v3",
+            "created": 1767069146,
+            "choices": [
+                {
+                    "index": 0,
+                    "message": {
+                        "role": "assistant",
+                        "content": "Here's the translated code in C:\n\n```c\n#include <stdio.h>\n#include <stdbool.h>\n\nbool c(int M[8][8], int x, int y) {\n    int p[] = {-2, +2};\n    int q[] = {-1, +1};\n    for (int i = 0; i < 2; i++) {\n        for (int j = 0; j < 2; j++) {\n            if (0 <= x + p[i] && x + p[i] < 8 && 0 <= y + q[j] && y + q[j] < 8) {\n                if (M[x + p[i]][y + q[j]] != 0) return true;\n            }\n        }\n    }\n    for (int i = 0; i < 2; i++) {\n        for (int j = 0; j < 2; j++) {\n            if (0 <= x + q[i] && x + q[i] < 8 && 0 <= y + p[j] && y + p[j] < 8) {\n                if (M[x + q[i]][y + p[j]] != 0) return true;\n            }\n        }\n    }\n    return false;\n}\n\nint main() {\n    char mp[] = {'a','b','c','d','e','f','g','h'};\n    char n[3], m[3];\n    scanf(\"%s %s\", n, m);\n    int M[8][8] = {0};\n    int l[2][2];\n    for (int i = 0; i < 8; i++) {\n        if (mp[i] == n[0]) l[0][0] = i;\n        if (mp[i] == m[0]) l[1][0] = i;\n    }\n    l[0][1] = n[1] - '0' - 1;\n    l[1][1] = m[1] - '0' - 1;\n    M[l[0][0]][l[0][1]] = 2;\n    M[l[1][0]][l[1][1]] = 1;\n    int r = 0;\n    for (int x = 0; x < 8; x++) {\n        for (int y = 0; y < 8; y++) {\n            if (M[x][y] == 0) {\n                if (x == l[0][0] || y == l[0][1]) continue;\n                if (!c(M, x, y)) r++;\n            }\n        }\n    }\n    printf(\"%d\\n\", r);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 1,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <stdbool.h>\n\nbool c(int M[8][8], int x, int y) {\n    int p[] = {-2, +2};\n    int q[] = {-1, +1};\n    for (int i = 0; i < 2; i++) {\n        for (int j = 0; j < 2; j++) {\n            int nx = x + p[i];\n            int ny = y + q[j];\n            if (nx >= 0 && nx < 8 && ny >= 0 && ny < 8) {\n                if (M[nx][ny] != 0) {\n                    return true;\n                }\n            }\n        }\n    }\n    for (int i = 0; i < 2; i++) {\n        for (int j = 0; j < 2; j++) {\n            int nx = x + q[i];\n            int ny = y + p[j];\n            if (nx >= 0 && nx < 8 && ny >= 0 && ny < 8) {\n                if (M[nx][ny] != 0) {\n                    return true;\n                }\n            }\n        }\n    }\n    return false;\n}\n\nint main() {\n    char mp[] = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'};\n    char n[3], m[3];\n    scanf(\"%s\", n);\n    scanf(\"%s\", m);\n    int M[8][8] = {0};\n    int l[2][2];\n    for (int i = 0; i < 8; i++) {\n        if (mp[i] == n[0]) {\n            l[0][0] = i;\n            break;\n        }\n    }\n    l[0][1] = n[1] - '0' - 1;\n    for (int i = 0; i < 8; i++) {\n        if (mp[i] == m[0]) {\n            l[1][0] = i;\n            break;\n        }\n    }\n    l[1][1] = m[1] - '0' - 1;\n    M[l[0][0]][l[0][1]] = 2;\n    M[l[1][0]][l[1][1]] = 1;\n    int r = 0;\n    for (int x = 0; x < 8; x++) {\n        for (int y = 0; y < 8; y++) {\n            if (M[x][y] == 0) {\n                if (x == l[0][0] || y == l[0][1]) continue;\n                if (!c(M, x, y)) r++;\n            }\n        }\n    }\n    printf(\"%d\\n\", r);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 2,
+                    "message": {
+                        "role": "assistant",
+                        "content": "Here's the translated code in C:\n\n```c\n#include <stdio.h>\n#include <stdbool.h>\n\nbool c(int M[8][8], int x, int y) {\n    int p[] = {-2, 2};\n    int q[] = {-1, 1};\n    for (int i = 0; i < 2; i++) {\n        for (int j = 0; j < 2; j++) {\n            if (0 <= x + p[i] && x + p[i] < 8 && 0 <= y + q[j] && y + q[j] < 8) {\n                if (M[x + p[i]][y + q[j]] != 0) return true;\n            }\n        }\n    }\n    for (int i = 0; i < 2; i++) {\n        for (int j = 0; j < 2; j++) {\n            if (0 <= x + q[i] && x + q[i] < 8 && 0 <= y + p[j] && y + p[j] < 8) {\n                if (M[x + q[i]][y + p[j]] != 0) return true;\n            }\n        }\n    }\n    return false;\n}\n\nint main() {\n    char mp[] = {'a','b','c','d','e','f','g','h'};\n    char n[3], m[3];\n    scanf(\"%s %s\", n, m);\n    int M[8][8] = {0};\n    int l[2][2];\n    for (int i = 0; i < 8; i++) {\n        if (mp[i] == n[0]) l[0][0] = i;\n        if (mp[i] == m[0]) l[1][0] = i;\n    }\n    l[0][1] = n[1] - '0' - 1;\n    l[1][1] = m[1] - '0' - 1;\n    M[l[0][0]][l[0][1]] = 2;\n    M[l[1][0]][l[1][1]] = 1;\n    int r = 0;\n    for (int x = 0; x < 8; x++) {\n        for (int y = 0; y < 8; y++) {\n            if (M[x][y] == 0) {\n                if (x == l[0][0] || y == l[0][1]) continue;\n                if (!c(M, x, y)) r++;\n            }\n        }\n    }\n    printf(\"%d\\n\", r);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 3,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <stdbool.h>\n\nbool c(int M[8][8], int x, int y) {\n    int p[] = {-2, +2};\n    int q[] = {-1, +1};\n    for (int i = 0; i < 2; i++) {\n        for (int j = 0; j < 2; j++) {\n            int nx = x + p[i];\n            int ny = y + q[j];\n            if (nx >= 0 && nx < 8 && ny >= 0 && ny < 8) {\n                if (M[nx][ny] != 0) {\n                    return true;\n                }\n            }\n        }\n    }\n    for (int i = 0; i < 2; i++) {\n        for (int j = 0; j < 2; j++) {\n            int nx = x + q[i];\n            int ny = y + p[j];\n            if (nx >= 0 && nx < 8 && ny >= 0 && ny < 8) {\n                if (M[nx][ny] != 0) {\n                    return true;\n                }\n            }\n        }\n    }\n    return false;\n}\n\nint main() {\n    char mp[] = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'};\n    char n[3], m[3];\n    scanf(\"%s\", n);\n    scanf(\"%s\", m);\n    int M[8][8] = {0};\n    int l[2][2];\n    for (int i = 0; i < 8; i++) {\n        if (mp[i] == n[0]) {\n            l[0][0] = i;\n            break;\n        }\n    }\n    l[0][1] = n[1] - '1';\n    for (int i = 0; i < 8; i++) {\n        if (mp[i] == m[0]) {\n            l[1][0] = i;\n            break;\n        }\n    }\n    l[1][1] = m[1] - '1';\n    M[l[0][0]][l[0][1]] = 2;\n    M[l[1][0]][l[1][1]] = 1;\n    int r = 0;\n    for (int x = 0; x < 8; x++) {\n        for (int y = 0; y < 8; y++) {\n            if (M[x][y] == 0) {\n                if (x == l[0][0] || y == l[0][1]) continue;\n                if (!c(M, x, y)) r++;\n            }\n        }\n    }\n    printf(\"%d\\n\", r);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 4,
+                    "message": {
+                        "role": "assistant",
+                        "content": "Here's the translated code in C:\n\n```c\n#include <stdio.h>\n#include <stdbool.h>\n\nbool c(int M[8][8], int x, int y) {\n    int p[] = {-2, +2};\n    int q[] = {-1, +1};\n    for (int i = 0; i < 2; i++) {\n        for (int j = 0; j < 2; j++) {\n            if (0 <= x + p[i] && x + p[i] < 8 && 0 <= y + q[j] && y + q[j] < 8) {\n                if (M[x + p[i]][y + q[j]] != 0) return true;\n            }\n        }\n    }\n    for (int i = 0; i < 2; i++) {\n        for (int j = 0; j < 2; j++) {\n            if (0 <= x + q[i] && x + q[i] < 8 && 0 <= y + p[j] && y + p[j] < 8) {\n                if (M[x + q[i]][y + p[j]] != 0) return true;\n            }\n        }\n    }\n    return false;\n}\n\nint main() {\n    char mp[] = {'a','b','c','d','e','f','g','h'};\n    char n[3], m[3];\n    scanf(\"%s %s\", n, m);\n    int M[8][8] = {0};\n    int l[2][2];\n    for (int i = 0; i < 8; i++) {\n        if (mp[i] == n[0]) l[0][0] = i;\n        if (mp[i] == m[0]) l[1][0] = i;\n    }\n    l[0][1] = n[1] - '0' - 1;\n    l[1][1] = m[1] - '0' - 1;\n    M[l[0][0]][l[0][1]] = 2;\n    M[l[1][0]][l[1][1]] = 1;\n    int r = 0;\n    for (int x = 0; x < 8; x++) {\n        for (int y = 0; y < 8; y++) {\n            if (M[x][y] == 0) {\n                if (x == l[0][0] || y == l[0][1]) continue;\n                if (!c(M, x, y)) r++;\n            }\n        }\n    }\n    printf(\"%d\\n\", r);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                }
+            ],
+            "usage": {
+                "prompt_tokens": 1720,
+                "completion_tokens": 2960,
+                "total_tokens": 4680
+            }
+        }
+    },
+    "source_data": {
+        "code_uid": "25f51c7117f1ca317213431b9e24ac58",
+        "prob_desc_output_to": "standard output",
+        "prob_desc_notes": null,
+        "lang_cluster": "Python",
+        "prob_desc_time_limit": "2 seconds",
+        "prob_desc_input_spec": "The first input line contains the description of the rook's position on the board. This description is a line which is 2 in length. Its first symbol is a lower-case Latin letter from a to h, and its second symbol is a number from 1 to 8. The second line contains the description of the knight's position in a similar way. It is guaranteed that their positions do not coincide.",
+        "source_code": "def c(M,x,y):\n p=[-2,+2]\n q=[-1,+1]\n l=[M[x+p[i]][y+q[j]]!=0 for i in range(len(p)) for j in range(len(q)) if(0<=x+p[i]<8 and 0<=y+q[j]<8)]\n l+=[M[x+q[i]][y+p[j]]!=0 for i in range(len(q)) for j in range(len(p)) if(0<=x+q[i]<8 and 0<=y+p[j]<8)]\n return 1 in l \nmp=['a','b','c','d','e','f','g','h']\ni=input\nn=i()\nm=i()\nM=[[0 for x in range(8)]for y in range(8)]\nl=[[mp.index(n[0]),int(n[1])-1],[mp.index(m[0]),int(m[1])-1]]\nM[l[0][0]][l[0][1]]=2\nM[l[1][0]][l[1][1]]=1\nr=0\nfor x in range(8):\n for y in range(8):\n  if(0==M[x][y]):\n   if(x==l[0][0]or y==l[0][1]):continue\n   if(c(M,x,y)==False):r+=1\nprint(r)\n",
+        "prob_desc_sample_inputs": [
+            "a1\nb2",
+            "a8\nd4"
+        ],
+        "prob_desc_memory_limit": "256 megabytes",
+        "exec_outcome": "PASSED",
+        "prob_desc_output_spec": "Print a single number which is the required number of ways.",
+        "src_uid": "073023c6b72ce923df2afd6130719cfc",
+        "prob_desc_input_from": "standard input",
+        "lang": "Python 3",
+        "prob_desc_sample_outputs": [
+            "44",
+            "38"
+        ],
+        "file_name": "d7021504500d5ca7c2b02df8100a574d159e6e67e20ec8071b75800b1267370a",
+        "prob_desc_description": "Two chess pieces, a rook and a knight, stand on a standard chessboard 8\u2009\u00d7\u20098 in size. The positions in which they are situated are known. It is guaranteed that none of them beats the other one.Your task is to find the number of ways to place another knight on the board so that none of the three pieces on the board beat another one. A new piece can only be placed on an empty square.",
+        "prob_desc_created_at": "1288440000",
+        "difficulty": 1200.0,
+        "hidden_unit_tests": "[{\"input\": \"a1\\r\\nb2\\r\\n\", \"output\": [\"44\"]}, {\"input\": \"a8\\r\\nd4\\r\\n\", \"output\": [\"38\"]}, {\"input\": \"a8\\r\\nf1\\r\\n\", \"output\": [\"42\"]}, {\"input\": \"f8\\r\\nh3\\r\\n\", \"output\": [\"42\"]}, {\"input\": \"g8\\r\\nb7\\r\\n\", \"output\": [\"42\"]}, {\"input\": \"h1\\r\\ng5\\r\\n\", \"output\": [\"42\"]}, {\"input\": \"c6\\r\\nb5\\r\\n\", \"output\": [\"39\"]}, {\"input\": \"c1\\r\\nd2\\r\\n\", \"output\": [\"42\"]}, {\"input\": \"g3\\r\\nh4\\r\\n\", \"output\": [\"42\"]}, {\"input\": \"e3\\r\\ng5\\r\\n\", \"output\": [\"38\"]}, {\"input\": \"f8\\r\\na3\\r\\n\", \"output\": [\"40\"]}, {\"input\": \"a2\\r\\nh8\\r\\n\", \"output\": [\"43\"]}, {\"input\": \"a3\\r\\nc5\\r\\n\", \"output\": [\"40\"]}, {\"input\": \"g1\\r\\ne6\\r\\n\", \"output\": [\"39\"]}, {\"input\": \"e1\\r\\na7\\r\\n\", \"output\": [\"41\"]}, {\"input\": \"b5\\r\\nc1\\r\\n\", \"output\": [\"39\"]}, {\"input\": \"b2\\r\\ne1\\r\\n\", \"output\": [\"43\"]}, {\"input\": \"h8\\r\\ng2\\r\\n\", \"output\": [\"43\"]}, {\"input\": \"a3\\r\\nd6\\r\\n\", \"output\": [\"38\"]}, {\"input\": \"g6\\r\\nb7\\r\\n\", \"output\": [\"39\"]}, {\"input\": \"c8\\r\\ne6\\r\\n\", \"output\": [\"40\"]}, {\"input\": \"e6\\r\\nf2\\r\\n\", \"output\": [\"35\"]}, {\"input\": \"b6\\r\\nd8\\r\\n\", \"output\": [\"41\"]}, {\"input\": \"a4\\r\\nd1\\r\\n\", \"output\": [\"42\"]}, {\"input\": \"b5\\r\\nh8\\r\\n\", \"output\": [\"40\"]}, {\"input\": \"h6\\r\\na1\\r\\n\", \"output\": [\"42\"]}, {\"input\": \"c3\\r\\na8\\r\\n\", \"output\": [\"39\"]}, {\"input\": \"g5\\r\\nd2\\r\\n\", \"output\": [\"38\"]}, {\"input\": \"b6\\r\\ng7\\r\\n\", \"output\": [\"39\"]}, {\"input\": \"h6\\r\\na8\\r\\n\", \"output\": [\"43\"]}, {\"input\": \"a8\\r\\nb7\\r\\n\", \"output\": [\"44\"]}, {\"input\": \"c8\\r\\nb2\\r\\n\", \"output\": [\"41\"]}, {\"input\": \"e4\\r\\nc1\\r\\n\", \"output\": [\"37\"]}, {\"input\": \"f1\\r\\nc3\\r\\n\", \"output\": [\"38\"]}, {\"input\": \"a3\\r\\nc8\\r\\n\", \"output\": [\"41\"]}, {\"input\": \"e8\\r\\nb6\\r\\n\", \"output\": [\"40\"]}, {\"input\": \"a1\\r\\nb7\\r\\n\", \"output\": [\"43\"]}, {\"input\": \"g2\\r\\nb7\\r\\n\", \"output\": [\"40\"]}, {\"input\": \"e1\\r\\nd6\\r\\n\", \"output\": [\"38\"]}, {\"input\": \"e5\\r\\nh6\\r\\n\", \"output\": [\"39\"]}]",
+        "source_lang": "Python 3",
+        "target_lang": "C"
+    }
+}

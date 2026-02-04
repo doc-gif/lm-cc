@@ -1,0 +1,87 @@
+{
+    "oai_response": {
+        "prompt": "Here is code in Python 3 programming lanaguge. Translate the following code from Python 3 to C programming lanaguge. Do not output any extra description or tokens other than the translated code. \n\ns = input()\nn = int(input())\n\nl, r = [-1e9] * 101, [-1e9] * 101\nl[0] = r[0] = 0\n\nfor q in s:\n    for j in range(n, -1, -1):\n        x = max(r[j], l[j - 1] + 1) if q == 'T' else max(l[j] + 1, r[j - 1])\n        y = max(l[j], r[j - 1] + 1) if q == 'T' else max(r[j] - 1, l[j - 1])\n        l[j], r[j] = x, y\n\nprint(max(l[n % 2:n + 1:2] + r[n % 2:n + 1:2]))\n||END-of-SRC||",
+        "response": {
+            "id": "multi-call-as-4vansmj20v",
+            "model": "deepseek-v3",
+            "created": 1767069097,
+            "choices": [
+                {
+                    "index": 0,
+                    "message": {
+                        "role": "assistant",
+                        "content": "Here's the translated code in C:\n\n```c\n#include <stdio.h>\n#include <string.h>\n#include <limits.h>\n\n#define MAX_N 101\n\nint main() {\n    char s[1001];\n    int n;\n    scanf(\"%s\", s);\n    scanf(\"%d\", &n);\n    \n    int l[MAX_N], r[MAX_N];\n    for (int i = 0; i < MAX_N; i++) {\n        l[i] = r[i] = -1e9;\n    }\n    l[0] = r[0] = 0;\n    \n    for (int i = 0; s[i] != '\\0'; i++) {\n        char q = s[i];\n        for (int j = n; j >= 0; j--) {\n            int x = (q == 'T') ? (r[j] > l[j - 1] + 1 ? r[j] : l[j - 1] + 1) : (l[j] + 1 > r[j - 1] ? l[j] + 1 : r[j - 1]);\n            int y = (q == 'T') ? (l[j] > r[j - 1] + 1 ? l[j] : r[j - 1] + 1) : (r[j] - 1 > l[j - 1] ? r[j] - 1 : l[j - 1]);\n            l[j] = x;\n            r[j] = y;\n        }\n    }\n    \n    int max_val = INT_MIN;\n    for (int i = n % 2; i <= n; i += 2) {\n        if (l[i] > max_val) max_val = l[i];\n        if (r[i] > max_val) max_val = r[i];\n    }\n    printf(\"%d\\n\", max_val);\n    \n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 1,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <string.h>\n#include <limits.h>\n\nint main() {\n    char s[1001];\n    int n;\n    scanf(\"%s\", s);\n    scanf(\"%d\", &n);\n    \n    int l[101], r[101];\n    for (int i = 0; i < 101; i++) {\n        l[i] = r[i] = INT_MIN / 2;\n    }\n    l[0] = r[0] = 0;\n    \n    for (int i = 0; s[i] != '\\0'; i++) {\n        char q = s[i];\n        for (int j = n; j >= 0; j--) {\n            int x = (q == 'T') ? (r[j] > l[j - 1] + 1 ? r[j] : l[j - 1] + 1) : (l[j] + 1 > r[j - 1] ? l[j] + 1 : r[j - 1]);\n            int y = (q == 'T') ? (l[j] > r[j - 1] + 1 ? l[j] : r[j - 1] + 1) : (r[j] - 1 > l[j - 1] ? r[j] - 1 : l[j - 1]);\n            l[j] = x;\n            r[j] = y;\n        }\n    }\n    \n    int max_val = INT_MIN;\n    for (int i = n % 2; i <= n; i += 2) {\n        if (l[i] > max_val) max_val = l[i];\n        if (r[i] > max_val) max_val = r[i];\n    }\n    printf(\"%d\\n\", max_val);\n    \n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 2,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <string.h>\n#include <limits.h>\n\nint main() {\n    char s[1000];\n    int n;\n    scanf(\"%s\", s);\n    scanf(\"%d\", &n);\n    \n    int l[101], r[101];\n    for (int i = 0; i < 101; i++) {\n        l[i] = r[i] = INT_MIN / 2;\n    }\n    l[0] = r[0] = 0;\n    \n    for (int i = 0; s[i] != '\\0'; i++) {\n        char q = s[i];\n        for (int j = n; j >= 0; j--) {\n            int x = (q == 'T') ? (r[j] > l[j - 1] + 1 ? r[j] : l[j - 1] + 1) : (l[j] + 1 > r[j - 1] ? l[j] + 1 : r[j - 1]);\n            int y = (q == 'T') ? (l[j] > r[j - 1] + 1 ? l[j] : r[j - 1] + 1) : (r[j] - 1 > l[j - 1] ? r[j] - 1 : l[j - 1]);\n            l[j] = x;\n            r[j] = y;\n        }\n    }\n    \n    int max_val = INT_MIN;\n    for (int i = n % 2; i <= n; i += 2) {\n        if (l[i] > max_val) max_val = l[i];\n        if (r[i] > max_val) max_val = r[i];\n    }\n    printf(\"%d\\n\", max_val);\n    \n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 3,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <string.h>\n#include <limits.h>\n\nint main() {\n    char s[1000];\n    int n;\n    scanf(\"%s\", s);\n    scanf(\"%d\", &n);\n    \n    int l[101], r[101];\n    for (int i = 0; i < 101; i++) {\n        l[i] = r[i] = INT_MIN / 2;\n    }\n    l[0] = r[0] = 0;\n    \n    for (int i = 0; s[i] != '\\0'; i++) {\n        char q = s[i];\n        for (int j = n; j >= 0; j--) {\n            int x = (q == 'T') ? (r[j] > l[j - 1] + 1 ? r[j] : l[j - 1] + 1) : (l[j] + 1 > r[j - 1] ? l[j] + 1 : r[j - 1]);\n            int y = (q == 'T') ? (l[j] > r[j - 1] + 1 ? l[j] : r[j - 1] + 1) : (r[j] - 1 > l[j - 1] ? r[j] - 1 : l[j - 1]);\n            l[j] = x;\n            r[j] = y;\n        }\n    }\n    \n    int max_val = INT_MIN;\n    for (int i = n % 2; i <= n; i += 2) {\n        if (l[i] > max_val) max_val = l[i];\n        if (r[i] > max_val) max_val = r[i];\n    }\n    printf(\"%d\\n\", max_val);\n    \n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 4,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <string.h>\n#include <limits.h>\n\nint main() {\n    char s[1000];\n    int n;\n    scanf(\"%s\", s);\n    scanf(\"%d\", &n);\n    \n    int l[101], r[101];\n    for (int i = 0; i < 101; i++) {\n        l[i] = r[i] = INT_MIN / 2;\n    }\n    l[0] = r[0] = 0;\n    \n    for (int i = 0; s[i] != '\\0'; i++) {\n        char q = s[i];\n        for (int j = n; j >= 0; j--) {\n            int x = (q == 'T') ? (r[j] > l[j - 1] + 1 ? r[j] : l[j - 1] + 1) : (l[j] + 1 > r[j - 1] ? l[j] + 1 : r[j - 1]);\n            int y = (q == 'T') ? (l[j] > r[j - 1] + 1 ? l[j] : r[j - 1] + 1) : (r[j] - 1 > l[j - 1] ? r[j] - 1 : l[j - 1]);\n            l[j] = x;\n            r[j] = y;\n        }\n    }\n    \n    int max_val = INT_MIN;\n    for (int i = n % 2; i <= n; i += 2) {\n        if (l[i] > max_val) max_val = l[i];\n        if (r[i] > max_val) max_val = r[i];\n    }\n    printf(\"%d\\n\", max_val);\n    \n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                }
+            ],
+            "usage": {
+                "prompt_tokens": 1140,
+                "completion_tokens": 1953,
+                "total_tokens": 3093
+            }
+        }
+    },
+    "source_data": {
+        "code_uid": "1e41831839960ab90b13e2a5b45fe063",
+        "prob_desc_output_to": "standard output",
+        "prob_desc_notes": "NoteIn the first example the best option is to change the second command (\"T\") to \"F\" \u2014 this way the turtle will cover a distance of 2 units.In the second example you have to change two commands. One of the ways to cover maximal distance of 6 units is to change the fourth command and first or last one.",
+        "lang_cluster": "Python",
+        "prob_desc_time_limit": "2 seconds",
+        "prob_desc_input_spec": "The first line of input contains a string commands \u2014 the original list of commands. The string commands contains between 1 and 100 characters, inclusive, and contains only characters \"T\" and \"F\". The second line contains an integer n (1\u2009\u2264\u2009n\u2009\u2264\u200950) \u2014 the number of commands you have to change in the list.",
+        "source_code": "s = input()\nn = int(input())\n\nl, r = [-1e9] * 101, [-1e9] * 101\nl[0] = r[0] = 0\n\nfor q in s:\n    for j in range(n, -1, -1):\n        x = max(r[j], l[j - 1] + 1) if q == 'T' else max(l[j] + 1, r[j - 1])\n        y = max(l[j], r[j - 1] + 1) if q == 'T' else max(r[j] - 1, l[j - 1])\n        l[j], r[j] = x, y\n\nprint(max(l[n % 2:n + 1:2] + r[n % 2:n + 1:2]))\n",
+        "prob_desc_sample_inputs": [
+            "FT\n1",
+            "FFFTFFF\n2"
+        ],
+        "prob_desc_memory_limit": "256 megabytes",
+        "exec_outcome": "PASSED",
+        "prob_desc_output_spec": "Output the maximum distance from the starting point to the ending point of the turtle's path. The ending point of the turtle's path is turtle's coordinate after it follows all the commands of the modified list.",
+        "src_uid": "4a54971eb22e62b1d9e6b72f05ae361d",
+        "prob_desc_input_from": "standard input",
+        "lang": "Python 3",
+        "prob_desc_sample_outputs": [
+            "2",
+            "6"
+        ],
+        "file_name": "d7021504500d5ca7c2b02df8100a574d159e6e67e20ec8071b75800b1267370a",
+        "prob_desc_description": "A lot of people associate Logo programming language with turtle graphics. In this case the turtle moves along the straight line and accepts commands \"T\" (\"turn around\") and \"F\" (\"move 1 unit forward\").You are given a list of commands that will be given to the turtle. You have to change exactly n commands from the list (one command can be changed several times). How far from the starting point can the turtle move after it follows all the commands of the modified list?",
+        "prob_desc_created_at": "1322924400",
+        "difficulty": 1800.0,
+        "hidden_unit_tests": "[{\"input\": \"FT\\r\\n1\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"FFFTFFF\\r\\n2\\r\\n\", \"output\": [\"6\"]}, {\"input\": \"F\\r\\n1\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF\\r\\n50\\r\\n\", \"output\": [\"100\"]}, {\"input\": \"FTFTFTFFFFTFTFTTTTTTFFTTTTFFTFFFTFTFTFFTFTFTFFFTTTFTTFTTTTTFFFFTTT\\r\\n12\\r\\n\", \"output\": [\"41\"]}, {\"input\": \"TTFFTFTTFTTTFFFTFTFFTFFTTFFTFTFTFTFFTTTFTFFTFFTTTTFTTTFFT\\r\\n46\\r\\n\", \"output\": [\"57\"]}, {\"input\": \"TTFFFFFFFTTTTFTTFTFFTTFFFTFTTTFFFFTFFFTFTTTFTTF\\r\\n24\\r\\n\", \"output\": [\"47\"]}, {\"input\": \"FFTTFTTFFFTFFFFTFTTFFTTFTFFFTFFTFTFTTT\\r\\n46\\r\\n\", \"output\": [\"37\"]}, {\"input\": \"FFTFTTFTFTFTFFTTFTFFTFTFTTTT\\r\\n1\\r\\n\", \"output\": [\"6\"]}, {\"input\": \"TFFTTFTFFTFFTTTTFTF\\r\\n19\\r\\n\", \"output\": [\"18\"]}, {\"input\": \"TTFFFFTTF\\r\\n22\\r\\n\", \"output\": [\"9\"]}, {\"input\": \"FTFTFFFTTTFFTTTFTTFTTTFTTTTFTTFFFTFTFTFTFFFTFTFFTTTFFTFTFTFTTFTTTTFFTTTTTFFFFTFTTFFTFFFTTTFFTFF\\r\\n18\\r\\n\", \"output\": [\"61\"]}, {\"input\": \"FTTFTTTFTTFFFTFFTTFTFTTTFFFTFTFTFFTTTFFFFFFTFTTFFTFFFFTFTTFFFTFFTTTTTFFTFTTFFFTFFTFFTF\\r\\n16\\r\\n\", \"output\": [\"61\"]}, {\"input\": \"TFFTFTTTFFTFTFTTTFFTTFFTFTFFTFFFFTTTTTFTFTFTTFFTTFTFFTTFTFFTTTTFFTFTTTFTTTTFFFFTFFTFFTFFFFTTTT\\r\\n2\\r\\n\", \"output\": [\"19\"]}, {\"input\": \"FTTFFTFFFFTTFFFTFFTTFFTTFFTTFFFTTFFTFTFTTFTFFTTTFTTFTTFTFFFFTFTFTFFFFFTTFTFFTTTFFFTF\\r\\n50\\r\\n\", \"output\": [\"83\"]}, {\"input\": \"FTTTTTFTTTTFTFFTFFFTTTTTTTTFTTFFTTTTFFTFTFTFFTFTFTTFTFTFTFFTFTFTFFTFFTTTTTT\\r\\n4\\r\\n\", \"output\": [\"20\"]}, {\"input\": \"TTTFTFTTTFTTFFTFFFFTTTFFFFTTFTFTFFFTTTTFFTTTFFTFTFTFFTTTFFTTFFTFT\\r\\n27\\r\\n\", \"output\": [\"58\"]}, {\"input\": \"TFFTFFFFTFFFTFFFFFTFFFFFFTFFTTTTFFTTFTTTFFTTFFFFTTFFTFFF\\r\\n42\\r\\n\", \"output\": [\"56\"]}, {\"input\": \"FFFFTTTTTTFTFFTFFFTFTFTFTFFTFFTFFTFTTFTTTFFFTF\\r\\n48\\r\\n\", \"output\": [\"45\"]}, {\"input\": \"FFFTTTFTTFFTTFFFTFFFFFTTFTFFTFTTTFFT\\r\\n48\\r\\n\", \"output\": [\"36\"]}, {\"input\": \"TTTTFFTFTFFFFTTFTFTFTTTTFFF\\r\\n43\\r\\n\", \"output\": [\"26\"]}, {\"input\": \"TTTFFFFTTTFTFTFFT\\r\\n50\\r\\n\", \"output\": [\"16\"]}, {\"input\": \"FTFTTFTF\\r\\n38\\r\\n\", \"output\": [\"8\"]}, {\"input\": \"TFTFFTFTTFFTTTTTTFTFTTFFTTTTTFTFTFTTFFTTFTTTFT\\r\\n11\\r\\n\", \"output\": [\"28\"]}, {\"input\": \"FFTTTFTFTFFFFTTTFFTFTFTFTFFFFFTTFTFT\\r\\n10\\r\\n\", \"output\": [\"30\"]}, {\"input\": \"TFFFTFFFTTFTTTFTFFFFFFTTFTF\\r\\n10\\r\\n\", \"output\": [\"26\"]}, {\"input\": \"TTFFFTTTTFFFFTTTF\\r\\n34\\r\\n\", \"output\": [\"16\"]}, {\"input\": \"FTTTFTFF\\r\\n8\\r\\n\", \"output\": [\"8\"]}, {\"input\": \"FTTFTFFTFTTTFTTFTFFTTFFFFFTFFFFTTFTFFFFFFTFFTTTFTTFTTTFFFTFTFTFFFFTFFTFTTTTTTTTFTTTTTTFFTTFTTT\\r\\n35\\r\\n\", \"output\": [\"80\"]}, {\"input\": \"TFTTFFTTFFTFTTFFTFFTTFTFTTTTTFFFFTFFTTFTTTFFTFTTFFFFTFTTTTFFFFTTTFTFTFTTFTFTFTFTTFTF\\r\\n26\\r\\n\", \"output\": [\"66\"]}, {\"input\": \"TFFFFFFFFFTTFTTFTFTFFFTFTFTTFTFTFFTFTTFTTFTTFFFTTFTFFFFFTFTFFTFTFFTTTTFTTFT\\r\\n13\\r\\n\", \"output\": [\"54\"]}, {\"input\": \"FFFTTTTTFTTFTTTFTFTFTTFTFTTFTTFTTTFFFFFFFFTTFTTTTTTFTTFFFFTTFTFFF\\r\\n6\\r\\n\", \"output\": [\"32\"]}, {\"input\": \"FTTFTTFFFFFTTFFFTFFFFTFTTFFTFTFFTFTFTTTFFTTFFTFTFTTFFFTT\\r\\n47\\r\\n\", \"output\": [\"56\"]}, {\"input\": \"FTFFTFTTFFTFTFFTTTTTFTFTFTFFFFTTFTTFTFTTTFTTFFFFFFTFTFTFFFTFTT\\r\\n10\\r\\n\", \"output\": [\"38\"]}, {\"input\": \"FFFTTTFTFTTTFFTTFTTTTTFFFFFTTFTFTFFFFTFFFFFTTTTFFFTF\\r\\n21\\r\\n\", \"output\": [\"47\"]}, {\"input\": \"TFTFFTTFFTTFTFFTFTFTFFTFTTTFFTTTTTTFTFFTFTF\\r\\n27\\r\\n\", \"output\": [\"43\"]}, {\"input\": \"TFTTFFFTFFTTFFTTFTTFTFTFFFTTFTTTF\\r\\n4\\r\\n\", \"output\": [\"20\"]}, {\"input\": \"FTTFTFTFFTTTTFFTFTTFTTFT\\r\\n24\\r\\n\", \"output\": [\"24\"]}, {\"input\": \"TTFTTTFFFTFFFF\\r\\n36\\r\\n\", \"output\": [\"14\"]}, {\"input\": \"TTFFF\\r\\n49\\r\\n\", \"output\": [\"4\"]}, {\"input\": \"FFTFTTFFTTFFFFFFTTTTFFTFFTFFFTTTTTTTTTTFFFTFFTFTFFTTTTTFFFFTTTFFFFTFFFFFTTTFTTFFFTFTFTTTFFT\\r\\n40\\r\\n\", \"output\": [\"87\"]}, {\"input\": \"FFTTTFFTTTFTTFTFTTFTTFTFTFFTTTTFFFFTFFTFTTFTFFTTTTTTFFTTFFFTTFTTFFTTTTTFFTFFTFTTT\\r\\n1\\r\\n\", \"output\": [\"16\"]}, {\"input\": \"TFTFFFTTTFFFFFFFTTFTTTFFFTTFFTTTFTTTFTTTTTFTTFFFTTTTTTFFTFFFFTFFTFTFTFFT\\r\\n4\\r\\n\", \"output\": [\"29\"]}, {\"input\": \"FTTTTTFTFFTTTFFTTFTFFTFTTFTTFFFTTFTTTFFFFFFFTFFTTTTFFTTTFFFFFTFFFFFFFFTFTTFTFT\\r\\n6\\r\\n\", \"output\": [\"40\"]}, {\"input\": \"TTTFFFTTFTFFFTTTFFFFTTFTTTTFTFFFFTFTTTFTTTFTTFTTFFTFTFTFTFFTTFTFTFTT\\r\\n41\\r\\n\", \"output\": [\"68\"]}, {\"input\": \"TFTTFFFFFFFTTTFTFFFTTTFTFFFTFTFTFFFTFTFTTTFTTFFTFTTFTFFTFTF\\r\\n8\\r\\n\", \"output\": [\"34\"]}, {\"input\": \"FFFFTTTTTFFFFTTTFFTTFFTFTTFFTTFFFTTTTFTFFFTFTTFTT\\r\\n43\\r\\n\", \"output\": [\"49\"]}, {\"input\": \"FFFFTTFFTTFFTTFTFFTTTFTFTFFTFTFTTFFTFTTF\\r\\n41\\r\\n\", \"output\": [\"40\"]}, {\"input\": \"TTTTFTTFTFFTFTTTTFFTFTFFFTFFTF\\r\\n24\\r\\n\", \"output\": [\"30\"]}, {\"input\": \"TTTFFFFTTFTFTTTTTFTFF\\r\\n30\\r\\n\", \"output\": [\"21\"]}, {\"input\": \"FTTTTFTFTTT\\r\\n31\\r\\n\", \"output\": [\"10\"]}, {\"input\": \"FFFFTTFTTTTFTTTFTFFFFFTTFFTFFTFFTTFTTFFTFTFTTTTFFFTFTTTFTFTFFTFFFTFTFFFFFFFFFTFFTTFFFFFFTFFFFFTTT\\r\\n18\\r\\n\", \"output\": [\"75\"]}, {\"input\": \"TFFTFTTTTFTTFTFFTFTFTFTTTTTTTTFTTFTTFTFTTFFTTTFFTTTFFTTTTFTFTFFTTTTTFTTFTFTFTTTTFFFTTFTF\\r\\n45\\r\\n\", \"output\": [\"78\"]}, {\"input\": \"TTFFFFFFTFFFFTFFTFTTTFTFFFFFFFTFFTTFFFTFFFFFTTFFFTTTTFFFFFTFFFTTFTFFTTTTFFFFTFTTTFTFTTTTFFTFTF\\r\\n44\\r\\n\", \"output\": [\"94\"]}, {\"input\": \"TFTFTFTFTFTFTFTFTFTFTFTFTFTFTFTFTFTFTFTFTFTFTFTFTFTFTFTFTFTFTFTFTFTFTFTFTFTFTFTFTFTFTFTFTFTFTFTF\\r\\n25\\r\\n\", \"output\": [\"51\"]}, {\"input\": \"TFFFTTFFF\\r\\n2\\r\\n\", \"output\": [\"8\"]}, {\"input\": \"TFFFTTTFFFFTFFTTFTTFTTFFTFFFTTTTTTFTTTTTTFFFFFFFTFFFFTTTFTFFTTTTTTFFFFFTTFTFTFFFTFTTFFTTFFFTTFFFTTTT\\r\\n1\\r\\n\", \"output\": [\"17\"]}, {\"input\": \"TFFFFFTFFFFF\\r\\n1\\r\\n\", \"output\": [\"11\"]}, {\"input\": \"FFFFTFTF\\r\\n1\\r\\n\", \"output\": [\"5\"]}]",
+        "source_lang": "Python 3",
+        "target_lang": "C"
+    }
+}

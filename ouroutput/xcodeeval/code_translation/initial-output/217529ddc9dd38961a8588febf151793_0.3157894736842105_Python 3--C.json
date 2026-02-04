@@ -1,0 +1,87 @@
+{
+    "oai_response": {
+        "prompt": "Here is code in Python 3 programming lanaguge. Translate the following code from Python 3 to C programming lanaguge. Do not output any extra description or tokens other than the translated code. \n\nc,d=map(int,input().split())\n\nn,m=map(int,input().split())\n\nk=int(input())\n\nz=0\nbest=10**10\nwhile(1):\n    x=n*m-k\n    x-=z*n\n    best=min(best,z*c+(max(x,0)*d))\n    if(x<0):\n        break\n    z+=1\nprint(best)\n    \n||END-of-SRC||",
+        "response": {
+            "id": "multi-call-as-ug3ra202r4",
+            "model": "deepseek-v3",
+            "created": 1767067055,
+            "choices": [
+                {
+                    "index": 0,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <stdlib.h>\n\nint main() {\n    int c, d;\n    scanf(\"%d %d\", &c, &d);\n    \n    int n, m;\n    scanf(\"%d %d\", &n, &m);\n    \n    int k;\n    scanf(\"%d\", &k);\n    \n    int z = 0;\n    int best = 1000000000;\n    while (1) {\n        int x = n * m - k;\n        x -= z * n;\n        int current = z * c + (x > 0 ? x * d : 0);\n        if (current < best) {\n            best = current;\n        }\n        if (x < 0) {\n            break;\n        }\n        z++;\n    }\n    printf(\"%d\\n\", best);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 1,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <stdlib.h>\n\nint main() {\n    int c, d;\n    scanf(\"%d %d\", &c, &d);\n    \n    int n, m;\n    scanf(\"%d %d\", &n, &m);\n    \n    int k;\n    scanf(\"%d\", &k);\n    \n    int z = 0;\n    int best = 1000000000;\n    while (1) {\n        int x = n * m - k;\n        x -= z * n;\n        int current = z * c + (x > 0 ? x * d : 0);\n        if (current < best) {\n            best = current;\n        }\n        if (x < 0) {\n            break;\n        }\n        z++;\n    }\n    printf(\"%d\\n\", best);\n    \n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 2,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <stdlib.h>\n\nint main() {\n    int c, d;\n    scanf(\"%d %d\", &c, &d);\n    \n    int n, m;\n    scanf(\"%d %d\", &n, &m);\n    \n    int k;\n    scanf(\"%d\", &k);\n    \n    int z = 0;\n    int best = 1000000000;\n    while (1) {\n        int x = n * m - k;\n        x -= z * n;\n        int current = z * c + (x > 0 ? x * d : 0);\n        if (current < best) {\n            best = current;\n        }\n        if (x < 0) {\n            break;\n        }\n        z++;\n    }\n    printf(\"%d\\n\", best);\n    \n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 3,
+                    "message": {
+                        "role": "assistant",
+                        "content": "Here's the translated code in C:\n\n```c\n#include <stdio.h>\n#include <limits.h>\n\nint main() {\n    int c, d;\n    scanf(\"%d %d\", &c, &d);\n    \n    int n, m;\n    scanf(\"%d %d\", &n, &m);\n    \n    int k;\n    scanf(\"%d\", &k);\n    \n    int z = 0;\n    int best = INT_MAX;\n    while(1) {\n        int x = n * m - k;\n        x -= z * n;\n        best = (best < z * c + (x > 0 ? x : 0) * d) ? best : z * c + (x > 0 ? x : 0) * d;\n        if(x < 0) {\n            break;\n        }\n        z++;\n    }\n    printf(\"%d\\n\", best);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 4,
+                    "message": {
+                        "role": "assistant",
+                        "content": "Here's the translated code in C:\n\n```c\n#include <stdio.h>\n#include <limits.h>\n\nint main() {\n    int c, d;\n    scanf(\"%d %d\", &c, &d);\n    \n    int n, m;\n    scanf(\"%d %d\", &n, &m);\n    \n    int k;\n    scanf(\"%d\", &k);\n    \n    int z = 0;\n    int best = INT_MAX;\n    while(1) {\n        int x = n * m - k;\n        x -= z * n;\n        int current = z * c + (x > 0 ? x : 0) * d;\n        if (current < best) {\n            best = current;\n        }\n        if (x < 0) {\n            break;\n        }\n        z++;\n    }\n    printf(\"%d\\n\", best);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                }
+            ],
+            "usage": {
+                "prompt_tokens": 670,
+                "completion_tokens": 928,
+                "total_tokens": 1598
+            }
+        }
+    },
+    "source_data": {
+        "code_uid": "217529ddc9dd38961a8588febf151793",
+        "prob_desc_output_to": "standard output",
+        "prob_desc_notes": null,
+        "lang_cluster": "Python",
+        "prob_desc_time_limit": "1 second",
+        "prob_desc_input_spec": "The first line contains two integers c and d (1\u2009\u2264\u2009c,\u2009d\u2009\u2264\u2009100)\u00a0\u2014 the number of problems in the main and additional rounds, correspondingly. The second line contains two integers n and m (1\u2009\u2264\u2009n,\u2009m\u2009\u2264\u2009100). Finally, the third line contains an integer k (1\u2009\u2264\u2009k\u2009\u2264\u2009100)\u00a0\u2014 the number of the pre-chosen winners. ",
+        "source_code": "c,d=map(int,input().split())\n\nn,m=map(int,input().split())\n\nk=int(input())\n\nz=0\nbest=10**10\nwhile(1):\n    x=n*m-k\n    x-=z*n\n    best=min(best,z*c+(max(x,0)*d))\n    if(x<0):\n        break\n    z+=1\nprint(best)\n    \n",
+        "prob_desc_sample_inputs": [
+            "1 10\n7 2\n1",
+            "2 2\n2 1\n2"
+        ],
+        "prob_desc_memory_limit": "256 megabytes",
+        "exec_outcome": "PASSED",
+        "prob_desc_output_spec": "In the first line, print a single integer \u2014 the minimum number of problems the jury needs to prepare.",
+        "src_uid": "c6ec932b852e0e8c30c822a226ef7bcb",
+        "prob_desc_input_from": "standard input",
+        "lang": "Python 3",
+        "prob_desc_sample_outputs": [
+            "2",
+            "0"
+        ],
+        "file_name": "d7021504500d5ca7c2b02df8100a574d159e6e67e20ec8071b75800b1267370a",
+        "prob_desc_description": "The finalists of the \"Russian Code Cup\" competition in 2214 will be the participants who win in one of the elimination rounds.The elimination rounds are divided into main and additional. Each of the main elimination rounds consists of c problems, the winners of the round are the first n people in the rating list. Each of the additional elimination rounds consists of d problems. The winner of the additional round is one person. Besides, k winners of the past finals are invited to the finals without elimination.As a result of all elimination rounds at least n\u00b7m people should go to the finals. You need to organize elimination rounds in such a way, that at least n\u00b7m people go to the finals, and the total amount of used problems in all rounds is as small as possible.",
+        "prob_desc_created_at": "1397749200",
+        "difficulty": 1500.0,
+        "hidden_unit_tests": "[{\"input\": \"1 10\\r\\n7 2\\r\\n1\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"2 2\\r\\n2 1\\r\\n2\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"8 9\\r\\n2 2\\r\\n3\\r\\n\", \"output\": [\"8\"]}, {\"input\": \"5 5\\r\\n8 8\\r\\n7\\r\\n\", \"output\": [\"40\"]}, {\"input\": \"1 8\\r\\n8 10\\r\\n8\\r\\n\", \"output\": [\"9\"]}, {\"input\": \"5 7\\r\\n9 1\\r\\n8\\r\\n\", \"output\": [\"5\"]}, {\"input\": \"35 28\\r\\n35 60\\r\\n44\\r\\n\", \"output\": [\"2065\"]}, {\"input\": \"19 76\\r\\n91 91\\r\\n87\\r\\n\", \"output\": [\"1729\"]}, {\"input\": \"20 38\\r\\n38 70\\r\\n58\\r\\n\", \"output\": [\"1380\"]}, {\"input\": \"2 81\\r\\n3 39\\r\\n45\\r\\n\", \"output\": [\"48\"]}, {\"input\": \"7 63\\r\\n18 69\\r\\n30\\r\\n\", \"output\": [\"476\"]}, {\"input\": \"89 69\\r\\n57 38\\r\\n15\\r\\n\", \"output\": [\"3382\"]}, {\"input\": \"3 30\\r\\n10 83\\r\\n57\\r\\n\", \"output\": [\"234\"]}, {\"input\": \"100 3\\r\\n93 23\\r\\n98\\r\\n\", \"output\": [\"2200\"]}, {\"input\": \"2 78\\r\\n21 24\\r\\n88\\r\\n\", \"output\": [\"40\"]}, {\"input\": \"40 80\\r\\n4 31\\r\\n63\\r\\n\", \"output\": [\"640\"]}, {\"input\": \"1 48\\r\\n89 76\\r\\n24\\r\\n\", \"output\": [\"76\"]}, {\"input\": \"5 25\\r\\n13 76\\r\\n86\\r\\n\", \"output\": [\"350\"]}, {\"input\": \"23 86\\r\\n83 88\\r\\n62\\r\\n\", \"output\": [\"2024\"]}, {\"input\": \"1 93\\r\\n76 40\\r\\n39\\r\\n\", \"output\": [\"40\"]}, {\"input\": \"53 93\\r\\n10 70\\r\\n9\\r\\n\", \"output\": [\"3710\"]}, {\"input\": \"100 100\\r\\n100 100\\r\\n100\\r\\n\", \"output\": [\"9900\"]}, {\"input\": \"10 100\\r\\n100 100\\r\\n99\\r\\n\", \"output\": [\"1000\"]}, {\"input\": \"1 100\\r\\n99 100\\r\\n1\\r\\n\", \"output\": [\"100\"]}, {\"input\": \"10 2\\r\\n7 2\\r\\n3\\r\\n\", \"output\": [\"18\"]}, {\"input\": \"4 1\\r\\n5 3\\r\\n8\\r\\n\", \"output\": [\"6\"]}, {\"input\": \"2 2\\r\\n2 1\\r\\n20\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"7 5\\r\\n1 1\\r\\n10\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"4 5\\r\\n9 10\\r\\n100\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"10 1\\r\\n1 2\\r\\n1\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"16 6\\r\\n3 12\\r\\n7\\r\\n\", \"output\": [\"156\"]}, {\"input\": \"10 1\\r\\n1 100\\r\\n1\\r\\n\", \"output\": [\"99\"]}, {\"input\": \"2 1\\r\\n3 4\\r\\n2\\r\\n\", \"output\": [\"7\"]}, {\"input\": \"2 1\\r\\n1 1\\r\\n10\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"100 1\\r\\n2 3\\r\\n1\\r\\n\", \"output\": [\"5\"]}, {\"input\": \"10 2\\r\\n1 11\\r\\n1\\r\\n\", \"output\": [\"20\"]}, {\"input\": \"10 10\\r\\n1 1\\r\\n100\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"100 1\\r\\n50 100\\r\\n1\\r\\n\", \"output\": [\"4999\"]}, {\"input\": \"10 1\\r\\n2 2\\r\\n3\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"3 1\\r\\n9 10\\r\\n80\\r\\n\", \"output\": [\"4\"]}, {\"input\": \"100 1\\r\\n1 100\\r\\n1\\r\\n\", \"output\": [\"99\"]}, {\"input\": \"10 9\\r\\n10 10\\r\\n9\\r\\n\", \"output\": [\"99\"]}, {\"input\": \"1 1\\r\\n1 1\\r\\n99\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"10 9\\r\\n1 1\\r\\n100\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"4 1\\r\\n5 1\\r\\n10\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"5 1\\r\\n6 3\\r\\n5\\r\\n\", \"output\": [\"11\"]}, {\"input\": \"10 1\\r\\n1 1\\r\\n10\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"1 1\\r\\n1 1\\r\\n10\\r\\n\", \"output\": [\"0\"]}]",
+        "source_lang": "Python 3",
+        "target_lang": "C"
+    }
+}

@@ -1,0 +1,85 @@
+{
+    "oai_response": {
+        "prompt": "Here is code in Python 3 programming lanaguge. Translate the following code from Python 3 to C programming lanaguge. Do not output any extra description or tokens other than the translated code. \n\n\ndef isAtLeastHalf(k, n):\n    V = 0\n    P = 0\n    if n%2 == 0:\n        least = (n//2)\n    else:    \n        least = (n//2)+1\n    res = False\n    while(n > 0 and k > 0):\n        #print('n=',n, ' k=', k)\n        if n>=k:\n            V += k\n            n -= k\n        else:\n            V += n\n            n=0\n        temp = (n//10)\n        P += temp\n        n -= temp\n        if (V>= least):\n            res = True\n            break\n    #print('Partial', V,P, res)        \n    return res\n\ndef searchMiniumCandies(n, l, r, res = -1):\n    #print(n,' l=',l,' r=',r,res)\n    if r >= l:\n        mid = l + (r - l)//2\n        if isAtLeastHalf(mid, n):\n            res = mid\n            #print('TRUE', l, mid-1)\n            return searchMiniumCandies(n, l, mid-1, res )\n        else:\n            #print('False')\n\n            return searchMiniumCandies(n, mid+1, r, res )\n    else:\n        #print('retornando', res)\n        return res\n\nn = int(input())\nprint(searchMiniumCandies(n, 0,n))                ||END-of-SRC||",
+        "response": {
+            "id": "multi-call-as-ge53cack72",
+            "model": "deepseek-v3",
+            "created": 1767069149,
+            "choices": [
+                {
+                    "index": 0,
+                    "message": {
+                        "role": "assistant",
+                        "content": "Here's the translated code in C:\n\n```c\n#include <stdio.h>\n#include <stdbool.h>\n\nbool isAtLeastHalf(int k, int n) {\n    int V = 0;\n    int P = 0;\n    int least;\n    if (n % 2 == 0) {\n        least = (n / 2);\n    } else {\n        least = (n / 2) + 1;\n    }\n    bool res = false;\n    while (n > 0 && k > 0) {\n        if (n >= k) {\n            V += k;\n            n -= k;\n        } else {\n            V += n;\n            n = 0;\n        }\n        int temp = (n / 10);\n        P += temp;\n        n -= temp;\n        if (V >= least) {\n            res = true;\n            break;\n        }\n    }\n    return res;\n}\n\nint searchMiniumCandies(int n, int l, int r, int res) {\n    if (r >= l) {\n        int mid = l + (r - l) / 2;\n        if (isAtLeastHalf(mid, n)) {\n            res = mid;\n            return searchMiniumCandies(n, l, mid - 1, res);\n        } else {\n            return searchMiniumCandies(n, mid + 1, r, res);\n        }\n    } else {\n        return res;\n    }\n}\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    printf(\"%d\", searchMiniumCandies(n, 0, n, -1));\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 1,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n\nint isAtLeastHalf(int k, int n) {\n    int V = 0;\n    int P = 0;\n    int least;\n    if (n % 2 == 0) {\n        least = (n / 2);\n    } else {\n        least = (n / 2) + 1;\n    }\n    int res = 0;\n    while (n > 0 && k > 0) {\n        if (n >= k) {\n            V += k;\n            n -= k;\n        } else {\n            V += n;\n            n = 0;\n        }\n        int temp = (n / 10);\n        P += temp;\n        n -= temp;\n        if (V >= least) {\n            res = 1;\n            break;\n        }\n    }\n    return res;\n}\n\nint searchMiniumCandies(int n, int l, int r, int res) {\n    if (r >= l) {\n        int mid = l + (r - l) / 2;\n        if (isAtLeastHalf(mid, n)) {\n            res = mid;\n            return searchMiniumCandies(n, l, mid - 1, res);\n        } else {\n            return searchMiniumCandies(n, mid + 1, r, res);\n        }\n    } else {\n        return res;\n    }\n}\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    printf(\"%d\", searchMiniumCandies(n, 0, n, -1));\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 2,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n\nint isAtLeastHalf(int k, int n) {\n    int V = 0;\n    int P = 0;\n    int least;\n    if (n % 2 == 0) {\n        least = (n / 2);\n    } else {\n        least = (n / 2) + 1;\n    }\n    int res = 0;\n    while (n > 0 && k > 0) {\n        if (n >= k) {\n            V += k;\n            n -= k;\n        } else {\n            V += n;\n            n = 0;\n        }\n        int temp = (n / 10);\n        P += temp;\n        n -= temp;\n        if (V >= least) {\n            res = 1;\n            break;\n        }\n    }\n    return res;\n}\n\nint searchMiniumCandies(int n, int l, int r, int res) {\n    if (r >= l) {\n        int mid = l + (r - l) / 2;\n        if (isAtLeastHalf(mid, n)) {\n            res = mid;\n            return searchMiniumCandies(n, l, mid - 1, res);\n        } else {\n            return searchMiniumCandies(n, mid + 1, r, res);\n        }\n    } else {\n        return res;\n    }\n}\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    printf(\"%d\", searchMiniumCandies(n, 0, n, -1));\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 3,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n\nint isAtLeastHalf(int k, int n) {\n    int V = 0;\n    int P = 0;\n    int least;\n    if (n % 2 == 0) {\n        least = (n / 2);\n    } else {\n        least = (n / 2) + 1;\n    }\n    int res = 0;\n    while (n > 0 && k > 0) {\n        if (n >= k) {\n            V += k;\n            n -= k;\n        } else {\n            V += n;\n            n = 0;\n        }\n        int temp = (n / 10);\n        P += temp;\n        n -= temp;\n        if (V >= least) {\n            res = 1;\n            break;\n        }\n    }\n    return res;\n}\n\nint searchMiniumCandies(int n, int l, int r, int res) {\n    if (r >= l) {\n        int mid = l + (r - l) / 2;\n        if (isAtLeastHalf(mid, n)) {\n            res = mid;\n            return searchMiniumCandies(n, l, mid - 1, res);\n        } else {\n            return searchMiniumCandies(n, mid + 1, r, res);\n        }\n    } else {\n        return res;\n    }\n}\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    printf(\"%d\", searchMiniumCandies(n, 0, n, -1));\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 4,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n\nint isAtLeastHalf(int k, int n) {\n    int V = 0;\n    int P = 0;\n    int least;\n    if (n % 2 == 0) {\n        least = (n / 2);\n    } else {\n        least = (n / 2) + 1;\n    }\n    int res = 0;\n    while (n > 0 && k > 0) {\n        if (n >= k) {\n            V += k;\n            n -= k;\n        } else {\n            V += n;\n            n = 0;\n        }\n        int temp = (n / 10);\n        P += temp;\n        n -= temp;\n        if (V >= least) {\n            res = 1;\n            break;\n        }\n    }\n    return res;\n}\n\nint searchMiniumCandies(int n, int l, int r, int res) {\n    if (r >= l) {\n        int mid = l + (r - l) / 2;\n        if (isAtLeastHalf(mid, n)) {\n            res = mid;\n            return searchMiniumCandies(n, l, mid - 1, res);\n        } else {\n            return searchMiniumCandies(n, mid + 1, r, res);\n        }\n    } else {\n        return res;\n    }\n}\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    printf(\"%d\", searchMiniumCandies(n, 0, n, -1));\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                }
+            ],
+            "usage": {
+                "prompt_tokens": 1855,
+                "completion_tokens": 1714,
+                "total_tokens": 3569
+            }
+        }
+    },
+    "source_data": {
+        "code_uid": "f1c5f5d2610b54c0dcb2446b6cd08764",
+        "prob_desc_output_to": "standard output",
+        "prob_desc_notes": "NoteIn the sample, the amount of candies, with $$$k=3$$$, would change in the following way (Vasya eats first):$$$68 \\to 65 \\to 59 \\to 56 \\to 51 \\to 48 \\to 44 \\to 41 \\\\ \\to 37 \\to 34 \\to 31 \\to 28 \\to 26 \\to 23 \\to 21 \\to 18 \\to 17 \\to 14 \\\\ \\to 13 \\to 10 \\to 9 \\to 6 \\to 6 \\to 3 \\to 3 \\to 0$$$.In total, Vasya would eat $$$39$$$ candies, while Petya\u00a0\u2014 $$$29$$$.",
+        "lang_cluster": "Python",
+        "prob_desc_time_limit": "1 second",
+        "prob_desc_input_spec": "The first line contains a single integer $$$n$$$ ($$$1 \\leq n \\leq 10^{18}$$$)\u00a0\u2014 the initial amount of candies in the box.",
+        "source_code": "\ndef isAtLeastHalf(k, n):\n    V = 0\n    P = 0\n    if n%2 == 0:\n        least = (n//2)\n    else:    \n        least = (n//2)+1\n    res = False\n    while(n > 0 and k > 0):\n        #print('n=',n, ' k=', k)\n        if n>=k:\n            V += k\n            n -= k\n        else:\n            V += n\n            n=0\n        temp = (n//10)\n        P += temp\n        n -= temp\n        if (V>= least):\n            res = True\n            break\n    #print('Partial', V,P, res)        \n    return res\n\ndef searchMiniumCandies(n, l, r, res = -1):\n    #print(n,' l=',l,' r=',r,res)\n    if r >= l:\n        mid = l + (r - l)//2\n        if isAtLeastHalf(mid, n):\n            res = mid\n            #print('TRUE', l, mid-1)\n            return searchMiniumCandies(n, l, mid-1, res )\n        else:\n            #print('False')\n\n            return searchMiniumCandies(n, mid+1, r, res )\n    else:\n        #print('retornando', res)\n        return res\n\nn = int(input())\nprint(searchMiniumCandies(n, 0,n))                ",
+        "prob_desc_sample_inputs": [
+            "68"
+        ],
+        "prob_desc_memory_limit": "256 megabytes",
+        "exec_outcome": "PASSED",
+        "prob_desc_output_spec": "Output a single integer\u00a0\u2014 the minimal amount of $$$k$$$ that would allow Vasya to eat at least half of candies he got.",
+        "src_uid": "db1a50da538fa82038f8db6104d2ab93",
+        "prob_desc_input_from": "standard input",
+        "lang": "Python 3",
+        "prob_desc_sample_outputs": [
+            "3"
+        ],
+        "file_name": "d7021504500d5ca7c2b02df8100a574d159e6e67e20ec8071b75800b1267370a",
+        "prob_desc_description": "After passing a test, Vasya got himself a box of $$$n$$$ candies. He decided to eat an equal amount of candies each morning until there are no more candies. However, Petya also noticed the box and decided to get some candies for himself.This means the process of eating candies is the following: in the beginning Vasya chooses a single integer $$$k$$$, same for all days. After that, in the morning he eats $$$k$$$ candies from the box (if there are less than $$$k$$$ candies in the box, he eats them all), then in the evening Petya eats $$$10\\%$$$ of the candies remaining in the box. If there are still candies left in the box, the process repeats\u00a0\u2014 next day Vasya eats $$$k$$$ candies again, and Petya\u00a0\u2014 $$$10\\%$$$ of the candies left in a box, and so on.If the amount of candies in the box is not divisible by $$$10$$$, Petya rounds the amount he takes from the box down. For example, if there were $$$97$$$ candies in the box, Petya would eat only $$$9$$$ of them. In particular, if there are less than $$$10$$$ candies in a box, Petya won't eat any at all.Your task is to find out the minimal amount of $$$k$$$ that can be chosen by Vasya so that he would eat at least half of the $$$n$$$ candies he initially got. Note that the number $$$k$$$ must be integer.",
+        "prob_desc_created_at": "1529768100",
+        "difficulty": 1500.0,
+        "hidden_unit_tests": "[{\"input\": \"68\\r\\n\", \"output\": [\"3\"]}, {\"input\": \"1\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"2\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"42\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"43\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"756\\r\\n\", \"output\": [\"29\"]}, {\"input\": \"999999972\\r\\n\", \"output\": [\"39259423\"]}, {\"input\": \"999999973\\r\\n\", \"output\": [\"39259424\"]}, {\"input\": \"1000000000000000000\\r\\n\", \"output\": [\"39259424579862572\"]}, {\"input\": \"6\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"3\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"4\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"5\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"66\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"67\\r\\n\", \"output\": [\"3\"]}, {\"input\": \"1000\\r\\n\", \"output\": [\"39\"]}, {\"input\": \"10000\\r\\n\", \"output\": [\"392\"]}, {\"input\": \"100500\\r\\n\", \"output\": [\"3945\"]}, {\"input\": \"1000000\\r\\n\", \"output\": [\"39259\"]}, {\"input\": \"10000000\\r\\n\", \"output\": [\"392594\"]}, {\"input\": \"100000000\\r\\n\", \"output\": [\"3925942\"]}, {\"input\": \"123456789\\r\\n\", \"output\": [\"4846842\"]}, {\"input\": \"543212345\\r\\n\", \"output\": [\"21326204\"]}, {\"input\": \"505050505\\r\\n\", \"output\": [\"19827992\"]}, {\"input\": \"777777777\\r\\n\", \"output\": [\"30535108\"]}, {\"input\": \"888888871\\r\\n\", \"output\": [\"34897266\"]}, {\"input\": \"1000000000\\r\\n\", \"output\": [\"39259424\"]}, {\"input\": \"999999999999999973\\r\\n\", \"output\": [\"39259424579862572\"]}, {\"input\": \"999999999999999998\\r\\n\", \"output\": [\"39259424579862572\"]}, {\"input\": \"999999999999999999\\r\\n\", \"output\": [\"39259424579862573\"]}, {\"input\": \"100000000000000000\\r\\n\", \"output\": [\"3925942457986257\"]}, {\"input\": \"540776028375043656\\r\\n\", \"output\": [\"21230555700587649\"]}, {\"input\": \"210364830044445976\\r\\n\", \"output\": [\"8258802179385535\"]}, {\"input\": \"297107279239074256\\r\\n\", \"output\": [\"11664260821414605\"]}, {\"input\": \"773524766411950187\\r\\n\", \"output\": [\"30368137227605772\"]}, {\"input\": \"228684941775227220\\r\\n\", \"output\": [\"8978039224174797\"]}, {\"input\": \"878782039723446310\\r\\n\", \"output\": [\"34500477210660436\"]}, {\"input\": \"615090701338187389\\r\\n\", \"output\": [\"24148106998961343\"]}, {\"input\": \"325990422297859188\\r\\n\", \"output\": [\"12798196397960353\"]}, {\"input\": \"255163492355051023\\r\\n\", \"output\": [\"10017571883647466\"]}, {\"input\": \"276392003308849171\\r\\n\", \"output\": [\"10850991008380891\"]}, {\"input\": \"601\\r\\n\", \"output\": [\"23\"]}, {\"input\": \"983\\r\\n\", \"output\": [\"38\"]}, {\"input\": \"729\\r\\n\", \"output\": [\"29\"]}, {\"input\": \"70\\r\\n\", \"output\": [\"3\"]}, {\"input\": \"703\\r\\n\", \"output\": [\"28\"]}, {\"input\": \"257\\r\\n\", \"output\": [\"10\"]}, {\"input\": \"526\\r\\n\", \"output\": [\"20\"]}, {\"input\": \"466\\r\\n\", \"output\": [\"18\"]}, {\"input\": \"738\\r\\n\", \"output\": [\"29\"]}, {\"input\": \"116\\r\\n\", \"output\": [\"5\"]}, {\"input\": \"888888888888888887\\r\\n\", \"output\": [\"34897266293211176\"]}, {\"input\": \"888888888888888888\\r\\n\", \"output\": [\"34897266293211176\"]}, {\"input\": \"888888888888888889\\r\\n\", \"output\": [\"34897266293211176\"]}, {\"input\": \"999999999999999969\\r\\n\", \"output\": [\"39259424579862571\"]}, {\"input\": \"999999999999999970\\r\\n\", \"output\": [\"39259424579862571\"]}, {\"input\": \"999999999999999971\\r\\n\", \"output\": [\"39259424579862572\"]}, {\"input\": \"999999999999999943\\r\\n\", \"output\": [\"39259424579862571\"]}, {\"input\": \"999999999999999944\\r\\n\", \"output\": [\"39259424579862570\"]}, {\"input\": \"999999999999999945\\r\\n\", \"output\": [\"39259424579862571\"]}, {\"input\": \"999999999999999917\\r\\n\", \"output\": [\"39259424579862570\"]}, {\"input\": \"999999999999999918\\r\\n\", \"output\": [\"39259424579862569\"]}, {\"input\": \"999999999999999919\\r\\n\", \"output\": [\"39259424579862570\"]}, {\"input\": \"99999999999999957\\r\\n\", \"output\": [\"3925942457986255\"]}, {\"input\": \"99999999999999958\\r\\n\", \"output\": [\"3925942457986255\"]}, {\"input\": \"99999999999999959\\r\\n\", \"output\": [\"3925942457986256\"]}, {\"input\": \"888888888888888853\\r\\n\", \"output\": [\"34897266293211174\"]}, {\"input\": \"888888888888888854\\r\\n\", \"output\": [\"34897266293211174\"]}, {\"input\": \"888888888888888855\\r\\n\", \"output\": [\"34897266293211175\"]}]",
+        "source_lang": "Python 3",
+        "target_lang": "C"
+    }
+}

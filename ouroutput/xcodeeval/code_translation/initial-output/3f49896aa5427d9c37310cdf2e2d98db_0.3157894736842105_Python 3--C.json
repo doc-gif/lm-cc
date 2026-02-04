@@ -1,0 +1,87 @@
+{
+    "oai_response": {
+        "prompt": "Here is code in Python 3 programming lanaguge. Translate the following code from Python 3 to C programming lanaguge. Do not output any extra description or tokens other than the translated code. \n\np=int(input())\nif p == 2:\n    print(1)\n    exit()\nans=0\nfor x in range(1,p):\n    m=x%p\n    if m==1:\n        if x==2:\n            q=True\n        else:\n            q=False\n    else:\n        q=False\n        for i in range(2,p):\n            m=(m*x)%p\n            if m==1:\n                if i==p-1:\n                    q=True\n                break\n    ans+=q\nprint(ans)\n    \n||END-of-SRC||",
+        "response": {
+            "id": "multi-call-as-rp7k2nfxmy",
+            "model": "deepseek-v3",
+            "created": 1767068091,
+            "choices": [
+                {
+                    "index": 0,
+                    "message": {
+                        "role": "assistant",
+                        "content": "Here's the translated code in C:\n\n```c\n#include <stdio.h>\n\nint main() {\n    int p;\n    scanf(\"%d\", &p);\n    if (p == 2) {\n        printf(\"1\\n\");\n        return 0;\n    }\n    int ans = 0;\n    for (int x = 1; x < p; x++) {\n        int m = x % p;\n        int q;\n        if (m == 1) {\n            if (x == 2) {\n                q = 1;\n            } else {\n                q = 0;\n            }\n        } else {\n            q = 0;\n            for (int i = 2; i < p; i++) {\n                m = (m * x) % p;\n                if (m == 1) {\n                    if (i == p - 1) {\n                        q = 1;\n                    }\n                    break;\n                }\n            }\n        }\n        ans += q;\n    }\n    printf(\"%d\\n\", ans);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 1,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n\nint main() {\n    int p;\n    scanf(\"%d\", &p);\n    if (p == 2) {\n        printf(\"1\\n\");\n        return 0;\n    }\n    int ans = 0;\n    for (int x = 1; x < p; x++) {\n        int m = x % p;\n        int q = 0;\n        if (m == 1) {\n            if (x == 2) {\n                q = 1;\n            } else {\n                q = 0;\n            }\n        } else {\n            q = 0;\n            for (int i = 2; i < p; i++) {\n                m = (m * x) % p;\n                if (m == 1) {\n                    if (i == p - 1) {\n                        q = 1;\n                    }\n                    break;\n                }\n            }\n        }\n        ans += q;\n    }\n    printf(\"%d\\n\", ans);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 2,
+                    "message": {
+                        "role": "assistant",
+                        "content": "Here's the translated code in C:\n\n```c\n#include <stdio.h>\n\nint main() {\n    int p;\n    scanf(\"%d\", &p);\n    if (p == 2) {\n        printf(\"1\\n\");\n        return 0;\n    }\n    int ans = 0;\n    for (int x = 1; x < p; x++) {\n        int m = x % p;\n        int q = 0;\n        if (m == 1) {\n            if (x == 2) {\n                q = 1;\n            } else {\n                q = 0;\n            }\n        } else {\n            q = 0;\n            for (int i = 2; i < p; i++) {\n                m = (m * x) % p;\n                if (m == 1) {\n                    if (i == p - 1) {\n                        q = 1;\n                    }\n                    break;\n                }\n            }\n        }\n        ans += q;\n    }\n    printf(\"%d\\n\", ans);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 3,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n\nint main() {\n    int p;\n    scanf(\"%d\", &p);\n    if (p == 2) {\n        printf(\"1\\n\");\n        return 0;\n    }\n    int ans = 0;\n    for (int x = 1; x < p; x++) {\n        int m = x % p;\n        int q;\n        if (m == 1) {\n            if (x == 2) {\n                q = 1;\n            } else {\n                q = 0;\n            }\n        } else {\n            q = 0;\n            for (int i = 2; i < p; i++) {\n                m = (m * x) % p;\n                if (m == 1) {\n                    if (i == p - 1) {\n                        q = 1;\n                    }\n                    break;\n                }\n            }\n        }\n        ans += q;\n    }\n    printf(\"%d\\n\", ans);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 4,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n\nint main() {\n    int p;\n    scanf(\"%d\", &p);\n    if (p == 2) {\n        printf(\"1\\n\");\n        return 0;\n    }\n    int ans = 0;\n    for (int x = 1; x < p; x++) {\n        int m = x % p;\n        int q;\n        if (m == 1) {\n            if (x == 2) {\n                q = 1;\n            } else {\n                q = 0;\n            }\n        } else {\n            q = 0;\n            for (int i = 2; i < p; i++) {\n                m = (m * x) % p;\n                if (m == 1) {\n                    if (i == p - 1) {\n                        q = 1;\n                    }\n                    break;\n                }\n            }\n        }\n        ans += q;\n    }\n    printf(\"%d\\n\", ans);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                }
+            ],
+            "usage": {
+                "prompt_tokens": 820,
+                "completion_tokens": 1093,
+                "total_tokens": 1913
+            }
+        }
+    },
+    "source_data": {
+        "code_uid": "3f49896aa5427d9c37310cdf2e2d98db",
+        "prob_desc_output_to": "standard output",
+        "prob_desc_notes": "NoteThe only primitive root  is 2.The primitive roots  are 2 and 3.",
+        "lang_cluster": "Python",
+        "prob_desc_time_limit": "2 seconds",
+        "prob_desc_input_spec": "The input contains a single line containing an integer p (2\u2009\u2264\u2009p\u2009&lt;\u20092000). It is guaranteed that p is a prime.",
+        "source_code": "p=int(input())\nif p == 2:\n    print(1)\n    exit()\nans=0\nfor x in range(1,p):\n    m=x%p\n    if m==1:\n        if x==2:\n            q=True\n        else:\n            q=False\n    else:\n        q=False\n        for i in range(2,p):\n            m=(m*x)%p\n            if m==1:\n                if i==p-1:\n                    q=True\n                break\n    ans+=q\nprint(ans)\n    \n",
+        "prob_desc_sample_inputs": [
+            "3",
+            "5"
+        ],
+        "prob_desc_memory_limit": "256 megabytes",
+        "exec_outcome": "PASSED",
+        "prob_desc_output_spec": "Output on a single line the number of primitive roots .",
+        "src_uid": "3bed682b6813f1ddb54410218c233cff",
+        "prob_desc_input_from": "standard input",
+        "lang": "Python 3",
+        "prob_desc_sample_outputs": [
+            "1",
+            "2"
+        ],
+        "file_name": "d7021504500d5ca7c2b02df8100a574d159e6e67e20ec8071b75800b1267370a",
+        "prob_desc_description": "The cows have just learned what a primitive root is! Given a prime p, a primitive root  is an integer x (1\u2009\u2264\u2009x\u2009&lt;\u2009p) such that none of integers x\u2009-\u20091,\u2009x2\u2009-\u20091,\u2009...,\u2009xp\u2009-\u20092\u2009-\u20091 are divisible by p, but xp\u2009-\u20091\u2009-\u20091 is. Unfortunately, computing primitive roots can be time consuming, so the cows need your help. Given a prime p, help the cows find the number of primitive roots .",
+        "prob_desc_created_at": "1363534200",
+        "difficulty": 1400.0,
+        "hidden_unit_tests": "[{\"input\": \"3\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"5\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"7\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"11\\r\\n\", \"output\": [\"4\"]}, {\"input\": \"17\\r\\n\", \"output\": [\"8\"]}, {\"input\": \"19\\r\\n\", \"output\": [\"6\"]}, {\"input\": \"1583\\r\\n\", \"output\": [\"672\"]}, {\"input\": \"997\\r\\n\", \"output\": [\"328\"]}, {\"input\": \"2\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"1987\\r\\n\", \"output\": [\"660\"]}, {\"input\": \"1993\\r\\n\", \"output\": [\"656\"]}, {\"input\": \"1997\\r\\n\", \"output\": [\"996\"]}, {\"input\": \"1999\\r\\n\", \"output\": [\"648\"]}, {\"input\": \"1297\\r\\n\", \"output\": [\"432\"]}, {\"input\": \"163\\r\\n\", \"output\": [\"54\"]}, {\"input\": \"1259\\r\\n\", \"output\": [\"576\"]}, {\"input\": \"821\\r\\n\", \"output\": [\"320\"]}, {\"input\": \"29\\r\\n\", \"output\": [\"12\"]}, {\"input\": \"43\\r\\n\", \"output\": [\"12\"]}, {\"input\": \"1949\\r\\n\", \"output\": [\"972\"]}, {\"input\": \"1879\\r\\n\", \"output\": [\"624\"]}, {\"input\": \"1759\\r\\n\", \"output\": [\"584\"]}, {\"input\": \"1597\\r\\n\", \"output\": [\"432\"]}, {\"input\": \"1619\\r\\n\", \"output\": [\"808\"]}, {\"input\": \"1277\\r\\n\", \"output\": [\"560\"]}, {\"input\": \"1097\\r\\n\", \"output\": [\"544\"]}, {\"input\": \"953\\r\\n\", \"output\": [\"384\"]}, {\"input\": \"751\\r\\n\", \"output\": [\"200\"]}, {\"input\": \"607\\r\\n\", \"output\": [\"200\"]}, {\"input\": \"509\\r\\n\", \"output\": [\"252\"]}, {\"input\": \"431\\r\\n\", \"output\": [\"168\"]}, {\"input\": \"317\\r\\n\", \"output\": [\"156\"]}, {\"input\": \"211\\r\\n\", \"output\": [\"48\"]}, {\"input\": \"127\\r\\n\", \"output\": [\"36\"]}, {\"input\": \"101\\r\\n\", \"output\": [\"40\"]}, {\"input\": \"31\\r\\n\", \"output\": [\"8\"]}]",
+        "source_lang": "Python 3",
+        "target_lang": "C"
+    }
+}

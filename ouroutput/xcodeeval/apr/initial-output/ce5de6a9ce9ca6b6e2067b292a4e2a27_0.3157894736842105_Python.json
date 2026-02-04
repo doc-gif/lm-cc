@@ -1,0 +1,99 @@
+{
+    "oai_response": {
+        "prompt": "Fix a buggy program written in Python language to solve the following programming problem:\nDescription: One day Vasya came across three Berland coins. They didn't have any numbers that's why Vasya didn't understand how their denominations differ. He supposed that if one coin is heavier than the other one, then it should be worth more. Vasya weighed all the three pairs of coins on pan balance scales and told you the results. Find out how the deminations of the coins differ or if Vasya has a mistake in the weighting results. No two coins are equal.\nInput Specification: The input data contains the results of all the weighting, one result on each line. It is guaranteed that every coin pair was weighted exactly once. Vasya labelled the coins with letters \u00abA\u00bb, \u00abB\u00bb and \u00abC\u00bb. Each result is a line that appears as (letter)(&gt; or &lt; sign)(letter). For example, if coin \"A\" proved lighter than coin \"B\", the result of the weighting is A&lt;B.\nOutput Specification: It the results are contradictory, print Impossible. Otherwise, print without spaces the rearrangement of letters \u00abA\u00bb, \u00abB\u00bb and \u00abC\u00bb which represent the coins in the increasing order of their weights.\n\nSample Input:\nA&gt;B\nC&lt;B\nA&gt;C\nSample Output:\nCBA\n\nSample Input:\nA&lt;B\nB&gt;C\nC&gt;A\nSample Output:\nACB\n\nNotes: None\nTake input from standard input and output to standard output\n\nHere is the code with a bug of WRONG_ANSWER:\n\nfrom collections import defaultdict\nfrom typing import List\n\n\nclass Solution:\n    @classmethod\n    def calculate(cls, weight_combo: List[str]) -> str:\n        mapping = defaultdict(int)\n        for combo in weight_combo:\n            [first_op, operator, second_op] = list(combo)\n            if operator == \">\":\n                mapping[first_op] += 1\n            else:\n                mapping[second_op] += 1\n        if mapping[\"A\"] == 1 and mapping[\"B\"] == 1 and mapping[\"C\"] == 1:\n            print(\"Impossible\")\n        if mapping['A'] == 0:\n            print(\"A\", end=\"\")\n        elif mapping['B'] == 0:\n            print(\"B\", end=\"\")\n        elif mapping['C'] == 0:\n            print(\"C\", end=\"\")\n\n        if mapping['A'] == 1:\n            print(\"A\", end=\"\")\n        elif mapping['B'] == 1:\n            print(\"B\", end=\"\")\n        elif mapping['C'] == 1:\n            print(\"C\", end=\"\")\n\n        if mapping['A'] == 2:\n            print(\"A\", end=\"\")\n        elif mapping['B'] == 2:\n            print(\"B\", end=\"\")\n        elif mapping['C'] == 2:\n            print(\"C\", end=\"\")\n\nif __name__ == \"__main__\":\n    combo = []\n    for _ in range(3):\n        combo.append(input())\n    Solution.calculate(combo)\n\n\nProvide the fixed Python code without any description or extra tokens.\n\nFixed source code:\n ||END-of-SRC||",
+        "response": {
+            "id": "multi-call-as-rndrmttk88",
+            "model": "deepseek-v3",
+            "created": 1760423523,
+            "choices": [
+                {
+                    "index": 0,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```python\nfrom collections import defaultdict\n\nclass Solution:\n    @classmethod\n    def calculate(cls, weight_combo: list) -> str:\n        graph = defaultdict(list)\n        in_degree = {'A': 0, 'B': 0, 'C': 0}\n        \n        for combo in weight_combo:\n            first_op = combo[0]\n            operator = combo[1]\n            second_op = combo[2]\n            \n            if operator == '>':\n                graph[first_op].append(second_op)\n                in_degree[second_op] += 1\n            else:\n                graph[second_op].append(first_op)\n                in_degree[first_op] += 1\n        \n        queue = []\n        for coin in ['A', 'B', 'C']:\n            if in_degree[coin] == 0:\n                queue.append(coin)\n        \n        result = []\n        while queue:\n            if len(queue) > 1:\n                print(\"Impossible\")\n                return\n            current = queue.pop(0)\n            result.append(current)\n            for neighbor in graph[current]:\n                in_degree[neighbor] -= 1\n                if in_degree[neighbor] == 0:\n                    queue.append(neighbor)\n        \n        if len(result) != 3:\n            print(\"Impossible\")\n        else:\n            print(''.join(result))\n\nif __name__ == \"__main__\":\n    combo = []\n    for _ in range(3):\n        combo.append(input().strip())\n    Solution.calculate(combo)\n``` ||END-of-SRC||"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 1,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```python\nfrom collections import defaultdict\n\nclass Solution:\n    @classmethod\n    def calculate(cls, weight_combo: list) -> str:\n        graph = defaultdict(set)\n        in_degree = {'A': 0, 'B': 0, 'C': 0}\n        \n        for combo in weight_combo:\n            first_op = combo[0]\n            operator = combo[1]\n            second_op = combo[2]\n            \n            if operator == '>':\n                graph[second_op].add(first_op)\n                in_degree[first_op] += 1\n            else:\n                graph[first_op].add(second_op)\n                in_degree[second_op] += 1\n        \n        queue = []\n        for coin in ['A', 'B', 'C']:\n            if in_degree[coin] == 0:\n                queue.append(coin)\n        \n        result = []\n        while queue:\n            if len(queue) > 1:\n                print(\"Impossible\")\n                return\n            current = queue.pop(0)\n            result.append(current)\n            for neighbor in graph[current]:\n                in_degree[neighbor] -= 1\n                if in_degree[neighbor] == 0:\n                    queue.append(neighbor)\n        \n        if len(result) != 3:\n            print(\"Impossible\")\n        else:\n            print(''.join(result))\n\nif __name__ == \"__main__\":\n    combo = []\n    for _ in range(3):\n        combo.append(input().strip())\n    Solution.calculate(combo)\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 2,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```python\nfrom collections import defaultdict\nfrom typing import List\n\n\nclass Solution:\n    @classmethod\n    def calculate(cls, weight_combo: List[str]) -> str:\n        mapping = defaultdict(int)\n        for combo in weight_combo:\n            [first_op, operator, second_op] = list(combo)\n            if operator == \">\":\n                mapping[first_op] += 1\n                mapping[second_op] -= 1\n            else:\n                mapping[second_op] += 1\n                mapping[first_op] -= 1\n        sorted_coins = sorted(mapping.keys(), key=lambda x: mapping[x])\n        if len(set(mapping.values())) != 3:\n            print(\"Impossible\")\n        else:\n            print(''.join(sorted_coins))\n\n\nif __name__ == \"__main__\":\n    combo = []\n    for _ in range(3):\n        combo.append(input())\n    Solution.calculate(combo)\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 3,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```python\nfrom collections import defaultdict\n\nclass Solution:\n    @classmethod\n    def calculate(cls, weight_combo: List[str]) -> str:\n        graph = {'A': 0, 'B': 0, 'C': 0}\n        for combo in weight_combo:\n            first_op, operator, second_op = combo[0], combo[1], combo[2]\n            if operator == '>':\n                graph[second_op] += 1\n            else:\n                graph[first_op] += 1\n        sorted_graph = sorted(graph.items(), key=lambda x: x[1])\n        if len(set([x[1] for x in sorted_graph])) != 3:\n            print(\"Impossible\")\n        else:\n            print(''.join([x[0] for x in sorted_graph]), end='')\n\nif __name__ == \"__main__\":\n    combo = []\n    for _ in range(3):\n        combo.append(input().strip())\n    Solution.calculate(combo)\n``` ||END-of-SRC||"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 4,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```python\nfrom collections import defaultdict\n\nclass Solution:\n    @classmethod\n    def calculate(cls, weight_combo: List[str]) -> str:\n        graph = defaultdict(list)\n        in_degree = {'A': 0, 'B': 0, 'C': 0}\n        \n        for combo in weight_combo:\n            first_op = combo[0]\n            operator = combo[1]\n            second_op = combo[2]\n            \n            if operator == '>':\n                graph[second_op].append(first_op)\n                in_degree[first_op] += 1\n            else:\n                graph[first_op].append(second_op)\n                in_degree[second_op] += 1\n        \n        queue = []\n        for coin in ['A', 'B', 'C']:\n            if in_degree[coin] == 0:\n                queue.append(coin)\n        \n        result = []\n        while queue:\n            if len(queue) > 1:\n                print(\"Impossible\")\n                return\n            current = queue.pop(0)\n            result.append(current)\n            for neighbor in graph[current]:\n                in_degree[neighbor] -= 1\n                if in_degree[neighbor] == 0:\n                    queue.append(neighbor)\n        \n        if len(result) != 3:\n            print(\"Impossible\")\n        else:\n            print(''.join(result))\n\nif __name__ == \"__main__\":\n    from typing import List\n    combo = []\n    for _ in range(3):\n        combo.append(input().strip())\n    Solution.calculate(combo)\n```"
+                    },
+                    "finish_reason": "stop"
+                }
+            ],
+            "usage": {
+                "prompt_tokens": 3345,
+                "completion_tokens": 1408,
+                "total_tokens": 4753
+            }
+        }
+    },
+    "source_data": {
+        "prob_desc_memory_limit": "256 megabytes",
+        "tags": [
+            "implementation"
+        ],
+        "prob_desc_created_at": "1291737600",
+        "fix_source_code": "",
+        "prob_desc_input_spec": "The input data contains the results of all the weighting, one result on each line. It is guaranteed that every coin pair was weighted exactly once. Vasya labelled the coins with letters \u00abA\u00bb, \u00abB\u00bb and \u00abC\u00bb. Each result is a line that appears as (letter)(&gt; or &lt; sign)(letter). For example, if coin \"A\" proved lighter than coin \"B\", the result of the weighting is A&lt;B.",
+        "prob_desc_sample_outputs": [
+            "CBA",
+            "ACB"
+        ],
+        "src_uid": "97fd9123d0fb511da165b900afbde5dc",
+        "prob_desc_time_limit": "2 seconds",
+        "fix_exec_outcome": "",
+        "delete_cnt": 0,
+        "apr_id": "2ccb1a0ecd3727ed28ec0b574a887a37",
+        "fix_code_uid": "",
+        "lang_cluster": "Python",
+        "prob_desc_sample_inputs": [
+            "A&gt;B\nC&lt;B\nA&gt;C",
+            "A&lt;B\nB&gt;C\nC&gt;A"
+        ],
+        "prob_desc_output_to": "standard output",
+        "file_name": "Python.jsonl",
+        "equal_cnt": 2,
+        "lang": "Python 3",
+        "prob_desc_output_spec": "It the results are contradictory, print Impossible. Otherwise, print without spaces the rearrangement of letters \u00abA\u00bb, \u00abB\u00bb and \u00abC\u00bb which represent the coins in the increasing order of their weights.",
+        "bug_exec_outcome": "WRONG_ANSWER",
+        "prob_desc_notes": null,
+        "difficulty": 1200.0,
+        "similarity_score": 0.9921649694,
+        "prob_desc_description": "One day Vasya came across three Berland coins. They didn't have any numbers that's why Vasya didn't understand how their denominations differ. He supposed that if one coin is heavier than the other one, then it should be worth more. Vasya weighed all the three pairs of coins on pan balance scales and told you the results. Find out how the deminations of the coins differ or if Vasya has a mistake in the weighting results. No two coins are equal.",
+        "potential_dominant_fix_op": "insert",
+        "bug_source_code": "from collections import defaultdict\nfrom typing import List\n\n\nclass Solution:\n    @classmethod\n    def calculate(cls, weight_combo: List[str]) -> str:\n        mapping = defaultdict(int)\n        for combo in weight_combo:\n            [first_op, operator, second_op] = list(combo)\n            if operator == \">\":\n                mapping[first_op] += 1\n            else:\n                mapping[second_op] += 1\n        if mapping[\"A\"] == 1 and mapping[\"B\"] == 1 and mapping[\"C\"] == 1:\n            print(\"Impossible\")\n        if mapping['A'] == 0:\n            print(\"A\", end=\"\")\n        elif mapping['B'] == 0:\n            print(\"B\", end=\"\")\n        elif mapping['C'] == 0:\n            print(\"C\", end=\"\")\n\n        if mapping['A'] == 1:\n            print(\"A\", end=\"\")\n        elif mapping['B'] == 1:\n            print(\"B\", end=\"\")\n        elif mapping['C'] == 1:\n            print(\"C\", end=\"\")\n\n        if mapping['A'] == 2:\n            print(\"A\", end=\"\")\n        elif mapping['B'] == 2:\n            print(\"B\", end=\"\")\n        elif mapping['C'] == 2:\n            print(\"C\", end=\"\")\n\nif __name__ == \"__main__\":\n    combo = []\n    for _ in range(3):\n        combo.append(input())\n    Solution.calculate(combo)\n",
+        "replace_cnt": 0,
+        "prob_desc_input_from": "standard input",
+        "bug_code_uid": "ce5de6a9ce9ca6b6e2067b292a4e2a27",
+        "insert_cnt": 1,
+        "fix_ops_cnt": 1,
+        "hidden_unit_tests": "[{\"input\": \"A>B\\r\\nC<B\\r\\nA>C\\r\\n\", \"output\": [\"CBA\"]}, {\"input\": \"A<B\\r\\nB>C\\r\\nC>A\\r\\n\", \"output\": [\"ACB\"]}, {\"input\": \"A<C\\r\\nB<A\\r\\nB>C\\r\\n\", \"output\": [\"Impossible\"]}, {\"input\": \"A<B\\r\\nA<C\\r\\nB>C\\r\\n\", \"output\": [\"ACB\"]}, {\"input\": \"B>A\\r\\nC<B\\r\\nC>A\\r\\n\", \"output\": [\"ACB\"]}, {\"input\": \"A>B\\r\\nB>C\\r\\nC<A\\r\\n\", \"output\": [\"CBA\"]}, {\"input\": \"A>C\\r\\nA>B\\r\\nB<C\\r\\n\", \"output\": [\"BCA\"]}, {\"input\": \"C<B\\r\\nB>A\\r\\nA<C\\r\\n\", \"output\": [\"ACB\"]}, {\"input\": \"C<B\\r\\nA>B\\r\\nC<A\\r\\n\", \"output\": [\"CBA\"]}, {\"input\": \"C>B\\r\\nB>A\\r\\nA<C\\r\\n\", \"output\": [\"ABC\"]}, {\"input\": \"C<B\\r\\nB<A\\r\\nC>A\\r\\n\", \"output\": [\"Impossible\"]}, {\"input\": \"B<C\\r\\nC<A\\r\\nA>B\\r\\n\", \"output\": [\"BCA\"]}, {\"input\": \"A>B\\r\\nC<B\\r\\nC<A\\r\\n\", \"output\": [\"CBA\"]}, {\"input\": \"B>A\\r\\nC>B\\r\\nA>C\\r\\n\", \"output\": [\"Impossible\"]}, {\"input\": \"B<A\\r\\nC>B\\r\\nC>A\\r\\n\", \"output\": [\"BAC\"]}, {\"input\": \"A<B\\r\\nC>B\\r\\nA<C\\r\\n\", \"output\": [\"ABC\"]}, {\"input\": \"A<B\\r\\nC<A\\r\\nB<C\\r\\n\", \"output\": [\"Impossible\"]}, {\"input\": \"A>C\\r\\nC<B\\r\\nB>A\\r\\n\", \"output\": [\"CAB\"]}, {\"input\": \"C>A\\r\\nA<B\\r\\nB>C\\r\\n\", \"output\": [\"ACB\"]}, {\"input\": \"C>A\\r\\nC<B\\r\\nB>A\\r\\n\", \"output\": [\"ACB\"]}, {\"input\": \"B>C\\r\\nB>A\\r\\nA<C\\r\\n\", \"output\": [\"ACB\"]}, {\"input\": \"C<B\\r\\nC<A\\r\\nB<A\\r\\n\", \"output\": [\"CBA\"]}, {\"input\": \"A<C\\r\\nA<B\\r\\nB>C\\r\\n\", \"output\": [\"ACB\"]}, {\"input\": \"B>A\\r\\nA>C\\r\\nB>C\\r\\n\", \"output\": [\"CAB\"]}, {\"input\": \"B<A\\r\\nA<C\\r\\nC<B\\r\\n\", \"output\": [\"Impossible\"]}, {\"input\": \"A<C\\r\\nB>C\\r\\nA>B\\r\\n\", \"output\": [\"Impossible\"]}, {\"input\": \"B>A\\r\\nC<A\\r\\nC>B\\r\\n\", \"output\": [\"Impossible\"]}, {\"input\": \"A>C\\r\\nC>B\\r\\nB<A\\r\\n\", \"output\": [\"BCA\"]}, {\"input\": \"B<C\\r\\nB<A\\r\\nA>C\\r\\n\", \"output\": [\"BCA\"]}, {\"input\": \"A>B\\r\\nC>B\\r\\nA<C\\r\\n\", \"output\": [\"BAC\"]}, {\"input\": \"C<B\\r\\nC<A\\r\\nB<A\\r\\n\", \"output\": [\"CBA\"]}, {\"input\": \"A<C\\r\\nA>B\\r\\nB>C\\r\\n\", \"output\": [\"Impossible\"]}, {\"input\": \"B>A\\r\\nB>C\\r\\nA<C\\r\\n\", \"output\": [\"ACB\"]}, {\"input\": \"B>C\\r\\nC<A\\r\\nB<A\\r\\n\", \"output\": [\"CBA\"]}, {\"input\": \"C>A\\r\\nB>A\\r\\nB>C\\r\\n\", \"output\": [\"ACB\"]}, {\"input\": \"B<A\\r\\nB>C\\r\\nA<C\\r\\n\", \"output\": [\"Impossible\"]}, {\"input\": \"B<C\\r\\nA<B\\r\\nC>A\\r\\n\", \"output\": [\"ABC\"]}, {\"input\": \"C<B\\r\\nB>A\\r\\nA>C\\r\\n\", \"output\": [\"CAB\"]}, {\"input\": \"A>B\\r\\nC>A\\r\\nB<C\\r\\n\", \"output\": [\"BAC\"]}, {\"input\": \"A>B\\r\\nB>C\\r\\nC<A\\r\\n\", \"output\": [\"CBA\"]}, {\"input\": \"B>C\\r\\nC>A\\r\\nA>B\\r\\n\", \"output\": [\"Impossible\"]}, {\"input\": \"B<A\\r\\nB>C\\r\\nC<A\\r\\n\", \"output\": [\"CBA\"]}, {\"input\": \"C>B\\r\\nB>A\\r\\nC>A\\r\\n\", \"output\": [\"ABC\"]}, {\"input\": \"A>C\\r\\nA>B\\r\\nB>C\\r\\n\", \"output\": [\"CBA\"]}, {\"input\": \"B<C\\r\\nA>B\\r\\nA<C\\r\\n\", \"output\": [\"BAC\"]}, {\"input\": \"C>A\\r\\nC<B\\r\\nB>A\\r\\n\", \"output\": [\"ACB\"]}, {\"input\": \"C>B\\r\\nA<B\\r\\nC<A\\r\\n\", \"output\": [\"Impossible\"]}, {\"input\": \"A<C\\r\\nC<B\\r\\nA>B\\r\\n\", \"output\": [\"Impossible\"]}, {\"input\": \"B>C\\r\\nA<B\\r\\nA<C\\r\\n\", \"output\": [\"ACB\"]}, {\"input\": \"C>A\\r\\nA<B\\r\\nC>B\\r\\n\", \"output\": [\"ABC\"]}]"
+    }
+}

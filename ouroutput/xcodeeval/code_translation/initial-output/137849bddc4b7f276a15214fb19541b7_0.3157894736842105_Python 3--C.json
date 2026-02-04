@@ -1,0 +1,89 @@
+{
+    "oai_response": {
+        "prompt": "Here is code in Python 3 programming lanaguge. Translate the following code from Python 3 to C programming lanaguge. Do not output any extra description or tokens other than the translated code. \n\ns = input()\nk = int(input())\nle = len(s) + k\nm = 0\nfor i in range(len(s)):\n    j = 1\n    while i+2*j <= le:\n        mi = i + j\n        la = i + 2*j\n        if mi >= len(s):\n            m = max(m, j)\n        if la <= len(s) and s[i:mi] == s[mi:la]:\n            m = max(m, j)\n        if mi < len(s):\n            xl = len(s) - mi\n            if s[i:i + xl] == s[mi:len(s)]:\n                m = max(m, j)\n        j += 1\nprint(2*m)\n||END-of-SRC||",
+        "response": {
+            "id": "multi-call-as-2151xe0dad",
+            "model": "deepseek-v3",
+            "created": 1767069258,
+            "choices": [
+                {
+                    "index": 0,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <string.h>\n\nint main() {\n    char s[1000];\n    int k;\n    scanf(\"%s\", s);\n    scanf(\"%d\", &k);\n    int le = strlen(s) + k;\n    int m = 0;\n    for (int i = 0; i < strlen(s); i++) {\n        int j = 1;\n        while (i + 2 * j <= le) {\n            int mi = i + j;\n            int la = i + 2 * j;\n            if (mi >= strlen(s)) {\n                if (j > m) {\n                    m = j;\n                }\n            }\n            if (la <= strlen(s)) {\n                int match = 1;\n                for (int x = 0; x < j; x++) {\n                    if (s[i + x] != s[mi + x]) {\n                        match = 0;\n                        break;\n                    }\n                }\n                if (match && j > m) {\n                    m = j;\n                }\n            }\n            if (mi < strlen(s)) {\n                int xl = strlen(s) - mi;\n                int match = 1;\n                for (int x = 0; x < xl; x++) {\n                    if (s[i + x] != s[mi + x]) {\n                        match = 0;\n                        break;\n                    }\n                }\n                if (match && j > m) {\n                    m = j;\n                }\n            }\n            j++;\n        }\n    }\n    printf(\"%d\\n\", 2 * m);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 1,
+                    "message": {
+                        "role": "assistant",
+                        "content": "Here's the translated code in C:\n\n```c\n#include <stdio.h>\n#include <string.h>\n\nint main() {\n    char s[1000];\n    int k;\n    scanf(\"%s\", s);\n    scanf(\"%d\", &k);\n    int le = strlen(s) + k;\n    int m = 0;\n    for (int i = 0; i < strlen(s); i++) {\n        int j = 1;\n        while (i + 2 * j <= le) {\n            int mi = i + j;\n            int la = i + 2 * j;\n            if (mi >= strlen(s)) {\n                if (j > m) m = j;\n            }\n            if (la <= strlen(s)) {\n                int match = 1;\n                for (int x = 0; x < j; x++) {\n                    if (s[i + x] != s[mi + x]) {\n                        match = 0;\n                        break;\n                    }\n                }\n                if (match && j > m) m = j;\n            }\n            if (mi < strlen(s)) {\n                int xl = strlen(s) - mi;\n                int match = 1;\n                for (int x = 0; x < xl; x++) {\n                    if (s[i + x] != s[mi + x]) {\n                        match = 0;\n                        break;\n                    }\n                }\n                if (match && j > m) m = j;\n            }\n            j++;\n        }\n    }\n    printf(\"%d\\n\", 2 * m);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 2,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <string.h>\n\nint main() {\n    char s[1000];\n    int k;\n    scanf(\"%s\", s);\n    scanf(\"%d\", &k);\n    int le = strlen(s) + k;\n    int m = 0;\n    for (int i = 0; i < strlen(s); i++) {\n        int j = 1;\n        while (i + 2 * j <= le) {\n            int mi = i + j;\n            int la = i + 2 * j;\n            if (mi >= strlen(s)) {\n                if (j > m) {\n                    m = j;\n                }\n            }\n            if (la <= strlen(s)) {\n                int match = 1;\n                for (int x = 0; x < j; x++) {\n                    if (s[i + x] != s[mi + x]) {\n                        match = 0;\n                        break;\n                    }\n                }\n                if (match && j > m) {\n                    m = j;\n                }\n            }\n            if (mi < strlen(s)) {\n                int xl = strlen(s) - mi;\n                int match = 1;\n                for (int x = 0; x < xl; x++) {\n                    if (s[i + x] != s[mi + x]) {\n                        match = 0;\n                        break;\n                    }\n                }\n                if (match && j > m) {\n                    m = j;\n                }\n            }\n            j++;\n        }\n    }\n    printf(\"%d\\n\", 2 * m);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 3,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <string.h>\n\nint main() {\n    char s[1000];\n    int k;\n    scanf(\"%s %d\", s, &k);\n    int le = strlen(s) + k;\n    int m = 0;\n    int len_s = strlen(s);\n    for (int i = 0; i < len_s; i++) {\n        int j = 1;\n        while (i + 2 * j <= le) {\n            int mi = i + j;\n            int la = i + 2 * j;\n            if (mi >= len_s) {\n                if (j > m) m = j;\n            }\n            if (la <= len_s) {\n                int match = 1;\n                for (int x = 0; x < j; x++) {\n                    if (s[i + x] != s[mi + x]) {\n                        match = 0;\n                        break;\n                    }\n                }\n                if (match && j > m) m = j;\n            }\n            if (mi < len_s) {\n                int xl = len_s - mi;\n                int match = 1;\n                for (int x = 0; x < xl; x++) {\n                    if (s[i + x] != s[mi + x]) {\n                        match = 0;\n                        break;\n                    }\n                }\n                if (match && j > m) m = j;\n            }\n            j++;\n        }\n    }\n    printf(\"%d\\n\", 2 * m);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 4,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <string.h>\n\nint main() {\n    char s[1000];\n    int k;\n    scanf(\"%s\", s);\n    scanf(\"%d\", &k);\n    int le = strlen(s) + k;\n    int m = 0;\n    for (int i = 0; i < strlen(s); i++) {\n        int j = 1;\n        while (i + 2 * j <= le) {\n            int mi = i + j;\n            int la = i + 2 * j;\n            if (mi >= strlen(s)) {\n                if (j > m) {\n                    m = j;\n                }\n            }\n            if (la <= strlen(s)) {\n                int match = 1;\n                for (int x = 0; x < j; x++) {\n                    if (s[i + x] != s[mi + x]) {\n                        match = 0;\n                        break;\n                    }\n                }\n                if (match && j > m) {\n                    m = j;\n                }\n            }\n            if (mi < strlen(s)) {\n                int xl = strlen(s) - mi;\n                int match = 1;\n                for (int x = 0; x < xl; x++) {\n                    if (s[i + x] != s[mi + x]) {\n                        match = 0;\n                        break;\n                    }\n                }\n                if (match && j > m) {\n                    m = j;\n                }\n            }\n            j++;\n        }\n    }\n    printf(\"%d\\n\", 2 * m);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                }
+            ],
+            "usage": {
+                "prompt_tokens": 1040,
+                "completion_tokens": 1689,
+                "total_tokens": 2729
+            }
+        }
+    },
+    "source_data": {
+        "code_uid": "137849bddc4b7f276a15214fb19541b7",
+        "prob_desc_output_to": "standard output",
+        "prob_desc_notes": "NoteA tandem repeat of length 2n is string s, where for any position i (1\u2009\u2264\u2009i\u2009\u2264\u2009n) the following condition fulfills: si\u2009=\u2009si\u2009+\u2009n.In the first sample Kolya could obtain a string aabaab, in the second \u2014 aaabbbbbb, in the third \u2014 abracadabrabracadabra.",
+        "lang_cluster": "Python",
+        "prob_desc_time_limit": "2 seconds",
+        "prob_desc_input_spec": "The first line contains s (1\u2009\u2264\u2009|s|\u2009\u2264\u2009200). This string contains only small English letters. The second line contains number k (1\u2009\u2264\u2009k\u2009\u2264\u2009200) \u2014 the number of the added characters.",
+        "source_code": "s = input()\nk = int(input())\nle = len(s) + k\nm = 0\nfor i in range(len(s)):\n    j = 1\n    while i+2*j <= le:\n        mi = i + j\n        la = i + 2*j\n        if mi >= len(s):\n            m = max(m, j)\n        if la <= len(s) and s[i:mi] == s[mi:la]:\n            m = max(m, j)\n        if mi < len(s):\n            xl = len(s) - mi\n            if s[i:i + xl] == s[mi:len(s)]:\n                m = max(m, j)\n        j += 1\nprint(2*m)\n",
+        "prob_desc_sample_inputs": [
+            "aaba\n2",
+            "aaabbbb\n2",
+            "abracadabra\n10"
+        ],
+        "prob_desc_memory_limit": "256 megabytes",
+        "exec_outcome": "PASSED",
+        "prob_desc_output_spec": "Print a single number \u2014 the maximum length of the tandem repeat that could have occurred in the new string.",
+        "src_uid": "bb65667b65ff069a9c0c9e8fe31da8ab",
+        "prob_desc_input_from": "standard input",
+        "lang": "Python 3",
+        "prob_desc_sample_outputs": [
+            "6",
+            "6",
+            "20"
+        ],
+        "file_name": "d7021504500d5ca7c2b02df8100a574d159e6e67e20ec8071b75800b1267370a",
+        "prob_desc_description": "Kolya got string s for his birthday, the string consists of small English letters. He immediately added k more characters to the right of the string.Then Borya came and said that the new string contained a tandem repeat of length l as a substring. How large could l be?See notes for definition of a tandem repeat.",
+        "prob_desc_created_at": "1403191800",
+        "difficulty": 1500.0,
+        "hidden_unit_tests": "[{\"input\": \"aaba\\r\\n2\\r\\n\", \"output\": [\"6\"]}, {\"input\": \"aaabbbb\\r\\n2\\r\\n\", \"output\": [\"6\"]}, {\"input\": \"abracadabra\\r\\n10\\r\\n\", \"output\": [\"20\"]}, {\"input\": \"zwvrx\\r\\n3\\r\\n\", \"output\": [\"6\"]}, {\"input\": \"ayi\\r\\n10\\r\\n\", \"output\": [\"12\"]}, {\"input\": \"eexlzphiay\\r\\n1\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"zumtumtlitf\\r\\n2\\r\\n\", \"output\": [\"6\"]}, {\"input\": \"xbmrxbmrkzovhb\\r\\n3\\r\\n\", \"output\": [\"8\"]}, {\"input\": \"ijtvifbuajod\\r\\n5\\r\\n\", \"output\": [\"10\"]}, {\"input\": \"jhfwjyyzwrjiyrrgveiqkoltivghgkontrqragikttxxuwszjwqhwxindyrdqhucnbwgwrppgqmsasrzohezjlfmkzsqptwpratprcrxyxecnlsaiqrvimihmhjfgzwdtvmfhgbuonpsblphyoxzclkrwbwrkasahiirzqlfjdoomlosltldbpomyyhmdwfchzxnmwlh\\r\\n200\\r\\n\", \"output\": [\"400\"]}, {\"input\": \"kbxuunznjtxutlauuuipifggjjkequbpvbagmxojhgxtakxioxsmrmoatlyzwsygibhafspqnfbycyztxmtpirqcyhalluhhubne\\r\\n100\\r\\n\", \"output\": [\"200\"]}, {\"input\": \"lfydqwrwevvvclkkainwxwvqf\\r\\n33\\r\\n\", \"output\": [\"58\"]}, {\"input\": \"skllmtqzajnzjkuflkazjku\\r\\n10\\r\\n\", \"output\": [\"20\"]}, {\"input\": \"uqytussdzppiuwxterrfyrwtsrkdpfzhjpeuuulopnnjtltdtlkzwixouxteuheqaxhaicoeveggwkcnkamluxykyktmvafajfnxmeuuulopnnjtltdtlkzwixouxteuheqaxhaicoeveggwkcnkamluxykyktmvafajfnxmefkurbbcbesiwcauwmlhmfslcavsreea\\r\\n41\\r\\n\", \"output\": [\"134\"]}, {\"input\": \"kitxizqtbzwjqldmhwpmznaoddtgqzithwvyeyuixxhlnmksmsysikftzrskbnriebbwzermgcxalwpmznaoddtgqzithwvyeyuixxhlnmksmsy\\r\\n32\\r\\n\", \"output\": [\"120\"]}, {\"input\": \"auxrkguktewrcwwklhmuxkgdialidacmjinwcsrtfrtdsvqsbwuqtsrmsyizsvdkbqwrbuphqqvzktqkskylnnqbezibqnaytuuqddrigdkbqwrbuphqqvzktqkskylnnqbezi\\r\\n23\\r\\n\", \"output\": [\"86\"]}, {\"input\": \"ezlrqvaeekbnkqqjcijtkaoisqpbguqfsqxtzjotdhtrnaoxutybbqzzhrqvaeekbnkqqjcijtkaoisqpbguqfsqxtzjotdhtrnaoxutybbqzzhzoeptxwaunvarfcapxsnamwjyqpxbiegizqotuqen\\r\\n15\\r\\n\", \"output\": [\"108\"]}, {\"input\": \"ngkdgsdxouojadjqzgxewuuyxdlxulgrblxpkyzhgmkeatmhvbdelmxxrqtsarfvotcxfuiqsxbnczbadelhxtlfwrnbisayeveiejvycllhkictyyriqseznziyurlgiejvycllhkictyyriqseznziyurlgwiubyvqfmabhstqalicamyholkqlvtjfhcfbyr\\r\\n133\\r\\n\", \"output\": [\"266\"]}, {\"input\": \"nemtbujbscvkgxnbqboeohzfozihjvhcllfseiouggzojhqcoqrvtdsgkubiophnhahgplhtjxblicnavkayzsydmxphgfvhlllontqfpqitrpjiadpmogtqyjhqfpqitrpjiadpmogtqyjhvaopbzglvdmwzsrhtsszyengbihrrzljvofgugmjedgujhzvlebpprue\\r\\n140\\r\\n\", \"output\": [\"280\"]}, {\"input\": \"wqlvwkiiqfmesejedhyjjfgzqfmiqyaiqefzaywrdundcmbfvhdflrpvkitbltbrzedvozltptkaanbpmjvsdnpthcepfydrdlscexczxwzyatupzlxdhnezdsipeyjqmbvoavsgeuulkqkexpwpttvxeovcjrqnzdeiaatzglvwkiiqfmesejedhyjjfgzqfmiqyaiq\\r\\n141\\r\\n\", \"output\": [\"334\"]}, {\"input\": \"cxpleheyfwu\\r\\n132\\r\\n\", \"output\": [\"142\"]}, {\"input\": \"wccknxhbqzjwaseubvizxuisnzneatgjhaatrfydssgzufyztesrxnjlbhckybqlbncvqgjcoupirpqnnmacejicjzhattqolmclqnotctcsliyvjwutvrtrhichssehtlwbrq\\r\\n123\\r\\n\", \"output\": [\"246\"]}, {\"input\": \"eluswgbaoqmkfymoidkripnpgmbvhydcuupfhecefgosemhverqwzxklzzacdgcrrlzdnocxmzxtiamqpxspfogqhrlsnfzdexamrkowqpqggolnrvxfhenedmfzngnavgnjkzsnkjjjfcgfqjuywmrt\\r\\n115\\r\\n\", \"output\": [\"230\"]}, {\"input\": \"zonkpassuptcnpeoogztfpaspwdwnmiwsxeskfajlpfswzrdcxhlzxrgddtgmnngevbiybdnwelkzonhrzgldriyymrzduulifphxypcaqurgeqitkxxnsqdpsxattjoncmhihgxdaxixkmockynyjefvhrzgldriyymrzduulifphxypcaqurgeqitkxxnsqdpsxatt\\r\\n200\\r\\n\", \"output\": [\"400\"]}, {\"input\": \"cznjenwypyeulxzdxfhalfbyefhhgieybtzjmbdirrpybxnftpcqfhrhiifsfkllztwejdvhvtnxecnfgwwxhhcsjsqzhrjddauttbxphfzljgbvcqshateqeulxzdxfhalfbyefhhgieybtzjmbdirrpybxnftpcqfhrhiifsfkllztwejdvhvtnxecnfgwwxhhcsjs\\r\\n41\\r\\n\", \"output\": [\"220\"]}, {\"input\": \"jtifziirovbklaioslunwvtdavraandnzcwqbealbvqonoxufqrsewwrzvkrecrfqhdduwmcdcdhdtvpyshfhgdwdkmglskidhzayvouwhumzhcphocqyfcdddhzayvouwhumzhcphocqyfcddayfakoxofjgusuonehbxbokjsdlktqrcdurogxltsysyjbiagrvhky\\r\\n32\\r\\n\", \"output\": [\"64\"]}, {\"input\": \"thdnszfpaznmjlzacpovjcvybdkynhnvkaxvncfpofvnfpkggyfvqbklvrnbwpjswbrvjvqyzheslzxvuuqpbrvjvqyzheslzxvuuqprxasesuweenacripkyevplccdlxocfuqklypxactpajkmhcsgbxwgznizwndthualdbbgxhrtdrodoiddzdmxtatssfsuksqz\\r\\n23\\r\\n\", \"output\": [\"46\"]}, {\"input\": \"ifglyzxttgfpcgvpfmfmjhuzmgmaiivnbrzjevgxosclwqfewklzstkjmnjmqgpeshndmzrtthpjbhuqoldgvkkmkqinkptatpytrchkvjyeimsfmjhuzmgmaiivnbrzjevgxosclwqfewklzstkjmnjmqgpeshndmzrtthpjbhuqoldgvkkmkqinkptatpytrchkvjy\\r\\n15\\r\\n\", \"output\": [\"186\"]}, {\"input\": \"ktkkckrzvjhdspjmtljrmwgfoxeuadhajkfjpcmquqldlkutwyqaupnypwqfbxbuaaywcflplmqxnvwmkzpdvvkgxkmsggxmdangeyudqrgrihgbljrmwgfoxeuadhajkfjpcmquqldlkutwyqaupnypwqfbxbuaaywcflplmqxnvwmkzpdvvkgxkmsggxmdangeyudq\\r\\n57\\r\\n\", \"output\": [\"190\"]}, {\"input\": \"mklxokaoaxzccddmsxzc\\r\\n41\\r\\n\", \"output\": [\"60\"]}, {\"input\": \"pdgrwrozhkrwwgebwvuilwm\\r\\n32\\r\\n\", \"output\": [\"54\"]}, {\"input\": \"uzfvkgoaimitrlfjn\\r\\n43\\r\\n\", \"output\": [\"60\"]}, {\"input\": \"xaxgnvphqavbuxzkcsptsih\\r\\n150\\r\\n\", \"output\": [\"172\"]}, {\"input\": \"fonwebmlwaxthdwche\\r\\n57\\r\\n\", \"output\": [\"74\"]}]",
+        "source_lang": "Python 3",
+        "target_lang": "C"
+    }
+}

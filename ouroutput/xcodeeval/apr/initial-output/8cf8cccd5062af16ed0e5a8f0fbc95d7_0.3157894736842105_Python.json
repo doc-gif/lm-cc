@@ -1,0 +1,101 @@
+{
+    "oai_response": {
+        "prompt": "Fix a buggy program written in Python language to solve the following programming problem:\nDescription: Malek lives in an apartment block with 100 floors numbered from 0 to 99. The apartment has an elevator with a digital counter showing the floor that the elevator is currently on. The elevator shows each digit of a number with 7 light sticks by turning them on or off. The picture below shows how the elevator shows each digit.One day when Malek wanted to go from floor 88 to floor 0 using the elevator he noticed that the counter shows number 89 instead of 88. Then when the elevator started moving the number on the counter changed to 87. After a little thinking Malek came to the conclusion that there is only one explanation for this: One of the sticks of the counter was broken. Later that day Malek was thinking about the broken stick and suddenly he came up with the following problem.Suppose the digital counter is showing number n. Malek calls an integer x (0\u2009\u2264\u2009x\u2009\u2264\u200999) good if it's possible that the digital counter was supposed to show x but because of some(possibly none) broken sticks it's showing n instead. Malek wants to know number of good integers for a specific n. So you must write a program that calculates this number. Please note that the counter always shows two digits.\nInput Specification: The only line of input contains exactly two digits representing number n (0\u2009\u2264\u2009n\u2009\u2264\u200999). Note that n may have a leading zero.\nOutput Specification: In the only line of the output print the number of good integers.\n\nSample Input:\n89\nSample Output:\n2\n\nSample Input:\n00\nSample Output:\n4\n\nSample Input:\n73\nSample Output:\n15\n\nNotes: NoteIn the first sample the counter may be supposed to show 88 or 89.In the second sample the good integers are 00, 08, 80 and 88.In the third sample the good integers are 03,\u200908,\u200909,\u200933,\u200938,\u200939,\u200973,\u200978,\u200979,\u200983,\u200988,\u200989,\u200993,\u200998,\u200999.\nTake input from standard input and output to standard output\n\nHere is the code with a bug of COMPILATION_ERROR:\n\nInteger = int(input(\"\"))\nif Integer < 100 and Integer > 0:\n    import math\n    First_dig = math.floor(Integer/10)\n    Second_dig = Integer - First_dig * 10\n    if First_dig == 0:\n        n = 2\n    elif First_dig == 1:\n        n = 7\n    elif First_dig == 2:\n        n = 2\n    elif First_dig == 3:\n        n = 3\n    elif First_dig == 4:\n        n = 3\n    elif First_dig == 5:\n        n = 3\n    elif First_dig == 6:\n        n = 2\n    elif First_dig == 7:\n        n =5\n   elif First_dig == 8:\n        n = 1\n    elif First_dig == 9:\n        n = 2\n\n    if Second_dig == 0 :\n        k = 2\n    elif Second_dig == 1:\n        k = 7\n    elif Second_dig == 2:\n        k = 2\n    elif Second_dig == 3:\n        k = 3\n    elif Second_dig == 4:\n        k = 3\n    elif Second_dig == 5:\n        k = 3\n    elif Second_dig == 6:\n        k = 2\n    elif Second_dig == 7:\n        k = 5\n    elif Second_dig == 8:\n        k = 1\n    else:\n        k = 2\n\n    \nprint(k*n)\n\nProvide the fixed Python code without any description or extra tokens.\n\nFixed source code:\n ||END-of-SRC||",
+        "response": {
+            "id": "multi-call-as-igqp6sjgrd",
+            "model": "deepseek-v3",
+            "created": 1760424230,
+            "choices": [
+                {
+                    "index": 0,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```python\nn = input().strip()\ndigit1 = int(n[0])\ndigit2 = int(n[1])\n\ndigit_mapping = {\n    0: {0, 8},\n    1: {0, 1, 3, 4, 7, 8, 9},\n    2: {2, 8},\n    3: {3, 8, 9},\n    4: {4, 8, 9},\n    5: {5, 6, 8, 9},\n    6: {6, 8},\n    7: {0, 3, 7, 8, 9},\n    8: {8},\n    9: {8, 9}\n}\n\npossible_digit1 = digit_mapping[digit1]\npossible_digit2 = digit_mapping[digit2]\n\ncount = len(possible_digit1) * len(possible_digit2)\nprint(count)\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 1,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```python\nn = input().strip()\ndigit_mapping = {\n    '0': 2,\n    '1': 7,\n    '2': 2,\n    '3': 3,\n    '4': 3,\n    '5': 3,\n    '6': 2,\n    '7': 5,\n    '8': 1,\n    '9': 2\n}\n\nfirst_digit = n[0]\nsecond_digit = n[1]\ncount = digit_mapping[first_digit] * digit_mapping[second_digit]\nprint(count)\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 2,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```python\nn = input().strip()\ndigit1 = int(n[0])\ndigit2 = int(n[1])\n\ndigit_map = {\n    0: [0, 8],\n    1: [0, 1, 3, 4, 7, 8, 9],\n    2: [2, 8],\n    3: [3, 8, 9],\n    4: [4, 8, 9],\n    5: [5, 6, 8, 9],\n    6: [6, 8],\n    7: [0, 3, 7, 8, 9],\n    8: [8],\n    9: [8, 9]\n}\n\ncount1 = len(digit_map[digit1])\ncount2 = len(digit_map[digit2])\n\nprint(count1 * count2)\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 3,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```python\nn = input().strip()\ndigit_mapping = {\n    '0': 2,\n    '1': 7,\n    '2': 2,\n    '3': 3,\n    '4': 3,\n    '5': 3,\n    '6': 2,\n    '7': 5,\n    '8': 1,\n    '9': 2\n}\nfirst_dig = n[0]\nsecond_dig = n[1]\ncount = digit_mapping[first_dig] * digit_mapping[second_dig]\nprint(count)\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 4,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```python\nn = input().strip()\ndigit_mapping = {\n    '0': 2,\n    '1': 7,\n    '2': 2,\n    '3': 3,\n    '4': 3,\n    '5': 3,\n    '6': 2,\n    '7': 5,\n    '8': 1,\n    '9': 2\n}\nfirst_dig = n[0]\nsecond_dig = n[1]\ncount = digit_mapping[first_dig] * digit_mapping[second_dig]\nprint(count)\n```"
+                    },
+                    "finish_reason": "stop"
+                }
+            ],
+            "usage": {
+                "prompt_tokens": 4210,
+                "completion_tokens": 761,
+                "total_tokens": 4971
+            }
+        }
+    },
+    "source_data": {
+        "prob_desc_memory_limit": "256 megabytes",
+        "tags": [
+            "implementation"
+        ],
+        "prob_desc_created_at": "1418488200",
+        "fix_source_code": "",
+        "prob_desc_input_spec": "The only line of input contains exactly two digits representing number n (0\u2009\u2264\u2009n\u2009\u2264\u200999). Note that n may have a leading zero.",
+        "prob_desc_sample_outputs": [
+            "2",
+            "4",
+            "15"
+        ],
+        "src_uid": "76c8bfa6789db8364a8ece0574cd31f5",
+        "prob_desc_time_limit": "1 second",
+        "fix_exec_outcome": "",
+        "delete_cnt": 1,
+        "apr_id": "179b03ddc79f84b0d98a4c335c932e8f",
+        "fix_code_uid": "",
+        "lang_cluster": "Python",
+        "prob_desc_sample_inputs": [
+            "89",
+            "00",
+            "73"
+        ],
+        "prob_desc_output_to": "standard output",
+        "file_name": "Python.jsonl",
+        "equal_cnt": 11,
+        "lang": "Python 3",
+        "prob_desc_output_spec": "In the only line of the output print the number of good integers.",
+        "bug_exec_outcome": "COMPILATION_ERROR",
+        "prob_desc_notes": "NoteIn the first sample the counter may be supposed to show 88 or 89.In the second sample the good integers are 00, 08, 80 and 88.In the third sample the good integers are 03,\u200908,\u200909,\u200933,\u200938,\u200939,\u200973,\u200978,\u200979,\u200983,\u200988,\u200989,\u200993,\u200998,\u200999.",
+        "difficulty": 1100.0,
+        "similarity_score": 0.5238600373,
+        "prob_desc_description": "Malek lives in an apartment block with 100 floors numbered from 0 to 99. The apartment has an elevator with a digital counter showing the floor that the elevator is currently on. The elevator shows each digit of a number with 7 light sticks by turning them on or off. The picture below shows how the elevator shows each digit.One day when Malek wanted to go from floor 88 to floor 0 using the elevator he noticed that the counter shows number 89 instead of 88. Then when the elevator started moving the number on the counter changed to 87. After a little thinking Malek came to the conclusion that there is only one explanation for this: One of the sticks of the counter was broken. Later that day Malek was thinking about the broken stick and suddenly he came up with the following problem.Suppose the digital counter is showing number n. Malek calls an integer x (0\u2009\u2264\u2009x\u2009\u2264\u200999) good if it's possible that the digital counter was supposed to show x but because of some(possibly none) broken sticks it's showing n instead. Malek wants to know number of good integers for a specific n. So you must write a program that calculates this number. Please note that the counter always shows two digits.",
+        "potential_dominant_fix_op": "replace",
+        "bug_source_code": "Integer = int(input(\"\"))\nif Integer < 100 and Integer > 0:\n    import math\n    First_dig = math.floor(Integer/10)\n    Second_dig = Integer - First_dig * 10\n    if First_dig == 0:\n        n = 2\n    elif First_dig == 1:\n        n = 7\n    elif First_dig == 2:\n        n = 2\n    elif First_dig == 3:\n        n = 3\n    elif First_dig == 4:\n        n = 3\n    elif First_dig == 5:\n        n = 3\n    elif First_dig == 6:\n        n = 2\n    elif First_dig == 7:\n        n =5\n   elif First_dig == 8:\n        n = 1\n    elif First_dig == 9:\n        n = 2\n\n    if Second_dig == 0 :\n        k = 2\n    elif Second_dig == 1:\n        k = 7\n    elif Second_dig == 2:\n        k = 2\n    elif Second_dig == 3:\n        k = 3\n    elif Second_dig == 4:\n        k = 3\n    elif Second_dig == 5:\n        k = 3\n    elif Second_dig == 6:\n        k = 2\n    elif Second_dig == 7:\n        k = 5\n    elif Second_dig == 8:\n        k = 1\n    else:\n        k = 2\n\n    \nprint(k*n)",
+        "replace_cnt": 8,
+        "prob_desc_input_from": "standard input",
+        "bug_code_uid": "8cf8cccd5062af16ed0e5a8f0fbc95d7",
+        "insert_cnt": 1,
+        "fix_ops_cnt": 10,
+        "hidden_unit_tests": "[{\"input\": \"89\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"00\\r\\n\", \"output\": [\"4\"]}, {\"input\": \"73\\r\\n\", \"output\": [\"15\"]}, {\"input\": \"08\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"26\\r\\n\", \"output\": [\"4\"]}, {\"input\": \"49\\r\\n\", \"output\": [\"6\"]}, {\"input\": \"88\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"04\\r\\n\", \"output\": [\"6\"]}, {\"input\": \"60\\r\\n\", \"output\": [\"4\"]}, {\"input\": \"11\\r\\n\", \"output\": [\"49\"]}, {\"input\": \"22\\r\\n\", \"output\": [\"4\"]}, {\"input\": \"33\\r\\n\", \"output\": [\"9\"]}, {\"input\": \"44\\r\\n\", \"output\": [\"9\"]}, {\"input\": \"55\\r\\n\", \"output\": [\"16\"]}, {\"input\": \"66\\r\\n\", \"output\": [\"4\"]}, {\"input\": \"77\\r\\n\", \"output\": [\"25\"]}, {\"input\": \"88\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"99\\r\\n\", \"output\": [\"4\"]}, {\"input\": \"80\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"78\\r\\n\", \"output\": [\"5\"]}, {\"input\": \"67\\r\\n\", \"output\": [\"10\"]}, {\"input\": \"89\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"46\\r\\n\", \"output\": [\"6\"]}, {\"input\": \"90\\r\\n\", \"output\": [\"4\"]}, {\"input\": \"92\\r\\n\", \"output\": [\"4\"]}, {\"input\": \"35\\r\\n\", \"output\": [\"12\"]}, {\"input\": \"05\\r\\n\", \"output\": [\"8\"]}, {\"input\": \"57\\r\\n\", \"output\": [\"20\"]}, {\"input\": \"20\\r\\n\", \"output\": [\"4\"]}]"
+    }
+}

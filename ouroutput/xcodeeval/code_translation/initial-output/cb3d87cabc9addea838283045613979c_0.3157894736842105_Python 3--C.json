@@ -1,0 +1,87 @@
+{
+    "oai_response": {
+        "prompt": "Here is code in Python 3 programming lanaguge. Translate the following code from Python 3 to C programming lanaguge. Do not output any extra description or tokens other than the translated code. \n\nn = input()\ns = input()\ns = ''.join(reversed(sorted(s)))\nif s == '0':\n    print(0)\n    exit(0)\nk = 0\nfor i in range(len(s)):\n    if s[i] == '0':\n        k += 1\nif n == 1:\n    print(s)\n    exit(0)\nans = '1' + '0'*k\nprint(ans)\n||END-of-SRC||",
+        "response": {
+            "id": "multi-call-as-cakaet6nrw",
+            "model": "deepseek-v3",
+            "created": 1767068893,
+            "choices": [
+                {
+                    "index": 0,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <string.h>\n#include <stdlib.h>\n\nint compare(const void *a, const void *b) {\n    return (*(char*)b - *(char*)a);\n}\n\nint main() {\n    char n[100], s[100];\n    scanf(\"%s\", n);\n    scanf(\"%s\", s);\n    \n    qsort(s, strlen(s), sizeof(char), compare);\n    \n    if (strcmp(s, \"0\") == 0) {\n        printf(\"0\\n\");\n        return 0;\n    }\n    \n    int k = 0;\n    for (int i = 0; i < strlen(s); i++) {\n        if (s[i] == '0') {\n            k++;\n        }\n    }\n    \n    if (strcmp(n, \"1\") == 0) {\n        printf(\"%s\\n\", s);\n        return 0;\n    }\n    \n    printf(\"1\");\n    for (int i = 0; i < k; i++) {\n        printf(\"0\");\n    }\n    printf(\"\\n\");\n    \n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 1,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <string.h>\n#include <stdlib.h>\n\nint compare(const void *a, const void *b) {\n    return (*(char*)b - *(char*)a);\n}\n\nint main() {\n    char n[100];\n    char s[100];\n    fgets(n, sizeof(n), stdin);\n    fgets(s, sizeof(s), stdin);\n    n[strcspn(n, \"\\n\")] = '\\0';\n    s[strcspn(s, \"\\n\")] = '\\0';\n    \n    qsort(s, strlen(s), sizeof(char), compare);\n    \n    if (strcmp(s, \"0\") == 0) {\n        printf(\"0\\n\");\n        return 0;\n    }\n    \n    int k = 0;\n    for (int i = 0; i < strlen(s); i++) {\n        if (s[i] == '0') {\n            k++;\n        }\n    }\n    \n    if (strlen(n) == 1) {\n        printf(\"%s\\n\", s);\n        return 0;\n    }\n    \n    printf(\"1\");\n    for (int i = 0; i < k; i++) {\n        printf(\"0\");\n    }\n    printf(\"\\n\");\n    \n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 2,
+                    "message": {
+                        "role": "assistant",
+                        "content": "Here's the equivalent C code:\n\n```c\n#include <stdio.h>\n#include <string.h>\n#include <stdlib.h>\n\nint compare(const void *a, const void *b) {\n    return (*(char *)b - *(char *)a);\n}\n\nint main() {\n    char n[100], s[100];\n    scanf(\"%s\", n);\n    scanf(\"%s\", s);\n    \n    qsort(s, strlen(s), sizeof(char), compare);\n    \n    if (strcmp(s, \"0\") == 0) {\n        printf(\"0\\n\");\n        return 0;\n    }\n    \n    int k = 0;\n    for (int i = 0; i < strlen(s); i++) {\n        if (s[i] == '0') {\n            k++;\n        }\n    }\n    \n    if (strcmp(n, \"1\") == 0) {\n        printf(\"%s\\n\", s);\n        return 0;\n    }\n    \n    printf(\"1\");\n    for (int i = 0; i < k; i++) {\n        printf(\"0\");\n    }\n    printf(\"\\n\");\n    \n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 3,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <string.h>\n#include <stdlib.h>\n\nint compare(const void *a, const void *b) {\n    return (*(char*)b - *(char*)a);\n}\n\nint main() {\n    char n[100], s[100];\n    scanf(\"%s\", n);\n    scanf(\"%s\", s);\n    \n    qsort(s, strlen(s), sizeof(char), compare);\n    \n    if (strcmp(s, \"0\") == 0) {\n        printf(\"0\\n\");\n        return 0;\n    }\n    \n    int k = 0;\n    for (int i = 0; i < strlen(s); i++) {\n        if (s[i] == '0') {\n            k++;\n        }\n    }\n    \n    if (strcmp(n, \"1\") == 0) {\n        printf(\"%s\\n\", s);\n        return 0;\n    }\n    \n    printf(\"1\");\n    for (int i = 0; i < k; i++) {\n        printf(\"0\");\n    }\n    printf(\"\\n\");\n    \n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 4,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <string.h>\n#include <stdlib.h>\n\nint compare(const void *a, const void *b) {\n    return (*(char*)b - *(char*)a);\n}\n\nint main() {\n    char n_str[100], s[100];\n    fgets(n_str, sizeof(n_str), stdin);\n    n_str[strcspn(n_str, \"\\n\")] = '\\0';\n    fgets(s, sizeof(s), stdin);\n    s[strcspn(s, \"\\n\")] = '\\0';\n    \n    qsort(s, strlen(s), sizeof(char), compare);\n    \n    if (strcmp(s, \"0\") == 0) {\n        printf(\"0\\n\");\n        return 0;\n    }\n    \n    int k = 0;\n    for (int i = 0; i < strlen(s); i++) {\n        if (s[i] == '0') {\n            k++;\n        }\n    }\n    \n    if (strlen(n_str) == 1 && n_str[0] == '1') {\n        printf(\"%s\\n\", s);\n        return 0;\n    }\n    \n    printf(\"1\");\n    for (int i = 0; i < k; i++) {\n        printf(\"0\");\n    }\n    printf(\"\\n\");\n    \n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                }
+            ],
+            "usage": {
+                "prompt_tokens": 705,
+                "completion_tokens": 1259,
+                "total_tokens": 1964
+            }
+        }
+    },
+    "source_data": {
+        "code_uid": "cb3d87cabc9addea838283045613979c",
+        "prob_desc_output_to": "standard output",
+        "prob_desc_notes": "NoteIn the first example you can obtain the answer by the following sequence of operations: \"1001\"  \"1010\"  \"1100\"  \"100\".In the second example you can't obtain smaller answer no matter what operations you use.",
+        "lang_cluster": "Python",
+        "prob_desc_time_limit": "1 second",
+        "prob_desc_input_spec": "The first line contains integer number n (1\u2009\u2264\u2009n\u2009\u2264\u2009100) \u2014 the length of string s. The second line contains the string s consisting of characters \"0\" and \"1\". It is guaranteed that the string s is correct.",
+        "source_code": "n = input()\ns = input()\ns = ''.join(reversed(sorted(s)))\nif s == '0':\n    print(0)\n    exit(0)\nk = 0\nfor i in range(len(s)):\n    if s[i] == '0':\n        k += 1\nif n == 1:\n    print(s)\n    exit(0)\nans = '1' + '0'*k\nprint(ans)\n",
+        "prob_desc_sample_inputs": [
+            "4\n1001",
+            "1\n1"
+        ],
+        "prob_desc_memory_limit": "256 megabytes",
+        "exec_outcome": "PASSED",
+        "prob_desc_output_spec": "Print one string \u2014 the minimum correct string that you can obtain from the given one.",
+        "src_uid": "ac244791f8b648d672ed3de32ce0074d",
+        "prob_desc_input_from": "standard input",
+        "lang": "Python 3",
+        "prob_desc_sample_outputs": [
+            "100",
+            "1"
+        ],
+        "file_name": "d7021504500d5ca7c2b02df8100a574d159e6e67e20ec8071b75800b1267370a",
+        "prob_desc_description": "String can be called correct if it consists of characters \"0\" and \"1\" and there are no redundant leading zeroes. Here are some examples: \"0\", \"10\", \"1001\".You are given a correct string s.You can perform two different operations on this string:   swap any pair of adjacent characters (for example, \"101\"  \"110\");  replace \"11\" with \"1\" (for example, \"110\"  \"10\"). Let val(s) be such a number that s is its binary representation.Correct string a is less than some other correct string b iff val(a)\u2009&lt;\u2009val(b).Your task is to find the minimum correct string that you can obtain from the given one using the operations described above. You can use these operations any number of times in any order (or even use no operations at all).",
+        "prob_desc_created_at": "1525099200",
+        "difficulty": 800.0,
+        "hidden_unit_tests": "[{\"input\": \"4\\r\\n1001\\r\\n\", \"output\": [\"100\"]}, {\"input\": \"1\\r\\n1\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"100\\r\\n1110111100001111011111111010110011111111011110000111101101011100110110001011000000101010110101011100\\r\\n\", \"output\": [\"1000000000000000000000000000000000000000\"]}, {\"input\": \"100\\r\\n1000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000\\r\\n\", \"output\": [\"1000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000\"]}, {\"input\": \"100\\r\\n1111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"100\\r\\n1111111111111111111111111111111111111111111111111111111110111111111111111111111111111111111111111111\\r\\n\", \"output\": [\"10\"]}, {\"input\": \"1\\r\\n0\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"8\\r\\n10101010\\r\\n\", \"output\": [\"10000\"]}, {\"input\": \"2\\r\\n10\\r\\n\", \"output\": [\"10\"]}, {\"input\": \"3\\r\\n111\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"5\\r\\n11100\\r\\n\", \"output\": [\"100\"]}, {\"input\": \"2\\r\\n11\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"3\\r\\n110\\r\\n\", \"output\": [\"10\"]}, {\"input\": \"50\\r\\n10010010000000000000000000000000000000001000000000\\r\\n\", \"output\": [\"10000000000000000000000000000000000000000000000\"]}]",
+        "source_lang": "Python 3",
+        "target_lang": "C"
+    }
+}

@@ -1,0 +1,87 @@
+{
+    "oai_response": {
+        "prompt": "Here is code in Python 3 programming lanaguge. Translate the following code from Python 3 to C programming lanaguge. Do not output any extra description or tokens other than the translated code. \n\nimport math\n\ndata = input().split()\n\nN, K = int(data[0]), int(data[1])\n\nposition_value = 0\nmax_counter = 0\n\nif K <= math.ceil(N/2):\n    print(K+(K-1))\nelse:\n    if K == N and K%2 != 0:\n        print(K-1)\n    elif (N%2 != 0 and K%2 == 0) or (N%2 != 0 and K%2 != 0):\n        print((K-(N-K))-1)\n    else:\n        print((K-(N-K)))\n\n\n||END-of-SRC||",
+        "response": {
+            "id": "multi-call-as-dnj3qe5r76",
+            "model": "deepseek-v3",
+            "created": 1767067243,
+            "choices": [
+                {
+                    "index": 0,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <math.h>\n\nint main() {\n    int N, K;\n    scanf(\"%d %d\", &N, &K);\n\n    if (K <= ceil(N/2.0)) {\n        printf(\"%d\", K + (K - 1));\n    } else {\n        if (K == N && K % 2 != 0) {\n            printf(\"%d\", K - 1);\n        } else if ((N % 2 != 0 && K % 2 == 0) || (N % 2 != 0 && K % 2 != 0)) {\n            printf(\"%d\", (K - (N - K)) - 1);\n        } else {\n            printf(\"%d\", K - (N - K));\n        }\n    }\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 1,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <math.h>\n\nint main() {\n    int N, K;\n    scanf(\"%d %d\", &N, &K);\n\n    if (K <= ceil(N/2.0)) {\n        printf(\"%d\", K + (K - 1));\n    } else {\n        if (K == N && K % 2 != 0) {\n            printf(\"%d\", K - 1);\n        } else if ((N % 2 != 0 && K % 2 == 0) || (N % 2 != 0 && K % 2 != 0)) {\n            printf(\"%d\", (K - (N - K)) - 1);\n        } else {\n            printf(\"%d\", K - (N - K));\n        }\n    }\n\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 2,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <math.h>\n\nint main() {\n    int N, K;\n    scanf(\"%d %d\", &N, &K);\n\n    if (K <= ceil(N / 2.0)) {\n        printf(\"%d\", K + (K - 1));\n    } else {\n        if (K == N && K % 2 != 0) {\n            printf(\"%d\", K - 1);\n        } else if ((N % 2 != 0 && K % 2 == 0) || (N % 2 != 0 && K % 2 != 0)) {\n            printf(\"%d\", (K - (N - K)) - 1);\n        } else {\n            printf(\"%d\", (K - (N - K)));\n        }\n    }\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 3,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <math.h>\n\nint main() {\n    int N, K;\n    scanf(\"%d %d\", &N, &K);\n\n    if (K <= ceil(N/2.0)) {\n        printf(\"%d\", K + (K - 1));\n    } else {\n        if (K == N && K % 2 != 0) {\n            printf(\"%d\", K - 1);\n        } else if ((N % 2 != 0 && K % 2 == 0) || (N % 2 != 0 && K % 2 != 0)) {\n            printf(\"%d\", (K - (N - K)) - 1);\n        } else {\n            printf(\"%d\", K - (N - K));\n        }\n    }\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 4,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <math.h>\n\nint main() {\n    int N, K;\n    scanf(\"%d %d\", &N, &K);\n\n    if (K <= ceil(N / 2.0)) {\n        printf(\"%d\", K + (K - 1));\n    } else {\n        if (K == N && K % 2 != 0) {\n            printf(\"%d\", K - 1);\n        } else if ((N % 2 != 0 && K % 2 == 0) || (N % 2 != 0 && K % 2 != 0)) {\n            printf(\"%d\", (K - (N - K)) - 1);\n        } else {\n            printf(\"%d\", (K - (N - K)));\n        }\n    }\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                }
+            ],
+            "usage": {
+                "prompt_tokens": 905,
+                "completion_tokens": 884,
+                "total_tokens": 1789
+            }
+        }
+    },
+    "source_data": {
+        "code_uid": "f1503ec92de8ceb9745350693f282cb5",
+        "prob_desc_output_to": "standard output",
+        "prob_desc_notes": "NoteIn the first sample Volodya's sequence will look like this: {1, 3, 5, 7, 9, 2, 4, 6, 8, 10}. The third place in the sequence is therefore occupied by the number 5.",
+        "lang_cluster": "Python",
+        "prob_desc_time_limit": "1 second",
+        "prob_desc_input_spec": "The only line of input contains integers n and k (1\u2009\u2264\u2009k\u2009\u2264\u2009n\u2009\u2264\u20091012). Please, do not use the %lld specifier to read or write 64-bit integers in C++. It is preferred to use the cin, cout streams or the %I64d specifier.",
+        "source_code": "import math\n\ndata = input().split()\n\nN, K = int(data[0]), int(data[1])\n\nposition_value = 0\nmax_counter = 0\n\nif K <= math.ceil(N/2):\n    print(K+(K-1))\nelse:\n    if K == N and K%2 != 0:\n        print(K-1)\n    elif (N%2 != 0 and K%2 == 0) or (N%2 != 0 and K%2 != 0):\n        print((K-(N-K))-1)\n    else:\n        print((K-(N-K)))\n\n\n",
+        "prob_desc_sample_inputs": [
+            "10 3",
+            "7 7"
+        ],
+        "prob_desc_memory_limit": "256 megabytes",
+        "exec_outcome": "PASSED",
+        "prob_desc_output_spec": "Print the number that will stand at the position number k after Volodya's manipulations.",
+        "src_uid": "1f8056884db00ad8294a7cc0be75fe97",
+        "prob_desc_input_from": "standard input",
+        "lang": "Python 3",
+        "prob_desc_sample_outputs": [
+            "5",
+            "6"
+        ],
+        "file_name": "d7021504500d5ca7c2b02df8100a574d159e6e67e20ec8071b75800b1267370a",
+        "prob_desc_description": "Being a nonconformist, Volodya is displeased with the current state of things, particularly with the order of natural numbers (natural number is positive integer number). He is determined to rearrange them. But there are too many natural numbers, so Volodya decided to start with the first n. He writes down the following sequence of numbers: firstly all odd integers from 1 to n (in ascending order), then all even integers from 1 to n (also in ascending order). Help our hero to find out which number will stand at the position number k.",
+        "prob_desc_created_at": "1371223800",
+        "difficulty": 900.0,
+        "hidden_unit_tests": "[{\"input\": \"10 3\\r\\n\", \"output\": [\"5\"]}, {\"input\": \"7 7\\r\\n\", \"output\": [\"6\"]}, {\"input\": \"7 1\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"7 2\\r\\n\", \"output\": [\"3\"]}, {\"input\": \"8 5\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"8 3\\r\\n\", \"output\": [\"5\"]}, {\"input\": \"8 4\\r\\n\", \"output\": [\"7\"]}, {\"input\": \"1000000000000 500000000001\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"999999999997 499999999999\\r\\n\", \"output\": [\"999999999997\"]}, {\"input\": \"999999999999 999999999999\\r\\n\", \"output\": [\"999999999998\"]}, {\"input\": \"1000000000000 1\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"999999999999 1\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"1 1\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"1000000000000 1000000000000\\r\\n\", \"output\": [\"1000000000000\"]}, {\"input\": \"1000000000000 500000000000\\r\\n\", \"output\": [\"999999999999\"]}, {\"input\": \"1000000000000 499999999999\\r\\n\", \"output\": [\"999999999997\"]}, {\"input\": \"999999999997 499999999998\\r\\n\", \"output\": [\"999999999995\"]}, {\"input\": \"619234238 556154835\\r\\n\", \"output\": [\"493075432\"]}, {\"input\": \"38151981 36650624\\r\\n\", \"output\": [\"35149266\"]}, {\"input\": \"680402465 442571217\\r\\n\", \"output\": [\"204739968\"]}, {\"input\": \"109135284 9408714\\r\\n\", \"output\": [\"18817427\"]}, {\"input\": \"603701841 56038951\\r\\n\", \"output\": [\"112077901\"]}, {\"input\": \"356764822 321510177\\r\\n\", \"output\": [\"286255532\"]}, {\"input\": \"284911189 142190783\\r\\n\", \"output\": [\"284381565\"]}, {\"input\": \"91028405 61435545\\r\\n\", \"output\": [\"31842684\"]}]",
+        "source_lang": "Python 3",
+        "target_lang": "C"
+    }
+}

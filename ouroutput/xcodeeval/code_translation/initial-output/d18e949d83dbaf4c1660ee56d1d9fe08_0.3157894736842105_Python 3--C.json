@@ -1,0 +1,87 @@
+{
+    "oai_response": {
+        "prompt": "Here is code in Python 3 programming lanaguge. Translate the following code from Python 3 to C programming lanaguge. Do not output any extra description or tokens other than the translated code. \n\ndef mp():  return map(int,input().split())\ndef lt():  return list(map(int,input().split()))\ndef pt(x):  print(x)\ndef ip():  return input()\ndef it():  return int(input())\ndef sl(x):  return [t for t in x]\ndef spl(x): return x.split()\ndef aj(liste, item): liste.append(item)\ndef bin(x):  return \"{0:b}\".format(x)\ndef printlist(l): print(''.join([str(x) for x in l]))\ndef listring(l): return ''.join([str(x) for x in l])\n\nn,k = mp()\nif k >= n//2:\n    print((n*(n-1))//2)\n    exit()\nresult = 0\nfor i in range(k):\n    result += (2*(n-1-2*i)-1)\nprint(result)\n    \n        \n        ||END-of-SRC||",
+        "response": {
+            "id": "multi-call-as-tsspusazrv",
+            "model": "deepseek-v3",
+            "created": 1767068260,
+            "choices": [
+                {
+                    "index": 0,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n\nint main() {\n    int n, k;\n    scanf(\"%d %d\", &n, &k);\n    if (k >= n / 2) {\n        printf(\"%d\\n\", (n * (n - 1)) / 2);\n        return 0;\n    }\n    int result = 0;\n    for (int i = 0; i < k; i++) {\n        result += (2 * (n - 1 - 2 * i) - 1);\n    }\n    printf(\"%d\\n\", result);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 1,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n\nint main() {\n    int n, k;\n    scanf(\"%d %d\", &n, &k);\n    if (k >= n / 2) {\n        printf(\"%d\\n\", (n * (n - 1)) / 2);\n        return 0;\n    }\n    int result = 0;\n    for (int i = 0; i < k; i++) {\n        result += (2 * (n - 1 - 2 * i) - 1);\n    }\n    printf(\"%d\\n\", result);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 2,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n\nint main() {\n    int n, k;\n    scanf(\"%d %d\", &n, &k);\n    if (k >= n / 2) {\n        printf(\"%d\\n\", (n * (n - 1)) / 2);\n        return 0;\n    }\n    int result = 0;\n    for (int i = 0; i < k; i++) {\n        result += (2 * (n - 1 - 2 * i) - 1);\n    }\n    printf(\"%d\\n\", result);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 3,
+                    "message": {
+                        "role": "assistant",
+                        "content": "Here's the translated code in C:\n\n```c\n#include <stdio.h>\n\nint main() {\n    int n, k;\n    scanf(\"%d %d\", &n, &k);\n    if (k >= n / 2) {\n        printf(\"%d\\n\", (n * (n - 1)) / 2);\n        return 0;\n    }\n    int result = 0;\n    for (int i = 0; i < k; i++) {\n        result += (2 * (n - 1 - 2 * i)) - 1;\n    }\n    printf(\"%d\\n\", result);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 4,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n\nint main() {\n    int n, k;\n    scanf(\"%d %d\", &n, &k);\n    if (k >= n / 2) {\n        printf(\"%d\\n\", (n * (n - 1)) / 2);\n        return 0;\n    }\n    int result = 0;\n    for (int i = 0; i < k; i++) {\n        result += (2 * (n - 1 - 2 * i)) - 1;\n    }\n    printf(\"%d\\n\", result);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                }
+            ],
+            "usage": {
+                "prompt_tokens": 1180,
+                "completion_tokens": 657,
+                "total_tokens": 1837
+            }
+        }
+    },
+    "source_data": {
+        "code_uid": "d18e949d83dbaf4c1660ee56d1d9fe08",
+        "prob_desc_output_to": "standard output",
+        "prob_desc_notes": "NoteIn the first sample, the Mischievous Mess Makers can swap the cows in the stalls 1 and 5 during the first minute, then the cows in stalls 2 and 4 during the second minute. This reverses the arrangement of cows, giving us a total messiness of 10.In the second sample, there is only one cow, so the maximum possible messiness is 0.",
+        "lang_cluster": "Python",
+        "prob_desc_time_limit": "1 second",
+        "prob_desc_input_spec": "The first line of the input contains two integers n and k (1\u2009\u2264\u2009n,\u2009k\u2009\u2264\u2009100\u2009000)\u00a0\u2014 the number of cows and the length of Farmer John's nap, respectively.",
+        "source_code": "def mp():  return map(int,input().split())\ndef lt():  return list(map(int,input().split()))\ndef pt(x):  print(x)\ndef ip():  return input()\ndef it():  return int(input())\ndef sl(x):  return [t for t in x]\ndef spl(x): return x.split()\ndef aj(liste, item): liste.append(item)\ndef bin(x):  return \"{0:b}\".format(x)\ndef printlist(l): print(''.join([str(x) for x in l]))\ndef listring(l): return ''.join([str(x) for x in l])\n\nn,k = mp()\nif k >= n//2:\n    print((n*(n-1))//2)\n    exit()\nresult = 0\nfor i in range(k):\n    result += (2*(n-1-2*i)-1)\nprint(result)\n    \n        \n        ",
+        "prob_desc_sample_inputs": [
+            "5 2",
+            "1 10"
+        ],
+        "prob_desc_memory_limit": "256 megabytes",
+        "exec_outcome": "PASSED",
+        "prob_desc_output_spec": "Output a single integer, the maximum messiness that the Mischievous Mess Makers can achieve by performing no more than k swaps. ",
+        "src_uid": "ea36ca0a3c336424d5b7e1b4c56947b0",
+        "prob_desc_input_from": "standard input",
+        "lang": "Python 3",
+        "prob_desc_sample_outputs": [
+            "10",
+            "0"
+        ],
+        "file_name": "d7021504500d5ca7c2b02df8100a574d159e6e67e20ec8071b75800b1267370a",
+        "prob_desc_description": "It is a balmy spring afternoon, and Farmer John's n cows are ruminating about link-cut cacti in their stalls. The cows, labeled 1 through n, are arranged so that the i-th cow occupies the i-th stall from the left. However, Elsie, after realizing that she will forever live in the shadows beyond Bessie's limelight, has formed the Mischievous Mess Makers and is plotting to disrupt this beautiful pastoral rhythm. While Farmer John takes his k minute long nap, Elsie and the Mess Makers plan to repeatedly choose two distinct stalls and swap the cows occupying those stalls, making no more than one swap each minute.Being the meticulous pranksters that they are, the Mischievous Mess Makers would like to know the maximum messiness attainable in the k minutes that they have. We denote as pi the label of the cow in the i-th stall. The messiness of an arrangement of cows is defined as the number of pairs (i,\u2009j) such that i\u2009&lt;\u2009j and pi\u2009&gt;\u2009pj.",
+        "prob_desc_created_at": "1458318900",
+        "difficulty": 1200.0,
+        "hidden_unit_tests": "[{\"input\": \"5 2\\r\\n\", \"output\": [\"10\"]}, {\"input\": \"1 10\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"100000 2\\r\\n\", \"output\": [\"399990\"]}, {\"input\": \"1 1\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"8 3\\r\\n\", \"output\": [\"27\"]}, {\"input\": \"7 1\\r\\n\", \"output\": [\"11\"]}, {\"input\": \"100000 40000\\r\\n\", \"output\": [\"4799960000\"]}, {\"input\": \"1 1000\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"100 45\\r\\n\", \"output\": [\"4905\"]}, {\"input\": \"9 2\\r\\n\", \"output\": [\"26\"]}, {\"input\": \"456 78\\r\\n\", \"output\": [\"58890\"]}, {\"input\": \"100000 50000\\r\\n\", \"output\": [\"4999950000\"]}, {\"input\": \"100000 50001\\r\\n\", \"output\": [\"4999950000\"]}, {\"input\": \"100000 50002\\r\\n\", \"output\": [\"4999950000\"]}, {\"input\": \"100000 50003\\r\\n\", \"output\": [\"4999950000\"]}, {\"input\": \"100000 49998\\r\\n\", \"output\": [\"4999949994\"]}, {\"input\": \"100000 49997\\r\\n\", \"output\": [\"4999949985\"]}, {\"input\": \"99999 49998\\r\\n\", \"output\": [\"4999849998\"]}, {\"input\": \"99999 49997\\r\\n\", \"output\": [\"4999849991\"]}, {\"input\": \"99999 49996\\r\\n\", \"output\": [\"4999849980\"]}, {\"input\": \"99999 50000\\r\\n\", \"output\": [\"4999850001\"]}, {\"input\": \"99999 50001\\r\\n\", \"output\": [\"4999850001\"]}, {\"input\": \"99999 50002\\r\\n\", \"output\": [\"4999850001\"]}, {\"input\": \"30062 9\\r\\n\", \"output\": [\"540945\"]}, {\"input\": \"13486 3\\r\\n\", \"output\": [\"80895\"]}, {\"input\": \"29614 7\\r\\n\", \"output\": [\"414491\"]}, {\"input\": \"13038 8\\r\\n\", \"output\": [\"208472\"]}, {\"input\": \"96462 6\\r\\n\", \"output\": [\"1157466\"]}, {\"input\": \"22599 93799\\r\\n\", \"output\": [\"255346101\"]}, {\"input\": \"421 36817\\r\\n\", \"output\": [\"88410\"]}, {\"input\": \"72859 65869\\r\\n\", \"output\": [\"2654180511\"]}, {\"input\": \"37916 5241\\r\\n\", \"output\": [\"342494109\"]}, {\"input\": \"47066 12852\\r\\n\", \"output\": [\"879423804\"]}, {\"input\": \"84032 21951\\r\\n\", \"output\": [\"2725458111\"]}, {\"input\": \"70454 75240\\r\\n\", \"output\": [\"2481847831\"]}, {\"input\": \"86946 63967\\r\\n\", \"output\": [\"3779759985\"]}, {\"input\": \"71128 11076\\r\\n\", \"output\": [\"1330260828\"]}, {\"input\": \"46111 64940\\r\\n\", \"output\": [\"1063089105\"]}, {\"input\": \"56500 84184\\r\\n\", \"output\": [\"1596096750\"]}, {\"input\": \"60108 83701\\r\\n\", \"output\": [\"1806455778\"]}, {\"input\": \"1 2\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"1 3\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"1 4\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"1 5\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"1 6\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"2 1\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"2 2\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"2 3\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"2 4\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"2 5\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"3 1\\r\\n\", \"output\": [\"3\"]}, {\"input\": \"3 2\\r\\n\", \"output\": [\"3\"]}, {\"input\": \"3 3\\r\\n\", \"output\": [\"3\"]}, {\"input\": \"3 4\\r\\n\", \"output\": [\"3\"]}, {\"input\": \"3 5\\r\\n\", \"output\": [\"3\"]}, {\"input\": \"4 1\\r\\n\", \"output\": [\"5\"]}, {\"input\": \"4 2\\r\\n\", \"output\": [\"6\"]}, {\"input\": \"4 3\\r\\n\", \"output\": [\"6\"]}, {\"input\": \"4 4\\r\\n\", \"output\": [\"6\"]}, {\"input\": \"4 5\\r\\n\", \"output\": [\"6\"]}, {\"input\": \"5 1\\r\\n\", \"output\": [\"7\"]}, {\"input\": \"5 3\\r\\n\", \"output\": [\"10\"]}, {\"input\": \"5 4\\r\\n\", \"output\": [\"10\"]}, {\"input\": \"5 5\\r\\n\", \"output\": [\"10\"]}, {\"input\": \"6 1\\r\\n\", \"output\": [\"9\"]}, {\"input\": \"6 2\\r\\n\", \"output\": [\"14\"]}, {\"input\": \"6 3\\r\\n\", \"output\": [\"15\"]}, {\"input\": \"7 2\\r\\n\", \"output\": [\"18\"]}, {\"input\": \"7 3\\r\\n\", \"output\": [\"21\"]}, {\"input\": \"7 4\\r\\n\", \"output\": [\"21\"]}, {\"input\": \"10 2\\r\\n\", \"output\": [\"30\"]}, {\"input\": \"60982 2\\r\\n\", \"output\": [\"243918\"]}, {\"input\": \"23426 23\\r\\n\", \"output\": [\"1076515\"]}, {\"input\": \"444 3\\r\\n\", \"output\": [\"2643\"]}, {\"input\": \"18187 433\\r\\n\", \"output\": [\"15374531\"]}, {\"input\": \"6895 3544\\r\\n\", \"output\": [\"23767065\"]}, {\"input\": \"56204 22352\\r\\n\", \"output\": [\"1513297456\"]}, {\"input\": \"41977 5207\\r\\n\", \"output\": [\"382917573\"]}, {\"input\": \"78147 2321\\r\\n\", \"output\": [\"351981971\"]}, {\"input\": \"99742 62198\\r\\n\", \"output\": [\"4974183411\"]}, {\"input\": \"72099 38339\\r\\n\", \"output\": [\"2599096851\"]}, {\"input\": \"82532 4838\\r\\n\", \"output\": [\"751762306\"]}, {\"input\": \"79410 33144\\r\\n\", \"output\": [\"3066847464\"]}, {\"input\": \"11021 3389\\r\\n\", \"output\": [\"51726307\"]}, {\"input\": \"66900 7572\\r\\n\", \"output\": [\"898455660\"]}, {\"input\": \"99999 49999\\r\\n\", \"output\": [\"4999850001\"]}, {\"input\": \"100000 49999\\r\\n\", \"output\": [\"4999949999\"]}, {\"input\": \"100000 100000\\r\\n\", \"output\": [\"4999950000\"]}, {\"input\": \"100000 1\\r\\n\", \"output\": [\"199997\"]}, {\"input\": \"4 100\\r\\n\", \"output\": [\"6\"]}, {\"input\": \"100000 1234\\r\\n\", \"output\": [\"243753254\"]}]",
+        "source_lang": "Python 3",
+        "target_lang": "C"
+    }
+}

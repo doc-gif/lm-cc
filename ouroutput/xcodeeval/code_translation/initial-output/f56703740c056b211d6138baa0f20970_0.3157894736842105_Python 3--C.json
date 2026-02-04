@@ -1,0 +1,89 @@
+{
+    "oai_response": {
+        "prompt": "Here is code in Python 3 programming lanaguge. Translate the following code from Python 3 to C programming lanaguge. Do not output any extra description or tokens other than the translated code. \n\nn = int(input())\na = []\ni = 1\ns = 0\nwhile i ** 2 <= n:\n    if n % i == 0:\n        a.append(i)\n        a.append(n // i)\n    i = i + 1\na = set(a)\nfor i in a:\n    oth = {'1', '2', '3', '5', '6', '8', '9', '0'}\n    if oth == oth - (set(str(i))):\n        s = s + 1\nif s > 0:\n    print('YES')\nelse:\n    print('NO')\n||END-of-SRC||",
+        "response": {
+            "id": "multi-call-as-unsi7sfkrd",
+            "model": "deepseek-v3",
+            "created": 1767067082,
+            "choices": [
+                {
+                    "index": 0,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n#include <math.h>\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    int *a = malloc(2 * sqrt(n) * sizeof(int));\n    int count = 0;\n    int i = 1;\n    while (i * i <= n) {\n        if (n % i == 0) {\n            a[count++] = i;\n            if (i != n / i) {\n                a[count++] = n / i;\n            }\n        }\n        i++;\n    }\n    \n    int s = 0;\n    for (int j = 0; j < count; j++) {\n        char digits[10] = {'1', '2', '3', '5', '6', '8', '9', '0'};\n        char num_str[20];\n        sprintf(num_str, \"%d\", a[j]);\n        int valid = 1;\n        for (int k = 0; k < strlen(num_str); k++) {\n            int found = 0;\n            for (int l = 0; l < 8; l++) {\n                if (num_str[k] == digits[l]) {\n                    found = 1;\n                    break;\n                }\n            }\n            if (!found) {\n                valid = 0;\n                break;\n            }\n        }\n        if (valid) {\n            s++;\n        }\n    }\n    \n    if (s > 0) {\n        printf(\"YES\\n\");\n    } else {\n        printf(\"NO\\n\");\n    }\n    \n    free(a);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 1,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n#include <math.h>\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    int *a = malloc(2 * sqrt(n) * sizeof(int));\n    int count = 0;\n    int i = 1;\n    while (i * i <= n) {\n        if (n % i == 0) {\n            a[count++] = i;\n            if (i != n / i) {\n                a[count++] = n / i;\n            }\n        }\n        i++;\n    }\n\n    int s = 0;\n    for (int j = 0; j < count; j++) {\n        char digits[10] = {'1', '2', '3', '5', '6', '8', '9', '0'};\n        char num_str[20];\n        sprintf(num_str, \"%d\", a[j]);\n        int valid = 1;\n        for (int k = 0; k < strlen(num_str); k++) {\n            int found = 0;\n            for (int l = 0; l < 8; l++) {\n                if (num_str[k] == digits[l]) {\n                    found = 1;\n                    break;\n                }\n            }\n            if (!found) {\n                valid = 0;\n                break;\n            }\n        }\n        if (valid) {\n            s++;\n        }\n    }\n\n    if (s > 0) {\n        printf(\"YES\\n\");\n    } else {\n        printf(\"NO\\n\");\n    }\n\n    free(a);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 2,
+                    "message": {
+                        "role": "assistant",
+                        "content": "Here's the translated code in C:\n\n```c\n#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n#include <math.h>\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    int a[1000];\n    int count = 0;\n    int i = 1;\n    int s = 0;\n    while (i * i <= n) {\n        if (n % i == 0) {\n            a[count++] = i;\n            a[count++] = n / i;\n        }\n        i++;\n    }\n    for (int j = 0; j < count; j++) {\n        char digits[] = \"12356890\";\n        char numStr[20];\n        sprintf(numStr, \"%d\", a[j]);\n        int valid = 1;\n        for (int k = 0; numStr[k] != '\\0'; k++) {\n            if (strchr(digits, numStr[k]) == NULL) {\n                valid = 0;\n                break;\n            }\n        }\n        if (valid) {\n            s++;\n        }\n    }\n    if (s > 0) {\n        printf(\"YES\\n\");\n    } else {\n        printf(\"NO\\n\");\n    }\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 3,
+                    "message": {
+                        "role": "assistant",
+                        "content": "Here's the translated code in C:\n\n```c\n#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n#include <math.h>\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    int a[1000];\n    int count = 0;\n    int i = 1;\n    int s = 0;\n    while (i * i <= n) {\n        if (n % i == 0) {\n            a[count++] = i;\n            a[count++] = n / i;\n        }\n        i++;\n    }\n    for (int j = 0; j < count; j++) {\n        char digits[] = \"12356890\";\n        char numStr[20];\n        sprintf(numStr, \"%d\", a[j]);\n        int valid = 1;\n        for (int k = 0; numStr[k] != '\\0'; k++) {\n            if (strchr(digits, numStr[k]) == NULL) {\n                valid = 0;\n                break;\n            }\n        }\n        if (valid) {\n            s++;\n        }\n    }\n    if (s > 0) {\n        printf(\"YES\\n\");\n    } else {\n        printf(\"NO\\n\");\n    }\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 4,
+                    "message": {
+                        "role": "assistant",
+                        "content": "Here's the translated code in C:\n\n```c\n#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n#include <math.h>\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    int a[1000];\n    int count = 0;\n    int i = 1;\n    int s = 0;\n    while (i * i <= n) {\n        if (n % i == 0) {\n            a[count++] = i;\n            a[count++] = n / i;\n        }\n        i++;\n    }\n    for (int j = 0; j < count; j++) {\n        for (int k = j + 1; k < count; k++) {\n            if (a[j] == a[k]) {\n                for (int l = k; l < count - 1; l++) {\n                    a[l] = a[l + 1];\n                }\n                count--;\n                k--;\n            }\n        }\n    }\n    for (int j = 0; j < count; j++) {\n        char str[20];\n        sprintf(str, \"%d\", a[j]);\n        int valid = 1;\n        for (int k = 0; k < strlen(str); k++) {\n            if (str[k] != '1' && str[k] != '2' && str[k] != '3' && \n                str[k] != '5' && str[k] != '6' && str[k] != '8' && \n                str[k] != '9' && str[k] != '0') {\n                valid = 0;\n                break;\n            }\n        }\n        if (valid) {\n            s++;\n        }\n    }\n    if (s > 0) {\n        printf(\"YES\\n\");\n    } else {\n        printf(\"NO\\n\");\n    }\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                }
+            ],
+            "usage": {
+                "prompt_tokens": 920,
+                "completion_tokens": 1624,
+                "total_tokens": 2544
+            }
+        }
+    },
+    "source_data": {
+        "code_uid": "f56703740c056b211d6138baa0f20970",
+        "prob_desc_output_to": "standard output",
+        "prob_desc_notes": "NoteNote that all lucky numbers are almost lucky as any number is evenly divisible by itself.In the first sample 47 is a lucky number. In the second sample 16 is divisible by 4.",
+        "lang_cluster": "Python",
+        "prob_desc_time_limit": "2 seconds",
+        "prob_desc_input_spec": "The single line contains an integer n (1\u2009\u2264\u2009n\u2009\u2264\u20091000) \u2014 the number that needs to be checked.",
+        "source_code": "n = int(input())\na = []\ni = 1\ns = 0\nwhile i ** 2 <= n:\n    if n % i == 0:\n        a.append(i)\n        a.append(n // i)\n    i = i + 1\na = set(a)\nfor i in a:\n    oth = {'1', '2', '3', '5', '6', '8', '9', '0'}\n    if oth == oth - (set(str(i))):\n        s = s + 1\nif s > 0:\n    print('YES')\nelse:\n    print('NO')\n",
+        "prob_desc_sample_inputs": [
+            "47",
+            "16",
+            "78"
+        ],
+        "prob_desc_memory_limit": "256 megabytes",
+        "exec_outcome": "PASSED",
+        "prob_desc_output_spec": "In the only line print \"YES\" (without the quotes), if number n is almost lucky. Otherwise, print \"NO\" (without the quotes).",
+        "src_uid": "78cf8bc7660dbd0602bf6e499bc6bb0d",
+        "prob_desc_input_from": "standard input",
+        "lang": "Python 3",
+        "prob_desc_sample_outputs": [
+            "YES",
+            "YES",
+            "NO"
+        ],
+        "file_name": "d7021504500d5ca7c2b02df8100a574d159e6e67e20ec8071b75800b1267370a",
+        "prob_desc_description": "Petya loves lucky numbers. Everybody knows that lucky numbers are positive integers whose decimal representation contains only the lucky digits 4 and 7. For example, numbers 47, 744, 4 are lucky and 5, 17, 467 are not.Petya calls a number almost lucky if it could be evenly divided by some lucky number. Help him find out if the given number n is almost lucky.",
+        "prob_desc_created_at": "1319727600",
+        "difficulty": 1000.0,
+        "hidden_unit_tests": "[{\"input\": \"47\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"16\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"78\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"48\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"100\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"107\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"77\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"477\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"480\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"1\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"3\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"4\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"49\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"56\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"124\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"1000\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"999\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"298\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"274\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"998\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"42\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"788\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"70\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"444\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"777\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"799\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"25\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"882\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"88\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"11\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"2\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"7\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"8\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"94\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"141\\r\\n\", \"output\": [\"YES\"]}]",
+        "source_lang": "Python 3",
+        "target_lang": "C"
+    }
+}

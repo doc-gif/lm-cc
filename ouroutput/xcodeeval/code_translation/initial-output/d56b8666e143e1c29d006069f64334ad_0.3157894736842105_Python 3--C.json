@@ -1,0 +1,89 @@
+{
+    "oai_response": {
+        "prompt": "Here is code in Python 3 programming lanaguge. Translate the following code from Python 3 to C programming lanaguge. Do not output any extra description or tokens other than the translated code. \n\ndef ListToString(x):\n    string1 = \"\"\n    return (string1.join(x))\n\nnumindex = []   \nx = input()\nnums = [int(n) for n in x.split()]\nletters = str(input())\nletterlist = list(letters)\n\nfor i in range (0, nums[1], 1):\n    for j in range (0, nums[0]-1, 1):\n        if (letterlist[j] == \"B\" and letterlist[j + 1] == \"G\"):\n            # temp = letterlist[j]\n            # letterlist[j] = letterlist[j+1]\n            # letterlist[j+1] = temp\n            numtemp = j\n            numindex.append(numtemp)\n        else:\n            continue\n    for k in range (0, len(numindex), 1):\n        temp = letterlist[numindex[k]]\n        letterlist[numindex[k]] = letterlist[numindex[k] + 1]\n        letterlist[numindex[k] + 1] = temp\n    numindex.clear()\n\nprint(ListToString(letterlist))\n\n\n||END-of-SRC||",
+        "response": {
+            "id": "multi-call-as-t4st328k7m",
+            "model": "deepseek-v3",
+            "created": 1767068568,
+            "choices": [
+                {
+                    "index": 0,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <string.h>\n\nvoid ListToString(char x[], int length) {\n    for (int i = 0; i < length; i++) {\n        printf(\"%c\", x[i]);\n    }\n}\n\nint main() {\n    int numindex[1000];\n    int numindex_count = 0;\n    int nums[2];\n    char letters[1000];\n    char letterlist[1000];\n    \n    scanf(\"%d %d\", &nums[0], &nums[1]);\n    scanf(\"%s\", letters);\n    int length = strlen(letters);\n    for (int i = 0; i < length; i++) {\n        letterlist[i] = letters[i];\n    }\n    \n    for (int i = 0; i < nums[1]; i++) {\n        numindex_count = 0;\n        for (int j = 0; j < nums[0] - 1; j++) {\n            if (letterlist[j] == 'B' && letterlist[j + 1] == 'G') {\n                numindex[numindex_count++] = j;\n            }\n        }\n        for (int k = 0; k < numindex_count; k++) {\n            char temp = letterlist[numindex[k]];\n            letterlist[numindex[k]] = letterlist[numindex[k] + 1];\n            letterlist[numindex[k] + 1] = temp;\n        }\n    }\n    \n    ListToString(letterlist, length);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 1,
+                    "message": {
+                        "role": "assistant",
+                        "content": "Here's the translated code in C:\n\n```c\n#include <stdio.h>\n#include <string.h>\n\nvoid ListToString(char *x, int length) {\n    for (int i = 0; i < length; i++) {\n        printf(\"%c\", x[i]);\n    }\n}\n\nint main() {\n    int nums[2];\n    scanf(\"%d %d\", &nums[0], &nums[1]);\n    getchar(); // consume newline\n    \n    char letters[1000];\n    fgets(letters, sizeof(letters), stdin);\n    letters[strcspn(letters, \"\\n\")] = '\\0'; // remove newline\n    \n    int numindex[1000];\n    int index_count = 0;\n    \n    for (int i = 0; i < nums[1]; i++) {\n        index_count = 0;\n        for (int j = 0; j < nums[0] - 1; j++) {\n            if (letters[j] == 'B' && letters[j + 1] == 'G') {\n                numindex[index_count++] = j;\n            }\n        }\n        for (int k = 0; k < index_count; k++) {\n            char temp = letters[numindex[k]];\n            letters[numindex[k]] = letters[numindex[k] + 1];\n            letters[numindex[k] + 1] = temp;\n        }\n    }\n    \n    ListToString(letters, strlen(letters));\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 2,
+                    "message": {
+                        "role": "assistant",
+                        "content": "Here's the translated code in C:\n\n```c\n#include <stdio.h>\n#include <string.h>\n\nvoid ListToString(char *x, int length) {\n    for (int i = 0; i < length; i++) {\n        printf(\"%c\", x[i]);\n    }\n}\n\nint main() {\n    int nums[2];\n    for (int i = 0; i < 2; i++) {\n        scanf(\"%d\", &nums[i]);\n    }\n    getchar(); // To consume the newline\n    \n    char letters[1000];\n    fgets(letters, sizeof(letters), stdin);\n    letters[strcspn(letters, \"\\n\")] = '\\0';\n    \n    int numindex[1000];\n    int index_count = 0;\n    \n    for (int i = 0; i < nums[1]; i++) {\n        index_count = 0;\n        for (int j = 0; j < nums[0] - 1; j++) {\n            if (letters[j] == 'B' && letters[j + 1] == 'G') {\n                numindex[index_count++] = j;\n            }\n        }\n        for (int k = 0; k < index_count; k++) {\n            char temp = letters[numindex[k]];\n            letters[numindex[k]] = letters[numindex[k] + 1];\n            letters[numindex[k] + 1] = temp;\n        }\n    }\n    \n    ListToString(letters, strlen(letters));\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 3,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <string.h>\n\nvoid ListToString(char *x, int length) {\n    for (int i = 0; i < length; i++) {\n        printf(\"%c\", x[i]);\n    }\n    printf(\"\\n\");\n}\n\nint main() {\n    int numindex[1000];\n    int numindex_count = 0;\n    int nums[2];\n    char letters[1000];\n    char letterlist[1000];\n    \n    scanf(\"%d %d\", &nums[0], &nums[1]);\n    scanf(\"%s\", letters);\n    int length = strlen(letters);\n    for (int i = 0; i < length; i++) {\n        letterlist[i] = letters[i];\n    }\n    \n    for (int i = 0; i < nums[1]; i++) {\n        numindex_count = 0;\n        for (int j = 0; j < nums[0] - 1; j++) {\n            if (letterlist[j] == 'B' && letterlist[j + 1] == 'G') {\n                numindex[numindex_count++] = j;\n            }\n        }\n        for (int k = 0; k < numindex_count; k++) {\n            char temp = letterlist[numindex[k]];\n            letterlist[numindex[k]] = letterlist[numindex[k] + 1];\n            letterlist[numindex[k] + 1] = temp;\n        }\n    }\n    \n    ListToString(letterlist, length);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 4,
+                    "message": {
+                        "role": "assistant",
+                        "content": "Here's the translated code in C:\n\n```c\n#include <stdio.h>\n#include <string.h>\n\nvoid ListToString(char *x, int length) {\n    for (int i = 0; i < length; i++) {\n        printf(\"%c\", x[i]);\n    }\n}\n\nint main() {\n    int nums[2];\n    for (int i = 0; i < 2; i++) {\n        scanf(\"%d\", &nums[i]);\n    }\n    getchar(); // To consume the newline after numbers\n    \n    char letters[1000];\n    fgets(letters, sizeof(letters), stdin);\n    letters[strcspn(letters, \"\\n\")] = '\\0'; // Remove newline\n    \n    int numindex[1000];\n    int index_count = 0;\n    \n    for (int i = 0; i < nums[1]; i++) {\n        index_count = 0;\n        for (int j = 0; j < nums[0] - 1; j++) {\n            if (letters[j] == 'B' && letters[j + 1] == 'G') {\n                numindex[index_count++] = j;\n            }\n        }\n        for (int k = 0; k < index_count; k++) {\n            char temp = letters[numindex[k]];\n            letters[numindex[k]] = letters[numindex[k] + 1];\n            letters[numindex[k] + 1] = temp;\n        }\n    }\n    \n    ListToString(letters, strlen(letters));\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                }
+            ],
+            "usage": {
+                "prompt_tokens": 1375,
+                "completion_tokens": 1612,
+                "total_tokens": 2987
+            }
+        }
+    },
+    "source_data": {
+        "code_uid": "d56b8666e143e1c29d006069f64334ad",
+        "prob_desc_output_to": "standard output",
+        "prob_desc_notes": null,
+        "lang_cluster": "Python",
+        "prob_desc_time_limit": "2 seconds",
+        "prob_desc_input_spec": "The first line contains two integers n and t (1\u2009\u2264\u2009n,\u2009t\u2009\u2264\u200950), which represent the number of children in the queue and the time after which the queue will transform into the arrangement you need to find.  The next line contains string s, which represents the schoolchildren's initial arrangement. If the i-th position in the queue contains a boy, then the i-th character of string s equals \"B\", otherwise the i-th character equals \"G\".",
+        "source_code": "def ListToString(x):\n    string1 = \"\"\n    return (string1.join(x))\n\nnumindex = []   \nx = input()\nnums = [int(n) for n in x.split()]\nletters = str(input())\nletterlist = list(letters)\n\nfor i in range (0, nums[1], 1):\n    for j in range (0, nums[0]-1, 1):\n        if (letterlist[j] == \"B\" and letterlist[j + 1] == \"G\"):\n            # temp = letterlist[j]\n            # letterlist[j] = letterlist[j+1]\n            # letterlist[j+1] = temp\n            numtemp = j\n            numindex.append(numtemp)\n        else:\n            continue\n    for k in range (0, len(numindex), 1):\n        temp = letterlist[numindex[k]]\n        letterlist[numindex[k]] = letterlist[numindex[k] + 1]\n        letterlist[numindex[k] + 1] = temp\n    numindex.clear()\n\nprint(ListToString(letterlist))\n\n\n",
+        "prob_desc_sample_inputs": [
+            "5 1\nBGGBG",
+            "5 2\nBGGBG",
+            "4 1\nGGGB"
+        ],
+        "prob_desc_memory_limit": "256 megabytes",
+        "exec_outcome": "PASSED",
+        "prob_desc_output_spec": "Print string a, which describes the arrangement after t seconds. If the i-th position has a boy after the needed time, then the i-th character a must equal \"B\", otherwise it must equal \"G\".",
+        "src_uid": "964ed316c6e6715120039b0219cc653a",
+        "prob_desc_input_from": "standard input",
+        "lang": "Python 3",
+        "prob_desc_sample_outputs": [
+            "GBGGB",
+            "GGBGB",
+            "GGGB"
+        ],
+        "file_name": "d7021504500d5ca7c2b02df8100a574d159e6e67e20ec8071b75800b1267370a",
+        "prob_desc_description": "During the break the schoolchildren, boys and girls, formed a queue of n people in the canteen. Initially the children stood in the order they entered the canteen. However, after a while the boys started feeling awkward for standing in front of the girls in the queue and they started letting the girls move forward each second. Let's describe the process more precisely. Let's say that the positions in the queue are sequentially numbered by integers from 1 to n, at that the person in the position number 1 is served first. Then, if at time x a boy stands on the i-th position and a girl stands on the (i\u2009+\u20091)-th position, then at time x\u2009+\u20091 the i-th position will have a girl and the (i\u2009+\u20091)-th position will have a boy. The time is given in seconds.You've got the initial position of the children, at the initial moment of time. Determine the way the queue is going to look after t seconds.",
+        "prob_desc_created_at": "1358868600",
+        "difficulty": 800.0,
+        "hidden_unit_tests": "[{\"input\": \"5 1\\r\\nBGGBG\\r\\n\", \"output\": [\"GBGGB\"]}, {\"input\": \"5 2\\r\\nBGGBG\\r\\n\", \"output\": [\"GGBGB\"]}, {\"input\": \"4 1\\r\\nGGGB\\r\\n\", \"output\": [\"GGGB\"]}, {\"input\": \"2 1\\r\\nBB\\r\\n\", \"output\": [\"BB\"]}, {\"input\": \"2 1\\r\\nBG\\r\\n\", \"output\": [\"GB\"]}, {\"input\": \"6 2\\r\\nBBGBBG\\r\\n\", \"output\": [\"GBBGBB\"]}, {\"input\": \"8 3\\r\\nBBGBGBGB\\r\\n\", \"output\": [\"GGBGBBBB\"]}, {\"input\": \"10 3\\r\\nBBGBBBBBBG\\r\\n\", \"output\": [\"GBBBBBGBBB\"]}, {\"input\": \"22 7\\r\\nGBGGBGGGGGBBBGGBGBGBBB\\r\\n\", \"output\": [\"GGGGGGGGBGGBGGBBBBBBBB\"]}, {\"input\": \"50 4\\r\\nGBBGBBBGGGGGBBGGBBBBGGGBBBGBBBGGBGGBGBBBGGBGGBGGBG\\r\\n\", \"output\": [\"GGBGBGBGBGBGGGBBGBGBGBGBBBGBGBGBGBGBGBGBGBGBGGBGBB\"]}, {\"input\": \"50 8\\r\\nGGGGBGGBGGGBGBBBGGGGGGGGBBGBGBGBBGGBGGBGGGGGGGGBBG\\r\\n\", \"output\": [\"GGGGGGGGGGGGBGGBGBGBGBGBGGGGGGBGBGBGBGBGBGGBGGBGBB\"]}, {\"input\": \"50 30\\r\\nBGGGGGGBGGBGBGGGGBGBBGBBBGGBBBGBGBGGGGGBGBBGBGBGGG\\r\\n\", \"output\": [\"GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGBBBBBBBBBBBBBBBBBBBB\"]}, {\"input\": \"20 20\\r\\nBBGGBGGGGBBBGBBGGGBB\\r\\n\", \"output\": [\"GGGGGGGGGGBBBBBBBBBB\"]}, {\"input\": \"27 6\\r\\nGBGBGBGGGGGGBGGBGGBBGBBBGBB\\r\\n\", \"output\": [\"GGGGGGGBGBGBGGGGGBGBBBBBBBB\"]}, {\"input\": \"46 11\\r\\nBGGGGGBGBGGBGGGBBGBBGBBGGBBGBBGBGGGGGGGBGBGBGB\\r\\n\", \"output\": [\"GGGGGGGGGGGBGGGGGBBGBGBGBGBGBGBGBGBGBGBGBBBBBB\"]}, {\"input\": \"50 6\\r\\nBGGBBBBGGBBBBBBGGBGBGBBBBGBBBBBBGBBBBBBBBBBBBBBBBB\\r\\n\", \"output\": [\"GGGGBBBBBGBGBGBGBBBGBBBBBBGBBBBBBBBBBBBBBBBBBBBBBB\"]}, {\"input\": \"50 10\\r\\nBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB\\r\\n\", \"output\": [\"BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB\"]}, {\"input\": \"50 8\\r\\nGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG\\r\\n\", \"output\": [\"GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG\"]}, {\"input\": \"50 10\\r\\nBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBGB\\r\\n\", \"output\": [\"BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBGBBBBBBBBBBB\"]}, {\"input\": \"50 13\\r\\nGGGBGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG\\r\\n\", \"output\": [\"GGGGGGGGGGGGGGGGBGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG\"]}, {\"input\": \"1 1\\r\\nB\\r\\n\", \"output\": [\"B\"]}, {\"input\": \"1 1\\r\\nG\\r\\n\", \"output\": [\"G\"]}, {\"input\": \"1 50\\r\\nB\\r\\n\", \"output\": [\"B\"]}, {\"input\": \"1 50\\r\\nG\\r\\n\", \"output\": [\"G\"]}, {\"input\": \"50 50\\r\\nBBBBBBBBGGBBBBBBGBBBBBBBBBBBGBBBBBBBBBBBBBBGBBBBBB\\r\\n\", \"output\": [\"GGGGGBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB\"]}, {\"input\": \"50 50\\r\\nGGBBGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGBBGGGGGGBG\\r\\n\", \"output\": [\"GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGBBBBB\"]}, {\"input\": \"6 3\\r\\nGGBBBG\\r\\n\", \"output\": [\"GGGBBB\"]}, {\"input\": \"26 3\\r\\nGBBGBBBBBGGGBGBGGGBGBGGBBG\\r\\n\", \"output\": [\"GGBBBBGBGBGBGGGBGBGGGBGBBB\"]}, {\"input\": \"46 3\\r\\nGGBBGGGGBBGBGBBBBBGGGBGGGBBGGGBBBGGBGGBBBGBGBB\\r\\n\", \"output\": [\"GGGGBGBGGGBBBBBGBGBGBGGGBGGBGBGBGBGBGBGBGBBBBB\"]}, {\"input\": \"44 8\\r\\nBGBBBBBBBBBGGBBGBGBGGBBBBBGBBGBBBBBBBBBGBBGB\\r\\n\", \"output\": [\"GBBGBGBGBGBGBGBBBBGBBGBBBBBBBBBGBBGBBBBBBBBB\"]}, {\"input\": \"30 25\\r\\nBGGBBGBGGBGBGBBGBGGGGBGBGGBBBB\\r\\n\", \"output\": [\"GGGGGGGGGGGGGGGBBBBBBBBBBBBBBB\"]}, {\"input\": \"17 42\\r\\nBBGBGBGGGGGGBBGGG\\r\\n\", \"output\": [\"GGGGGGGGGGGBBBBBB\"]}, {\"input\": \"30 50\\r\\nBGGBBGGGGGGGGBBGGGBBGGBBBGBBGG\\r\\n\", \"output\": [\"GGGGGGGGGGGGGGGGGGBBBBBBBBBBBB\"]}, {\"input\": \"31 33\\r\\nBBGGBBGGBGBBBBGGBGBBBGBGGBBGBBB\\r\\n\", \"output\": [\"GGGGGGGGGGGGBBBBBBBBBBBBBBBBBBB\"]}, {\"input\": \"2 2\\r\\nBG\\r\\n\", \"output\": [\"GB\"]}, {\"input\": \"8 8\\r\\nGGGBGGBB\\r\\n\", \"output\": [\"GGGGGBBB\"]}, {\"input\": \"34 34\\r\\nBGGBBBBGGBBGBGGGGGGBBGGGGGBGGBGGGB\\r\\n\", \"output\": [\"GGGGGGGGGGGGGGGGGGGGGBBBBBBBBBBBBB\"]}, {\"input\": \"34 20\\r\\nBBBBGBGGGBGGGBGBGGBBBBGGBBGGGBGBBG\\r\\n\", \"output\": [\"GGGGGGGGGGGGGGGGGBBBBBBBBBBBBBBBBB\"]}, {\"input\": \"50 50\\r\\nBBGBBBBBBBBBBBBGBBBGBBBBBBBGBBBBBBGBBBGBBGBBGBBBGG\\r\\n\", \"output\": [\"GGGGGGGGGGBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB\"]}, {\"input\": \"10 10\\r\\nGGGGGGGGGG\\r\\n\", \"output\": [\"GGGGGGGGGG\"]}, {\"input\": \"10 10\\r\\nBBBBBBBBBB\\r\\n\", \"output\": [\"BBBBBBBBBB\"]}, {\"input\": \"10 10\\r\\nBGBGBGBGBG\\r\\n\", \"output\": [\"GGGGGBBBBB\"]}]",
+        "source_lang": "Python 3",
+        "target_lang": "C"
+    }
+}

@@ -1,0 +1,87 @@
+{
+    "oai_response": {
+        "prompt": "Here is code in Python 3 programming lanaguge. Translate the following code from Python 3 to C programming lanaguge. Do not output any extra description or tokens other than the translated code. \n\ns = str(input())\ns1 = sorted(s)\nac1 = 0\nfor i in s:\n\tif i == 'a':\n\t\tac1 += 1\nleng = len(s1) / 2\nif ac1 > leng:\n    print(len(s1))\nelse:\n    while ac1 <= leng:\n    \ts1.pop(-1)\n    \tleng = len(s1) / 2\n    print(len(s1))||END-of-SRC||",
+        "response": {
+            "id": "multi-call-as-pyqucehyt3",
+            "model": "deepseek-v3",
+            "created": 1767067032,
+            "choices": [
+                {
+                    "index": 0,
+                    "message": {
+                        "role": "assistant",
+                        "content": "Here's the translated code in C:\n\n```c\n#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\nint compare(const void *a, const void *b) {\n    return (*(char *)a - *(char *)b);\n}\n\nint main() {\n    char s[1000];\n    scanf(\"%s\", s);\n    int len = strlen(s);\n    char *s1 = malloc(len + 1);\n    strcpy(s1, s);\n    qsort(s1, len, sizeof(char), compare);\n    \n    int ac1 = 0;\n    for (int i = 0; i < len; i++) {\n        if (s[i] == 'a') {\n            ac1++;\n        }\n    }\n    \n    float leng = len / 2.0;\n    if (ac1 > leng) {\n        printf(\"%d\\n\", len);\n    } else {\n        while (ac1 <= leng) {\n            len--;\n            s1[len] = '\\0';\n            leng = len / 2.0;\n        }\n        printf(\"%d\\n\", len);\n    }\n    \n    free(s1);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 1,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\nint compare(const void *a, const void *b) {\n    return (*(char*)a - *(char*)b);\n}\n\nint main() {\n    char s[1000];\n    scanf(\"%s\", s);\n    int len = strlen(s);\n    char *s1 = malloc(len + 1);\n    strcpy(s1, s);\n    qsort(s1, len, sizeof(char), compare);\n    \n    int ac1 = 0;\n    for (int i = 0; i < len; i++) {\n        if (s[i] == 'a') {\n            ac1++;\n        }\n    }\n    \n    double leng = len / 2.0;\n    if (ac1 > leng) {\n        printf(\"%d\\n\", len);\n    } else {\n        while (ac1 <= leng) {\n            len--;\n            s1[len] = '\\0';\n            leng = len / 2.0;\n        }\n        printf(\"%d\\n\", len);\n    }\n    free(s1);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 2,
+                    "message": {
+                        "role": "assistant",
+                        "content": "Here's the translated code in C:\n\n```c\n#include <stdio.h>\n#include <string.h>\n#include <stdlib.h>\n\nint compare(const void *a, const void *b) {\n    return (*(char*)a - *(char*)b);\n}\n\nint main() {\n    char s[1000];\n    scanf(\"%s\", s);\n    int len = strlen(s);\n    char *s1 = malloc(len + 1);\n    strcpy(s1, s);\n    qsort(s1, len, sizeof(char), compare);\n    int ac1 = 0;\n    for (int i = 0; i < len; i++) {\n        if (s[i] == 'a') {\n            ac1++;\n        }\n    }\n    double leng = len / 2.0;\n    if (ac1 > leng) {\n        printf(\"%d\\n\", len);\n    } else {\n        while (ac1 <= leng) {\n            len--;\n            leng = len / 2.0;\n        }\n        printf(\"%d\\n\", len);\n    }\n    free(s1);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 3,
+                    "message": {
+                        "role": "assistant",
+                        "content": "Here's the translated code in C:\n\n```c\n#include <stdio.h>\n#include <string.h>\n#include <stdlib.h>\n\nint compare(const void *a, const void *b) {\n    return (*(char*)a - *(char*)b);\n}\n\nint main() {\n    char s[1000];\n    scanf(\"%s\", s);\n    int len = strlen(s);\n    char *s1 = malloc(len + 1);\n    strcpy(s1, s);\n    qsort(s1, len, sizeof(char), compare);\n    int ac1 = 0;\n    for (int i = 0; i < len; i++) {\n        if (s[i] == 'a') {\n            ac1++;\n        }\n    }\n    double leng = len / 2.0;\n    if (ac1 > leng) {\n        printf(\"%d\\n\", len);\n    } else {\n        while (ac1 <= leng) {\n            len--;\n            s1[len] = '\\0';\n            leng = len / 2.0;\n        }\n        printf(\"%d\\n\", len);\n    }\n    free(s1);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 4,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <string.h>\n#include <stdlib.h>\n\nint compare(const void *a, const void *b) {\n    return (*(char*)a - *(char*)b);\n}\n\nint main() {\n    char s[1000];\n    scanf(\"%s\", s);\n    int len = strlen(s);\n    char *s1 = malloc(len + 1);\n    strcpy(s1, s);\n    qsort(s1, len, sizeof(char), compare);\n    \n    int ac1 = 0;\n    for (int i = 0; i < len; i++) {\n        if (s[i] == 'a') {\n            ac1++;\n        }\n    }\n    \n    double leng = len / 2.0;\n    if (ac1 > leng) {\n        printf(\"%d\\n\", len);\n    } else {\n        while (ac1 <= leng) {\n            len--;\n            s1[len] = '\\0';\n            leng = len / 2.0;\n        }\n        printf(\"%d\\n\", len);\n    }\n    free(s1);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                }
+            ],
+            "usage": {
+                "prompt_tokens": 720,
+                "completion_tokens": 1194,
+                "total_tokens": 1914
+            }
+        }
+    },
+    "source_data": {
+        "code_uid": "aca21bb2e16f022541ebc396c6c9e617",
+        "prob_desc_output_to": "standard output",
+        "prob_desc_notes": "NoteIn the first example, it's enough to erase any four of the \"x\"s. The answer is $$$3$$$ since that is the maximum number of characters that can remain.In the second example, we don't need to erase any characters.",
+        "lang_cluster": "Python",
+        "prob_desc_time_limit": "1 second",
+        "prob_desc_input_spec": "The first line contains a string $$$s$$$ ($$$1 \\leq |s| \\leq 50$$$) consisting of lowercase English letters. It is guaranteed that there is at least one \"a\" in $$$s$$$.",
+        "source_code": "s = str(input())\ns1 = sorted(s)\nac1 = 0\nfor i in s:\n\tif i == 'a':\n\t\tac1 += 1\nleng = len(s1) / 2\nif ac1 > leng:\n    print(len(s1))\nelse:\n    while ac1 <= leng:\n    \ts1.pop(-1)\n    \tleng = len(s1) / 2\n    print(len(s1))",
+        "prob_desc_sample_inputs": [
+            "xaxxxxa",
+            "aaabaa"
+        ],
+        "prob_desc_memory_limit": "256 megabytes",
+        "exec_outcome": "PASSED",
+        "prob_desc_output_spec": "Print a single integer, the length of the longest good string that Alice can get after erasing some characters from $$$s$$$.",
+        "src_uid": "84cb9ad2ae3ba7e912920d7feb4f6219",
+        "prob_desc_input_from": "standard input",
+        "lang": "Python 3",
+        "prob_desc_sample_outputs": [
+            "3",
+            "6"
+        ],
+        "file_name": "d7021504500d5ca7c2b02df8100a574d159e6e67e20ec8071b75800b1267370a",
+        "prob_desc_description": "Alice has a string $$$s$$$. She really likes the letter \"a\". She calls a string good if strictly more than half of the characters in that string are \"a\"s. For example \"aaabb\", \"axaa\" are good strings, and \"baca\", \"awwwa\", \"\" (empty string) are not.Alice can erase some characters from her string $$$s$$$. She would like to know what is the longest string remaining after erasing some characters (possibly zero) to get a good string. It is guaranteed that the string has at least one \"a\" in it, so the answer always exists.",
+        "prob_desc_created_at": "1555783500",
+        "difficulty": 800.0,
+        "hidden_unit_tests": "[{\"input\": \"xaxxxxa\\r\\n\", \"output\": [\"3\"]}, {\"input\": \"aaabaa\\r\\n\", \"output\": [\"6\"]}, {\"input\": \"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\\r\\n\", \"output\": [\"50\"]}, {\"input\": \"ababababababababababababababababababababababababav\\r\\n\", \"output\": [\"49\"]}, {\"input\": \"abababababababababababababababababababababababava\\r\\n\", \"output\": [\"49\"]}, {\"input\": \"abababababababababababababababababababababababavv\\r\\n\", \"output\": [\"47\"]}, {\"input\": \"a\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"ap\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"dya\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"qyax\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"ahaos\\r\\n\", \"output\": [\"3\"]}, {\"input\": \"caidsucitzpblhucxnzcdupstfoourafborgyqwvaymdk\\r\\n\", \"output\": [\"5\"]}, {\"input\": \"wqufdkunalpjjmeolduzppvzabhytailycojjhnsykfhim\\r\\n\", \"output\": [\"5\"]}, {\"input\": \"qfggoxltgxqqirqazusxblbhhuajrjrsuojnwvdnzwymhjx\\r\\n\", \"output\": [\"3\"]}, {\"input\": \"kvujzkexnkqygxalmlpupghpqqsvqsabpbgrhmwixfroghpm\\r\\n\", \"output\": [\"3\"]}, {\"input\": \"ckhklxvduyregcmxabkrbcnxxjlgoaiikpbvuamdvrksefigx\\r\\n\", \"output\": [\"5\"]}, {\"input\": \"yqahbyyoxltryqdmvenemaqnbakglgqolxnaifnqtoclnnqiab\\r\\n\", \"output\": [\"9\"]}, {\"input\": \"ass\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"xaxax\\r\\n\", \"output\": [\"3\"]}]",
+        "source_lang": "Python 3",
+        "target_lang": "C"
+    }
+}

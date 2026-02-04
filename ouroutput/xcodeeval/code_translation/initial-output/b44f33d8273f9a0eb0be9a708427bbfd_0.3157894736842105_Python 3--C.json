@@ -1,0 +1,87 @@
+{
+    "oai_response": {
+        "prompt": "Here is code in Python 3 programming lanaguge. Translate the following code from Python 3 to C programming lanaguge. Do not output any extra description or tokens other than the translated code. \n\ndef sum_digit(a):\n    k=a\n    dem=0\n    while k>0:\n        x=k%10\n        dem+=x\n        k=int(k/10)\n    return (dem)\nch=input()\nn=int(ch)\nch=str(n)\nif len(ch)>1:\n    n1=str(int(ch[0])-1)\n    if n1=='0':\n        n1=''\n    for i in range(len(ch)-1):\n        n1+='9'\n    x=int(n1)\n    y=n-x\n    print (sum_digit(x)+sum_digit(y)) \nelse:\n    print (n)||END-of-SRC||",
+        "response": {
+            "id": "multi-call-as-rjvmj1fsxk",
+            "model": "deepseek-v3",
+            "created": 1767067576,
+            "choices": [
+                {
+                    "index": 0,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <string.h>\n\nint sum_digit(int a) {\n    int k = a;\n    int dem = 0;\n    while (k > 0) {\n        int x = k % 10;\n        dem += x;\n        k = k / 10;\n    }\n    return dem;\n}\n\nint main() {\n    char ch[100];\n    scanf(\"%s\", ch);\n    int n = atoi(ch);\n    if (strlen(ch) > 1) {\n        char n1[100];\n        n1[0] = ch[0] - 1;\n        if (n1[0] == '0') {\n            n1[0] = '\\0';\n        } else {\n            n1[1] = '\\0';\n        }\n        for (int i = 0; i < strlen(ch) - 1; i++) {\n            strcat(n1, \"9\");\n        }\n        int x = atoi(n1);\n        int y = n - x;\n        printf(\"%d\\n\", sum_digit(x) + sum_digit(y));\n    } else {\n        printf(\"%d\\n\", n);\n    }\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 1,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <string.h>\n\nint sum_digit(int a) {\n    int k = a;\n    int dem = 0;\n    while (k > 0) {\n        int x = k % 10;\n        dem += x;\n        k = k / 10;\n    }\n    return dem;\n}\n\nint main() {\n    char ch[100];\n    scanf(\"%s\", ch);\n    int n = atoi(ch);\n    if (strlen(ch) > 1) {\n        char n1[100];\n        n1[0] = (ch[0] - '0') - 1 + '0';\n        if (n1[0] == '0') {\n            n1[0] = '\\0';\n        } else {\n            n1[1] = '\\0';\n        }\n        for (int i = 1; i < strlen(ch); i++) {\n            strcat(n1, \"9\");\n        }\n        int x = atoi(n1);\n        int y = n - x;\n        printf(\"%d\\n\", sum_digit(x) + sum_digit(y));\n    } else {\n        printf(\"%d\\n\", n);\n    }\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 2,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <string.h>\n\nint sum_digit(int a) {\n    int k = a;\n    int dem = 0;\n    while (k > 0) {\n        int x = k % 10;\n        dem += x;\n        k = k / 10;\n    }\n    return dem;\n}\n\nint main() {\n    char ch[100];\n    scanf(\"%s\", ch);\n    int n = atoi(ch);\n    if (strlen(ch) > 1) {\n        char n1[100];\n        n1[0] = ch[0] - 1;\n        if (n1[0] == '0') {\n            n1[0] = '\\0';\n        } else {\n            n1[1] = '\\0';\n        }\n        for (int i = 1; i < strlen(ch); i++) {\n            strcat(n1, \"9\");\n        }\n        int x = atoi(n1);\n        int y = n - x;\n        printf(\"%d\\n\", sum_digit(x) + sum_digit(y));\n    } else {\n        printf(\"%d\\n\", n);\n    }\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 3,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <string.h>\n\nint sum_digit(int a) {\n    int k = a;\n    int dem = 0;\n    while (k > 0) {\n        int x = k % 10;\n        dem += x;\n        k = k / 10;\n    }\n    return dem;\n}\n\nint main() {\n    char ch[100];\n    scanf(\"%s\", ch);\n    int n = atoi(ch);\n    if (strlen(ch) > 1) {\n        char n1[100];\n        n1[0] = ch[0] - 1;\n        if (n1[0] == '0') {\n            n1[0] = '\\0';\n        } else {\n            n1[1] = '\\0';\n        }\n        for (int i = 1; i < strlen(ch); i++) {\n            strcat(n1, \"9\");\n        }\n        int x = atoi(n1);\n        int y = n - x;\n        printf(\"%d\\n\", sum_digit(x) + sum_digit(y));\n    } else {\n        printf(\"%d\\n\", n);\n    }\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 4,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <string.h>\n\nint sum_digit(int a) {\n    int k = a;\n    int dem = 0;\n    while (k > 0) {\n        int x = k % 10;\n        dem += x;\n        k = k / 10;\n    }\n    return dem;\n}\n\nint main() {\n    char ch[100];\n    scanf(\"%s\", ch);\n    int n = atoi(ch);\n    if (strlen(ch) > 1) {\n        char n1[100];\n        n1[0] = ch[0] - 1;\n        if (n1[0] == '0') {\n            n1[0] = '\\0';\n        } else {\n            n1[1] = '\\0';\n        }\n        for (int i = 1; i < strlen(ch); i++) {\n            strcat(n1, \"9\");\n        }\n        int x = atoi(n1);\n        int y = n - x;\n        printf(\"%d\\n\", sum_digit(x) + sum_digit(y));\n    } else {\n        printf(\"%d\\n\", n);\n    }\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                }
+            ],
+            "usage": {
+                "prompt_tokens": 925,
+                "completion_tokens": 1282,
+                "total_tokens": 2207
+            }
+        }
+    },
+    "source_data": {
+        "code_uid": "b44f33d8273f9a0eb0be9a708427bbfd",
+        "prob_desc_output_to": "standard output",
+        "prob_desc_notes": "NoteIn the first example, you can choose, for example, $$$a = 17$$$ and $$$b = 18$$$, so that $$$S(17) + S(18) = 1 + 7 + 1 + 8 = 17$$$. It can be shown that it is impossible to get a larger answer.In the second test example, you can choose, for example, $$$a = 5000000001$$$ and $$$b = 4999999999$$$, with $$$S(5000000001) + S(4999999999) = 91$$$. It can be shown that it is impossible to get a larger answer.",
+        "lang_cluster": "Python",
+        "prob_desc_time_limit": "2 seconds",
+        "prob_desc_input_spec": "The only line of input contains an integer $$$n$$$ $$$(1 \\leq n \\leq 10^{12})$$$.",
+        "source_code": "def sum_digit(a):\n    k=a\n    dem=0\n    while k>0:\n        x=k%10\n        dem+=x\n        k=int(k/10)\n    return (dem)\nch=input()\nn=int(ch)\nch=str(n)\nif len(ch)>1:\n    n1=str(int(ch[0])-1)\n    if n1=='0':\n        n1=''\n    for i in range(len(ch)-1):\n        n1+='9'\n    x=int(n1)\n    y=n-x\n    print (sum_digit(x)+sum_digit(y)) \nelse:\n    print (n)",
+        "prob_desc_sample_inputs": [
+            "35",
+            "10000000000"
+        ],
+        "prob_desc_memory_limit": "512 megabytes",
+        "exec_outcome": "PASSED",
+        "prob_desc_output_spec": "Print largest $$$S(a) + S(b)$$$ among all pairs of integers $$$a, b$$$, such that $$$0 \\leq a, b \\leq n$$$ and $$$a + b = n$$$.",
+        "src_uid": "5c61b4a4728070b9de49d72831cd2329",
+        "prob_desc_input_from": "standard input",
+        "lang": "Python 3",
+        "prob_desc_sample_outputs": [
+            "17",
+            "91"
+        ],
+        "file_name": "d7021504500d5ca7c2b02df8100a574d159e6e67e20ec8071b75800b1267370a",
+        "prob_desc_description": "You are given a positive integer $$$n$$$.Let $$$S(x)$$$ be sum of digits in base 10 representation of $$$x$$$, for example, $$$S(123) = 1 + 2 + 3 = 6$$$, $$$S(0) = 0$$$.Your task is to find two integers $$$a, b$$$, such that $$$0 \\leq a, b \\leq n$$$, $$$a + b = n$$$ and $$$S(a) + S(b)$$$ is the largest possible among all such pairs.",
+        "prob_desc_created_at": "1538636700",
+        "difficulty": 1100.0,
+        "hidden_unit_tests": "[{\"input\": \"35\\r\\n\", \"output\": [\"17\"]}, {\"input\": \"10000000000\\r\\n\", \"output\": [\"91\"]}, {\"input\": \"4394826\\r\\n\", \"output\": [\"90\"]}, {\"input\": \"96\\r\\n\", \"output\": [\"24\"]}, {\"input\": \"9999991\\r\\n\", \"output\": [\"109\"]}, {\"input\": \"999999999992\\r\\n\", \"output\": [\"200\"]}, {\"input\": \"290687942106\\r\\n\", \"output\": [\"153\"]}, {\"input\": \"1000000000000\\r\\n\", \"output\": [\"109\"]}, {\"input\": \"1\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"8\\r\\n\", \"output\": [\"8\"]}, {\"input\": \"15\\r\\n\", \"output\": [\"15\"]}, {\"input\": \"894\\r\\n\", \"output\": [\"39\"]}, {\"input\": \"8581\\r\\n\", \"output\": [\"49\"]}, {\"input\": \"41764\\r\\n\", \"output\": [\"58\"]}, {\"input\": \"333625\\r\\n\", \"output\": [\"67\"]}, {\"input\": \"13350712\\r\\n\", \"output\": [\"85\"]}, {\"input\": \"142098087\\r\\n\", \"output\": [\"111\"]}, {\"input\": \"4536444302\\r\\n\", \"output\": [\"116\"]}, {\"input\": \"30892252868\\r\\n\", \"output\": [\"143\"]}, {\"input\": \"990\\r\\n\", \"output\": [\"36\"]}, {\"input\": \"9994\\r\\n\", \"output\": [\"58\"]}, {\"input\": \"99993\\r\\n\", \"output\": [\"75\"]}, {\"input\": \"999997\\r\\n\", \"output\": [\"97\"]}, {\"input\": \"99999995\\r\\n\", \"output\": [\"131\"]}, {\"input\": \"999999990\\r\\n\", \"output\": [\"144\"]}, {\"input\": \"9999999998\\r\\n\", \"output\": [\"170\"]}, {\"input\": \"99999999997\\r\\n\", \"output\": [\"187\"]}, {\"input\": \"99\\r\\n\", \"output\": [\"18\"]}, {\"input\": \"29\\r\\n\", \"output\": [\"11\"]}, {\"input\": \"10\\r\\n\", \"output\": [\"10\"]}, {\"input\": \"99999999999\\r\\n\", \"output\": [\"99\"]}, {\"input\": \"19\\r\\n\", \"output\": [\"10\"]}, {\"input\": \"109\\r\\n\", \"output\": [\"19\"]}, {\"input\": \"39\\r\\n\", \"output\": [\"12\"]}, {\"input\": \"999999\\r\\n\", \"output\": [\"54\"]}, {\"input\": \"9999\\r\\n\", \"output\": [\"36\"]}, {\"input\": \"199\\r\\n\", \"output\": [\"19\"]}, {\"input\": \"1999\\r\\n\", \"output\": [\"28\"]}, {\"input\": \"20\\r\\n\", \"output\": [\"11\"]}, {\"input\": \"9111119\\r\\n\", \"output\": [\"68\"]}, {\"input\": \"999\\r\\n\", \"output\": [\"27\"]}, {\"input\": \"678186539\\r\\n\", \"output\": [\"116\"]}, {\"input\": \"9999999\\r\\n\", \"output\": [\"63\"]}, {\"input\": \"119\\r\\n\", \"output\": [\"20\"]}, {\"input\": \"39999\\r\\n\", \"output\": [\"39\"]}, {\"input\": \"408\\r\\n\", \"output\": [\"30\"]}, {\"input\": \"909\\r\\n\", \"output\": [\"27\"]}, {\"input\": \"1009\\r\\n\", \"output\": [\"28\"]}, {\"input\": \"11\\r\\n\", \"output\": [\"11\"]}, {\"input\": \"9\\r\\n\", \"output\": [\"9\"]}, {\"input\": \"5\\r\\n\", \"output\": [\"5\"]}, {\"input\": \"2999\\r\\n\", \"output\": [\"29\"]}, {\"input\": \"324278748889\\r\\n\", \"output\": [\"160\"]}, {\"input\": \"234799\\r\\n\", \"output\": [\"61\"]}, {\"input\": \"110\\r\\n\", \"output\": [\"20\"]}, {\"input\": \"110884501982\\r\\n\", \"output\": [\"146\"]}, {\"input\": \"7019\\r\\n\", \"output\": [\"35\"]}, {\"input\": \"17219\\r\\n\", \"output\": [\"47\"]}, {\"input\": \"999999999999\\r\\n\", \"output\": [\"108\"]}, {\"input\": \"849925977\\r\\n\", \"output\": [\"132\"]}, {\"input\": \"700000019\\r\\n\", \"output\": [\"80\"]}, {\"input\": \"190420131558\\r\\n\", \"output\": [\"138\"]}, {\"input\": \"18\\r\\n\", \"output\": [\"18\"]}, {\"input\": \"15901772\\r\\n\", \"output\": [\"95\"]}, {\"input\": \"2303910749\\r\\n\", \"output\": [\"110\"]}, {\"input\": \"2452148459\\r\\n\", \"output\": [\"116\"]}, {\"input\": \"1140\\r\\n\", \"output\": [\"33\"]}, {\"input\": \"155690477371\\r\\n\", \"output\": [\"154\"]}]",
+        "source_lang": "Python 3",
+        "target_lang": "C"
+    }
+}

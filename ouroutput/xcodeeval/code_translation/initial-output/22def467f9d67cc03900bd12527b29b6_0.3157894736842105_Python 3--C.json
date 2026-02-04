@@ -1,0 +1,87 @@
+{
+    "oai_response": {
+        "prompt": "Here is code in Python 3 programming lanaguge. Translate the following code from Python 3 to C programming lanaguge. Do not output any extra description or tokens other than the translated code. \n\ndef gcd(a, b):\n    return gcd(b % a, a) if a else b\nx, y, n = map(int, input().split())\ng = gcd(x, y)\nx, y = x // g, y // g\nif n < y:\n    d = [min(i, y - i) for i in ((x * i) % y for i in range(0, n + 1))]\n    for i in range(n - 1, 0, -1):\n        if d[i] < d[n] and n * d[i] <= i * d[n]: n = i\n    print(str((x * n) // y + int(2 * ((x * n) % y) > y)) + '/' + str(n))\nelse: print(str(x) + '/' + str(y))||END-of-SRC||",
+        "response": {
+            "id": "multi-call-as-1f5f6qjgeu",
+            "model": "deepseek-v3",
+            "created": 1767067673,
+            "choices": [
+                {
+                    "index": 0,
+                    "message": {
+                        "role": "assistant",
+                        "content": "Here's the translated code in C:\n\n```c\n#include <stdio.h>\n\nint gcd(int a, int b) {\n    return a ? gcd(b % a, a) : b;\n}\n\nint main() {\n    int x, y, n;\n    scanf(\"%d %d %d\", &x, &y, &n);\n    int g = gcd(x, y);\n    x /= g;\n    y /= g;\n    if (n < y) {\n        int d[n + 1];\n        for (int i = 0; i <= n; i++) {\n            int mod = (x * i) % y;\n            d[i] = mod < y - mod ? mod : y - mod;\n        }\n        for (int i = n - 1; i > 0; i--) {\n            if (d[i] < d[n] && n * d[i] <= i * d[n]) {\n                n = i;\n            }\n        }\n        printf(\"%d/%d\\n\", (x * n) / y + (2 * ((x * n) % y) > y), n);\n    } else {\n        printf(\"%d/%d\\n\", x, y);\n    }\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 1,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n\nint gcd(int a, int b) {\n    return a ? gcd(b % a, a) : b;\n}\n\nint main() {\n    int x, y, n;\n    scanf(\"%d %d %d\", &x, &y, &n);\n    int g = gcd(x, y);\n    x /= g;\n    y /= g;\n    if (n < y) {\n        int d[n + 1];\n        for (int i = 0; i <= n; i++) {\n            int mod = (x * i) % y;\n            d[i] = mod < y - mod ? mod : y - mod;\n        }\n        for (int i = n - 1; i > 0; i--) {\n            if (d[i] < d[n] && n * d[i] <= i * d[n]) {\n                n = i;\n            }\n        }\n        int num = (x * n) / y;\n        if (2 * ((x * n) % y) > y) {\n            num++;\n        }\n        printf(\"%d/%d\\n\", num, n);\n    } else {\n        printf(\"%d/%d\\n\", x, y);\n    }\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 2,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n\nint gcd(int a, int b) {\n    return a ? gcd(b % a, a) : b;\n}\n\nint main() {\n    int x, y, n;\n    scanf(\"%d %d %d\", &x, &y, &n);\n    int g = gcd(x, y);\n    x /= g;\n    y /= g;\n    if (n < y) {\n        int d[n + 1];\n        for (int i = 0; i <= n; i++) {\n            int mod = (x * i) % y;\n            d[i] = mod < y - mod ? mod : y - mod;\n        }\n        for (int i = n - 1; i > 0; i--) {\n            if (d[i] < d[n] && n * d[i] <= i * d[n]) {\n                n = i;\n            }\n        }\n        int num = (x * n) / y;\n        if (2 * ((x * n) % y) > y) {\n            num++;\n        }\n        printf(\"%d/%d\\n\", num, n);\n    } else {\n        printf(\"%d/%d\\n\", x, y);\n    }\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 3,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n\nint gcd(int a, int b) {\n    return a ? gcd(b % a, a) : b;\n}\n\nint main() {\n    int x, y, n;\n    scanf(\"%d %d %d\", &x, &y, &n);\n    int g = gcd(x, y);\n    x /= g;\n    y /= g;\n    if (n < y) {\n        int d[n + 1];\n        for (int i = 0; i <= n; i++) {\n            int mod = (x * i) % y;\n            d[i] = mod < y - mod ? mod : y - mod;\n        }\n        for (int i = n - 1; i > 0; i--) {\n            if (d[i] < d[n] && n * d[i] <= i * d[n]) {\n                n = i;\n            }\n        }\n        int num = (x * n) / y;\n        if (2 * ((x * n) % y) > y) {\n            num++;\n        }\n        printf(\"%d/%d\\n\", num, n);\n    } else {\n        printf(\"%d/%d\\n\", x, y);\n    }\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 4,
+                    "message": {
+                        "role": "assistant",
+                        "content": "Here's the translated code in C:\n\n```c\n#include <stdio.h>\n\nint gcd(int a, int b) {\n    return a ? gcd(b % a, a) : b;\n}\n\nint main() {\n    int x, y, n;\n    scanf(\"%d %d %d\", &x, &y, &n);\n    int g = gcd(x, y);\n    x /= g;\n    y /= g;\n    if (n < y) {\n        int d[n + 1];\n        for (int i = 0; i <= n; i++) {\n            int mod = (x * i) % y;\n            d[i] = mod < y - mod ? mod : y - mod;\n        }\n        for (int i = n - 1; i > 0; i--) {\n            if (d[i] < d[n] && n * d[i] <= i * d[n]) {\n                n = i;\n            }\n        }\n        printf(\"%d/%d\\n\", (x * n) / y + (2 * ((x * n) % y) > y), n);\n    } else {\n        printf(\"%d/%d\\n\", x, y);\n    }\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                }
+            ],
+            "usage": {
+                "prompt_tokens": 1130,
+                "completion_tokens": 1321,
+                "total_tokens": 2451
+            }
+        }
+    },
+    "source_data": {
+        "code_uid": "22def467f9d67cc03900bd12527b29b6",
+        "prob_desc_output_to": "standard output",
+        "prob_desc_notes": null,
+        "lang_cluster": "Python",
+        "prob_desc_time_limit": "2 seconds",
+        "prob_desc_input_spec": "A single line contains three integers x,\u2009y,\u2009n (1\u2009\u2264\u2009x,\u2009y,\u2009n\u2009\u2264\u2009105).",
+        "source_code": "def gcd(a, b):\n    return gcd(b % a, a) if a else b\nx, y, n = map(int, input().split())\ng = gcd(x, y)\nx, y = x // g, y // g\nif n < y:\n    d = [min(i, y - i) for i in ((x * i) % y for i in range(0, n + 1))]\n    for i in range(n - 1, 0, -1):\n        if d[i] < d[n] and n * d[i] <= i * d[n]: n = i\n    print(str((x * n) // y + int(2 * ((x * n) % y) > y)) + '/' + str(n))\nelse: print(str(x) + '/' + str(y))",
+        "prob_desc_sample_inputs": [
+            "3 7 6",
+            "7 2 4"
+        ],
+        "prob_desc_memory_limit": "256 megabytes",
+        "exec_outcome": "PASSED",
+        "prob_desc_output_spec": "Print the required fraction in the format \"a/b\" (without quotes).",
+        "src_uid": "827bc6f120aff6a6f04271bc84e863ee",
+        "prob_desc_input_from": "standard input",
+        "lang": "Python 3",
+        "prob_desc_sample_outputs": [
+            "2/5",
+            "7/2"
+        ],
+        "file_name": "d7021504500d5ca7c2b02df8100a574d159e6e67e20ec8071b75800b1267370a",
+        "prob_desc_description": "You are given three positive integers x,\u2009y,\u2009n. Your task is to find the nearest fraction to fraction  whose denominator is no more than n. Formally, you should find such pair of integers a,\u2009b (1\u2009\u2264\u2009b\u2009\u2264\u2009n;\u00a00\u2009\u2264\u2009a) that the value  is as minimal as possible.If there are multiple \"nearest\" fractions, choose the one with the minimum denominator. If there are multiple \"nearest\" fractions with the minimum denominator, choose the one with the minimum numerator.",
+        "prob_desc_created_at": "1362929400",
+        "difficulty": 1700.0,
+        "hidden_unit_tests": "[{\"input\": \"3 7 6\\r\\n\", \"output\": [\"2/5\"]}, {\"input\": \"7 2 4\\r\\n\", \"output\": [\"7/2\"]}, {\"input\": \"1 1 1\\r\\n\", \"output\": [\"1/1\"]}, {\"input\": \"1 2 1\\r\\n\", \"output\": [\"0/1\"]}, {\"input\": \"1 2 2\\r\\n\", \"output\": [\"1/2\"]}, {\"input\": \"17708 35362 1558\\r\\n\", \"output\": [\"328/655\"]}, {\"input\": \"72657 93778 50943\\r\\n\", \"output\": [\"38236/49351\"]}, {\"input\": \"1000 7 3\\r\\n\", \"output\": [\"143/1\"]}, {\"input\": \"1000 11 20\\r\\n\", \"output\": [\"1000/11\"]}, {\"input\": \"100000 2 100000\\r\\n\", \"output\": [\"50000/1\"]}, {\"input\": \"99999 2 1\\r\\n\", \"output\": [\"49999/1\"]}, {\"input\": \"38133 49787 9840\\r\\n\", \"output\": [\"3295/4302\"]}, {\"input\": \"76730 91851 71438\\r\\n\", \"output\": [\"49039/58703\"]}, {\"input\": \"7487 17563 1102\\r\\n\", \"output\": [\"107/251\"]}, {\"input\": \"46084 75979 30535\\r\\n\", \"output\": [\"11637/19186\"]}, {\"input\": \"60489 34395 34632\\r\\n\", \"output\": [\"20163/11465\"]}, {\"input\": \"91245 43755 27191\\r\\n\", \"output\": [\"6083/2917\"]}, {\"input\": \"29842 2171 245\\r\\n\", \"output\": [\"811/59\"]}, {\"input\": \"44247 27883 24673\\r\\n\", \"output\": [\"34667/21846\"]}, {\"input\": \"89781 34400 19222\\r\\n\", \"output\": [\"49972/19147\"]}, {\"input\": \"36890 92817 22772\\r\\n\", \"output\": [\"5951/14973\"]}, {\"input\": \"75486 2177 1983\\r\\n\", \"output\": [\"58877/1698\"]}, {\"input\": \"6243 60593 42244\\r\\n\", \"output\": [\"3565/34601\"]}, {\"input\": \"20648 86305 73795\\r\\n\", \"output\": [\"15543/64967\"]}, {\"input\": \"59245 44721 45425\\r\\n\", \"output\": [\"59245/44721\"]}, {\"input\": \"90002 86785 57380\\r\\n\", \"output\": [\"23109/22283\"]}, {\"input\": \"28598 12497 10464\\r\\n\", \"output\": [\"23710/10361\"]}, {\"input\": \"43003 70913 71178\\r\\n\", \"output\": [\"43003/70913\"]}, {\"input\": \"14304 96625 53803\\r\\n\", \"output\": [\"7934/53595\"]}, {\"input\": \"35646 27334 23417\\r\\n\", \"output\": [\"17823/13667\"]}, {\"input\": \"99997 99999 99996\\r\\n\", \"output\": [\"49999/50000\"]}, {\"input\": \"100000 10 10\\r\\n\", \"output\": [\"10000/1\"]}, {\"input\": \"7 6 3\\r\\n\", \"output\": [\"1/1\"]}]",
+        "source_lang": "Python 3",
+        "target_lang": "C"
+    }
+}

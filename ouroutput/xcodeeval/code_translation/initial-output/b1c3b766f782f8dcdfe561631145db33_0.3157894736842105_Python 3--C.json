@@ -1,0 +1,91 @@
+{
+    "oai_response": {
+        "prompt": "Here is code in Python 3 programming lanaguge. Translate the following code from Python 3 to C programming lanaguge. Do not output any extra description or tokens other than the translated code. \n\nn,k=map(int,input().split())\nk=10**k\ns=n*k\nwhile n*k>0:\n    if n>k:\n        n=n%k\n    else:\n        k=k%n\nD=s//(n+k)\nprint(D)||END-of-SRC||",
+        "response": {
+            "id": "multi-call-as-7sgzxsse2b",
+            "model": "deepseek-v3",
+            "created": 1767066956,
+            "choices": [
+                {
+                    "index": 0,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <math.h>\n\nint main() {\n    int n, k;\n    scanf(\"%d %d\", &n, &k);\n    k = pow(10, k);\n    int s = n * k;\n    while (n * k > 0) {\n        if (n > k) {\n            n = n % k;\n        } else {\n            k = k % n;\n        }\n    }\n    int D = s / (n + k);\n    printf(\"%d\\n\", D);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 1,
+                    "message": {
+                        "role": "assistant",
+                        "content": "Here's the translated code in C:\n\n```c\n#include <stdio.h>\n#include <math.h>\n\nint main() {\n    int n, k;\n    scanf(\"%d %d\", &n, &k);\n    k = pow(10, k);\n    int s = n * k;\n    while (n * k > 0) {\n        if (n > k) {\n            n = n % k;\n        } else {\n            k = k % n;\n        }\n    }\n    int D = s / (n + k);\n    printf(\"%d\\n\", D);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 2,
+                    "message": {
+                        "role": "assistant",
+                        "content": "Here's the translated code in C:\n\n```c\n#include <stdio.h>\n#include <math.h>\n\nint main() {\n    int n, k;\n    scanf(\"%d %d\", &n, &k);\n    k = pow(10, k);\n    int s = n * k;\n    while (n * k > 0) {\n        if (n > k) {\n            n = n % k;\n        } else {\n            k = k % n;\n        }\n    }\n    int D = s / (n + k);\n    printf(\"%d\\n\", D);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 3,
+                    "message": {
+                        "role": "assistant",
+                        "content": "Here's the translated code in C:\n\n```c\n#include <stdio.h>\n#include <math.h>\n\nint main() {\n    int n, k;\n    scanf(\"%d %d\", &n, &k);\n    k = pow(10, k);\n    int s = n * k;\n    while (n * k > 0) {\n        if (n > k) {\n            n = n % k;\n        } else {\n            k = k % n;\n        }\n    }\n    int D = s / (n + k);\n    printf(\"%d\", D);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 4,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <math.h>\n\nint main() {\n    int n, k;\n    scanf(\"%d %d\", &n, &k);\n    k = pow(10, k);\n    int s = n * k;\n    while (n * k > 0) {\n        if (n > k) {\n            n = n % k;\n        } else {\n            k = k % n;\n        }\n    }\n    int D = s / (n + k);\n    printf(\"%d\\n\", D);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                }
+            ],
+            "usage": {
+                "prompt_tokens": 535,
+                "completion_tokens": 623,
+                "total_tokens": 1158
+            }
+        }
+    },
+    "source_data": {
+        "code_uid": "b1c3b766f782f8dcdfe561631145db33",
+        "prob_desc_output_to": "standard output",
+        "prob_desc_notes": null,
+        "lang_cluster": "Python",
+        "prob_desc_time_limit": "1 second",
+        "prob_desc_input_spec": "The only line contains two integers n and k (1\u2009\u2264\u2009n\u2009\u2264\u2009109, 0\u2009\u2264\u2009k\u2009\u2264\u20098).",
+        "source_code": "n,k=map(int,input().split())\nk=10**k\ns=n*k\nwhile n*k>0:\n    if n>k:\n        n=n%k\n    else:\n        k=k%n\nD=s//(n+k)\nprint(D)",
+        "prob_desc_sample_inputs": [
+            "375 4",
+            "10000 1",
+            "38101 0",
+            "123456789 8"
+        ],
+        "prob_desc_memory_limit": "256 megabytes",
+        "exec_outcome": "PASSED",
+        "prob_desc_output_spec": "Print the k-rounding of n.",
+        "src_uid": "73566d4d9f20f7bbf71bc06bc9a4e9f3",
+        "prob_desc_input_from": "standard input",
+        "lang": "Python 3",
+        "prob_desc_sample_outputs": [
+            "30000",
+            "10000",
+            "38101",
+            "12345678900000000"
+        ],
+        "file_name": "d7021504500d5ca7c2b02df8100a574d159e6e67e20ec8071b75800b1267370a",
+        "prob_desc_description": "For a given positive integer n denote its k-rounding as the minimum positive integer x, such that x ends with k or more zeros in base 10 and is divisible by n.For example, 4-rounding of 375 is 375\u00b780\u2009=\u200930000. 30000 is the minimum integer such that it ends with 4 or more zeros and is divisible by 375.Write a program that will perform the k-rounding of n.",
+        "prob_desc_created_at": "1505653500",
+        "difficulty": 1100.0,
+        "hidden_unit_tests": "[{\"input\": \"375 4\\r\\n\", \"output\": [\"30000\"]}, {\"input\": \"10000 1\\r\\n\", \"output\": [\"10000\"]}, {\"input\": \"38101 0\\r\\n\", \"output\": [\"38101\"]}, {\"input\": \"123456789 8\\r\\n\", \"output\": [\"12345678900000000\"]}, {\"input\": \"1 0\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"2 0\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"100 0\\r\\n\", \"output\": [\"100\"]}, {\"input\": \"1000000000 0\\r\\n\", \"output\": [\"1000000000\"]}, {\"input\": \"160 2\\r\\n\", \"output\": [\"800\"]}, {\"input\": \"3 0\\r\\n\", \"output\": [\"3\"]}, {\"input\": \"10 0\\r\\n\", \"output\": [\"10\"]}, {\"input\": \"1 1\\r\\n\", \"output\": [\"10\"]}, {\"input\": \"2 1\\r\\n\", \"output\": [\"10\"]}, {\"input\": \"3 1\\r\\n\", \"output\": [\"30\"]}, {\"input\": \"4 1\\r\\n\", \"output\": [\"20\"]}, {\"input\": \"5 1\\r\\n\", \"output\": [\"10\"]}, {\"input\": \"6 1\\r\\n\", \"output\": [\"30\"]}, {\"input\": \"7 1\\r\\n\", \"output\": [\"70\"]}, {\"input\": \"8 1\\r\\n\", \"output\": [\"40\"]}, {\"input\": \"9 1\\r\\n\", \"output\": [\"90\"]}, {\"input\": \"10 1\\r\\n\", \"output\": [\"10\"]}, {\"input\": \"11 1\\r\\n\", \"output\": [\"110\"]}, {\"input\": \"12 1\\r\\n\", \"output\": [\"60\"]}, {\"input\": \"16 2\\r\\n\", \"output\": [\"400\"]}, {\"input\": \"2 2\\r\\n\", \"output\": [\"100\"]}, {\"input\": \"1 2\\r\\n\", \"output\": [\"100\"]}, {\"input\": \"5 2\\r\\n\", \"output\": [\"100\"]}, {\"input\": \"15 2\\r\\n\", \"output\": [\"300\"]}, {\"input\": \"36 2\\r\\n\", \"output\": [\"900\"]}, {\"input\": \"1 8\\r\\n\", \"output\": [\"100000000\"]}, {\"input\": \"8 8\\r\\n\", \"output\": [\"100000000\"]}, {\"input\": \"96 8\\r\\n\", \"output\": [\"300000000\"]}, {\"input\": \"175 8\\r\\n\", \"output\": [\"700000000\"]}, {\"input\": \"9999995 8\\r\\n\", \"output\": [\"199999900000000\"]}, {\"input\": \"999999999 8\\r\\n\", \"output\": [\"99999999900000000\"]}, {\"input\": \"12345678 8\\r\\n\", \"output\": [\"617283900000000\"]}, {\"input\": \"78125 8\\r\\n\", \"output\": [\"100000000\"]}, {\"input\": \"390625 8\\r\\n\", \"output\": [\"100000000\"]}, {\"input\": \"1953125 8\\r\\n\", \"output\": [\"500000000\"]}, {\"input\": \"9765625 8\\r\\n\", \"output\": [\"2500000000\"]}, {\"input\": \"68359375 8\\r\\n\", \"output\": [\"17500000000\"]}, {\"input\": \"268435456 8\\r\\n\", \"output\": [\"104857600000000\"]}, {\"input\": \"125829120 8\\r\\n\", \"output\": [\"9830400000000\"]}, {\"input\": \"128000 8\\r\\n\", \"output\": [\"400000000\"]}, {\"input\": \"300000 8\\r\\n\", \"output\": [\"300000000\"]}, {\"input\": \"3711871 8\\r\\n\", \"output\": [\"371187100000000\"]}, {\"input\": \"55555 8\\r\\n\", \"output\": [\"1111100000000\"]}, {\"input\": \"222222222 8\\r\\n\", \"output\": [\"11111111100000000\"]}, {\"input\": \"479001600 8\\r\\n\", \"output\": [\"7484400000000\"]}, {\"input\": \"655360001 7\\r\\n\", \"output\": [\"6553600010000000\"]}, {\"input\": \"655360001 8\\r\\n\", \"output\": [\"65536000100000000\"]}, {\"input\": \"1000000000 1\\r\\n\", \"output\": [\"1000000000\"]}, {\"input\": \"1000000000 7\\r\\n\", \"output\": [\"1000000000\"]}, {\"input\": \"1000000000 8\\r\\n\", \"output\": [\"1000000000\"]}, {\"input\": \"100000000 8\\r\\n\", \"output\": [\"100000000\"]}, {\"input\": \"10000000 8\\r\\n\", \"output\": [\"100000000\"]}, {\"input\": \"1000000 8\\r\\n\", \"output\": [\"100000000\"]}, {\"input\": \"10000009 8\\r\\n\", \"output\": [\"1000000900000000\"]}, {\"input\": \"10000005 8\\r\\n\", \"output\": [\"200000100000000\"]}, {\"input\": \"10000002 8\\r\\n\", \"output\": [\"500000100000000\"]}, {\"input\": \"999999997 8\\r\\n\", \"output\": [\"99999999700000000\"]}, {\"input\": \"999999997 7\\r\\n\", \"output\": [\"9999999970000000\"]}, {\"input\": \"999999995 8\\r\\n\", \"output\": [\"19999999900000000\"]}, {\"input\": \"123 8\\r\\n\", \"output\": [\"12300000000\"]}, {\"input\": \"24 2\\r\\n\", \"output\": [\"600\"]}, {\"input\": \"16 4\\r\\n\", \"output\": [\"10000\"]}, {\"input\": \"123456787 8\\r\\n\", \"output\": [\"12345678700000000\"]}, {\"input\": \"100000000 8\\r\\n\", \"output\": [\"100000000\"]}, {\"input\": \"7 1\\r\\n\", \"output\": [\"70\"]}, {\"input\": \"101 1\\r\\n\", \"output\": [\"1010\"]}, {\"input\": \"50 2\\r\\n\", \"output\": [\"100\"]}, {\"input\": \"999999818 1\\r\\n\", \"output\": [\"4999999090\"]}, {\"input\": \"2 1\\r\\n\", \"output\": [\"10\"]}, {\"input\": \"123 1\\r\\n\", \"output\": [\"1230\"]}, {\"input\": \"16 1\\r\\n\", \"output\": [\"80\"]}, {\"input\": \"1 1\\r\\n\", \"output\": [\"10\"]}, {\"input\": \"1000000000 8\\r\\n\", \"output\": [\"1000000000\"]}, {\"input\": \"15304 6\\r\\n\", \"output\": [\"1913000000\"]}, {\"input\": \"3 8\\r\\n\", \"output\": [\"300000000\"]}, {\"input\": \"4 2\\r\\n\", \"output\": [\"100\"]}, {\"input\": \"100000 7\\r\\n\", \"output\": [\"10000000\"]}, {\"input\": \"5 8\\r\\n\", \"output\": [\"100000000\"]}, {\"input\": \"16724 6\\r\\n\", \"output\": [\"4181000000\"]}, {\"input\": \"999999999 1\\r\\n\", \"output\": [\"9999999990\"]}, {\"input\": \"999999990 8\\r\\n\", \"output\": [\"9999999900000000\"]}, {\"input\": \"999999999 8\\r\\n\", \"output\": [\"99999999900000000\"]}, {\"input\": \"100000 1\\r\\n\", \"output\": [\"100000\"]}, {\"input\": \"8 3\\r\\n\", \"output\": [\"1000\"]}, {\"input\": \"16768 6\\r\\n\", \"output\": [\"262000000\"]}, {\"input\": \"123456789 1\\r\\n\", \"output\": [\"1234567890\"]}, {\"input\": \"2 8\\r\\n\", \"output\": [\"100000000\"]}, {\"input\": \"999999937 8\\r\\n\", \"output\": [\"99999993700000000\"]}, {\"input\": \"5 1\\r\\n\", \"output\": [\"10\"]}, {\"input\": \"2000000 7\\r\\n\", \"output\": [\"10000000\"]}, {\"input\": \"1999998 2\\r\\n\", \"output\": [\"99999900\"]}, {\"input\": \"125 3\\r\\n\", \"output\": [\"1000\"]}]",
+        "source_lang": "Python 3",
+        "target_lang": "C"
+    }
+}

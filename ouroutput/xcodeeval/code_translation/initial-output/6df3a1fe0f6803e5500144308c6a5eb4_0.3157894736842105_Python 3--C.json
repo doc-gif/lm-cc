@@ -1,0 +1,89 @@
+{
+    "oai_response": {
+        "prompt": "Here is code in Python 3 programming lanaguge. Translate the following code from Python 3 to C programming lanaguge. Do not output any extra description or tokens other than the translated code. \n\n# fin = open(\"input.txt\")\n# a, b = map(int, fin.readline().split())\na, b = map(int, input().split())\na2 = a - b\nif a2 == 0:\n\tprint(\"infinity\")\nelse:\n\tCount = 0\n\ti = 1\n\twhile i ** 2 <= a2:\n\t\tCount += (a2 % i == 0 and i > b) + (a2 % i == 0 and a2 // i > b and i != a2 // i)\n\t\ti += 1\n\tprint(Count)\n||END-of-SRC||",
+        "response": {
+            "id": "multi-call-as-t7qasnz7qn",
+            "model": "deepseek-v3",
+            "created": 1767066904,
+            "choices": [
+                {
+                    "index": 0,
+                    "message": {
+                        "role": "assistant",
+                        "content": "Here's the translated code in C:\n\n```c\n#include <stdio.h>\n#include <math.h>\n\nint main() {\n    int a, b;\n    scanf(\"%d %d\", &a, &b);\n    int a2 = a - b;\n    if (a2 == 0) {\n        printf(\"infinity\\n\");\n    } else {\n        int Count = 0;\n        for (int i = 1; i * i <= a2; i++) {\n            if (a2 % i == 0) {\n                if (i > b) Count++;\n                if (a2 / i > b && i != a2 / i) Count++;\n            }\n        }\n        printf(\"%d\\n\", Count);\n    }\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 1,
+                    "message": {
+                        "role": "assistant",
+                        "content": "Here's the translated code in C:\n\n```c\n#include <stdio.h>\n#include <math.h>\n\nint main() {\n    int a, b;\n    scanf(\"%d %d\", &a, &b);\n    int a2 = a - b;\n    if (a2 == 0) {\n        printf(\"infinity\\n\");\n    } else {\n        int Count = 0;\n        for (int i = 1; i * i <= a2; i++) {\n            if (a2 % i == 0) {\n                if (i > b) Count++;\n                if (a2 / i > b && i != a2 / i) Count++;\n            }\n        }\n        printf(\"%d\\n\", Count);\n    }\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 2,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <math.h>\n\nint main() {\n    int a, b;\n    scanf(\"%d %d\", &a, &b);\n    int a2 = a - b;\n    if (a2 == 0) {\n        printf(\"infinity\\n\");\n    } else {\n        int Count = 0;\n        int i = 1;\n        while (i * i <= a2) {\n            Count += (a2 % i == 0 && i > b) + (a2 % i == 0 && a2 / i > b && i != a2 / i);\n            i += 1;\n        }\n        printf(\"%d\\n\", Count);\n    }\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 3,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <math.h>\n\nint main() {\n    int a, b;\n    scanf(\"%d %d\", &a, &b);\n    int a2 = a - b;\n    if (a2 == 0) {\n        printf(\"infinity\\n\");\n    } else {\n        int Count = 0;\n        for (int i = 1; i * i <= a2; i++) {\n            if (a2 % i == 0) {\n                if (i > b) Count++;\n                if (a2 / i > b && i != a2 / i) Count++;\n            }\n        }\n        printf(\"%d\\n\", Count);\n    }\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 4,
+                    "message": {
+                        "role": "assistant",
+                        "content": "Here's the translated code in C:\n\n```c\n#include <stdio.h>\n#include <math.h>\n\nint main() {\n    int a, b;\n    scanf(\"%d %d\", &a, &b);\n    int a2 = a - b;\n    if (a2 == 0) {\n        printf(\"infinity\\n\");\n    } else {\n        int Count = 0;\n        for (int i = 1; i * i <= a2; i++) {\n            if (a2 % i == 0) {\n                if (i > b) Count++;\n                if (a2 / i > b && i != a2 / i) Count++;\n            }\n        }\n        printf(\"%d\\n\", Count);\n    }\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                }
+            ],
+            "usage": {
+                "prompt_tokens": 875,
+                "completion_tokens": 796,
+                "total_tokens": 1671
+            }
+        }
+    },
+    "source_data": {
+        "code_uid": "6df3a1fe0f6803e5500144308c6a5eb4",
+        "prob_desc_output_to": "standard output",
+        "prob_desc_notes": "NoteIn the first sample the answers of the Modular Equation are 8 and 16 since ",
+        "lang_cluster": "Python",
+        "prob_desc_time_limit": "1 second",
+        "prob_desc_input_spec": "In the only line of the input two space-separated integers a and b (0\u2009\u2264\u2009a,\u2009b\u2009\u2264\u2009109) are given.",
+        "source_code": "# fin = open(\"input.txt\")\n# a, b = map(int, fin.readline().split())\na, b = map(int, input().split())\na2 = a - b\nif a2 == 0:\n\tprint(\"infinity\")\nelse:\n\tCount = 0\n\ti = 1\n\twhile i ** 2 <= a2:\n\t\tCount += (a2 % i == 0 and i > b) + (a2 % i == 0 and a2 // i > b and i != a2 // i)\n\t\ti += 1\n\tprint(Count)\n",
+        "prob_desc_sample_inputs": [
+            "21 5",
+            "9435152 272",
+            "10 10"
+        ],
+        "prob_desc_memory_limit": "256 megabytes",
+        "exec_outcome": "PASSED",
+        "prob_desc_output_spec": "If there is an infinite number of answers to our equation, print \"infinity\" (without the quotes). Otherwise print the number of solutions of the Modular Equation .",
+        "src_uid": "6e0715f9239787e085b294139abb2475",
+        "prob_desc_input_from": "standard input",
+        "lang": "Python 3",
+        "prob_desc_sample_outputs": [
+            "2",
+            "282",
+            "infinity"
+        ],
+        "file_name": "d7021504500d5ca7c2b02df8100a574d159e6e67e20ec8071b75800b1267370a",
+        "prob_desc_description": "Last week, Hamed learned about a new type of equations in his math class called Modular Equations. Lets define i modulo j as the remainder of division of i by j and denote it by . A Modular Equation, as Hamed's teacher described, is an equation of the form  in which a and b are two non-negative integers and x is a variable. We call a positive integer x for which  a solution of our equation.Hamed didn't pay much attention to the class since he was watching a movie. He only managed to understand the definitions of these equations.Now he wants to write his math exercises but since he has no idea how to do that, he asked you for help. He has told you all he knows about Modular Equations and asked you to write a program which given two numbers a and b determines how many answers the Modular Equation  has.",
+        "prob_desc_created_at": "1418488200",
+        "difficulty": 1600.0,
+        "hidden_unit_tests": "[{\"input\": \"21 5\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"9435152 272\\r\\n\", \"output\": [\"282\"]}, {\"input\": \"10 10\\r\\n\", \"output\": [\"infinity\"]}, {\"input\": \"0 1000000000\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"11 2\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"1 0\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"0 0\\r\\n\", \"output\": [\"infinity\"]}, {\"input\": \"121 0\\r\\n\", \"output\": [\"3\"]}, {\"input\": \"772930485 686893955\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"257424 24\\r\\n\", \"output\": [\"127\"]}, {\"input\": \"295138437 589952171\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"223093836 966\\r\\n\", \"output\": [\"399\"]}, {\"input\": \"233758336 10665466\\r\\n\", \"output\": [\"13\"]}, {\"input\": \"223092887 17\\r\\n\", \"output\": [\"500\"]}, {\"input\": \"223094728 1858\\r\\n\", \"output\": [\"371\"]}, {\"input\": \"223092899 29\\r\\n\", \"output\": [\"495\"]}, {\"input\": \"997920 0\\r\\n\", \"output\": [\"240\"]}, {\"input\": \"887043 3\\r\\n\", \"output\": [\"213\"]}, {\"input\": \"124 24\\r\\n\", \"output\": [\"3\"]}, {\"input\": \"982901 101\\r\\n\", \"output\": [\"193\"]}, {\"input\": \"357987 35\\r\\n\", \"output\": [\"45\"]}, {\"input\": \"954374 1030\\r\\n\", \"output\": [\"32\"]}, {\"input\": \"49106 46\\r\\n\", \"output\": [\"15\"]}, {\"input\": \"325508499 119510657\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"89768760 885778845\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"944387968 700818251\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"12 3\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"1000000000 1\\r\\n\", \"output\": [\"19\"]}, {\"input\": \"923456789 3\\r\\n\", \"output\": [\"14\"]}, {\"input\": \"1000000000 6\\r\\n\", \"output\": [\"6\"]}, {\"input\": \"1000000000 333333300\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"5 2\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"1 10\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"15 3\\r\\n\", \"output\": [\"3\"]}, {\"input\": \"2 0\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"77 75\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"1000000000 1000000000\\r\\n\", \"output\": [\"infinity\"]}]",
+        "source_lang": "Python 3",
+        "target_lang": "C"
+    }
+}

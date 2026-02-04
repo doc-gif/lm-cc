@@ -1,0 +1,89 @@
+{
+    "oai_response": {
+        "prompt": "Here is code in Python 3 programming lanaguge. Translate the following code from Python 3 to C programming lanaguge. Do not output any extra description or tokens other than the translated code. \n\nfrom sys import stdin\nfrom itertools import combinations\nn, l, r , x = map(int, stdin.readline().rstrip().split(\" \"))\nli = list(map(int, stdin.readline().rstrip().split(\" \")))\nz = []\nans = 0\nfor i in range(2, n+1):\n    z += list(combinations(li, i))\n\nfor i in z:\n    a = sorted(i)\n    if a[-1]-a[0]>=x and r >= sum(a) >= l:\n        ans+=1\n\nprint(ans)||END-of-SRC||",
+        "response": {
+            "id": "multi-call-as-m6msvjigpb",
+            "model": "deepseek-v3",
+            "created": 1767069071,
+            "choices": [
+                {
+                    "index": 0,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <stdlib.h>\n\nint compare(const void *a, const void *b) {\n    return (*(int*)a - *(int*)b);\n}\n\nvoid generate_combinations(int *arr, int n, int k, int start, int *current, int index, int *count, int l, int r, int x) {\n    if (index == k) {\n        int sum = 0;\n        int min = current[0];\n        int max = current[0];\n        for (int i = 0; i < k; i++) {\n            sum += current[i];\n            if (current[i] < min) min = current[i];\n            if (current[i] > max) max = current[i];\n        }\n        if (sum >= l && sum <= r && (max - min) >= x) {\n            (*count)++;\n        }\n        return;\n    }\n    for (int i = start; i < n; i++) {\n        current[index] = arr[i];\n        generate_combinations(arr, n, k, i + 1, current, index + 1, count, l, r, x);\n    }\n}\n\nint main() {\n    int n, l, r, x;\n    scanf(\"%d %d %d %d\", &n, &l, &r, &x);\n    int *li = (int*)malloc(n * sizeof(int));\n    for (int i = 0; i < n; i++) {\n        scanf(\"%d\", &li[i]);\n    }\n    int ans = 0;\n    for (int k = 2; k <= n; k++) {\n        int *current = (int*)malloc(k * sizeof(int));\n        generate_combinations(li, n, k, 0, current, 0, &ans, l, r, x);\n        free(current);\n    }\n    printf(\"%d\\n\", ans);\n    free(li);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 1,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <stdlib.h>\n\nint compare(const void *a, const void *b) {\n    return (*(int*)a - *(int*)b);\n}\n\nvoid generate_combinations(int *arr, int n, int k, int start, int *current, int index, int *combinations, int *count) {\n    if (index == k) {\n        for (int i = 0; i < k; i++) {\n            combinations[(*count) * k + i] = current[i];\n        }\n        (*count)++;\n        return;\n    }\n    for (int i = start; i < n; i++) {\n        current[index] = arr[i];\n        generate_combinations(arr, n, k, i + 1, current, index + 1, combinations, count);\n    }\n}\n\nint main() {\n    int n, l, r, x;\n    scanf(\"%d %d %d %d\", &n, &l, &r, &x);\n    int *li = malloc(n * sizeof(int));\n    for (int i = 0; i < n; i++) {\n        scanf(\"%d\", &li[i]);\n    }\n\n    int total_combinations = 0;\n    for (int k = 2; k <= n; k++) {\n        int max_comb = 1;\n        for (int i = n; i > n - k; i--) max_comb *= i;\n        for (int i = k; i > 1; i--) max_comb /= i;\n        total_combinations += max_comb;\n    }\n\n    int *combinations = malloc(total_combinations * n * sizeof(int));\n    int *current = malloc(n * sizeof(int));\n    int count = 0;\n    for (int k = 2; k <= n; k++) {\n        generate_combinations(li, n, k, 0, current, 0, combinations, &count);\n    }\n\n    int ans = 0;\n    for (int i = 0; i < count; i++) {\n        int k = 2;\n        while (i > 0 && combinations[i * n] == combinations[(i - 1) * n]) {\n            k++;\n            i--;\n        }\n        int *a = malloc(k * sizeof(int));\n        for (int j = 0; j < k; j++) {\n            a[j] = combinations[i * n + j];\n        }\n        qsort(a, k, sizeof(int), compare);\n        int sum = 0;\n        for (int j = 0; j < k; j++) {\n            sum += a[j];\n        }\n        if (a[k - 1] - a[0] >= x && sum >= l && sum <= r) {\n            ans++;\n        }\n        free(a);\n    }\n\n    printf(\"%d\\n\", ans);\n    free(li);\n    free(combinations);\n    free(current);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 2,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <stdlib.h>\n\nint compare(const void *a, const void *b) {\n    return (*(int*)a - *(int*)b);\n}\n\nvoid generate_combinations(int *arr, int n, int k, int start, int *current, int index, int *combinations, int *count) {\n    if (index == k) {\n        for (int i = 0; i < k; i++) {\n            combinations[(*count) * k + i] = current[i];\n        }\n        (*count)++;\n        return;\n    }\n    for (int i = start; i < n; i++) {\n        current[index] = arr[i];\n        generate_combinations(arr, n, k, i + 1, current, index + 1, combinations, count);\n    }\n}\n\nint main() {\n    int n, l, r, x;\n    scanf(\"%d %d %d %d\", &n, &l, &r, &x);\n    int *li = malloc(n * sizeof(int));\n    for (int i = 0; i < n; i++) {\n        scanf(\"%d\", &li[i]);\n    }\n\n    int ans = 0;\n    for (int k = 2; k <= n; k++) {\n        int num_combinations = 0;\n        int *current = malloc(k * sizeof(int));\n        int max_combinations = 1;\n        for (int i = n; i > n - k; i--) max_combinations *= i;\n        for (int i = 1; i <= k; i++) max_combinations /= i;\n        int *combinations = malloc(max_combinations * k * sizeof(int));\n        generate_combinations(li, n, k, 0, current, 0, combinations, &num_combinations);\n\n        for (int i = 0; i < num_combinations; i++) {\n            int *a = malloc(k * sizeof(int));\n            for (int j = 0; j < k; j++) {\n                a[j] = combinations[i * k + j];\n            }\n            qsort(a, k, sizeof(int), compare);\n            int sum = 0;\n            for (int j = 0; j < k; j++) {\n                sum += a[j];\n            }\n            if (a[k-1] - a[0] >= x && sum >= l && sum <= r) {\n                ans++;\n            }\n            free(a);\n        }\n        free(current);\n        free(combinations);\n    }\n    printf(\"%d\\n\", ans);\n    free(li);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 3,
+                    "message": {
+                        "role": "assistant",
+                        "content": "Here's the translated code in C:\n\n```c\n#include <stdio.h>\n#include <stdlib.h>\n\nvoid combinations(int arr[], int data[], int start, int end, int index, int r, int *ans, int l, int x, int max_sum) {\n    if (index == r) {\n        int sum = 0;\n        int min = data[0];\n        int max = data[0];\n        for (int i = 0; i < r; i++) {\n            sum += data[i];\n            if (data[i] < min) min = data[i];\n            if (data[i] > max) max = data[i];\n        }\n        if (sum >= l && sum <= max_sum && (max - min) >= x) {\n            (*ans)++;\n        }\n        return;\n    }\n    for (int i = start; i <= end && end - i + 1 >= r - index; i++) {\n        data[index] = arr[i];\n        combinations(arr, data, i+1, end, index+1, r, ans, l, x, max_sum);\n    }\n}\n\nint main() {\n    int n, l, r, x;\n    scanf(\"%d %d %d %d\", &n, &l, &r, &x);\n    int *li = malloc(n * sizeof(int));\n    for (int i = 0; i < n; i++) {\n        scanf(\"%d\", &li[i]);\n    }\n    int ans = 0;\n    for (int i = 2; i <= n; i++) {\n        int *data = malloc(i * sizeof(int));\n        combinations(li, data, 0, n-1, 0, i, &ans, l, x, r);\n        free(data);\n    }\n    printf(\"%d\\n\", ans);\n    free(li);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 4,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <stdlib.h>\n\nint compare(const void *a, const void *b) {\n    return (*(int*)a - *(int*)b);\n}\n\nvoid generate_combinations(int *arr, int n, int k, int start, int *current, int index, int *combinations, int *count) {\n    if (index == k) {\n        for (int i = 0; i < k; i++) {\n            combinations[(*count) * k + i] = current[i];\n        }\n        (*count)++;\n        return;\n    }\n    for (int i = start; i < n; i++) {\n        current[index] = arr[i];\n        generate_combinations(arr, n, k, i + 1, current, index + 1, combinations, count);\n    }\n}\n\nint main() {\n    int n, l, r, x;\n    scanf(\"%d %d %d %d\", &n, &l, &r, &x);\n    int *li = malloc(n * sizeof(int));\n    for (int i = 0; i < n; i++) {\n        scanf(\"%d\", &li[i]);\n    }\n\n    int ans = 0;\n    for (int k = 2; k <= n; k++) {\n        int num_combinations = 0;\n        int *current = malloc(k * sizeof(int));\n        int max_combinations = 1;\n        for (int i = n; i > n - k; i--) max_combinations *= i;\n        for (int i = 1; i <= k; i++) max_combinations /= i;\n        int *combinations = malloc(max_combinations * k * sizeof(int));\n        generate_combinations(li, n, k, 0, current, 0, combinations, &num_combinations);\n\n        for (int i = 0; i < num_combinations; i++) {\n            int *a = malloc(k * sizeof(int));\n            for (int j = 0; j < k; j++) {\n                a[j] = combinations[i * k + j];\n            }\n            qsort(a, k, sizeof(int), compare);\n            int sum = 0;\n            for (int j = 0; j < k; j++) {\n                sum += a[j];\n            }\n            if (a[k-1] - a[0] >= x && sum >= l && sum <= r) {\n                ans++;\n            }\n            free(a);\n        }\n        free(current);\n        free(combinations);\n    }\n    printf(\"%d\\n\", ans);\n    free(li);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                }
+            ],
+            "usage": {
+                "prompt_tokens": 840,
+                "completion_tokens": 2601,
+                "total_tokens": 3441
+            }
+        }
+    },
+    "source_data": {
+        "code_uid": "40ac9de155e7ca16c845807aa73c20f8",
+        "prob_desc_output_to": "standard output",
+        "prob_desc_notes": "NoteIn the first example two sets are suitable, one consisting of the second and third problem, another one consisting of all three problems.In the second example, two sets of problems are suitable \u2014 the set of problems with difficulties 10 and 30 as well as the set of problems with difficulties 20 and 30.In the third example any set consisting of one problem of difficulty 10 and one problem of difficulty 20 is suitable.",
+        "lang_cluster": "Python",
+        "prob_desc_time_limit": "2 seconds",
+        "prob_desc_input_spec": "The first line contains four integers n, l, r, x (1\u2009\u2264\u2009n\u2009\u2264\u200915, 1\u2009\u2264\u2009l\u2009\u2264\u2009r\u2009\u2264\u2009109, 1\u2009\u2264\u2009x\u2009\u2264\u2009106) \u2014 the number of problems you have, the minimum and maximum value of total difficulty of the problemset and the minimum difference in difficulty between the hardest problem in the pack and the easiest one, respectively. The second line contains n integers c1,\u2009c2,\u2009...,\u2009cn (1\u2009\u2264\u2009ci\u2009\u2264\u2009106) \u2014 the difficulty of each problem.",
+        "source_code": "from sys import stdin\nfrom itertools import combinations\nn, l, r , x = map(int, stdin.readline().rstrip().split(\" \"))\nli = list(map(int, stdin.readline().rstrip().split(\" \")))\nz = []\nans = 0\nfor i in range(2, n+1):\n    z += list(combinations(li, i))\n\nfor i in z:\n    a = sorted(i)\n    if a[-1]-a[0]>=x and r >= sum(a) >= l:\n        ans+=1\n\nprint(ans)",
+        "prob_desc_sample_inputs": [
+            "3 5 6 1\n1 2 3",
+            "4 40 50 10\n10 20 30 25",
+            "5 25 35 10\n10 10 20 10 20"
+        ],
+        "prob_desc_memory_limit": "256 megabytes",
+        "exec_outcome": "PASSED",
+        "prob_desc_output_spec": "Print the number of ways to choose a suitable problemset for the contest. ",
+        "src_uid": "0d43104a0de924cdcf8e4aced5aa825d",
+        "prob_desc_input_from": "standard input",
+        "lang": "Python 3",
+        "prob_desc_sample_outputs": [
+            "2",
+            "2",
+            "6"
+        ],
+        "file_name": "d7021504500d5ca7c2b02df8100a574d159e6e67e20ec8071b75800b1267370a",
+        "prob_desc_description": "You have n problems. You have estimated the difficulty of the i-th one as integer ci. Now you want to prepare a problemset for a contest, using some of the problems you've made.A problemset for the contest must consist of at least two problems. You think that the total difficulty of the problems of the contest must be at least l and at most r. Also, you think that the difference between difficulties of the easiest and the hardest of the chosen problems must be at least x.Find the number of ways to choose a problemset for the contest.",
+        "prob_desc_created_at": "1433435400",
+        "difficulty": 1400.0,
+        "hidden_unit_tests": "[{\"input\": \"3 5 6 1\\r\\n1 2 3\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"4 40 50 10\\r\\n10 20 30 25\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"5 25 35 10\\r\\n10 10 20 10 20\\r\\n\", \"output\": [\"6\"]}, {\"input\": \"4 15 60 10\\r\\n10 20 30 25\\r\\n\", \"output\": [\"6\"]}, {\"input\": \"1 10 20 1\\r\\n15\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"10 626451 11471247 246428\\r\\n369649 684428 303821 287098 422756 301599 720377 177567 515216 750602\\r\\n\", \"output\": [\"914\"]}, {\"input\": \"15 1415849 15540979 356865\\r\\n8352 960238 276753 259695 712845 945369 60023 920446 181269 392011 318488 857649 30681 740872 115749\\r\\n\", \"output\": [\"31485\"]}, {\"input\": \"7 1000 2000 1\\r\\n10 20 30 40 50 60 70\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"4 10 20 1\\r\\n4 6 4 6\\r\\n\", \"output\": [\"9\"]}, {\"input\": \"4 10 20 1\\r\\n5 15 13 7\\r\\n\", \"output\": [\"4\"]}, {\"input\": \"2 10 20 5\\r\\n5 10\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"5 1098816 3969849 167639\\r\\n85627 615007 794045 530104 7091\\r\\n\", \"output\": [\"15\"]}, {\"input\": \"13 700147 8713522 390093\\r\\n996812 94040 954140 545670 369698 423872 365802 784830 700267 960664 949252 84637 257447\\r\\n\", \"output\": [\"8026\"]}, {\"input\": \"15 4531977 20754263 137419\\r\\n637830 85299 755530 64382 896833 879525 331501 148182 741013 192101 112217 52165 702790 988594 587499\\r\\n\", \"output\": [\"6759\"]}, {\"input\": \"15 2572491 5084070 823435\\r\\n570344 78552 775918 501843 844935 71141 331498 636557 435494 715447 992666 831188 28969 171046 989614\\r\\n\", \"output\": [\"15078\"]}, {\"input\": \"15 4789415 23152928 233992\\r\\n502422 273992 449428 947379 700461 681985 857134 243310 478052 77769 936151 642380 464695 281772 964693\\r\\n\", \"output\": [\"10875\"]}, {\"input\": \"3 390224 390224 1\\r\\n264237 125987 288891\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"7 1652707 1652707 1\\r\\n492387 684636 235422 332532 924898 499872 192988\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"10 501107 501107 1\\r\\n843967 30518 196518 619138 204862 690754 274071 550121 173607 359971\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"15 6627289 6627289 1\\r\\n683844 183950 184972 764255 211665 842336 790234 815301 914823 513046 93547 713159 554415 200951 388028\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"15 5083470 5083470 1\\r\\n978510 643688 591921 723137 573784 346171 920030 352119 528857 365128 627302 308557 716247 263519 654230\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"15 6558665 6558665 1\\r\\n572491 435494 916457 775918 823435 78552 501843 331498 71141 844935 636557 992666 570344 831188 715447\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"10 159699 10967276 3542\\r\\n998862 999751 995306 992648 992661 991407 997503 998809 999740 997669\\r\\n\", \"output\": [\"942\"]}, {\"input\": \"5 2815840 8479687 4082\\r\\n991137 992161 997887 998891 994990\\r\\n\", \"output\": [\"14\"]}, {\"input\": \"15 2898377 6694755 721\\r\\n992733 999159 990076 996808 990975 993338 993234 994757 997873 993303 994409 993801 998027 990495 999287\\r\\n\", \"output\": [\"9819\"]}, {\"input\": \"6 20 70 1\\r\\n10 10 20 20 30 30\\r\\n\", \"output\": [\"35\"]}, {\"input\": \"6 20 70 1\\r\\n10 10 10 10 10 10\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"15 1 1000000000 1\\r\\n10 20 30 40 50 60 70 80 90 100 110 120 130 140 150\\r\\n\", \"output\": [\"32752\"]}, {\"input\": \"6 30 40 1\\r\\n19 20 21 14 15 16\\r\\n\", \"output\": [\"13\"]}, {\"input\": \"4 5 234 2\\r\\n10 9 12 11\\r\\n\", \"output\": [\"8\"]}]",
+        "source_lang": "Python 3",
+        "target_lang": "C"
+    }
+}

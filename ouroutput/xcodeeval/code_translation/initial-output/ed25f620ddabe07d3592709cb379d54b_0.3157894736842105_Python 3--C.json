@@ -1,0 +1,89 @@
+{
+    "oai_response": {
+        "prompt": "Here is code in Python 3 programming lanaguge. Translate the following code from Python 3 to C programming lanaguge. Do not output any extra description or tokens other than the translated code. \n\nt2, t3 = list(map(int,input().split(' ')))\n\nleft = 2*(t2)-10\nright = 3*(t2+t3)+10\nwhile right-left != 1:\n    guess = int((left+right)/2)\n    work2 = int(guess/2)-int(guess/6)\n    work3 = int(guess/3)-int(guess/6)\n    work6 = int(guess/6)\n    if max(0,t2-work2)+max(0,t3-work3) <= work6:\n        right = guess\n    else:\n        left = guess\nprint(right)\n||END-of-SRC||",
+        "response": {
+            "id": "multi-call-as-ya3vdwzpym",
+            "model": "deepseek-v3",
+            "created": 1767069720,
+            "choices": [
+                {
+                    "index": 0,
+                    "message": {
+                        "role": "assistant",
+                        "content": "Here's the translated code in C:\n\n```c\n#include <stdio.h>\n\nint main() {\n    int t2, t3;\n    scanf(\"%d %d\", &t2, &t3);\n    \n    int left = 2 * t2 - 10;\n    int right = 3 * (t2 + t3) + 10;\n    \n    while (right - left != 1) {\n        int guess = (left + right) / 2;\n        int work2 = guess / 2 - guess / 6;\n        int work3 = guess / 3 - guess / 6;\n        int work6 = guess / 6;\n        \n        if ((t2 > work2 ? t2 - work2 : 0) + (t3 > work3 ? t3 - work3 : 0) <= work6) {\n            right = guess;\n        } else {\n            left = guess;\n        }\n    }\n    \n    printf(\"%d\\n\", right);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 1,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n\nint main() {\n    int t2, t3;\n    scanf(\"%d %d\", &t2, &t3);\n\n    int left = 2 * t2 - 10;\n    int right = 3 * (t2 + t3) + 10;\n    while (right - left != 1) {\n        int guess = (left + right) / 2;\n        int work2 = guess / 2 - guess / 6;\n        int work3 = guess / 3 - guess / 6;\n        int work6 = guess / 6;\n        if ((t2 - work2 > 0 ? t2 - work2 : 0) + (t3 - work3 > 0 ? t3 - work3 : 0) <= work6) {\n            right = guess;\n        } else {\n            left = guess;\n        }\n    }\n    printf(\"%d\\n\", right);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 2,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n\nint main() {\n    int t2, t3;\n    scanf(\"%d %d\", &t2, &t3);\n\n    int left = 2 * t2 - 10;\n    int right = 3 * (t2 + t3) + 10;\n    while (right - left != 1) {\n        int guess = (left + right) / 2;\n        int work2 = guess / 2 - guess / 6;\n        int work3 = guess / 3 - guess / 6;\n        int work6 = guess / 6;\n        if ((t2 - work2 > 0 ? t2 - work2 : 0) + (t3 - work3 > 0 ? t3 - work3 : 0) <= work6) {\n            right = guess;\n        } else {\n            left = guess;\n        }\n    }\n    printf(\"%d\\n\", right);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 3,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n\nint main() {\n    int t2, t3;\n    scanf(\"%d %d\", &t2, &t3);\n    \n    int left = 2 * t2 - 10;\n    int right = 3 * (t2 + t3) + 10;\n    \n    while (right - left != 1) {\n        int guess = (left + right) / 2;\n        int work2 = guess / 2 - guess / 6;\n        int work3 = guess / 3 - guess / 6;\n        int work6 = guess / 6;\n        \n        if ((t2 > work2 ? t2 - work2 : 0) + (t3 > work3 ? t3 - work3 : 0) <= work6) {\n            right = guess;\n        } else {\n            left = guess;\n        }\n    }\n    \n    printf(\"%d\\n\", right);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 4,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n\nint main() {\n    int t2, t3;\n    scanf(\"%d %d\", &t2, &t3);\n\n    int left = 2 * t2 - 10;\n    int right = 3 * (t2 + t3) + 10;\n    while (right - left != 1) {\n        int guess = (left + right) / 2;\n        int work2 = guess / 2 - guess / 6;\n        int work3 = guess / 3 - guess / 6;\n        int work6 = guess / 6;\n        if ((t2 - work2 > 0 ? t2 - work2 : 0) + (t3 - work3 > 0 ? t3 - work3 : 0) <= work6) {\n            right = guess;\n        } else {\n            left = guess;\n        }\n    }\n    printf(\"%d\\n\", right);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                }
+            ],
+            "usage": {
+                "prompt_tokens": 930,
+                "completion_tokens": 1053,
+                "total_tokens": 1983
+            }
+        }
+    },
+    "source_data": {
+        "code_uid": "ed25f620ddabe07d3592709cb379d54b",
+        "prob_desc_output_to": "standard output",
+        "prob_desc_notes": "NoteIn the first case, the student using two-block pieces can make a tower of height 4, and the students using three-block pieces can make towers of height 3, 6, and 9 blocks. The tallest tower has a height of 9 blocks.In the second case, the students can make towers of heights 2, 4, and 8 with two-block pieces and towers of heights 3 and 6 with three-block pieces, for a maximum height of 8 blocks.",
+        "lang_cluster": "Python",
+        "prob_desc_time_limit": "2 seconds",
+        "prob_desc_input_spec": "The first line of the input contains two space-separated integers n and m (0\u2009\u2264\u2009n,\u2009m\u2009\u2264\u20091\u2009000\u2009000, n\u2009+\u2009m\u2009&gt;\u20090)\u00a0\u2014 the number of students using two-block pieces and the number of students using three-block pieces, respectively.",
+        "source_code": "t2, t3 = list(map(int,input().split(' ')))\n\nleft = 2*(t2)-10\nright = 3*(t2+t3)+10\nwhile right-left != 1:\n    guess = int((left+right)/2)\n    work2 = int(guess/2)-int(guess/6)\n    work3 = int(guess/3)-int(guess/6)\n    work6 = int(guess/6)\n    if max(0,t2-work2)+max(0,t3-work3) <= work6:\n        right = guess\n    else:\n        left = guess\nprint(right)\n",
+        "prob_desc_sample_inputs": [
+            "1 3",
+            "3 2",
+            "5 0"
+        ],
+        "prob_desc_memory_limit": "256 megabytes",
+        "exec_outcome": "PASSED",
+        "prob_desc_output_spec": "Print a single integer, denoting the minimum possible height of the tallest tower.",
+        "src_uid": "23f2c8cac07403899199abdcfd947a5a",
+        "prob_desc_input_from": "standard input",
+        "lang": "Python 3",
+        "prob_desc_sample_outputs": [
+            "9",
+            "8",
+            "10"
+        ],
+        "file_name": "d7021504500d5ca7c2b02df8100a574d159e6e67e20ec8071b75800b1267370a",
+        "prob_desc_description": "Students in a class are making towers of blocks. Each student makes a (non-zero) tower by stacking pieces lengthwise on top of each other. n of the students use pieces made of two blocks and m of the students use pieces made of three blocks.The students don\u2019t want to use too many blocks, but they also want to be unique, so no two students\u2019 towers may contain the same number of blocks. Find the minimum height necessary for the tallest of the students' towers.",
+        "prob_desc_created_at": "1455384900",
+        "difficulty": 1600.0,
+        "hidden_unit_tests": "[{\"input\": \"1 3\\r\\n\", \"output\": [\"9\"]}, {\"input\": \"3 2\\r\\n\", \"output\": [\"8\"]}, {\"input\": \"5 0\\r\\n\", \"output\": [\"10\"]}, {\"input\": \"4 2\\r\\n\", \"output\": [\"9\"]}, {\"input\": \"0 1000000\\r\\n\", \"output\": [\"3000000\"]}, {\"input\": \"1000000 1\\r\\n\", \"output\": [\"2000000\"]}, {\"input\": \"1083 724\\r\\n\", \"output\": [\"2710\"]}, {\"input\": \"1184 868\\r\\n\", \"output\": [\"3078\"]}, {\"input\": \"1285 877\\r\\n\", \"output\": [\"3243\"]}, {\"input\": \"820189 548173\\r\\n\", \"output\": [\"2052543\"]}, {\"input\": \"968867 651952\\r\\n\", \"output\": [\"2431228\"]}, {\"input\": \"817544 553980\\r\\n\", \"output\": [\"2057286\"]}, {\"input\": \"813242 543613\\r\\n\", \"output\": [\"2035282\"]}, {\"input\": \"961920 647392\\r\\n\", \"output\": [\"2413968\"]}, {\"input\": \"825496 807050\\r\\n\", \"output\": [\"2448819\"]}, {\"input\": \"974174 827926\\r\\n\", \"output\": [\"2703150\"]}, {\"input\": \"969872 899794\\r\\n\", \"output\": [\"2804499\"]}, {\"input\": \"818549 720669\\r\\n\", \"output\": [\"2308827\"]}, {\"input\": \"967227 894524\\r\\n\", \"output\": [\"2792626\"]}, {\"input\": \"185253 152723\\r\\n\", \"output\": [\"506964\"]}, {\"input\": \"195173 150801\\r\\n\", \"output\": [\"518961\"]}, {\"input\": \"129439 98443\\r\\n\", \"output\": [\"341823\"]}, {\"input\": \"163706 157895\\r\\n\", \"output\": [\"482402\"]}, {\"input\": \"197973 140806\\r\\n\", \"output\": [\"508168\"]}, {\"input\": \"1000000 1000000\\r\\n\", \"output\": [\"3000000\"]}, {\"input\": \"1000000 999999\\r\\n\", \"output\": [\"2999998\"]}, {\"input\": \"999999 1000000\\r\\n\", \"output\": [\"3000000\"]}, {\"input\": \"500000 500100\\r\\n\", \"output\": [\"1500300\"]}, {\"input\": \"500000 166000\\r\\n\", \"output\": [\"1000000\"]}, {\"input\": \"500000 499000\\r\\n\", \"output\": [\"1498500\"]}, {\"input\": \"500000 167000\\r\\n\", \"output\": [\"1000500\"]}, {\"input\": \"1 1000000\\r\\n\", \"output\": [\"3000000\"]}, {\"input\": \"2 999123\\r\\n\", \"output\": [\"2997369\"]}, {\"input\": \"10 988723\\r\\n\", \"output\": [\"2966169\"]}, {\"input\": \"234 298374\\r\\n\", \"output\": [\"895122\"]}, {\"input\": \"2365 981235\\r\\n\", \"output\": [\"2943705\"]}, {\"input\": \"12345 981732\\r\\n\", \"output\": [\"2945196\"]}, {\"input\": \"108752 129872\\r\\n\", \"output\": [\"389616\"]}, {\"input\": \"984327 24352\\r\\n\", \"output\": [\"1968654\"]}, {\"input\": \"928375 1253\\r\\n\", \"output\": [\"1856750\"]}, {\"input\": \"918273 219\\r\\n\", \"output\": [\"1836546\"]}, {\"input\": \"987521 53\\r\\n\", \"output\": [\"1975042\"]}, {\"input\": \"123456 1\\r\\n\", \"output\": [\"246912\"]}, {\"input\": \"789123 0\\r\\n\", \"output\": [\"1578246\"]}, {\"input\": \"143568 628524\\r\\n\", \"output\": [\"1885572\"]}, {\"input\": \"175983 870607\\r\\n\", \"output\": [\"2611821\"]}, {\"input\": \"6 4\\r\\n\", \"output\": [\"15\"]}, {\"input\": \"6 3\\r\\n\", \"output\": [\"14\"]}, {\"input\": \"7 3\\r\\n\", \"output\": [\"15\"]}, {\"input\": \"5 4\\r\\n\", \"output\": [\"14\"]}, {\"input\": \"5 3\\r\\n\", \"output\": [\"12\"]}, {\"input\": \"8 5\\r\\n\", \"output\": [\"20\"]}, {\"input\": \"1 0\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"19170 15725\\r\\n\", \"output\": [\"52342\"]}, {\"input\": \"3000 2000\\r\\n\", \"output\": [\"7500\"]}, {\"input\": \"7 4\\r\\n\", \"output\": [\"16\"]}, {\"input\": \"50 30\\r\\n\", \"output\": [\"120\"]}, {\"input\": \"300 200\\r\\n\", \"output\": [\"750\"]}, {\"input\": \"9 4\\r\\n\", \"output\": [\"20\"]}, {\"input\": \"4 3\\r\\n\", \"output\": [\"10\"]}, {\"input\": \"1 1\\r\\n\", \"output\": [\"3\"]}, {\"input\": \"8 6\\r\\n\", \"output\": [\"21\"]}, {\"input\": \"10 6\\r\\n\", \"output\": [\"24\"]}, {\"input\": \"65 56\\r\\n\", \"output\": [\"182\"]}, {\"input\": \"13 10\\r\\n\", \"output\": [\"34\"]}, {\"input\": \"14 42\\r\\n\", \"output\": [\"126\"]}, {\"input\": \"651 420\\r\\n\", \"output\": [\"1606\"]}, {\"input\": \"8 9\\r\\n\", \"output\": [\"27\"]}, {\"input\": \"15 10\\r\\n\", \"output\": [\"38\"]}, {\"input\": \"999999 888888\\r\\n\", \"output\": [\"2833330\"]}, {\"input\": \"192056 131545\\r\\n\", \"output\": [\"485402\"]}, {\"input\": \"32 16\\r\\n\", \"output\": [\"72\"]}, {\"input\": \"18 12\\r\\n\", \"output\": [\"45\"]}, {\"input\": \"1000000 666667\\r\\n\", \"output\": [\"2500000\"]}, {\"input\": \"0 1\\r\\n\", \"output\": [\"3\"]}, {\"input\": \"9 5\\r\\n\", \"output\": [\"21\"]}, {\"input\": \"1515 1415\\r\\n\", \"output\": [\"4395\"]}, {\"input\": \"300000 200000\\r\\n\", \"output\": [\"750000\"]}]",
+        "source_lang": "Python 3",
+        "target_lang": "C"
+    }
+}

@@ -1,0 +1,89 @@
+{
+    "oai_response": {
+        "prompt": "Here is code in Python 3 programming lanaguge. Translate the following code from Python 3 to C programming lanaguge. Do not output any extra description or tokens other than the translated code. \n\ndef dis(x,y,d):\n    if y==0 or x==d:\n        return x+y\n    else:\n        return 4*d - x - y\nd,x1,y1,x2,y2 = map(int, input().split())\na = abs(dis(x1,y1,d) - dis(x2,y2,d))\nprint(min(a, 4*d-a))||END-of-SRC||",
+        "response": {
+            "id": "multi-call-as-cb9subswkr",
+            "model": "deepseek-v3",
+            "created": 1767069422,
+            "choices": [
+                {
+                    "index": 0,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <stdlib.h>\n\nint dis(int x, int y, int d) {\n    if (y == 0 || x == d) {\n        return x + y;\n    } else {\n        return 4 * d - x - y;\n    }\n}\n\nint main() {\n    int d, x1, y1, x2, y2;\n    scanf(\"%d %d %d %d %d\", &d, &x1, &y1, &x2, &y2);\n    int a = abs(dis(x1, y1, d) - dis(x2, y2, d));\n    printf(\"%d\\n\", (a < 4 * d - a) ? a : 4 * d - a);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 1,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <stdlib.h>\n\nint dis(int x, int y, int d) {\n    if (y == 0 || x == d) {\n        return x + y;\n    } else {\n        return 4 * d - x - y;\n    }\n}\n\nint main() {\n    int d, x1, y1, x2, y2;\n    scanf(\"%d %d %d %d %d\", &d, &x1, &y1, &x2, &y2);\n    int a = abs(dis(x1, y1, d) - dis(x2, y2, d));\n    int min = a < (4 * d - a) ? a : (4 * d - a);\n    printf(\"%d\\n\", min);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 2,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <stdlib.h>\n\nint dis(int x, int y, int d) {\n    if (y == 0 || x == d) {\n        return x + y;\n    } else {\n        return 4 * d - x - y;\n    }\n}\n\nint main() {\n    int d, x1, y1, x2, y2;\n    scanf(\"%d %d %d %d %d\", &d, &x1, &y1, &x2, &y2);\n    int a = abs(dis(x1, y1, d) - dis(x2, y2, d));\n    int min = a < (4 * d - a) ? a : (4 * d - a);\n    printf(\"%d\\n\", min);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 3,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <stdlib.h>\n\nint dis(int x, int y, int d) {\n    if (y == 0 || x == d) {\n        return x + y;\n    } else {\n        return 4 * d - x - y;\n    }\n}\n\nint main() {\n    int d, x1, y1, x2, y2;\n    scanf(\"%d %d %d %d %d\", &d, &x1, &y1, &x2, &y2);\n    int a = abs(dis(x1, y1, d) - dis(x2, y2, d));\n    int min = a < (4 * d - a) ? a : (4 * d - a);\n    printf(\"%d\\n\", min);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 4,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <stdlib.h>\n\nint dis(int x, int y, int d) {\n    if (y == 0 || x == d) {\n        return x + y;\n    } else {\n        return 4 * d - x - y;\n    }\n}\n\nint main() {\n    int d, x1, y1, x2, y2;\n    scanf(\"%d %d %d %d %d\", &d, &x1, &y1, &x2, &y2);\n    int a = abs(dis(x1, y1, d) - dis(x2, y2, d));\n    printf(\"%d\\n\", (a < 4 * d - a) ? a : 4 * d - a);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                }
+            ],
+            "usage": {
+                "prompt_tokens": 650,
+                "completion_tokens": 883,
+                "total_tokens": 1533
+            }
+        }
+    },
+    "source_data": {
+        "code_uid": "6b91f627402983ecbff1a2120d0c367a",
+        "prob_desc_output_to": "standard output",
+        "prob_desc_notes": null,
+        "lang_cluster": "Python",
+        "prob_desc_time_limit": "2 seconds",
+        "prob_desc_input_spec": "The single line contains 5 space-separated integers: n,\u2009x1,\u2009y1,\u2009x2,\u2009y2 (1\u2009\u2264\u2009n\u2009\u2264\u20091000,\u20090\u2009\u2264\u2009x1,\u2009y1,\u2009x2,\u2009y2\u2009\u2264\u2009n) which correspondingly represent a side of the square, the coordinates of the first point and the coordinates of the second point. It is guaranteed that the points lie on the sides of the square.",
+        "source_code": "def dis(x,y,d):\n    if y==0 or x==d:\n        return x+y\n    else:\n        return 4*d - x - y\nd,x1,y1,x2,y2 = map(int, input().split())\na = abs(dis(x1,y1,d) - dis(x2,y2,d))\nprint(min(a, 4*d-a))",
+        "prob_desc_sample_inputs": [
+            "2 0 0 1 0",
+            "2 0 1 2 1",
+            "100 0 0 100 100"
+        ],
+        "prob_desc_memory_limit": "256 megabytes",
+        "exec_outcome": "PASSED",
+        "prob_desc_output_spec": "You must print on a single line the shortest distance between the points.",
+        "src_uid": "685fe16c217b5b71eafdb4198822250e",
+        "prob_desc_input_from": "standard input",
+        "lang": "Python 3",
+        "prob_desc_sample_outputs": [
+            "1",
+            "4",
+            "200"
+        ],
+        "file_name": "d7021504500d5ca7c2b02df8100a574d159e6e67e20ec8071b75800b1267370a",
+        "prob_desc_description": "Meg the Rabbit decided to do something nice, specifically \u2014 to determine the shortest distance between two points on the surface of our planet. But Meg... what can you say, she wants everything simple. So, she already regards our planet as a two-dimensional circle. No, wait, it's even worse \u2014 as a square of side n. Thus, the task has been reduced to finding the shortest path between two dots on a square (the path should go through the square sides). To simplify the task let us consider the vertices of the square to lie at points whose coordinates are: (0,\u20090), (n,\u20090), (0,\u2009n) and (n,\u2009n).",
+        "prob_desc_created_at": "1295971200",
+        "difficulty": 1300.0,
+        "hidden_unit_tests": "[{\"input\": \"2 0 0 1 0\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"2 0 1 2 1\\r\\n\", \"output\": [\"4\"]}, {\"input\": \"100 0 0 100 100\\r\\n\", \"output\": [\"200\"]}, {\"input\": \"4 0 3 1 4\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"10 8 10 10 0\\r\\n\", \"output\": [\"12\"]}, {\"input\": \"26 21 0 26 14\\r\\n\", \"output\": [\"19\"]}, {\"input\": \"15 0 1 11 0\\r\\n\", \"output\": [\"12\"]}, {\"input\": \"26 26 7 26 12\\r\\n\", \"output\": [\"5\"]}, {\"input\": \"6 6 0 2 6\\r\\n\", \"output\": [\"10\"]}, {\"input\": \"5 1 5 2 5\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"99 12 0 35 99\\r\\n\", \"output\": [\"146\"]}, {\"input\": \"44 44 31 28 0\\r\\n\", \"output\": [\"47\"]}, {\"input\": \"42 42 36 5 0\\r\\n\", \"output\": [\"73\"]}, {\"input\": \"87 87 66 0 5\\r\\n\", \"output\": [\"158\"]}, {\"input\": \"85 0 32 0 31\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"30 20 30 3 0\\r\\n\", \"output\": [\"53\"]}, {\"input\": \"5 4 0 5 1\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"40 24 40 4 0\\r\\n\", \"output\": [\"68\"]}, {\"input\": \"11 0 2 11 4\\r\\n\", \"output\": [\"17\"]}, {\"input\": \"82 0 11 35 0\\r\\n\", \"output\": [\"46\"]}, {\"input\": \"32 19 32 0 1\\r\\n\", \"output\": [\"50\"]}, {\"input\": \"54 12 0 0 44\\r\\n\", \"output\": [\"56\"]}, {\"input\": \"75 42 75 28 0\\r\\n\", \"output\": [\"145\"]}, {\"input\": \"48 31 48 0 4\\r\\n\", \"output\": [\"75\"]}, {\"input\": \"69 4 69 69 59\\r\\n\", \"output\": [\"75\"]}, {\"input\": \"561 0 295 233 0\\r\\n\", \"output\": [\"528\"]}, {\"input\": \"341 158 0 0 190\\r\\n\", \"output\": [\"348\"]}, {\"input\": \"887 887 461 39 887\\r\\n\", \"output\": [\"1274\"]}, {\"input\": \"700 0 288 700 368\\r\\n\", \"output\": [\"1356\"]}, {\"input\": \"512 70 512 512 99\\r\\n\", \"output\": [\"855\"]}, {\"input\": \"826 188 826 592 0\\r\\n\", \"output\": [\"1606\"]}, {\"input\": \"953 0 773 0 903\\r\\n\", \"output\": [\"130\"]}, {\"input\": \"80 80 4 0 54\\r\\n\", \"output\": [\"138\"]}, {\"input\": \"208 73 0 208 123\\r\\n\", \"output\": [\"258\"]}, {\"input\": \"983 0 894 199 0\\r\\n\", \"output\": [\"1093\"]}, {\"input\": \"686 615 686 470 686\\r\\n\", \"output\": [\"145\"]}, {\"input\": \"869 869 833 0 578\\r\\n\", \"output\": [\"1196\"]}, {\"input\": \"169 0 94 0 132\\r\\n\", \"output\": [\"38\"]}, {\"input\": \"68 42 68 68 28\\r\\n\", \"output\": [\"66\"]}, {\"input\": \"967 967 607 279 0\\r\\n\", \"output\": [\"1295\"]}, {\"input\": \"489 489 139 455 489\\r\\n\", \"output\": [\"384\"]}, {\"input\": \"964 205 964 604 964\\r\\n\", \"output\": [\"399\"]}, {\"input\": \"86 0 34 86 21\\r\\n\", \"output\": [\"141\"]}, {\"input\": \"209 166 209 131 0\\r\\n\", \"output\": [\"330\"]}, {\"input\": \"684 684 113 314 684\\r\\n\", \"output\": [\"941\"]}, {\"input\": \"16 0 6 0 8\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"862 154 862 297 862\\r\\n\", \"output\": [\"143\"]}, {\"input\": \"418 222 0 254 418\\r\\n\", \"output\": [\"778\"]}, {\"input\": \"571 504 571 143 571\\r\\n\", \"output\": [\"361\"]}, {\"input\": \"371 371 210 81 371\\r\\n\", \"output\": [\"451\"]}, {\"input\": \"1000 0 0 1000 1000\\r\\n\", \"output\": [\"2000\"]}, {\"input\": \"1000 564 0 436 1000\\r\\n\", \"output\": [\"2000\"]}, {\"input\": \"1000 0 573 12 1000\\r\\n\", \"output\": [\"439\"]}, {\"input\": \"1000 984 0 1000 999\\r\\n\", \"output\": [\"1015\"]}, {\"input\": \"100 10 0 10 0\\r\\n\", \"output\": [\"0\"]}]",
+        "source_lang": "Python 3",
+        "target_lang": "C"
+    }
+}

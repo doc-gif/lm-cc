@@ -1,0 +1,91 @@
+{
+    "oai_response": {
+        "prompt": "Here is code in Python 3 programming lanaguge. Translate the following code from Python 3 to C programming lanaguge. Do not output any extra description or tokens other than the translated code. \n\n# your code goes here\nn, m = map(int, input().split())\ns = input()\nl = []\nfor e in s:\n\tl.append(e)\n\t\nl.sort()\na = []\na.append(l[0])\ndel l[0]\nsu = ord(a[0])-ord('a')+1\nflag = 0\nwhile len(a) < m:\n\ti = 0\n\twhile ord(l[i])-ord('a')+1 < ord(a[-1])-ord('a')+3:\n\t\tif i == len(l)-1:\n\t\t\tprint(-1)\n\t\t\tflag = 1\n\t\t\tbreak\n\t\ti+=1\n\tif flag == 1:\n\t\tbreak\n\ta.append(l[i])\n\tdel l[i]\n\tsu += ord(a[-1])-ord('a')+1\nif not flag:\n\tprint(su)\n\n\t\n\t\t\n\n||END-of-SRC||",
+        "response": {
+            "id": "multi-call-as-sxdd85i53i",
+            "model": "deepseek-v3",
+            "created": 1767068148,
+            "choices": [
+                {
+                    "index": 0,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\nint compare(const void *a, const void *b) {\n    return (*(char*)a - *(char*)b);\n}\n\nint main() {\n    int n, m;\n    scanf(\"%d %d\", &n, &m);\n    char s[n+1];\n    scanf(\"%s\", s);\n    qsort(s, n, sizeof(char), compare);\n    \n    char a[m];\n    int a_size = 0;\n    a[a_size++] = s[0];\n    int su = s[0] - 'a' + 1;\n    int flag = 0;\n    \n    for (int i = 1; i < n && a_size < m; i++) {\n        if (s[i] - 'a' + 1 >= a[a_size-1] - 'a' + 3) {\n            a[a_size++] = s[i];\n            su += s[i] - 'a' + 1;\n        }\n    }\n    \n    if (a_size < m) {\n        printf(\"-1\\n\");\n    } else {\n        printf(\"%d\\n\", su);\n    }\n    \n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 1,
+                    "message": {
+                        "role": "assistant",
+                        "content": "Here's the translated code in C:\n\n```c\n#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\nint compare(const void *a, const void *b) {\n    return (*(char*)a - *(char*)b);\n}\n\nint main() {\n    int n, m;\n    scanf(\"%d %d\", &n, &m);\n    char s[100];\n    scanf(\"%s\", s);\n    \n    char l[100];\n    strcpy(l, s);\n    qsort(l, strlen(l), sizeof(char), compare);\n    \n    char a[100] = {0};\n    a[0] = l[0];\n    memmove(l, l+1, strlen(l));\n    \n    int su = a[0] - 'a' + 1;\n    int flag = 0;\n    \n    while (strlen(a) < m) {\n        int i = 0;\n        while (l[i] - 'a' + 1 < a[strlen(a)-1] - 'a' + 3) {\n            if (i == strlen(l)-1) {\n                printf(\"-1\\n\");\n                flag = 1;\n                break;\n            }\n            i++;\n        }\n        if (flag == 1) {\n            break;\n        }\n        a[strlen(a)] = l[i];\n        memmove(l+i, l+i+1, strlen(l)-i);\n        su += a[strlen(a)-1] - 'a' + 1;\n    }\n    \n    if (!flag) {\n        printf(\"%d\\n\", su);\n    }\n    \n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 2,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\nint compare(const void *a, const void *b) {\n    return (*(char*)a - *(char*)b);\n}\n\nint main() {\n    int n, m;\n    scanf(\"%d %d\", &n, &m);\n    char s[n+1];\n    scanf(\"%s\", s);\n    \n    char l[n];\n    for (int i = 0; i < n; i++) {\n        l[i] = s[i];\n    }\n    \n    qsort(l, n, sizeof(char), compare);\n    \n    char a[m];\n    int a_size = 0;\n    a[a_size++] = l[0];\n    for (int i = 0; i < n - 1; i++) {\n        l[i] = l[i+1];\n    }\n    n--;\n    int su = a[0] - 'a' + 1;\n    int flag = 0;\n    \n    while (a_size < m) {\n        int i = 0;\n        while (l[i] - 'a' + 1 < a[a_size-1] - 'a' + 3) {\n            if (i == n - 1) {\n                printf(\"-1\\n\");\n                flag = 1;\n                break;\n            }\n            i++;\n        }\n        if (flag == 1) {\n            break;\n        }\n        a[a_size++] = l[i];\n        for (int j = i; j < n - 1; j++) {\n            l[j] = l[j+1];\n        }\n        n--;\n        su += a[a_size-1] - 'a' + 1;\n    }\n    if (!flag) {\n        printf(\"%d\\n\", su);\n    }\n    \n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 3,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\nint compare(const void *a, const void *b) {\n    return (*(char*)a - *(char*)b);\n}\n\nint main() {\n    int n, m;\n    scanf(\"%d %d\", &n, &m);\n    char s[n+1];\n    scanf(\"%s\", s);\n    \n    qsort(s, n, sizeof(char), compare);\n    \n    char a[m];\n    a[0] = s[0];\n    int su = a[0] - 'a' + 1;\n    int flag = 0;\n    int l_index = 1;\n    \n    for (int a_index = 1; a_index < m; a_index++) {\n        int found = 0;\n        for (int i = l_index; i < n; i++) {\n            if (s[i] - 'a' + 1 >= a[a_index-1] - 'a' + 3) {\n                a[a_index] = s[i];\n                su += a[a_index] - 'a' + 1;\n                l_index = i + 1;\n                found = 1;\n                break;\n            }\n        }\n        if (!found) {\n            printf(\"-1\\n\");\n            flag = 1;\n            break;\n        }\n    }\n    \n    if (!flag) {\n        printf(\"%d\\n\", su);\n    }\n    \n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 4,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\nint compare(const void *a, const void *b) {\n    return (*(char*)a - *(char*)b);\n}\n\nint main() {\n    int n, m;\n    scanf(\"%d %d\", &n, &m);\n    char s[n+1];\n    scanf(\"%s\", s);\n    \n    qsort(s, n, sizeof(char), compare);\n    \n    char a[m];\n    int a_size = 0;\n    a[a_size++] = s[0];\n    int su = s[0] - 'a' + 1;\n    int flag = 0;\n    \n    for (int i = 1; i < n && a_size < m; i++) {\n        if (s[i] - 'a' + 1 >= a[a_size-1] - 'a' + 3) {\n            a[a_size++] = s[i];\n            su += s[i] - 'a' + 1;\n        }\n    }\n    \n    if (a_size < m) {\n        printf(\"-1\\n\");\n    } else {\n        printf(\"%d\\n\", su);\n    }\n    \n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                }
+            ],
+            "usage": {
+                "prompt_tokens": 1175,
+                "completion_tokens": 1558,
+                "total_tokens": 2733
+            }
+        }
+    },
+    "source_data": {
+        "code_uid": "df9ed0d7f375e023859aca287e9f6fd8",
+        "prob_desc_output_to": "standard output",
+        "prob_desc_notes": "NoteIn the first example, the following rockets satisfy the condition: \"adx\" (weight is $$$1+4+24=29$$$); \"ady\" (weight is $$$1+4+25=30$$$); \"bdx\" (weight is $$$2+4+24=30$$$); \"bdy\" (weight is $$$2+4+25=31$$$).Rocket \"adx\" has the minimal weight, so the answer is $$$29$$$.In the second example, target rocket is \"belo\". Its weight is $$$2+5+12+15=34$$$.In the third example, $$$n=k=2$$$, so the rocket must have both stages: 'a' and 'b'. This rocket doesn't satisfy the condition, because these letters are adjacent in the alphabet. Answer is -1.",
+        "lang_cluster": "Python",
+        "prob_desc_time_limit": "1 second",
+        "prob_desc_input_spec": "The first line of input contains two integers\u00a0\u2014 $$$n$$$ and $$$k$$$ ($$$1 \\le k \\le n \\le 50$$$)\u00a0\u2013 the number of available stages and the number of stages to use in the rocket. The second line contains string $$$s$$$, which consists of exactly $$$n$$$ lowercase Latin letters. Each letter defines a new stage, which can be used to build the rocket. Each stage can be used at most once.",
+        "source_code": "# your code goes here\nn, m = map(int, input().split())\ns = input()\nl = []\nfor e in s:\n\tl.append(e)\n\t\nl.sort()\na = []\na.append(l[0])\ndel l[0]\nsu = ord(a[0])-ord('a')+1\nflag = 0\nwhile len(a) < m:\n\ti = 0\n\twhile ord(l[i])-ord('a')+1 < ord(a[-1])-ord('a')+3:\n\t\tif i == len(l)-1:\n\t\t\tprint(-1)\n\t\t\tflag = 1\n\t\t\tbreak\n\t\ti+=1\n\tif flag == 1:\n\t\tbreak\n\ta.append(l[i])\n\tdel l[i]\n\tsu += ord(a[-1])-ord('a')+1\nif not flag:\n\tprint(su)\n\n\t\n\t\t\n\n",
+        "prob_desc_sample_inputs": [
+            "5 3\nxyabd",
+            "7 4\nproblem",
+            "2 2\nab",
+            "12 1\nabaabbaaabbb"
+        ],
+        "prob_desc_memory_limit": "256 megabytes",
+        "exec_outcome": "PASSED",
+        "prob_desc_output_spec": "Print a single integer\u00a0\u2014 the minimal total weight of the rocket or -1, if it is impossible to build the rocket at all.",
+        "src_uid": "56b13d313afef9dc6c6ba2758b5ea313",
+        "prob_desc_input_from": "standard input",
+        "lang": "Python 3",
+        "prob_desc_sample_outputs": [
+            "29",
+            "34",
+            "-1",
+            "1"
+        ],
+        "file_name": "d7021504500d5ca7c2b02df8100a574d159e6e67e20ec8071b75800b1267370a",
+        "prob_desc_description": "Natasha is going to fly to Mars. She needs to build a rocket, which consists of several stages in some order. Each of the stages is defined by a lowercase Latin letter. This way, the rocket can be described by the string\u00a0\u2014 concatenation of letters, which correspond to the stages.There are $$$n$$$ stages available. The rocket must contain exactly $$$k$$$ of them. Stages in the rocket should be ordered by their weight. So, after the stage with some letter can go only stage with a letter, which is at least two positions after in the alphabet (skipping one letter in between, or even more). For example, after letter 'c' can't go letters 'a', 'b', 'c' and 'd', but can go letters 'e', 'f', ..., 'z'.For the rocket to fly as far as possible, its weight should be minimal. The weight of the rocket is equal to the sum of the weights of its stages. The weight of the stage is the number of its letter in the alphabet. For example, the stage 'a 'weighs one ton,' b 'weighs two tons, and' z'\u00a0\u2014 $$$26$$$ tons.Build the rocket with the minimal weight or determine, that it is impossible to build a rocket at all. Each stage can be used at most once.",
+        "prob_desc_created_at": "1532617500",
+        "difficulty": 900.0,
+        "hidden_unit_tests": "[{\"input\": \"5 3\\r\\nxyabd\\r\\n\", \"output\": [\"29\"]}, {\"input\": \"7 4\\r\\nproblem\\r\\n\", \"output\": [\"34\"]}, {\"input\": \"2 2\\r\\nab\\r\\n\", \"output\": [\"-1\"]}, {\"input\": \"12 1\\r\\nabaabbaaabbb\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"50 13\\r\\nqwertyuiopasdfghjklzxcvbnmaaaaaaaaaaaaaaaaaaaaaaaa\\r\\n\", \"output\": [\"169\"]}, {\"input\": \"50 14\\r\\nqwertyuiopasdfghjklzxcvbnmaaaaaaaaaaaaaaaaaaaaaaaa\\r\\n\", \"output\": [\"-1\"]}, {\"input\": \"1 1\\r\\na\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"50 1\\r\\naaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"50 2\\r\\naaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\\r\\n\", \"output\": [\"-1\"]}, {\"input\": \"13 13\\r\\nuwgmkyqeiaocs\\r\\n\", \"output\": [\"169\"]}, {\"input\": \"13 13\\r\\nhzdxpbfvrltnj\\r\\n\", \"output\": [\"182\"]}, {\"input\": \"1 1\\r\\nn\\r\\n\", \"output\": [\"14\"]}, {\"input\": \"10 8\\r\\nsmzeblyjqw\\r\\n\", \"output\": [\"113\"]}, {\"input\": \"20 20\\r\\ntzmvhskkyugkuuxpvtbh\\r\\n\", \"output\": [\"-1\"]}, {\"input\": \"30 15\\r\\nwjzolzzkfulwgioksfxmcxmnnjtoav\\r\\n\", \"output\": [\"-1\"]}, {\"input\": \"40 30\\r\\nxumfrflllrrgswehqtsskefixhcxjrxbjmrpsshv\\r\\n\", \"output\": [\"-1\"]}, {\"input\": \"50 31\\r\\nahbyyoxltryqdmvenemaqnbakglgqolxnaifnqtoclnnqiabpz\\r\\n\", \"output\": [\"-1\"]}, {\"input\": \"10 7\\r\\niuiukrxcml\\r\\n\", \"output\": [\"99\"]}, {\"input\": \"38 2\\r\\nvjzarfykmrsrvwbwfwldsulhxtykmjbnwmdufa\\r\\n\", \"output\": [\"5\"]}, {\"input\": \"12 6\\r\\nfwseyrarkwcd\\r\\n\", \"output\": [\"61\"]}, {\"input\": \"2 2\\r\\nac\\r\\n\", \"output\": [\"4\"]}, {\"input\": \"1 1\\r\\nc\\r\\n\", \"output\": [\"3\"]}, {\"input\": \"2 2\\r\\nad\\r\\n\", \"output\": [\"5\"]}, {\"input\": \"2 1\\r\\nac\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"4 3\\r\\nadjz\\r\\n\", \"output\": [\"15\"]}, {\"input\": \"3 3\\r\\naoz\\r\\n\", \"output\": [\"42\"]}, {\"input\": \"3 1\\r\\nzzz\\r\\n\", \"output\": [\"26\"]}, {\"input\": \"2 1\\r\\nxz\\r\\n\", \"output\": [\"24\"]}, {\"input\": \"5 1\\r\\naaddd\\r\\n\", \"output\": [\"1\"]}]",
+        "source_lang": "Python 3",
+        "target_lang": "C"
+    }
+}

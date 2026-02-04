@@ -1,0 +1,89 @@
+{
+    "oai_response": {
+        "prompt": "Here is code in Python 3 programming lanaguge. Translate the following code from Python 3 to C programming lanaguge. Do not output any extra description or tokens other than the translated code. \n\nstrno=input()\nn=len(strno)\nsum1=0\nfor i in range(1,n):\n    sum1 += 1<<i\nfor i in range(n):\n    if strno[i]=='7':\n        sum1 += 1<<(n-i-1)\nprint(sum1+1)\n||END-of-SRC||",
+        "response": {
+            "id": "multi-call-as-zaiierwum7",
+            "model": "deepseek-v3",
+            "created": 1767066544,
+            "choices": [
+                {
+                    "index": 0,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <string.h>\n\nint main() {\n    char strno[100];\n    scanf(\"%s\", strno);\n    int n = strlen(strno);\n    int sum1 = 0;\n    for (int i = 1; i < n; i++) {\n        sum1 += 1 << i;\n    }\n    for (int i = 0; i < n; i++) {\n        if (strno[i] == '7') {\n            sum1 += 1 << (n - i - 1);\n        }\n    }\n    printf(\"%d\\n\", sum1 + 1);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 1,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <string.h>\n\nint main() {\n    char strno[100];\n    scanf(\"%s\", strno);\n    int n = strlen(strno);\n    int sum1 = 0;\n    for (int i = 1; i < n; i++) {\n        sum1 += 1 << i;\n    }\n    for (int i = 0; i < n; i++) {\n        if (strno[i] == '7') {\n            sum1 += 1 << (n - i - 1);\n        }\n    }\n    printf(\"%d\\n\", sum1 + 1);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 2,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <string.h>\n#include <math.h>\n\nint main() {\n    char strno[100];\n    scanf(\"%s\", strno);\n    int n = strlen(strno);\n    int sum1 = 0;\n    for (int i = 1; i < n; i++) {\n        sum1 += 1 << i;\n    }\n    for (int i = 0; i < n; i++) {\n        if (strno[i] == '7') {\n            sum1 += 1 << (n - i - 1);\n        }\n    }\n    printf(\"%d\\n\", sum1 + 1);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 3,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <string.h>\n#include <math.h>\n\nint main() {\n    char strno[100];\n    scanf(\"%s\", strno);\n    int n = strlen(strno);\n    int sum1 = 0;\n    for (int i = 1; i < n; i++) {\n        sum1 += 1 << i;\n    }\n    for (int i = 0; i < n; i++) {\n        if (strno[i] == '7') {\n            sum1 += 1 << (n - i - 1);\n        }\n    }\n    printf(\"%d\\n\", sum1 + 1);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 4,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <string.h>\n\nint main() {\n    char strno[100];\n    scanf(\"%s\", strno);\n    int n = strlen(strno);\n    int sum1 = 0;\n    for (int i = 1; i < n; i++) {\n        sum1 += 1 << i;\n    }\n    for (int i = 0; i < n; i++) {\n        if (strno[i] == '7') {\n            sum1 += 1 << (n - i - 1);\n        }\n    }\n    printf(\"%d\\n\", sum1 + 1);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                }
+            ],
+            "usage": {
+                "prompt_tokens": 580,
+                "completion_tokens": 718,
+                "total_tokens": 1298
+            }
+        }
+    },
+    "source_data": {
+        "code_uid": "fb6cfef97fd4db13d14f8e18137490ac",
+        "prob_desc_output_to": "standard output",
+        "prob_desc_notes": null,
+        "lang_cluster": "Python",
+        "prob_desc_time_limit": "1 second",
+        "prob_desc_input_spec": "The first and only line of input contains a lucky number n (1\u2009\u2264\u2009n\u2009\u2264\u2009109).",
+        "source_code": "strno=input()\nn=len(strno)\nsum1=0\nfor i in range(1,n):\n    sum1 += 1<<i\nfor i in range(n):\n    if strno[i]=='7':\n        sum1 += 1<<(n-i-1)\nprint(sum1+1)\n",
+        "prob_desc_sample_inputs": [
+            "4",
+            "7",
+            "77"
+        ],
+        "prob_desc_memory_limit": "256 megabytes",
+        "exec_outcome": "PASSED",
+        "prob_desc_output_spec": "Print the index of n among all lucky numbers.",
+        "src_uid": "6a10bfe8b3da9c11167e136b3c6fb2a3",
+        "prob_desc_input_from": "standard input",
+        "lang": "Python 3",
+        "prob_desc_sample_outputs": [
+            "1",
+            "2",
+            "6"
+        ],
+        "file_name": "d7021504500d5ca7c2b02df8100a574d159e6e67e20ec8071b75800b1267370a",
+        "prob_desc_description": "Once again Tavas started eating coffee mix without water! Keione told him that it smells awful, but he didn't stop doing that. That's why Keione told his smart friend, SaDDas to punish him! SaDDas took Tavas' headphones and told him: \"If you solve the following problem, I'll return it to you.\"  The problem is: You are given a lucky number n. Lucky numbers are the positive integers whose decimal representations contain only the lucky digits 4 and 7. For example, numbers 47, 744, 4 are lucky and 5, 17, 467 are not.If we sort all lucky numbers in increasing order, what's the 1-based index of n? Tavas is not as smart as SaDDas, so he asked you to do him a favor and solve this problem so he can have his headphones back.",
+        "prob_desc_created_at": "1429029300",
+        "difficulty": 1100.0,
+        "hidden_unit_tests": "[{\"input\": \"4\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"7\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"77\\r\\n\", \"output\": [\"6\"]}, {\"input\": \"474744\\r\\n\", \"output\": [\"83\"]}, {\"input\": \"777774\\r\\n\", \"output\": [\"125\"]}, {\"input\": \"447\\r\\n\", \"output\": [\"8\"]}, {\"input\": \"774\\r\\n\", \"output\": [\"13\"]}, {\"input\": \"4447747\\r\\n\", \"output\": [\"140\"]}, {\"input\": \"7747474\\r\\n\", \"output\": [\"233\"]}, {\"input\": \"4444\\r\\n\", \"output\": [\"15\"]}, {\"input\": \"4447\\r\\n\", \"output\": [\"16\"]}, {\"input\": \"4447744\\r\\n\", \"output\": [\"139\"]}, {\"input\": \"77474\\r\\n\", \"output\": [\"57\"]}, {\"input\": \"7747\\r\\n\", \"output\": [\"28\"]}, {\"input\": \"444\\r\\n\", \"output\": [\"7\"]}, {\"input\": \"7774477\\r\\n\", \"output\": [\"242\"]}, {\"input\": \"4477774\\r\\n\", \"output\": [\"157\"]}, {\"input\": \"7444\\r\\n\", \"output\": [\"23\"]}, {\"input\": \"7474747\\r\\n\", \"output\": [\"212\"]}, {\"input\": \"774477\\r\\n\", \"output\": [\"114\"]}, {\"input\": \"47\\r\\n\", \"output\": [\"4\"]}, {\"input\": \"747777\\r\\n\", \"output\": [\"110\"]}, {\"input\": \"444444444\\r\\n\", \"output\": [\"511\"]}, {\"input\": \"777777777\\r\\n\", \"output\": [\"1022\"]}, {\"input\": \"477477447\\r\\n\", \"output\": [\"728\"]}, {\"input\": \"777744747\\r\\n\", \"output\": [\"996\"]}]",
+        "source_lang": "Python 3",
+        "target_lang": "C"
+    }
+}

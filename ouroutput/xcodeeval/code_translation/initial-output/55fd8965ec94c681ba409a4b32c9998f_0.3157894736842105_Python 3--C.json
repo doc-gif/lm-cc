@@ -1,0 +1,87 @@
+{
+    "oai_response": {
+        "prompt": "Here is code in Python 3 programming lanaguge. Translate the following code from Python 3 to C programming lanaguge. Do not output any extra description or tokens other than the translated code. \n\n\"\"\"\nOh, Grantors of Dark Disgrace, \nDo Not Wake Me Again.\n\"\"\"\n\nii = lambda: int(input())\nmi = lambda: map(int, input().split())\nli = lambda: list(mi())\nsi = lambda: input()\n\nfrom itertools import permutations\n\nl = [[]]*5\nn = [0, 1, 2, 3, 4]\n\nfor i in range(5):\n    l[i] = li()\n\nmaxi = 0\n\nfor a, b, c, d, e in permutations(n, 5):\n    s = l[a][b] + l[b][a] + l[b][c] + l[c][b] + 2*(l[c][d] + l[d][c] + l[d][e] + l[e][d])\n    maxi = max(maxi, s)\n\nprint(maxi)||END-of-SRC||",
+        "response": {
+            "id": "multi-call-as-nafae74207",
+            "model": "deepseek-v3",
+            "created": 1767068691,
+            "choices": [
+                {
+                    "index": 0,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\nvoid swap(int *a, int *b) {\n    int temp = *a;\n    *a = *b;\n    *b = temp;\n}\n\nvoid permute(int *arr, int l, int r, int l_val[5][5], int *maxi) {\n    if (l == r) {\n        int a = arr[0], b = arr[1], c = arr[2], d = arr[3], e = arr[4];\n        int s = l_val[a][b] + l_val[b][a] + l_val[b][c] + l_val[c][b] + 2 * (l_val[c][d] + l_val[d][c] + l_val[d][e] + l_val[e][d]);\n        if (s > *maxi) {\n            *maxi = s;\n        }\n    } else {\n        for (int i = l; i <= r; i++) {\n            swap(&arr[l], &arr[i]);\n            permute(arr, l + 1, r, l_val, maxi);\n            swap(&arr[l], &arr[i]);\n        }\n    }\n}\n\nint main() {\n    int l_val[5][5];\n    for (int i = 0; i < 5; i++) {\n        for (int j = 0; j < 5; j++) {\n            scanf(\"%d\", &l_val[i][j]);\n        }\n    }\n\n    int n[] = {0, 1, 2, 3, 4};\n    int maxi = 0;\n\n    permute(n, 0, 4, l_val, &maxi);\n\n    printf(\"%d\\n\", maxi);\n\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 1,
+                    "message": {
+                        "role": "assistant",
+                        "content": "Here's the translated code in C:\n\n```c\n#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\nint main() {\n    int l[5][5];\n    int n[] = {0, 1, 2, 3, 4};\n    \n    for (int i = 0; i < 5; i++) {\n        for (int j = 0; j < 5; j++) {\n            scanf(\"%d\", &l[i][j]);\n        }\n    }\n    \n    int maxi = 0;\n    \n    for (int a = 0; a < 5; a++) {\n        for (int b = 0; b < 5; b++) {\n            if (b == a) continue;\n            for (int c = 0; c < 5; c++) {\n                if (c == a || c == b) continue;\n                for (int d = 0; d < 5; d++) {\n                    if (d == a || d == b || d == c) continue;\n                    for (int e = 0; e < 5; e++) {\n                        if (e == a || e == b || e == c || e == d) continue;\n                        int s = l[a][b] + l[b][a] + l[b][c] + l[c][b] + 2 * (l[c][d] + l[d][c] + l[d][e] + l[e][d]);\n                        if (s > maxi) {\n                            maxi = s;\n                        }\n                    }\n                }\n            }\n        }\n    }\n    \n    printf(\"%d\\n\", maxi);\n    \n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 2,
+                    "message": {
+                        "role": "assistant",
+                        "content": "Here's the translated code in C:\n\n```c\n#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\nint main() {\n    int l[5][5];\n    int n[] = {0, 1, 2, 3, 4};\n    \n    for (int i = 0; i < 5; i++) {\n        for (int j = 0; j < 5; j++) {\n            scanf(\"%d\", &l[i][j]);\n        }\n    }\n    \n    int maxi = 0;\n    \n    for (int a = 0; a < 5; a++) {\n        for (int b = 0; b < 5; b++) {\n            if (b == a) continue;\n            for (int c = 0; c < 5; c++) {\n                if (c == a || c == b) continue;\n                for (int d = 0; d < 5; d++) {\n                    if (d == a || d == b || d == c) continue;\n                    for (int e = 0; e < 5; e++) {\n                        if (e == a || e == b || e == c || e == d) continue;\n                        int s = l[a][b] + l[b][a] + l[b][c] + l[c][b] + 2 * (l[c][d] + l[d][c] + l[d][e] + l[e][d]);\n                        if (s > maxi) maxi = s;\n                    }\n                }\n            }\n        }\n    }\n    \n    printf(\"%d\\n\", maxi);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 3,
+                    "message": {
+                        "role": "assistant",
+                        "content": "Here's the translated code in C:\n\n```c\n#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\nint l[5][5];\n\nvoid swap(int *a, int *b) {\n    int temp = *a;\n    *a = *b;\n    *b = temp;\n}\n\nvoid permute(int *a, int l, int r, int *maxi) {\n    if (l == r) {\n        int a_idx = a[0], b_idx = a[1], c_idx = a[2], d_idx = a[3], e_idx = a[4];\n        int s = l[a_idx][b_idx] + l[b_idx][a_idx] + l[b_idx][c_idx] + l[c_idx][b_idx] + 2*(l[c_idx][d_idx] + l[d_idx][c_idx] + l[d_idx][e_idx] + l[e_idx][d_idx]);\n        if (s > *maxi) *maxi = s;\n    } else {\n        for (int i = l; i <= r; i++) {\n            swap(&a[l], &a[i]);\n            permute(a, l+1, r, maxi);\n            swap(&a[l], &a[i]);\n        }\n    }\n}\n\nint main() {\n    for (int i = 0; i < 5; i++) {\n        for (int j = 0; j < 5; j++) {\n            scanf(\"%d\", &l[i][j]);\n        }\n    }\n\n    int n[] = {0, 1, 2, 3, 4};\n    int maxi = 0;\n    permute(n, 0, 4, &maxi);\n    printf(\"%d\\n\", maxi);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 4,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\nvoid swap(int *a, int *b) {\n    int temp = *a;\n    *a = *b;\n    *b = temp;\n}\n\nvoid permute(int *arr, int l, int r, int l_val[5][5], int *maxi) {\n    if (l == r) {\n        int a = arr[0], b = arr[1], c = arr[2], d = arr[3], e = arr[4];\n        int s = l_val[a][b] + l_val[b][a] + l_val[b][c] + l_val[c][b] + 2 * (l_val[c][d] + l_val[d][c] + l_val[d][e] + l_val[e][d]);\n        if (s > *maxi) {\n            *maxi = s;\n        }\n    } else {\n        for (int i = l; i <= r; i++) {\n            swap(&arr[l], &arr[i]);\n            permute(arr, l + 1, r, l_val, maxi);\n            swap(&arr[l], &arr[i]);\n        }\n    }\n}\n\nint main() {\n    int l[5][5];\n    for (int i = 0; i < 5; i++) {\n        for (int j = 0; j < 5; j++) {\n            scanf(\"%d\", &l[i][j]);\n        }\n    }\n\n    int n[] = {0, 1, 2, 3, 4};\n    int maxi = 0;\n\n    permute(n, 0, 4, l, &maxi);\n\n    printf(\"%d\\n\", maxi);\n\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                }
+            ],
+            "usage": {
+                "prompt_tokens": 1165,
+                "completion_tokens": 1883,
+                "total_tokens": 3048
+            }
+        }
+    },
+    "source_data": {
+        "code_uid": "55fd8965ec94c681ba409a4b32c9998f",
+        "prob_desc_output_to": "standard output",
+        "prob_desc_notes": "NoteIn the first sample, the optimal arrangement of the line is 23154. In this case, the total happiness equals:(g23\u2009+\u2009g32\u2009+\u2009g15\u2009+\u2009g51)\u2009+\u2009(g13\u2009+\u2009g31\u2009+\u2009g54\u2009+\u2009g45)\u2009+\u2009(g15\u2009+\u2009g51)\u2009+\u2009(g54\u2009+\u2009g45)\u2009=\u200932.",
+        "lang_cluster": "Python",
+        "prob_desc_time_limit": "1 second",
+        "prob_desc_input_spec": "The input consists of five lines, each line contains five space-separated integers: the j-th number in the i-th line shows gij (0\u2009\u2264\u2009gij\u2009\u2264\u2009105). It is guaranteed that gii\u2009=\u20090 for all i. Assume that the students are numbered from 1 to 5.",
+        "source_code": "\"\"\"\nOh, Grantors of Dark Disgrace, \nDo Not Wake Me Again.\n\"\"\"\n\nii = lambda: int(input())\nmi = lambda: map(int, input().split())\nli = lambda: list(mi())\nsi = lambda: input()\n\nfrom itertools import permutations\n\nl = [[]]*5\nn = [0, 1, 2, 3, 4]\n\nfor i in range(5):\n    l[i] = li()\n\nmaxi = 0\n\nfor a, b, c, d, e in permutations(n, 5):\n    s = l[a][b] + l[b][a] + l[b][c] + l[c][b] + 2*(l[c][d] + l[d][c] + l[d][e] + l[e][d])\n    maxi = max(maxi, s)\n\nprint(maxi)",
+        "prob_desc_sample_inputs": [
+            "0 0 0 0 9\n0 0 0 0 0\n0 0 0 0 0\n0 0 0 0 0\n7 0 0 0 0",
+            "0 43 21 18 2\n3 0 21 11 65\n5 2 0 1 4\n54 62 12 0 99\n87 64 81 33 0"
+        ],
+        "prob_desc_memory_limit": "256 megabytes",
+        "exec_outcome": "PASSED",
+        "prob_desc_output_spec": "Print a single integer \u2014 the maximum possible total happiness of the students.",
+        "src_uid": "be6d4df20e9a48d183dd8f34531df246",
+        "prob_desc_input_from": "standard input",
+        "lang": "Python 3",
+        "prob_desc_sample_outputs": [
+            "32",
+            "620"
+        ],
+        "file_name": "d7021504500d5ca7c2b02df8100a574d159e6e67e20ec8071b75800b1267370a",
+        "prob_desc_description": "Many students live in a dormitory. A dormitory is a whole new world of funny amusements and possibilities but it does have its drawbacks. There is only one shower and there are multiple students who wish to have a shower in the morning. That's why every morning there is a line of five people in front of the dormitory shower door. As soon as the shower opens, the first person from the line enters the shower. After a while the first person leaves the shower and the next person enters the shower. The process continues until everybody in the line has a shower.Having a shower takes some time, so the students in the line talk as they wait. At each moment of time the students talk in pairs: the (2i\u2009-\u20091)-th man in the line (for the current moment) talks with the (2i)-th one. Let's look at this process in more detail. Let's number the people from 1 to 5. Let's assume that the line initially looks as 23154 (person number 2 stands at the beginning of the line). Then, before the shower opens, 2 talks with 3, 1 talks with 5, 4 doesn't talk with anyone. Then 2 enters the shower. While 2 has a shower, 3 and 1 talk, 5 and 4 talk too. Then, 3 enters the shower. While 3 has a shower, 1 and 5 talk, 4 doesn't talk to anyone. Then 1 enters the shower and while he is there, 5 and 4 talk. Then 5 enters the shower, and then 4 enters the shower.We know that if students i and j talk, then the i-th student's happiness increases by gij and the j-th student's happiness increases by gji. Your task is to find such initial order of students in the line that the total happiness of all students will be maximum in the end. Please note that some pair of students may have a talk several times. In the example above students 1 and 5 talk while they wait for the shower to open and while 3 has a shower.",
+        "prob_desc_created_at": "1400686200",
+        "difficulty": 1200.0,
+        "hidden_unit_tests": "[{\"input\": \"0 0 0 0 9\\r\\n0 0 0 0 0\\r\\n0 0 0 0 0\\r\\n0 0 0 0 0\\r\\n7 0 0 0 0\\r\\n\", \"output\": [\"32\"]}, {\"input\": \"0 43 21 18 2\\r\\n3 0 21 11 65\\r\\n5 2 0 1 4\\r\\n54 62 12 0 99\\r\\n87 64 81 33 0\\r\\n\", \"output\": [\"620\"]}, {\"input\": \"0 4 2 4 9\\r\\n6 0 2 5 0\\r\\n2 5 0 6 3\\r\\n6 3 3 0 10\\r\\n0 3 1 3 0\\r\\n\", \"output\": [\"63\"]}, {\"input\": \"0 65 90 2 32\\r\\n69 0 9 97 67\\r\\n77 97 0 16 84\\r\\n18 50 94 0 63\\r\\n69 12 82 16 0\\r\\n\", \"output\": [\"947\"]}, {\"input\": \"0 70 10 0 0\\r\\n70 0 50 90 0\\r\\n10 50 0 80 0\\r\\n0 90 80 0 100\\r\\n0 0 0 100 0\\r\\n\", \"output\": [\"960\"]}, {\"input\": \"0 711 647 743 841\\r\\n29 0 109 38 682\\r\\n329 393 0 212 512\\r\\n108 56 133 0 579\\r\\n247 92 933 164 0\\r\\n\", \"output\": [\"6265\"]}, {\"input\": \"0 9699 6962 6645 7790\\r\\n9280 0 6215 8661 6241\\r\\n2295 7817 0 7373 9681\\r\\n693 6298 1381 0 4633\\r\\n7626 3761 694 4073 0\\r\\n\", \"output\": [\"93667\"]}, {\"input\": \"0 90479 71577 33797 88848\\r\\n45771 0 96799 78707 72708\\r\\n5660 26421 0 10991 22757\\r\\n78919 24804 90645 0 48665\\r\\n92787 43671 38727 17302 0\\r\\n\", \"output\": [\"860626\"]}, {\"input\": \"0 61256 85109 94834 32902\\r\\n55269 0 67023 1310 85444\\r\\n23497 84998 0 55618 80701\\r\\n30324 1713 62127 0 55041\\r\\n47799 52448 40072 28971 0\\r\\n\", \"output\": [\"822729\"]}, {\"input\": \"0 7686 20401 55871 74372\\r\\n29526 0 15486 2152 84700\\r\\n27854 30093 0 62418 14297\\r\\n43903 76036 36194 0 50522\\r\\n29743 9945 38831 75882 0\\r\\n\", \"output\": [\"605229\"]}, {\"input\": \"0 5271 65319 64976 13673\\r\\n80352 0 41169 66004 47397\\r\\n33603 44407 0 55079 36122\\r\\n4277 9834 92810 0 80276\\r\\n1391 1145 92132 51595 0\\r\\n\", \"output\": [\"744065\"]}, {\"input\": \"0 75763 33154 32389 12897\\r\\n5095 0 6375 61517 46063\\r\\n35354 82789 0 24814 310\\r\\n37373 45993 61355 0 76865\\r\\n24383 84258 71887 71430 0\\r\\n\", \"output\": [\"714904\"]}, {\"input\": \"0 89296 32018 98206 22395\\r\\n15733 0 69391 74253 50419\\r\\n80450 89589 0 20583 51716\\r\\n38629 93129 67730 0 69703\\r\\n44054 83018 21382 64478 0\\r\\n\", \"output\": [\"874574\"]}, {\"input\": \"0 14675 94714 27735 99544\\r\\n45584 0 43621 94734 66110\\r\\n72838 45781 0 47389 99394\\r\\n75870 95368 33311 0 63379\\r\\n21974 70489 53797 23747 0\\r\\n\", \"output\": [\"974145\"]}, {\"input\": \"0 9994 14841 63916 37926\\r\\n80090 0 90258 96988 18217\\r\\n674 69024 0 17641 54436\\r\\n35046 21380 14213 0 67188\\r\\n49360 19086 68337 70856 0\\r\\n\", \"output\": [\"801116\"]}, {\"input\": \"0 28287 52158 19163 10096\\r\\n93438 0 19260 88892 12429\\r\\n22525 60034 0 78163 18126\\r\\n11594 8506 56066 0 17732\\r\\n59561 82486 23419 57406 0\\r\\n\", \"output\": [\"654636\"]}, {\"input\": \"0 35310 30842 63415 91022\\r\\n30553 0 25001 38944 92355\\r\\n48906 33736 0 96880 80893\\r\\n80507 79652 45299 0 38212\\r\\n72488 77736 19203 56436 0\\r\\n\", \"output\": [\"953303\"]}, {\"input\": \"0 42865 18485 37168 43099\\r\\n41476 0 58754 73410 51163\\r\\n76093 44493 0 51611 93773\\r\\n87223 80979 58422 0 63327\\r\\n51215 63346 84797 52809 0\\r\\n\", \"output\": [\"864938\"]}, {\"input\": \"0 63580 51022 25392 84354\\r\\n39316 0 17516 63801 92440\\r\\n5447 2074 0 11758 4772\\r\\n26329 55642 62442 0 75330\\r\\n6164 83831 10741 15214 0\\r\\n\", \"output\": [\"738415\"]}, {\"input\": \"0 0 0 0 0\\r\\n0 0 0 0 0\\r\\n0 0 0 0 0\\r\\n0 0 0 0 0\\r\\n0 0 0 0 0\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"0 1 1 1 0\\r\\n1 0 0 1 0\\r\\n0 1 0 0 1\\r\\n1 1 0 0 0\\r\\n1 0 0 1 0\\r\\n\", \"output\": [\"10\"]}, {\"input\": \"0 3 6 9 8\\r\\n2 0 8 7 7\\r\\n4 6 0 6 1\\r\\n9 0 3 0 6\\r\\n6 5 0 2 0\\r\\n\", \"output\": [\"90\"]}, {\"input\": \"0 97 67 53 6\\r\\n96 0 100 57 17\\r\\n27 79 0 66 16\\r\\n89 46 71 0 28\\r\\n27 26 27 12 0\\r\\n\", \"output\": [\"926\"]}, {\"input\": \"0 670 904 349 56\\r\\n446 0 941 590 993\\r\\n654 888 0 423 752\\r\\n16 424 837 0 433\\r\\n418 655 459 897 0\\r\\n\", \"output\": [\"9752\"]}, {\"input\": \"0 4109 129 1340 7124\\r\\n7815 0 8991 2828 909\\r\\n5634 799 0 5691 9604\\r\\n3261 7013 8062 0 5160\\r\\n2433 4742 694 4786 0\\r\\n\", \"output\": [\"69867\"]}, {\"input\": \"0 14299 32984 96001 30445\\r\\n77723 0 75669 14101 55389\\r\\n30897 9956 0 52675 29987\\r\\n36518 90812 92955 0 64020\\r\\n91242 50085 86272 62454 0\\r\\n\", \"output\": [\"783459\"]}, {\"input\": \"0 46183 30304 63049 13191\\r\\n37244 0 23076 12594 43885\\r\\n98470 1788 0 37335 7775\\r\\n33822 50804 27921 0 56734\\r\\n38313 67579 77714 46687 0\\r\\n\", \"output\": [\"666175\"]}, {\"input\": \"0 39037 87960 13497 38526\\r\\n5528 0 44220 23338 92550\\r\\n87887 86544 0 30269 82845\\r\\n24590 60325 90979 0 20186\\r\\n64959 69875 93564 68355 0\\r\\n\", \"output\": [\"950600\"]}, {\"input\": \"0 27677 88187 87515 82582\\r\\n98177 0 22852 28214 99977\\r\\n52662 14066 0 79760 68188\\r\\n56883 30561 91843 0 79777\\r\\n12461 14821 29284 54372 0\\r\\n\", \"output\": [\"878207\"]}, {\"input\": \"0 37330 91942 67667 42061\\r\\n1978 0 84218 17 10834\\r\\n11303 6279 0 48597 26591\\r\\n82688 5437 34983 0 92556\\r\\n79574 32231 23167 16637 0\\r\\n\", \"output\": [\"718057\"]}, {\"input\": \"0 3 0 0 0\\r\\n3 0 2 0 0\\r\\n0 2 0 1 0\\r\\n0 0 1 0 1\\r\\n0 0 0 1 0\\r\\n\", \"output\": [\"24\"]}]",
+        "source_lang": "Python 3",
+        "target_lang": "C"
+    }
+}

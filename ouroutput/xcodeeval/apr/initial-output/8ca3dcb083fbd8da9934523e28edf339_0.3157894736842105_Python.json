@@ -1,0 +1,107 @@
+{
+    "oai_response": {
+        "prompt": "Fix a buggy program written in Python language to solve the following programming problem:\nDescription: Vasya will fancy any number as long as it is an integer power of two. Petya, on the other hand, is very conservative and only likes a single integer $$$p$$$ (which may be positive, negative, or zero). To combine their tastes, they invented $$$p$$$-binary numbers of the form $$$2^x + p$$$, where $$$x$$$ is a non-negative integer.For example, some $$$-9$$$-binary (\"minus nine\" binary) numbers are: $$$-8$$$ (minus eight), $$$7$$$ and $$$1015$$$ ($$$-8=2^0-9$$$, $$$7=2^4-9$$$, $$$1015=2^{10}-9$$$).The boys now use $$$p$$$-binary numbers to represent everything. They now face a problem: given a positive integer $$$n$$$, what's the smallest number of $$$p$$$-binary numbers (not necessarily distinct) they need to represent $$$n$$$ as their sum? It may be possible that representation is impossible altogether. Help them solve this problem.For example, if $$$p=0$$$ we can represent $$$7$$$ as $$$2^0 + 2^1 + 2^2$$$.And if $$$p=-9$$$ we can represent $$$7$$$ as one number $$$(2^4-9)$$$.Note that negative $$$p$$$-binary numbers are allowed to be in the sum (see the Notes section for an example).\nInput Specification: The only line contains two integers $$$n$$$ and $$$p$$$ ($$$1 \\leq n \\leq 10^9$$$, $$$-1000 \\leq p \\leq 1000$$$).\nOutput Specification: If it is impossible to represent $$$n$$$ as the sum of any number of $$$p$$$-binary numbers, print a single integer $$$-1$$$. Otherwise, print the smallest possible number of summands.\n\nSample Input:\n24 0\nSample Output:\n2\n\nSample Input:\n24 1\nSample Output:\n3\n\nSample Input:\n24 -1\nSample Output:\n4\n\nSample Input:\n4 -7\nSample Output:\n2\n\nSample Input:\n1 1\nSample Output:\n-1\n\nNotes: Note$$$0$$$-binary numbers are just regular binary powers, thus in the first sample case we can represent $$$24 = (2^4 + 0) + (2^3 + 0)$$$.In the second sample case, we can represent $$$24 = (2^4 + 1) + (2^2 + 1) + (2^0 + 1)$$$.In the third sample case, we can represent $$$24 = (2^4 - 1) + (2^2 - 1) + (2^2 - 1) + (2^2 - 1)$$$. Note that repeated summands are allowed.In the fourth sample case, we can represent $$$4 = (2^4 - 7) + (2^1 - 7)$$$. Note that the second summand is negative, which is allowed.In the fifth sample case, no representation is possible.\nTake input from standard input and output to standard output\n\nHere is the code with a bug of TIME_LIMIT_EXCEEDED:\n\ndef pro(g, v):\n\tif g == 0:\n\t\tif v == 0:\n\t\t\treturn True\n\t\telse:\n\t\t\treturn False\n\ty = 2**100\n\tans = 0\n\tx = g\n\twhile x != 0:\n\t\tif x >= y:\n\t\t\tx -= y\n\t\t\tans += 1\n\t\ty //= 2\n\tif ans <= v and v <= g:\n\t\treturn True\n\telse:\n\t\treturn False\n\nn, p = map(int, input().split())\nmini = 10000\nfor i in range(0, 1000000):\n\tif n - p * i < 0:\n\t\tbreak\n\tx = pro(n - p * i, i)\n\t#print (x, i)\n\tif (x):\n\t\t#print (\"YES\")\n\t\tmini = min(mini, i)\nif mini == 10000:\n\tprint (-1)\nelse:\n\tprint (mini)\n\n\nProvide the fixed Python code without any description or extra tokens.\n\nFixed source code:\n ||END-of-SRC||",
+        "response": {
+            "id": "multi-call-as-xwy1bnhh9g",
+            "model": "deepseek-v3",
+            "created": 1760424366,
+            "choices": [
+                {
+                    "index": 0,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```python\ndef count_set_bits(x):\n    count = 0\n    while x > 0:\n        count += x & 1\n        x >>= 1\n    return count\n\nn, p = map(int, input().split())\nresult = -1\nmax_k = 60  # Since 2^60 is way larger than 1e9\n\nfor k in range(1, max_k + 1):\n    target = n - k * p\n    if target < 0:\n        continue\n    bits = count_set_bits(target)\n    if bits <= k and target >= k:\n        result = k\n        break\n\nprint(result)\n``` ||END-of-SRC||"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 1,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```python\ndef count_set_bits(x):\n    count = 0\n    while x > 0:\n        count += x & 1\n        x >>= 1\n    return count\n\nn, p = map(int, input().split())\nresult = -1\nmax_k = 60  # Since 2^60 is way larger than 1e9\n\nfor k in range(1, max_k + 1):\n    target = n - k * p\n    if target < 0:\n        continue\n    bits = count_set_bits(target)\n    if bits <= k and k <= target:\n        result = k\n        break\n\nprint(result)\n``` ||END-of-SRC||"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 2,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```python\ndef count_set_bits(x):\n    count = 0\n    while x > 0:\n        count += x & 1\n        x >>= 1\n    return count\n\nn, p = map(int, input().split())\nresult = -1\nmax_k = 60  # Since 2^60 is way larger than 1e9\n\nfor k in range(1, max_k + 1):\n    target = n - k * p\n    if target < 0:\n        continue\n    bits = count_set_bits(target)\n    if bits <= k and k <= target:\n        result = k\n        break\n\nprint(result)\n``` ||END-of-SRC||"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 3,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```python\ndef count_set_bits(x):\n    count = 0\n    while x > 0:\n        count += x & 1\n        x >>= 1\n    return count\n\nn, p = map(int, input().split())\nresult = -1\nmax_k = 60  # Since 2^60 is way larger than 1e9\n\nfor k in range(1, max_k + 1):\n    target = n - k * p\n    if target < 0:\n        continue\n    bits = count_set_bits(target)\n    if bits <= k and k <= target:\n        result = k\n        break\n\nprint(result)\n``` ||END-of-SRC||"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 4,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```python\ndef count_set_bits(x):\n    count = 0\n    while x > 0:\n        count += x & 1\n        x >>= 1\n    return count\n\nn, p = map(int, input().split())\nresult = -1\nfor k in range(1, 60):\n    target = n - k * p\n    if target < 0:\n        continue\n    bits = count_set_bits(target)\n    if bits <= k and k <= target:\n        result = k\n        break\nprint(result)\n``` ||END-of-SRC||"
+                    },
+                    "finish_reason": "stop"
+                }
+            ],
+            "usage": {
+                "prompt_tokens": 4660,
+                "completion_tokens": 723,
+                "total_tokens": 5383
+            }
+        }
+    },
+    "source_data": {
+        "prob_desc_memory_limit": "512 megabytes",
+        "tags": [
+            "math",
+            "brute force",
+            "bitmasks"
+        ],
+        "prob_desc_created_at": "1572087900",
+        "fix_source_code": "",
+        "prob_desc_input_spec": "The only line contains two integers $$$n$$$ and $$$p$$$ ($$$1 \\leq n \\leq 10^9$$$, $$$-1000 \\leq p \\leq 1000$$$).",
+        "prob_desc_sample_outputs": [
+            "2",
+            "3",
+            "4",
+            "2",
+            "-1"
+        ],
+        "src_uid": "9e86d87ce5a75c6a982894af84eb4ba8",
+        "prob_desc_time_limit": "2 seconds",
+        "fix_exec_outcome": "",
+        "delete_cnt": 0,
+        "apr_id": "47bc5f14be549ba9b3949adf6c8271ce",
+        "fix_code_uid": "",
+        "lang_cluster": "Python",
+        "prob_desc_sample_inputs": [
+            "24 0",
+            "24 1",
+            "24 -1",
+            "4 -7",
+            "1 1"
+        ],
+        "prob_desc_output_to": "standard output",
+        "file_name": "Python.jsonl",
+        "equal_cnt": 4,
+        "lang": "PyPy 3",
+        "prob_desc_output_spec": "If it is impossible to represent $$$n$$$ as the sum of any number of $$$p$$$-binary numbers, print a single integer $$$-1$$$. Otherwise, print the smallest possible number of summands.",
+        "bug_exec_outcome": "TIME_LIMIT_EXCEEDED",
+        "prob_desc_notes": "Note$$$0$$$-binary numbers are just regular binary powers, thus in the first sample case we can represent $$$24 = (2^4 + 0) + (2^3 + 0)$$$.In the second sample case, we can represent $$$24 = (2^4 + 1) + (2^2 + 1) + (2^0 + 1)$$$.In the third sample case, we can represent $$$24 = (2^4 - 1) + (2^2 - 1) + (2^2 - 1) + (2^2 - 1)$$$. Note that repeated summands are allowed.In the fourth sample case, we can represent $$$4 = (2^4 - 7) + (2^1 - 7)$$$. Note that the second summand is negative, which is allowed.In the fifth sample case, no representation is possible.",
+        "difficulty": 1600.0,
+        "similarity_score": 0.9935622215,
+        "prob_desc_description": "Vasya will fancy any number as long as it is an integer power of two. Petya, on the other hand, is very conservative and only likes a single integer $$$p$$$ (which may be positive, negative, or zero). To combine their tastes, they invented $$$p$$$-binary numbers of the form $$$2^x + p$$$, where $$$x$$$ is a non-negative integer.For example, some $$$-9$$$-binary (\"minus nine\" binary) numbers are: $$$-8$$$ (minus eight), $$$7$$$ and $$$1015$$$ ($$$-8=2^0-9$$$, $$$7=2^4-9$$$, $$$1015=2^{10}-9$$$).The boys now use $$$p$$$-binary numbers to represent everything. They now face a problem: given a positive integer $$$n$$$, what's the smallest number of $$$p$$$-binary numbers (not necessarily distinct) they need to represent $$$n$$$ as their sum? It may be possible that representation is impossible altogether. Help them solve this problem.For example, if $$$p=0$$$ we can represent $$$7$$$ as $$$2^0 + 2^1 + 2^2$$$.And if $$$p=-9$$$ we can represent $$$7$$$ as one number $$$(2^4-9)$$$.Note that negative $$$p$$$-binary numbers are allowed to be in the sum (see the Notes section for an example).",
+        "potential_dominant_fix_op": "insert",
+        "bug_source_code": "def pro(g, v):\n\tif g == 0:\n\t\tif v == 0:\n\t\t\treturn True\n\t\telse:\n\t\t\treturn False\n\ty = 2**100\n\tans = 0\n\tx = g\n\twhile x != 0:\n\t\tif x >= y:\n\t\t\tx -= y\n\t\t\tans += 1\n\t\ty //= 2\n\tif ans <= v and v <= g:\n\t\treturn True\n\telse:\n\t\treturn False\n\nn, p = map(int, input().split())\nmini = 10000\nfor i in range(0, 1000000):\n\tif n - p * i < 0:\n\t\tbreak\n\tx = pro(n - p * i, i)\n\t#print (x, i)\n\tif (x):\n\t\t#print (\"YES\")\n\t\tmini = min(mini, i)\nif mini == 10000:\n\tprint (-1)\nelse:\n\tprint (mini)\n",
+        "replace_cnt": 1,
+        "prob_desc_input_from": "standard input",
+        "bug_code_uid": "8ca3dcb083fbd8da9934523e28edf339",
+        "insert_cnt": 2,
+        "fix_ops_cnt": 3,
+        "hidden_unit_tests": "[{\"input\": \"24 0\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"24 1\\r\\n\", \"output\": [\"3\"]}, {\"input\": \"24 -1\\r\\n\", \"output\": [\"4\"]}, {\"input\": \"4 -7\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"1 1\\r\\n\", \"output\": [\"-1\"]}, {\"input\": \"10 7\\r\\n\", \"output\": [\"-1\"]}, {\"input\": \"3 -179\\r\\n\", \"output\": [\"5\"]}, {\"input\": \"12345678 -123\\r\\n\", \"output\": [\"12\"]}, {\"input\": \"1000000000 1000\\r\\n\", \"output\": [\"16\"]}, {\"input\": \"1 0\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"1 -1\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"536870912 0\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"536870911 0\\r\\n\", \"output\": [\"29\"]}, {\"input\": \"1 -1000\\r\\n\", \"output\": [\"8\"]}, {\"input\": \"100500 -179\\r\\n\", \"output\": [\"8\"]}, {\"input\": \"1000000000 -1000\\r\\n\", \"output\": [\"14\"]}, {\"input\": \"536870812 1\\r\\n\", \"output\": [\"24\"]}, {\"input\": \"536870812 -1\\r\\n\", \"output\": [\"26\"]}, {\"input\": \"1 1000\\r\\n\", \"output\": [\"-1\"]}, {\"input\": \"1001 1000\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"13 -987\\r\\n\", \"output\": [\"7\"]}, {\"input\": \"101 50\\r\\n\", \"output\": [\"-1\"]}, {\"input\": \"1001 500\\r\\n\", \"output\": [\"-1\"]}, {\"input\": \"13 6\\r\\n\", \"output\": [\"-1\"]}, {\"input\": \"5 2\\r\\n\", \"output\": [\"-1\"]}, {\"input\": \"67108838 -1\\r\\n\", \"output\": [\"26\"]}, {\"input\": \"11 5\\r\\n\", \"output\": [\"-1\"]}, {\"input\": \"19 6\\r\\n\", \"output\": [\"-1\"]}, {\"input\": \"21 10\\r\\n\", \"output\": [\"-1\"]}, {\"input\": \"2001 1000\\r\\n\", \"output\": [\"-1\"]}, {\"input\": \"17 8\\r\\n\", \"output\": [\"-1\"]}, {\"input\": \"3002 1000\\r\\n\", \"output\": [\"-1\"]}, {\"input\": \"332639425 -399\\r\\n\", \"output\": [\"13\"]}, {\"input\": \"9 8\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"3 2\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"678 169\\r\\n\", \"output\": [\"-1\"]}, {\"input\": \"2 1\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"9 4\\r\\n\", \"output\": [\"-1\"]}, {\"input\": \"29 9\\r\\n\", \"output\": [\"-1\"]}, {\"input\": \"782 156\\r\\n\", \"output\": [\"-1\"]}, {\"input\": \"1999 999\\r\\n\", \"output\": [\"-1\"]}, {\"input\": \"47 23\\r\\n\", \"output\": [\"-1\"]}, {\"input\": \"3998 999\\r\\n\", \"output\": [\"-1\"]}, {\"input\": \"4 3\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"746 248\\r\\n\", \"output\": [\"-1\"]}, {\"input\": \"2 -1000\\r\\n\", \"output\": [\"8\"]}, {\"input\": \"35 11\\r\\n\", \"output\": [\"-1\"]}, {\"input\": \"16777215 0\\r\\n\", \"output\": [\"24\"]}]"
+    }
+}

@@ -1,0 +1,87 @@
+{
+    "oai_response": {
+        "prompt": "Here is code in Python 3 programming lanaguge. Translate the following code from Python 3 to C programming lanaguge. Do not output any extra description or tokens other than the translated code. \n\nn = int(input())\ns = list(input())\ni = 1\ntotal = 0\nif n == 1:\n    print(1)\nelse:\n    while i < n:\n        if (s[i-1] + s[i] == \"UU\") or (s[i-1] + s[i] == \"RR\"):\n            total += 1\n            i += 1\n        elif (s[i-1] + s[i] == \"UR\") or (s[i-1] + s[i] == \"RU\"):\n            total += 1\n            i += 2\n        if i == n:\n            total += 1\n    print(total)\n\n||END-of-SRC||",
+        "response": {
+            "id": "multi-call-as-d1gnb2zwg3",
+            "model": "deepseek-v3",
+            "created": 1767069010,
+            "choices": [
+                {
+                    "index": 0,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <string.h>\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    char s[n+1];\n    scanf(\"%s\", s);\n    int i = 1;\n    int total = 0;\n    if (n == 1) {\n        printf(\"1\\n\");\n    } else {\n        while (i < n) {\n            if ((s[i-1] == 'U' && s[i] == 'U') || (s[i-1] == 'R' && s[i] == 'R')) {\n                total += 1;\n                i += 1;\n            } else if ((s[i-1] == 'U' && s[i] == 'R') || (s[i-1] == 'R' && s[i] == 'U')) {\n                total += 1;\n                i += 2;\n            }\n            if (i == n) {\n                total += 1;\n            }\n        }\n        printf(\"%d\\n\", total);\n    }\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 1,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <string.h>\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    char s[n+1];\n    scanf(\"%s\", s);\n    int i = 1;\n    int total = 0;\n    if (n == 1) {\n        printf(\"1\\n\");\n    } else {\n        while (i < n) {\n            if ((s[i-1] == 'U' && s[i] == 'U') || (s[i-1] == 'R' && s[i] == 'R')) {\n                total += 1;\n                i += 1;\n            } else if ((s[i-1] == 'U' && s[i] == 'R') || (s[i-1] == 'R' && s[i] == 'U')) {\n                total += 1;\n                i += 2;\n            }\n            if (i == n) {\n                total += 1;\n            }\n        }\n        printf(\"%d\\n\", total);\n    }\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 2,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <string.h>\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    char s[n+1];\n    scanf(\"%s\", s);\n    int i = 1;\n    int total = 0;\n    if (n == 1) {\n        printf(\"1\\n\");\n    } else {\n        while (i < n) {\n            if ((s[i-1] == 'U' && s[i] == 'U') || (s[i-1] == 'R' && s[i] == 'R')) {\n                total += 1;\n                i += 1;\n            } else if ((s[i-1] == 'U' && s[i] == 'R') || (s[i-1] == 'R' && s[i] == 'U')) {\n                total += 1;\n                i += 2;\n            }\n            if (i == n) {\n                total += 1;\n            }\n        }\n        printf(\"%d\\n\", total);\n    }\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 3,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <string.h>\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    char s[n+1];\n    scanf(\"%s\", s);\n    int i = 1;\n    int total = 0;\n    if (n == 1) {\n        printf(\"1\\n\");\n    } else {\n        while (i < n) {\n            if ((s[i-1] == 'U' && s[i] == 'U') || (s[i-1] == 'R' && s[i] == 'R')) {\n                total += 1;\n                i += 1;\n            } else if ((s[i-1] == 'U' && s[i] == 'R') || (s[i-1] == 'R' && s[i] == 'U')) {\n                total += 1;\n                i += 2;\n            }\n            if (i == n) {\n                total += 1;\n            }\n        }\n        printf(\"%d\\n\", total);\n    }\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 4,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <string.h>\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    char s[n+1];\n    scanf(\"%s\", s);\n    int i = 1;\n    int total = 0;\n    if (n == 1) {\n        printf(\"1\\n\");\n    } else {\n        while (i < n) {\n            if ((s[i-1] == 'U' && s[i] == 'U') || (s[i-1] == 'R' && s[i] == 'R')) {\n                total += 1;\n                i += 1;\n            } else if ((s[i-1] == 'U' && s[i] == 'R') || (s[i-1] == 'R' && s[i] == 'U')) {\n                total += 1;\n                i += 2;\n            }\n            if (i == n) {\n                total += 1;\n            }\n        }\n        printf(\"%d\\n\", total);\n    }\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                }
+            ],
+            "usage": {
+                "prompt_tokens": 960,
+                "completion_tokens": 1140,
+                "total_tokens": 2100
+            }
+        }
+    },
+    "source_data": {
+        "code_uid": "a4665e9d10b3055eda90d4057883c127",
+        "prob_desc_output_to": "standard output",
+        "prob_desc_notes": "NoteIn the first test the shortened sequence of moves may be DUD (its length is 3).In the second test the shortened sequence of moves can be UUDRRRDUDDUUU (its length is 13).",
+        "lang_cluster": "Python",
+        "prob_desc_time_limit": "1 second",
+        "prob_desc_input_spec": "The first line of the input contains one integer n (1\u2009\u2264\u2009n\u2009\u2264\u2009100)\u00a0\u2014 the length of the sequence. The second line contains the sequence consisting of n characters U and R.",
+        "source_code": "n = int(input())\ns = list(input())\ni = 1\ntotal = 0\nif n == 1:\n    print(1)\nelse:\n    while i < n:\n        if (s[i-1] + s[i] == \"UU\") or (s[i-1] + s[i] == \"RR\"):\n            total += 1\n            i += 1\n        elif (s[i-1] + s[i] == \"UR\") or (s[i-1] + s[i] == \"RU\"):\n            total += 1\n            i += 2\n        if i == n:\n            total += 1\n    print(total)\n\n",
+        "prob_desc_sample_inputs": [
+            "5\nRUURU",
+            "17\nUUURRRRRUUURURUUU"
+        ],
+        "prob_desc_memory_limit": "256 megabytes",
+        "exec_outcome": "PASSED",
+        "prob_desc_output_spec": "Print the minimum possible length of the sequence of moves after all replacements are done.",
+        "src_uid": "986ae418ce82435badadb0bd5588f45b",
+        "prob_desc_input_from": "standard input",
+        "lang": "Python 3",
+        "prob_desc_sample_outputs": [
+            "3",
+            "13"
+        ],
+        "file_name": "d7021504500d5ca7c2b02df8100a574d159e6e67e20ec8071b75800b1267370a",
+        "prob_desc_description": "Mikhail walks on a 2D plane. He can go either up or right. You are given a sequence of Mikhail's moves. He thinks that this sequence is too long and he wants to make it as short as possible.In the given sequence moving up is described by character U and moving right is described by character R. Mikhail can replace any pair of consecutive moves RU or UR with a diagonal move (described as character D). After that, he can go on and do some other replacements, until there is no pair of consecutive moves RU or UR left.Your problem is to print the minimum possible length of the sequence of moves after the replacements.",
+        "prob_desc_created_at": "1521698700",
+        "difficulty": 800.0,
+        "hidden_unit_tests": "[{\"input\": \"5\\r\\nRUURU\\r\\n\", \"output\": [\"3\"]}, {\"input\": \"17\\r\\nUUURRRRRUUURURUUU\\r\\n\", \"output\": [\"13\"]}, {\"input\": \"100\\r\\nUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU\\r\\n\", \"output\": [\"100\"]}, {\"input\": \"100\\r\\nRRURRUUUURURRRURRRRURRRRRRURRUURRRUUURUURURRURUURUURRUURUURRURURUUUUURUUUUUURRUUURRRURRURRRUURRUUUUR\\r\\n\", \"output\": [\"67\"]}, {\"input\": \"100\\r\\nUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUURUUUUUUUUUUUUUUUUUUUUU\\r\\n\", \"output\": [\"99\"]}, {\"input\": \"3\\r\\nRUR\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"1\\r\\nR\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"5\\r\\nRURUU\\r\\n\", \"output\": [\"3\"]}, {\"input\": \"1\\r\\nU\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"2\\r\\nUR\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"23\\r\\nUUUUUUUUUUUUUUUUUUUUUUU\\r\\n\", \"output\": [\"23\"]}]",
+        "source_lang": "Python 3",
+        "target_lang": "C"
+    }
+}

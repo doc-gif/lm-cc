@@ -1,0 +1,91 @@
+{
+    "oai_response": {
+        "prompt": "Here is code in Python 3 programming lanaguge. Translate the following code from Python 3 to C programming lanaguge. Do not output any extra description or tokens other than the translated code. \n\na=input().replace(' ','')\nprint('YES' if a.strip().lower()[-2] in 'aeiouy' else \"NO\")||END-of-SRC||",
+        "response": {
+            "id": "multi-call-as-vpgbeh35re",
+            "model": "deepseek-v3",
+            "created": 1767066500,
+            "choices": [
+                {
+                    "index": 0,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <ctype.h>\n#include <string.h>\n\nint main() {\n    char a[1000];\n    int i = 0;\n    char c;\n    while ((c = getchar()) != '\\n' && c != EOF) {\n        if (c != ' ') {\n            a[i++] = tolower(c);\n        }\n    }\n    a[i] = '\\0';\n    int len = strlen(a);\n    if (len >= 2 && strchr(\"aeiouy\", a[len - 2])) {\n        printf(\"YES\\n\");\n    } else {\n        printf(\"NO\\n\");\n    }\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 1,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <ctype.h>\n#include <string.h>\n\nint main() {\n    char a[1000];\n    fgets(a, sizeof(a), stdin);\n    \n    // Remove spaces\n    int j = 0;\n    for (int i = 0; a[i]; i++) {\n        if (!isspace(a[i])) {\n            a[j++] = a[i];\n        }\n    }\n    a[j] = '\\0';\n    \n    // Convert to lowercase\n    for (int i = 0; a[i]; i++) {\n        a[i] = tolower(a[i]);\n    }\n    \n    int len = strlen(a);\n    if (len >= 2) {\n        char last_char = a[len - 2];\n        if (strchr(\"aeiouy\", last_char)) {\n            printf(\"YES\\n\");\n        } else {\n            printf(\"NO\\n\");\n        }\n    } else {\n        printf(\"NO\\n\");\n    }\n    \n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 2,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <ctype.h>\n#include <string.h>\n\nint main() {\n    char a[1000];\n    fgets(a, sizeof(a), stdin);\n    \n    // Remove spaces\n    int j = 0;\n    for (int i = 0; a[i]; i++) {\n        if (!isspace(a[i])) {\n            a[j++] = a[i];\n        }\n    }\n    a[j] = '\\0';\n    \n    // Convert to lowercase\n    for (int i = 0; a[i]; i++) {\n        a[i] = tolower(a[i]);\n    }\n    \n    int len = strlen(a);\n    if (len >= 2) {\n        char last_char = a[len - 2];\n        if (strchr(\"aeiouy\", last_char)) {\n            printf(\"YES\\n\");\n        } else {\n            printf(\"NO\\n\");\n        }\n    } else {\n        printf(\"NO\\n\");\n    }\n    \n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 3,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <ctype.h>\n#include <string.h>\n\nint main() {\n    char a[1000];\n    int i;\n    for (i = 0; (a[i] = getchar()) != '\\n' && a[i] != EOF; i++) {\n        if (a[i] == ' ') {\n            i--;\n        }\n    }\n    a[i] = '\\0';\n    \n    int len = strlen(a);\n    if (len < 2) {\n        printf(\"NO\\n\");\n        return 0;\n    }\n    \n    char last = tolower(a[len - 2]);\n    if (strchr(\"aeiouy\", last) != NULL) {\n        printf(\"YES\\n\");\n    } else {\n        printf(\"NO\\n\");\n    }\n    \n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 4,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <ctype.h>\n#include <string.h>\n\nint main() {\n    char a[1000];\n    fgets(a, sizeof(a), stdin);\n    \n    // Remove spaces\n    int j = 0;\n    for (int i = 0; a[i]; i++) {\n        if (!isspace(a[i])) {\n            a[j++] = a[i];\n        }\n    }\n    a[j] = '\\0';\n    \n    // Convert to lowercase\n    for (int i = 0; a[i]; i++) {\n        a[i] = tolower(a[i]);\n    }\n    \n    int len = strlen(a);\n    if (len >= 2) {\n        char last_char = a[len - 2];\n        if (strchr(\"aeiouy\", last_char)) {\n            printf(\"YES\\n\");\n        } else {\n            printf(\"NO\\n\");\n        }\n    } else {\n        printf(\"NO\\n\");\n    }\n    \n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                }
+            ],
+            "usage": {
+                "prompt_tokens": 405,
+                "completion_tokens": 953,
+                "total_tokens": 1358
+            }
+        }
+    },
+    "source_data": {
+        "code_uid": "0df7f7625d37884463f6ecec4d35e323",
+        "prob_desc_output_to": "standard output",
+        "prob_desc_notes": null,
+        "lang_cluster": "Python",
+        "prob_desc_time_limit": "2 seconds",
+        "prob_desc_input_spec": "The single line contains a question represented by a non-empty line consisting of large and small Latin letters, spaces and a question mark. The line length does not exceed 100. It is guaranteed that the question mark occurs exactly once in the line \u2014 as the last symbol and that the line contains at least one letter.",
+        "source_code": "a=input().replace(' ','')\nprint('YES' if a.strip().lower()[-2] in 'aeiouy' else \"NO\")",
+        "prob_desc_sample_inputs": [
+            "Is it a melon?",
+            "Is it an apple?",
+            "Is     it a banana ?",
+            "Is   it an apple  and a  banana   simultaneouSLY?"
+        ],
+        "prob_desc_memory_limit": "256 megabytes",
+        "exec_outcome": "PASSED",
+        "prob_desc_output_spec": "Print answer for the question in a single line: YES if the answer is \"Yes\", NO if the answer is \"No\". Remember that in the reply to the question the last letter, not the last character counts. I. e. the spaces and the question mark do not count as letters.",
+        "src_uid": "dea7eb04e086a4c1b3924eff255b9648",
+        "prob_desc_input_from": "standard input",
+        "lang": "Python 3",
+        "prob_desc_sample_outputs": [
+            "NO",
+            "YES",
+            "YES",
+            "YES"
+        ],
+        "file_name": "d7021504500d5ca7c2b02df8100a574d159e6e67e20ec8071b75800b1267370a",
+        "prob_desc_description": "Vasya plays the sleuth with his friends. The rules of the game are as follows: those who play for the first time, that is Vasya is the sleuth, he should investigate a \"crime\" and find out what is happening. He can ask any questions whatsoever that can be answered with \"Yes\" or \"No\". All the rest agree beforehand to answer the questions like that: if the question\u2019s last letter is a vowel, they answer \"Yes\" and if the last letter is a consonant, they answer \"No\". Of course, the sleuth knows nothing about it and his task is to understand that.Unfortunately, Vasya is not very smart. After 5 hours of endless stupid questions everybody except Vasya got bored. That\u2019s why Vasya\u2019s friends ask you to write a program that would give answers instead of them.The English alphabet vowels are: A, E, I, O, U, YThe English alphabet consonants are: B, C, D, F, G, H, J, K, L, M, N, P, Q, R, S, T, V, W, X, Z",
+        "prob_desc_created_at": "1292601600",
+        "difficulty": 800.0,
+        "hidden_unit_tests": "[{\"input\": \"Is it a melon?\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"Is it an apple?\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"  Is     it a banana ?\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"Is   it an apple  and a  banana   simultaneouSLY?\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"oHtSbDwzHb?\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"sZecYdUvZHrXx?\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"uMtXK?\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"U?\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"aqFDkCUKeHMyvZFcAyWlMUSQTFomtaWjoKLVyxLCw vcufPBFbaljOuHWiDCROYTcmbgzbaqHXKPOYEbuEtRqqoxBbOETCsQzhw?\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"dJcNqQiFXzcbsj fItCpBLyXOnrSBPebwyFHlxUJHqCUzzCmcAvMiKL NunwOXnKeIxUZmBVwiCUfPkjRAkTPbkYCmwRRnDSLaz?\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"gxzXbdcAQMuFKuuiPohtMgeypr wpDIoDSyOYTdvylcg SoEBZjnMHHYZGEqKgCgBeTbyTwyGuPZxkxsnSczotBdYyfcQsOVDVC?\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"FQXBisXaJFMiHFQlXjixBDMaQuIbyqSBKGsBfTmBKCjszlGVZxEOqYYqRTUkGpSDDAoOXyXcQbHcPaegeOUBNeSD JiKOdECPOF?\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"YhCuZnrWUBEed?\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"hh?\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"whU?\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"fgwg?\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"GlEmEPKrYcOnBNJUIFjszWUyVdvWw DGDjoCMtRJUburkPToCyDrOtMr?\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"n?\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"BueDOlxgzeNlxrzRrMbKiQdmGujEKmGxclvaPpTuHmTqBp?\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"iehvZNQXDGCuVmJPOEysLyUryTdfaIxIuTzTadDbqRQGoCLXkxnyfWSGoLXebNnQQNTqAQJebbyYvHOfpUnXeWdjx?\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"                                                                                                J  ?\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"       j                                                                                           ?\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"                         o                           ?\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"                                                              T             ?\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"                      q             ?\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"       j                                                                                     ?\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"                                                   c  ?\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"         B  ?\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"LuhxDHVwMPTtUIUMIQTuQETgXCOQPsfdFlyHvpfOVedjUTpGLAZGOHloIjJJtOLAlHPivzA?\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"wmztmzFfwbGyOmNHENUFMTsFEMWYA?\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"wGsfZCSwN PEUhNUrLfABrxA?\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"mCDHENXjYbgMdBimAdPnewaHfpGWowjWrVAdvWczjw  iDcUbyzMsmsnwbviiKiAyGVA?\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"ARIWnwqFqxsQXsXXzHqvFjxOCttAGPUzDtWzsenPYdNXuFOIUGYZsLLK IaoxiyjBBRThoelwdPTkuCQfcBLUEJpCPIrVZlvUWA?\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \" PslvVpgpN BXkMFBEVXsyZFIQbBEFxGkYTeXKrOdcmhbiTUatYRUoYAayrchqbksswIlfIjerZPqptvCGnMUhyrQSvwltRhFzA?\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"HpBkttwSjBXDmyleGiRWNUMPaAIE uzTrp KJDzaUiCdsMYOoWKHoUhWUoecCPmACymMUUbGav UMRpCytPETwNFAObZJA?\\r\\n\", \"output\": [\"YES\"]}]",
+        "source_lang": "Python 3",
+        "target_lang": "C"
+    }
+}

@@ -1,0 +1,89 @@
+{
+    "oai_response": {
+        "prompt": "Here is code in Python 3 programming lanaguge. Translate the following code from Python 3 to C programming lanaguge. Do not output any extra description or tokens other than the translated code. \n\ndef prime(n):\n    if n == 1:\n        return 0\n    for j in range(2, int(pow(n, 0.5)) + 1):\n        if n % j == 0:\n            return 0\n    return 1\n\n\na, b = map(int, input().split())\nif prime(a) == 1 and prime(b) == 1:\n    for i in range(a + 1, b+1):\n        if prime(i) == 0:\n            #print(i)\n            continue\n        else:\n           # print(i)\n            if i == b:\n                print('YES')\n                break\n            else:\n                print('NO')\n                break\nelse:\n    print('NO')\n||END-of-SRC||",
+        "response": {
+            "id": "multi-call-as-w62vcp3e0d",
+            "model": "deepseek-v3",
+            "created": 1767068066,
+            "choices": [
+                {
+                    "index": 0,
+                    "message": {
+                        "role": "assistant",
+                        "content": "Here's the translated code in C:\n\n```c\n#include <stdio.h>\n#include <math.h>\n\nint prime(int n) {\n    if (n == 1) {\n        return 0;\n    }\n    for (int j = 2; j <= (int)sqrt(n); j++) {\n        if (n % j == 0) {\n            return 0;\n        }\n    }\n    return 1;\n}\n\nint main() {\n    int a, b;\n    scanf(\"%d %d\", &a, &b);\n    if (prime(a) == 1 && prime(b) == 1) {\n        for (int i = a + 1; i < b; i++) {\n            if (prime(i) == 0) {\n                continue;\n            } else {\n                if (i == b) {\n                    printf(\"YES\\n\");\n                    break;\n                } else {\n                    printf(\"NO\\n\");\n                    break;\n                }\n            }\n        }\n    } else {\n        printf(\"NO\\n\");\n    }\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 1,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <math.h>\n\nint prime(int n) {\n    if (n == 1) {\n        return 0;\n    }\n    for (int j = 2; j <= (int)sqrt(n); j++) {\n        if (n % j == 0) {\n            return 0;\n        }\n    }\n    return 1;\n}\n\nint main() {\n    int a, b;\n    scanf(\"%d %d\", &a, &b);\n    if (prime(a) == 1 && prime(b) == 1) {\n        for (int i = a + 1; i <= b; i++) {\n            if (prime(i) == 0) {\n                continue;\n            } else {\n                if (i == b) {\n                    printf(\"YES\\n\");\n                    break;\n                } else {\n                    printf(\"NO\\n\");\n                    break;\n                }\n            }\n        }\n    } else {\n        printf(\"NO\\n\");\n    }\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 2,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <math.h>\n\nint prime(int n) {\n    if (n == 1) {\n        return 0;\n    }\n    for (int j = 2; j <= (int)sqrt(n); j++) {\n        if (n % j == 0) {\n            return 0;\n        }\n    }\n    return 1;\n}\n\nint main() {\n    int a, b;\n    scanf(\"%d %d\", &a, &b);\n    if (prime(a) == 1 && prime(b) == 1) {\n        for (int i = a + 1; i <= b; i++) {\n            if (prime(i) == 0) {\n                continue;\n            } else {\n                if (i == b) {\n                    printf(\"YES\\n\");\n                    break;\n                } else {\n                    printf(\"NO\\n\");\n                    break;\n                }\n            }\n        }\n    } else {\n        printf(\"NO\\n\");\n    }\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 3,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <math.h>\n\nint prime(int n) {\n    if (n == 1) {\n        return 0;\n    }\n    for (int j = 2; j <= (int)sqrt(n); j++) {\n        if (n % j == 0) {\n            return 0;\n        }\n    }\n    return 1;\n}\n\nint main() {\n    int a, b;\n    scanf(\"%d %d\", &a, &b);\n    if (prime(a) == 1 && prime(b) == 1) {\n        for (int i = a + 1; i <= b; i++) {\n            if (prime(i) == 0) {\n                continue;\n            } else {\n                if (i == b) {\n                    printf(\"YES\\n\");\n                    break;\n                } else {\n                    printf(\"NO\\n\");\n                    break;\n                }\n            }\n        }\n    } else {\n        printf(\"NO\\n\");\n    }\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 4,
+                    "message": {
+                        "role": "assistant",
+                        "content": "Here's the translated code in C:\n\n```c\n#include <stdio.h>\n#include <math.h>\n\nint prime(int n) {\n    if (n == 1) {\n        return 0;\n    }\n    for (int j = 2; j <= sqrt(n); j++) {\n        if (n % j == 0) {\n            return 0;\n        }\n    }\n    return 1;\n}\n\nint main() {\n    int a, b;\n    scanf(\"%d %d\", &a, &b);\n    if (prime(a) == 1 && prime(b) == 1) {\n        for (int i = a + 1; i < b; i++) {\n            if (prime(i) == 0) {\n                continue;\n            } else {\n                if (i == b) {\n                    printf(\"YES\\n\");\n                    break;\n                } else {\n                    printf(\"NO\\n\");\n                    break;\n                }\n            }\n        }\n    } else {\n        printf(\"NO\\n\");\n    }\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                }
+            ],
+            "usage": {
+                "prompt_tokens": 1025,
+                "completion_tokens": 1081,
+                "total_tokens": 2106
+            }
+        }
+    },
+    "source_data": {
+        "code_uid": "c191982331fbbea8cff2cc4b44f08e82",
+        "prob_desc_output_to": "standard output",
+        "prob_desc_notes": null,
+        "lang_cluster": "Python",
+        "prob_desc_time_limit": "2 seconds",
+        "prob_desc_input_spec": "The first and only input line contains two positive integers \u2014 n and m (2\u2009\u2264\u2009n\u2009&lt;\u2009m\u2009\u2264\u200950). It is guaranteed that n is prime. Pretests contain all the cases with restrictions 2\u2009\u2264\u2009n\u2009&lt;\u2009m\u2009\u2264\u20094.",
+        "source_code": "def prime(n):\n    if n == 1:\n        return 0\n    for j in range(2, int(pow(n, 0.5)) + 1):\n        if n % j == 0:\n            return 0\n    return 1\n\n\na, b = map(int, input().split())\nif prime(a) == 1 and prime(b) == 1:\n    for i in range(a + 1, b+1):\n        if prime(i) == 0:\n            #print(i)\n            continue\n        else:\n           # print(i)\n            if i == b:\n                print('YES')\n                break\n            else:\n                print('NO')\n                break\nelse:\n    print('NO')\n",
+        "prob_desc_sample_inputs": [
+            "3 5",
+            "7 11",
+            "7 9"
+        ],
+        "prob_desc_memory_limit": "256 megabytes",
+        "exec_outcome": "PASSED",
+        "prob_desc_output_spec": "Print YES, if m is the next prime number after n, or NO otherwise.",
+        "src_uid": "9d52ff51d747bb59aa463b6358258865",
+        "prob_desc_input_from": "standard input",
+        "lang": "Python 3",
+        "prob_desc_sample_outputs": [
+            "YES",
+            "YES",
+            "NO"
+        ],
+        "file_name": "d7021504500d5ca7c2b02df8100a574d159e6e67e20ec8071b75800b1267370a",
+        "prob_desc_description": "A prime number is a number which has exactly two distinct divisors: one and itself. For example, numbers 2, 7, 3 are prime, and 1, 6, 4 are not.The next prime number after x is the smallest prime number greater than x. For example, the next prime number after 2 is 3, and the next prime number after 3 is 5. Note that there is exactly one next prime number after each number. So 5 is\u00a0not the next prime number for 2.One cold April morning Panoramix predicted that soon Kakofonix will break free from his straitjacket, and this will be a black day for the residents of the Gallic countryside.Panoramix's prophecy tells that if some day Asterix and Obelix beat exactly x Roman soldiers, where x is a prime number, and next day they beat exactly y Roman soldiers, where y is the next prime number after x, then it's time to wait for Armageddon, for nothing can shut Kakofonix up while he sings his infernal song.Yesterday the Gauls beat n Roman soldiers and it turned out that the number n was prime! Today their victims were a troop of m Romans (m\u2009&gt;\u2009n). Determine whether the Gauls should wait for the black day after today's victory of Asterix and Obelix?",
+        "prob_desc_created_at": "1303226100",
+        "difficulty": 800.0,
+        "hidden_unit_tests": "[{\"input\": \"3 5\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"7 11\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"7 9\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"2 3\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"2 4\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"3 4\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"5 7\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"11 13\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"13 17\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"17 19\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"19 23\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"23 29\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"29 31\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"31 37\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"37 41\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"41 43\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"43 47\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"2 5\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"2 7\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"2 6\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"2 11\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"3 6\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"3 7\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"3 9\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"5 6\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"5 9\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"5 11\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"5 13\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"5 15\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"7 8\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"7 13\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"13 15\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"19 21\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"13 20\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"41 49\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"43 49\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"47 50\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"47 49\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"47 48\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"23 25\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"2 50\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"31 33\\r\\n\", \"output\": [\"NO\"]}]",
+        "source_lang": "Python 3",
+        "target_lang": "C"
+    }
+}

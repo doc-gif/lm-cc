@@ -1,0 +1,89 @@
+{
+    "oai_response": {
+        "prompt": "Here is code in Python 3 programming lanaguge. Translate the following code from Python 3 to C programming lanaguge. Do not output any extra description or tokens other than the translated code. \n\nx,y=map(int,input().split())\ndis=pow(abs(x),2)+pow(abs(y),2)\ndis=pow(dis,0.5)\ndis=abs(dis)\nif dis==int(dis):\n    print('black')\nelif x<0 and y<0 or x>0 and y>0:\n    if (int(dis) % 2 == 0):\n        print('black')\n    else:\n        print('white')\nelse:\n    if(int(dis)%2!=0):\n        print('black')\n    else:\n        print('white')||END-of-SRC||",
+        "response": {
+            "id": "multi-call-as-cu7vdcfhti",
+            "model": "deepseek-v3",
+            "created": 1767068666,
+            "choices": [
+                {
+                    "index": 0,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <math.h>\n\nint main() {\n    int x, y;\n    scanf(\"%d %d\", &x, &y);\n    double dis = pow(abs(x), 2) + pow(abs(y), 2);\n    dis = pow(dis, 0.5);\n    dis = fabs(dis);\n    if (dis == (int)dis) {\n        printf(\"black\\n\");\n    } else if ((x < 0 && y < 0) || (x > 0 && y > 0)) {\n        if (((int)dis % 2) == 0) {\n            printf(\"black\\n\");\n        } else {\n            printf(\"white\\n\");\n        }\n    } else {\n        if (((int)dis % 2) != 0) {\n            printf(\"black\\n\");\n        } else {\n            printf(\"white\\n\");\n        }\n    }\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 1,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <math.h>\n\nint main() {\n    int x, y;\n    scanf(\"%d %d\", &x, &y);\n    double dis = pow(abs(x), 2) + pow(abs(y), 2);\n    dis = pow(dis, 0.5);\n    dis = fabs(dis);\n    if (dis == (int)dis) {\n        printf(\"black\\n\");\n    } else if ((x < 0 && y < 0) || (x > 0 && y > 0)) {\n        if (((int)dis % 2) == 0) {\n            printf(\"black\\n\");\n        } else {\n            printf(\"white\\n\");\n        }\n    } else {\n        if (((int)dis % 2) != 0) {\n            printf(\"black\\n\");\n        } else {\n            printf(\"white\\n\");\n        }\n    }\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 2,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <math.h>\n\nint main() {\n    int x, y;\n    scanf(\"%d %d\", &x, &y);\n    double dis = pow(abs(x), 2) + pow(abs(y), 2);\n    dis = pow(dis, 0.5);\n    dis = fabs(dis);\n    if (dis == (int)dis) {\n        printf(\"black\\n\");\n    } else if ((x < 0 && y < 0) || (x > 0 && y > 0)) {\n        if (((int)dis % 2) == 0) {\n            printf(\"black\\n\");\n        } else {\n            printf(\"white\\n\");\n        }\n    } else {\n        if (((int)dis % 2) != 0) {\n            printf(\"black\\n\");\n        } else {\n            printf(\"white\\n\");\n        }\n    }\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 3,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <math.h>\n\nint main() {\n    int x, y;\n    scanf(\"%d %d\", &x, &y);\n    double dis = sqrt(pow(abs(x), 2) + pow(abs(y), 2));\n    dis = fabs(dis);\n    if (dis == (int)dis) {\n        printf(\"black\\n\");\n    } else if ((x < 0 && y < 0) || (x > 0 && y > 0)) {\n        if ((int)dis % 2 == 0) {\n            printf(\"black\\n\");\n        } else {\n            printf(\"white\\n\");\n        }\n    } else {\n        if ((int)dis % 2 != 0) {\n            printf(\"black\\n\");\n        } else {\n            printf(\"white\\n\");\n        }\n    }\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 4,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <math.h>\n\nint main() {\n    int x, y;\n    scanf(\"%d %d\", &x, &y);\n    double dis = pow(abs(x), 2) + pow(abs(y), 2);\n    dis = pow(dis, 0.5);\n    dis = fabs(dis);\n    if (dis == (int)dis) {\n        printf(\"black\\n\");\n    } else if ((x < 0 && y < 0) || (x > 0 && y > 0)) {\n        if (((int)dis % 2) == 0) {\n            printf(\"black\\n\");\n        } else {\n            printf(\"white\\n\");\n        }\n    } else {\n        if (((int)dis % 2) != 0) {\n            printf(\"black\\n\");\n        } else {\n            printf(\"white\\n\");\n        }\n    }\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                }
+            ],
+            "usage": {
+                "prompt_tokens": 855,
+                "completion_tokens": 984,
+                "total_tokens": 1839
+            }
+        }
+    },
+    "source_data": {
+        "code_uid": "542a9f2db1aa74ac9dfede338b04b3ea",
+        "prob_desc_output_to": "standard output",
+        "prob_desc_notes": null,
+        "lang_cluster": "Python",
+        "prob_desc_time_limit": "2 seconds",
+        "prob_desc_input_spec": "The first and single line contains two integers x and y \u2014 the coordinates of the hole made in the clock by the ball. Each of the numbers x and y has an absolute value that does not exceed 1000.",
+        "source_code": "x,y=map(int,input().split())\ndis=pow(abs(x),2)+pow(abs(y),2)\ndis=pow(dis,0.5)\ndis=abs(dis)\nif dis==int(dis):\n    print('black')\nelif x<0 and y<0 or x>0 and y>0:\n    if (int(dis) % 2 == 0):\n        print('black')\n    else:\n        print('white')\nelse:\n    if(int(dis)%2!=0):\n        print('black')\n    else:\n        print('white')",
+        "prob_desc_sample_inputs": [
+            "-2 1",
+            "2 1",
+            "4 3"
+        ],
+        "prob_desc_memory_limit": "256 megabytes",
+        "exec_outcome": "PASSED",
+        "prob_desc_output_spec": "Find the required color. All the points between which and the origin of coordinates the distance is integral-value are painted black.",
+        "src_uid": "8c92aac1bef5822848a136a1328346c6",
+        "prob_desc_input_from": "standard input",
+        "lang": "Python 3",
+        "prob_desc_sample_outputs": [
+            "white",
+            "black",
+            "black"
+        ],
+        "file_name": "d7021504500d5ca7c2b02df8100a574d159e6e67e20ec8071b75800b1267370a",
+        "prob_desc_description": "Not so long ago as a result of combat operations the main Berland place of interest \u2014 the magic clock \u2014 was damaged. The cannon's balls made several holes in the clock, that's why the residents are concerned about the repair. The magic clock can be represented as an infinite Cartesian plane, where the origin corresponds to the clock center. The clock was painted two colors as is shown in the picture:  The picture shows only the central part of the clock. This coloring naturally extends to infinity.The balls can be taken to be points on the plane. Your task is to find the color of the area, damaged by the given ball.All the points located on the border of one of the areas have to be considered painted black.",
+        "prob_desc_created_at": "1288972800",
+        "difficulty": 1300.0,
+        "hidden_unit_tests": "[{\"input\": \"-2 1\\r\\n\", \"output\": [\"white\"]}, {\"input\": \"2 1\\r\\n\", \"output\": [\"black\"]}, {\"input\": \"4 3\\r\\n\", \"output\": [\"black\"]}, {\"input\": \"3 3\\r\\n\", \"output\": [\"black\"]}, {\"input\": \"4 4\\r\\n\", \"output\": [\"white\"]}, {\"input\": \"-4 4\\r\\n\", \"output\": [\"black\"]}, {\"input\": \"4 -4\\r\\n\", \"output\": [\"black\"]}, {\"input\": \"-4 -4\\r\\n\", \"output\": [\"white\"]}, {\"input\": \"0 0\\r\\n\", \"output\": [\"black\"]}, {\"input\": \"0 1\\r\\n\", \"output\": [\"black\"]}, {\"input\": \"0 2\\r\\n\", \"output\": [\"black\"]}, {\"input\": \"0 1000\\r\\n\", \"output\": [\"black\"]}, {\"input\": \"1000 0\\r\\n\", \"output\": [\"black\"]}, {\"input\": \"-1000 0\\r\\n\", \"output\": [\"black\"]}, {\"input\": \"0 -1000\\r\\n\", \"output\": [\"black\"]}, {\"input\": \"1000 -1000\\r\\n\", \"output\": [\"white\"]}, {\"input\": \"12 5\\r\\n\", \"output\": [\"black\"]}, {\"input\": \"12 -5\\r\\n\", \"output\": [\"black\"]}, {\"input\": \"-12 -35\\r\\n\", \"output\": [\"black\"]}, {\"input\": \"20 -21\\r\\n\", \"output\": [\"black\"]}, {\"input\": \"-677 492\\r\\n\", \"output\": [\"white\"]}, {\"input\": \"-673 -270\\r\\n\", \"output\": [\"white\"]}, {\"input\": \"-668 970\\r\\n\", \"output\": [\"black\"]}, {\"input\": \"-220 208\\r\\n\", \"output\": [\"white\"]}, {\"input\": \"-215 -996\\r\\n\", \"output\": [\"black\"]}, {\"input\": \"-211 243\\r\\n\", \"output\": [\"black\"]}, {\"input\": \"-206 -518\\r\\n\", \"output\": [\"white\"]}, {\"input\": \"-201 278\\r\\n\", \"output\": [\"black\"]}, {\"input\": \"-196 -484\\r\\n\", \"output\": [\"black\"]}, {\"input\": \"902 479\\r\\n\", \"output\": [\"white\"]}, {\"input\": \"-441 572\\r\\n\", \"output\": [\"white\"]}, {\"input\": \"217 221\\r\\n\", \"output\": [\"white\"]}, {\"input\": \"875 -129\\r\\n\", \"output\": [\"white\"]}, {\"input\": \"-469 -36\\r\\n\", \"output\": [\"black\"]}, {\"input\": \"189 -387\\r\\n\", \"output\": [\"white\"]}, {\"input\": \"847 -294\\r\\n\", \"output\": [\"white\"]}, {\"input\": \"-496 -644\\r\\n\", \"output\": [\"black\"]}, {\"input\": \"-281 -552\\r\\n\", \"output\": [\"white\"]}, {\"input\": \"377 -902\\r\\n\", \"output\": [\"black\"]}, {\"input\": \"165 -738\\r\\n\", \"output\": [\"white\"]}, {\"input\": \"61 -175\\r\\n\", \"output\": [\"black\"]}, {\"input\": \"-42 389\\r\\n\", \"output\": [\"black\"]}, {\"input\": \"-589 952\\r\\n\", \"output\": [\"black\"]}, {\"input\": \"-693 -929\\r\\n\", \"output\": [\"white\"]}, {\"input\": \"-796 -365\\r\\n\", \"output\": [\"white\"]}, {\"input\": \"658 198\\r\\n\", \"output\": [\"white\"]}, {\"input\": \"555 319\\r\\n\", \"output\": [\"black\"]}, {\"input\": \"8 882\\r\\n\", \"output\": [\"black\"]}, {\"input\": \"-96 -556\\r\\n\", \"output\": [\"black\"]}, {\"input\": \"-129 489\\r\\n\", \"output\": [\"black\"]}, {\"input\": \"207 -224\\r\\n\", \"output\": [\"black\"]}, {\"input\": \"64 0\\r\\n\", \"output\": [\"black\"]}, {\"input\": \"17 144\\r\\n\", \"output\": [\"black\"]}, {\"input\": \"60 -448\\r\\n\", \"output\": [\"black\"]}, {\"input\": \"-399 -40\\r\\n\", \"output\": [\"black\"]}, {\"input\": \"128 -504\\r\\n\", \"output\": [\"black\"]}, {\"input\": \"0 72\\r\\n\", \"output\": [\"black\"]}, {\"input\": \"168 -26\\r\\n\", \"output\": [\"black\"]}, {\"input\": \"72 -154\\r\\n\", \"output\": [\"black\"]}, {\"input\": \"117 -44\\r\\n\", \"output\": [\"black\"]}, {\"input\": \"-72 -646\\r\\n\", \"output\": [\"black\"]}, {\"input\": \"253 -204\\r\\n\", \"output\": [\"black\"]}, {\"input\": \"-40 198\\r\\n\", \"output\": [\"black\"]}, {\"input\": \"-216 -90\\r\\n\", \"output\": [\"black\"]}, {\"input\": \"15 -8\\r\\n\", \"output\": [\"black\"]}, {\"input\": \"-180 -432\\r\\n\", \"output\": [\"black\"]}, {\"input\": \"280 342\\r\\n\", \"output\": [\"black\"]}, {\"input\": \"132 224\\r\\n\", \"output\": [\"black\"]}, {\"input\": \"-192 -256\\r\\n\", \"output\": [\"black\"]}, {\"input\": \"351 -280\\r\\n\", \"output\": [\"black\"]}]",
+        "source_lang": "Python 3",
+        "target_lang": "C"
+    }
+}

@@ -1,0 +1,89 @@
+{
+    "oai_response": {
+        "prompt": "Here is code in Python 3 programming lanaguge. Translate the following code from Python 3 to C programming lanaguge. Do not output any extra description or tokens other than the translated code. \n\nn,m,X,Y,x,y=map(int,input().split())\na=[abs(X-x),abs(Y-y)]\na.sort()\nprint(\"First\" if a[1]<5 and a[0]+a[1]<7 else \"Second\")\n\n||END-of-SRC||",
+        "response": {
+            "id": "multi-call-as-bwe4wzuwe1",
+            "model": "deepseek-v3",
+            "created": 1767070004,
+            "choices": [
+                {
+                    "index": 0,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <stdlib.h>\n#include <math.h>\n\nint main() {\n    int n, m, X, Y, x, y;\n    scanf(\"%d %d %d %d %d %d\", &n, &m, &X, &Y, &x, &y);\n    int a[2] = {abs(X - x), abs(Y - y)};\n    if (a[0] > a[1]) {\n        int temp = a[0];\n        a[0] = a[1];\n        a[1] = temp;\n    }\n    if (a[1] < 5 && a[0] + a[1] < 7) {\n        printf(\"First\");\n    } else {\n        printf(\"Second\");\n    }\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 1,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <stdlib.h>\n#include <math.h>\n\nint main() {\n    int n, m, X, Y, x, y;\n    scanf(\"%d %d %d %d %d %d\", &n, &m, &X, &Y, &x, &y);\n    int a[2] = {abs(X - x), abs(Y - y)};\n    for (int i = 0; i < 2; i++) {\n        for (int j = i + 1; j < 2; j++) {\n            if (a[i] > a[j]) {\n                int temp = a[i];\n                a[i] = a[j];\n                a[j] = temp;\n            }\n        }\n    }\n    if (a[1] < 5 && a[0] + a[1] < 7) {\n        printf(\"First\");\n    } else {\n        printf(\"Second\");\n    }\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 2,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <stdlib.h>\n#include <math.h>\n\nint main() {\n    int n, m, X, Y, x, y;\n    scanf(\"%d %d %d %d %d %d\", &n, &m, &X, &Y, &x, &y);\n    int a[2] = {abs(X - x), abs(Y - y)};\n    if (a[0] > a[1]) {\n        int temp = a[0];\n        a[0] = a[1];\n        a[1] = temp;\n    }\n    printf(\"%s\", (a[1] < 5 && a[0] + a[1] < 7) ? \"First\" : \"Second\");\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 3,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <stdlib.h>\n#include <math.h>\n\nint main() {\n    int n, m, X, Y, x, y;\n    scanf(\"%d %d %d %d %d %d\", &n, &m, &X, &Y, &x, &y);\n    int a[2] = {abs(X - x), abs(Y - y)};\n    if (a[0] > a[1]) {\n        int temp = a[0];\n        a[0] = a[1];\n        a[1] = temp;\n    }\n    printf(\"%s\", (a[1] < 5 && a[0] + a[1] < 7) ? \"First\" : \"Second\");\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 4,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <stdlib.h>\n#include <math.h>\n\nint main() {\n    int n, m, X, Y, x, y;\n    scanf(\"%d %d %d %d %d %d\", &n, &m, &X, &Y, &x, &y);\n    int a[2] = {abs(X - x), abs(Y - y)};\n    for (int i = 0; i < 2; i++) {\n        for (int j = i + 1; j < 2; j++) {\n            if (a[i] > a[j]) {\n                int temp = a[i];\n                a[i] = a[j];\n                a[j] = temp;\n            }\n        }\n    }\n    if (a[1] < 5 && a[0] + a[1] < 7) {\n        printf(\"First\");\n    } else {\n        printf(\"Second\");\n    }\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                }
+            ],
+            "usage": {
+                "prompt_tokens": 505,
+                "completion_tokens": 947,
+                "total_tokens": 1452
+            }
+        }
+    },
+    "source_data": {
+        "code_uid": "c38899e593c8c630929a64286fb37eef",
+        "prob_desc_output_to": "standard output",
+        "prob_desc_notes": null,
+        "lang_cluster": "Python",
+        "prob_desc_time_limit": "2 seconds",
+        "prob_desc_input_spec": "The first line contains six integers n, m, x1, y1, x2, y2 \u2014 the board sizes and the coordinates of the first and second chips, correspondingly (1\u2009\u2264\u2009n,\u2009m\u2009\u2264\u2009100; 2\u2009\u2264\u2009n\u2009\u00d7\u2009m; 1\u2009\u2264\u2009x1,\u2009x2\u2009\u2264\u2009n; 1\u2009\u2264\u2009y1,\u2009y2\u2009\u2264\u2009m). The numbers in the line are separated by single spaces. It is guaranteed that the chips are located in different squares.",
+        "source_code": "n,m,X,Y,x,y=map(int,input().split())\na=[abs(X-x),abs(Y-y)]\na.sort()\nprint(\"First\" if a[1]<5 and a[0]+a[1]<7 else \"Second\")\n\n",
+        "prob_desc_sample_inputs": [
+            "1 6 1 2 1 6",
+            "6 5 4 3 2 1",
+            "10 10 1 1 10 10"
+        ],
+        "prob_desc_memory_limit": "256 megabytes",
+        "exec_outcome": "PASSED",
+        "prob_desc_output_spec": "If the first player wins, print \"First\" without the quotes. Otherwise, print \"Second\" without the quotes.",
+        "src_uid": "41f6f90b7307d2383495441114fa8ea2",
+        "prob_desc_input_from": "standard input",
+        "lang": "Python 3",
+        "prob_desc_sample_outputs": [
+            "First",
+            "First",
+            "Second"
+        ],
+        "file_name": "d7021504500d5ca7c2b02df8100a574d159e6e67e20ec8071b75800b1267370a",
+        "prob_desc_description": "Two players play a game. The game is played on a rectangular board with n\u2009\u00d7\u2009m squares. At the beginning of the game two different squares of the board have two chips. The first player's goal is to shift the chips to the same square. The second player aims to stop the first one with a tube of superglue.We'll describe the rules of the game in more detail.The players move in turns. The first player begins.With every move the first player chooses one of his unglued chips, and shifts it one square to the left, to the right, up or down. It is not allowed to move a chip beyond the board edge. At the beginning of a turn some squares of the board may be covered with a glue. The first player can move the chip to such square, in this case the chip gets tightly glued and cannot move any longer.At each move the second player selects one of the free squares (which do not contain a chip or a glue) and covers it with superglue. The glue dries long and squares covered with it remain sticky up to the end of the game.If, after some move of the first player both chips are in the same square, then the first player wins. If the first player cannot make a move (both of his chips are glued), then the second player wins. Note that the situation where the second player cannot make a move is impossible \u2014 he can always spread the glue on the square from which the first player has just moved the chip.We will further clarify the case where both chips are glued and are in the same square. In this case the first player wins as the game ends as soon as both chips are in the same square, and the condition of the loss (the inability to move) does not arise.You know the board sizes and the positions of the two chips on it. At the beginning of the game all board squares are glue-free. Find out who wins if the players play optimally.",
+        "prob_desc_created_at": "1334934300",
+        "difficulty": 2000.0,
+        "hidden_unit_tests": "[{\"input\": \"1 6 1 2 1 6\\r\\n\", \"output\": [\"First\"]}, {\"input\": \"6 5 4 3 2 1\\r\\n\", \"output\": [\"First\"]}, {\"input\": \"10 10 1 1 10 10\\r\\n\", \"output\": [\"Second\"]}, {\"input\": \"1 2 1 1 1 2\\r\\n\", \"output\": [\"First\"]}, {\"input\": \"4 4 1 4 4 1\\r\\n\", \"output\": [\"First\"]}, {\"input\": \"25 32 17 18 20 19\\r\\n\", \"output\": [\"First\"]}, {\"input\": \"30 1 10 1 20 1\\r\\n\", \"output\": [\"Second\"]}, {\"input\": \"28 17 20 10 27 2\\r\\n\", \"output\": [\"Second\"]}, {\"input\": \"5 5 1 1 5 5\\r\\n\", \"output\": [\"Second\"]}, {\"input\": \"5 4 1 4 5 1\\r\\n\", \"output\": [\"Second\"]}, {\"input\": \"95 28 50 12 50 13\\r\\n\", \"output\": [\"First\"]}, {\"input\": \"7 41 3 5 3 6\\r\\n\", \"output\": [\"First\"]}, {\"input\": \"45 62 28 48 28 50\\r\\n\", \"output\": [\"First\"]}, {\"input\": \"57 17 12 7 12 10\\r\\n\", \"output\": [\"First\"]}, {\"input\": \"73 88 30 58 30 62\\r\\n\", \"output\": [\"First\"]}, {\"input\": \"33 13 12 1 12 6\\r\\n\", \"output\": [\"Second\"]}, {\"input\": \"49 34 38 19 38 25\\r\\n\", \"output\": [\"Second\"]}, {\"input\": \"61 39 14 30 14 37\\r\\n\", \"output\": [\"Second\"]}, {\"input\": \"100 32 71 12 71 22\\r\\n\", \"output\": [\"Second\"]}, {\"input\": \"96 54 9 30 9 47\\r\\n\", \"output\": [\"Second\"]}, {\"input\": \"57 85 29 40 29 69\\r\\n\", \"output\": [\"Second\"]}, {\"input\": \"64 96 4 2 4 80\\r\\n\", \"output\": [\"Second\"]}, {\"input\": \"99 100 24 1 24 100\\r\\n\", \"output\": [\"Second\"]}, {\"input\": \"18 72 2 71 3 71\\r\\n\", \"output\": [\"First\"]}, {\"input\": \"24 68 19 14 18 15\\r\\n\", \"output\": [\"First\"]}, {\"input\": \"24 32 6 2 7 4\\r\\n\", \"output\": [\"First\"]}, {\"input\": \"28 14 21 2 20 5\\r\\n\", \"output\": [\"First\"]}, {\"input\": \"30 85 9 45 8 49\\r\\n\", \"output\": [\"First\"]}, {\"input\": \"34 55 7 25 8 30\\r\\n\", \"output\": [\"Second\"]}, {\"input\": \"34 39 18 1 17 7\\r\\n\", \"output\": [\"Second\"]}, {\"input\": \"21 18 16 6 15 17\\r\\n\", \"output\": [\"Second\"]}, {\"input\": \"37 100 33 13 32 30\\r\\n\", \"output\": [\"Second\"]}, {\"input\": \"11 97 2 29 1 76\\r\\n\", \"output\": [\"Second\"]}, {\"input\": \"89 100 54 1 55 100\\r\\n\", \"output\": [\"Second\"]}, {\"input\": \"80 97 70 13 68 13\\r\\n\", \"output\": [\"First\"]}, {\"input\": \"24 97 21 54 19 55\\r\\n\", \"output\": [\"First\"]}, {\"input\": \"76 7 24 4 26 6\\r\\n\", \"output\": [\"First\"]}, {\"input\": \"20 77 5 49 3 52\\r\\n\", \"output\": [\"First\"]}, {\"input\": \"18 18 11 12 13 16\\r\\n\", \"output\": [\"First\"]}, {\"input\": \"60 100 28 80 26 85\\r\\n\", \"output\": [\"Second\"]}, {\"input\": \"14 96 3 80 1 86\\r\\n\", \"output\": [\"Second\"]}, {\"input\": \"40 43 40 9 38 28\\r\\n\", \"output\": [\"Second\"]}, {\"input\": \"44 99 10 5 8 92\\r\\n\", \"output\": [\"Second\"]}, {\"input\": \"52 70 26 65 23 65\\r\\n\", \"output\": [\"First\"]}, {\"input\": \"13 25 4 2 7 3\\r\\n\", \"output\": [\"First\"]}, {\"input\": \"36 76 36 49 33 51\\r\\n\", \"output\": [\"First\"]}, {\"input\": \"64 91 52 64 49 67\\r\\n\", \"output\": [\"First\"]}, {\"input\": \"87 15 56 8 59 12\\r\\n\", \"output\": [\"Second\"]}, {\"input\": \"48 53 24 37 21 42\\r\\n\", \"output\": [\"Second\"]}, {\"input\": \"71 85 10 14 13 20\\r\\n\", \"output\": [\"Second\"]}, {\"input\": \"23 90 6 31 9 88\\r\\n\", \"output\": [\"Second\"]}, {\"input\": \"47 95 27 70 23 70\\r\\n\", \"output\": [\"First\"]}, {\"input\": \"63 54 19 22 23 23\\r\\n\", \"output\": [\"First\"]}, {\"input\": \"47 91 36 61 32 63\\r\\n\", \"output\": [\"First\"]}, {\"input\": \"63 22 54 16 58 19\\r\\n\", \"output\": [\"Second\"]}, {\"input\": \"15 11 12 5 8 9\\r\\n\", \"output\": [\"Second\"]}, {\"input\": \"31 80 28 70 24 75\\r\\n\", \"output\": [\"Second\"]}, {\"input\": \"15 48 6 42 10 48\\r\\n\", \"output\": [\"Second\"]}, {\"input\": \"21 68 2 13 6 57\\r\\n\", \"output\": [\"Second\"]}, {\"input\": \"73 64 63 32 68 32\\r\\n\", \"output\": [\"Second\"]}, {\"input\": \"89 81 33 18 28 19\\r\\n\", \"output\": [\"Second\"]}, {\"input\": \"13 62 10 13 5 15\\r\\n\", \"output\": [\"Second\"]}, {\"input\": \"35 19 4 8 9 11\\r\\n\", \"output\": [\"Second\"]}, {\"input\": \"51 8 24 3 19 7\\r\\n\", \"output\": [\"Second\"]}, {\"input\": \"73 27 40 8 45 13\\r\\n\", \"output\": [\"Second\"]}, {\"input\": \"51 76 50 5 45 76\\r\\n\", \"output\": [\"Second\"]}, {\"input\": \"74 88 33 20 39 20\\r\\n\", \"output\": [\"Second\"]}, {\"input\": \"28 7 17 5 11 6\\r\\n\", \"output\": [\"Second\"]}, {\"input\": \"8 33 2 21 8 23\\r\\n\", \"output\": [\"Second\"]}, {\"input\": \"30 47 9 32 3 35\\r\\n\", \"output\": [\"Second\"]}, {\"input\": \"10 5 10 1 4 5\\r\\n\", \"output\": [\"Second\"]}, {\"input\": \"84 43 71 6 77 26\\r\\n\", \"output\": [\"Second\"]}, {\"input\": \"87 13 77 7 70 7\\r\\n\", \"output\": [\"Second\"]}, {\"input\": \"41 34 27 7 20 8\\r\\n\", \"output\": [\"Second\"]}, {\"input\": \"73 79 17 42 10 67\\r\\n\", \"output\": [\"Second\"]}, {\"input\": \"48 86 31 36 23 36\\r\\n\", \"output\": [\"Second\"]}, {\"input\": \"16 97 7 4 15 94\\r\\n\", \"output\": [\"Second\"]}, {\"input\": \"48 11 33 8 24 8\\r\\n\", \"output\": [\"Second\"]}, {\"input\": \"39 46 21 22 30 35\\r\\n\", \"output\": [\"Second\"]}, {\"input\": \"96 75 15 10 6 65\\r\\n\", \"output\": [\"Second\"]}, {\"input\": \"25 68 3 39 20 41\\r\\n\", \"output\": [\"Second\"]}, {\"input\": \"41 64 10 21 29 50\\r\\n\", \"output\": [\"Second\"]}, {\"input\": \"24 65 23 18 3 64\\r\\n\", \"output\": [\"Second\"]}, {\"input\": \"40 100 4 1 30 100\\r\\n\", \"output\": [\"Second\"]}, {\"input\": \"73 95 58 11 11 24\\r\\n\", \"output\": [\"Second\"]}, {\"input\": \"89 51 76 1 25 51\\r\\n\", \"output\": [\"Second\"]}, {\"input\": \"77 99 56 1 3 99\\r\\n\", \"output\": [\"Second\"]}, {\"input\": \"97 94 96 2 7 93\\r\\n\", \"output\": [\"Second\"]}, {\"input\": \"100 100 1 1 100 100\\r\\n\", \"output\": [\"Second\"]}, {\"input\": \"100 94 1 30 100 30\\r\\n\", \"output\": [\"Second\"]}, {\"input\": \"10 10 1 1 4 5\\r\\n\", \"output\": [\"Second\"]}, {\"input\": \"5 5 1 1 4 5\\r\\n\", \"output\": [\"Second\"]}, {\"input\": \"100 100 1 1 5 4\\r\\n\", \"output\": [\"Second\"]}, {\"input\": \"100 100 10 10 13 14\\r\\n\", \"output\": [\"Second\"]}, {\"input\": \"10 10 1 1 5 4\\r\\n\", \"output\": [\"Second\"]}, {\"input\": \"10 10 1 1 1 6\\r\\n\", \"output\": [\"Second\"]}, {\"input\": \"100 100 1 1 4 5\\r\\n\", \"output\": [\"Second\"]}, {\"input\": \"100 100 1 1 3 5\\r\\n\", \"output\": [\"First\"]}, {\"input\": \"4 5 1 1 4 5\\r\\n\", \"output\": [\"Second\"]}, {\"input\": \"5 5 1 1 3 5\\r\\n\", \"output\": [\"First\"]}, {\"input\": \"50 50 1 1 5 4\\r\\n\", \"output\": [\"Second\"]}, {\"input\": \"5 5 1 5 4 1\\r\\n\", \"output\": [\"Second\"]}, {\"input\": \"100 100 1 1 2 6\\r\\n\", \"output\": [\"Second\"]}, {\"input\": \"50 50 1 1 4 5\\r\\n\", \"output\": [\"Second\"]}, {\"input\": \"5 5 1 1 5 4\\r\\n\", \"output\": [\"Second\"]}, {\"input\": \"10 10 1 1 3 5\\r\\n\", \"output\": [\"First\"]}, {\"input\": \"6 6 1 1 6 1\\r\\n\", \"output\": [\"Second\"]}, {\"input\": \"5 4 1 1 5 4\\r\\n\", \"output\": [\"Second\"]}, {\"input\": \"6 2 6 1 1 2\\r\\n\", \"output\": [\"Second\"]}, {\"input\": \"10 10 3 4 3 5\\r\\n\", \"output\": [\"First\"]}, {\"input\": \"10 10 1 1 5 3\\r\\n\", \"output\": [\"First\"]}, {\"input\": \"10 10 6 1 1 1\\r\\n\", \"output\": [\"Second\"]}, {\"input\": \"10 10 1 1 6 2\\r\\n\", \"output\": [\"Second\"]}, {\"input\": \"50 50 1 1 5 2\\r\\n\", \"output\": [\"First\"]}, {\"input\": \"3 5 1 1 3 5\\r\\n\", \"output\": [\"First\"]}, {\"input\": \"5 5 1 1 5 3\\r\\n\", \"output\": [\"First\"]}, {\"input\": \"10 10 7 7 3 4\\r\\n\", \"output\": [\"Second\"]}, {\"input\": \"100 100 1 1 5 1\\r\\n\", \"output\": [\"First\"]}, {\"input\": \"6 6 1 1 1 6\\r\\n\", \"output\": [\"Second\"]}]",
+        "source_lang": "Python 3",
+        "target_lang": "C"
+    }
+}

@@ -1,0 +1,102 @@
+{
+    "oai_response": {
+        "prompt": "Fix a buggy program written in Python language to solve the following programming problem:\nDescription: Statistics claims that students sleep no more than three hours a day. But even in the world of their dreams, while they are snoring peacefully, the sense of impending doom is still upon them.A poor student is dreaming that he is sitting the mathematical analysis exam. And he is examined by the most formidable professor of all times, a three times Soviet Union Hero, a Noble Prize laureate in student expulsion, venerable Petr Palych.The poor student couldn't answer a single question. Thus, instead of a large spacious office he is going to apply for a job to thorium mines. But wait a minute! Petr Palych decided to give the student the last chance! Yes, that is possible only in dreams. So the professor began: \"Once a Venusian girl and a Marsian boy met on the Earth and decided to take a walk holding hands. But the problem is the girl has al fingers on her left hand and ar fingers on the right one. The boy correspondingly has bl and br fingers. They can only feel comfortable when holding hands, when no pair of the girl's fingers will touch each other. That is, they are comfortable when between any two girl's fingers there is a boy's finger. And in addition, no three fingers of the boy should touch each other. Determine if they can hold hands so that the both were comfortable.\"The boy any the girl don't care who goes to the left and who goes to the right. The difference is only that if the boy goes to the left of the girl, he will take her left hand with his right one, and if he goes to the right of the girl, then it is vice versa.\nInput Specification: The first line contains two positive integers not exceeding 100. They are the number of fingers on the Venusian girl's left and right hand correspondingly. The second line contains two integers not exceeding 100. They are the number of fingers on the Marsian boy's left and right hands correspondingly.\nOutput Specification: Print YES or NO, that is, the answer to Petr Palych's question.\n\nSample Input:\n5 1\n10 5\nSample Output:\nYES\n\nSample Input:\n4 5\n3 3\nSample Output:\nYES\n\nSample Input:\n1 2\n11 6\nSample Output:\nNO\n\nNotes: NoteThe boy and the girl don't really care who goes to the left.\nTake input from standard input and output to standard output\n\nHere is the code with a bug of RUNTIME_ERROR:\n\nimport sys\n\ndef read():\n    global gl, gr, bl, br\n\n    girl = input.readline()\n    gl = int(girl.split(' ')[0])\n    gr = int(girl.split(' ')[1])\n\n    boy = input.readline()\n    bl = int(boy.split(' ')[0])\n    br = int(boy.split(' ')[1])\n\n\ndef check_possible(g, b):\n\n    if g == b:\n        return True\n\n    elif g > b:\n\n        if b == g - 1:\n            return True\n        else:\n            return False\n\n    elif g < b:\n\n        if b <= 2*g + 2:\n            return True\n        else:\n            return False\n\ndef main():\n    \n    poss = check_possible(gl, br)\n    if poss:\n        output.write('YES')\n        return\n\n    poss = check_possible(gr, bl)\n    if poss:\n        output.write( 'YES')\n        return\n\n    otput.write('NO')\n\n\ndef run():\n\n    global input, output\n    input = sys.stdin\n    output = sys.stdout\n\n    read()\n    main()\n\n\nif __name__ == '__main__':\n    run()\n\n\nProvide the fixed Python code without any description or extra tokens.\n\nFixed source code:\n ||END-of-SRC||",
+        "response": {
+            "id": "multi-call-as-szs3hvpk6h",
+            "model": "deepseek-v3",
+            "created": 1760421529,
+            "choices": [
+                {
+                    "index": 0,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```python\nimport sys\n\ndef read():\n    global gl, gr, bl, br\n\n    girl = sys.stdin.readline()\n    gl = int(girl.split(' ')[0])\n    gr = int(girl.split(' ')[1])\n\n    boy = sys.stdin.readline()\n    bl = int(boy.split(' ')[0])\n    br = int(boy.split(' ')[1])\n\n\ndef check_possible(g, b):\n\n    if g == b:\n        return True\n\n    elif g > b:\n\n        if b == g - 1:\n            return True\n        else:\n            return False\n\n    elif g < b:\n\n        if b <= 2*g + 2:\n            return True\n        else:\n            return False\n\ndef main():\n    \n    poss = check_possible(gl, br)\n    if poss:\n        print('YES')\n        return\n\n    poss = check_possible(gr, bl)\n    if poss:\n        print('YES')\n        return\n\n    print('NO')\n\n\ndef run():\n\n    read()\n    main()\n\n\nif __name__ == '__main__':\n    run()\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 1,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```python\nimport sys\n\ndef read():\n    global gl, gr, bl, br\n\n    girl = sys.stdin.readline()\n    gl = int(girl.split(' ')[0])\n    gr = int(girl.split(' ')[1])\n\n    boy = sys.stdin.readline()\n    bl = int(boy.split(' ')[0])\n    br = int(boy.split(' ')[1])\n\n\ndef check_possible(g, b):\n\n    if g == b:\n        return True\n\n    elif g > b:\n\n        if b >= g - 1:\n            return True\n        else:\n            return False\n\n    elif g < b:\n\n        if b <= 2 * (g + 1):\n            return True\n        else:\n            return False\n\ndef main():\n    \n    poss = check_possible(gl, br)\n    if poss:\n        print('YES')\n        return\n\n    poss = check_possible(gr, bl)\n    if poss:\n        print('YES')\n        return\n\n    print('NO')\n\n\ndef run():\n\n    read()\n    main()\n\n\nif __name__ == '__main__':\n    run()\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 2,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```python\nimport sys\n\ndef read():\n    global gl, gr, bl, br\n\n    girl = sys.stdin.readline()\n    gl = int(girl.split()[0])\n    gr = int(girl.split()[1])\n\n    boy = sys.stdin.readline()\n    bl = int(boy.split()[0])\n    br = int(boy.split()[1])\n\n\ndef check_possible(g, b):\n    if g == b:\n        return True\n    elif g > b:\n        if b == g - 1:\n            return True\n        else:\n            return False\n    elif g < b:\n        if b <= 2 * g + 2:\n            return True\n        else:\n            return False\n\ndef main():\n    poss = check_possible(gl, br)\n    if poss:\n        print('YES')\n        return\n\n    poss = check_possible(gr, bl)\n    if poss:\n        print('YES')\n        return\n\n    print('NO')\n\n\ndef run():\n    read()\n    main()\n\n\nif __name__ == '__main__':\n    run()\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 3,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```python\nimport sys\n\ndef read():\n    global gl, gr, bl, br\n\n    girl = sys.stdin.readline()\n    gl = int(girl.split(' ')[0])\n    gr = int(girl.split(' ')[1])\n\n    boy = sys.stdin.readline()\n    bl = int(boy.split(' ')[0])\n    br = int(boy.split(' ')[1])\n\n\ndef check_possible(g, b):\n\n    if g == b:\n        return True\n\n    elif g > b:\n\n        if b == g - 1:\n            return True\n        else:\n            return False\n\n    elif g < b:\n\n        if b <= 2*g + 2:\n            return True\n        else:\n            return False\n\ndef main():\n    \n    poss = check_possible(gl, br)\n    if poss:\n        print('YES')\n        return\n\n    poss = check_possible(gr, bl)\n    if poss:\n        print('YES')\n        return\n\n    print('NO')\n\n\ndef run():\n\n    read()\n    main()\n\n\nif __name__ == '__main__':\n    run()\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 4,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```python\nimport sys\n\ndef read():\n    global gl, gr, bl, br\n\n    girl = sys.stdin.readline()\n    parts = girl.split()\n    gl = int(parts[0])\n    gr = int(parts[1])\n\n    boy = sys.stdin.readline()\n    parts = boy.split()\n    bl = int(parts[0])\n    br = int(parts[1])\n\n\ndef check_possible(g, b):\n    if g == b:\n        return True\n    elif g > b:\n        if b == g - 1:\n            return True\n        else:\n            return False\n    elif g < b:\n        if b <= 2 * g + 2:\n            return True\n        else:\n            return False\n\ndef main():\n    poss = check_possible(gl, br)\n    if poss:\n        print('YES')\n        return\n\n    poss = check_possible(gr, bl)\n    if poss:\n        print('YES')\n        return\n\n    print('NO')\n\ndef run():\n    read()\n    main()\n\n\nif __name__ == '__main__':\n    run()\n```"
+                    },
+                    "finish_reason": "stop"
+                }
+            ],
+            "usage": {
+                "prompt_tokens": 4010,
+                "completion_tokens": 1152,
+                "total_tokens": 5162
+            }
+        }
+    },
+    "source_data": {
+        "prob_desc_memory_limit": "256 megabytes",
+        "tags": [
+            "math",
+            "greedy"
+        ],
+        "prob_desc_created_at": "1298649600",
+        "fix_source_code": "",
+        "prob_desc_input_spec": "The first line contains two positive integers not exceeding 100. They are the number of fingers on the Venusian girl's left and right hand correspondingly. The second line contains two integers not exceeding 100. They are the number of fingers on the Marsian boy's left and right hands correspondingly.",
+        "prob_desc_sample_outputs": [
+            "YES",
+            "YES",
+            "NO"
+        ],
+        "src_uid": "36b7478e162be6e985613b2dad0974dd",
+        "prob_desc_time_limit": "2 seconds",
+        "fix_exec_outcome": "",
+        "delete_cnt": 0,
+        "apr_id": "0390aa119a841bd12ad1d4597c017eb3",
+        "fix_code_uid": "",
+        "lang_cluster": "Python",
+        "prob_desc_sample_inputs": [
+            "5 1\n10 5",
+            "4 5\n3 3",
+            "1 2\n11 6"
+        ],
+        "prob_desc_output_to": "standard output",
+        "file_name": "Python.jsonl",
+        "equal_cnt": 2,
+        "lang": "Python 3",
+        "prob_desc_output_spec": "Print YES or NO, that is, the answer to Petr Palych's question.",
+        "bug_exec_outcome": "RUNTIME_ERROR",
+        "prob_desc_notes": "NoteThe boy and the girl don't really care who goes to the left.",
+        "difficulty": 1300.0,
+        "similarity_score": 0.9994328022,
+        "prob_desc_description": "Statistics claims that students sleep no more than three hours a day. But even in the world of their dreams, while they are snoring peacefully, the sense of impending doom is still upon them.A poor student is dreaming that he is sitting the mathematical analysis exam. And he is examined by the most formidable professor of all times, a three times Soviet Union Hero, a Noble Prize laureate in student expulsion, venerable Petr Palych.The poor student couldn't answer a single question. Thus, instead of a large spacious office he is going to apply for a job to thorium mines. But wait a minute! Petr Palych decided to give the student the last chance! Yes, that is possible only in dreams. So the professor began: \"Once a Venusian girl and a Marsian boy met on the Earth and decided to take a walk holding hands. But the problem is the girl has al fingers on her left hand and ar fingers on the right one. The boy correspondingly has bl and br fingers. They can only feel comfortable when holding hands, when no pair of the girl's fingers will touch each other. That is, they are comfortable when between any two girl's fingers there is a boy's finger. And in addition, no three fingers of the boy should touch each other. Determine if they can hold hands so that the both were comfortable.\"The boy any the girl don't care who goes to the left and who goes to the right. The difference is only that if the boy goes to the left of the girl, he will take her left hand with his right one, and if he goes to the right of the girl, then it is vice versa.",
+        "potential_dominant_fix_op": "insert",
+        "bug_source_code": "import sys\n\ndef read():\n    global gl, gr, bl, br\n\n    girl = input.readline()\n    gl = int(girl.split(' ')[0])\n    gr = int(girl.split(' ')[1])\n\n    boy = input.readline()\n    bl = int(boy.split(' ')[0])\n    br = int(boy.split(' ')[1])\n\n\ndef check_possible(g, b):\n\n    if g == b:\n        return True\n\n    elif g > b:\n\n        if b == g - 1:\n            return True\n        else:\n            return False\n\n    elif g < b:\n\n        if b <= 2*g + 2:\n            return True\n        else:\n            return False\n\ndef main():\n    \n    poss = check_possible(gl, br)\n    if poss:\n        output.write('YES')\n        return\n\n    poss = check_possible(gr, bl)\n    if poss:\n        output.write( 'YES')\n        return\n\n    otput.write('NO')\n\n\ndef run():\n\n    global input, output\n    input = sys.stdin\n    output = sys.stdout\n\n    read()\n    main()\n\n\nif __name__ == '__main__':\n    run()\n",
+        "replace_cnt": 0,
+        "prob_desc_input_from": "standard input",
+        "bug_code_uid": "9cc62098072ee7ee6a1ad8c681c70984",
+        "insert_cnt": 1,
+        "fix_ops_cnt": 1,
+        "hidden_unit_tests": "[{\"input\": \"5 1\\r\\n10 5\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"4 5\\r\\n3 3\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"1 2\\r\\n11 6\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"1 1\\r\\n1 1\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"2 2\\r\\n1 1\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"3 3\\r\\n1 1\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"4 4\\r\\n1 1\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"100 100\\r\\n50 50\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"100 3\\r\\n4 1\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"100 5\\r\\n1 1\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"100 4\\r\\n1 1\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"100 1\\r\\n4 1\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"1 100\\r\\n1 4\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"1 100\\r\\n5 4\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"1 100\\r\\n1 5\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"43 100\\r\\n65 24\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"4 2\\r\\n12 1\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"6 11\\r\\n13 11\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"2 6\\r\\n12 12\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"14 7\\r\\n2 9\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"1 14\\r\\n7 14\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"6 11\\r\\n2 10\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"5 12\\r\\n13 11\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"15 1\\r\\n11 9\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"7 12\\r\\n10 6\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"15 7\\r\\n15 15\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"1 5\\r\\n14 1\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"2 4\\r\\n6 6\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"12 8\\r\\n4 12\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"6 14\\r\\n5 5\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"19 17\\r\\n5 8\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"9 21\\r\\n13 16\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"11 2\\r\\n11 22\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"15 3\\r\\n12 16\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"13 2\\r\\n13 5\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"21 1\\r\\n5 19\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"9 15\\r\\n16 2\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"7 18\\r\\n23 19\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"13 17\\r\\n19 1\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"5 15\\r\\n13 9\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"11 17\\r\\n6 4\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"18 3\\r\\n16 15\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"5 23\\r\\n12 17\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"25 8\\r\\n14 24\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"18 22\\r\\n22 19\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"2 25\\r\\n8 24\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"7 25\\r\\n18 15\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"8 22\\r\\n2 3\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"25 9\\r\\n16 12\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"19 4\\r\\n25 17\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"24 43\\r\\n96 39\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"13 23\\r\\n19 63\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"93 12\\r\\n87 54\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"94 35\\r\\n53 79\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"65 8\\r\\n73 25\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"25 14\\r\\n19 91\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"58 86\\r\\n40 46\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"82 60\\r\\n100 38\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"36 62\\r\\n81 12\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"30 38\\r\\n12 100\\r\\n\", \"output\": [\"NO\"]}]"
+    }
+}

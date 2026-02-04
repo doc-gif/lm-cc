@@ -1,0 +1,89 @@
+{
+    "oai_response": {
+        "prompt": "Here is code in Python 3 programming lanaguge. Translate the following code from Python 3 to C programming lanaguge. Do not output any extra description or tokens other than the translated code. \n\nimport sys\n\ndef minp():\n\treturn sys.stdin.readline().strip()\n\ndef mint():\n\treturn int(minp())\n\ndef mints():\n\treturn map(int,minp().split())\n\nn,m,mi,ma = mints()\na = list(mints())\nmii = min(a)\nmaa = max(a)\nif mii > mi:\n\tm += 1\nif maa < ma:\n\tm += 1\nif mii < mi or maa > ma or m > n:\n\tprint(\"Incorrect\")\nelse:\n\tprint(\"Correct\")\n||END-of-SRC||",
+        "response": {
+            "id": "multi-call-as-wnr3c3bdfn",
+            "model": "deepseek-v3",
+            "created": 1767068903,
+            "choices": [
+                {
+                    "index": 0,
+                    "message": {
+                        "role": "assistant",
+                        "content": "Here's the translated code in C:\n\n```c\n#include <stdio.h>\n#include <stdlib.h>\n#include <limits.h>\n\nint min(int a, int b) { return a < b ? a : b; }\nint max(int a, int b) { return a > b ? a : b; }\n\nint main() {\n    int n, m, mi, ma;\n    scanf(\"%d%d%d%d\", &n, &m, &mi, &ma);\n    int* a = malloc(n * sizeof(int));\n    int mii = INT_MAX;\n    int maa = INT_MIN;\n    \n    for (int i = 0; i < n; ++i) {\n        scanf(\"%d\", &a[i]);\n        mii = min(mii, a[i]);\n        maa = max(maa, a[i]);\n    }\n    \n    if (mii > mi) m += 1;\n    if (maa < ma) m += 1;\n    \n    if (mii < mi || maa > ma || m > n) {\n        printf(\"Incorrect\");\n    } else {\n        printf(\"Correct\");\n    }\n    \n    free(a);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 1,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <stdlib.h>\n\nint min(int a, int b) {\n    return a < b ? a : b;\n}\n\nint max(int a, int b) {\n    return a > b ? a : b;\n}\n\nint main() {\n    int n, m, mi, ma;\n    scanf(\"%d %d %d %d\", &n, &m, &mi, &ma);\n    int* a = (int*)malloc(n * sizeof(int));\n    int mii = 1000000, maa = -1000000;\n    for (int i = 0; i < n; ++i) {\n        scanf(\"%d\", &a[i]);\n        mii = min(mii, a[i]);\n        maa = max(maa, a[i]);\n    }\n    if (mii > mi) {\n        m += 1;\n    }\n    if (maa < ma) {\n        m += 1;\n    }\n    if (mii < mi || maa > ma || m > n) {\n        printf(\"Incorrect\\n\");\n    } else {\n        printf(\"Correct\\n\");\n    }\n    free(a);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 2,
+                    "message": {
+                        "role": "assistant",
+                        "content": "Here's the translated code in C:\n\n```c\n#include <stdio.h>\n#include <stdlib.h>\n#include <limits.h>\n\nint min(int a, int b) { return a < b ? a : b; }\nint max(int a, int b) { return a > b ? a : b; }\n\nint main() {\n    int n, m, mi, ma;\n    scanf(\"%d %d %d %d\", &n, &m, &mi, &ma);\n    int* a = malloc(n * sizeof(int));\n    int mii = INT_MAX;\n    int maa = INT_MIN;\n    \n    for (int i = 0; i < n; ++i) {\n        scanf(\"%d\", &a[i]);\n        mii = min(mii, a[i]);\n        maa = max(maa, a[i]);\n    }\n    \n    if (mii > mi) m += 1;\n    if (maa < ma) m += 1;\n    \n    if (mii < mi || maa > ma || m > n) {\n        printf(\"Incorrect\\n\");\n    } else {\n        printf(\"Correct\\n\");\n    }\n    \n    free(a);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 3,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <stdlib.h>\n\nint minp() {\n    char buf[100];\n    fgets(buf, sizeof(buf), stdin);\n    int i = 0;\n    while (buf[i] != '\\n' && buf[i] != '\\0') i++;\n    buf[i] = '\\0';\n    return atoi(buf);\n}\n\nvoid mints(int *arr, int size) {\n    char buf[100];\n    fgets(buf, sizeof(buf), stdin);\n    int i = 0, j = 0;\n    while (j < size) {\n        while (buf[i] == ' ') i++;\n        int num = 0;\n        while (buf[i] >= '0' && buf[i] <= '9') {\n            num = num * 10 + (buf[i] - '0');\n            i++;\n        }\n        arr[j++] = num;\n    }\n}\n\nint main() {\n    int n, m, mi, ma;\n    int arr[4];\n    mints(arr, 4);\n    n = arr[0];\n    m = arr[1];\n    mi = arr[2];\n    ma = arr[3];\n    \n    int *a = malloc(n * sizeof(int));\n    mints(a, n);\n    \n    int mii = a[0], maa = a[0];\n    for (int i = 1; i < n; i++) {\n        if (a[i] < mii) mii = a[i];\n        if (a[i] > maa) maa = a[i];\n    }\n    \n    if (mii > mi) m += 1;\n    if (maa < ma) m += 1;\n    \n    if (mii < mi || maa > ma || m > n) {\n        printf(\"Incorrect\\n\");\n    } else {\n        printf(\"Correct\\n\");\n    }\n    \n    free(a);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 4,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <stdlib.h>\n\nint minp() {\n    char buf[100];\n    fgets(buf, sizeof(buf), stdin);\n    int i = 0;\n    while (buf[i] != '\\n' && buf[i] != '\\0') i++;\n    buf[i] = '\\0';\n    return atoi(buf);\n}\n\nvoid mints(int *arr, int size) {\n    char buf[100];\n    fgets(buf, sizeof(buf), stdin);\n    int i = 0, j = 0;\n    while (j < size) {\n        while (buf[i] == ' ') i++;\n        int num = 0;\n        while (buf[i] >= '0' && buf[i] <= '9') {\n            num = num * 10 + (buf[i] - '0');\n            i++;\n        }\n        arr[j++] = num;\n    }\n}\n\nint main() {\n    int n, m, mi, ma;\n    int arr[4];\n    mints(arr, 4);\n    n = arr[0];\n    m = arr[1];\n    mi = arr[2];\n    ma = arr[3];\n    \n    int *a = malloc(n * sizeof(int));\n    mints(a, n);\n    \n    int mii = a[0], maa = a[0];\n    for (int i = 1; i < n; i++) {\n        if (a[i] < mii) mii = a[i];\n        if (a[i] > maa) maa = a[i];\n    }\n    \n    if (mii > mi) m += 1;\n    if (maa < ma) m += 1;\n    \n    if (mii < mi || maa > ma || m > n) {\n        printf(\"Incorrect\\n\");\n    } else {\n        printf(\"Correct\\n\");\n    }\n    \n    free(a);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                }
+            ],
+            "usage": {
+                "prompt_tokens": 805,
+                "completion_tokens": 1580,
+                "total_tokens": 2385
+            }
+        }
+    },
+    "source_data": {
+        "code_uid": "99c9d473cc583582cbe2a6bf3c0ed9f8",
+        "prob_desc_output_to": "standard output",
+        "prob_desc_notes": "NoteIn the first test sample one of the possible initial configurations of temperatures is [1, 2].In the second test sample one of the possible initial configurations of temperatures is [2, 1, 3].In the third test sample it is impossible to add one temperature to obtain the minimum equal to 1 and the maximum equal to 3.",
+        "lang_cluster": "Python",
+        "prob_desc_time_limit": "1 second",
+        "prob_desc_input_spec": "The first line contains four integers n,\u2009m,\u2009min,\u2009max (1\u2009\u2264\u2009m\u2009&lt;\u2009n\u2009\u2264\u2009100;\u00a01\u2009\u2264\u2009min\u2009&lt;\u2009max\u2009\u2264\u2009100). The second line contains m space-separated integers ti (1\u2009\u2264\u2009ti\u2009\u2264\u2009100) \u2014 the temperatures reported by the assistant. Note, that the reported temperatures, and the temperatures you want to add can contain equal temperatures.",
+        "source_code": "import sys\n\ndef minp():\n\treturn sys.stdin.readline().strip()\n\ndef mint():\n\treturn int(minp())\n\ndef mints():\n\treturn map(int,minp().split())\n\nn,m,mi,ma = mints()\na = list(mints())\nmii = min(a)\nmaa = max(a)\nif mii > mi:\n\tm += 1\nif maa < ma:\n\tm += 1\nif mii < mi or maa > ma or m > n:\n\tprint(\"Incorrect\")\nelse:\n\tprint(\"Correct\")\n",
+        "prob_desc_sample_inputs": [
+            "2 1 1 2\n1",
+            "3 1 1 3\n2",
+            "2 1 1 3\n2"
+        ],
+        "prob_desc_memory_limit": "256 megabytes",
+        "exec_outcome": "PASSED",
+        "prob_desc_output_spec": "If the data is consistent, print 'Correct' (without the quotes). Otherwise, print 'Incorrect' (without the quotes).",
+        "src_uid": "99f9cdc85010bd89434f39b78f15b65e",
+        "prob_desc_input_from": "standard input",
+        "lang": "Python 3",
+        "prob_desc_sample_outputs": [
+            "Correct",
+            "Correct",
+            "Incorrect"
+        ],
+        "file_name": "d7021504500d5ca7c2b02df8100a574d159e6e67e20ec8071b75800b1267370a",
+        "prob_desc_description": "Not so long ago company R2 bought company R1 and consequently, all its developments in the field of multicore processors. Now the R2 laboratory is testing one of the R1 processors.The testing goes in n steps, at each step the processor gets some instructions, and then its temperature is measured. The head engineer in R2 is keeping a report record on the work of the processor: he writes down the minimum and the maximum measured temperature in his notebook. His assistant had to write down all temperatures into his notebook, but (for unknown reasons) he recorded only m.The next day, the engineer's assistant filed in a report with all the m temperatures. However, the chief engineer doubts that the assistant wrote down everything correctly (naturally, the chief engineer doesn't doubt his notes). So he asked you to help him. Given numbers n, m, min, max and the list of m temperatures determine whether you can upgrade the set of m temperatures to the set of n temperatures (that is add n\u2009-\u2009m temperatures), so that the minimum temperature was min and the maximum one was max.",
+        "prob_desc_created_at": "1397977200",
+        "difficulty": 1200.0,
+        "hidden_unit_tests": "[{\"input\": \"2 1 1 2\\r\\n1\\r\\n\", \"output\": [\"Correct\"]}, {\"input\": \"3 1 1 3\\r\\n2\\r\\n\", \"output\": [\"Correct\"]}, {\"input\": \"2 1 1 3\\r\\n2\\r\\n\", \"output\": [\"Incorrect\"]}, {\"input\": \"3 1 1 5\\r\\n3\\r\\n\", \"output\": [\"Correct\"]}, {\"input\": \"3 2 1 5\\r\\n1 5\\r\\n\", \"output\": [\"Correct\"]}, {\"input\": \"3 2 1 5\\r\\n1 1\\r\\n\", \"output\": [\"Correct\"]}, {\"input\": \"3 2 1 5\\r\\n5 5\\r\\n\", \"output\": [\"Correct\"]}, {\"input\": \"3 2 1 5\\r\\n1 6\\r\\n\", \"output\": [\"Incorrect\"]}, {\"input\": \"3 2 5 10\\r\\n1 10\\r\\n\", \"output\": [\"Incorrect\"]}, {\"input\": \"6 5 3 6\\r\\n4 4 4 4 4\\r\\n\", \"output\": [\"Incorrect\"]}, {\"input\": \"100 50 68 97\\r\\n20 42 93 1 98 6 32 11 48 46 82 96 24 73 40 100 99 10 55 87 65 80 97 54 59 48 30 22 16 92 66 2 22 60 23 81 64 60 34 60 99 99 4 70 91 99 30 20 41 96\\r\\n\", \"output\": [\"Incorrect\"]}, {\"input\": \"100 50 1 2\\r\\n1 1 2 1 1 2 2 1 1 1 1 1 2 2 1 2 1 2 2 1 1 1 2 2 2 1 1 2 1 1 1 1 2 2 1 1 1 1 1 2 1 1 1 2 1 2 2 2 1 2\\r\\n\", \"output\": [\"Correct\"]}, {\"input\": \"100 99 1 2\\r\\n2 1 1 1 2 2 1 1 1 2 2 2 1 2 1 1 2 1 1 2 1 2 2 1 2 1 2 1 2 1 2 2 2 2 1 1 1 1 1 2 1 2 2 1 2 2 2 1 1 1 1 1 2 2 2 2 1 2 2 1 1 1 2 1 1 2 1 1 2 1 2 1 2 1 1 1 1 2 1 1 1 1 1 2 2 2 1 1 1 1 2 2 2 2 1 1 2 2 2\\r\\n\", \"output\": [\"Correct\"]}, {\"input\": \"3 2 2 100\\r\\n40 1\\r\\n\", \"output\": [\"Incorrect\"]}, {\"input\": \"3 2 2 3\\r\\n4 4\\r\\n\", \"output\": [\"Incorrect\"]}, {\"input\": \"5 2 2 4\\r\\n2 2\\r\\n\", \"output\": [\"Correct\"]}, {\"input\": \"5 1 1 4\\r\\n1\\r\\n\", \"output\": [\"Correct\"]}, {\"input\": \"9 7 1 4\\r\\n4 3 3 2 2 4 1\\r\\n\", \"output\": [\"Correct\"]}, {\"input\": \"9 5 2 3\\r\\n4 2 4 3 3\\r\\n\", \"output\": [\"Incorrect\"]}, {\"input\": \"6 3 1 3\\r\\n1 4 2\\r\\n\", \"output\": [\"Incorrect\"]}, {\"input\": \"3 2 1 99\\r\\n34 100\\r\\n\", \"output\": [\"Incorrect\"]}, {\"input\": \"4 2 1 99\\r\\n100 38\\r\\n\", \"output\": [\"Incorrect\"]}, {\"input\": \"5 2 1 99\\r\\n100 38\\r\\n\", \"output\": [\"Incorrect\"]}, {\"input\": \"4 2 1 99\\r\\n36 51\\r\\n\", \"output\": [\"Correct\"]}, {\"input\": \"7 6 3 10\\r\\n5 10 7 7 4 5\\r\\n\", \"output\": [\"Correct\"]}, {\"input\": \"8 6 3 10\\r\\n8 5 7 8 4 4\\r\\n\", \"output\": [\"Correct\"]}, {\"input\": \"9 6 3 10\\r\\n9 7 7 5 3 10\\r\\n\", \"output\": [\"Correct\"]}, {\"input\": \"16 15 30 40\\r\\n36 37 35 36 34 34 37 35 32 33 31 38 39 38 38\\r\\n\", \"output\": [\"Incorrect\"]}, {\"input\": \"17 15 30 40\\r\\n38 36 37 34 30 38 38 31 38 38 36 39 39 37 35\\r\\n\", \"output\": [\"Correct\"]}, {\"input\": \"18 15 30 40\\r\\n35 37 31 32 30 33 36 38 36 38 31 30 39 32 36\\r\\n\", \"output\": [\"Correct\"]}, {\"input\": \"17 16 30 40\\r\\n39 32 37 31 40 32 36 34 56 34 40 36 37 36 33 36\\r\\n\", \"output\": [\"Incorrect\"]}, {\"input\": \"18 16 30 40\\r\\n32 35 33 39 34 30 37 34 30 34 39 18 32 37 37 36\\r\\n\", \"output\": [\"Incorrect\"]}, {\"input\": \"19 16 30 40\\r\\n36 30 37 30 37 32 34 30 35 35 33 35 39 37 46 37\\r\\n\", \"output\": [\"Incorrect\"]}, {\"input\": \"2 1 2 100\\r\\n38\\r\\n\", \"output\": [\"Incorrect\"]}, {\"input\": \"3 1 2 100\\r\\n1\\r\\n\", \"output\": [\"Incorrect\"]}, {\"input\": \"4 1 2 100\\r\\n1\\r\\n\", \"output\": [\"Incorrect\"]}, {\"input\": \"91 38 1 3\\r\\n3 2 3 2 3 2 3 3 1 1 1 2 2 1 3 2 3 1 3 3 1 3 3 2 1 2 2 3 1 2 1 3 2 2 3 1 1 2\\r\\n\", \"output\": [\"Correct\"]}, {\"input\": \"4 3 2 10\\r\\n6 3 10\\r\\n\", \"output\": [\"Correct\"]}, {\"input\": \"41 6 4 10\\r\\n10 7 4 9 9 10\\r\\n\", \"output\": [\"Correct\"]}, {\"input\": \"21 1 1 9\\r\\n9\\r\\n\", \"output\": [\"Correct\"]}, {\"input\": \"2 1 9 10\\r\\n10\\r\\n\", \"output\": [\"Correct\"]}, {\"input\": \"2 1 2 9\\r\\n9\\r\\n\", \"output\": [\"Correct\"]}, {\"input\": \"8 7 5 9\\r\\n6 7 8 5 5 6 6\\r\\n\", \"output\": [\"Correct\"]}, {\"input\": \"3 2 2 8\\r\\n7 2\\r\\n\", \"output\": [\"Correct\"]}, {\"input\": \"71 36 1 10\\r\\n7 10 8 1 3 8 5 7 3 10 8 1 6 4 5 7 8 2 4 3 4 10 8 5 1 2 8 8 10 10 4 3 7 9 7 8\\r\\n\", \"output\": [\"Correct\"]}, {\"input\": \"85 3 4 9\\r\\n4 8 7\\r\\n\", \"output\": [\"Correct\"]}, {\"input\": \"4 3 4 10\\r\\n9 10 5\\r\\n\", \"output\": [\"Correct\"]}, {\"input\": \"2 1 1 5\\r\\n1\\r\\n\", \"output\": [\"Correct\"]}, {\"input\": \"91 75 1 10\\r\\n2 6 9 7 4 9 4 8 10 6 4 1 10 6 5 9 7 5 1 4 6 4 8 2 1 3 5 7 6 9 5 5 8 1 7 1 4 2 8 3 1 6 6 2 10 6 2 2 8 5 4 5 5 3 10 9 4 3 1 9 10 3 2 4 8 7 4 9 3 1 1 1 3 4 5\\r\\n\", \"output\": [\"Correct\"]}, {\"input\": \"10 4 1 8\\r\\n7 9 6 6\\r\\n\", \"output\": [\"Incorrect\"]}, {\"input\": \"18 1 3 10\\r\\n2\\r\\n\", \"output\": [\"Incorrect\"]}, {\"input\": \"6 2 4 8\\r\\n6 3\\r\\n\", \"output\": [\"Incorrect\"]}, {\"input\": \"17 6 2 8\\r\\n3 8 6 1 6 4\\r\\n\", \"output\": [\"Incorrect\"]}, {\"input\": \"21 1 5 8\\r\\n4\\r\\n\", \"output\": [\"Incorrect\"]}, {\"input\": \"2 1 1 10\\r\\n9\\r\\n\", \"output\": [\"Incorrect\"]}, {\"input\": \"2 1 4 8\\r\\n5\\r\\n\", \"output\": [\"Incorrect\"]}, {\"input\": \"2 1 1 7\\r\\n6\\r\\n\", \"output\": [\"Incorrect\"]}, {\"input\": \"2 1 4 9\\r\\n5\\r\\n\", \"output\": [\"Incorrect\"]}, {\"input\": \"2 1 3 8\\r\\n7\\r\\n\", \"output\": [\"Incorrect\"]}, {\"input\": \"2 1 5 9\\r\\n6\\r\\n\", \"output\": [\"Incorrect\"]}, {\"input\": \"3 2 1 10\\r\\n4 9\\r\\n\", \"output\": [\"Incorrect\"]}, {\"input\": \"2 1 4 10\\r\\n7\\r\\n\", \"output\": [\"Incorrect\"]}, {\"input\": \"2 1 2 9\\r\\n8\\r\\n\", \"output\": [\"Incorrect\"]}, {\"input\": \"2 1 3 9\\r\\n3\\r\\n\", \"output\": [\"Correct\"]}, {\"input\": \"3 2 6 7\\r\\n6 6\\r\\n\", \"output\": [\"Correct\"]}, {\"input\": \"6 4 1 10\\r\\n11 10 9 1\\r\\n\", \"output\": [\"Incorrect\"]}, {\"input\": \"7 6 3 8\\r\\n3 4 5 6 7 8\\r\\n\", \"output\": [\"Correct\"]}, {\"input\": \"5 3 1 5\\r\\n2 3 4\\r\\n\", \"output\": [\"Correct\"]}]",
+        "source_lang": "Python 3",
+        "target_lang": "C"
+    }
+}

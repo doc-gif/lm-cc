@@ -1,0 +1,89 @@
+{
+    "oai_response": {
+        "prompt": "Here is code in Python 3 programming lanaguge. Translate the following code from Python 3 to C programming lanaguge. Do not output any extra description or tokens other than the translated code. \n\nstart, stop = input().split()\nn = int(input())\n\nd = {'v': 2 , '<': 3, '^':0, '>':1}\n\nif (d[start] + n) % 4 == d[stop]:\n    clockwise = True\nelse:\n    clockwise = False\n\nif (d[start] - n) % 4 == d[stop]:\n    counter_clockwise = True\nelse:\n    counter_clockwise = False\n\n\nif counter_clockwise and clockwise:\n    print('undefined')\nelif clockwise:\n    print('cw')\nelse:\n    print('ccw')\n||END-of-SRC||",
+        "response": {
+            "id": "multi-call-as-75jjjm7vbz",
+            "model": "deepseek-v3",
+            "created": 1767066794,
+            "choices": [
+                {
+                    "index": 0,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <string.h>\n\nint main() {\n    char start[2], stop[2];\n    int n;\n    scanf(\"%s %s\", start, stop);\n    scanf(\"%d\", &n);\n    \n    int d[256] = {0};\n    d['v'] = 2;\n    d['<'] = 3;\n    d['^'] = 0;\n    d['>'] = 1;\n    \n    int clockwise = (d[(int)start[0]] + n) % 4 == d[(int)stop[0]];\n    int counter_clockwise = (d[(int)start[0]] - n) % 4 == d[(int)stop[0]];\n    \n    if (counter_clockwise && clockwise) {\n        printf(\"undefined\\n\");\n    } else if (clockwise) {\n        printf(\"cw\\n\");\n    } else {\n        printf(\"ccw\\n\");\n    }\n    \n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 1,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <string.h>\n\nint main() {\n    char start[2], stop[2];\n    int n;\n    scanf(\"%s %s\", start, stop);\n    scanf(\"%d\", &n);\n    \n    int d[256] = {0};\n    d['v'] = 2;\n    d['<'] = 3;\n    d['^'] = 0;\n    d['>'] = 1;\n    \n    int clockwise = (d[(int)start[0]] + n) % 4 == d[(int)stop[0]];\n    int counter_clockwise = (d[(int)start[0]] - n) % 4 == d[(int)stop[0]];\n    \n    if (counter_clockwise && clockwise) {\n        printf(\"undefined\\n\");\n    } else if (clockwise) {\n        printf(\"cw\\n\");\n    } else {\n        printf(\"ccw\\n\");\n    }\n    \n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 2,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <string.h>\n\nint main() {\n    char start[2], stop[2];\n    int n;\n    scanf(\"%s %s\", start, stop);\n    scanf(\"%d\", &n);\n    \n    int d[256] = {0};\n    d['v'] = 2;\n    d['<'] = 3;\n    d['^'] = 0;\n    d['>'] = 1;\n    \n    int clockwise = (d[(int)start[0]] + n) % 4 == d[(int)stop[0]];\n    int counter_clockwise = (d[(int)start[0]] - n) % 4 == d[(int)stop[0]];\n    \n    if (counter_clockwise && clockwise) {\n        printf(\"undefined\\n\");\n    } else if (clockwise) {\n        printf(\"cw\\n\");\n    } else {\n        printf(\"ccw\\n\");\n    }\n    \n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 3,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <string.h>\n\nint main() {\n    char start[2], stop[2];\n    int n;\n    scanf(\"%s %s\", start, stop);\n    scanf(\"%d\", &n);\n    \n    int d[256] = {0};\n    d['v'] = 2;\n    d['<'] = 3;\n    d['^'] = 0;\n    d['>'] = 1;\n    \n    int clockwise = (d[(int)start[0]] + n) % 4 == d[(int)stop[0]];\n    int counter_clockwise = (d[(int)start[0]] - n) % 4 == d[(int)stop[0]];\n    \n    if (counter_clockwise && clockwise) {\n        printf(\"undefined\\n\");\n    } else if (clockwise) {\n        printf(\"cw\\n\");\n    } else {\n        printf(\"ccw\\n\");\n    }\n    \n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 4,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <string.h>\n\nint main() {\n    char start[2], stop[2];\n    int n;\n    scanf(\"%s %s\", start, stop);\n    scanf(\"%d\", &n);\n    \n    int d[256] = {0};\n    d['v'] = 2;\n    d['<'] = 3;\n    d['^'] = 0;\n    d['>'] = 1;\n    \n    int clockwise = (d[(int)start[0]] + n) % 4 == d[(int)stop[0]];\n    int counter_clockwise = (d[(int)start[0]] - n) % 4 == d[(int)stop[0]];\n    \n    if (counter_clockwise && clockwise) {\n        printf(\"undefined\\n\");\n    } else if (clockwise) {\n        printf(\"cw\\n\");\n    } else {\n        printf(\"ccw\\n\");\n    }\n    \n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                }
+            ],
+            "usage": {
+                "prompt_tokens": 875,
+                "completion_tokens": 1040,
+                "total_tokens": 1915
+            }
+        }
+    },
+    "source_data": {
+        "code_uid": "6725ff8a048b6cf041ad691bea220b2a",
+        "prob_desc_output_to": "standard output",
+        "prob_desc_notes": null,
+        "lang_cluster": "Python",
+        "prob_desc_time_limit": "1 second",
+        "prob_desc_input_spec": "There are two characters in the first string\u00a0\u2013 the starting and the ending position of a spinner. The position is encoded with one of the following characters: v (ASCII code 118, lowercase v), &lt; (ASCII code 60), ^ (ASCII code 94) or &gt; (ASCII code 62) (see the picture above for reference). Characters are separated by a single space. In the second strings, a single number n is given (0\u2009\u2264\u2009n\u2009\u2264\u2009109)\u00a0\u2013 the duration of the rotation. It is guaranteed that the ending position of a spinner is a result of a n second spin in any of the directions, assuming the given starting position.",
+        "source_code": "start, stop = input().split()\nn = int(input())\n\nd = {'v': 2 , '<': 3, '^':0, '>':1}\n\nif (d[start] + n) % 4 == d[stop]:\n    clockwise = True\nelse:\n    clockwise = False\n\nif (d[start] - n) % 4 == d[stop]:\n    counter_clockwise = True\nelse:\n    counter_clockwise = False\n\n\nif counter_clockwise and clockwise:\n    print('undefined')\nelif clockwise:\n    print('cw')\nelse:\n    print('ccw')\n",
+        "prob_desc_sample_inputs": [
+            "^ &gt;\n1",
+            "&lt; ^\n3",
+            "^ v\n6"
+        ],
+        "prob_desc_memory_limit": "256 megabytes",
+        "exec_outcome": "PASSED",
+        "prob_desc_output_spec": "Output cw, if the direction is clockwise, ccw\u00a0\u2013 if counter-clockwise, and undefined otherwise.",
+        "src_uid": "fb99ef80fd21f98674fe85d80a2e5298",
+        "prob_desc_input_from": "standard input",
+        "lang": "Python 3",
+        "prob_desc_sample_outputs": [
+            "cw",
+            "ccw",
+            "undefined"
+        ],
+        "file_name": "d7021504500d5ca7c2b02df8100a574d159e6e67e20ec8071b75800b1267370a",
+        "prob_desc_description": "  Walking through the streets of Marshmallow City, Slastyona have spotted some merchants selling a kind of useless toy which is very popular nowadays\u00a0\u2013 caramel spinner! Wanting to join the craze, she has immediately bought the strange contraption.Spinners in Sweetland have the form of V-shaped pieces of caramel. Each spinner can, well, spin around an invisible magic axis. At a specific point in time, a spinner can take 4 positions shown below (each one rotated 90 degrees relative to the previous, with the fourth one followed by the first one):  After the spinner was spun, it starts its rotation, which is described by a following algorithm: the spinner maintains its position for a second then majestically switches to the next position in clockwise or counter-clockwise order, depending on the direction the spinner was spun in.Slastyona managed to have spinner rotating for exactly n seconds. Being fascinated by elegance of the process, she completely forgot the direction the spinner was spun in! Lucky for her, she managed to recall the starting position, and wants to deduct the direction given the information she knows. Help her do this.",
+        "prob_desc_created_at": "1501425300",
+        "difficulty": 900.0,
+        "hidden_unit_tests": "[{\"input\": \"^ >\\r\\n1\\r\\n\", \"output\": [\"cw\"]}, {\"input\": \"< ^\\r\\n3\\r\\n\", \"output\": [\"ccw\"]}, {\"input\": \"^ v\\r\\n6\\r\\n\", \"output\": [\"undefined\"]}, {\"input\": \"^ >\\r\\n999999999\\r\\n\", \"output\": [\"ccw\"]}, {\"input\": \"> v\\r\\n1\\r\\n\", \"output\": [\"cw\"]}, {\"input\": \"v <\\r\\n1\\r\\n\", \"output\": [\"cw\"]}, {\"input\": \"< ^\\r\\n1\\r\\n\", \"output\": [\"cw\"]}, {\"input\": \"v <\\r\\n422435957\\r\\n\", \"output\": [\"cw\"]}, {\"input\": \"v >\\r\\n139018901\\r\\n\", \"output\": [\"ccw\"]}, {\"input\": \"v ^\\r\\n571728018\\r\\n\", \"output\": [\"undefined\"]}, {\"input\": \"^ ^\\r\\n0\\r\\n\", \"output\": [\"undefined\"]}, {\"input\": \"< >\\r\\n2\\r\\n\", \"output\": [\"undefined\"]}, {\"input\": \"> >\\r\\n1000000000\\r\\n\", \"output\": [\"undefined\"]}, {\"input\": \"v v\\r\\n8\\r\\n\", \"output\": [\"undefined\"]}, {\"input\": \"< <\\r\\n1568\\r\\n\", \"output\": [\"undefined\"]}, {\"input\": \"^ v\\r\\n2\\r\\n\", \"output\": [\"undefined\"]}, {\"input\": \"^ <\\r\\n1\\r\\n\", \"output\": [\"ccw\"]}, {\"input\": \"< v\\r\\n1\\r\\n\", \"output\": [\"ccw\"]}, {\"input\": \"v >\\r\\n1\\r\\n\", \"output\": [\"ccw\"]}, {\"input\": \"> ^\\r\\n1\\r\\n\", \"output\": [\"ccw\"]}, {\"input\": \"v v\\r\\n927162384\\r\\n\", \"output\": [\"undefined\"]}, {\"input\": \"^ <\\r\\n467441155\\r\\n\", \"output\": [\"cw\"]}, {\"input\": \"^ >\\r\\n822875521\\r\\n\", \"output\": [\"cw\"]}, {\"input\": \"^ <\\r\\n821690113\\r\\n\", \"output\": [\"ccw\"]}, {\"input\": \"^ <\\r\\n171288453\\r\\n\", \"output\": [\"ccw\"]}, {\"input\": \"^ <\\r\\n110821381\\r\\n\", \"output\": [\"ccw\"]}, {\"input\": \"^ ^\\r\\n539580280\\r\\n\", \"output\": [\"undefined\"]}, {\"input\": \"^ >\\r\\n861895563\\r\\n\", \"output\": [\"ccw\"]}, {\"input\": \"v v\\r\\n4\\r\\n\", \"output\": [\"undefined\"]}, {\"input\": \"^ ^\\r\\n4\\r\\n\", \"output\": [\"undefined\"]}, {\"input\": \"> >\\r\\n4\\r\\n\", \"output\": [\"undefined\"]}, {\"input\": \"< <\\r\\n8\\r\\n\", \"output\": [\"undefined\"]}, {\"input\": \"v v\\r\\n0\\r\\n\", \"output\": [\"undefined\"]}, {\"input\": \"^ <\\r\\n11\\r\\n\", \"output\": [\"cw\"]}, {\"input\": \"< <\\r\\n4\\r\\n\", \"output\": [\"undefined\"]}, {\"input\": \"< <\\r\\n0\\r\\n\", \"output\": [\"undefined\"]}, {\"input\": \"< v\\r\\n3\\r\\n\", \"output\": [\"cw\"]}, {\"input\": \"^ <\\r\\n3\\r\\n\", \"output\": [\"cw\"]}, {\"input\": \"^ <\\r\\n7\\r\\n\", \"output\": [\"cw\"]}, {\"input\": \"< >\\r\\n6\\r\\n\", \"output\": [\"undefined\"]}, {\"input\": \"v >\\r\\n3\\r\\n\", \"output\": [\"cw\"]}, {\"input\": \"> >\\r\\n300\\r\\n\", \"output\": [\"undefined\"]}, {\"input\": \"> >\\r\\n0\\r\\n\", \"output\": [\"undefined\"]}, {\"input\": \"v <\\r\\n3\\r\\n\", \"output\": [\"ccw\"]}, {\"input\": \"> >\\r\\n12\\r\\n\", \"output\": [\"undefined\"]}]",
+        "source_lang": "Python 3",
+        "target_lang": "C"
+    }
+}

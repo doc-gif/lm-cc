@@ -1,0 +1,85 @@
+{
+    "oai_response": {
+        "prompt": "Here is code in Python 3 programming lanaguge. Translate the following code from Python 3 to C programming lanaguge. Do not output any extra description or tokens other than the translated code. \n\ndef calculator(a):\n    if a%3 == 0 or a%7 == 0:\n        return \"YES\"\n    while a>=3:\n        a-=7\n        if a>0 and a%3==0:\n            return \"YES\"\n    return \"NO\"\nfor i in range(int(input())):\n    print(calculator(int(input())))\n    ||END-of-SRC||",
+        "response": {
+            "id": "multi-call-as-xv88rfq3i4",
+            "model": "deepseek-v3",
+            "created": 1767066450,
+            "choices": [
+                {
+                    "index": 0,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n\nconst char* calculator(int a) {\n    if (a % 3 == 0 || a % 7 == 0) {\n        return \"YES\";\n    }\n    while (a >= 3) {\n        a -= 7;\n        if (a > 0 && a % 3 == 0) {\n            return \"YES\";\n        }\n    }\n    return \"NO\";\n}\n\nint main() {\n    int t, a;\n    scanf(\"%d\", &t);\n    while (t--) {\n        scanf(\"%d\", &a);\n        printf(\"%s\\n\", calculator(a));\n    }\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 1,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n\nconst char* calculator(int a) {\n    if (a % 3 == 0 || a % 7 == 0) {\n        return \"YES\";\n    }\n    while (a >= 3) {\n        a -= 7;\n        if (a > 0 && a % 3 == 0) {\n            return \"YES\";\n        }\n    }\n    return \"NO\";\n}\n\nint main() {\n    int t, a;\n    scanf(\"%d\", &t);\n    while (t--) {\n        scanf(\"%d\", &a);\n        printf(\"%s\\n\", calculator(a));\n    }\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 2,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n\nconst char* calculator(int a) {\n    if (a % 3 == 0 || a % 7 == 0) {\n        return \"YES\";\n    }\n    while (a >= 3) {\n        a -= 7;\n        if (a > 0 && a % 3 == 0) {\n            return \"YES\";\n        }\n    }\n    return \"NO\";\n}\n\nint main() {\n    int t, a;\n    scanf(\"%d\", &t);\n    while (t--) {\n        scanf(\"%d\", &a);\n        printf(\"%s\\n\", calculator(a));\n    }\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 3,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n\nconst char* calculator(int a) {\n    if (a % 3 == 0 || a % 7 == 0) {\n        return \"YES\";\n    }\n    while (a >= 3) {\n        a -= 7;\n        if (a > 0 && a % 3 == 0) {\n            return \"YES\";\n        }\n    }\n    return \"NO\";\n}\n\nint main() {\n    int t, a;\n    scanf(\"%d\", &t);\n    while (t--) {\n        scanf(\"%d\", &a);\n        printf(\"%s\\n\", calculator(a));\n    }\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 4,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n\nconst char* calculator(int a) {\n    if (a % 3 == 0 || a % 7 == 0) {\n        return \"YES\";\n    }\n    while (a >= 3) {\n        a -= 7;\n        if (a > 0 && a % 3 == 0) {\n            return \"YES\";\n        }\n    }\n    return \"NO\";\n}\n\nint main() {\n    int t, a;\n    scanf(\"%d\", &t);\n    while (t--) {\n        scanf(\"%d\", &a);\n        printf(\"%s\\n\", calculator(a));\n    }\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                }
+            ],
+            "usage": {
+                "prompt_tokens": 630,
+                "completion_tokens": 706,
+                "total_tokens": 1336
+            }
+        }
+    },
+    "source_data": {
+        "code_uid": "cc26a8f50c3655dde6009e86559dc2e1",
+        "prob_desc_output_to": "standard output",
+        "prob_desc_notes": "NoteIn the first example Ivan can buy two small portions.In the second example Ivan cannot buy exactly 5 chunks, since one small portion is not enough, but two small portions or one large is too much.",
+        "lang_cluster": "Python",
+        "prob_desc_time_limit": "1 second",
+        "prob_desc_input_spec": "The first line contains one integer n (1\u2009\u2264\u2009n\u2009\u2264\u2009100) \u2014 the number of testcases. The i-th of the following n lines contains one integer xi (1\u2009\u2264\u2009xi\u2009\u2264\u2009100) \u2014 the number of chicken chunks Ivan wants to eat.",
+        "source_code": "def calculator(a):\n    if a%3 == 0 or a%7 == 0:\n        return \"YES\"\n    while a>=3:\n        a-=7\n        if a>0 and a%3==0:\n            return \"YES\"\n    return \"NO\"\nfor i in range(int(input())):\n    print(calculator(int(input())))\n    ",
+        "prob_desc_sample_inputs": [
+            "2\n6\n5"
+        ],
+        "prob_desc_memory_limit": "256 megabytes",
+        "exec_outcome": "PASSED",
+        "prob_desc_output_spec": "Print n lines, in i-th line output YES if Ivan can buy exactly xi chunks. Otherwise, print NO.",
+        "src_uid": "cfd1182be98fb5f0c426f8b68e48d452",
+        "prob_desc_input_from": "standard input",
+        "lang": "Python 3",
+        "prob_desc_sample_outputs": [
+            "YES\nNO"
+        ],
+        "file_name": "d7021504500d5ca7c2b02df8100a574d159e6e67e20ec8071b75800b1267370a",
+        "prob_desc_description": "Ivan's classes at the university have just finished, and now he wants to go to the local CFK cafe and eat some fried chicken.CFK sells chicken chunks in small and large portions. A small portion contains 3 chunks; a large one \u2014 7 chunks. Ivan wants to eat exactly x chunks. Now he wonders whether he can buy exactly this amount of chicken.Formally, Ivan wants to know if he can choose two non-negative integers a and b in such a way that a small portions and b large ones contain exactly x chunks.Help Ivan to answer this question for several values of x!",
+        "prob_desc_created_at": "1513091100",
+        "difficulty": 900.0,
+        "hidden_unit_tests": "[{\"input\": \"2\\r\\n6\\r\\n5\\r\\n\", \"output\": [\"YES\\r\\nNO\"]}, {\"input\": \"100\\r\\n1\\r\\n2\\r\\n3\\r\\n4\\r\\n5\\r\\n6\\r\\n7\\r\\n8\\r\\n9\\r\\n10\\r\\n11\\r\\n12\\r\\n13\\r\\n14\\r\\n15\\r\\n16\\r\\n17\\r\\n18\\r\\n19\\r\\n20\\r\\n21\\r\\n22\\r\\n23\\r\\n24\\r\\n25\\r\\n26\\r\\n27\\r\\n28\\r\\n29\\r\\n30\\r\\n31\\r\\n32\\r\\n33\\r\\n34\\r\\n35\\r\\n36\\r\\n37\\r\\n38\\r\\n39\\r\\n40\\r\\n41\\r\\n42\\r\\n43\\r\\n44\\r\\n45\\r\\n46\\r\\n47\\r\\n48\\r\\n49\\r\\n50\\r\\n51\\r\\n52\\r\\n53\\r\\n54\\r\\n55\\r\\n56\\r\\n57\\r\\n58\\r\\n59\\r\\n60\\r\\n61\\r\\n62\\r\\n63\\r\\n64\\r\\n65\\r\\n66\\r\\n67\\r\\n68\\r\\n69\\r\\n70\\r\\n71\\r\\n72\\r\\n73\\r\\n74\\r\\n75\\r\\n76\\r\\n77\\r\\n78\\r\\n79\\r\\n80\\r\\n81\\r\\n82\\r\\n83\\r\\n84\\r\\n85\\r\\n86\\r\\n87\\r\\n88\\r\\n89\\r\\n90\\r\\n91\\r\\n92\\r\\n93\\r\\n94\\r\\n95\\r\\n96\\r\\n97\\r\\n98\\r\\n99\\r\\n100\\r\\n\", \"output\": [\"NO\\r\\nNO\\r\\nYES\\r\\nNO\\r\\nNO\\r\\nYES\\r\\nYES\\r\\nNO\\r\\nYES\\r\\nYES\\r\\nNO\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\"]}, {\"input\": \"3\\r\\n6\\r\\n6\\r\\n6\\r\\n\", \"output\": [\"YES\\r\\nYES\\r\\nYES\"]}, {\"input\": \"47\\r\\n1\\r\\n1\\r\\n1\\r\\n1\\r\\n1\\r\\n1\\r\\n1\\r\\n1\\r\\n1\\r\\n1\\r\\n1\\r\\n1\\r\\n1\\r\\n1\\r\\n1\\r\\n1\\r\\n1\\r\\n1\\r\\n1\\r\\n1\\r\\n1\\r\\n1\\r\\n1\\r\\n1\\r\\n1\\r\\n1\\r\\n1\\r\\n1\\r\\n1\\r\\n1\\r\\n1\\r\\n1\\r\\n1\\r\\n1\\r\\n1\\r\\n1\\r\\n1\\r\\n1\\r\\n1\\r\\n1\\r\\n1\\r\\n1\\r\\n1\\r\\n1\\r\\n1\\r\\n1\\r\\n1\\r\\n\", \"output\": [\"NO\\r\\nNO\\r\\nNO\\r\\nNO\\r\\nNO\\r\\nNO\\r\\nNO\\r\\nNO\\r\\nNO\\r\\nNO\\r\\nNO\\r\\nNO\\r\\nNO\\r\\nNO\\r\\nNO\\r\\nNO\\r\\nNO\\r\\nNO\\r\\nNO\\r\\nNO\\r\\nNO\\r\\nNO\\r\\nNO\\r\\nNO\\r\\nNO\\r\\nNO\\r\\nNO\\r\\nNO\\r\\nNO\\r\\nNO\\r\\nNO\\r\\nNO\\r\\nNO\\r\\nNO\\r\\nNO\\r\\nNO\\r\\nNO\\r\\nNO\\r\\nNO\\r\\nNO\\r\\nNO\\r\\nNO\\r\\nNO\\r\\nNO\\r\\nNO\\r\\nNO\\r\\nNO\"]}, {\"input\": \"3\\r\\n1\\r\\n52\\r\\n76\\r\\n\", \"output\": [\"NO\\r\\nYES\\r\\nYES\"]}, {\"input\": \"87\\r\\n100\\r\\n100\\r\\n100\\r\\n100\\r\\n100\\r\\n100\\r\\n100\\r\\n100\\r\\n100\\r\\n100\\r\\n100\\r\\n100\\r\\n100\\r\\n100\\r\\n100\\r\\n100\\r\\n100\\r\\n100\\r\\n100\\r\\n100\\r\\n100\\r\\n100\\r\\n100\\r\\n100\\r\\n100\\r\\n100\\r\\n100\\r\\n100\\r\\n100\\r\\n100\\r\\n100\\r\\n100\\r\\n100\\r\\n100\\r\\n100\\r\\n100\\r\\n100\\r\\n100\\r\\n100\\r\\n100\\r\\n100\\r\\n100\\r\\n100\\r\\n100\\r\\n100\\r\\n100\\r\\n100\\r\\n100\\r\\n100\\r\\n100\\r\\n100\\r\\n100\\r\\n100\\r\\n100\\r\\n100\\r\\n100\\r\\n100\\r\\n100\\r\\n100\\r\\n100\\r\\n100\\r\\n100\\r\\n100\\r\\n100\\r\\n100\\r\\n100\\r\\n100\\r\\n100\\r\\n100\\r\\n100\\r\\n100\\r\\n100\\r\\n100\\r\\n100\\r\\n100\\r\\n100\\r\\n100\\r\\n100\\r\\n100\\r\\n100\\r\\n100\\r\\n100\\r\\n100\\r\\n100\\r\\n100\\r\\n100\\r\\n100\\r\\n\", \"output\": [\"YES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\"]}, {\"input\": \"3\\r\\n3\\r\\n2\\r\\n1\\r\\n\", \"output\": [\"YES\\r\\nNO\\r\\nNO\"]}, {\"input\": \"100\\r\\n100\\r\\n100\\r\\n100\\r\\n100\\r\\n100\\r\\n100\\r\\n100\\r\\n100\\r\\n100\\r\\n100\\r\\n100\\r\\n100\\r\\n100\\r\\n100\\r\\n100\\r\\n100\\r\\n100\\r\\n100\\r\\n100\\r\\n100\\r\\n100\\r\\n100\\r\\n100\\r\\n100\\r\\n100\\r\\n100\\r\\n100\\r\\n100\\r\\n100\\r\\n100\\r\\n100\\r\\n100\\r\\n100\\r\\n100\\r\\n100\\r\\n100\\r\\n100\\r\\n100\\r\\n100\\r\\n100\\r\\n100\\r\\n100\\r\\n100\\r\\n100\\r\\n100\\r\\n100\\r\\n100\\r\\n100\\r\\n100\\r\\n100\\r\\n100\\r\\n100\\r\\n100\\r\\n100\\r\\n100\\r\\n100\\r\\n100\\r\\n100\\r\\n100\\r\\n100\\r\\n100\\r\\n100\\r\\n100\\r\\n100\\r\\n100\\r\\n100\\r\\n100\\r\\n100\\r\\n100\\r\\n100\\r\\n100\\r\\n100\\r\\n100\\r\\n100\\r\\n100\\r\\n100\\r\\n100\\r\\n100\\r\\n100\\r\\n100\\r\\n100\\r\\n100\\r\\n100\\r\\n100\\r\\n100\\r\\n100\\r\\n100\\r\\n100\\r\\n100\\r\\n100\\r\\n100\\r\\n100\\r\\n100\\r\\n100\\r\\n100\\r\\n100\\r\\n100\\r\\n100\\r\\n100\\r\\n100\\r\\n\", \"output\": [\"YES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\\r\\nYES\"]}]",
+        "source_lang": "Python 3",
+        "target_lang": "C"
+    }
+}

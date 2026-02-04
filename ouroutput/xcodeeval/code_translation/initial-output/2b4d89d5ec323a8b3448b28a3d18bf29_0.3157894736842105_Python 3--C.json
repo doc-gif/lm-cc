@@ -1,0 +1,87 @@
+{
+    "oai_response": {
+        "prompt": "Here is code in Python 3 programming lanaguge. Translate the following code from Python 3 to C programming lanaguge. Do not output any extra description or tokens other than the translated code. \n\nimport sys\n\ndef solve():\n    a, b = map(int, input().split())\n    c, d = map(int, input().split())\n\n    if b < d:\n        a, c = c, a\n        b, d = d, b\n\n    for i in range(c):\n        if (b - d + i*a) % c == 0:\n            ans = b + i*a\n            print(ans)\n            return\n\n    print(-1)\n\nif __name__ == '__main__':\n    solve()||END-of-SRC||",
+        "response": {
+            "id": "multi-call-as-5mipfip9jj",
+            "model": "deepseek-v3",
+            "created": 1767066494,
+            "choices": [
+                {
+                    "index": 0,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n\nvoid solve() {\n    int a, b, c, d;\n    scanf(\"%d %d\", &a, &b);\n    scanf(\"%d %d\", &c, &d);\n\n    if (b < d) {\n        int temp = a;\n        a = c;\n        c = temp;\n        temp = b;\n        b = d;\n        d = temp;\n    }\n\n    for (int i = 0; i < c; i++) {\n        if ((b - d + i * a) % c == 0) {\n            int ans = b + i * a;\n            printf(\"%d\\n\", ans);\n            return;\n        }\n    }\n\n    printf(\"-1\\n\");\n}\n\nint main() {\n    solve();\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 1,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n\nvoid solve() {\n    int a, b, c, d;\n    scanf(\"%d %d\", &a, &b);\n    scanf(\"%d %d\", &c, &d);\n\n    if (b < d) {\n        int temp = a;\n        a = c;\n        c = temp;\n        temp = b;\n        b = d;\n        d = temp;\n    }\n\n    for (int i = 0; i < c; i++) {\n        if ((b - d + i * a) % c == 0) {\n            int ans = b + i * a;\n            printf(\"%d\\n\", ans);\n            return;\n        }\n    }\n\n    printf(\"-1\\n\");\n}\n\nint main() {\n    solve();\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 2,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n\nvoid solve() {\n    int a, b, c, d;\n    scanf(\"%d %d\", &a, &b);\n    scanf(\"%d %d\", &c, &d);\n\n    if (b < d) {\n        int temp = a;\n        a = c;\n        c = temp;\n        temp = b;\n        b = d;\n        d = temp;\n    }\n\n    for (int i = 0; i < c; i++) {\n        if ((b - d + i * a) % c == 0) {\n            int ans = b + i * a;\n            printf(\"%d\\n\", ans);\n            return;\n        }\n    }\n\n    printf(\"-1\\n\");\n}\n\nint main() {\n    solve();\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 3,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n\nvoid solve() {\n    int a, b, c, d;\n    scanf(\"%d %d\", &a, &b);\n    scanf(\"%d %d\", &c, &d);\n\n    if (b < d) {\n        int temp = a;\n        a = c;\n        c = temp;\n        temp = b;\n        b = d;\n        d = temp;\n    }\n\n    for (int i = 0; i < c; i++) {\n        if ((b - d + i * a) % c == 0) {\n            int ans = b + i * a;\n            printf(\"%d\\n\", ans);\n            return;\n        }\n    }\n\n    printf(\"-1\\n\");\n}\n\nint main() {\n    solve();\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 4,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n\nvoid solve() {\n    int a, b, c, d;\n    scanf(\"%d %d\", &a, &b);\n    scanf(\"%d %d\", &c, &d);\n\n    if (b < d) {\n        int temp = a;\n        a = c;\n        c = temp;\n        temp = b;\n        b = d;\n        d = temp;\n    }\n\n    for (int i = 0; i < c; i++) {\n        if ((b - d + i * a) % c == 0) {\n            int ans = b + i * a;\n            printf(\"%d\\n\", ans);\n            return;\n        }\n    }\n\n    printf(\"-1\\n\");\n}\n\nint main() {\n    solve();\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                }
+            ],
+            "usage": {
+                "prompt_tokens": 795,
+                "completion_tokens": 848,
+                "total_tokens": 1643
+            }
+        }
+    },
+    "source_data": {
+        "code_uid": "2b4d89d5ec323a8b3448b28a3d18bf29",
+        "prob_desc_output_to": "standard output",
+        "prob_desc_notes": "NoteIn the first sample testcase, Rick's 5th scream and Morty's 8th time are at time 82. In the second sample testcase, all Rick's screams will be at odd times and Morty's will be at even times, so they will never scream at the same time.",
+        "lang_cluster": "Python",
+        "prob_desc_time_limit": "1 second",
+        "prob_desc_input_spec": "The first line of input contains two integers a and b (1\u2009\u2264\u2009a,\u2009b\u2009\u2264\u2009100).  The second line contains two integers c and d (1\u2009\u2264\u2009c,\u2009d\u2009\u2264\u2009100).",
+        "source_code": "import sys\n\ndef solve():\n    a, b = map(int, input().split())\n    c, d = map(int, input().split())\n\n    if b < d:\n        a, c = c, a\n        b, d = d, b\n\n    for i in range(c):\n        if (b - d + i*a) % c == 0:\n            ans = b + i*a\n            print(ans)\n            return\n\n    print(-1)\n\nif __name__ == '__main__':\n    solve()",
+        "prob_desc_sample_inputs": [
+            "20 2\n9 19",
+            "2 1\n16 12"
+        ],
+        "prob_desc_memory_limit": "256 megabytes",
+        "exec_outcome": "PASSED",
+        "prob_desc_output_spec": "Print the first time Rick and Morty will scream at the same time, or \u2009-\u20091 if they will never scream at the same time.",
+        "src_uid": "158cb12d45f4ee3368b94b2b622693e7",
+        "prob_desc_input_from": "standard input",
+        "lang": "Python 3",
+        "prob_desc_sample_outputs": [
+            "82",
+            "-1"
+        ],
+        "file_name": "d7021504500d5ca7c2b02df8100a574d159e6e67e20ec8071b75800b1267370a",
+        "prob_desc_description": "A monster is chasing after Rick and Morty on another planet. They're so frightened that sometimes they scream. More accurately, Rick screams at times b,\u2009b\u2009+\u2009a,\u2009b\u2009+\u20092a,\u2009b\u2009+\u20093a,\u2009... and Morty screams at times d,\u2009d\u2009+\u2009c,\u2009d\u2009+\u20092c,\u2009d\u2009+\u20093c,\u2009....   The Monster will catch them if at any point they scream at the same time, so it wants to know when it will catch them (the first time they scream at the same time) or that they will never scream at the same time.",
+        "prob_desc_created_at": "1490281500",
+        "difficulty": 1200.0,
+        "hidden_unit_tests": "[{\"input\": \"20 2\\r\\n9 19\\r\\n\", \"output\": [\"82\"]}, {\"input\": \"2 1\\r\\n16 12\\r\\n\", \"output\": [\"-1\"]}, {\"input\": \"39 52\\r\\n88 78\\r\\n\", \"output\": [\"1222\"]}, {\"input\": \"59 96\\r\\n34 48\\r\\n\", \"output\": [\"1748\"]}, {\"input\": \"87 37\\r\\n91 29\\r\\n\", \"output\": [\"211\"]}, {\"input\": \"11 81\\r\\n49 7\\r\\n\", \"output\": [\"301\"]}, {\"input\": \"39 21\\r\\n95 89\\r\\n\", \"output\": [\"3414\"]}, {\"input\": \"59 70\\r\\n48 54\\r\\n\", \"output\": [\"1014\"]}, {\"input\": \"87 22\\r\\n98 32\\r\\n\", \"output\": [\"718\"]}, {\"input\": \"15 63\\r\\n51 13\\r\\n\", \"output\": [\"-1\"]}, {\"input\": \"39 7\\r\\n97 91\\r\\n\", \"output\": [\"1255\"]}, {\"input\": \"18 18\\r\\n71 71\\r\\n\", \"output\": [\"1278\"]}, {\"input\": \"46 71\\r\\n16 49\\r\\n\", \"output\": [\"209\"]}, {\"input\": \"70 11\\r\\n74 27\\r\\n\", \"output\": [\"2321\"]}, {\"input\": \"94 55\\r\\n20 96\\r\\n\", \"output\": [\"-1\"]}, {\"input\": \"18 4\\r\\n77 78\\r\\n\", \"output\": [\"1156\"]}, {\"input\": \"46 44\\r\\n23 55\\r\\n\", \"output\": [\"-1\"]}, {\"input\": \"74 88\\r\\n77 37\\r\\n\", \"output\": [\"1346\"]}, {\"input\": \"94 37\\r\\n34 7\\r\\n\", \"output\": [\"789\"]}, {\"input\": \"22 81\\r\\n80 88\\r\\n\", \"output\": [\"-1\"]}, {\"input\": \"46 30\\r\\n34 62\\r\\n\", \"output\": [\"674\"]}, {\"input\": \"40 4\\r\\n81 40\\r\\n\", \"output\": [\"364\"]}, {\"input\": \"69 48\\r\\n39 9\\r\\n\", \"output\": [\"48\"]}, {\"input\": \"89 93\\r\\n84 87\\r\\n\", \"output\": [\"5967\"]}, {\"input\": \"17 45\\r\\n42 65\\r\\n\", \"output\": [\"317\"]}, {\"input\": \"41 85\\r\\n95 46\\r\\n\", \"output\": [\"331\"]}, {\"input\": \"69 30\\r\\n41 16\\r\\n\", \"output\": [\"1410\"]}, {\"input\": \"93 74\\r\\n99 93\\r\\n\", \"output\": [\"-1\"]}, {\"input\": \"17 19\\r\\n44 75\\r\\n\", \"output\": [\"427\"]}, {\"input\": \"45 63\\r\\n98 53\\r\\n\", \"output\": [\"3483\"]}, {\"input\": \"69 11\\r\\n48 34\\r\\n\", \"output\": [\"-1\"]}, {\"input\": \"55 94\\r\\n3 96\\r\\n\", \"output\": [\"204\"]}, {\"input\": \"100 100\\r\\n100 100\\r\\n\", \"output\": [\"100\"]}, {\"input\": \"1 1\\r\\n1 1\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"1 1\\r\\n1 100\\r\\n\", \"output\": [\"100\"]}, {\"input\": \"1 100\\r\\n100 1\\r\\n\", \"output\": [\"101\"]}, {\"input\": \"98 1\\r\\n99 100\\r\\n\", \"output\": [\"9703\"]}, {\"input\": \"98 1\\r\\n99 2\\r\\n\", \"output\": [\"9605\"]}, {\"input\": \"97 2\\r\\n99 100\\r\\n\", \"output\": [\"4852\"]}, {\"input\": \"3 3\\r\\n3 1\\r\\n\", \"output\": [\"-1\"]}, {\"input\": \"3 2\\r\\n7 2\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"2 3\\r\\n2 5\\r\\n\", \"output\": [\"5\"]}, {\"input\": \"2 3\\r\\n2 3\\r\\n\", \"output\": [\"3\"]}, {\"input\": \"100 3\\r\\n100 5\\r\\n\", \"output\": [\"-1\"]}, {\"input\": \"6 10\\r\\n12 14\\r\\n\", \"output\": [\"-1\"]}, {\"input\": \"4 2\\r\\n4 4\\r\\n\", \"output\": [\"-1\"]}, {\"input\": \"2 3\\r\\n2 2\\r\\n\", \"output\": [\"-1\"]}, {\"input\": \"2 3\\r\\n4 99\\r\\n\", \"output\": [\"99\"]}, {\"input\": \"1 5\\r\\n1 5\\r\\n\", \"output\": [\"5\"]}, {\"input\": \"1 100\\r\\n3 1\\r\\n\", \"output\": [\"100\"]}, {\"input\": \"2 2\\r\\n2 1\\r\\n\", \"output\": [\"-1\"]}, {\"input\": \"2 10\\r\\n6 20\\r\\n\", \"output\": [\"20\"]}, {\"input\": \"2 2\\r\\n2 10\\r\\n\", \"output\": [\"10\"]}, {\"input\": \"3 7\\r\\n3 6\\r\\n\", \"output\": [\"-1\"]}, {\"input\": \"1 100\\r\\n1 100\\r\\n\", \"output\": [\"100\"]}, {\"input\": \"7 25\\r\\n39 85\\r\\n\", \"output\": [\"319\"]}, {\"input\": \"84 82\\r\\n38 6\\r\\n\", \"output\": [\"82\"]}, {\"input\": \"7 7\\r\\n7 14\\r\\n\", \"output\": [\"14\"]}]",
+        "source_lang": "Python 3",
+        "target_lang": "C"
+    }
+}

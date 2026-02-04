@@ -1,0 +1,87 @@
+{
+    "oai_response": {
+        "prompt": "Here is code in Python 3 programming lanaguge. Translate the following code from Python 3 to C programming lanaguge. Do not output any extra description or tokens other than the translated code. \n\ns = input().strip()\n\nj = 3\nif s[0] == 'h':\n    j = 4\n\ni = j\nk = 0\nwhile i < len(s):\n    if k > 0 and s[i] == 'r' and s[i + 1] == 'u':\n        break\n    i += 1\n    k = 1\n\nif i + 2 == len(s):\n    print(s[:j] + \"://\" + s[j:i] + \".ru\")\nelse:\n    print(s[:j] + \"://\" + s[j:i] + \".ru/\" + s[i+2:])||END-of-SRC||",
+        "response": {
+            "id": "multi-call-as-7j9x22zuqy",
+            "model": "deepseek-v3",
+            "created": 1767067745,
+            "choices": [
+                {
+                    "index": 0,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <string.h>\n\nint main() {\n    char s[1000];\n    scanf(\"%s\", s);\n    \n    int j = 3;\n    if (s[0] == 'h') {\n        j = 4;\n    }\n    \n    int i = j;\n    int k = 0;\n    while (i < strlen(s)) {\n        if (k > 0 && s[i] == 'r' && s[i + 1] == 'u') {\n            break;\n        }\n        i++;\n        k = 1;\n    }\n    \n    if (i + 2 == strlen(s)) {\n        printf(\"%.*s://%.*s.ru\", j, s, i - j, s + j);\n    } else {\n        printf(\"%.*s://%.*s.ru/%.*s\", j, s, i - j, s + j, (int)strlen(s) - i - 2, s + i + 2);\n    }\n    \n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 1,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <string.h>\n\nint main() {\n    char s[1000];\n    scanf(\"%s\", s);\n    \n    int j = 3;\n    if (s[0] == 'h') {\n        j = 4;\n    }\n    \n    int i = j;\n    int k = 0;\n    while (i < strlen(s)) {\n        if (k > 0 && s[i] == 'r' && s[i + 1] == 'u') {\n            break;\n        }\n        i++;\n        k = 1;\n    }\n    \n    if (i + 2 == strlen(s)) {\n        printf(\"%.*s://%.*s.ru\", j, s, i - j, s + j);\n    } else {\n        printf(\"%.*s://%.*s.ru/%.*s\", j, s, i - j, s + j, (int)strlen(s) - i - 2, s + i + 2);\n    }\n    \n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 2,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <string.h>\n\nint main() {\n    char s[1000];\n    scanf(\"%s\", s);\n    \n    int j = 3;\n    if (s[0] == 'h') {\n        j = 4;\n    }\n    \n    int i = j;\n    int k = 0;\n    while (i < strlen(s)) {\n        if (k > 0 && s[i] == 'r' && s[i + 1] == 'u') {\n            break;\n        }\n        i++;\n        k = 1;\n    }\n    \n    if (i + 2 == strlen(s)) {\n        printf(\"%.*s://%.*s.ru\", j, s, i - j, s + j);\n    } else {\n        printf(\"%.*s://%.*s.ru/%.*s\", j, s, i - j, s + j, (int)strlen(s) - i - 2, s + i + 2);\n    }\n    \n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 3,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <string.h>\n\nint main() {\n    char s[1000];\n    scanf(\"%s\", s);\n    \n    int j = 3;\n    if (s[0] == 'h') {\n        j = 4;\n    }\n    \n    int i = j;\n    int k = 0;\n    while (i < strlen(s)) {\n        if (k > 0 && s[i] == 'r' && s[i + 1] == 'u') {\n            break;\n        }\n        i++;\n        k = 1;\n    }\n    \n    if (i + 2 == strlen(s)) {\n        printf(\"%.*s://%.*s.ru\", j, s, i - j, s + j);\n    } else {\n        printf(\"%.*s://%.*s.ru/%s\", j, s, i - j, s + j, s + i + 2);\n    }\n    \n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 4,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <string.h>\n\nint main() {\n    char s[1000];\n    fgets(s, sizeof(s), stdin);\n    s[strcspn(s, \"\\n\")] = '\\0';\n\n    int j = 3;\n    if (s[0] == 'h') {\n        j = 4;\n    }\n\n    int i = j;\n    int k = 0;\n    while (i < strlen(s)) {\n        if (k > 0 && s[i] == 'r' && s[i + 1] == 'u') {\n            break;\n        }\n        i++;\n        k = 1;\n    }\n\n    if (i + 2 == strlen(s)) {\n        printf(\"%.*s://%.*s.ru\", j, s, i - j, s + j);\n    } else {\n        printf(\"%.*s://%.*s.ru/%s\", j, s, i - j, s + j, s + i + 2);\n    }\n\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                }
+            ],
+            "usage": {
+                "prompt_tokens": 940,
+                "completion_tokens": 1101,
+                "total_tokens": 2041
+            }
+        }
+    },
+    "source_data": {
+        "code_uid": "1149f2e35cbaa6ac6ab43cb75ad48b67",
+        "prob_desc_output_to": "standard output",
+        "prob_desc_notes": "NoteIn the second sample there are two more possible answers: \"ftp://httpruru.ru\" and \"ftp://httpru.ru/ru\".",
+        "lang_cluster": "Python",
+        "prob_desc_time_limit": "2 seconds",
+        "prob_desc_input_spec": "The first line contains a non-empty string that Vasya wrote out in his notebook. This line consists of lowercase English letters only.  It is guaranteed that the given string contains at most 50 letters. It is guaranteed that the given string can be obtained from some correct Internet resource address, described above.",
+        "source_code": "s = input().strip()\n\nj = 3\nif s[0] == 'h':\n    j = 4\n\ni = j\nk = 0\nwhile i < len(s):\n    if k > 0 and s[i] == 'r' and s[i + 1] == 'u':\n        break\n    i += 1\n    k = 1\n\nif i + 2 == len(s):\n    print(s[:j] + \"://\" + s[j:i] + \".ru\")\nelse:\n    print(s[:j] + \"://\" + s[j:i] + \".ru/\" + s[i+2:])",
+        "prob_desc_sample_inputs": [
+            "httpsunrux",
+            "ftphttprururu"
+        ],
+        "prob_desc_memory_limit": "256 megabytes",
+        "exec_outcome": "PASSED",
+        "prob_desc_output_spec": "Print a single line \u2014 the address of the Internet resource that Vasya liked. If there are several addresses that meet the problem limitations, you are allowed to print any of them.",
+        "src_uid": "4c999b7854a8a08960b6501a90b3bba3",
+        "prob_desc_input_from": "standard input",
+        "lang": "Python 3",
+        "prob_desc_sample_outputs": [
+            "http://sun.ru/x",
+            "ftp://http.ru/ruru"
+        ],
+        "file_name": "d7021504500d5ca7c2b02df8100a574d159e6e67e20ec8071b75800b1267370a",
+        "prob_desc_description": "Vasya is an active Internet user. One day he came across an Internet resource he liked, so he wrote its address in the notebook. We know that the address of the written resource has format: &lt;protocol&gt;://&lt;domain&gt;.ru[/&lt;context&gt;] where:  &lt;protocol&gt; can equal either \"http\" (without the quotes) or \"ftp\" (without the quotes),  &lt;domain&gt; is a non-empty string, consisting of lowercase English letters,  the /&lt;context&gt; part may not be present. If it is present, then &lt;context&gt; is a non-empty string, consisting of lowercase English letters. If string &lt;context&gt; isn't present in the address, then the additional character \"/\" isn't written. Thus, the address has either two characters \"/\" (the ones that go before the domain), or three (an extra one in front of the context).When the boy came home, he found out that the address he wrote in his notebook had no punctuation marks. Vasya must have been in a lot of hurry and didn't write characters \":\", \"/\", \".\".Help Vasya to restore the possible address of the recorded Internet resource.",
+        "prob_desc_created_at": "1353339000",
+        "difficulty": 1100.0,
+        "hidden_unit_tests": "[{\"input\": \"httpsunrux\\r\\n\", \"output\": [\"http://sun.ru/x\"]}, {\"input\": \"ftphttprururu\\r\\n\", \"output\": [\"ftp://http.ru/ruru\"]}, {\"input\": \"httpuururrururruruurururrrrrurrurrurruruuruuu\\r\\n\", \"output\": [\"http://uu.ru/rrururruruurururrrrrurrurrurruruuruuu\"]}, {\"input\": \"httpabuaruauabbaruru\\r\\n\", \"output\": [\"http://abua.ru/auabbaruru\"]}, {\"input\": \"httpuurrruurruuruuruuurrrurururuurruuuuuuruurr\\r\\n\", \"output\": [\"http://uurr.ru/urruuruuruuurrrurururuurruuuuuuruurr\"]}, {\"input\": \"httpruhhphhhpuhruruhhpruhhphruhhru\\r\\n\", \"output\": [\"http://ruhhphhhpuh.ru/ruhhpruhhphruhhru\"]}, {\"input\": \"httpftprftprutprururftruruftptp\\r\\n\", \"output\": [\"http://ftprftp.ru/tprururftruruftptp\"]}, {\"input\": \"httpfttpftpfttftpftpftppfrurururu\\r\\n\", \"output\": [\"http://fttpftpfttftpftpftppf.ru/rururu\"]}, {\"input\": \"httpruhttttpruhttprupruhttpruhtturuhttphtruuru\\r\\n\", \"output\": [\"http://ruhttttp.ru/httprupruhttpruhtturuhttphtruuru\"]}, {\"input\": \"httpsjkazaaghasjkasjkabruru\\r\\n\", \"output\": [\"http://sjkazaaghasjkasjkab.ru/ru\"]}, {\"input\": \"httpftphttptphttphrururuhpftphtpftphtpftphtptpft\\r\\n\", \"output\": [\"http://ftphttptphttph.ru/ruruhpftphtpftphtpftphtptpft\"]}, {\"input\": \"httpppppru\\r\\n\", \"output\": [\"http://pppp.ru\"]}, {\"input\": \"ftprrurururrurururuurrururruuru\\r\\n\", \"output\": [\"ftp://r.ru/rururrurururuurrururruuru\"]}, {\"input\": \"ftpabaruru\\r\\n\", \"output\": [\"ftp://aba.ru/ru\"]}, {\"input\": \"ftpruurruurururururuuruuur\\r\\n\", \"output\": [\"ftp://ruur.ru/urururururuuruuur\"]}, {\"input\": \"ftphhphruhhpruhhpuhhpuruhhphruhhruhhpuhhru\\r\\n\", \"output\": [\"ftp://hhph.ru/hhpruhhpuhhpuruhhphruhhruhhpuhhru\"]}, {\"input\": \"ftparua\\r\\n\", \"output\": [\"ftp://a.ru/a\"]}, {\"input\": \"httpzru\\r\\n\", \"output\": [\"http://z.ru\"]}, {\"input\": \"httprrur\\r\\n\", \"output\": [\"http://r.ru/r\"]}, {\"input\": \"ftprru\\r\\n\", \"output\": [\"ftp://r.ru\"]}]",
+        "source_lang": "Python 3",
+        "target_lang": "C"
+    }
+}

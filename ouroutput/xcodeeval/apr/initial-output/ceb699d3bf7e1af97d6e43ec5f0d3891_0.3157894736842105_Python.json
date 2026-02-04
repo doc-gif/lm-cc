@@ -1,0 +1,106 @@
+{
+    "oai_response": {
+        "prompt": "Fix a buggy program written in Python language to solve the following programming problem:\nDescription: Consider an array $$$a$$$ of length $$$n$$$ with elements numbered from $$$1$$$ to $$$n$$$. It is possible to remove the $$$i$$$-th element of $$$a$$$ if $$$gcd(a_i, i) = 1$$$, where $$$gcd$$$ denotes the greatest common divisor. After an element is removed, the elements to the right are shifted to the left by one position.An array $$$b$$$ with $$$n$$$ integers such that $$$1 \\le b_i \\le n - i + 1$$$ is a removal sequence for the array $$$a$$$ if it is possible to remove all elements of $$$a$$$, if you remove the $$$b_1$$$-th element, then the $$$b_2$$$-th, ..., then the $$$b_n$$$-th element. For example, let $$$a = [42, 314]$$$:  $$$[1, 1]$$$ is a removal sequence: when you remove the $$$1$$$-st element of the array, the condition $$$gcd(42, 1) = 1$$$ holds, and the array becomes $$$[314]$$$; when you remove the $$$1$$$-st element again, the condition $$$gcd(314, 1) = 1$$$ holds, and the array becomes empty.  $$$[2, 1]$$$ is not a removal sequence: when you try to remove the $$$2$$$-nd element, the condition $$$gcd(314, 2) = 1$$$ is false. An array is ambiguous if it has at least two removal sequences. For example, the array $$$[1, 2, 5]$$$ is ambiguous: it has removal sequences $$$[3, 1, 1]$$$ and $$$[1, 2, 1]$$$. The array $$$[42, 314]$$$ is not ambiguous: the only removal sequence it has is $$$[1, 1]$$$.You are given two integers $$$n$$$ and $$$m$$$. You have to calculate the number of ambiguous arrays $$$a$$$ such that the length of $$$a$$$ is from $$$1$$$ to $$$n$$$ and each $$$a_i$$$ is an integer from $$$1$$$ to $$$m$$$.\nInput Specification: The only line of the input contains two integers $$$n$$$ and $$$m$$$ ($$$2 \\le n \\le 3 \\cdot 10^5$$$; $$$1 \\le m \\le 10^{12}$$$).\nOutput Specification: Print one integer \u2014 the number of ambiguous arrays $$$a$$$ such that the length of $$$a$$$ is from $$$1$$$ to $$$n$$$ and each $$$a_i$$$ is an integer from $$$1$$$ to $$$m$$$. Since the answer can be very large, print it modulo $$$998244353$$$.\n\nSample Input:\n2 3\nSample Output:\n6\n\nSample Input:\n4 2\nSample Output:\n26\n\nSample Input:\n4 6\nSample Output:\n1494\n\nSample Input:\n1337 424242424242\nSample Output:\n119112628\n\nNotes: None\nTake input from standard input and output to standard output\n\nHere is the code with a bug of TIME_LIMIT_EXCEEDED:\n\nfrom collections import defaultdict, deque, Counter\r\nimport sys\r\nfrom decimal import *\r\nfrom heapq import heapify, heappop, heappush\r\nimport math\r\nimport random\r\nimport string\r\nfrom copy import deepcopy\r\nfrom itertools import combinations, permutations, product\r\nfrom operator import mul, itemgetter\r\nfrom functools import reduce, lru_cache\r\nfrom bisect import bisect_left, bisect_right\r\n\r\ndef input():\r\n    return sys.stdin.readline().rstrip()\r\ndef getN():\r\n    return int(input())\r\ndef getNM():\r\n    return map(int, input().split())\r\ndef getList():\r\n    return list(map(int, input().split()))\r\ndef getListGraph():\r\n    return list(map(lambda x:int(x) - 1, input().split()))\r\ndef getArray(intn):\r\n    return [int(input()) for i in range(intn)]\r\n\r\nmod = 10 ** 9 + 7\r\nMOD = 998244353\r\n\r\n# import pypyjit\r\n# pypyjit.set_param('max_unroll_recursion=-1')\r\ninf = float('inf')\r\neps = 10 ** (-12)\r\ndy = [0, 1, 0, -1]\r\ndx = [1, 0, -1, 0]\r\n\r\n#############\r\n# Main Code #\r\n#############\r\n\r\nprime = [2]\r\nmax = 100000\r\nlimit = int(math.sqrt(max))\r\ndata = [i + 1 for i in range(2, max, 2)]\r\n\r\nwhile limit > data[0]:\r\n    prime.append(data[0])\r\n    data = [j for j in data if j % data[0] != 0]\r\nprime = set(prime + data)\r\n\r\nN, M = getNM()\r\nl, all, subs = 1, 1, 1\r\nans = 0\r\nfor i in range(N):\r\n    if i + 1 in prime and l <= M:\r\n        l *= (i + 1)\r\n    subs = (subs * (M // l)) % MOD\r\n    all *= M\r\n    ans %= MOD\r\n    ans += all - subs\r\n    ans %= MOD\r\nprint(ans)\n\nProvide the fixed Python code without any description or extra tokens.\n\nFixed source code:\n ||END-of-SRC||",
+        "response": {
+            "id": "multi-call-as-xccu4r1pnf",
+            "model": "deepseek-v3",
+            "created": 1760424604,
+            "choices": [
+                {
+                    "index": 0,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```python\nimport sys\nimport math\n\nMOD = 998244353\n\ndef input():\n    return sys.stdin.readline().rstrip()\n\ndef getNM():\n    return map(int, input().split())\n\ndef main():\n    N, M = getNM()\n    l = 1\n    total = 0\n    all_arrays = 1\n    non_ambiguous = 1\n    for i in range(1, N + 1):\n        all_arrays = (all_arrays * (M % MOD)) % MOD\n        if math.gcd(l, i) == 1:\n            l *= i\n        non_ambiguous = (non_ambiguous * ((M // l) % MOD)) % MOD\n        total = (total + all_arrays - non_ambiguous) % MOD\n    print(total)\n\nif __name__ == \"__main__\":\n    main()\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 1,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```python\nimport sys\nimport math\n\nMOD = 998244353\n\ndef input():\n    return sys.stdin.readline().rstrip()\n\ndef getNM():\n    return map(int, input().split())\n\ndef main():\n    N, M = getNM()\n    l = 1\n    ans = 0\n    all_arrays = 1\n    non_ambiguous = 1\n    for i in range(1, N + 1):\n        if math.gcd(l, i) == 1:\n            l *= i\n        all_arrays = (all_arrays * (M % MOD)) % MOD\n        non_ambiguous = (non_ambiguous * ((M // l) % MOD)) % MOD\n        ans = (ans + all_arrays - non_ambiguous) % MOD\n    print(ans)\n\nif __name__ == \"__main__\":\n    main()\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 2,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```python\nimport sys\nimport math\n\nMOD = 998244353\n\ndef input():\n    return sys.stdin.readline().rstrip()\n\ndef getNM():\n    return map(int, input().split())\n\ndef main():\n    N, M = getNM()\n    l = 1\n    ans = 0\n    all_arrays = 1\n    non_ambiguous = 1\n    for i in range(1, N + 1):\n        if math.gcd(l, i) == 1:\n            l *= i\n        all_arrays = all_arrays * (M % MOD) % MOD\n        non_ambiguous = non_ambiguous * ((M // l) % MOD) % MOD\n        ans = (ans + all_arrays - non_ambiguous) % MOD\n    print(ans)\n\nif __name__ == \"__main__\":\n    main()\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 3,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```python\nimport sys\nimport math\n\nMOD = 998244353\n\ndef input():\n    return sys.stdin.readline().rstrip()\n\ndef getNM():\n    return map(int, input().split())\n\ndef solve():\n    N, M = getNM()\n    l = 1\n    total = 0\n    all_arrays = 1  # product of M for arrays of length 1..i\n    non_ambiguous = 1  # product of floor(M / l) for arrays of length 1..i\n    for i in range(1, N + 1):\n        if math.gcd(l, i) == 1:\n            l *= i\n        all_arrays = (all_arrays * (M % MOD)) % MOD\n        non_ambiguous = (non_ambiguous * ((M // l) % MOD)) % MOD\n        total = (total + all_arrays - non_ambiguous) % MOD\n    print(total)\n\nsolve()\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 4,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```python\nimport sys\nimport math\n\nMOD = 998244353\n\ndef input():\n    return sys.stdin.readline().rstrip()\n\ndef getNM():\n    return map(int, input().split())\n\ndef main():\n    N, M = getNM()\n    l = 1\n    ans = 0\n    all_arrays = 1  # counts M^i for arrays of length i\n    non_ambiguous = 1  # counts product_{k=1 to i} floor(M / lcm(1..k))\n    \n    for i in range(1, N + 1):\n        if math.gcd(l, i) == 1:\n            l *= i\n        all_arrays = (all_arrays * (M % MOD)) % MOD\n        non_ambiguous = (non_ambiguous * ((M // l) % MOD)) % MOD\n        ans = (ans + all_arrays - non_ambiguous) % MOD\n    print(ans)\n\nif __name__ == \"__main__\":\n    main()\n```"
+                    },
+                    "finish_reason": "stop"
+                }
+            ],
+            "usage": {
+                "prompt_tokens": 6440,
+                "completion_tokens": 972,
+                "total_tokens": 7412
+            }
+        }
+    },
+    "source_data": {
+        "prob_desc_memory_limit": "512 megabytes",
+        "tags": [
+            "dp",
+            "math",
+            "combinatorics",
+            "number theory"
+        ],
+        "prob_desc_created_at": "1666276500",
+        "fix_source_code": "",
+        "prob_desc_input_spec": "The only line of the input contains two integers $$$n$$$ and $$$m$$$ ($$$2 \\le n \\le 3 \\cdot 10^5$$$; $$$1 \\le m \\le 10^{12}$$$).",
+        "prob_desc_sample_outputs": [
+            "6",
+            "26",
+            "1494",
+            "119112628"
+        ],
+        "src_uid": "0fdd91ed33431848614075ebe9d2ee68",
+        "prob_desc_time_limit": "2 seconds",
+        "fix_exec_outcome": "",
+        "delete_cnt": 0,
+        "apr_id": "73fde6f026b39529a5a29ee86446b209",
+        "fix_code_uid": "",
+        "lang_cluster": "Python",
+        "prob_desc_sample_inputs": [
+            "2 3",
+            "4 2",
+            "4 6",
+            "1337 424242424242"
+        ],
+        "prob_desc_output_to": "standard output",
+        "file_name": "Python.jsonl",
+        "equal_cnt": 2,
+        "lang": "PyPy 3",
+        "prob_desc_output_spec": "Print one integer \u2014 the number of ambiguous arrays $$$a$$$ such that the length of $$$a$$$ is from $$$1$$$ to $$$n$$$ and each $$$a_i$$$ is an integer from $$$1$$$ to $$$m$$$. Since the answer can be very large, print it modulo $$$998244353$$$.",
+        "bug_exec_outcome": "TIME_LIMIT_EXCEEDED",
+        "prob_desc_notes": null,
+        "difficulty": 1900.0,
+        "similarity_score": 0.9986216426,
+        "prob_desc_description": "Consider an array $$$a$$$ of length $$$n$$$ with elements numbered from $$$1$$$ to $$$n$$$. It is possible to remove the $$$i$$$-th element of $$$a$$$ if $$$gcd(a_i, i) = 1$$$, where $$$gcd$$$ denotes the greatest common divisor. After an element is removed, the elements to the right are shifted to the left by one position.An array $$$b$$$ with $$$n$$$ integers such that $$$1 \\le b_i \\le n - i + 1$$$ is a removal sequence for the array $$$a$$$ if it is possible to remove all elements of $$$a$$$, if you remove the $$$b_1$$$-th element, then the $$$b_2$$$-th, ..., then the $$$b_n$$$-th element. For example, let $$$a = [42, 314]$$$:  $$$[1, 1]$$$ is a removal sequence: when you remove the $$$1$$$-st element of the array, the condition $$$gcd(42, 1) = 1$$$ holds, and the array becomes $$$[314]$$$; when you remove the $$$1$$$-st element again, the condition $$$gcd(314, 1) = 1$$$ holds, and the array becomes empty.  $$$[2, 1]$$$ is not a removal sequence: when you try to remove the $$$2$$$-nd element, the condition $$$gcd(314, 2) = 1$$$ is false. An array is ambiguous if it has at least two removal sequences. For example, the array $$$[1, 2, 5]$$$ is ambiguous: it has removal sequences $$$[3, 1, 1]$$$ and $$$[1, 2, 1]$$$. The array $$$[42, 314]$$$ is not ambiguous: the only removal sequence it has is $$$[1, 1]$$$.You are given two integers $$$n$$$ and $$$m$$$. You have to calculate the number of ambiguous arrays $$$a$$$ such that the length of $$$a$$$ is from $$$1$$$ to $$$n$$$ and each $$$a_i$$$ is an integer from $$$1$$$ to $$$m$$$.",
+        "potential_dominant_fix_op": "replace",
+        "bug_source_code": "from collections import defaultdict, deque, Counter\r\nimport sys\r\nfrom decimal import *\r\nfrom heapq import heapify, heappop, heappush\r\nimport math\r\nimport random\r\nimport string\r\nfrom copy import deepcopy\r\nfrom itertools import combinations, permutations, product\r\nfrom operator import mul, itemgetter\r\nfrom functools import reduce, lru_cache\r\nfrom bisect import bisect_left, bisect_right\r\n\r\ndef input():\r\n    return sys.stdin.readline().rstrip()\r\ndef getN():\r\n    return int(input())\r\ndef getNM():\r\n    return map(int, input().split())\r\ndef getList():\r\n    return list(map(int, input().split()))\r\ndef getListGraph():\r\n    return list(map(lambda x:int(x) - 1, input().split()))\r\ndef getArray(intn):\r\n    return [int(input()) for i in range(intn)]\r\n\r\nmod = 10 ** 9 + 7\r\nMOD = 998244353\r\n\r\n# import pypyjit\r\n# pypyjit.set_param('max_unroll_recursion=-1')\r\ninf = float('inf')\r\neps = 10 ** (-12)\r\ndy = [0, 1, 0, -1]\r\ndx = [1, 0, -1, 0]\r\n\r\n#############\r\n# Main Code #\r\n#############\r\n\r\nprime = [2]\r\nmax = 100000\r\nlimit = int(math.sqrt(max))\r\ndata = [i + 1 for i in range(2, max, 2)]\r\n\r\nwhile limit > data[0]:\r\n    prime.append(data[0])\r\n    data = [j for j in data if j % data[0] != 0]\r\nprime = set(prime + data)\r\n\r\nN, M = getNM()\r\nl, all, subs = 1, 1, 1\r\nans = 0\r\nfor i in range(N):\r\n    if i + 1 in prime and l <= M:\r\n        l *= (i + 1)\r\n    subs = (subs * (M // l)) % MOD\r\n    all *= M\r\n    ans %= MOD\r\n    ans += all - subs\r\n    ans %= MOD\r\nprint(ans)",
+        "replace_cnt": 1,
+        "prob_desc_input_from": "standard input",
+        "bug_code_uid": "ceb699d3bf7e1af97d6e43ec5f0d3891",
+        "insert_cnt": 0,
+        "fix_ops_cnt": 1,
+        "hidden_unit_tests": "[{\"input\": \"2 3\\n\", \"output\": [\"6\\n\", \"\\n6\", \"6\", \"6\\n\", \"6 \\n\", \"6 \", \"6\\n\\n\", \"6\\n\\n\\n\", \"6\\n\\n\"]}, {\"input\": \"4 2\\n\", \"output\": [\"\\n26\", \"26 \\n\", \"26\\n\", \"26\", \"26\\n\\n\", \"26\\n\\n\\n\", \"26\\n\\n\", \"26\\n\", \"26 \"]}, {\"input\": \"4 6\\n\", \"output\": [\"1494\\n\", \"1494\\n\\n\", \"1494\", \"1494 \", \"1494\\n\\n\\n\", \"1494 \\n\", \"\\n1494\", \"1494\\n\", \"1494\\n\\n\"]}, {\"input\": \"1337 424242424242\\n\", \"output\": [\"119112628 \\n\", \"119112628\\n\\n\", \"119112628\\n\\n\", \"\\n119112628\", \"119112628\\n\", \"119112628 \", \"119112628\", \"119112628\\n\\n\\n\", \"119112628\\n\"]}, {\"input\": \"300000 1000000000\\n\", \"output\": [\"590856313 \\n\", \"590856313 \", \"590856313\", \"590856313\\n\", \"590856313\\n\\n\", \"590856313\\n\", \"590856313\\n\\n\\n\", \"\\n590856313\", \"590856313\\n\\n\"]}, {\"input\": \"300000 1\\n\", \"output\": [\"299999\\n\", \"299999 \\n\", \"299999 \", \"\\n299999\", \"299999\\n\\n\\n\", \"299999\\n\", \"299999\\n\\n\", \"299999\\n\\n\", \"299999\"]}, {\"input\": \"2 1\\n\", \"output\": [\"\\n1\", \"1\\n\\n\\n\", \"1\", \"1\\n\", \"1\\n\\n\", \"1 \\n\", \"1\\n\\n\", \"1 \", \"1\\n\"]}, {\"input\": \"2 1000000000000\\n\", \"output\": [\"\\n138131255\", \"138131255\", \"138131255\\n\", \"138131255\\n\", \"138131255\\n\\n\", \"138131255\\n\\n\", \"138131255\\n\\n\\n\", \"138131255 \\n\", \"138131255 \"]}, {\"input\": \"17957 2\\n\", \"output\": [\"653647969\", \"653647969\\n\", \"653647969 \\n\", \"653647969\\n\", \"653647969\\n\\n\", \"\\n653647969\", \"653647969\\n\\n\\n\", \"653647969 \", \"653647969\\n\\n\"]}]"
+    }
+}

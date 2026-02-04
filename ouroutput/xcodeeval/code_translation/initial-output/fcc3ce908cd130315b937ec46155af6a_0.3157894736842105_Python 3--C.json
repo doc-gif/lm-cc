@@ -1,0 +1,87 @@
+{
+    "oai_response": {
+        "prompt": "Here is code in Python 3 programming lanaguge. Translate the following code from Python 3 to C programming lanaguge. Do not output any extra description or tokens other than the translated code. \n\nn = int(input())\nn+=1\nwhile len(set(str(n)))<4:\n    n+=1\nprint(n)    ||END-of-SRC||",
+        "response": {
+            "id": "multi-call-as-6hhdjyhnd5",
+            "model": "deepseek-v3",
+            "created": 1767066926,
+            "choices": [
+                {
+                    "index": 0,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n#include <stdbool.h>\n\nbool has_distinct_digits(int num) {\n    char str[11];\n    sprintf(str, \"%d\", num);\n    int len = strlen(str);\n    for (int i = 0; i < len; i++) {\n        for (int j = i + 1; j < len; j++) {\n            if (str[i] == str[j]) {\n                return false;\n            }\n        }\n    }\n    return true;\n}\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    n++;\n    while (!has_distinct_digits(n)) {\n        n++;\n    }\n    printf(\"%d\\n\", n);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 1,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n#include <stdbool.h>\n\nbool has_distinct_digits(int num) {\n    char str[11];\n    sprintf(str, \"%d\", num);\n    int len = strlen(str);\n    for (int i = 0; i < len; i++) {\n        for (int j = i + 1; j < len; j++) {\n            if (str[i] == str[j]) {\n                return false;\n            }\n        }\n    }\n    return true;\n}\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    n++;\n    while (!has_distinct_digits(n)) {\n        n++;\n    }\n    printf(\"%d\\n\", n);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 2,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <string.h>\n#include <stdbool.h>\n\nbool has_four_unique_digits(int n) {\n    char digits[11];\n    sprintf(digits, \"%d\", n);\n    for (int i = 0; i < strlen(digits); i++) {\n        for (int j = i + 1; j < strlen(digits); j++) {\n            if (digits[i] == digits[j]) {\n                return false;\n            }\n        }\n    }\n    return true;\n}\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    n++;\n    while (!has_four_unique_digits(n)) {\n        n++;\n    }\n    printf(\"%d\", n);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 3,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n#include <stdbool.h>\n\nbool has_distinct_digits(int num) {\n    char str[11];\n    sprintf(str, \"%d\", num);\n    int len = strlen(str);\n    for (int i = 0; i < len; i++) {\n        for (int j = i + 1; j < len; j++) {\n            if (str[i] == str[j]) {\n                return false;\n            }\n        }\n    }\n    return true;\n}\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    n++;\n    while (!has_distinct_digits(n)) {\n        n++;\n    }\n    printf(\"%d\\n\", n);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 4,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <string.h>\n#include <stdbool.h>\n\nbool has_four_unique_digits(int num) {\n    char digits[11];\n    sprintf(digits, \"%d\", num);\n    for (int i = 0; i < strlen(digits); i++) {\n        for (int j = i + 1; j < strlen(digits); j++) {\n            if (digits[i] == digits[j]) {\n                return false;\n            }\n        }\n    }\n    return true;\n}\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    n++;\n    while (!has_four_unique_digits(n)) {\n        n++;\n    }\n    printf(\"%d\", n);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                }
+            ],
+            "usage": {
+                "prompt_tokens": 390,
+                "completion_tokens": 824,
+                "total_tokens": 1214
+            }
+        }
+    },
+    "source_data": {
+        "code_uid": "fcc3ce908cd130315b937ec46155af6a",
+        "prob_desc_output_to": "standard output",
+        "prob_desc_notes": null,
+        "lang_cluster": "Python",
+        "prob_desc_time_limit": "2 seconds",
+        "prob_desc_input_spec": "The single line contains integer y (1000\u2009\u2264\u2009y\u2009\u2264\u20099000) \u2014 the year number.",
+        "source_code": "n = int(input())\nn+=1\nwhile len(set(str(n)))<4:\n    n+=1\nprint(n)    ",
+        "prob_desc_sample_inputs": [
+            "1987",
+            "2013"
+        ],
+        "prob_desc_memory_limit": "256 megabytes",
+        "exec_outcome": "PASSED",
+        "prob_desc_output_spec": "Print a single integer \u2014 the minimum year number that is strictly larger than y and all it's digits are distinct. It is guaranteed that the answer exists.",
+        "src_uid": "d62dabfbec52675b7ed7b582ad133acd",
+        "prob_desc_input_from": "standard input",
+        "lang": "Python 3",
+        "prob_desc_sample_outputs": [
+            "2013",
+            "2014"
+        ],
+        "file_name": "d7021504500d5ca7c2b02df8100a574d159e6e67e20ec8071b75800b1267370a",
+        "prob_desc_description": "It seems like the year of 2013 came only yesterday. Do you know a curious fact? The year of 2013 is the first year after the old 1987 with only distinct digits.Now you are suggested to solve the following problem: given a year number, find the minimum year number which is strictly larger than the given one and has only distinct digits.",
+        "prob_desc_created_at": "1360596600",
+        "difficulty": 800.0,
+        "hidden_unit_tests": "[{\"input\": \"1987\\r\\n\", \"output\": [\"2013\"]}, {\"input\": \"2013\\r\\n\", \"output\": [\"2014\"]}, {\"input\": \"1000\\r\\n\", \"output\": [\"1023\"]}, {\"input\": \"1001\\r\\n\", \"output\": [\"1023\"]}, {\"input\": \"1234\\r\\n\", \"output\": [\"1235\"]}, {\"input\": \"5555\\r\\n\", \"output\": [\"5601\"]}, {\"input\": \"9000\\r\\n\", \"output\": [\"9012\"]}, {\"input\": \"1111\\r\\n\", \"output\": [\"1203\"]}, {\"input\": \"8999\\r\\n\", \"output\": [\"9012\"]}, {\"input\": \"4572\\r\\n\", \"output\": [\"4573\"]}, {\"input\": \"6666\\r\\n\", \"output\": [\"6701\"]}, {\"input\": \"2001\\r\\n\", \"output\": [\"2013\"]}, {\"input\": \"3000\\r\\n\", \"output\": [\"3012\"]}, {\"input\": \"7712\\r\\n\", \"output\": [\"7801\"]}, {\"input\": \"8088\\r\\n\", \"output\": [\"8091\"]}, {\"input\": \"1594\\r\\n\", \"output\": [\"1596\"]}, {\"input\": \"6016\\r\\n\", \"output\": [\"6017\"]}, {\"input\": \"8800\\r\\n\", \"output\": [\"8901\"]}, {\"input\": \"3331\\r\\n\", \"output\": [\"3401\"]}, {\"input\": \"5090\\r\\n\", \"output\": [\"5091\"]}, {\"input\": \"2342\\r\\n\", \"output\": [\"2345\"]}, {\"input\": \"2334\\r\\n\", \"output\": [\"2340\"]}, {\"input\": \"1123\\r\\n\", \"output\": [\"1203\"]}, {\"input\": \"8989\\r\\n\", \"output\": [\"9012\"]}, {\"input\": \"8977\\r\\n\", \"output\": [\"9012\"]}, {\"input\": \"6869\\r\\n\", \"output\": [\"6870\"]}]",
+        "source_lang": "Python 3",
+        "target_lang": "C"
+    }
+}

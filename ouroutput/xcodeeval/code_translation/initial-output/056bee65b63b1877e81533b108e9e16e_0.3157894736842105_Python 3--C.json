@@ -1,0 +1,85 @@
+{
+    "oai_response": {
+        "prompt": "Here is code in Python 3 programming lanaguge. Translate the following code from Python 3 to C programming lanaguge. Do not output any extra description or tokens other than the translated code. \n\nmod = 1000000007\ndef power(a, p):\n    res = 1\n    while p > 0:\n        if p % 2 == 1:\n            res = (res * a) % mod\n        a = (a * a) % mod\n        p //= 2\n    return res\nn, m = map(int, input().split())\nn += 1\nres = (power(n * 2, m - 1)) * (n - m) * 2\nprint((res % mod))||END-of-SRC||",
+        "response": {
+            "id": "multi-call-as-09dbrm2q71",
+            "model": "deepseek-v3",
+            "created": 1767070465,
+            "choices": [
+                {
+                    "index": 0,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n\n#define MOD 1000000007\n\nlong long power(long long a, long long p) {\n    long long res = 1;\n    while (p > 0) {\n        if (p % 2 == 1) {\n            res = (res * a) % MOD;\n        }\n        a = (a * a) % MOD;\n        p /= 2;\n    }\n    return res;\n}\n\nint main() {\n    long long n, m;\n    scanf(\"%lld %lld\", &n, &m);\n    n += 1;\n    long long res = (power(n * 2, m - 1) * (n - m) * 2) % MOD;\n    printf(\"%lld\\n\", res);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 1,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n\n#define MOD 1000000007\n\nlong long power(long long a, long long p) {\n    long long res = 1;\n    while (p > 0) {\n        if (p % 2 == 1) {\n            res = (res * a) % MOD;\n        }\n        a = (a * a) % MOD;\n        p /= 2;\n    }\n    return res;\n}\n\nint main() {\n    long long n, m;\n    scanf(\"%lld %lld\", &n, &m);\n    n += 1;\n    long long res = (power(n * 2, m - 1) * (n - m) * 2) % MOD;\n    printf(\"%lld\\n\", res);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 2,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n\n#define MOD 1000000007\n\nlong long power(long long a, long long p) {\n    long long res = 1;\n    while (p > 0) {\n        if (p % 2 == 1) {\n            res = (res * a) % MOD;\n        }\n        a = (a * a) % MOD;\n        p /= 2;\n    }\n    return res;\n}\n\nint main() {\n    long long n, m;\n    scanf(\"%lld %lld\", &n, &m);\n    n += 1;\n    long long res = (power(n * 2, m - 1) * (n - m) * 2) % MOD;\n    printf(\"%lld\\n\", res);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 3,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n\n#define MOD 1000000007\n\nlong long power(long long a, long long p) {\n    long long res = 1;\n    while (p > 0) {\n        if (p % 2 == 1) {\n            res = (res * a) % MOD;\n        }\n        a = (a * a) % MOD;\n        p /= 2;\n    }\n    return res;\n}\n\nint main() {\n    long long n, m;\n    scanf(\"%lld %lld\", &n, &m);\n    n += 1;\n    long long res = (power(n * 2, m - 1) * (n - m) * 2) % MOD;\n    printf(\"%lld\\n\", res);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 4,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n\n#define MOD 1000000007\n\nlong long power(long long a, long long p) {\n    long long res = 1;\n    while (p > 0) {\n        if (p % 2 == 1) {\n            res = (res * a) % MOD;\n        }\n        a = (a * a) % MOD;\n        p /= 2;\n    }\n    return res;\n}\n\nint main() {\n    long long n, m;\n    scanf(\"%lld %lld\", &n, &m);\n    n += 1;\n    long long res = (power(n * 2, m - 1) * (n - m) * 2) % MOD;\n    printf(\"%lld\\n\", res);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                }
+            ],
+            "usage": {
+                "prompt_tokens": 835,
+                "completion_tokens": 850,
+                "total_tokens": 1685
+            }
+        }
+    },
+    "source_data": {
+        "code_uid": "056bee65b63b1877e81533b108e9e16e",
+        "prob_desc_output_to": "standard output",
+        "prob_desc_notes": "NoteHere, we will denote a passenger by which seat they were assigned, and which side they came from (either \"F\" or \"B\" for front or back, respectively).For example, one valid way is 3B, 3B, 3B (i.e. all passengers were assigned seat 3 and came from the back entrance). Another valid way would be 2F, 1B, 3F.One invalid way would be 2B, 2B, 2B, since the third passenger would get to the front without finding a seat.",
+        "lang_cluster": "Python",
+        "prob_desc_time_limit": "2 seconds",
+        "prob_desc_input_spec": "The first line of input will contain two integers n,\u2009m (1\u2009\u2264\u2009m\u2009\u2264\u2009n\u2009\u2264\u20091\u2009000\u2009000), the number of seats, and the number of passengers, respectively.",
+        "source_code": "mod = 1000000007\ndef power(a, p):\n    res = 1\n    while p > 0:\n        if p % 2 == 1:\n            res = (res * a) % mod\n        a = (a * a) % mod\n        p //= 2\n    return res\nn, m = map(int, input().split())\nn += 1\nres = (power(n * 2, m - 1)) * (n - m) * 2\nprint((res % mod))",
+        "prob_desc_sample_inputs": [
+            "3 3"
+        ],
+        "prob_desc_memory_limit": "256 megabytes",
+        "exec_outcome": "PASSED",
+        "prob_desc_output_spec": "Print a single number, the number of ways, modulo 109\u2009+\u20097.",
+        "src_uid": "4f9711197e699c0fd0c4e9db8323cac7",
+        "prob_desc_input_from": "standard input",
+        "lang": "Python 3",
+        "prob_desc_sample_outputs": [
+            "128"
+        ],
+        "file_name": "d7021504500d5ca7c2b02df8100a574d159e6e67e20ec8071b75800b1267370a",
+        "prob_desc_description": "There is an airplane which has n rows from front to back. There will be m people boarding this airplane.This airplane has an entrance at the very front and very back of the plane.Each person has some assigned seat. It is possible for multiple people to have the same assigned seat. The people will then board the plane one by one starting with person 1. Each person can independently choose either the front entrance or back entrance to enter the plane.When a person walks into the plane, they walk directly to their assigned seat and will try to sit in it. If it is occupied, they will continue walking in the direction they walked in until they are at empty seat - they will take the earliest empty seat that they can find. If they get to the end of the row without finding a seat, they will be angry.Find the number of ways to assign tickets to the passengers and board the plane without anyone getting angry. Two ways are different if there exists a passenger who chose a different entrance in both ways, or the assigned seat is different. Print this count modulo 109\u2009+\u20097.",
+        "prob_desc_created_at": "1502085900",
+        "difficulty": 2700.0,
+        "hidden_unit_tests": "[{\"input\": \"3 3\\r\\n\", \"output\": [\"128\"]}, {\"input\": \"1000000 1000000\\r\\n\", \"output\": [\"233176135\"]}, {\"input\": \"1000000 500000\\r\\n\", \"output\": [\"211837745\"]}, {\"input\": \"1 1\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"10 1\\r\\n\", \"output\": [\"20\"]}, {\"input\": \"285042 201091\\r\\n\", \"output\": [\"348727840\"]}, {\"input\": \"896437 604720\\r\\n\", \"output\": [\"531995995\"]}, {\"input\": \"284114 73851\\r\\n\", \"output\": [\"935093233\"]}, {\"input\": \"541826 316395\\r\\n\", \"output\": [\"365726326\"]}, {\"input\": \"353093 96536\\r\\n\", \"output\": [\"708633906\"]}, {\"input\": \"540898 158491\\r\\n\", \"output\": [\"698076231\"]}, {\"input\": \"858309 773589\\r\\n\", \"output\": [\"875072331\"]}, {\"input\": \"56322 42432\\r\\n\", \"output\": [\"905316418\"]}, {\"input\": \"461466 56468\\r\\n\", \"output\": [\"616418222\"]}, {\"input\": \"29102 1503\\r\\n\", \"output\": [\"211174820\"]}, {\"input\": \"42800 41731\\r\\n\", \"output\": [\"178922948\"]}, {\"input\": \"235175 92933\\r\\n\", \"output\": [\"704139178\"]}, {\"input\": \"921643 744360\\r\\n\", \"output\": [\"959987426\"]}, {\"input\": \"619924 583916\\r\\n\", \"output\": [\"765568563\"]}, {\"input\": \"43657 852\\r\\n\", \"output\": [\"898633472\"]}, {\"input\": \"4672 3086\\r\\n\", \"output\": [\"648722588\"]}, {\"input\": \"197047 148580\\r\\n\", \"output\": [\"132050966\"]}, {\"input\": \"693851 210584\\r\\n\", \"output\": [\"800890261\"]}, {\"input\": \"951563 122804\\r\\n\", \"output\": [\"202475849\"]}, {\"input\": \"175236 173750\\r\\n\", \"output\": [\"291135880\"]}, {\"input\": \"784160 282537\\r\\n\", \"output\": [\"252488614\"]}, {\"input\": \"976535 433238\\r\\n\", \"output\": [\"30881486\"]}, {\"input\": \"827825 745802\\r\\n\", \"output\": [\"28515641\"]}, {\"input\": \"361284 5729\\r\\n\", \"output\": [\"121235105\"]}, {\"input\": \"189791 36882\\r\\n\", \"output\": [\"503014832\"]}, {\"input\": \"84609 75872\\r\\n\", \"output\": [\"860171419\"]}, {\"input\": \"938407 501656\\r\\n\", \"output\": [\"321500030\"]}, {\"input\": \"600033 306982\\r\\n\", \"output\": [\"214582457\"]}, {\"input\": \"857745 223544\\r\\n\", \"output\": [\"778808942\"]}, {\"input\": \"321370 271684\\r\\n\", \"output\": [\"624745554\"]}, {\"input\": \"41872 1808\\r\\n\", \"output\": [\"389891349\"]}, {\"input\": \"234247 67712\\r\\n\", \"output\": [\"610314478\"]}, {\"input\": \"734006 258894\\r\\n\", \"output\": [\"822257297\"]}, {\"input\": \"991718 318936\\r\\n\", \"output\": [\"688082968\"]}, {\"input\": \"335925 159533\\r\\n\", \"output\": [\"401609204\"]}, {\"input\": \"3745 1612\\r\\n\", \"output\": [\"100232679\"]}, {\"input\": \"196119 47809\\r\\n\", \"output\": [\"831275903\"]}, {\"input\": \"506214 320883\\r\\n\", \"output\": [\"31547174\"]}, {\"input\": \"960651 256313\\r\\n\", \"output\": [\"500076538\"]}, {\"input\": \"107210 13886\\r\\n\", \"output\": [\"179122019\"]}, {\"input\": \"124763 65049\\r\\n\", \"output\": [\"454953468\"]}, {\"input\": \"491959 252209\\r\\n\", \"output\": [\"696157573\"]}, {\"input\": \"684333 613651\\r\\n\", \"output\": [\"980362331\"]}, {\"input\": \"897899 478680\\r\\n\", \"output\": [\"889928809\"]}, {\"input\": \"69082 16337\\r\\n\", \"output\": [\"24188373\"]}, {\"input\": \"261457 212062\\r\\n\", \"output\": [\"866036254\"]}, {\"input\": \"453831 290298\\r\\n\", \"output\": [\"552613881\"]}, {\"input\": \"646205 361804\\r\\n\", \"output\": [\"801930294\"]}, {\"input\": \"838580 174298\\r\\n\", \"output\": [\"488250696\"]}, {\"input\": \"364922 343089\\r\\n\", \"output\": [\"140158453\"]}, {\"input\": \"30945 5665\\r\\n\", \"output\": [\"758927360\"]}, {\"input\": \"749671 469976\\r\\n\", \"output\": [\"673292024\"]}, {\"input\": \"942045 878421\\r\\n\", \"output\": [\"214250096\"]}, {\"input\": \"287729 11831\\r\\n\", \"output\": [\"625218018\"]}, {\"input\": \"144546 128076\\r\\n\", \"output\": [\"232200563\"]}, {\"input\": \"519169 430233\\r\\n\", \"output\": [\"44864151\"]}, {\"input\": \"711543 136245\\r\\n\", \"output\": [\"40200989\"]}, {\"input\": \"903917 186673\\r\\n\", \"output\": [\"762310964\"]}, {\"input\": \"252919 105355\\r\\n\", \"output\": [\"941982792\"]}, {\"input\": \"106282 12802\\r\\n\", \"output\": [\"237272767\"]}]",
+        "source_lang": "Python 3",
+        "target_lang": "C"
+    }
+}

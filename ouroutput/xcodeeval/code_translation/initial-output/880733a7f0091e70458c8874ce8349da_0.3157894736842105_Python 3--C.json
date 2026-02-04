@@ -1,0 +1,87 @@
+{
+    "oai_response": {
+        "prompt": "Here is code in Python 3 programming lanaguge. Translate the following code from Python 3 to C programming lanaguge. Do not output any extra description or tokens other than the translated code. \n\nn = input().split()\nif n[2] == 'week':\n    print(53 if int(n[0]) == 5 or int(n[0]) == 6 else 52)\nelse:\n    if int(n[0]) == 31:\n        print(7)\n    elif int(n[0]) == 30:\n        print(11)\n    else:\n        print(12)\n||END-of-SRC||",
+        "response": {
+            "id": "multi-call-as-bh4ttkqz4r",
+            "model": "deepseek-v3",
+            "created": 1767068809,
+            "choices": [
+                {
+                    "index": 0,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <string.h>\n\nint main() {\n    int num;\n    char type[5];\n    scanf(\"%d %s\", &num, type);\n    if (strcmp(type, \"week\") == 0) {\n        printf(\"%d\\n\", (num == 5 || num == 6) ? 53 : 52);\n    } else {\n        if (num == 31) {\n            printf(\"7\\n\");\n        } else if (num == 30) {\n            printf(\"11\\n\");\n        } else {\n            printf(\"12\\n\");\n        }\n    }\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 1,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <string.h>\n\nint main() {\n    int num;\n    char type[10];\n    scanf(\"%d %s\", &num, type);\n    \n    if (strcmp(type, \"week\") == 0) {\n        printf(\"%d\", (num == 5 || num == 6) ? 53 : 52);\n    } else {\n        if (num == 31) {\n            printf(\"7\");\n        } else if (num == 30) {\n            printf(\"11\");\n        } else {\n            printf(\"12\");\n        }\n    }\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 2,
+                    "message": {
+                        "role": "assistant",
+                        "content": "Here's the translated code in C:\n\n```c\n#include <stdio.h>\n#include <string.h>\n\nint main() {\n    int num;\n    char str[10];\n    scanf(\"%d %s\", &num, str);\n    \n    if (strcmp(str, \"week\") == 0) {\n        printf(\"%d\\n\", (num == 5 || num == 6) ? 53 : 52);\n    } else {\n        if (num == 31) {\n            printf(\"7\\n\");\n        } else if (num == 30) {\n            printf(\"11\\n\");\n        } else {\n            printf(\"12\\n\");\n        }\n    }\n    \n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 3,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <string.h>\n\nint main() {\n    char n[3][10];\n    scanf(\"%s %s %s\", n[0], n[1], n[2]);\n    if (strcmp(n[2], \"week\") == 0) {\n        int day = atoi(n[0]);\n        printf(\"%d\\n\", (day == 5 || day == 6) ? 53 : 52);\n    } else {\n        int num = atoi(n[0]);\n        if (num == 31) {\n            printf(\"7\\n\");\n        } else if (num == 30) {\n            printf(\"11\\n\");\n        } else {\n            printf(\"12\\n\");\n        }\n    }\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 4,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <string.h>\n\nint main() {\n    int day;\n    char type[5];\n    scanf(\"%d %s\", &day, type);\n    if (strcmp(type, \"week\") == 0) {\n        printf(\"%d\\n\", (day == 5 || day == 6) ? 53 : 52);\n    } else {\n        if (day == 31) {\n            printf(\"7\\n\");\n        } else if (day == 30) {\n            printf(\"11\\n\");\n        } else {\n            printf(\"12\\n\");\n        }\n    }\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                }
+            ],
+            "usage": {
+                "prompt_tokens": 670,
+                "completion_tokens": 711,
+                "total_tokens": 1381
+            }
+        }
+    },
+    "source_data": {
+        "code_uid": "880733a7f0091e70458c8874ce8349da",
+        "prob_desc_output_to": "standard output",
+        "prob_desc_notes": "NotePolar bears use the Gregorian calendar. It is the most common calendar and you likely use it too. You can read about it on Wikipedia if you want to \u2013 https://en.wikipedia.org/wiki/Gregorian_calendar. The week starts with Monday.In the first sample Limak wants to save one candy on each Thursday (the 4-th day of the week). There are 52 Thursdays in the 2016. Thus, he will save 52 candies in total.In the second sample Limak wants to save one candy on the 30-th day of each month. There is the 30-th day in exactly 11 months in the 2016\u00a0\u2014 all months but February. It means that Limak will save 11 candies in total.",
+        "lang_cluster": "Python",
+        "prob_desc_time_limit": "2 seconds",
+        "prob_desc_input_spec": "The only line of the input is in one of the following two formats:    \"x of week\" where x (1\u2009\u2264\u2009x\u2009\u2264\u20097) denotes the day of the week. The 1-st day is Monday and the 7-th one is Sunday.  \"x of month\" where x (1\u2009\u2264\u2009x\u2009\u2264\u200931) denotes the day of the month. ",
+        "source_code": "n = input().split()\nif n[2] == 'week':\n    print(53 if int(n[0]) == 5 or int(n[0]) == 6 else 52)\nelse:\n    if int(n[0]) == 31:\n        print(7)\n    elif int(n[0]) == 30:\n        print(11)\n    else:\n        print(12)\n",
+        "prob_desc_sample_inputs": [
+            "4 of week",
+            "30 of month"
+        ],
+        "prob_desc_memory_limit": "256 megabytes",
+        "exec_outcome": "PASSED",
+        "prob_desc_output_spec": "Print one integer\u00a0\u2014 the number of candies Limak will save in the year 2016.",
+        "src_uid": "9b8543c1ae3666e6c163d268fdbeef6b",
+        "prob_desc_input_from": "standard input",
+        "lang": "Python 3",
+        "prob_desc_sample_outputs": [
+            "52",
+            "11"
+        ],
+        "file_name": "d7021504500d5ca7c2b02df8100a574d159e6e67e20ec8071b75800b1267370a",
+        "prob_desc_description": "Today is Wednesday, the third day of the week. What's more interesting is that tomorrow is the last day of the year 2015.Limak is a little polar bear. He enjoyed this year a lot. Now, he is so eager to the coming year 2016.Limak wants to prove how responsible a bear he is. He is going to regularly save candies for the entire year 2016! He considers various saving plans. He can save one candy either on some fixed day of the week or on some fixed day of the month.Limak chose one particular plan. He isn't sure how many candies he will save in the 2016 with his plan. Please, calculate it and tell him.",
+        "prob_desc_created_at": "1451487900",
+        "difficulty": 900.0,
+        "hidden_unit_tests": "[{\"input\": \"4 of week\\r\\n\", \"output\": [\"52\"]}, {\"input\": \"30 of month\\r\\n\", \"output\": [\"11\"]}, {\"input\": \"17 of month\\r\\n\", \"output\": [\"12\"]}, {\"input\": \"31 of month\\r\\n\", \"output\": [\"7\"]}, {\"input\": \"6 of week\\r\\n\", \"output\": [\"53\"]}, {\"input\": \"1 of week\\r\\n\", \"output\": [\"52\"]}, {\"input\": \"2 of week\\r\\n\", \"output\": [\"52\"]}, {\"input\": \"3 of week\\r\\n\", \"output\": [\"52\"]}, {\"input\": \"5 of week\\r\\n\", \"output\": [\"53\"]}, {\"input\": \"7 of week\\r\\n\", \"output\": [\"52\"]}, {\"input\": \"1 of month\\r\\n\", \"output\": [\"12\"]}, {\"input\": \"2 of month\\r\\n\", \"output\": [\"12\"]}, {\"input\": \"3 of month\\r\\n\", \"output\": [\"12\"]}, {\"input\": \"4 of month\\r\\n\", \"output\": [\"12\"]}, {\"input\": \"5 of month\\r\\n\", \"output\": [\"12\"]}, {\"input\": \"6 of month\\r\\n\", \"output\": [\"12\"]}, {\"input\": \"7 of month\\r\\n\", \"output\": [\"12\"]}, {\"input\": \"8 of month\\r\\n\", \"output\": [\"12\"]}, {\"input\": \"9 of month\\r\\n\", \"output\": [\"12\"]}, {\"input\": \"10 of month\\r\\n\", \"output\": [\"12\"]}, {\"input\": \"11 of month\\r\\n\", \"output\": [\"12\"]}, {\"input\": \"12 of month\\r\\n\", \"output\": [\"12\"]}, {\"input\": \"13 of month\\r\\n\", \"output\": [\"12\"]}, {\"input\": \"14 of month\\r\\n\", \"output\": [\"12\"]}, {\"input\": \"15 of month\\r\\n\", \"output\": [\"12\"]}, {\"input\": \"16 of month\\r\\n\", \"output\": [\"12\"]}, {\"input\": \"18 of month\\r\\n\", \"output\": [\"12\"]}, {\"input\": \"19 of month\\r\\n\", \"output\": [\"12\"]}, {\"input\": \"20 of month\\r\\n\", \"output\": [\"12\"]}, {\"input\": \"21 of month\\r\\n\", \"output\": [\"12\"]}, {\"input\": \"22 of month\\r\\n\", \"output\": [\"12\"]}, {\"input\": \"23 of month\\r\\n\", \"output\": [\"12\"]}, {\"input\": \"24 of month\\r\\n\", \"output\": [\"12\"]}, {\"input\": \"25 of month\\r\\n\", \"output\": [\"12\"]}, {\"input\": \"26 of month\\r\\n\", \"output\": [\"12\"]}, {\"input\": \"27 of month\\r\\n\", \"output\": [\"12\"]}, {\"input\": \"28 of month\\r\\n\", \"output\": [\"12\"]}, {\"input\": \"29 of month\\r\\n\", \"output\": [\"12\"]}]",
+        "source_lang": "Python 3",
+        "target_lang": "C"
+    }
+}

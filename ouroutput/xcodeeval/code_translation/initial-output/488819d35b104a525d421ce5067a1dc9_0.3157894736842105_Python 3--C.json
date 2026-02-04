@@ -1,0 +1,87 @@
+{
+    "oai_response": {
+        "prompt": "Here is code in Python 3 programming lanaguge. Translate the following code from Python 3 to C programming lanaguge. Do not output any extra description or tokens other than the translated code. \n\nn, e = map(int, input().split())\ngroups = 0\nsmall = min(n, e)\nbig = max(n, e)\nfor i in range(big):\n    if big >= 2 and small >= 1:\n        groups += 1\n        big -= 2\n        small -= 1\n    elif big >= 1 and small >= 2:\n        groups += 1\n        big -= 1\n        small -= 2\n    else:\n        break\n    #print(small, big)\n    a = small\n    b = big\n    small = min(a, b)\n    big = max(a, b)\n    #print(small, big)\n    #print(\"\\n\")\nprint(groups)\n||END-of-SRC||",
+        "response": {
+            "id": "multi-call-as-s8q3cf4hif",
+            "model": "deepseek-v3",
+            "created": 1767067328,
+            "choices": [
+                {
+                    "index": 0,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n\nint main() {\n    int n, e;\n    scanf(\"%d %d\", &n, &e);\n    int groups = 0;\n    int small = n < e ? n : e;\n    int big = n > e ? n : e;\n    for (int i = 0; i < big; i++) {\n        if (big >= 2 && small >= 1) {\n            groups += 1;\n            big -= 2;\n            small -= 1;\n        } else if (big >= 1 && small >= 2) {\n            groups += 1;\n            big -= 1;\n            small -= 2;\n        } else {\n            break;\n        }\n        int a = small;\n        int b = big;\n        small = a < b ? a : b;\n        big = a > b ? a : b;\n    }\n    printf(\"%d\\n\", groups);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 1,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n\nint main() {\n    int n, e;\n    scanf(\"%d %d\", &n, &e);\n    int groups = 0;\n    int small = n < e ? n : e;\n    int big = n > e ? n : e;\n    for (int i = 0; i < big; i++) {\n        if (big >= 2 && small >= 1) {\n            groups += 1;\n            big -= 2;\n            small -= 1;\n        } else if (big >= 1 && small >= 2) {\n            groups += 1;\n            big -= 1;\n            small -= 2;\n        } else {\n            break;\n        }\n        int a = small;\n        int b = big;\n        small = a < b ? a : b;\n        big = a > b ? a : b;\n    }\n    printf(\"%d\\n\", groups);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 2,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n\nint main() {\n    int n, e;\n    scanf(\"%d %d\", &n, &e);\n    int groups = 0;\n    int small = (n < e) ? n : e;\n    int big = (n > e) ? n : e;\n    for (int i = 0; i < big; i++) {\n        if (big >= 2 && small >= 1) {\n            groups += 1;\n            big -= 2;\n            small -= 1;\n        } else if (big >= 1 && small >= 2) {\n            groups += 1;\n            big -= 1;\n            small -= 2;\n        } else {\n            break;\n        }\n        int a = small;\n        int b = big;\n        small = (a < b) ? a : b;\n        big = (a > b) ? a : b;\n    }\n    printf(\"%d\\n\", groups);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 3,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n\nint main() {\n    int n, e;\n    scanf(\"%d %d\", &n, &e);\n    int groups = 0;\n    int small = n < e ? n : e;\n    int big = n > e ? n : e;\n    while (1) {\n        if (big >= 2 && small >= 1) {\n            groups++;\n            big -= 2;\n            small -= 1;\n        } else if (big >= 1 && small >= 2) {\n            groups++;\n            big -= 1;\n            small -= 2;\n        } else {\n            break;\n        }\n        int a = small;\n        int b = big;\n        small = a < b ? a : b;\n        big = a > b ? a : b;\n    }\n    printf(\"%d\\n\", groups);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 4,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n\nint main() {\n    int n, e;\n    scanf(\"%d %d\", &n, &e);\n    int groups = 0;\n    int small = n < e ? n : e;\n    int big = n > e ? n : e;\n    for (int i = 0; i < big; i++) {\n        if (big >= 2 && small >= 1) {\n            groups += 1;\n            big -= 2;\n            small -= 1;\n        } else if (big >= 1 && small >= 2) {\n            groups += 1;\n            big -= 1;\n            small -= 2;\n        } else {\n            break;\n        }\n        int a = small;\n        int b = big;\n        small = a < b ? a : b;\n        big = a > b ? a : b;\n    }\n    printf(\"%d\\n\", groups);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                }
+            ],
+            "usage": {
+                "prompt_tokens": 1030,
+                "completion_tokens": 1018,
+                "total_tokens": 2048
+            }
+        }
+    },
+    "source_data": {
+        "code_uid": "488819d35b104a525d421ce5067a1dc9",
+        "prob_desc_output_to": "standard output",
+        "prob_desc_notes": "NoteLet's represent the experienced players as XP and newbies as NB.In the first test the teams look as follows: (XP, NB, NB), (XP, NB, NB).In the second test sample the teams look as follows: (XP, NB, NB), (XP, NB, NB), (XP, XP, NB).",
+        "lang_cluster": "Python",
+        "prob_desc_time_limit": "1 second",
+        "prob_desc_input_spec": "The first line contains two integers n and m (0\u2009\u2264\u2009n,\u2009m\u2009\u2264\u20095\u00b7105) \u2014 the number of experienced participants and newbies that are present at the training session. ",
+        "source_code": "n, e = map(int, input().split())\ngroups = 0\nsmall = min(n, e)\nbig = max(n, e)\nfor i in range(big):\n    if big >= 2 and small >= 1:\n        groups += 1\n        big -= 2\n        small -= 1\n    elif big >= 1 and small >= 2:\n        groups += 1\n        big -= 1\n        small -= 2\n    else:\n        break\n    #print(small, big)\n    a = small\n    b = big\n    small = min(a, b)\n    big = max(a, b)\n    #print(small, big)\n    #print(\"\\n\")\nprint(groups)\n",
+        "prob_desc_sample_inputs": [
+            "2 6",
+            "4 5"
+        ],
+        "prob_desc_memory_limit": "256 megabytes",
+        "exec_outcome": "PASSED",
+        "prob_desc_output_spec": "Print the maximum number of teams that can be formed.",
+        "src_uid": "0718c6afe52cd232a5e942052527f31b",
+        "prob_desc_input_from": "standard input",
+        "lang": "Python 3",
+        "prob_desc_sample_outputs": [
+            "2",
+            "3"
+        ],
+        "file_name": "d7021504500d5ca7c2b02df8100a574d159e6e67e20ec8071b75800b1267370a",
+        "prob_desc_description": "A and B are preparing themselves for programming contests.An important part of preparing for a competition is sharing programming knowledge from the experienced members to those who are just beginning to deal with the contests. Therefore, during the next team training A decided to make teams so that newbies are solving problems together with experienced participants.A believes that the optimal team of three people should consist of one experienced participant and two newbies. Thus, each experienced participant can share the experience with a large number of people.However, B believes that the optimal team should have two experienced members plus one newbie. Thus, each newbie can gain more knowledge and experience.As a result, A and B have decided that all the teams during the training session should belong to one of the two types described above. Furthermore, they agree that the total number of teams should be as much as possible.There are n experienced members and m newbies on the training session. Can you calculate what maximum number of teams can be formed?",
+        "prob_desc_created_at": "1425128400",
+        "difficulty": 1300.0,
+        "hidden_unit_tests": "[{\"input\": \"2 6\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"4 5\\r\\n\", \"output\": [\"3\"]}, {\"input\": \"1 1\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"3 3\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"500000 500000\\r\\n\", \"output\": [\"333333\"]}, {\"input\": \"70 100\\r\\n\", \"output\": [\"56\"]}, {\"input\": \"5 12525\\r\\n\", \"output\": [\"5\"]}, {\"input\": \"10 5\\r\\n\", \"output\": [\"5\"]}, {\"input\": \"5 10\\r\\n\", \"output\": [\"5\"]}, {\"input\": \"0 0\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"0 1\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"1 0\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"0 21233\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"12523 0\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"1231 1253\\r\\n\", \"output\": [\"828\"]}, {\"input\": \"500000 0\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"1 500000\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"250000 500000\\r\\n\", \"output\": [\"250000\"]}, {\"input\": \"500000 250000\\r\\n\", \"output\": [\"250000\"]}, {\"input\": \"33333 77777\\r\\n\", \"output\": [\"33333\"]}, {\"input\": \"30900 174529\\r\\n\", \"output\": [\"30900\"]}, {\"input\": \"89979 57154\\r\\n\", \"output\": [\"49044\"]}, {\"input\": \"231646 398487\\r\\n\", \"output\": [\"210044\"]}, {\"input\": \"332019 281112\\r\\n\", \"output\": [\"204377\"]}, {\"input\": \"473686 122443\\r\\n\", \"output\": [\"122443\"]}, {\"input\": \"481245 86879\\r\\n\", \"output\": [\"86879\"]}, {\"input\": \"39935 123534\\r\\n\", \"output\": [\"39935\"]}, {\"input\": \"10000 20000\\r\\n\", \"output\": [\"10000\"]}, {\"input\": \"10000 20001\\r\\n\", \"output\": [\"10000\"]}, {\"input\": \"10000 20002\\r\\n\", \"output\": [\"10000\"]}, {\"input\": \"10000 20003\\r\\n\", \"output\": [\"10000\"]}, {\"input\": \"10000 20004\\r\\n\", \"output\": [\"10000\"]}, {\"input\": \"10001 20000\\r\\n\", \"output\": [\"10000\"]}, {\"input\": \"10001 20001\\r\\n\", \"output\": [\"10000\"]}, {\"input\": \"10001 20002\\r\\n\", \"output\": [\"10001\"]}, {\"input\": \"10001 20003\\r\\n\", \"output\": [\"10001\"]}, {\"input\": \"10001 20004\\r\\n\", \"output\": [\"10001\"]}, {\"input\": \"20000 10000\\r\\n\", \"output\": [\"10000\"]}, {\"input\": \"20001 10000\\r\\n\", \"output\": [\"10000\"]}, {\"input\": \"20002 10000\\r\\n\", \"output\": [\"10000\"]}, {\"input\": \"20003 10000\\r\\n\", \"output\": [\"10000\"]}, {\"input\": \"20004 10000\\r\\n\", \"output\": [\"10000\"]}, {\"input\": \"20000 10001\\r\\n\", \"output\": [\"10000\"]}, {\"input\": \"20001 10001\\r\\n\", \"output\": [\"10000\"]}, {\"input\": \"20002 10001\\r\\n\", \"output\": [\"10001\"]}, {\"input\": \"20003 10001\\r\\n\", \"output\": [\"10001\"]}, {\"input\": \"20004 10001\\r\\n\", \"output\": [\"10001\"]}, {\"input\": \"10 0\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"0 6\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"2 3\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"1 2\\r\\n\", \"output\": [\"1\"]}]",
+        "source_lang": "Python 3",
+        "target_lang": "C"
+    }
+}

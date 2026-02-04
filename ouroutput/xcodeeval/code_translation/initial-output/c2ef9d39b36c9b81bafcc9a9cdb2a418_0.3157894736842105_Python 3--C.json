@@ -1,0 +1,89 @@
+{
+    "oai_response": {
+        "prompt": "Here is code in Python 3 programming lanaguge. Translate the following code from Python 3 to C programming lanaguge. Do not output any extra description or tokens other than the translated code. \n\ns, v1, v2, t1, t2=map(int, input().split())\na=s*v1+2*t1\nb=s*v2+2*t2\nif(a<b):\n    print(\"First\")\nif(a>b):\n    print(\"Second\")\nif(a==b):\n    print(\"Friendship\")\n||END-of-SRC||",
+        "response": {
+            "id": "multi-call-as-7d4848tf3q",
+            "model": "deepseek-v3",
+            "created": 1767066567,
+            "choices": [
+                {
+                    "index": 0,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n\nint main() {\n    int s, v1, v2, t1, t2;\n    scanf(\"%d %d %d %d %d\", &s, &v1, &v2, &t1, &t2);\n    int a = s * v1 + 2 * t1;\n    int b = s * v2 + 2 * t2;\n    if (a < b) {\n        printf(\"First\\n\");\n    }\n    if (a > b) {\n        printf(\"Second\\n\");\n    }\n    if (a == b) {\n        printf(\"Friendship\\n\");\n    }\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 1,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n\nint main() {\n    int s, v1, v2, t1, t2;\n    scanf(\"%d %d %d %d %d\", &s, &v1, &v2, &t1, &t2);\n    int a = s * v1 + 2 * t1;\n    int b = s * v2 + 2 * t2;\n    if (a < b) {\n        printf(\"First\\n\");\n    }\n    if (a > b) {\n        printf(\"Second\\n\");\n    }\n    if (a == b) {\n        printf(\"Friendship\\n\");\n    }\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 2,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n\nint main() {\n    int s, v1, v2, t1, t2;\n    scanf(\"%d %d %d %d %d\", &s, &v1, &v2, &t1, &t2);\n    int a = s * v1 + 2 * t1;\n    int b = s * v2 + 2 * t2;\n    if (a < b) {\n        printf(\"First\\n\");\n    }\n    if (a > b) {\n        printf(\"Second\\n\");\n    }\n    if (a == b) {\n        printf(\"Friendship\\n\");\n    }\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 3,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n\nint main() {\n    int s, v1, v2, t1, t2;\n    scanf(\"%d %d %d %d %d\", &s, &v1, &v2, &t1, &t2);\n    int a = s * v1 + 2 * t1;\n    int b = s * v2 + 2 * t2;\n    if (a < b) {\n        printf(\"First\\n\");\n    }\n    if (a > b) {\n        printf(\"Second\\n\");\n    }\n    if (a == b) {\n        printf(\"Friendship\\n\");\n    }\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 4,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n\nint main() {\n    int s, v1, v2, t1, t2;\n    scanf(\"%d %d %d %d %d\", &s, &v1, &v2, &t1, &t2);\n    int a = s * v1 + 2 * t1;\n    int b = s * v2 + 2 * t2;\n    if (a < b) {\n        printf(\"First\\n\");\n    }\n    if (a > b) {\n        printf(\"Second\\n\");\n    }\n    if (a == b) {\n        printf(\"Friendship\\n\");\n    }\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                }
+            ],
+            "usage": {
+                "prompt_tokens": 595,
+                "completion_tokens": 734,
+                "total_tokens": 1329
+            }
+        }
+    },
+    "source_data": {
+        "code_uid": "c2ef9d39b36c9b81bafcc9a9cdb2a418",
+        "prob_desc_output_to": "standard output",
+        "prob_desc_notes": "NoteIn the first example, information on the success of the first participant comes in 7 milliseconds, of the second participant\u00a0\u2014 in 14 milliseconds. So, the first wins.In the second example, information on the success of the first participant comes in 11 milliseconds, of the second participant\u00a0\u2014 in 5 milliseconds. So, the second wins.In the third example, information on the success of the first participant comes in 22 milliseconds, of the second participant\u00a0\u2014 in 22 milliseconds. So, it is be a draw.",
+        "lang_cluster": "Python",
+        "prob_desc_time_limit": "1 second",
+        "prob_desc_input_spec": "The first line contains five integers s, v1, v2, t1, t2 (1\u2009\u2264\u2009s,\u2009v1,\u2009v2,\u2009t1,\u2009t2\u2009\u2264\u20091000)\u00a0\u2014 the number of characters in the text, the time of typing one character for the first participant, the time of typing one character for the the second participant, the ping of the first participant and the ping of the second participant.",
+        "source_code": "s, v1, v2, t1, t2=map(int, input().split())\na=s*v1+2*t1\nb=s*v2+2*t2\nif(a<b):\n    print(\"First\")\nif(a>b):\n    print(\"Second\")\nif(a==b):\n    print(\"Friendship\")\n",
+        "prob_desc_sample_inputs": [
+            "5 1 2 1 2",
+            "3 3 1 1 1",
+            "4 5 3 1 5"
+        ],
+        "prob_desc_memory_limit": "256 megabytes",
+        "exec_outcome": "PASSED",
+        "prob_desc_output_spec": "If the first participant wins, print \"First\". If the second participant wins, print \"Second\". In case of a draw print \"Friendship\".",
+        "src_uid": "10226b8efe9e3c473239d747b911a1ef",
+        "prob_desc_input_from": "standard input",
+        "lang": "Python 3",
+        "prob_desc_sample_outputs": [
+            "First",
+            "Second",
+            "Friendship"
+        ],
+        "file_name": "d7021504500d5ca7c2b02df8100a574d159e6e67e20ec8071b75800b1267370a",
+        "prob_desc_description": "Two boys decided to compete in text typing on the site \"Key races\". During the competition, they have to type a text consisting of s characters. The first participant types one character in v1 milliseconds and has ping t1 milliseconds. The second participant types one character in v2 milliseconds and has ping t2 milliseconds.If connection ping (delay) is t milliseconds, the competition passes for a participant as follows:   Exactly after t milliseconds after the start of the competition the participant receives the text to be entered.  Right after that he starts to type it.  Exactly t milliseconds after he ends typing all the text, the site receives information about it. The winner is the participant whose information on the success comes earlier. If the information comes from both participants at the same time, it is considered that there is a draw.Given the length of the text and the information about participants, determine the result of the game.",
+        "prob_desc_created_at": "1501511700",
+        "difficulty": 800.0,
+        "hidden_unit_tests": "[{\"input\": \"5 1 2 1 2\\r\\n\", \"output\": [\"First\"]}, {\"input\": \"3 3 1 1 1\\r\\n\", \"output\": [\"Second\"]}, {\"input\": \"4 5 3 1 5\\r\\n\", \"output\": [\"Friendship\"]}, {\"input\": \"1000 1000 1000 1000 1000\\r\\n\", \"output\": [\"Friendship\"]}, {\"input\": \"1 1 1 1 1\\r\\n\", \"output\": [\"Friendship\"]}, {\"input\": \"8 8 1 1 1\\r\\n\", \"output\": [\"Second\"]}, {\"input\": \"15 14 32 65 28\\r\\n\", \"output\": [\"First\"]}, {\"input\": \"894 197 325 232 902\\r\\n\", \"output\": [\"First\"]}, {\"input\": \"1 2 8 8 5\\r\\n\", \"output\": [\"Friendship\"]}, {\"input\": \"37 261 207 1 1000\\r\\n\", \"output\": [\"Friendship\"]}, {\"input\": \"29 344 406 900 1\\r\\n\", \"output\": [\"Friendship\"]}, {\"input\": \"1 2 8 9 8\\r\\n\", \"output\": [\"First\"]}, {\"input\": \"2 9 8 8 9\\r\\n\", \"output\": [\"Friendship\"]}, {\"input\": \"213 480 811 134 745\\r\\n\", \"output\": [\"First\"]}, {\"input\": \"2 313 856 964 421\\r\\n\", \"output\": [\"Friendship\"]}, {\"input\": \"1 10 2 6 10\\r\\n\", \"output\": [\"Friendship\"]}, {\"input\": \"2 7 6 2 3\\r\\n\", \"output\": [\"Friendship\"]}, {\"input\": \"637 324 69 612 998\\r\\n\", \"output\": [\"Second\"]}, {\"input\": \"13 849 819 723 918\\r\\n\", \"output\": [\"Friendship\"]}, {\"input\": \"9 5 7 8 7\\r\\n\", \"output\": [\"First\"]}, {\"input\": \"6 5 7 10 4\\r\\n\", \"output\": [\"Friendship\"]}, {\"input\": \"61 464 623 89 548\\r\\n\", \"output\": [\"First\"]}, {\"input\": \"641 31 29 161 802\\r\\n\", \"output\": [\"Friendship\"]}, {\"input\": \"3 3 1 6 9\\r\\n\", \"output\": [\"Friendship\"]}, {\"input\": \"2 3 9 8 2\\r\\n\", \"output\": [\"Friendship\"]}, {\"input\": \"485 117 368 567 609\\r\\n\", \"output\": [\"First\"]}, {\"input\": \"4 202 512 995 375\\r\\n\", \"output\": [\"Friendship\"]}, {\"input\": \"424 41 41 909 909\\r\\n\", \"output\": [\"Friendship\"]}, {\"input\": \"884 913 263 641 265\\r\\n\", \"output\": [\"Second\"]}, {\"input\": \"12 462 8 311 327\\r\\n\", \"output\": [\"Second\"]}, {\"input\": \"436 306 266 493 580\\r\\n\", \"output\": [\"Second\"]}, {\"input\": \"69 1 2 1 2\\r\\n\", \"output\": [\"First\"]}]",
+        "source_lang": "Python 3",
+        "target_lang": "C"
+    }
+}

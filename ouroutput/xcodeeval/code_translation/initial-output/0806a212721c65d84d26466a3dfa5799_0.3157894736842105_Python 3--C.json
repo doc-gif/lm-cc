@@ -1,0 +1,87 @@
+{
+    "oai_response": {
+        "prompt": "Here is code in Python 3 programming lanaguge. Translate the following code from Python 3 to C programming lanaguge. Do not output any extra description or tokens other than the translated code. \n\nn = int (input())\nk = 1\ns = ''\nb = 0\nc = 0\nd = []\nwhile k<100:\n    if n>k:\n        a = n-k\n    \n        s = str(a)\n        for i in range(len(s)):\n                  b+=int(s[i])\n              \n        if a+b == n:\n                    c+=1   \n                    d.append(a)\n    k+=1\n    s = ''\n    b = 0\nprint(c)\nd.sort()\nprint('\\n'.join(str(v) for v in d))\n            \n||END-of-SRC||",
+        "response": {
+            "id": "multi-call-as-rd3a0r2er2",
+            "model": "deepseek-v3",
+            "created": 1767066580,
+            "choices": [
+                {
+                    "index": 0,
+                    "message": {
+                        "role": "assistant",
+                        "content": "Here's the translated code in C:\n\n```c\n#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\nint main() {\n    int n, k = 1, b = 0, c = 0;\n    scanf(\"%d\", &n);\n    int d[100];\n    int d_index = 0;\n    while (k < 100) {\n        if (n > k) {\n            int a = n - k;\n            char s[20];\n            sprintf(s, \"%d\", a);\n            b = 0;\n            for (int i = 0; i < strlen(s); i++) {\n                b += s[i] - '0';\n            }\n            if (a + b == n) {\n                c++;\n                d[d_index++] = a;\n            }\n        }\n        k++;\n    }\n    printf(\"%d\\n\", c);\n    for (int i = 0; i < d_index; i++) {\n        for (int j = i + 1; j < d_index; j++) {\n            if (d[i] > d[j]) {\n                int temp = d[i];\n                d[i] = d[j];\n                d[j] = temp;\n            }\n        }\n    }\n    for (int i = 0; i < d_index; i++) {\n        printf(\"%d\\n\", d[i]);\n    }\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 1,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\nint main() {\n    int n, k = 1, b = 0, c = 0;\n    char s[100];\n    int d[100];\n    int d_size = 0;\n    \n    scanf(\"%d\", &n);\n    \n    while (k < 100) {\n        if (n > k) {\n            int a = n - k;\n            sprintf(s, \"%d\", a);\n            b = 0;\n            for (int i = 0; i < strlen(s); i++) {\n                b += s[i] - '0';\n            }\n            if (a + b == n) {\n                c++;\n                d[d_size++] = a;\n            }\n        }\n        k++;\n    }\n    \n    printf(\"%d\\n\", c);\n    \n    for (int i = 0; i < d_size; i++) {\n        for (int j = i + 1; j < d_size; j++) {\n            if (d[i] > d[j]) {\n                int temp = d[i];\n                d[i] = d[j];\n                d[j] = temp;\n            }\n        }\n    }\n    \n    for (int i = 0; i < d_size; i++) {\n        printf(\"%d\\n\", d[i]);\n    }\n    \n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 2,
+                    "message": {
+                        "role": "assistant",
+                        "content": "Here's the translated code in C:\n\n```c\n#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\nint main() {\n    int n, k = 1, b = 0, c = 0;\n    scanf(\"%d\", &n);\n    int d[100];\n    int d_index = 0;\n    \n    while (k < 100) {\n        if (n > k) {\n            int a = n - k;\n            char s[20];\n            sprintf(s, \"%d\", a);\n            b = 0;\n            for (int i = 0; i < strlen(s); i++) {\n                b += s[i] - '0';\n            }\n            if (a + b == n) {\n                c++;\n                d[d_index++] = a;\n            }\n        }\n        k++;\n    }\n    \n    printf(\"%d\\n\", c);\n    \n    for (int i = 0; i < d_index - 1; i++) {\n        for (int j = i + 1; j < d_index; j++) {\n            if (d[i] > d[j]) {\n                int temp = d[i];\n                d[i] = d[j];\n                d[j] = temp;\n            }\n        }\n    }\n    \n    for (int i = 0; i < d_index; i++) {\n        printf(\"%d\\n\", d[i]);\n    }\n    \n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 3,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\nint main() {\n    int n, k = 1, b = 0, c = 0;\n    scanf(\"%d\", &n);\n    int d[100];\n    int d_index = 0;\n    \n    while (k < 100) {\n        if (n > k) {\n            int a = n - k;\n            char s[20];\n            sprintf(s, \"%d\", a);\n            b = 0;\n            for (int i = 0; i < strlen(s); i++) {\n                b += s[i] - '0';\n            }\n            if (a + b == n) {\n                c++;\n                d[d_index++] = a;\n            }\n        }\n        k++;\n    }\n    \n    printf(\"%d\\n\", c);\n    \n    for (int i = 0; i < d_index - 1; i++) {\n        for (int j = i + 1; j < d_index; j++) {\n            if (d[i] > d[j]) {\n                int temp = d[i];\n                d[i] = d[j];\n                d[j] = temp;\n            }\n        }\n    }\n    \n    for (int i = 0; i < d_index; i++) {\n        printf(\"%d\\n\", d[i]);\n    }\n    \n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 4,
+                    "message": {
+                        "role": "assistant",
+                        "content": "Here's the translated code in C:\n\n```c\n#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\nint main() {\n    int n, k = 1, b = 0, c = 0;\n    scanf(\"%d\", &n);\n    int d[100];\n    int d_index = 0;\n    \n    while (k < 100) {\n        if (n > k) {\n            int a = n - k;\n            char s[20];\n            sprintf(s, \"%d\", a);\n            b = 0;\n            for (int i = 0; i < strlen(s); i++) {\n                b += s[i] - '0';\n            }\n            if (a + b == n) {\n                c++;\n                d[d_index++] = a;\n            }\n        }\n        k++;\n    }\n    \n    printf(\"%d\\n\", c);\n    \n    for (int i = 0; i < d_index - 1; i++) {\n        for (int j = i + 1; j < d_index; j++) {\n            if (d[i] > d[j]) {\n                int temp = d[i];\n                d[i] = d[j];\n                d[j] = temp;\n            }\n        }\n    }\n    \n    for (int i = 0; i < d_index; i++) {\n        printf(\"%d\\n\", d[i]);\n    }\n    \n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                }
+            ],
+            "usage": {
+                "prompt_tokens": 850,
+                "completion_tokens": 1490,
+                "total_tokens": 2340
+            }
+        }
+    },
+    "source_data": {
+        "code_uid": "0806a212721c65d84d26466a3dfa5799",
+        "prob_desc_output_to": "standard output",
+        "prob_desc_notes": "NoteIn the first test case x\u2009=\u200915 there is only one variant: 15\u2009+\u20091\u2009+\u20095\u2009=\u200921.In the second test case there are no such x.",
+        "lang_cluster": "Python",
+        "prob_desc_time_limit": "1 second",
+        "prob_desc_input_spec": "The first line contains integer n (1\u2009\u2264\u2009n\u2009\u2264\u2009109).",
+        "source_code": "n = int (input())\nk = 1\ns = ''\nb = 0\nc = 0\nd = []\nwhile k<100:\n    if n>k:\n        a = n-k\n    \n        s = str(a)\n        for i in range(len(s)):\n                  b+=int(s[i])\n              \n        if a+b == n:\n                    c+=1   \n                    d.append(a)\n    k+=1\n    s = ''\n    b = 0\nprint(c)\nd.sort()\nprint('\\n'.join(str(v) for v in d))\n            \n",
+        "prob_desc_sample_inputs": [
+            "21",
+            "20"
+        ],
+        "prob_desc_memory_limit": "512 megabytes",
+        "exec_outcome": "PASSED",
+        "prob_desc_output_spec": "In the first line print one integer k\u00a0\u2014 number of different values of x satisfying the condition.  In next k lines print these values in ascending order.",
+        "src_uid": "ae20ae2a16273a0d379932d6e973f878",
+        "prob_desc_input_from": "standard input",
+        "lang": "Python 3",
+        "prob_desc_sample_outputs": [
+            "1\n15",
+            "0"
+        ],
+        "file_name": "d7021504500d5ca7c2b02df8100a574d159e6e67e20ec8071b75800b1267370a",
+        "prob_desc_description": "Eighth-grader Vova is on duty today in the class. After classes, he went into the office to wash the board, and found on it the number n. He asked what is this number and the teacher of mathematics Inna Petrovna answered Vova that n is the answer to the arithmetic task for first-graders. In the textbook, a certain positive integer x was given. The task was to add x to the sum of the digits of the number x written in decimal numeral system.Since the number n on the board was small, Vova quickly guessed which x could be in the textbook. Now he wants to get a program which will search for arbitrary values of the number n for all suitable values of x or determine that such x does not exist. Write such a program for Vova.",
+        "prob_desc_created_at": "1508151900",
+        "difficulty": 1200.0,
+        "hidden_unit_tests": "[{\"input\": \"21\\r\\n\", \"output\": [\"1\\r\\n15\"]}, {\"input\": \"20\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"1\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"2\\r\\n\", \"output\": [\"1\\r\\n1\"]}, {\"input\": \"3\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"100000001\\r\\n\", \"output\": [\"2\\r\\n99999937\\r\\n 100000000\", \"2\\r\\n99999937 100000000\", \"2\\r\\n99999937\\r\\n100000000\"]}, {\"input\": \"1000000000\\r\\n\", \"output\": [\"1\\r\\n999999932\"]}, {\"input\": \"999999979\\r\\n\", \"output\": [\"2\\r\\n999999899\\r\\n 999999908\", \"2\\r\\n999999899 999999908\", \"2\\r\\n999999899\\r\\n999999908\"]}, {\"input\": \"9\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"10\\r\\n\", \"output\": [\"1\\r\\n5\"]}, {\"input\": \"11\\r\\n\", \"output\": [\"1\\r\\n10\"]}, {\"input\": \"39\\r\\n\", \"output\": [\"1\\r\\n33\"]}, {\"input\": \"66\\r\\n\", \"output\": [\"1\\r\\n60\"]}, {\"input\": \"75\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"100\\r\\n\", \"output\": [\"1\\r\\n86\"]}, {\"input\": \"101\\r\\n\", \"output\": [\"2\\r\\n91\\r\\n100\", \"2\\r\\n91\\r\\n 100\", \"2\\r\\n91 100\"]}, {\"input\": \"2014\\r\\n\", \"output\": [\"2\\r\\n1988\\r\\n2006\", \"2\\r\\n1988 2006\", \"2\\r\\n1988\\r\\n 2006\"]}, {\"input\": \"999999994\\r\\n\", \"output\": [\"0\"]}]",
+        "source_lang": "Python 3",
+        "target_lang": "C"
+    }
+}

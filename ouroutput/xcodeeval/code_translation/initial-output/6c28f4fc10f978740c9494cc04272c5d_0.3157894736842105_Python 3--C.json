@@ -1,0 +1,89 @@
+{
+    "oai_response": {
+        "prompt": "Here is code in Python 3 programming lanaguge. Translate the following code from Python 3 to C programming lanaguge. Do not output any extra description or tokens other than the translated code. \n\ns = input().split()\nx, y, m = (int(i) for i in s)\n\nans = 0\n\nif x >= m or y >= m:\n    print(0)\nelif x <= 0 and y <= 0:\n    print(-1)\nelse:\n    if x < 0:\n        q = abs(x // y)\n        ans += q\n        x += y * q\n    elif y < 0:\n        q = abs(y // x)\n        ans += q\n        y += x * q\n\n    while x < m and y < m:\n        ans += 1\n        if x < y:\n            x = x + y\n        else:\n            y = x + y\n    \n    print(ans)||END-of-SRC||",
+        "response": {
+            "id": "multi-call-as-wtpuytavzy",
+            "model": "deepseek-v3",
+            "created": 1767068633,
+            "choices": [
+                {
+                    "index": 0,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <stdlib.h>\n\nint main() {\n    int x, y, m;\n    scanf(\"%d %d %d\", &x, &y, &m);\n\n    int ans = 0;\n\n    if (x >= m || y >= m) {\n        printf(\"0\\n\");\n    } else if (x <= 0 && y <= 0) {\n        printf(\"-1\\n\");\n    } else {\n        if (x < 0) {\n            int q = abs(x / y);\n            ans += q;\n            x += y * q;\n        } else if (y < 0) {\n            int q = abs(y / x);\n            ans += q;\n            y += x * q;\n        }\n\n        while (x < m && y < m) {\n            ans += 1;\n            if (x < y) {\n                x = x + y;\n            } else {\n                y = x + y;\n            }\n        }\n\n        printf(\"%d\\n\", ans);\n    }\n\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 1,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <stdlib.h>\n\nint main() {\n    int x, y, m;\n    scanf(\"%d %d %d\", &x, &y, &m);\n    \n    int ans = 0;\n    \n    if (x >= m || y >= m) {\n        printf(\"0\\n\");\n    } else if (x <= 0 && y <= 0) {\n        printf(\"-1\\n\");\n    } else {\n        if (x < 0) {\n            int q = abs(x / y);\n            ans += q;\n            x += y * q;\n        } else if (y < 0) {\n            int q = abs(y / x);\n            ans += q;\n            y += x * q;\n        }\n        \n        while (x < m && y < m) {\n            ans += 1;\n            if (x < y) {\n                x = x + y;\n            } else {\n                y = x + y;\n            }\n        }\n        \n        printf(\"%d\\n\", ans);\n    }\n    \n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 2,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <stdlib.h>\n\nint main() {\n    int x, y, m;\n    scanf(\"%d %d %d\", &x, &y, &m);\n\n    int ans = 0;\n\n    if (x >= m || y >= m) {\n        printf(\"0\\n\");\n    } else if (x <= 0 && y <= 0) {\n        printf(\"-1\\n\");\n    } else {\n        if (x < 0) {\n            int q = abs(x / y);\n            ans += q;\n            x += y * q;\n        } else if (y < 0) {\n            int q = abs(y / x);\n            ans += q;\n            y += x * q;\n        }\n\n        while (x < m && y < m) {\n            ans += 1;\n            if (x < y) {\n                x = x + y;\n            } else {\n                y = x + y;\n            }\n        }\n\n        printf(\"%d\\n\", ans);\n    }\n\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 3,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <stdlib.h>\n\nint main() {\n    int x, y, m;\n    scanf(\"%d %d %d\", &x, &y, &m);\n\n    int ans = 0;\n\n    if (x >= m || y >= m) {\n        printf(\"0\\n\");\n    } else if (x <= 0 && y <= 0) {\n        printf(\"-1\\n\");\n    } else {\n        if (x < 0) {\n            int q = abs(x / y);\n            ans += q;\n            x += y * q;\n        } else if (y < 0) {\n            int q = abs(y / x);\n            ans += q;\n            y += x * q;\n        }\n\n        while (x < m && y < m) {\n            ans += 1;\n            if (x < y) {\n                x = x + y;\n            } else {\n                y = x + y;\n            }\n        }\n\n        printf(\"%d\\n\", ans);\n    }\n\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 4,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <stdlib.h>\n\nint main() {\n    int x, y, m;\n    scanf(\"%d %d %d\", &x, &y, &m);\n\n    int ans = 0;\n\n    if (x >= m || y >= m) {\n        printf(\"0\\n\");\n    } else if (x <= 0 && y <= 0) {\n        printf(\"-1\\n\");\n    } else {\n        if (x < 0) {\n            int q = abs(x / y);\n            ans += q;\n            x += y * q;\n        } else if (y < 0) {\n            int q = abs(y / x);\n            ans += q;\n            y += x * q;\n        }\n\n        while (x < m && y < m) {\n            ans += 1;\n            if (x < y) {\n                x = x + y;\n            } else {\n                y = x + y;\n            }\n        }\n\n        printf(\"%d\\n\", ans);\n    }\n\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                }
+            ],
+            "usage": {
+                "prompt_tokens": 1030,
+                "completion_tokens": 1121,
+                "total_tokens": 2151
+            }
+        }
+    },
+    "source_data": {
+        "code_uid": "6c28f4fc10f978740c9494cc04272c5d",
+        "prob_desc_output_to": "standard output",
+        "prob_desc_notes": "NoteIn the first sample the following sequence of operations is suitable: (1, 2)  (3, 2)  (5, 2).In the second sample: (-1, 4)  (3, 4)  (7, 4)  (11, 4)  (15, 4).Finally, in the third sample x, y cannot be made positive, hence there is no proper sequence of operations.",
+        "lang_cluster": "Python",
+        "prob_desc_time_limit": "1 second",
+        "prob_desc_input_spec": "Single line of the input contains three integers x, y and m (\u2009-\u20091018\u2009\u2264\u2009x, y, m\u2009\u2264\u20091018). Please, do not use the %lld specifier to read or write 64-bit integers in C++. It is preffered to use the cin, cout streams or the %I64d specifier.",
+        "source_code": "s = input().split()\nx, y, m = (int(i) for i in s)\n\nans = 0\n\nif x >= m or y >= m:\n    print(0)\nelif x <= 0 and y <= 0:\n    print(-1)\nelse:\n    if x < 0:\n        q = abs(x // y)\n        ans += q\n        x += y * q\n    elif y < 0:\n        q = abs(y // x)\n        ans += q\n        y += x * q\n\n    while x < m and y < m:\n        ans += 1\n        if x < y:\n            x = x + y\n        else:\n            y = x + y\n    \n    print(ans)",
+        "prob_desc_sample_inputs": [
+            "1 2 5",
+            "-1 4 15",
+            "0 -1 5"
+        ],
+        "prob_desc_memory_limit": "256 megabytes",
+        "exec_outcome": "PASSED",
+        "prob_desc_output_spec": "Print the minimum number of operations or \"-1\" (without quotes), if it is impossible to transform the given pair to the m-perfect one.",
+        "src_uid": "82026a3c3d9a6bda2e2ac6e14979d821",
+        "prob_desc_input_from": "standard input",
+        "lang": "Python 3",
+        "prob_desc_sample_outputs": [
+            "2",
+            "4",
+            "-1"
+        ],
+        "file_name": "d7021504500d5ca7c2b02df8100a574d159e6e67e20ec8071b75800b1267370a",
+        "prob_desc_description": "Let us call a pair of integer numbers m-perfect, if at least one number in the pair is greater than or equal to m. Thus, the pairs (3, 3) and (0, 2) are 2-perfect while the pair (-1, 1) is not.Two integers x, y are written on the blackboard. It is allowed to erase one of them and replace it with the sum of the numbers, (x\u2009+\u2009y).What is the minimum number of such operations one has to perform in order to make the given pair of integers m-perfect?",
+        "prob_desc_created_at": "1371223800",
+        "difficulty": 1600.0,
+        "hidden_unit_tests": "[{\"input\": \"1 2 5\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"-1 4 15\\r\\n\", \"output\": [\"4\"]}, {\"input\": \"0 -1 5\\r\\n\", \"output\": [\"-1\"]}, {\"input\": \"0 1 8\\r\\n\", \"output\": [\"5\"]}, {\"input\": \"-134 -345 -134\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"-134 -345 -133\\r\\n\", \"output\": [\"-1\"]}, {\"input\": \"999999999 -1000000000 1000000000\\r\\n\", \"output\": [\"3\"]}, {\"input\": \"0 0 0\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"0 0 1\\r\\n\", \"output\": [\"-1\"]}, {\"input\": \"-1000000000000000000 1 1000000000000000000\\r\\n\", \"output\": [\"1000000000000000087\"]}, {\"input\": \"-3 26 -1\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"-25 4 -8\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"12 30 -8\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"-12 17 3\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"4 -11 28\\r\\n\", \"output\": [\"8\"]}, {\"input\": \"38 174 957147453\\r\\n\", \"output\": [\"33\"]}, {\"input\": \"154 30 763391461\\r\\n\", \"output\": [\"33\"]}, {\"input\": \"3 193 648520002\\r\\n\", \"output\": [\"32\"]}, {\"input\": \"139 82 923851170\\r\\n\", \"output\": [\"33\"]}, {\"input\": \"171 185 534908267\\r\\n\", \"output\": [\"31\"]}, {\"input\": \"-868993006 -389009632 -766659629\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"-429468031 69656014 39767881\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"185212727 871828769 828159476\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"140457446 731228634 -75123935\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"223567628 -731033737 352248633\\r\\n\", \"output\": [\"5\"]}, {\"input\": \"-187818082 -372699371 -301077133\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"-552043292 -693546115 415527936\\r\\n\", \"output\": [\"-1\"]}, {\"input\": \"-29007970 -344600631 62206369\\r\\n\", \"output\": [\"-1\"]}, {\"input\": \"101292660 -305927896 648565756\\r\\n\", \"output\": [\"8\"]}, {\"input\": \"702748103 -278432024 995244274\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"0 0 -1\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"0 0 1000000000\\r\\n\", \"output\": [\"-1\"]}, {\"input\": \"1 -999999999 239239239\\r\\n\", \"output\": [\"1000000040\"]}, {\"input\": \"-1 -1 0\\r\\n\", \"output\": [\"-1\"]}, {\"input\": \"-1 0 0\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"-1 0 1\\r\\n\", \"output\": [\"-1\"]}, {\"input\": \"-1000000000 -1000000000 -1000000000\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"-1000000000 -1000000000 1000000000\\r\\n\", \"output\": [\"-1\"]}, {\"input\": \"999999999 999999999 1000000000\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"-1 1 609276626\\r\\n\", \"output\": [\"44\"]}, {\"input\": \"-1 2 926098525\\r\\n\", \"output\": [\"43\"]}, {\"input\": \"0 0 698431198\\r\\n\", \"output\": [\"-1\"]}, {\"input\": \"0 -3 702455284\\r\\n\", \"output\": [\"-1\"]}, {\"input\": \"0 0 648749804\\r\\n\", \"output\": [\"-1\"]}, {\"input\": \"-1 0 861856808\\r\\n\", \"output\": [\"-1\"]}, {\"input\": \"2 2 -213745374\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"-1 1 21065410\\r\\n\", \"output\": [\"37\"]}, {\"input\": \"3 -3 607820420\\r\\n\", \"output\": [\"42\"]}, {\"input\": \"36 -58 428518679\\r\\n\", \"output\": [\"37\"]}, {\"input\": \"8 55 931239629\\r\\n\", \"output\": [\"36\"]}, {\"input\": \"-99 -91 523666385\\r\\n\", \"output\": [\"-1\"]}, {\"input\": \"-56 -11 631827324\\r\\n\", \"output\": [\"-1\"]}, {\"input\": \"-4 6 447215792\\r\\n\", \"output\": [\"39\"]}, {\"input\": \"-47 -31 -669106932\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"12 -76 -999189104\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"39 15 -960040787\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"-96 26 -210129802\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"93 86 -850132431\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"1 -1000000000000000000 1000000000000000000\\r\\n\", \"output\": [\"1000000000000000087\"]}, {\"input\": \"-2348349823443 234234545453 1000000000000000000\\r\\n\", \"output\": [\"43\"]}, {\"input\": \"0 1 679891637638612258\\r\\n\", \"output\": [\"86\"]}, {\"input\": \"-1000000000000000000 -1000000000000000000 -1000000000000000000\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"-1000000000000000000 -1000000000000000000 -999999999999999999\\r\\n\", \"output\": [\"-1\"]}, {\"input\": \"-100000000000000 1 233\\r\\n\", \"output\": [\"100000000000012\"]}, {\"input\": \"-1000000000000 2 1000000000000\\r\\n\", \"output\": [\"500000000057\"]}, {\"input\": \"-1000000000000 3 1000000000\\r\\n\", \"output\": [\"333333333375\"]}, {\"input\": \"10 -10 0\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"-1000000000000000 2 444\\r\\n\", \"output\": [\"500000000000012\"]}]",
+        "source_lang": "Python 3",
+        "target_lang": "C"
+    }
+}

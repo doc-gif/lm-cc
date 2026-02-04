@@ -1,0 +1,87 @@
+{
+    "oai_response": {
+        "prompt": "Here is code in Python 3 programming lanaguge. Translate the following code from Python 3 to C programming lanaguge. Do not output any extra description or tokens other than the translated code. \n\na, b = list(map(int, input().split()))\nfor i in range(b):\n    if a % 10 != 0:\n        a -= 1\n    else:\n        a /= 10\nprint(int(a))\n||END-of-SRC||",
+        "response": {
+            "id": "multi-call-as-bb5pz5p9zr",
+            "model": "deepseek-v3",
+            "created": 1767068095,
+            "choices": [
+                {
+                    "index": 0,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n\nint main() {\n    int a, b;\n    scanf(\"%d %d\", &a, &b);\n    for (int i = 0; i < b; i++) {\n        if (a % 10 != 0) {\n            a -= 1;\n        } else {\n            a /= 10;\n        }\n    }\n    printf(\"%d\\n\", a);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 1,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n\nint main() {\n    int a, b;\n    scanf(\"%d %d\", &a, &b);\n    for (int i = 0; i < b; i++) {\n        if (a % 10 != 0) {\n            a -= 1;\n        } else {\n            a /= 10;\n        }\n    }\n    printf(\"%d\\n\", a);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 2,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n\nint main() {\n    int a, b;\n    scanf(\"%d %d\", &a, &b);\n    for (int i = 0; i < b; i++) {\n        if (a % 10 != 0) {\n            a -= 1;\n        } else {\n            a /= 10;\n        }\n    }\n    printf(\"%d\\n\", a);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 3,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n\nint main() {\n    int a, b;\n    scanf(\"%d %d\", &a, &b);\n    for (int i = 0; i < b; i++) {\n        if (a % 10 != 0) {\n            a -= 1;\n        } else {\n            a /= 10;\n        }\n    }\n    printf(\"%d\\n\", a);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 4,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n\nint main() {\n    int a, b;\n    scanf(\"%d %d\", &a, &b);\n    for (int i = 0; i < b; i++) {\n        if (a % 10 != 0) {\n            a -= 1;\n        } else {\n            a /= 10;\n        }\n    }\n    printf(\"%d\\n\", a);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                }
+            ],
+            "usage": {
+                "prompt_tokens": 490,
+                "completion_tokens": 472,
+                "total_tokens": 962
+            }
+        }
+    },
+    "source_data": {
+        "code_uid": "cb4820305a7ab90d89817aca757201ad",
+        "prob_desc_output_to": "standard output",
+        "prob_desc_notes": "NoteThe first example corresponds to the following sequence: $$$512 \\rightarrow 511 \\rightarrow 510 \\rightarrow 51 \\rightarrow 50$$$.",
+        "lang_cluster": "Python",
+        "prob_desc_time_limit": "1 second",
+        "prob_desc_input_spec": "The first line of the input contains two integer numbers $$$n$$$ and $$$k$$$ ($$$2 \\le n \\le 10^9$$$, $$$1 \\le k \\le 50$$$) \u2014 the number from which Tanya will subtract and the number of subtractions correspondingly.",
+        "source_code": "a, b = list(map(int, input().split()))\nfor i in range(b):\n    if a % 10 != 0:\n        a -= 1\n    else:\n        a /= 10\nprint(int(a))\n",
+        "prob_desc_sample_inputs": [
+            "512 4",
+            "1000000000 9"
+        ],
+        "prob_desc_memory_limit": "256 megabytes",
+        "exec_outcome": "PASSED",
+        "prob_desc_output_spec": "Print one integer number \u2014 the result of the decreasing $$$n$$$ by one $$$k$$$ times. It is guaranteed that the result will be positive integer number. ",
+        "src_uid": "064162604284ce252b88050b4174ba55",
+        "prob_desc_input_from": "standard input",
+        "lang": "Python 3",
+        "prob_desc_sample_outputs": [
+            "50",
+            "1"
+        ],
+        "file_name": "d7021504500d5ca7c2b02df8100a574d159e6e67e20ec8071b75800b1267370a",
+        "prob_desc_description": "Little girl Tanya is learning how to decrease a number by one, but she does it wrong with a number consisting of two or more digits. Tanya subtracts one from a number by the following algorithm:  if the last digit of the number is non-zero, she decreases the number by one;  if the last digit of the number is zero, she divides the number by 10 (i.e. removes the last digit). You are given an integer number $$$n$$$. Tanya will subtract one from it $$$k$$$ times. Your task is to print the result after all $$$k$$$ subtractions.It is guaranteed that the result will be positive integer number.",
+        "prob_desc_created_at": "1567258500",
+        "difficulty": 800.0,
+        "hidden_unit_tests": "[{\"input\": \"512 4\\r\\n\", \"output\": [\"50\"]}, {\"input\": \"1000000000 9\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"131203 11\\r\\n\", \"output\": [\"12\"]}, {\"input\": \"999999999 50\\r\\n\", \"output\": [\"9999\"]}, {\"input\": \"999999999 49\\r\\n\", \"output\": [\"99990\"]}, {\"input\": \"131203 9\\r\\n\", \"output\": [\"130\"]}, {\"input\": \"900000000 16\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"909090909 50\\r\\n\", \"output\": [\"3\"]}, {\"input\": \"1001 2\\r\\n\", \"output\": [\"100\"]}, {\"input\": \"5 2\\r\\n\", \"output\": [\"3\"]}, {\"input\": \"2 1\\r\\n\", \"output\": [\"1\"]}]",
+        "source_lang": "Python 3",
+        "target_lang": "C"
+    }
+}

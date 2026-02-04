@@ -1,0 +1,85 @@
+{
+    "oai_response": {
+        "prompt": "Here is code in Python 3 programming lanaguge. Translate the following code from Python 3 to C programming lanaguge. Do not output any extra description or tokens other than the translated code. \n\nfrom math import factorial\na = int(input())\nprint(factorial(a)//factorial(a-5)//120*a*(a-1)*(a-2)*(a-3)*(a-4))\n||END-of-SRC||",
+        "response": {
+            "id": "multi-call-as-n4suwsqtj0",
+            "model": "deepseek-v3",
+            "created": 1767068798,
+            "choices": [
+                {
+                    "index": 0,
+                    "message": {
+                        "role": "assistant",
+                        "content": "Here's the translated code in C:\n\n```c\n#include <stdio.h>\n\nlong factorial(int n) {\n    long result = 1;\n    for (int i = 1; i <= n; i++) {\n        result *= i;\n    }\n    return result;\n}\n\nint main() {\n    int a;\n    scanf(\"%d\", &a);\n    printf(\"%ld\", factorial(a) / factorial(a - 5) / 120 * a * (a - 1) * (a - 2) * (a - 3) * (a - 4));\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 1,
+                    "message": {
+                        "role": "assistant",
+                        "content": "Here's the translated code in C:\n\n```c\n#include <stdio.h>\n\nlong factorial(int n) {\n    long result = 1;\n    for (int i = 1; i <= n; i++) {\n        result *= i;\n    }\n    return result;\n}\n\nint main() {\n    int a;\n    scanf(\"%d\", &a);\n    printf(\"%ld\", factorial(a) / factorial(a - 5) / 120 * a * (a - 1) * (a - 2) * (a - 3) * (a - 4));\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 2,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n\nlong long factorial(int n) {\n    long long result = 1;\n    for (int i = 2; i <= n; i++) {\n        result *= i;\n    }\n    return result;\n}\n\nint main() {\n    int a;\n    scanf(\"%d\", &a);\n    long long res = factorial(a) / factorial(a - 5) / 120 * a * (a - 1) * (a - 2) * (a - 3) * (a - 4);\n    printf(\"%lld\\n\", res);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 3,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n\nlong long factorial(int n) {\n    long long result = 1;\n    for (int i = 2; i <= n; i++) {\n        result *= i;\n    }\n    return result;\n}\n\nint main() {\n    int a;\n    scanf(\"%d\", &a);\n    printf(\"%lld\\n\", factorial(a) / factorial(a - 5) / 120 * a * (a - 1) * (a - 2) * (a - 3) * (a - 4));\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 4,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n\nlong factorial(int n) {\n    long result = 1;\n    for (int i = 1; i <= n; ++i) {\n        result *= i;\n    }\n    return result;\n}\n\nint main() {\n    int a;\n    scanf(\"%d\", &a);\n    printf(\"%ld\", factorial(a) / factorial(a - 5) / 120 * a * (a - 1) * (a - 2) * (a - 3) * (a - 4));\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                }
+            ],
+            "usage": {
+                "prompt_tokens": 455,
+                "completion_tokens": 632,
+                "total_tokens": 1087
+            }
+        }
+    },
+    "source_data": {
+        "code_uid": "a5245d44518c09c79fd745204b5605b1",
+        "prob_desc_output_to": "standard output",
+        "prob_desc_notes": null,
+        "lang_cluster": "Python",
+        "prob_desc_time_limit": "0.5 seconds",
+        "prob_desc_input_spec": "The only line of the input contains one integer n (5\u2009\u2264\u2009n\u2009\u2264\u2009100) \u2014 the number of east to west paths and north to south paths.",
+        "source_code": "from math import factorial\na = int(input())\nprint(factorial(a)//factorial(a-5)//120*a*(a-1)*(a-2)*(a-3)*(a-4))\n",
+        "prob_desc_sample_inputs": [
+            "5"
+        ],
+        "prob_desc_memory_limit": "64 megabytes",
+        "exec_outcome": "PASSED",
+        "prob_desc_output_spec": "Output one integer \u2014 the number of ways to place the benches.",
+        "src_uid": "92db14325cd8aee06b502c12d2e3dd81",
+        "prob_desc_input_from": "standard input",
+        "lang": "Python 3",
+        "prob_desc_sample_outputs": [
+            "120"
+        ],
+        "file_name": "d7021504500d5ca7c2b02df8100a574d159e6e67e20ec8071b75800b1267370a",
+        "prob_desc_description": "The city park of IT City contains n east to west paths and n north to south paths. Each east to west path crosses each north to south path, so there are n2 intersections.The city funded purchase of five benches. To make it seems that there are many benches it was decided to place them on as many paths as possible. Obviously this requirement is satisfied by the following scheme: each bench is placed on a cross of paths and each path contains not more than one bench.Help the park administration count the number of ways to place the benches.",
+        "prob_desc_created_at": "1455807600",
+        "difficulty": 1400.0,
+        "hidden_unit_tests": "[{\"input\": \"5\\r\\n\", \"output\": [\"120\"]}, {\"input\": \"6\\r\\n\", \"output\": [\"4320\"]}, {\"input\": \"7\\r\\n\", \"output\": [\"52920\"]}, {\"input\": \"15\\r\\n\", \"output\": [\"1082161080\"]}, {\"input\": \"17\\r\\n\", \"output\": [\"4594961280\"]}, {\"input\": \"72\\r\\n\", \"output\": [\"23491596420472320\"]}, {\"input\": \"83\\r\\n\", \"output\": [\"101159538130177920\"]}, {\"input\": \"95\\r\\n\", \"output\": [\"402852449038723320\"]}, {\"input\": \"99\\r\\n\", \"output\": [\"613867215317368320\"]}, {\"input\": \"100\\r\\n\", \"output\": [\"680185280130048000\"]}]",
+        "source_lang": "Python 3",
+        "target_lang": "C"
+    }
+}

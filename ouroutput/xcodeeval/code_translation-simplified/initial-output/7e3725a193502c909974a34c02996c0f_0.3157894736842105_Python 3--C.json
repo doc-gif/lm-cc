@@ -1,0 +1,88 @@
+{
+    "oai_response": {
+        "prompt": "Here is code in Python 3 programming lanaguge. Translate the following code from Python 3 to C programming lanaguge. Do not output any extra description or tokens other than the translated code. \n\nimport math\nn = int(input())\nfactors = []\nvalue = n\nfor divisor in range(2, n + 1):\n    if value % divisor == 0:\n        exponent = 0\n        while value % divisor == 0:\n            exponent += 1\n            value //= divisor\n        factors.append([divisor, exponent])\nproduct = 1\nmax_exp_two = 0\nfor factor, exponent in factors:\n    product *= factor\n    power_two = int(math.log2(exponent))\n    if exponent > (1 << power_two):\n        power_two += 1\n    max_exp_two = max(max_exp_two, power_two)\nneeds_adjustment = 0\nfor factor, exponent in factors:\n    if exponent < (1 << max_exp_two):\n        needs_adjustment = 1\nprint(product, max_exp_two + needs_adjustment)||END-of-SRC||",
+        "response": {
+            "id": "multi-call-as-jr7k9s2fj1",
+            "model": "deepseek-v3",
+            "created": 1769631022,
+            "choices": [
+                {
+                    "index": 0,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <math.h>\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    int factors[100][2];\n    int count = 0;\n    int value = n;\n    for (int divisor = 2; divisor <= n; divisor++) {\n        if (value % divisor == 0) {\n            int exponent = 0;\n            while (value % divisor == 0) {\n                exponent++;\n                value /= divisor;\n            }\n            factors[count][0] = divisor;\n            factors[count][1] = exponent;\n            count++;\n        }\n    }\n    int product = 1;\n    int max_exp_two = 0;\n    for (int i = 0; i < count; i++) {\n        product *= factors[i][0];\n        int exponent = factors[i][1];\n        int power_two = (int)(log2(exponent));\n        if (exponent > (1 << power_two)) {\n            power_two++;\n        }\n        if (power_two > max_exp_two) {\n            max_exp_two = power_two;\n        }\n    }\n    int needs_adjustment = 0;\n    for (int i = 0; i < count; i++) {\n        if (factors[i][1] < (1 << max_exp_two)) {\n            needs_adjustment = 1;\n        }\n    }\n    printf(\"%d %d\\n\", product, max_exp_two + needs_adjustment);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 1,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <math.h>\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    int factors[100][2];\n    int count = 0;\n    int value = n;\n    for (int divisor = 2; divisor <= n; divisor++) {\n        if (value % divisor == 0) {\n            int exponent = 0;\n            while (value % divisor == 0) {\n                exponent++;\n                value /= divisor;\n            }\n            factors[count][0] = divisor;\n            factors[count][1] = exponent;\n            count++;\n        }\n    }\n    int product = 1;\n    int max_exp_two = 0;\n    for (int i = 0; i < count; i++) {\n        product *= factors[i][0];\n        int exponent = factors[i][1];\n        int power_two = (int)(log2(exponent));\n        if (exponent > (1 << power_two)) {\n            power_two++;\n        }\n        if (power_two > max_exp_two) {\n            max_exp_two = power_two;\n        }\n    }\n    int needs_adjustment = 0;\n    for (int i = 0; i < count; i++) {\n        if (factors[i][1] < (1 << max_exp_two)) {\n            needs_adjustment = 1;\n        }\n    }\n    printf(\"%d %d\\n\", product, max_exp_two + needs_adjustment);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 2,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <math.h>\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    int factors[100][2];\n    int count = 0;\n    int value = n;\n    for (int divisor = 2; divisor <= n; divisor++) {\n        if (value % divisor == 0) {\n            int exponent = 0;\n            while (value % divisor == 0) {\n                exponent++;\n                value /= divisor;\n            }\n            factors[count][0] = divisor;\n            factors[count][1] = exponent;\n            count++;\n        }\n    }\n    int product = 1;\n    int max_exp_two = 0;\n    for (int i = 0; i < count; i++) {\n        product *= factors[i][0];\n        int exponent = factors[i][1];\n        int power_two = (int)(log2(exponent));\n        if (exponent > (1 << power_two)) {\n            power_two++;\n        }\n        if (power_two > max_exp_two) {\n            max_exp_two = power_two;\n        }\n    }\n    int needs_adjustment = 0;\n    for (int i = 0; i < count; i++) {\n        if (factors[i][1] < (1 << max_exp_two)) {\n            needs_adjustment = 1;\n        }\n    }\n    printf(\"%d %d\\n\", product, max_exp_two + needs_adjustment);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 3,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <math.h>\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    int factors[100][2];\n    int count = 0;\n    int value = n;\n    for (int divisor = 2; divisor <= n; divisor++) {\n        if (value % divisor == 0) {\n            int exponent = 0;\n            while (value % divisor == 0) {\n                exponent++;\n                value /= divisor;\n            }\n            factors[count][0] = divisor;\n            factors[count][1] = exponent;\n            count++;\n        }\n    }\n    int product = 1;\n    int max_exp_two = 0;\n    for (int i = 0; i < count; i++) {\n        product *= factors[i][0];\n        int exponent = factors[i][1];\n        int power_two = (int)(log2(exponent));\n        if (exponent > (1 << power_two)) {\n            power_two++;\n        }\n        if (power_two > max_exp_two) {\n            max_exp_two = power_two;\n        }\n    }\n    int needs_adjustment = 0;\n    for (int i = 0; i < count; i++) {\n        if (factors[i][1] < (1 << max_exp_two)) {\n            needs_adjustment = 1;\n        }\n    }\n    printf(\"%d %d\", product, max_exp_two + needs_adjustment);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 4,
+                    "message": {
+                        "role": "assistant",
+                        "content": "Here's the translated code in C:\n\n```c\n#include <stdio.h>\n#include <math.h>\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    int factors[100][2];\n    int count = 0;\n    int value = n;\n    for (int divisor = 2; divisor <= n; divisor++) {\n        if (value % divisor == 0) {\n            int exponent = 0;\n            while (value % divisor == 0) {\n                exponent++;\n                value /= divisor;\n            }\n            factors[count][0] = divisor;\n            factors[count][1] = exponent;\n            count++;\n        }\n    }\n    int product = 1;\n    int max_exp_two = 0;\n    for (int i = 0; i < count; i++) {\n        product *= factors[i][0];\n        int exponent = factors[i][1];\n        int power_two = (int)(log2(exponent));\n        if (exponent > (1 << power_two)) {\n            power_two++;\n        }\n        if (power_two > max_exp_two) {\n            max_exp_two = power_two;\n        }\n    }\n    int needs_adjustment = 0;\n    for (int i = 0; i < count; i++) {\n        if (factors[i][1] < (1 << max_exp_two)) {\n            needs_adjustment = 1;\n        }\n    }\n    printf(\"%d %d\", product, max_exp_two + needs_adjustment);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                }
+            ],
+            "usage": {
+                "prompt_tokens": 1180,
+                "completion_tokens": 1602,
+                "total_tokens": 2782
+            }
+        }
+    },
+    "source_data": {
+        "code_uid": "7e3725a193502c909974a34c02996c0f",
+        "prob_desc_output_to": "standard output",
+        "prob_desc_notes": "NoteIn the first example, you can apply the operation mul $$$5$$$ to get $$$100$$$ and then sqrt to get $$$10$$$.In the second example, you can first apply sqrt to get $$$72$$$, then mul $$$18$$$ to get $$$1296$$$ and finally two more sqrt and you get $$$6$$$.Note, that even if the initial value of $$$n$$$ is less or equal $$$10^6$$$, it can still become greater than $$$10^6$$$ after applying one or more operations.",
+        "lang_cluster": "Python",
+        "prob_desc_time_limit": "1 second",
+        "prob_desc_input_spec": "The only line of the input contains a single integer $$$n$$$ ($$$1 \\le n \\le 10^6$$$)\u00a0\u2014 the initial number.",
+        "prob_desc_sample_inputs": [
+            "20",
+            "5184"
+        ],
+        "prob_desc_memory_limit": "256 megabytes",
+        "exec_outcome": "PASSED",
+        "prob_desc_output_spec": "Print two integers: the minimum integer $$$n$$$ that can be achieved using the described operations and the minimum number of operations required.",
+        "src_uid": "212cda3d9d611cd45332bb10b80f0b56",
+        "prob_desc_input_from": "standard input",
+        "lang": "Python 3",
+        "prob_desc_sample_outputs": [
+            "10 2",
+            "6 4"
+        ],
+        "file_name": "d7021504500d5ca7c2b02df8100a574d159e6e67e20ec8071b75800b1267370a",
+        "prob_desc_description": "JATC's math teacher always gives the class some interesting math problems so that they don't get bored. Today the problem is as follows. Given an integer $$$n$$$, you can perform the following operations zero or more times:  mul $$$x$$$: multiplies $$$n$$$ by $$$x$$$ (where $$$x$$$ is an arbitrary positive integer).  sqrt: replaces $$$n$$$ with $$$\\sqrt{n}$$$ (to apply this operation, $$$\\sqrt{n}$$$ must be an integer). You can perform these operations as many times as you like. What is the minimum value of $$$n$$$, that can be achieved and what is the minimum number of operations, to achieve that minimum value?Apparently, no one in the class knows the answer to this problem, maybe you can help them?",
+        "prob_desc_created_at": "1542209700",
+        "difficulty": 1500.0,
+        "hidden_unit_tests": "[{\"input\": \"20\\r\\n\", \"output\": [\"10 2\"]}, {\"input\": \"5184\\r\\n\", \"output\": [\"6 4\"]}, {\"input\": \"1000000\\r\\n\", \"output\": [\"10 4\"]}, {\"input\": \"999979\\r\\n\", \"output\": [\"999979 0\"]}, {\"input\": \"559872\\r\\n\", \"output\": [\"6 4\"]}, {\"input\": \"256\\r\\n\", \"output\": [\"2 3\"]}, {\"input\": \"279936\\r\\n\", \"output\": [\"6 4\"]}, {\"input\": \"1\\r\\n\", \"output\": [\"1 0\"]}, {\"input\": \"786432\\r\\n\", \"output\": [\"6 6\"]}, {\"input\": \"531441\\r\\n\", \"output\": [\"3 5\"]}, {\"input\": \"524288\\r\\n\", \"output\": [\"2 6\"]}, {\"input\": \"605000\\r\\n\", \"output\": [\"110 3\"]}, {\"input\": \"328509\\r\\n\", \"output\": [\"69 3\"]}, {\"input\": \"9602\\r\\n\", \"output\": [\"9602 0\"]}, {\"input\": \"196608\\r\\n\", \"output\": [\"6 5\"]}, {\"input\": \"982081\\r\\n\", \"output\": [\"991 1\"]}, {\"input\": \"999983\\r\\n\", \"output\": [\"999983 0\"]}, {\"input\": \"30492\\r\\n\", \"output\": [\"462 2\"]}, {\"input\": \"262144\\r\\n\", \"output\": [\"2 6\"]}, {\"input\": \"390625\\r\\n\", \"output\": [\"5 3\"]}, {\"input\": \"1009\\r\\n\", \"output\": [\"1009 0\"]}, {\"input\": \"499979\\r\\n\", \"output\": [\"499979 0\"]}, {\"input\": \"999958\\r\\n\", \"output\": [\"999958 0\"]}, {\"input\": \"341\\r\\n\", \"output\": [\"341 0\"]}, {\"input\": \"1105\\r\\n\", \"output\": [\"1105 0\"]}, {\"input\": \"1729\\r\\n\", \"output\": [\"1729 0\"]}, {\"input\": \"29341\\r\\n\", \"output\": [\"29341 0\"]}, {\"input\": \"162000\\r\\n\", \"output\": [\"30 3\"]}, {\"input\": \"162401\\r\\n\", \"output\": [\"162401 0\"]}, {\"input\": \"252601\\r\\n\", \"output\": [\"252601 0\"]}, {\"input\": \"994009\\r\\n\", \"output\": [\"997 1\"]}, {\"input\": \"982802\\r\\n\", \"output\": [\"1402 2\"]}, {\"input\": \"36\\r\\n\", \"output\": [\"6 1\"]}, {\"input\": \"6\\r\\n\", \"output\": [\"6 0\"]}, {\"input\": \"18\\r\\n\", \"output\": [\"6 2\"]}, {\"input\": \"144\\r\\n\", \"output\": [\"6 3\"]}, {\"input\": \"2\\r\\n\", \"output\": [\"2 0\"]}, {\"input\": \"10\\r\\n\", \"output\": [\"10 0\"]}, {\"input\": \"49\\r\\n\", \"output\": [\"7 1\"]}, {\"input\": \"589824\\r\\n\", \"output\": [\"6 5\"]}, {\"input\": \"900\\r\\n\", \"output\": [\"30 1\"]}, {\"input\": \"6444\\r\\n\", \"output\": [\"1074 2\"]}, {\"input\": \"10609\\r\\n\", \"output\": [\"103 1\"]}, {\"input\": \"52488\\r\\n\", \"output\": [\"6 4\"]}, {\"input\": \"3\\r\\n\", \"output\": [\"3 0\"]}, {\"input\": \"4\\r\\n\", \"output\": [\"2 1\"]}, {\"input\": \"5\\r\\n\", \"output\": [\"5 0\"]}, {\"input\": \"7\\r\\n\", \"output\": [\"7 0\"]}, {\"input\": \"8\\r\\n\", \"output\": [\"2 3\"]}, {\"input\": \"9\\r\\n\", \"output\": [\"3 1\"]}, {\"input\": \"11\\r\\n\", \"output\": [\"11 0\"]}, {\"input\": \"12\\r\\n\", \"output\": [\"6 2\"]}, {\"input\": \"13\\r\\n\", \"output\": [\"13 0\"]}, {\"input\": \"14\\r\\n\", \"output\": [\"14 0\"]}]",
+        "initial_source_code": "import math\nn=int(input())\narr=[]\nfor i in range(2,n+1):\n\tif n%i==0:\n\t\tcnt=0\n\t\twhile n%i==0:\n\t\t\tcnt+=1\n\t\t\tn=n//i \n\t\tarr.append([i,cnt])\n# print(arr)\nmul=0\nmn=1\nst=0\nfor i in range(len(arr)):\n\tmn=mn*arr[i][0]\n\txx=int(math.log2(arr[i][1]))\n\t# print(xx,(1<<xx))\n\tif arr[i][1]>(1<<xx):\n\t\txx+=1\n\tst=max(st,xx)\nfor i in range(len(arr)):\n\tif arr[i][1]<(1<<st):\n\t\tmul=1\nprint(mn,st+mul)",
+        "source_code": "import math\nn = int(input())\nfactors = []\nvalue = n\nfor divisor in range(2, n + 1):\n    if value % divisor == 0:\n        exponent = 0\n        while value % divisor == 0:\n            exponent += 1\n            value //= divisor\n        factors.append([divisor, exponent])\nproduct = 1\nmax_exp_two = 0\nfor factor, exponent in factors:\n    product *= factor\n    power_two = int(math.log2(exponent))\n    if exponent > (1 << power_two):\n        power_two += 1\n    max_exp_two = max(max_exp_two, power_two)\nneeds_adjustment = 0\nfor factor, exponent in factors:\n    if exponent < (1 << max_exp_two):\n        needs_adjustment = 1\nprint(product, max_exp_two + needs_adjustment)",
+        "source_lang": "Python 3",
+        "target_lang": "C"
+    }
+}

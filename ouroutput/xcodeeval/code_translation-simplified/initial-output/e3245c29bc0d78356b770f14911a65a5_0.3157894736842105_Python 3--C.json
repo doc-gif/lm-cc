@@ -1,0 +1,88 @@
+{
+    "oai_response": {
+        "prompt": "Here is code in Python 3 programming lanaguge. Translate the following code from Python 3 to C programming lanaguge. Do not output any extra description or tokens other than the translated code. \n\nimport functools\nimport logging\nimport os\nimport sys\nimport time\nlogger = logging.getLogger()\nreader = sys.stdin\nis_judge = os.getenv(\"ONLINE_JUDGE\") is not None\ndef timeit(func):\n    def timed(*args, **kwargs):\n        if is_judge:\n            return func(*args, **kwargs)\n        ts = time.time()\n        rv = func(*args, **kwargs)\n        te = time.time()\n        logger.debug(\"performance %r %2.2fms\", func.__name__, (te - ts) * 1000)\n        return rv\n    return timed\ndef contains_subsequence(arr, seq):\n    seq_len = len(seq)\n    if seq_len == 0:\n        return True\n    i = 0\n    for item in arr:\n        if item == seq[i]:\n            i += 1\n            if i == seq_len:\n                break\n    return i == seq_len\ndef main():\n    line = reader.readline()\n    if contains_subsequence(line, \"hello\"):\n        print(\"YES\")\n    else:\n        print(\"NO\")\ndef setup():\n    global logger, reader\n    if is_judge:\n        logger.setLevel(logging.WARNING)\n    else:\n        handler = logging.StreamHandler(sys.stdout)\n        handler.setLevel(logging.DEBUG)\n        formatter = logging.Formatter(\"{asctime}s - {message}\", style=\"{\")\n        handler.setFormatter(formatter)\n        logger.addHandler(handler)\n        logger.setLevel(logging.DEBUG)\n        reader = open(\"input.txt\")\nif __name__ == \"__main__\":\n    line = input()\n    if contains_subsequence(line, \"hello\"):\n        print(\"YES\")\n    else:\n        print(\"NO\")||END-of-SRC||",
+        "response": {
+            "id": "multi-call-as-fftv78v3s3",
+            "model": "deepseek-v3",
+            "created": 1769630935,
+            "choices": [
+                {
+                    "index": 0,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n#include <time.h>\n\nint is_judge = 0;\n\nint contains_subsequence(char* arr, char* seq) {\n    int seq_len = strlen(seq);\n    if (seq_len == 0) {\n        return 1;\n    }\n    int i = 0;\n    for (int j = 0; arr[j] != '\\0'; j++) {\n        if (arr[j] == seq[i]) {\n            i++;\n            if (i == seq_len) {\n                break;\n            }\n        }\n    }\n    return i == seq_len;\n}\n\nint main() {\n    char line[1000];\n    fgets(line, sizeof(line), stdin);\n    if (contains_subsequence(line, \"hello\")) {\n        printf(\"YES\\n\");\n    } else {\n        printf(\"NO\\n\");\n    }\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 1,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <string.h>\n#include <time.h>\n#include <stdlib.h>\n\nint is_judge = 0;\n\nint contains_subsequence(const char *arr, const char *seq) {\n    int seq_len = strlen(seq);\n    if (seq_len == 0) {\n        return 1;\n    }\n    int i = 0;\n    for (int j = 0; arr[j] != '\\0'; j++) {\n        if (arr[j] == seq[i]) {\n            i++;\n            if (i == seq_len) {\n                break;\n            }\n        }\n    }\n    return i == seq_len;\n}\n\nint main() {\n    char line[1000];\n    fgets(line, sizeof(line), stdin);\n    if (contains_subsequence(line, \"hello\")) {\n        printf(\"YES\\n\");\n    } else {\n        printf(\"NO\\n\");\n    }\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 2,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n#include <time.h>\n\nint is_judge = 0;\n\nint contains_subsequence(char* arr, char* seq) {\n    int seq_len = strlen(seq);\n    if (seq_len == 0) {\n        return 1;\n    }\n    int i = 0;\n    for (int j = 0; arr[j] != '\\0'; j++) {\n        if (arr[j] == seq[i]) {\n            i++;\n            if (i == seq_len) {\n                break;\n            }\n        }\n    }\n    return i == seq_len;\n}\n\nint main() {\n    char line[1000];\n    fgets(line, sizeof(line), stdin);\n    if (contains_subsequence(line, \"hello\")) {\n        printf(\"YES\\n\");\n    } else {\n        printf(\"NO\\n\");\n    }\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 3,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n#include <time.h>\n\nint is_judge = 0;\n\nint contains_subsequence(char* arr, char* seq) {\n    int seq_len = strlen(seq);\n    if (seq_len == 0) {\n        return 1;\n    }\n    int i = 0;\n    for (int j = 0; arr[j] != '\\0'; j++) {\n        if (arr[j] == seq[i]) {\n            i++;\n            if (i == seq_len) {\n                break;\n            }\n        }\n    }\n    return i == seq_len;\n}\n\nint main() {\n    char line[1000];\n    fgets(line, sizeof(line), stdin);\n    if (contains_subsequence(line, \"hello\")) {\n        printf(\"YES\\n\");\n    } else {\n        printf(\"NO\\n\");\n    }\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 4,
+                    "message": {
+                        "role": "assistant",
+                        "content": "Here's the translated code in C:\n\n```c\n#include <stdio.h>\n#include <string.h>\n\nint contains_subsequence(const char* arr, const char* seq) {\n    int seq_len = strlen(seq);\n    if (seq_len == 0) {\n        return 1;\n    }\n    int i = 0;\n    for (int j = 0; arr[j] != '\\0'; j++) {\n        if (arr[j] == seq[i]) {\n            i++;\n            if (i == seq_len) {\n                break;\n            }\n        }\n    }\n    return i == seq_len;\n}\n\nint main() {\n    char line[1000];\n    fgets(line, sizeof(line), stdin);\n    if (contains_subsequence(line, \"hello\")) {\n        printf(\"YES\\n\");\n    } else {\n        printf(\"NO\\n\");\n    }\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                }
+            ],
+            "usage": {
+                "prompt_tokens": 2115,
+                "completion_tokens": 971,
+                "total_tokens": 3086
+            }
+        }
+    },
+    "source_data": {
+        "code_uid": "e3245c29bc0d78356b770f14911a65a5",
+        "prob_desc_output_to": "standard output",
+        "prob_desc_notes": null,
+        "lang_cluster": "Python",
+        "prob_desc_time_limit": "1 second",
+        "prob_desc_input_spec": "The first and only line contains the word s, which Vasya typed. This word consisits of small Latin letters, its length is no less that 1 and no more than 100 letters.",
+        "prob_desc_sample_inputs": [
+            "ahhellllloou",
+            "hlelo"
+        ],
+        "prob_desc_memory_limit": "256 megabytes",
+        "exec_outcome": "PASSED",
+        "prob_desc_output_spec": "If Vasya managed to say hello, print \"YES\", otherwise print \"NO\".",
+        "src_uid": "c5d19dc8f2478ee8d9cba8cc2e4cd838",
+        "prob_desc_input_from": "standard input",
+        "lang": "Python 3",
+        "prob_desc_sample_outputs": [
+            "YES",
+            "NO"
+        ],
+        "file_name": "d7021504500d5ca7c2b02df8100a574d159e6e67e20ec8071b75800b1267370a",
+        "prob_desc_description": "Vasya has recently learned to type and log on to the Internet. He immediately entered a chat room and decided to say hello to everybody. Vasya typed the word s. It is considered that Vasya managed to say hello if several letters can be deleted from the typed word so that it resulted in the word \"hello\". For example, if Vasya types the word \"ahhellllloou\", it will be considered that he said hello, and if he types \"hlelo\", it will be considered that Vasya got misunderstood and he didn't manage to say hello. Determine whether Vasya managed to say hello by the given word s.",
+        "prob_desc_created_at": "1296489600",
+        "difficulty": 1000.0,
+        "hidden_unit_tests": "[{\"input\": \"ahhellllloou\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"hlelo\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"helhcludoo\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"hehwelloho\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"pnnepelqomhhheollvlo\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"tymbzjyqhymedasloqbq\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"yehluhlkwo\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"hatlevhhalrohairnolsvocafgueelrqmlqlleello\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"hhhtehdbllnhwmbyhvelqqyoulretpbfokflhlhreeflxeftelziclrwllrpflflbdtotvlqgoaoqldlroovbfsq\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"rzlvihhghnelqtwlexmvdjjrliqllolhyewgozkuovaiezgcilelqapuoeglnwmnlftxxiigzczlouooi\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"pfhhwctyqdlkrwhebfqfelhyebwllhemtrmeblgrynmvyhioesqklclocxmlffuormljszllpoo\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"lqllcolohwflhfhlnaow\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"heheeellollvoo\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"hellooo\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"o\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"hhqhzeclohlehljlhtesllylrolmomvuhcxsobtsckogdv\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"yoegfuzhqsihygnhpnukluutocvvwuldiighpogsifealtgkfzqbwtmgghmythcxflebrkctlldlkzlagovwlstsghbouk\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"uatqtgbvrnywfacwursctpagasnhydvmlinrcnqrry\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"tndtbldbllnrwmbyhvqaqqyoudrstpbfokfoclnraefuxtftmgzicorwisrpfnfpbdtatvwqgyalqtdtrjqvbfsq\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"rzlvirhgemelnzdawzpaoqtxmqucnahvqnwldklrmjiiyageraijfivigvozgwngiulttxxgzczptusoi\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"kgyelmchocojsnaqdsyeqgnllytbqietpdlgknwwumqkxrexgdcnwoldicwzwofpmuesjuxzrasscvyuqwspm\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"pnyvrcotjvgynbeldnxieghfltmexttuxzyac\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"dtwhbqoumejligbenxvzhjlhosqojetcqsynlzyhfaevbdpekgbtjrbhlltbceobcok\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"crrfpfftjwhhikwzeedrlwzblckkteseofjuxjrktcjfsylmlsvogvrcxbxtffujqshslemnixoeezivksouefeqlhhokwbqjz\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"jhfbndhyzdvhbvhmhmefqllujdflwdpjbehedlsqfdsqlyelwjtyloxwsvasrbqosblzbowlqjmyeilcvotdlaouxhdpoeloaovb\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"hwlghueoemiqtjhhpashjsouyegdlvoyzeunlroypoprnhlyiwiuxrghekaylndhrhllllwhbebezoglydcvykllotrlaqtvmlla\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"wshiaunnqnqxodholbipwhhjmyeblhgpeleblklpzwhdunmpqkbuzloetmwwxmeltkrcomulxauzlwmlklldjodozxryghsnwgcz\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"shvksednttggehroewuiptvvxtrzgidravtnjwuqrlnnkxbplctzkckinpkgjopjfoxdbojtcvsuvablcbkrzajrlhgobkcxeqti\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"hyyhddqhxhekehkwfhlnlsihzefwchzerevcjtokefplholrbvxlltdlafjxrfhleglrvlolojoqaolagtbeyogxlbgfolllslli\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"iaagrdhhelxpdegueiulflquvlzidoprzkehthkldaytrjwhyhprwjxlltinxvuilxohqgjqcvkkdcuoliekcnlilwgqlnlzouoo\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"wfluaeseldgxyvxpwuhkptdmlflnlhktwxiabsvkolsquymrmhzczzoybvlilhmvsuunggvgxzgyyffk\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"loee\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"izdipwylefqmjbuoznfglgcfvedeouflkeehxbasaqmiooppfsqlhprospqgxvzrcpwlfdddngoqvpwvggsnvvxhmjoslwjudjlo\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"pplynflbjlseflaegzqpdxswgunhnlglqhycrbcwdfhclmcrwekkzsoosmfblljeenwfjyifcvxihhhbyhmhlkvtskeglaovjnsi\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"xqjqmenkodmlhzyzmmvofdngktygbbxbzpluzcohohmalkoeuwfikblltaaigv\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"hello\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"oohell\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"hell\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"eloellohoelo\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"helllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllo\\r\\n\", \"output\": [\"YES\"]}]",
+        "initial_source_code": "\nimport functools\nimport logging\nimport os\nimport sys\nimport time\n\nlogger = logging.getLogger()\nreader = sys.stdin\nis_judge = os.getenv(\"ONLINE_JUDGE\") is not None\n\n\ndef timeit(func):\n    @functools.wraps(func)\n    def timed(*args, **kwargs):\n        if is_judge:\n            rv = func(*args, **kwargs)\n        else:\n            ts = time.time()\n            rv = func(*args, **kwargs)\n            te = time.time()\n\n            logger.debug(\"performance %r %2.2fms\", func.__name__, (te - ts) * 1000)\n        return rv\n    return timed\n\n# ----------------------\n# -     /SOLUTION      -\n# ----------------------\n\n\n@timeit\ndef contains_subsequence(arr, seq):\n    seq_len = len(seq)\n\n    # Empty sequence\n    if seq_len == 0:\n        return True\n\n    i = 0\n    for item in arr:\n        if item == seq[i]:\n            i += 1\n            if i == seq_len:\n                break\n\n    return i == seq_len\n\n\n@timeit\ndef main():\n    # while line := reader.readline():\n    line = reader.readline()\n    if contains_subsequence(line, \"hello\"):\n        print(\"YES\")\n    else:\n        print(\"NO\")\n\n\n# ----------------------\n# -     \\SOLUTION      -\n# ----------------------\n\n\ndef setup():\n    global logger, reader\n\n    if is_judge:\n        logger.setLevel(logging.WARNING)\n    else:\n        # Format logger\n        handler = logging.StreamHandler(sys.stdout)\n        handler.setLevel(logging.DEBUG)\n        formatter = logging.Formatter(\"{asctime}s - {message}\", style='{')\n        handler.setFormatter(formatter)\n\n        logger.addHandler(handler)\n        logger.setLevel(logging.DEBUG)\n\n        # Stdin from file\n        reader = open(\"input.txt\")\n\n\nif __name__ == '__main__':\n    line = input()\n    if contains_subsequence(line, \"hello\"):\n        print(\"YES\")\n    else:\n        print(\"NO\")\n    # setup()\n    # try:\n    #     main()\n    # except KeyboardInterrupt:\n    #     logger.debug(\"KeyboardInterrupt\")\n    # except IOError as e:\n    #     logger.error(f\"I/O error({e.errno}): {e.strerror}\")\n",
+        "source_code": "import functools\nimport logging\nimport os\nimport sys\nimport time\nlogger = logging.getLogger()\nreader = sys.stdin\nis_judge = os.getenv(\"ONLINE_JUDGE\") is not None\ndef timeit(func):\n    def timed(*args, **kwargs):\n        if is_judge:\n            return func(*args, **kwargs)\n        ts = time.time()\n        rv = func(*args, **kwargs)\n        te = time.time()\n        logger.debug(\"performance %r %2.2fms\", func.__name__, (te - ts) * 1000)\n        return rv\n    return timed\ndef contains_subsequence(arr, seq):\n    seq_len = len(seq)\n    if seq_len == 0:\n        return True\n    i = 0\n    for item in arr:\n        if item == seq[i]:\n            i += 1\n            if i == seq_len:\n                break\n    return i == seq_len\ndef main():\n    line = reader.readline()\n    if contains_subsequence(line, \"hello\"):\n        print(\"YES\")\n    else:\n        print(\"NO\")\ndef setup():\n    global logger, reader\n    if is_judge:\n        logger.setLevel(logging.WARNING)\n    else:\n        handler = logging.StreamHandler(sys.stdout)\n        handler.setLevel(logging.DEBUG)\n        formatter = logging.Formatter(\"{asctime}s - {message}\", style=\"{\")\n        handler.setFormatter(formatter)\n        logger.addHandler(handler)\n        logger.setLevel(logging.DEBUG)\n        reader = open(\"input.txt\")\nif __name__ == \"__main__\":\n    line = input()\n    if contains_subsequence(line, \"hello\"):\n        print(\"YES\")\n    else:\n        print(\"NO\")",
+        "source_lang": "Python 3",
+        "target_lang": "C"
+    }
+}

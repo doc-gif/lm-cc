@@ -1,0 +1,89 @@
+{
+    "oai_response": {
+        "prompt": "Here is code in Python 3 programming lanaguge. Translate the following code from Python 3 to C programming lanaguge. Do not output any extra description or tokens other than the translated code. \n\nMOD = 1000000007\n\ndef calc(n, m, k):\n    if k == -1 and n%2 != m%2:\n        return 0\n    n = (n-1)\n    m = (m-1)\n    n = (n * m)\n    r = 1\n    s = 2\n    while n > 0:\n        if n % 2 == 1:\n            r = (r*s) % MOD\n        n //= 2\n        s = (s*s) % MOD\n    return r\n\n\nif __name__ == '__main__':\n    n, m, k = input().split(' ')\n    print(calc(int(n), int(m), int(k)))||END-of-SRC||",
+        "response": {
+            "id": "multi-call-as-hgpn0ct6sg",
+            "model": "deepseek-v3",
+            "created": 1767066865,
+            "choices": [
+                {
+                    "index": 0,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n\n#define MOD 1000000007\n\nint calc(int n, int m, int k) {\n    if (k == -1 && n % 2 != m % 2) {\n        return 0;\n    }\n    n = (n - 1);\n    m = (m - 1);\n    n = (n * m);\n    int r = 1;\n    int s = 2;\n    while (n > 0) {\n        if (n % 2 == 1) {\n            r = (1LL * r * s) % MOD;\n        }\n        n /= 2;\n        s = (1LL * s * s) % MOD;\n    }\n    return r;\n}\n\nint main() {\n    int n, m, k;\n    scanf(\"%d %d %d\", &n, &m, &k);\n    printf(\"%d\\n\", calc(n, m, k));\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 1,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n\n#define MOD 1000000007\n\nint calc(int n, int m, int k) {\n    if (k == -1 && n % 2 != m % 2) {\n        return 0;\n    }\n    n = (n - 1);\n    m = (m - 1);\n    n = (n * m);\n    int r = 1;\n    int s = 2;\n    while (n > 0) {\n        if (n % 2 == 1) {\n            r = (1LL * r * s) % MOD;\n        }\n        n /= 2;\n        s = (1LL * s * s) % MOD;\n    }\n    return r;\n}\n\nint main() {\n    int n, m, k;\n    scanf(\"%d %d %d\", &n, &m, &k);\n    printf(\"%d\\n\", calc(n, m, k));\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 2,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n\n#define MOD 1000000007\n\nint calc(int n, int m, int k) {\n    if (k == -1 && n % 2 != m % 2) {\n        return 0;\n    }\n    n = (n - 1);\n    m = (m - 1);\n    n = (n * m);\n    int r = 1;\n    int s = 2;\n    while (n > 0) {\n        if (n % 2 == 1) {\n            r = (1LL * r * s) % MOD;\n        }\n        n /= 2;\n        s = (1LL * s * s) % MOD;\n    }\n    return r;\n}\n\nint main() {\n    int n, m, k;\n    scanf(\"%d %d %d\", &n, &m, &k);\n    printf(\"%d\\n\", calc(n, m, k));\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 3,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n\n#define MOD 1000000007\n\nint calc(int n, int m, int k) {\n    if (k == -1 && n % 2 != m % 2) {\n        return 0;\n    }\n    n = (n - 1);\n    m = (m - 1);\n    n = (n * m);\n    int r = 1;\n    int s = 2;\n    while (n > 0) {\n        if (n % 2 == 1) {\n            r = (1LL * r * s) % MOD;\n        }\n        n /= 2;\n        s = (1LL * s * s) % MOD;\n    }\n    return r;\n}\n\nint main() {\n    int n, m, k;\n    scanf(\"%d %d %d\", &n, &m, &k);\n    printf(\"%d\\n\", calc(n, m, k));\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 4,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n\n#define MOD 1000000007\n\nint calc(int n, int m, int k) {\n    if (k == -1 && n % 2 != m % 2) {\n        return 0;\n    }\n    n = (n - 1);\n    m = (m - 1);\n    n = (n * m);\n    int r = 1;\n    int s = 2;\n    while (n > 0) {\n        if (n % 2 == 1) {\n            r = (1LL * r * s) % MOD;\n        }\n        n /= 2;\n        s = (1LL * s * s) % MOD;\n    }\n    return r;\n}\n\nint main() {\n    int n, m, k;\n    scanf(\"%d %d %d\", &n, &m, &k);\n    printf(\"%d\\n\", calc(n, m, k));\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                }
+            ],
+            "usage": {
+                "prompt_tokens": 1020,
+                "completion_tokens": 1046,
+                "total_tokens": 2066
+            }
+        }
+    },
+    "source_data": {
+        "code_uid": "012903f9ec9fff34f1b6836f440556a7",
+        "prob_desc_output_to": "standard output",
+        "prob_desc_notes": "NoteIn the first example the only way is to put -1 into the only block.In the second example the only way is to put 1 into every block.",
+        "lang_cluster": "Python",
+        "prob_desc_time_limit": "1 second",
+        "prob_desc_input_spec": "The only line contains three integers n, m and k (1\u2009\u2264\u2009n,\u2009m\u2009\u2264\u20091018, k is either 1 or -1).",
+        "source_code": "MOD = 1000000007\n\ndef calc(n, m, k):\n    if k == -1 and n%2 != m%2:\n        return 0\n    n = (n-1)\n    m = (m-1)\n    n = (n * m)\n    r = 1\n    s = 2\n    while n > 0:\n        if n % 2 == 1:\n            r = (r*s) % MOD\n        n //= 2\n        s = (s*s) % MOD\n    return r\n\n\nif __name__ == '__main__':\n    n, m, k = input().split(' ')\n    print(calc(int(n), int(m), int(k)))",
+        "prob_desc_sample_inputs": [
+            "1 1 -1",
+            "1 3 1",
+            "3 3 -1"
+        ],
+        "prob_desc_memory_limit": "256 megabytes",
+        "exec_outcome": "PASSED",
+        "prob_desc_output_spec": "Print a single number denoting the answer modulo 1000000007.",
+        "src_uid": "6b9eff690fae14725885cbc891ff7243",
+        "prob_desc_input_from": "standard input",
+        "lang": "Python 3",
+        "prob_desc_sample_outputs": [
+            "1",
+            "1",
+            "16"
+        ],
+        "file_name": "d7021504500d5ca7c2b02df8100a574d159e6e67e20ec8071b75800b1267370a",
+        "prob_desc_description": "Ralph has a magic field which is divided into n\u2009\u00d7\u2009m blocks. That is to say, there are n rows and m columns on the field. Ralph can put an integer in each block. However, the magic field doesn't always work properly. It works only if the product of integers in each row and each column equals to k, where k is either 1 or -1.Now Ralph wants you to figure out the number of ways to put numbers in each block in such a way that the magic field works properly. Two ways are considered different if and only if there exists at least one block where the numbers in the first way and in the second way are different. You are asked to output the answer modulo 1000000007\u2009=\u2009109\u2009+\u20097.Note that there is no range of the numbers to put in the blocks, but we can prove that the answer is not infinity.",
+        "prob_desc_created_at": "1511099700",
+        "difficulty": 1800.0,
+        "hidden_unit_tests": "[{\"input\": \"1 1 -1\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"1 3 1\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"3 3 -1\\r\\n\", \"output\": [\"16\"]}, {\"input\": \"2 7 1\\r\\n\", \"output\": [\"64\"]}, {\"input\": \"1 1 1\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"2 4 -1\\r\\n\", \"output\": [\"8\"]}, {\"input\": \"173 69 -1\\r\\n\", \"output\": [\"814271739\"]}, {\"input\": \"110 142 1\\r\\n\", \"output\": [\"537040244\"]}, {\"input\": \"162 162 -1\\r\\n\", \"output\": [\"394042552\"]}, {\"input\": \"49 153 -1\\r\\n\", \"output\": [\"412796600\"]}, {\"input\": \"94 182 1\\r\\n\", \"output\": [\"33590706\"]}, {\"input\": \"106666666 233333333 1\\r\\n\", \"output\": [\"121241754\"]}, {\"input\": \"2 2 1\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"146 34 -1\\r\\n\", \"output\": [\"742752757\"]}, {\"input\": \"94 86 -1\\r\\n\", \"output\": [\"476913727\"]}, {\"input\": \"2529756051797760 2682355969139391 -1\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"3126690179932000 2474382898739836 -1\\r\\n\", \"output\": [\"917305624\"]}, {\"input\": \"3551499873841921 2512677762780671 -1\\r\\n\", \"output\": [\"350058339\"]}, {\"input\": \"3613456196418270 2872267429531501 1\\r\\n\", \"output\": [\"223552863\"]}, {\"input\": \"2886684369091916 3509787933422130 1\\r\\n\", \"output\": [\"341476979\"]}, {\"input\": \"3536041043537343 2416093514489183 1\\r\\n\", \"output\": [\"394974516\"]}, {\"input\": \"2273134852621270 2798005122439669 1\\r\\n\", \"output\": [\"901406364\"]}, {\"input\": \"2870150496178092 3171485931753811 -1\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"999999999999999999 1000000000000000000 1\\r\\n\", \"output\": [\"102810659\"]}, {\"input\": \"987654321987654321 666666666666666666 1\\r\\n\", \"output\": [\"279028602\"]}, {\"input\": \"1 2 -1\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"2 1 -1\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"1000000000000000000 1 1\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"1000000006 100000000000000000 1\\r\\n\", \"output\": [\"123624987\"]}]",
+        "source_lang": "Python 3",
+        "target_lang": "C"
+    }
+}

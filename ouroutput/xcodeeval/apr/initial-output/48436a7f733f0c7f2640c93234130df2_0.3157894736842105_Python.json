@@ -1,0 +1,103 @@
+{
+    "oai_response": {
+        "prompt": "Fix a buggy program written in Python language to solve the following programming problem:\nDescription: Bob is about to take a hot bath. There are two taps to fill the bath: a hot water tap and a cold water tap. The cold water's temperature is t1, and the hot water's temperature is t2. The cold water tap can transmit any integer number of water units per second from 0 to x1, inclusive. Similarly, the hot water tap can transmit from 0 to x2 water units per second.If y1 water units per second flow through the first tap and y2 water units per second flow through the second tap, then the resulting bath water temperature will be:Bob wants to open both taps so that the bath water temperature was not less than t0. However, the temperature should be as close as possible to this value. If there are several optimal variants, Bob chooses the one that lets fill the bath in the quickest way possible.Determine how much each tap should be opened so that Bob was pleased with the result in the end.\nInput Specification: You are given five integers t1, t2, x1, x2 and t0 (1\u2009\u2264\u2009t1\u2009\u2264\u2009t0\u2009\u2264\u2009t2\u2009\u2264\u2009106, 1\u2009\u2264\u2009x1,\u2009x2\u2009\u2264\u2009106).\nOutput Specification: Print two space-separated integers y1 and y2 (0\u2009\u2264\u2009y1\u2009\u2264\u2009x1, 0\u2009\u2264\u2009y2\u2009\u2264\u2009x2).\n\nSample Input:\n10 70 100 100 25\nSample Output:\n99 33\n\nSample Input:\n300 500 1000 1000 300\nSample Output:\n1000 0\n\nSample Input:\n143 456 110 117 273\nSample Output:\n76 54\n\nNotes: NoteIn the second sample the hot water tap shouldn't be opened, but the cold water tap should be opened at full capacity in order to fill the bath in the quickest way possible.\nTake input from standard input and output to standard output\n\nHere is the code with a bug of RUNTIME_ERROR:\n\ndef gcd(a,b):\n    if(a%b==0):\n        return b\n    else:\n        return gcd(b,a%b)\n\n[t1,t2,x1,x2,t0]=input().split(' ')\n#[t1,t2,x1,x2,t0]=[10,20,5,5,13]\nt1=int(t1)\nt2=int(t2)\nx1=int(x1)\nx2=int(x2)\nt0=int(t0)\n\na=t2-t0\nb=t0-t1\nif (a==0):\n    y1=0\n    y2=x2\n    print(y1,y2)\n    exit(0)\n    \nif (b==0):\n    y1=x1\n    y2=0\n    print(y1,y2)\n    exit(0)\n    \ng=gcd(a,b)\na=int(a/g)\nb=int(b/g)\nif(a<=x1 and b<=x2):\n    mintime=int(x1/a)\n    if(mintime>int(x2/b)):\n        mintime=int(x2/b)\n    print(mintime*a,mintime*b)\n    exit(0)\n\ny1=1\ny2=1\nminn=99999\nwhile(y1<=x1 and y2<=x2):\n    if(y1/y2<a/b):\n        if(minn>a/b-y1/y2):\n            minn=a/b-y1/y2\n            miny1=y1\n            miny2=y2\n        y1=y1+1\n    else:\n        y2=y2+1\ny1=miny1\ny2=miny2\nmintime=int(x1/y1)\nif(mintime>int(x2/y2)):\n    mintime=int(x2/y2)\nprint(mintime*y1,mintime*y2)\n\n\n\n\n\n\n\nProvide the fixed Python code without any description or extra tokens.\n\nFixed source code:\n ||END-of-SRC||",
+        "response": {
+            "id": "multi-call-as-ktbneqm6ti",
+            "model": "deepseek-v3",
+            "created": 1760424517,
+            "choices": [
+                {
+                    "index": 0,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```python\ndef gcd(a, b):\n    if a % b == 0:\n        return b\n    else:\n        return gcd(b, a % b)\n\nt1, t2, x1, x2, t0 = map(int, input().split())\n\nif t1 == t0 and t2 == t0:\n    print(x1, x2)\n    exit()\nelif t2 == t0:\n    print(0, x2)\n    exit()\nelif t1 == t0:\n    print(x1, 0)\n    exit()\n\na = t2 - t0\nb = t0 - t1\n\ng = gcd(a, b)\na_reduced = a // g\nb_reduced = b // g\n\nmax_mult = min(x1 // a_reduced, x2 // b_reduced)\nif max_mult > 0:\n    print(a_reduced * max_mult, b_reduced * max_mult)\n    exit()\n\nmin_diff = float('inf')\nbest_y1, best_y2 = 0, 0\n\nfor y1 in range(0, x1 + 1):\n    low = 0\n    high = x2\n    best_y2_for_y1 = 0\n    while low <= high:\n        mid = (low + high) // 2\n        if mid == 0:\n            current_temp = t1\n        else:\n            current_temp = (y1 * t1 + mid * t2) / (y1 + mid)\n        if current_temp >= t0:\n            best_y2_for_y1 = mid\n            high = mid - 1\n        else:\n            low = mid + 1\n    if best_y2_for_y1 == 0:\n        continue\n    current_temp = (y1 * t1 + best_y2_for_y1 * t2) / (y1 + best_y2_for_y1)\n    diff = current_temp - t0\n    if diff < min_diff or (diff == min_diff and (y1 + best_y2_for_y1) > (best_y1 + best_y2)):\n        min_diff = diff\n        best_y1 = y1\n        best_y2 = best_y2_for_y1\n\nprint(best_y1, best_y2)\n``` ||END-of-SRC||"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 1,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```python\ndef gcd(a, b):\n    if b == 0:\n        return a\n    else:\n        return gcd(b, a % b)\n\nt1, t2, x1, x2, t0 = map(int, input().split())\n\nif t1 == t0 and t2 == t0:\n    print(x1, x2)\n    exit()\nelif t2 == t0:\n    print(0, x2)\n    exit()\nelif t1 == t0:\n    print(x1, 0)\n    exit()\n\na = t2 - t0\nb = t0 - t1\n\ng = gcd(a, b)\na_reduced = a // g\nb_reduced = b // g\n\nif a_reduced <= x1 and b_reduced <= x2:\n    k = min(x1 // a_reduced, x2 // b_reduced)\n    print(k * a_reduced, k * b_reduced)\n    exit()\n\nmin_diff = float('inf')\nbest_y1 = 0\nbest_y2 = 0\n\nfor y1 in range(0, x1 + 1):\n    # Calculate y2 based on y1 to satisfy (t1*y1 + t2*y2) / (y1 + y2) >= t0\n    # => y2(t2 - t0) >= y1(t0 - t1)\n    # => y2 >= y1 * (t0 - t1) / (t2 - t0)\n    # Since y2 must be integer, y2 >= ceil(y1 * b / a)\n    if a == 0:\n        continue\n    y2 = (y1 * b + a - 1) // a  # Equivalent to ceiling(y1 * b / a)\n    if y2 > x2:\n        continue\n    current_diff = (t1 * y1 + t2 * y2) / (y1 + y2) - t0\n    if current_diff < 0:\n        continue\n    if current_diff < min_diff or (current_diff == min_diff and (y1 + y2) > (best_y1 + best_y2)):\n        min_diff = current_diff\n        best_y1 = y1\n        best_y2 = y2\n\nif best_y1 == 0 and best_y2 == 0:\n    print(0, x2)\nelse:\n    print(best_y1, best_y2)\n``` ||END-of-SRC||"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 2,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```python\ndef gcd(a, b):\n    if b == 0:\n        return a\n    else:\n        return gcd(b, a % b)\n\nt1, t2, x1, x2, t0 = map(int, input().split())\n\nif t1 == t0 and t2 == t0:\n    print(x1, x2)\n    exit()\nelif t2 == t0:\n    print(0, x2)\n    exit()\nelif t1 == t0:\n    print(x1, 0)\n    exit()\n\na = t2 - t0\nb = t0 - t1\ng = gcd(a, b)\na_reduced = a // g\nb_reduced = b // g\n\nif a_reduced <= x1 and b_reduced <= x2:\n    k = min(x1 // a_reduced, x2 // b_reduced)\n    print(k * a_reduced, k * b_reduced)\n    exit()\n\nmin_diff = float('inf')\nbest_y1 = 0\nbest_y2 = 0\n\nfor y1 in range(0, x1 + 1):\n    low = 0\n    high = x2\n    best_y2_for_y1 = 0\n    while low <= high:\n        mid = (low + high) // 2\n        if mid == 0:\n            current_temp = t1\n        else:\n            current_temp = (y1 * t1 + mid * t2) / (y1 + mid)\n        if current_temp >= t0:\n            high = mid - 1\n            best_y2_for_y1 = mid\n        else:\n            low = mid + 1\n    if best_y2_for_y1 > x2:\n        continue\n    if best_y2_for_y1 == 0:\n        continue\n    current_temp = (y1 * t1 + best_y2_for_y1 * t2) / (y1 + best_y2_for_y1)\n    diff = current_temp - t0\n    if diff < min_diff or (diff == min_diff and (y1 + best_y2_for_y1) > (best_y1 + best_y2)):\n        min_diff = diff\n        best_y1 = y1\n        best_y2 = best_y2_for_y1\n\nif best_y1 == 0 and best_y2 == 0:\n    print(x1, 0)\nelse:\n    print(best_y1, best_y2)\n``` ||END-of-SRC||"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 3,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```python\ndef gcd(a, b):\n    if a % b == 0:\n        return b\n    else:\n        return gcd(b, a % b)\n\nt1, t2, x1, x2, t0 = map(int, input().split())\n\nif t1 == t0 and t2 == t0:\n    print(x1, x2)\n    exit()\nelif t2 == t0:\n    print(0, x2)\n    exit()\nelif t1 == t0:\n    print(x1, 0)\n    exit()\n\na = t2 - t0\nb = t0 - t1\ng = gcd(a, b)\na_reduced = a // g\nb_reduced = b // g\n\nmax_mult = min(x1 // b_reduced, x2 // a_reduced)\nif max_mult > 0:\n    print(b_reduced * max_mult, a_reduced * max_mult)\n    exit()\n\nmin_diff = float('inf')\nbest_y1 = 0\nbest_y2 = 0\n\nfor y1 in range(0, x1 + 1):\n    low = 0\n    high = x2\n    best_y2_for_y1 = -1\n    while low <= high:\n        mid = (low + high) // 2\n        if mid == 0:\n            current_temp = t1\n        else:\n            current_temp = (y1 * t1 + mid * t2) / (y1 + mid)\n        if current_temp >= t0:\n            best_y2_for_y1 = mid\n            high = mid - 1\n        else:\n            low = mid + 1\n    if best_y2_for_y1 != -1:\n        current_temp = (y1 * t1 + best_y2_for_y1 * t2) / (y1 + best_y2_for_y1)\n        diff = current_temp - t0\n        if diff < min_diff or (diff == min_diff and (y1 + best_y2_for_y1) > (best_y1 + best_y2)):\n            min_diff = diff\n            best_y1 = y1\n            best_y2 = best_y2_for_y1\n\nprint(best_y1, best_y2)\n``` ||END-of-SRC||"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 4,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```python\ndef gcd(a, b):\n    if a % b == 0:\n        return b\n    else:\n        return gcd(b, a % b)\n\nt1, t2, x1, x2, t0 = map(int, input().split())\n\nif t1 == t0 and t2 == t0:\n    print(x1, x2)\n    exit()\nelif t2 == t0:\n    print(0, x2)\n    exit()\nelif t1 == t0:\n    print(x1, 0)\n    exit()\n\na = t2 - t0\nb = t0 - t1\ng = gcd(a, b)\na_reduced = a // g\nb_reduced = b // g\n\nmax_possible = min(x1 // b_reduced, x2 // a_reduced)\nif max_possible > 0:\n    print(b_reduced * max_possible, a_reduced * max_possible)\n    exit()\n\nmin_diff = float('inf')\nbest_y1 = 0\nbest_y2 = 0\n\nfor y1 in range(0, x1 + 1):\n    low = 0\n    high = x2\n    best_y2_for_y1 = 0\n    while low <= high:\n        mid = (low + high) // 2\n        if mid == 0:\n            current_temp = t1\n        else:\n            current_temp = (y1 * t1 + mid * t2) / (y1 + mid)\n        if current_temp >= t0:\n            best_y2_for_y1 = mid\n            high = mid - 1\n        else:\n            low = mid + 1\n    if best_y2_for_y1 == 0:\n        continue\n    current_temp = (y1 * t1 + best_y2_for_y1 * t2) / (y1 + best_y2_for_y1)\n    diff = current_temp - t0\n    if diff < min_diff or (diff == min_diff and (y1 + best_y2_for_y1) > (best_y1 + best_y2)):\n        min_diff = diff\n        best_y1 = y1\n        best_y2 = best_y2_for_y1\n\nprint(best_y1, best_y2)\n``` ||END-of-SRC||"
+                    },
+                    "finish_reason": "stop"
+                }
+            ],
+            "usage": {
+                "prompt_tokens": 4290,
+                "completion_tokens": 2524,
+                "total_tokens": 6814
+            }
+        }
+    },
+    "source_data": {
+        "prob_desc_memory_limit": "256 megabytes",
+        "tags": [
+            "math",
+            "brute force",
+            "binary search"
+        ],
+        "prob_desc_created_at": "1320858000",
+        "fix_source_code": "",
+        "prob_desc_input_spec": "You are given five integers t1, t2, x1, x2 and t0 (1\u2009\u2264\u2009t1\u2009\u2264\u2009t0\u2009\u2264\u2009t2\u2009\u2264\u2009106, 1\u2009\u2264\u2009x1,\u2009x2\u2009\u2264\u2009106).",
+        "prob_desc_sample_outputs": [
+            "99 33",
+            "1000 0",
+            "76 54"
+        ],
+        "src_uid": "87a500829c1935ded3ef6e4e47096b9f",
+        "prob_desc_time_limit": "2 seconds",
+        "fix_exec_outcome": "",
+        "delete_cnt": 0,
+        "apr_id": "880713849146371f2f9d726f42ef3945",
+        "fix_code_uid": "",
+        "lang_cluster": "Python",
+        "prob_desc_sample_inputs": [
+            "10 70 100 100 25",
+            "300 500 1000 1000 300",
+            "143 456 110 117 273"
+        ],
+        "prob_desc_output_to": "standard output",
+        "file_name": "Python.jsonl",
+        "equal_cnt": 7,
+        "lang": "Python 3",
+        "prob_desc_output_spec": "Print two space-separated integers y1 and y2 (0\u2009\u2264\u2009y1\u2009\u2264\u2009x1, 0\u2009\u2264\u2009y2\u2009\u2264\u2009x2).",
+        "bug_exec_outcome": "RUNTIME_ERROR",
+        "prob_desc_notes": "NoteIn the second sample the hot water tap shouldn't be opened, but the cold water tap should be opened at full capacity in order to fill the bath in the quickest way possible.",
+        "difficulty": 1900.0,
+        "similarity_score": 0.9139726162,
+        "prob_desc_description": "Bob is about to take a hot bath. There are two taps to fill the bath: a hot water tap and a cold water tap. The cold water's temperature is t1, and the hot water's temperature is t2. The cold water tap can transmit any integer number of water units per second from 0 to x1, inclusive. Similarly, the hot water tap can transmit from 0 to x2 water units per second.If y1 water units per second flow through the first tap and y2 water units per second flow through the second tap, then the resulting bath water temperature will be:Bob wants to open both taps so that the bath water temperature was not less than t0. However, the temperature should be as close as possible to this value. If there are several optimal variants, Bob chooses the one that lets fill the bath in the quickest way possible.Determine how much each tap should be opened so that Bob was pleased with the result in the end.",
+        "potential_dominant_fix_op": "insert",
+        "bug_source_code": "def gcd(a,b):\n    if(a%b==0):\n        return b\n    else:\n        return gcd(b,a%b)\n\n[t1,t2,x1,x2,t0]=input().split(' ')\n#[t1,t2,x1,x2,t0]=[10,20,5,5,13]\nt1=int(t1)\nt2=int(t2)\nx1=int(x1)\nx2=int(x2)\nt0=int(t0)\n\na=t2-t0\nb=t0-t1\nif (a==0):\n    y1=0\n    y2=x2\n    print(y1,y2)\n    exit(0)\n    \nif (b==0):\n    y1=x1\n    y2=0\n    print(y1,y2)\n    exit(0)\n    \ng=gcd(a,b)\na=int(a/g)\nb=int(b/g)\nif(a<=x1 and b<=x2):\n    mintime=int(x1/a)\n    if(mintime>int(x2/b)):\n        mintime=int(x2/b)\n    print(mintime*a,mintime*b)\n    exit(0)\n\ny1=1\ny2=1\nminn=99999\nwhile(y1<=x1 and y2<=x2):\n    if(y1/y2<a/b):\n        if(minn>a/b-y1/y2):\n            minn=a/b-y1/y2\n            miny1=y1\n            miny2=y2\n        y1=y1+1\n    else:\n        y2=y2+1\ny1=miny1\ny2=miny2\nmintime=int(x1/y1)\nif(mintime>int(x2/y2)):\n    mintime=int(x2/y2)\nprint(mintime*y1,mintime*y2)\n\n\n\n\n\n",
+        "replace_cnt": 2,
+        "prob_desc_input_from": "standard input",
+        "bug_code_uid": "48436a7f733f0c7f2640c93234130df2",
+        "insert_cnt": 5,
+        "fix_ops_cnt": 7,
+        "hidden_unit_tests": "[{\"input\": \"10 70 100 100 25\\r\\n\", \"output\": [\"99 33\"]}, {\"input\": \"300 500 1000 1000 300\\r\\n\", \"output\": [\"1000 0\"]}, {\"input\": \"143 456 110 117 273\\r\\n\", \"output\": [\"76 54\"]}, {\"input\": \"10 20 5 5 13\\r\\n\", \"output\": [\"4 2\"]}, {\"input\": \"1 3 1999 3444 2\\r\\n\", \"output\": [\"1999 1999\"]}, {\"input\": \"100 110 2 2 109\\r\\n\", \"output\": [\"0 2\"]}, {\"input\": \"3746 3797 485 485 3747\\r\\n\", \"output\": [\"450 9\"]}, {\"input\": \"900000 1000000 50000 50000 960000\\r\\n\", \"output\": [\"33332 49998\"]}, {\"input\": \"1 3 100 100 2\\r\\n\", \"output\": [\"100 100\"]}, {\"input\": \"1 3 100 100 3\\r\\n\", \"output\": [\"0 100\"]}, {\"input\": \"1 1 100 100 1\\r\\n\", \"output\": [\"100 100\"]}, {\"input\": \"1 1 1 1 1\\r\\n\", \"output\": [\"1 1\"]}, {\"input\": \"10 14 1 1 12\\r\\n\", \"output\": [\"1 1\"]}, {\"input\": \"10 14 1 1 13\\r\\n\", \"output\": [\"0 1\"]}, {\"input\": \"10 14 1 1 14\\r\\n\", \"output\": [\"0 1\"]}, {\"input\": \"10 14 1 1 11\\r\\n\", \"output\": [\"1 1\"]}, {\"input\": \"10 14 1 1 10\\r\\n\", \"output\": [\"1 0\"]}, {\"input\": \"1 1000000 1000000 1000000 500000\\r\\n\", \"output\": [\"1000000 999998\"]}, {\"input\": \"1 1000000 1000000 1000000 2\\r\\n\", \"output\": [\"999998 1\"]}, {\"input\": \"1 1000000 1000000 1000000 999999\\r\\n\", \"output\": [\"1 999998\"]}, {\"input\": \"3 9 9 2 5\\r\\n\", \"output\": [\"4 2\"]}, {\"input\": \"7 9 481 961 9\\r\\n\", \"output\": [\"0 961\"]}, {\"input\": \"5 10 6361 6643 9\\r\\n\", \"output\": [\"1660 6640\"]}, {\"input\": \"3 10 202534 204124 7\\r\\n\", \"output\": [\"153093 204124\"]}, {\"input\": \"4 7 990105 993245 7\\r\\n\", \"output\": [\"0 993245\"]}, {\"input\": \"167 6430 3 2 4879\\r\\n\", \"output\": [\"0 2\"]}, {\"input\": \"59039 78548 8 5 68239\\r\\n\", \"output\": [\"5 5\"]}, {\"input\": \"99065 826220 9 3 659285\\r\\n\", \"output\": [\"0 3\"]}, {\"input\": \"973058 995844 1 10 973658\\r\\n\", \"output\": [\"1 1\"]}, {\"input\": \"983534 987908 2 7 984750\\r\\n\", \"output\": [\"2 1\"]}, {\"input\": \"127873 889327 5550 623544 491743\\r\\n\", \"output\": [\"4953 4533\"]}, {\"input\": \"146692 953585 99505 406219 259334\\r\\n\", \"output\": [\"92031 14932\"]}, {\"input\": \"61097 812001 384947 188893 662044\\r\\n\", \"output\": [\"41007 164334\"]}, {\"input\": \"581106 975502 703094 487920 637713\\r\\n\", \"output\": [\"675578 113214\"]}, {\"input\": \"663155 979777 797049 494787 951112\\r\\n\", \"output\": [\"28665 287957\"]}, {\"input\": \"129630 805489 631548 761110 577559\\r\\n\", \"output\": [\"227930 447929\"]}, {\"input\": \"499637 716156 949694 543785 663905\\r\\n\", \"output\": [\"156753 492804\"]}, {\"input\": \"522321 902347 10945 842811 630561\\r\\n\", \"output\": [\"9052 3605\"]}, {\"input\": \"285510 831681 329092 849678 821409\\r\\n\", \"output\": [\"13696 714532\"]}, {\"input\": \"176902 815637 847541 412251 587604\\r\\n\", \"output\": [\"228033 410702\"]}, {\"input\": \"690136 947897 137581 128882 932136\\r\\n\", \"output\": [\"6612 101523\"]}, {\"input\": \"122316 918901 393457 621754 907250\\r\\n\", \"output\": [\"9025 608019\"]}, {\"input\": \"345903 808776 240052 245730 365687\\r\\n\", \"output\": [\"231914 10355\"]}, {\"input\": \"483180 855922 224311 233776 855647\\r\\n\", \"output\": [\"141 190974\"]}, {\"input\": \"353408 572330 154358 165573 557017\\r\\n\", \"output\": [\"11080 147325\"]}, {\"input\": \"632076 716031 914 915 662639\\r\\n\", \"output\": [\"856 490\"]}, {\"input\": \"668704 747356 945 949 696258\\r\\n\", \"output\": [\"790 426\"]}, {\"input\": \"463050 509065 994 994 489428\\r\\n\", \"output\": [\"737 990\"]}, {\"input\": \"77909 251377 937 952 115397\\r\\n\", \"output\": [\"798 220\"]}, {\"input\": \"13612 793764 96 76 398584\\r\\n\", \"output\": [\"78 76\"]}, {\"input\": \"1 5 3 5 5\\r\\n\", \"output\": [\"0 5\"]}, {\"input\": \"99 99 99 99 99\\r\\n\", \"output\": [\"99 99\"]}, {\"input\": \"100 100 100 100 100\\r\\n\", \"output\": [\"100 100\"]}, {\"input\": \"1000000 1000000 1000000 1000000 1000000\\r\\n\", \"output\": [\"1000000 1000000\"]}, {\"input\": \"1000000 1000000 999999 999998 1000000\\r\\n\", \"output\": [\"999999 999998\"]}, {\"input\": \"5 5 5 5 5\\r\\n\", \"output\": [\"5 5\"]}, {\"input\": \"10 10 100 100 10\\r\\n\", \"output\": [\"100 100\"]}, {\"input\": \"1000 1000 1000 1000 1000\\r\\n\", \"output\": [\"1000 1000\"]}, {\"input\": \"10 10 5 5 10\\r\\n\", \"output\": [\"5 5\"]}, {\"input\": \"1 2 100 100 2\\r\\n\", \"output\": [\"0 100\"]}, {\"input\": \"100 100 1000 1000 100\\r\\n\", \"output\": [\"1000 1000\"]}, {\"input\": \"1000 1000000 1000000 1000000 1000000\\r\\n\", \"output\": [\"0 1000000\"]}, {\"input\": \"50 100 100 100 100\\r\\n\", \"output\": [\"0 100\"]}, {\"input\": \"10 10 20 20 10\\r\\n\", \"output\": [\"20 20\"]}, {\"input\": \"1 100000 1000 1 2\\r\\n\", \"output\": [\"1000 1\"]}, {\"input\": \"1000 1000000 100000 1000000 1000000\\r\\n\", \"output\": [\"0 1000000\"]}, {\"input\": \"1 10 10 10 10\\r\\n\", \"output\": [\"0 10\"]}, {\"input\": \"1000000 1000000 50 50 1000000\\r\\n\", \"output\": [\"50 50\"]}, {\"input\": \"300 300 1000 1000 300\\r\\n\", \"output\": [\"1000 1000\"]}, {\"input\": \"5 5 123 1234 5\\r\\n\", \"output\": [\"123 1234\"]}]"
+    }
+}

@@ -1,0 +1,87 @@
+{
+    "oai_response": {
+        "prompt": "Here is code in Python 3 programming lanaguge. Translate the following code from Python 3 to C programming lanaguge. Do not output any extra description or tokens other than the translated code. \n\nimport math\nx, y, z = map(int, input().split())\na, b, c = map(int, input().split())\ns, rs, ls = map(int, input().split())\ndef rec(ss):\n    for i in range(0, 205, 1):\n        for j in range(0, 105, 1):\n            if(i * rs + j * ls <= ss):\n                q = y + i;p = z + j; pq = x + ((int)((ss - i * rs - j *ls) / s))\n                an1 = 1000000000000.0;an2 = 1000000000000.0\n                if(b - p > 0):\n                    an1 = math.ceil(((float) (pq)) / ((float)(b - p)))\n                if(q - c > 0):\n                    an2 = math.ceil(((float) (a)) / ((float)(q - c)))\n                if(q > c and p >= b or an1 > an2):\n                    return True\n    return False\nst = 0; en = 100000; mid = 0\nwhile(st <= en):\n    mid = (int)((st + en) / 2)\n    if(rec(mid) == True):\n        en = mid - 1\n    else:\n        st = mid + 1\nprint(en + 1)||END-of-SRC||",
+        "response": {
+            "id": "multi-call-as-y9fr9yt2rj",
+            "model": "deepseek-v3",
+            "created": 1767070220,
+            "choices": [
+                {
+                    "index": 0,
+                    "message": {
+                        "role": "assistant",
+                        "content": "Here's the translated code in C:\n\n```c\n#include <stdio.h>\n#include <math.h>\n\nint x, y, z;\nint a, b, c;\nint s, rs, ls;\n\nint rec(int ss) {\n    for (int i = 0; i <= 205; i++) {\n        for (int j = 0; j <= 105; j++) {\n            if (i * rs + j * ls <= ss) {\n                int q = y + i;\n                int p = z + j;\n                int pq = x + ((int)((ss - i * rs - j * ls) / s));\n                double an1 = 1000000000000.0;\n                double an2 = 1000000000000.0;\n                if (b - p > 0) {\n                    an1 = ceil((double)pq / (double)(b - p));\n                }\n                if (q - c > 0) {\n                    an2 = ceil((double)a / (double)(q - c));\n                }\n                if ((q > c && p >= b) || an1 > an2) {\n                    return 1;\n                }\n            }\n        }\n    }\n    return 0;\n}\n\nint main() {\n    scanf(\"%d %d %d\", &x, &y, &z);\n    scanf(\"%d %d %d\", &a, &b, &c);\n    scanf(\"%d %d %d\", &s, &rs, &ls);\n    \n    int st = 0, en = 100000, mid;\n    while (st <= en) {\n        mid = (st + en) / 2;\n        if (rec(mid)) {\n            en = mid - 1;\n        } else {\n            st = mid + 1;\n        }\n    }\n    printf(\"%d\\n\", en + 1);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 1,
+                    "message": {
+                        "role": "assistant",
+                        "content": "Here's the translated code in C:\n\n```c\n#include <stdio.h>\n#include <math.h>\n\nint x, y, z;\nint a, b, c;\nint s, rs, ls;\n\nint rec(int ss) {\n    for (int i = 0; i <= 205; i++) {\n        for (int j = 0; j <= 105; j++) {\n            if (i * rs + j * ls <= ss) {\n                int q = y + i;\n                int p = z + j;\n                int pq = x + ((ss - i * rs - j * ls) / s);\n                double an1 = 1000000000000.0;\n                double an2 = 1000000000000.0;\n                if (b - p > 0) {\n                    an1 = ceil((double)pq / (double)(b - p));\n                }\n                if (q - c > 0) {\n                    an2 = ceil((double)a / (double)(q - c));\n                }\n                if ((q > c && p >= b) || an1 > an2) {\n                    return 1;\n                }\n            }\n        }\n    }\n    return 0;\n}\n\nint main() {\n    scanf(\"%d %d %d\", &x, &y, &z);\n    scanf(\"%d %d %d\", &a, &b, &c);\n    scanf(\"%d %d %d\", &s, &rs, &ls);\n    \n    int st = 0, en = 100000, mid;\n    while (st <= en) {\n        mid = (st + en) / 2;\n        if (rec(mid)) {\n            en = mid - 1;\n        } else {\n            st = mid + 1;\n        }\n    }\n    printf(\"%d\\n\", en + 1);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 2,
+                    "message": {
+                        "role": "assistant",
+                        "content": "Here's the translated code in C:\n\n```c\n#include <stdio.h>\n#include <math.h>\n\nint x, y, z;\nint a, b, c;\nint s, rs, ls;\n\nint rec(int ss) {\n    for (int i = 0; i <= 205; i++) {\n        for (int j = 0; j <= 105; j++) {\n            if (i * rs + j * ls <= ss) {\n                int q = y + i;\n                int p = z + j;\n                int pq = x + ((ss - i * rs - j * ls) / s);\n                double an1 = 1000000000000.0;\n                double an2 = 1000000000000.0;\n                if (b - p > 0) {\n                    an1 = ceil((double)pq / (double)(b - p));\n                }\n                if (q - c > 0) {\n                    an2 = ceil((double)a / (double)(q - c));\n                }\n                if ((q > c && p >= b) || an1 > an2) {\n                    return 1;\n                }\n            }\n        }\n    }\n    return 0;\n}\n\nint main() {\n    scanf(\"%d %d %d\", &x, &y, &z);\n    scanf(\"%d %d %d\", &a, &b, &c);\n    scanf(\"%d %d %d\", &s, &rs, &ls);\n    \n    int st = 0, en = 100000, mid;\n    while (st <= en) {\n        mid = (st + en) / 2;\n        if (rec(mid)) {\n            en = mid - 1;\n        } else {\n            st = mid + 1;\n        }\n    }\n    printf(\"%d\\n\", en + 1);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 3,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <math.h>\n#include <stdbool.h>\n\nint x, y, z;\nint a, b, c;\nint s, rs, ls;\n\nbool rec(int ss) {\n    for (int i = 0; i <= 205; i++) {\n        for (int j = 0; j <= 105; j++) {\n            if (i * rs + j * ls <= ss) {\n                int q = y + i;\n                int p = z + j;\n                int pq = x + ((ss - i * rs - j * ls) / s);\n                double an1 = 1000000000000.0;\n                double an2 = 1000000000000.0;\n                if (b - p > 0) {\n                    an1 = ceil((double)pq / (double)(b - p));\n                }\n                if (q - c > 0) {\n                    an2 = ceil((double)a / (double)(q - c));\n                }\n                if ((q > c && p >= b) || an1 > an2) {\n                    return true;\n                }\n            }\n        }\n    }\n    return false;\n}\n\nint main() {\n    scanf(\"%d %d %d\", &x, &y, &z);\n    scanf(\"%d %d %d\", &a, &b, &c);\n    scanf(\"%d %d %d\", &s, &rs, &ls);\n    \n    int st = 0;\n    int en = 100000;\n    int mid = 0;\n    \n    while (st <= en) {\n        mid = (st + en) / 2;\n        if (rec(mid)) {\n            en = mid - 1;\n        } else {\n            st = mid + 1;\n        }\n    }\n    \n    printf(\"%d\\n\", en + 1);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 4,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <math.h>\n#include <stdbool.h>\n\nint x, y, z;\nint a, b, c;\nint s, rs, ls;\n\nbool rec(int ss) {\n    for (int i = 0; i <= 205; i++) {\n        for (int j = 0; j <= 105; j++) {\n            if (i * rs + j * ls <= ss) {\n                int q = y + i;\n                int p = z + j;\n                int pq = x + ((ss - i * rs - j * ls) / s);\n                double an1 = 1000000000000.0;\n                double an2 = 1000000000000.0;\n                if (b - p > 0) {\n                    an1 = ceil((double)pq / (double)(b - p));\n                }\n                if (q - c > 0) {\n                    an2 = ceil((double)a / (double)(q - c));\n                }\n                if ((q > c && p >= b) || an1 > an2) {\n                    return true;\n                }\n            }\n        }\n    }\n    return false;\n}\n\nint main() {\n    scanf(\"%d %d %d\", &x, &y, &z);\n    scanf(\"%d %d %d\", &a, &b, &c);\n    scanf(\"%d %d %d\", &s, &rs, &ls);\n    \n    int st = 0, en = 100000, mid;\n    while (st <= en) {\n        mid = (st + en) / 2;\n        if (rec(mid)) {\n            en = mid - 1;\n        } else {\n            st = mid + 1;\n        }\n    }\n    printf(\"%d\\n\", en + 1);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                }
+            ],
+            "usage": {
+                "prompt_tokens": 1755,
+                "completion_tokens": 2017,
+                "total_tokens": 3772
+            }
+        }
+    },
+    "source_data": {
+        "code_uid": "353f10554b4be814f1a215802ec5a016",
+        "prob_desc_output_to": "standard output",
+        "prob_desc_notes": "NoteFor the first sample, prices for ATK and DEF are extremely high. Master Yang can buy 99 HP, then he can beat the monster with 1 HP left.For the second sample, Master Yang is strong enough to beat the monster, so he doesn't need to buy anything.",
+        "lang_cluster": "Python",
+        "prob_desc_time_limit": "1 second",
+        "prob_desc_input_spec": "The first line contains three integers HPY,\u2009ATKY,\u2009DEFY, separated by a space, denoting the initial HP, ATK and DEF of Master Yang. The second line contains three integers HPM,\u2009ATKM,\u2009DEFM, separated by a space, denoting the HP, ATK and DEF of the monster. The third line contains three integers h,\u2009a,\u2009d, separated by a space, denoting the price of 1\u00a0HP, 1\u00a0ATK and 1\u00a0DEF. All numbers in input are integer and lie between 1 and 100 inclusively.",
+        "source_code": "import math\nx, y, z = map(int, input().split())\na, b, c = map(int, input().split())\ns, rs, ls = map(int, input().split())\ndef rec(ss):\n    for i in range(0, 205, 1):\n        for j in range(0, 105, 1):\n            if(i * rs + j * ls <= ss):\n                q = y + i;p = z + j; pq = x + ((int)((ss - i * rs - j *ls) / s))\n                an1 = 1000000000000.0;an2 = 1000000000000.0\n                if(b - p > 0):\n                    an1 = math.ceil(((float) (pq)) / ((float)(b - p)))\n                if(q - c > 0):\n                    an2 = math.ceil(((float) (a)) / ((float)(q - c)))\n                if(q > c and p >= b or an1 > an2):\n                    return True\n    return False\nst = 0; en = 100000; mid = 0\nwhile(st <= en):\n    mid = (int)((st + en) / 2)\n    if(rec(mid) == True):\n        en = mid - 1\n    else:\n        st = mid + 1\nprint(en + 1)",
+        "prob_desc_sample_inputs": [
+            "1 2 1\n1 100 1\n1 100 100",
+            "100 100 100\n1 1 1\n1 1 1"
+        ],
+        "prob_desc_memory_limit": "256 megabytes",
+        "exec_outcome": "PASSED",
+        "prob_desc_output_spec": "The only output line should contain an integer, denoting the minimum bitcoins Master Yang should spend in order to win.",
+        "src_uid": "bf8a133154745e64a547de6f31ddc884",
+        "prob_desc_input_from": "standard input",
+        "lang": "Python 3",
+        "prob_desc_sample_outputs": [
+            "99",
+            "0"
+        ],
+        "file_name": "d7021504500d5ca7c2b02df8100a574d159e6e67e20ec8071b75800b1267370a",
+        "prob_desc_description": "A monster is attacking the Cyberland!Master Yang, a braver, is going to beat the monster. Yang and the monster each have 3 attributes: hitpoints (HP), offensive power (ATK) and defensive power (DEF).During the battle, every second the monster's HP decrease by max(0,\u2009ATKY\u2009-\u2009DEFM), while Yang's HP decreases by max(0,\u2009ATKM\u2009-\u2009DEFY), where index Y denotes Master Yang and index M denotes monster. Both decreases happen simultaneously Once monster's HP\u2009\u2264\u20090 and the same time Master Yang's HP\u2009&gt;\u20090, Master Yang wins.Master Yang can buy attributes from the magic shop of Cyberland: h bitcoins per HP, a bitcoins per ATK, and d bitcoins per DEF.Now Master Yang wants to know the minimum number of bitcoins he can spend in order to win.",
+        "prob_desc_created_at": "1416590400",
+        "difficulty": 1800.0,
+        "hidden_unit_tests": "[{\"input\": \"1 2 1\\r\\n1 100 1\\r\\n1 100 100\\r\\n\", \"output\": [\"99\"]}, {\"input\": \"100 100 100\\r\\n1 1 1\\r\\n1 1 1\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"50 80 92\\r\\n41 51 56\\r\\n75 93 12\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"76 63 14\\r\\n89 87 35\\r\\n20 15 56\\r\\n\", \"output\": [\"915\"]}, {\"input\": \"12 59 66\\r\\n43 15 16\\r\\n12 18 66\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"51 89 97\\r\\n18 25 63\\r\\n22 91 74\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"72 16 49\\r\\n5 21 84\\r\\n48 51 88\\r\\n\", \"output\": [\"3519\"]}, {\"input\": \"74 89 5\\r\\n32 76 99\\r\\n62 95 36\\r\\n\", \"output\": [\"3529\"]}, {\"input\": \"39 49 78\\r\\n14 70 41\\r\\n3 33 23\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"11 82 51\\r\\n90 84 72\\r\\n98 98 43\\r\\n\", \"output\": [\"1376\"]}, {\"input\": \"65 6 5\\r\\n70 78 51\\r\\n88 55 78\\r\\n\", \"output\": [\"7027\"]}, {\"input\": \"14 61 87\\r\\n11 78 14\\r\\n5 84 92\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"1 28 47\\r\\n31 60 38\\r\\n14 51 77\\r\\n\", \"output\": [\"1562\"]}, {\"input\": \"99 32 20\\r\\n89 72 74\\r\\n1 100 39\\r\\n\", \"output\": [\"5478\"]}, {\"input\": \"1 10 29\\r\\n1 1 43\\r\\n1 1 100\\r\\n\", \"output\": [\"34\"]}, {\"input\": \"1 1 100\\r\\n1 1 1\\r\\n100 1 100\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"79 1 1\\r\\n1 1 10\\r\\n1 1 100\\r\\n\", \"output\": [\"10\"]}, {\"input\": \"10 10 100\\r\\n1 100 100\\r\\n10 100 90\\r\\n\", \"output\": [\"9100\"]}, {\"input\": \"10 10 100\\r\\n1 10 1\\r\\n1 1 100\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"1 100 1\\r\\n1 1 1\\r\\n1 1 1\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"11 1 1\\r\\n100 1 1\\r\\n100 1 1\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"1 100 100\\r\\n1 1 1\\r\\n87 100 43\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"10 100 1\\r\\n1 100 100\\r\\n100 1 9\\r\\n\", \"output\": [\"811\"]}, {\"input\": \"10 100 55\\r\\n100 100 1\\r\\n1 1 1\\r\\n\", \"output\": [\"37\"]}, {\"input\": \"11 1 1\\r\\n10 1 10\\r\\n100 50 1\\r\\n\", \"output\": [\"500\"]}, {\"input\": \"10 100 1\\r\\n100 1 1\\r\\n1 100 1\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"1 10 10\\r\\n1 10 100\\r\\n1 1 61\\r\\n\", \"output\": [\"91\"]}, {\"input\": \"1 1 1\\r\\n1 1 1\\r\\n1 1 1\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"1 1 1\\r\\n1 1 1\\r\\n100 100 100\\r\\n\", \"output\": [\"100\"]}, {\"input\": \"1 1 1\\r\\n100 100 100\\r\\n100 100 100\\r\\n\", \"output\": [\"19900\"]}, {\"input\": \"100 100 100\\r\\n100 100 100\\r\\n100 100 100\\r\\n\", \"output\": [\"100\"]}, {\"input\": \"1 1 1\\r\\n1 1 100\\r\\n100 100 1\\r\\n\", \"output\": [\"10000\"]}, {\"input\": \"50 100 51\\r\\n100 100 100\\r\\n1 100 100\\r\\n\", \"output\": [\"1384\"]}, {\"input\": \"1 1 1\\r\\n100 100 100\\r\\n1 2 3\\r\\n\", \"output\": [\"496\"]}, {\"input\": \"100 1 1\\r\\n100 100 100\\r\\n100 1 100\\r\\n\", \"output\": [\"199\"]}, {\"input\": \"1 100 1\\r\\n100 100 100\\r\\n1 100 100\\r\\n\", \"output\": [\"1990\"]}, {\"input\": \"100 100 1\\r\\n100 100 100\\r\\n1 100 100\\r\\n\", \"output\": [\"1891\"]}, {\"input\": \"1 1 1\\r\\n100 100 100\\r\\n1 100 100\\r\\n\", \"output\": [\"11890\"]}, {\"input\": \"20 1 1\\r\\n100 100 100\\r\\n1 100 100\\r\\n\", \"output\": [\"11871\"]}, {\"input\": \"25 38 49\\r\\n84 96 42\\r\\n3 51 92\\r\\n\", \"output\": [\"1692\"]}, {\"input\": \"2 1 1\\r\\n100 2 100\\r\\n100 1 100\\r\\n\", \"output\": [\"199\"]}, {\"input\": \"1 97 1\\r\\n100 99 98\\r\\n1 51 52\\r\\n\", \"output\": [\"1498\"]}, {\"input\": \"1 1 1\\r\\n100 100 100\\r\\n1 1 100\\r\\n\", \"output\": [\"298\"]}, {\"input\": \"1 100 1\\r\\n100 100 99\\r\\n1 100 100\\r\\n\", \"output\": [\"1890\"]}, {\"input\": \"100 1 1\\r\\n100 100 100\\r\\n1 100 100\\r\\n\", \"output\": [\"11791\"]}]",
+        "source_lang": "Python 3",
+        "target_lang": "C"
+    }
+}

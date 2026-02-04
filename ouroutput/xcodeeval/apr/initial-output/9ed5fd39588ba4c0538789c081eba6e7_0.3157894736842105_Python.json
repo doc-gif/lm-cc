@@ -1,0 +1,104 @@
+{
+    "oai_response": {
+        "prompt": "Fix a buggy program written in Python language to solve the following programming problem:\nDescription: Polycarp has a cat and his cat is a real gourmet! Dependent on a day of the week he eats certain type of food:  on Mondays, Thursdays and Sundays he eats fish food;  on Tuesdays and Saturdays he eats rabbit stew;  on other days of week he eats chicken stake. Polycarp plans to go on a trip and already packed his backpack. His backpack contains:  $$$a$$$ daily rations of fish food;  $$$b$$$ daily rations of rabbit stew;  $$$c$$$ daily rations of chicken stakes. Polycarp has to choose such day of the week to start his trip that his cat can eat without additional food purchases as long as possible. Print the maximum number of days the cat can eat in a trip without additional food purchases, if Polycarp chooses the day of the week to start his trip optimally.\nInput Specification: The first line of the input contains three positive integers $$$a$$$, $$$b$$$ and $$$c$$$ ($$$1 \\le a, b, c \\le 7\\cdot10^8$$$) \u2014 the number of daily rations of fish food, rabbit stew and chicken stakes in Polycarps backpack correspondingly.\nOutput Specification: Print the maximum number of days the cat can eat in a trip without additional food purchases, if Polycarp chooses the day of the week to start his trip optimally.\n\nSample Input:\n2 1 1\nSample Output:\n4\n\nSample Input:\n3 2 2\nSample Output:\n7\n\nSample Input:\n1 100 1\nSample Output:\n3\n\nSample Input:\n30 20 10\nSample Output:\n39\n\nNotes: NoteIn the first example the best day for start of the trip is Sunday. In this case, during Sunday and Monday the cat will eat fish food, during Tuesday \u2014 rabbit stew and during Wednesday \u2014 chicken stake. So, after four days of the trip all food will be eaten.In the second example Polycarp can start his trip in any day of the week. In any case there are food supplies only for one week in Polycarps backpack.In the third example Polycarp can start his trip in any day, excluding Wednesday, Saturday and Sunday. In this case, the cat will eat three different dishes in three days. Nevertheless that after three days of a trip there will be $$$99$$$ portions of rabbit stew in a backpack, can cannot eat anything in fourth day of a trip.\nTake input from standard input and output to standard output\n\nHere is the code with a bug of RUNTIME_ERROR:\n\nn = int(input())\nxs = [int(elm) for elm in input().split(\" \")] \n\ndef calc_min_diff(xs):\n    if n == 1:\n        return 1\n\n    min_cur_diffs = []\n    twice_flags = []\n    for i in range(n):\n        cur_diffs = [abs(xs[j] - xs[i]) for j in range(n) if xs[j] != xs[i] and i != j]\n        #print(\"cur_diffs\", cur_diffs)\n        #print(\"xs\", xs)\n        if len(cur_diffs) == 0:\n            #print(\"out1\")\n            return 1\n\n        min_cur_diff = min(cur_diffs)\n        \n        twice_flag = False\n        for cur_diff in cur_diffs:\n            #if cur_diff % min_cur_diff != 0:\n            #print(cur_diff, min_cur_diff)\n            if cur_diff == min_cur_diff:\n                pass\n            elif cur_diff == min_cur_diff * 2:\n                twice_flag = True\n            else:\n                #print(\"out2\")\n                return -1\n        min_cur_diffs.append(min_cur_diff)\n        twice_flags.append(twice_flag)\n    \n    \n    min_diff = min(min_cur_diffs)\n    for min_cur_diff, twice_flag in zip(min_cur_diffs, twice_flags):\n        if twice_flag:\n            if min_cur_diff != min_diff:\n                #print(\"out3\")\n                return -1\n        else:\n            if min_cur_diff in [min_diff, min_diff*2]:\n                pass\n            else:\n                #print(\"out4\")\n                return -1\n    \n    if not twice_flag and min_diff % 2 == 0:\n        ret = min_diff // 2\n    else:\n        ret = min_diff\n    return ret\n\nout = calc_min_diff(xs)\nprint(out)\n\nProvide the fixed Python code without any description or extra tokens.\n\nFixed source code:\n ||END-of-SRC||",
+        "response": {
+            "id": "multi-call-as-zu5yu6603t",
+            "model": "deepseek-v3",
+            "created": 1760422840,
+            "choices": [
+                {
+                    "index": 0,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```python\na, b, c = map(int, input().split())\n\ndef max_days(a, b, c):\n    max_possible = 0\n    for start_day in range(7):\n        remaining_a = a\n        remaining_b = b\n        remaining_c = c\n        days = 0\n        current_day = start_day\n        while True:\n            if current_day % 7 in {0, 3, 6}:  # Monday, Thursday, Sunday\n                if remaining_a == 0:\n                    break\n                remaining_a -= 1\n            elif current_day % 7 in {1, 5}:  # Tuesday, Saturday\n                if remaining_b == 0:\n                    break\n                remaining_b -= 1\n            else:  # Wednesday, Friday\n                if remaining_c == 0:\n                    break\n                remaining_c -= 1\n            days += 1\n            current_day += 1\n        if days > max_possible:\n            max_possible = days\n    return max_possible\n\nprint(max_days(a, b, c))\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 1,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```python\na, b, c = map(int, input().split())\n\ndef max_days(a, b, c):\n    max_possible = 0\n    for start_day in range(7):\n        remaining_a = a\n        remaining_b = b\n        remaining_c = c\n        days = 0\n        current_day = start_day\n        while True:\n            if current_day % 7 in {0, 3, 6}:  # Monday, Thursday, Sunday\n                if remaining_a == 0:\n                    break\n                remaining_a -= 1\n            elif current_day % 7 in {1, 5}:  # Tuesday, Saturday\n                if remaining_b == 0:\n                    break\n                remaining_b -= 1\n            else:  # Wednesday, Friday\n                if remaining_c == 0:\n                    break\n                remaining_c -= 1\n            days += 1\n            current_day += 1\n        if days > max_possible:\n            max_possible = days\n    return max_possible\n\nprint(max_days(a, b, c))\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 2,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```python\na, b, c = map(int, input().split())\n\ndef max_days(a, b, c):\n    max_possible = 0\n    for start_day in range(7):\n        remaining_a = a\n        remaining_b = b\n        remaining_c = c\n        days = 0\n        current_day = start_day\n        while True:\n            if current_day % 7 in {0, 3, 6}:  # Monday, Thursday, Sunday (0-based)\n                if remaining_a == 0:\n                    break\n                remaining_a -= 1\n            elif current_day % 7 in {1, 5}:  # Tuesday, Saturday\n                if remaining_b == 0:\n                    break\n                remaining_b -= 1\n            else:  # Wednesday, Friday\n                if remaining_c == 0:\n                    break\n                remaining_c -= 1\n            days += 1\n            current_day += 1\n        if days > max_possible:\n            max_possible = days\n    return max_possible\n\nprint(max_days(a, b, c))\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 3,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```python\na, b, c = map(int, input().split())\n\ndef max_days(a, b, c):\n    max_possible = 0\n    for start_day in range(7):\n        remaining_a = a\n        remaining_b = b\n        remaining_c = c\n        days = 0\n        current_day = start_day\n        while True:\n            if current_day % 7 in {0, 3, 6}:  # Monday, Thursday, Sunday\n                if remaining_a == 0:\n                    break\n                remaining_a -= 1\n            elif current_day % 7 in {1, 5}:  # Tuesday, Saturday\n                if remaining_b == 0:\n                    break\n                remaining_b -= 1\n            else:  # Wednesday, Friday\n                if remaining_c == 0:\n                    break\n                remaining_c -= 1\n            days += 1\n            current_day += 1\n        if days > max_possible:\n            max_possible = days\n    return max_possible\n\nprint(max_days(a, b, c))\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 4,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```python\na, b, c = map(int, input().split())\n\ndef max_days(a, b, c):\n    max_possible = 0\n    for start_day in range(7):\n        remaining_a = a\n        remaining_b = b\n        remaining_c = c\n        days = 0\n        current_day = start_day\n        while True:\n            if current_day % 7 in {0, 3, 6}:  # Monday, Thursday, Sunday\n                if remaining_a == 0:\n                    break\n                remaining_a -= 1\n            elif current_day % 7 in {1, 5}:  # Tuesday, Saturday\n                if remaining_b == 0:\n                    break\n                remaining_b -= 1\n            else:  # Wednesday, Friday\n                if remaining_c == 0:\n                    break\n                remaining_c -= 1\n            days += 1\n            current_day += 1\n        if days > max_possible:\n            max_possible = days\n    return max_possible\n\nprint(max_days(a, b, c))\n```"
+                    },
+                    "finish_reason": "stop"
+                }
+            ],
+            "usage": {
+                "prompt_tokens": 4925,
+                "completion_tokens": 1160,
+                "total_tokens": 6085
+            }
+        }
+    },
+    "source_data": {
+        "prob_desc_memory_limit": "256 megabytes",
+        "tags": [
+            "math",
+            "implementation"
+        ],
+        "prob_desc_created_at": "1555425300",
+        "fix_source_code": "",
+        "prob_desc_input_spec": "The first line of the input contains three positive integers $$$a$$$, $$$b$$$ and $$$c$$$ ($$$1 \\le a, b, c \\le 7\\cdot10^8$$$) \u2014 the number of daily rations of fish food, rabbit stew and chicken stakes in Polycarps backpack correspondingly.",
+        "prob_desc_sample_outputs": [
+            "4",
+            "7",
+            "3",
+            "39"
+        ],
+        "src_uid": "e17df52cc0615585e4f8f2d31d2daafb",
+        "prob_desc_time_limit": "1 second",
+        "fix_exec_outcome": "",
+        "delete_cnt": 0,
+        "apr_id": "4410f94eaef240fc6320dd695255a645",
+        "fix_code_uid": "",
+        "lang_cluster": "Python",
+        "prob_desc_sample_inputs": [
+            "2 1 1",
+            "3 2 2",
+            "1 100 1",
+            "30 20 10"
+        ],
+        "prob_desc_output_to": "standard output",
+        "file_name": "Python.jsonl",
+        "equal_cnt": 11,
+        "lang": "Python 3",
+        "prob_desc_output_spec": "Print the maximum number of days the cat can eat in a trip without additional food purchases, if Polycarp chooses the day of the week to start his trip optimally.",
+        "bug_exec_outcome": "RUNTIME_ERROR",
+        "prob_desc_notes": "NoteIn the first example the best day for start of the trip is Sunday. In this case, during Sunday and Monday the cat will eat fish food, during Tuesday \u2014 rabbit stew and during Wednesday \u2014 chicken stake. So, after four days of the trip all food will be eaten.In the second example Polycarp can start his trip in any day of the week. In any case there are food supplies only for one week in Polycarps backpack.In the third example Polycarp can start his trip in any day, excluding Wednesday, Saturday and Sunday. In this case, the cat will eat three different dishes in three days. Nevertheless that after three days of a trip there will be $$$99$$$ portions of rabbit stew in a backpack, can cannot eat anything in fourth day of a trip.",
+        "difficulty": 1400.0,
+        "similarity_score": 0.0301129241,
+        "prob_desc_description": "Polycarp has a cat and his cat is a real gourmet! Dependent on a day of the week he eats certain type of food:  on Mondays, Thursdays and Sundays he eats fish food;  on Tuesdays and Saturdays he eats rabbit stew;  on other days of week he eats chicken stake. Polycarp plans to go on a trip and already packed his backpack. His backpack contains:  $$$a$$$ daily rations of fish food;  $$$b$$$ daily rations of rabbit stew;  $$$c$$$ daily rations of chicken stakes. Polycarp has to choose such day of the week to start his trip that his cat can eat without additional food purchases as long as possible. Print the maximum number of days the cat can eat in a trip without additional food purchases, if Polycarp chooses the day of the week to start his trip optimally.",
+        "potential_dominant_fix_op": "replace",
+        "bug_source_code": "n = int(input())\nxs = [int(elm) for elm in input().split(\" \")] \n\ndef calc_min_diff(xs):\n    if n == 1:\n        return 1\n\n    min_cur_diffs = []\n    twice_flags = []\n    for i in range(n):\n        cur_diffs = [abs(xs[j] - xs[i]) for j in range(n) if xs[j] != xs[i] and i != j]\n        #print(\"cur_diffs\", cur_diffs)\n        #print(\"xs\", xs)\n        if len(cur_diffs) == 0:\n            #print(\"out1\")\n            return 1\n\n        min_cur_diff = min(cur_diffs)\n        \n        twice_flag = False\n        for cur_diff in cur_diffs:\n            #if cur_diff % min_cur_diff != 0:\n            #print(cur_diff, min_cur_diff)\n            if cur_diff == min_cur_diff:\n                pass\n            elif cur_diff == min_cur_diff * 2:\n                twice_flag = True\n            else:\n                #print(\"out2\")\n                return -1\n        min_cur_diffs.append(min_cur_diff)\n        twice_flags.append(twice_flag)\n    \n    \n    min_diff = min(min_cur_diffs)\n    for min_cur_diff, twice_flag in zip(min_cur_diffs, twice_flags):\n        if twice_flag:\n            if min_cur_diff != min_diff:\n                #print(\"out3\")\n                return -1\n        else:\n            if min_cur_diff in [min_diff, min_diff*2]:\n                pass\n            else:\n                #print(\"out4\")\n                return -1\n    \n    if not twice_flag and min_diff % 2 == 0:\n        ret = min_diff // 2\n    else:\n        ret = min_diff\n    return ret\n\nout = calc_min_diff(xs)\nprint(out)",
+        "replace_cnt": 11,
+        "prob_desc_input_from": "standard input",
+        "bug_code_uid": "9ed5fd39588ba4c0538789c081eba6e7",
+        "insert_cnt": 1,
+        "fix_ops_cnt": 12,
+        "hidden_unit_tests": "[{\"input\": \"2 1 1\\r\\n\", \"output\": [\"4\"]}, {\"input\": \"3 2 2\\r\\n\", \"output\": [\"7\"]}, {\"input\": \"1 100 1\\r\\n\", \"output\": [\"3\"]}, {\"input\": \"30 20 10\\r\\n\", \"output\": [\"39\"]}, {\"input\": \"700000000 200000000 300000000\\r\\n\", \"output\": [\"700000003\"]}, {\"input\": \"300000000 700000000 400000000\\r\\n\", \"output\": [\"700000002\"]}, {\"input\": \"500000000 200000000 700000000\\r\\n\", \"output\": [\"700000003\"]}, {\"input\": \"700000000 700000000 700000000\\r\\n\", \"output\": [\"1633333336\"]}, {\"input\": \"92 54 80\\r\\n\", \"output\": [\"192\"]}, {\"input\": \"97 46 46\\r\\n\", \"output\": [\"163\"]}, {\"input\": \"13 77 34\\r\\n\", \"output\": [\"33\"]}, {\"input\": \"4 1 2\\r\\n\", \"output\": [\"6\"]}, {\"input\": \"1009859 14748096 15475634\\r\\n\", \"output\": [\"2356339\"]}, {\"input\": \"2 100 100\\r\\n\", \"output\": [\"6\"]}, {\"input\": \"200 2 3\\r\\n\", \"output\": [\"9\"]}, {\"input\": \"2 8 9\\r\\n\", \"output\": [\"6\"]}, {\"input\": \"201 4 5\\r\\n\", \"output\": [\"16\"]}, {\"input\": \"3 1 4\\r\\n\", \"output\": [\"6\"]}, {\"input\": \"202 4 5\\r\\n\", \"output\": [\"16\"]}, {\"input\": \"205 2 4\\r\\n\", \"output\": [\"10\"]}, {\"input\": \"203 3 6\\r\\n\", \"output\": [\"13\"]}, {\"input\": \"3 2 1\\r\\n\", \"output\": [\"6\"]}, {\"input\": \"21234578 1231455 1230047\\r\\n\", \"output\": [\"4305167\"]}, {\"input\": \"5 4 3\\r\\n\", \"output\": [\"12\"]}, {\"input\": \"10 8 6\\r\\n\", \"output\": [\"23\"]}, {\"input\": \"27 20 20\\r\\n\", \"output\": [\"65\"]}, {\"input\": \"20 16 12\\r\\n\", \"output\": [\"46\"]}, {\"input\": \"11144477 3123445 6688711\\r\\n\", \"output\": [\"10932060\"]}, {\"input\": \"525643356 245126545 242111421\\r\\n\", \"output\": [\"847389976\"]}, {\"input\": \"1 1 2\\r\\n\", \"output\": [\"4\"]}, {\"input\": \"4 4 2\\r\\n\", \"output\": [\"9\"]}, {\"input\": \"580491178 465290676 24999591\\r\\n\", \"output\": [\"87498571\"]}, {\"input\": \"309767158 518372594 115844198\\r\\n\", \"output\": [\"405454697\"]}, {\"input\": \"600025643 600010745 600014575\\r\\n\", \"output\": [\"1400059835\"]}, {\"input\": \"659209689 118781819 382068338\\r\\n\", \"output\": [\"415736369\"]}, {\"input\": \"600019415 600004367 600015718\\r\\n\", \"output\": [\"1400045303\"]}, {\"input\": \"177674746 123877503 565008408\\r\\n\", \"output\": [\"414574410\"]}, {\"input\": \"123243 122112 234567\\r\\n\", \"output\": [\"287569\"]}, {\"input\": \"650439292 352470919 347331093\\r\\n\", \"output\": [\"1215658828\"]}, {\"input\": \"690005222 690012314 690019663\\r\\n\", \"output\": [\"1610012186\"]}, {\"input\": \"222222 2222222 22223\\r\\n\", \"output\": [\"77783\"]}, {\"input\": \"155247014 622599781 457401709\\r\\n\", \"output\": [\"362243034\"]}, {\"input\": \"10012219 123221 1234\\r\\n\", \"output\": [\"4323\"]}, {\"input\": \"1 2 3\\r\\n\", \"output\": [\"5\"]}, {\"input\": \"4 2 3\\r\\n\", \"output\": [\"9\"]}, {\"input\": \"27053 31618 3317\\r\\n\", \"output\": [\"11612\"]}, {\"input\": \"1 2 9\\r\\n\", \"output\": [\"5\"]}, {\"input\": \"5 4 1\\r\\n\", \"output\": [\"6\"]}, {\"input\": \"1 10 2\\r\\n\", \"output\": [\"5\"]}, {\"input\": \"1 5 6\\r\\n\", \"output\": [\"5\"]}, {\"input\": \"1 7 10\\r\\n\", \"output\": [\"5\"]}, {\"input\": \"1 1527 11861\\r\\n\", \"output\": [\"5\"]}, {\"input\": \"5 5 1\\r\\n\", \"output\": [\"6\"]}, {\"input\": \"5 1 6\\r\\n\", \"output\": [\"6\"]}, {\"input\": \"699999999 466666666 466666665\\r\\n\", \"output\": [\"1633333330\"]}, {\"input\": \"31750 16654 16655\\r\\n\", \"output\": [\"58291\"]}]"
+    }
+}

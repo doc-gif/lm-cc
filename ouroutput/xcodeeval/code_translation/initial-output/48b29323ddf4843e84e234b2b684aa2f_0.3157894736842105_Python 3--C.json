@@ -1,0 +1,87 @@
+{
+    "oai_response": {
+        "prompt": "Here is code in Python 3 programming lanaguge. Translate the following code from Python 3 to C programming lanaguge. Do not output any extra description or tokens other than the translated code. \n\nimport operator as op\nimport math\nfrom functools import reduce\n\ndef ncr(n, r):\n    r = min(r, n-r)\n    numer = reduce(op.mul, range(n, n-r, -1), 1)\n    denom = reduce(op.mul, range(1, r+1), 1)\n    return numer // denom\n\nn,m,t=map(int,input().split())\nways=0\na=4\nb=t-a\nwhile(a<=n and b!=0):\n\tif(b<=m):\n\t\tways+=ncr(n,a)*ncr(m,b)\n\ta=a+1\n\tb=t-a\nprint(int(ways))\n\t\n\t\n\n||END-of-SRC||",
+        "response": {
+            "id": "multi-call-as-si4sejcc0y",
+            "model": "deepseek-v3",
+            "created": 1767068366,
+            "choices": [
+                {
+                    "index": 0,
+                    "message": {
+                        "role": "assistant",
+                        "content": "Here's the translated code in C:\n\n```c\n#include <stdio.h>\n\nlong long ncr(int n, int r) {\n    if (r > n - r) r = n - r;\n    long long numer = 1;\n    for (int i = n; i > n - r; i--) numer *= i;\n    long long denom = 1;\n    for (int i = 1; i <= r; i++) denom *= i;\n    return numer / denom;\n}\n\nint main() {\n    int n, m, t;\n    scanf(\"%d %d %d\", &n, &m, &t);\n    long long ways = 0;\n    int a = 4;\n    int b = t - a;\n    while (a <= n && b != 0) {\n        if (b <= m) {\n            ways += ncr(n, a) * ncr(m, b);\n        }\n        a = a + 1;\n        b = t - a;\n    }\n    printf(\"%lld\\n\", ways);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 1,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n\nlong long ncr(int n, int r) {\n    if (r > n - r) r = n - r;\n    long long numer = 1;\n    for (int i = n; i > n - r; --i) numer *= i;\n    long long denom = 1;\n    for (int i = 1; i <= r; ++i) denom *= i;\n    return numer / denom;\n}\n\nint main() {\n    int n, m, t;\n    scanf(\"%d %d %d\", &n, &m, &t);\n    long long ways = 0;\n    int a = 4;\n    int b = t - a;\n    while (a <= n && b != 0) {\n        if (b <= m) {\n            ways += ncr(n, a) * ncr(m, b);\n        }\n        a += 1;\n        b = t - a;\n    }\n    printf(\"%lld\\n\", ways);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 2,
+                    "message": {
+                        "role": "assistant",
+                        "content": "Here's the translated code in C:\n\n```c\n#include <stdio.h>\n\nlong long ncr(int n, int r) {\n    if (r > n - r) r = n - r;\n    long long numer = 1;\n    for (int i = n; i > n - r; i--) numer *= i;\n    long long denom = 1;\n    for (int i = 1; i <= r; i++) denom *= i;\n    return numer / denom;\n}\n\nint main() {\n    int n, m, t;\n    scanf(\"%d %d %d\", &n, &m, &t);\n    long long ways = 0;\n    int a = 4;\n    int b = t - a;\n    while (a <= n && b != 0) {\n        if (b <= m) {\n            ways += ncr(n, a) * ncr(m, b);\n        }\n        a++;\n        b = t - a;\n    }\n    printf(\"%lld\\n\", ways);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 3,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n\nlong long ncr(int n, int r) {\n    if (r > n - r) r = n - r;\n    long long numer = 1;\n    for (int i = n; i > n - r; --i) numer *= i;\n    long long denom = 1;\n    for (int i = 1; i <= r; ++i) denom *= i;\n    return numer / denom;\n}\n\nint main() {\n    int n, m, t;\n    scanf(\"%d %d %d\", &n, &m, &t);\n    long long ways = 0;\n    int a = 4;\n    int b = t - a;\n    while (a <= n && b != 0) {\n        if (b <= m) {\n            ways += ncr(n, a) * ncr(m, b);\n        }\n        a = a + 1;\n        b = t - a;\n    }\n    printf(\"%lld\\n\", ways);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 4,
+                    "message": {
+                        "role": "assistant",
+                        "content": "Here's the translated code in C:\n\n```c\n#include <stdio.h>\n\nlong long ncr(int n, int r) {\n    if (r > n - r) r = n - r;\n    long long numer = 1;\n    for (int i = n; i > n - r; i--) numer *= i;\n    long long denom = 1;\n    for (int i = 1; i <= r; i++) denom *= i;\n    return numer / denom;\n}\n\nint main() {\n    int n, m, t;\n    scanf(\"%d %d %d\", &n, &m, &t);\n    long long ways = 0;\n    int a = 4;\n    int b = t - a;\n    while (a <= n && b != 0) {\n        if (b <= m) {\n            ways += ncr(n, a) * ncr(m, b);\n        }\n        a++;\n        b = t - a;\n    }\n    printf(\"%lld\\n\", ways);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                }
+            ],
+            "usage": {
+                "prompt_tokens": 970,
+                "completion_tokens": 1136,
+                "total_tokens": 2106
+            }
+        }
+    },
+    "source_data": {
+        "code_uid": "48b29323ddf4843e84e234b2b684aa2f",
+        "prob_desc_output_to": "standard output",
+        "prob_desc_notes": null,
+        "lang_cluster": "Python",
+        "prob_desc_time_limit": "2 seconds",
+        "prob_desc_input_spec": "The only line of the input data contains three integers n, m, t (4\u2009\u2264\u2009n\u2009\u2264\u200930,\u20091\u2009\u2264\u2009m\u2009\u2264\u200930,\u20095\u2009\u2264\u2009t\u2009\u2264\u2009n\u2009+\u2009m).",
+        "source_code": "import operator as op\nimport math\nfrom functools import reduce\n\ndef ncr(n, r):\n    r = min(r, n-r)\n    numer = reduce(op.mul, range(n, n-r, -1), 1)\n    denom = reduce(op.mul, range(1, r+1), 1)\n    return numer // denom\n\nn,m,t=map(int,input().split())\nways=0\na=4\nb=t-a\nwhile(a<=n and b!=0):\n\tif(b<=m):\n\t\tways+=ncr(n,a)*ncr(m,b)\n\ta=a+1\n\tb=t-a\nprint(int(ways))\n\t\n\t\n\n",
+        "prob_desc_sample_inputs": [
+            "5 2 5",
+            "4 3 5"
+        ],
+        "prob_desc_memory_limit": "256 megabytes",
+        "exec_outcome": "PASSED",
+        "prob_desc_output_spec": "Find the required number of ways. Please do not use the %lld specificator to read or write 64-bit integers in \u0421++. It is preferred to use cin, cout streams or the %I64d specificator.",
+        "src_uid": "489e69c7a2fba5fac34e89d7388ed4b8",
+        "prob_desc_input_from": "standard input",
+        "lang": "Python 3",
+        "prob_desc_sample_outputs": [
+            "10",
+            "3"
+        ],
+        "file_name": "d7021504500d5ca7c2b02df8100a574d159e6e67e20ec8071b75800b1267370a",
+        "prob_desc_description": "There are n boys and m girls attending a theatre club. To set a play \"The Big Bang Theory\", they need to choose a group containing exactly t actors containing no less than 4 boys and no less than one girl. How many ways are there to choose a group? Of course, the variants that only differ in the composition of the troupe are considered different.Perform all calculations in the 64-bit type: long long for \u0421/\u0421++, int64 for Delphi and long for Java.",
+        "prob_desc_created_at": "1322233200",
+        "difficulty": 1400.0,
+        "hidden_unit_tests": "[{\"input\": \"5 2 5\\r\\n\", \"output\": [\"10\"]}, {\"input\": \"4 3 5\\r\\n\", \"output\": [\"3\"]}, {\"input\": \"4 1 5\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"7 3 6\\r\\n\", \"output\": [\"168\"]}, {\"input\": \"30 30 30\\r\\n\", \"output\": [\"118264581548187697\"]}, {\"input\": \"10 10 8\\r\\n\", \"output\": [\"84990\"]}, {\"input\": \"10 10 10\\r\\n\", \"output\": [\"168229\"]}, {\"input\": \"10 10 20\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"20 15 27\\r\\n\", \"output\": [\"23535820\"]}, {\"input\": \"20 20 40\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"20 20 24\\r\\n\", \"output\": [\"62852101650\"]}, {\"input\": \"4 20 20\\r\\n\", \"output\": [\"4845\"]}, {\"input\": \"4 20 24\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"20 3 23\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"20 1 21\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"20 1 5\\r\\n\", \"output\": [\"4845\"]}, {\"input\": \"20 20 5\\r\\n\", \"output\": [\"96900\"]}, {\"input\": \"30 30 60\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"30 30 59\\r\\n\", \"output\": [\"60\"]}, {\"input\": \"30 29 55\\r\\n\", \"output\": [\"455126\"]}, {\"input\": \"30 29 59\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"4 30 34\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"30 1 20\\r\\n\", \"output\": [\"54627300\"]}, {\"input\": \"30 1 31\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"29 30 57\\r\\n\", \"output\": [\"1711\"]}, {\"input\": \"25 30 40\\r\\n\", \"output\": [\"11899700525790\"]}, {\"input\": \"4 2 6\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"5 1 6\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"30 30 50\\r\\n\", \"output\": [\"75394027566\"]}, {\"input\": \"30 30 57\\r\\n\", \"output\": [\"34220\"]}, {\"input\": \"30 30 58\\r\\n\", \"output\": [\"1770\"]}, {\"input\": \"25 25 48\\r\\n\", \"output\": [\"1225\"]}, {\"input\": \"30 1 30\\r\\n\", \"output\": [\"30\"]}, {\"input\": \"28 28 50\\r\\n\", \"output\": [\"32468436\"]}, {\"input\": \"28 28 55\\r\\n\", \"output\": [\"56\"]}, {\"input\": \"30 30 55\\r\\n\", \"output\": [\"5461512\"]}, {\"input\": \"7 30 37\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"10 1 11\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"10 1 6\\r\\n\", \"output\": [\"252\"]}]",
+        "source_lang": "Python 3",
+        "target_lang": "C"
+    }
+}

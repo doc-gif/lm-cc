@@ -1,0 +1,100 @@
+{
+    "oai_response": {
+        "prompt": "Fix a buggy program written in Python language to solve the following programming problem:\nDescription: Bob and Alice are often participating in various programming competitions. Like many competitive programmers, Alice and Bob have good and bad days. They noticed, that their lucky and unlucky days are repeating with some period. For example, for Alice days $$$[l_a; r_a]$$$ are lucky, then there are some unlucky days: $$$[r_a + 1; l_a + t_a - 1]$$$, and then there are lucky days again: $$$[l_a + t_a; r_a + t_a]$$$ and so on. In other words, the day is lucky for Alice if it lies in the segment $$$[l_a + k t_a; r_a + k t_a]$$$ for some non-negative integer $$$k$$$.The Bob's lucky day have similar structure, however the parameters of his sequence are different: $$$l_b$$$, $$$r_b$$$, $$$t_b$$$. So a day is a lucky for Bob if it lies in a segment $$$[l_b + k t_b; r_b + k t_b]$$$, for some non-negative integer $$$k$$$.Alice and Bob want to participate in team competitions together and so they want to find out what is the largest possible number of consecutive days, which are lucky for both Alice and Bob.\nInput Specification: The first line contains three integers $$$l_a$$$, $$$r_a$$$, $$$t_a$$$ ($$$0 \\le l_a \\le r_a \\le t_a - 1, 2 \\le t_a \\le 10^9$$$) and describes Alice's lucky days. The second line contains three integers $$$l_b$$$, $$$r_b$$$, $$$t_b$$$ ($$$0 \\le l_b \\le r_b \\le t_b - 1, 2 \\le t_b \\le 10^9$$$) and describes Bob's lucky days. It is guaranteed that both Alice and Bob have some unlucky days.\nOutput Specification: Print one integer: the maximum number of days in the row that are lucky for both Alice and Bob.\n\nSample Input:\n0 2 5\n1 3 5\nSample Output:\n2\n\nSample Input:\n0 1 3\n2 3 6\nSample Output:\n1\n\nNotes: NoteThe graphs below correspond to the two sample tests and show the lucky and unlucky days of Alice and Bob as well as the possible solutions for these tests.\nTake input from standard input and output to standard output\n\nHere is the code with a bug of TIME_LIMIT_EXCEEDED:\n\nimport math\n\ndef gcd(a, b):\n    \"\"\"Returns the greatest common divisor of a and b.\n    Should be implemented using recursion.\n\n    >>> gcd(34, 19)\n    1\n    >>> gcd(39, 91)\n    13\n    >>> gcd(20, 30)\n    10\n    >>> gcd(40, 40)\n    40\n    \"\"\"\n    if b > a:\n        return gcd(b, a)\n\n    if a % b == 0:\n        return b\n\n    return gcd(b, a % b)\n\n\n(la, ra, ta) = [int(s) for s in input().split(\" \")]\n(lb, rb, tb) = [int(s) for s in input().split(\" \")]\n\ndelta = gcd(ta, tb)\n\ndef overlap(al, ar, bl, br):\n    return max(0, min(ar, br) - max(al, bl) + 1)\n\ndef eval(fst_, snd_):\n    result_ = 0\n\n    pos_sndl = snd_[0]\n    pos_sndr = snd_[1]\n    pos_fstl = fst_[0]\n    pos_fstr = fst_[1]\n    intersection = overlap(pos_sndl, pos_sndr, pos_fstl, pos_fstr)\n    result_ = max(result_, intersection)\n    # print(delta)\n    # print(intersection)\n    snd_k = abs(snd_[1] - fst_[0]) // delta + 1\n    fst_k = 0 if intersection != 0 else max(abs(snd_[0] - fst_[1]) // delta -1, 0)\n\n    for k in range(fst_k, snd_k):\n        pos_sndl = snd_[0]\n        pos_sndr = snd_[1]\n        pos_fstl = k * delta + fst_[0]\n        pos_fstr = k * delta + fst_[1]\n        intersection = overlap(pos_sndl, pos_sndr, pos_fstl, pos_fstr)\n        # print(intersection)\n        # print(pos_sndl, pos_sndr, pos_fstl, pos_fstr, intersection)\n        result_ = max(result_, intersection)\n\n    return result_\n\n\nfst_ = (la, ra, ta)\nsnd_ = (lb, rb, tb)\n\nresult = max(eval(fst_, snd_), eval(snd_, fst_))\nprint(result)\n\nProvide the fixed Python code without any description or extra tokens.\n\nFixed source code:\n ||END-of-SRC||",
+        "response": {
+            "id": "multi-call-as-qmcdeyrz2b",
+            "model": "deepseek-v3",
+            "created": 1760423448,
+            "choices": [
+                {
+                    "index": 0,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```python\nimport math\n\ndef gcd(a, b):\n    if b > a:\n        return gcd(b, a)\n    if a % b == 0:\n        return b\n    return gcd(b, a % b)\n\nla, ra, ta = map(int, input().split())\nlb, rb, tb = map(int, input().split())\n\ndelta = gcd(ta, tb)\n\ndef overlap(al, ar, bl, br):\n    return max(0, min(ar, br) - max(al, bl) + 1)\n\ndef eval(fst, snd):\n    la, ra, ta = fst\n    lb, rb, tb = snd\n    g = delta\n    max_len = 0\n    \n    # Check the first possible intersection around k=0\n    k0 = (lb - la) // g\n    for k in [k0 - 1, k0, k0 + 1]:\n        fst_l = la + k * g\n        fst_r = ra + k * g\n        current = overlap(fst_l, fst_r, lb, rb)\n        if current > max_len:\n            max_len = current\n    \n    return max_len\n\nresult = max(eval((la, ra, ta), (lb, rb, tb)), eval((lb, rb, tb), (la, ra, ta)))\nprint(result)\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 1,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```python\nimport math\n\ndef gcd(a, b):\n    if b > a:\n        return gcd(b, a)\n    if a % b == 0:\n        return b\n    return gcd(b, a % b)\n\nla, ra, ta = map(int, input().split())\nlb, rb, tb = map(int, input().split())\n\ndelta = gcd(ta, tb)\n\ndef overlap(al, ar, bl, br):\n    return max(0, min(ar, br) - max(al, bl) + 1)\n\ndef eval(fst, snd):\n    result = 0\n    la, ra, ta = fst\n    lb, rb, tb = snd\n    \n    # Calculate the possible k values where the segments might overlap\n    # We need to check k such that (la + k * ta) is near (lb + m * tb) for some m\n    # The key is to find the k where the segments are closest\n    \n    # The segments repeat every delta = gcd(ta, tb)\n    # So we can consider k modulo (tb // delta) and m modulo (ta // delta)\n    # But for simplicity, we can check k around the initial overlap\n    \n    # The initial segments\n    k0 = (lb - la) // delta\n    for k in [k0 - 1, k0, k0 + 1]:\n        pos_la = la + k * delta\n        pos_ra = ra + k * delta\n        intersection = overlap(pos_la, pos_ra, lb, rb)\n        result = max(result, intersection)\n    \n    return result\n\nresult = max(eval((la, ra, ta), (lb, rb, tb)), eval((lb, rb, tb), (la, ra, ta)))\nprint(result)\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 2,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```python\nimport math\n\ndef gcd(a, b):\n    if b > a:\n        return gcd(b, a)\n    if a % b == 0:\n        return b\n    return gcd(b, a % b)\n\nla, ra, ta = map(int, input().split())\nlb, rb, tb = map(int, input().split())\n\ndelta = gcd(ta, tb)\n\ndef overlap(al, ar, bl, br):\n    return max(0, min(ar, br) - max(al, bl) + 1)\n\ndef eval(fst, snd):\n    la, ra, ta = fst\n    lb, rb, tb = snd\n    g = delta\n    max_len = 0\n    \n    # Check the two closest possible overlapping segments\n    k = (lb - la) // g\n    for dk in [-1, 0, 1]:\n        current_k = k + dk\n        if current_k < 0:\n            continue\n        al = la + current_k * g\n        ar = ra + current_k * g\n        current_overlap = overlap(al, ar, lb, rb)\n        if current_overlap > max_len:\n            max_len = current_overlap\n    \n    return max_len\n\nresult = max(eval((la, ra, ta), (lb, rb, tb)), eval((lb, rb, tb), (la, ra, ta)))\nprint(result)\n``` ||END-of-SRC||"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 3,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```python\nimport math\n\ndef gcd(a, b):\n    if b > a:\n        return gcd(b, a)\n    if a % b == 0:\n        return b\n    return gcd(b, a % b)\n\nla, ra, ta = map(int, input().split())\nlb, rb, tb = map(int, input().split())\n\ndelta = gcd(ta, tb)\n\ndef overlap(al, ar, bl, br):\n    return max(0, min(ar, br) - max(al, bl) + 1)\n\ndef eval(fst, snd):\n    la, ra, ta = fst\n    lb, rb, tb = snd\n    g = gcd(ta, tb)\n    max_overlap = 0\n    \n    # Check the first possible overlapping segments\n    k = (lb - la) // g\n    for dk in [-1, 0, 1]:\n        current_k = k + dk\n        if current_k < 0:\n            continue\n        pos_la = la + current_k * g\n        pos_ra = ra + current_k * g\n        overlap_len = overlap(pos_la, pos_ra, lb, rb)\n        if overlap_len > max_overlap:\n            max_overlap = overlap_len\n    \n    # Check the other possible overlapping segments\n    k = (rb - ra) // g\n    for dk in [-1, 0, 1]:\n        current_k = k + dk\n        if current_k < 0:\n            continue\n        pos_la = la + current_k * g\n        pos_ra = ra + current_k * g\n        overlap_len = overlap(pos_la, pos_ra, lb, rb)\n        if overlap_len > max_overlap:\n            max_overlap = overlap_len\n    \n    return max_overlap\n\nresult = max(eval((la, ra, ta), (lb, rb, tb)), eval((lb, rb, tb), (la, ra, ta)))\nprint(result)\n``` ||END-of-SRC||"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 4,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```python\nimport math\n\ndef gcd(a, b):\n    if b > a:\n        return gcd(b, a)\n    if a % b == 0:\n        return b\n    return gcd(b, a % b)\n\nla, ra, ta = map(int, input().split())\nlb, rb, tb = map(int, input().split())\n\ndelta = gcd(ta, tb)\n\ndef overlap(al, ar, bl, br):\n    return max(0, min(ar, br) - max(al, bl) + 1)\n\ndef compute_max(la, ra, ta, lb, rb, tb):\n    g = gcd(ta, tb)\n    max_len = 0\n    len_a = ra - la + 1\n    len_b = rb - lb + 1\n    \n    # The key idea is to check the overlaps around the closest k where the segments can overlap\n    # We need to check k around the optimal positions without iterating all possible k\n    \n    # The possible k's are around (lb - la) / g and similar\n    k0 = (lb - la) // g\n    for k in [k0 - 1, k0, k0 + 1]:\n        a_l = la + k * g\n        a_r = a_l + len_a - 1\n        current_overlap = overlap(a_l, a_r, lb, rb)\n        if current_overlap > max_len:\n            max_len = current_overlap\n    \n    k1 = (rb - la) // g\n    for k in [k1 - 1, k1, k1 + 1]:\n        a_l = la + k * g\n        a_r = a_l + len_a - 1\n        current_overlap = overlap(a_l, a_r, lb, rb)\n        if current_overlap > max_len:\n            max_len = current_overlap\n    \n    return max_len\n\nmax1 = compute_max(la, ra, ta, lb, rb, tb)\nmax2 = compute_max(lb, rb, tb, la, ra, ta)\nprint(max(max1, max2))\n```"
+                    },
+                    "finish_reason": "stop"
+                }
+            ],
+            "usage": {
+                "prompt_tokens": 5550,
+                "completion_tokens": 1867,
+                "total_tokens": 7417
+            }
+        }
+    },
+    "source_data": {
+        "prob_desc_memory_limit": "256 megabytes",
+        "tags": [
+            "math",
+            "number theory"
+        ],
+        "prob_desc_created_at": "1541860500",
+        "fix_source_code": "",
+        "prob_desc_input_spec": "The first line contains three integers $$$l_a$$$, $$$r_a$$$, $$$t_a$$$ ($$$0 \\le l_a \\le r_a \\le t_a - 1, 2 \\le t_a \\le 10^9$$$) and describes Alice's lucky days. The second line contains three integers $$$l_b$$$, $$$r_b$$$, $$$t_b$$$ ($$$0 \\le l_b \\le r_b \\le t_b - 1, 2 \\le t_b \\le 10^9$$$) and describes Bob's lucky days. It is guaranteed that both Alice and Bob have some unlucky days.",
+        "prob_desc_sample_outputs": [
+            "2",
+            "1"
+        ],
+        "src_uid": "faa75751c05c3ff919ddd148c6784910",
+        "prob_desc_time_limit": "1 second",
+        "fix_exec_outcome": "",
+        "delete_cnt": 1,
+        "apr_id": "2409d5fdfa24c5f96c6f00cd6fe1f323",
+        "fix_code_uid": "",
+        "lang_cluster": "Python",
+        "prob_desc_sample_inputs": [
+            "0 2 5\n1 3 5",
+            "0 1 3\n2 3 6"
+        ],
+        "prob_desc_output_to": "standard output",
+        "file_name": "Python.jsonl",
+        "equal_cnt": 20,
+        "lang": "PyPy 3",
+        "prob_desc_output_spec": "Print one integer: the maximum number of days in the row that are lucky for both Alice and Bob.",
+        "bug_exec_outcome": "TIME_LIMIT_EXCEEDED",
+        "prob_desc_notes": "NoteThe graphs below correspond to the two sample tests and show the lucky and unlucky days of Alice and Bob as well as the possible solutions for these tests.",
+        "difficulty": 1900.0,
+        "similarity_score": 0.5924855471,
+        "prob_desc_description": "Bob and Alice are often participating in various programming competitions. Like many competitive programmers, Alice and Bob have good and bad days. They noticed, that their lucky and unlucky days are repeating with some period. For example, for Alice days $$$[l_a; r_a]$$$ are lucky, then there are some unlucky days: $$$[r_a + 1; l_a + t_a - 1]$$$, and then there are lucky days again: $$$[l_a + t_a; r_a + t_a]$$$ and so on. In other words, the day is lucky for Alice if it lies in the segment $$$[l_a + k t_a; r_a + k t_a]$$$ for some non-negative integer $$$k$$$.The Bob's lucky day have similar structure, however the parameters of his sequence are different: $$$l_b$$$, $$$r_b$$$, $$$t_b$$$. So a day is a lucky for Bob if it lies in a segment $$$[l_b + k t_b; r_b + k t_b]$$$, for some non-negative integer $$$k$$$.Alice and Bob want to participate in team competitions together and so they want to find out what is the largest possible number of consecutive days, which are lucky for both Alice and Bob.",
+        "potential_dominant_fix_op": "replace",
+        "bug_source_code": "import math\n\ndef gcd(a, b):\n    \"\"\"Returns the greatest common divisor of a and b.\n    Should be implemented using recursion.\n\n    >>> gcd(34, 19)\n    1\n    >>> gcd(39, 91)\n    13\n    >>> gcd(20, 30)\n    10\n    >>> gcd(40, 40)\n    40\n    \"\"\"\n    if b > a:\n        return gcd(b, a)\n\n    if a % b == 0:\n        return b\n\n    return gcd(b, a % b)\n\n\n(la, ra, ta) = [int(s) for s in input().split(\" \")]\n(lb, rb, tb) = [int(s) for s in input().split(\" \")]\n\ndelta = gcd(ta, tb)\n\ndef overlap(al, ar, bl, br):\n    return max(0, min(ar, br) - max(al, bl) + 1)\n\ndef eval(fst_, snd_):\n    result_ = 0\n\n    pos_sndl = snd_[0]\n    pos_sndr = snd_[1]\n    pos_fstl = fst_[0]\n    pos_fstr = fst_[1]\n    intersection = overlap(pos_sndl, pos_sndr, pos_fstl, pos_fstr)\n    result_ = max(result_, intersection)\n    # print(delta)\n    # print(intersection)\n    snd_k = abs(snd_[1] - fst_[0]) // delta + 1\n    fst_k = 0 if intersection != 0 else max(abs(snd_[0] - fst_[1]) // delta -1, 0)\n\n    for k in range(fst_k, snd_k):\n        pos_sndl = snd_[0]\n        pos_sndr = snd_[1]\n        pos_fstl = k * delta + fst_[0]\n        pos_fstr = k * delta + fst_[1]\n        intersection = overlap(pos_sndl, pos_sndr, pos_fstl, pos_fstr)\n        # print(intersection)\n        # print(pos_sndl, pos_sndr, pos_fstl, pos_fstr, intersection)\n        result_ = max(result_, intersection)\n\n    return result_\n\n\nfst_ = (la, ra, ta)\nsnd_ = (lb, rb, tb)\n\nresult = max(eval(fst_, snd_), eval(snd_, fst_))\nprint(result)",
+        "replace_cnt": 10,
+        "prob_desc_input_from": "standard input",
+        "bug_code_uid": "974628d203147b735470453995aa1285",
+        "insert_cnt": 8,
+        "fix_ops_cnt": 19,
+        "hidden_unit_tests": "[{\"input\": \"0 2 5\\r\\n1 3 5\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"0 1 3\\r\\n2 3 6\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"0 1 5\\r\\n2 4 5\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"1 8 10\\r\\n0 7 9\\r\\n\", \"output\": [\"8\"]}, {\"input\": \"11 13 18\\r\\n4 6 12\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"7 13 18\\r\\n2 6 12\\r\\n\", \"output\": [\"5\"]}, {\"input\": \"372839920 992839201 1000000000\\r\\n100293021 773829394 999999993\\r\\n\", \"output\": [\"619999282\"]}, {\"input\": \"100293023 882738299 1000000000\\r\\n0 445483940 500000000\\r\\n\", \"output\": [\"382738300\"]}, {\"input\": \"339403920 743344311 1000000000\\r\\n1 403940389 403940390\\r\\n\", \"output\": [\"403940389\"]}, {\"input\": \"999999999 999999999 1000000000\\r\\n0 0 999999998\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"0 3 6\\r\\n1 1 2\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"0 0 3\\r\\n1 7 8\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"0 3 20\\r\\n6 8 10\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"1 199999999 200000000\\r\\n57 777777777 1000000000\\r\\n\", \"output\": [\"199999999\"]}, {\"input\": \"199288399 887887887 900000000\\r\\n0 299999889 299999900\\r\\n\", \"output\": [\"299999890\"]}, {\"input\": \"0 445444445 999999998\\r\\n53 445444497 999999992\\r\\n\", \"output\": [\"445444445\"]}, {\"input\": \"1 666666661 998776554\\r\\n5 666666666 999999999\\r\\n\", \"output\": [\"666666660\"]}, {\"input\": \"14 882991007 999999990\\r\\n24 882991017 999999230\\r\\n\", \"output\": [\"882990994\"]}, {\"input\": \"111000111 111000119 999999994\\r\\n111000103 111000110 999999973\\r\\n\", \"output\": [\"7\"]}, {\"input\": \"45 57 500000000\\r\\n10203 39920 700000000\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"0 0 1000000000\\r\\n500000000 500000000 999999999\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"3 3 1000000000\\r\\n2 2 999999996\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"13 17 1000000000\\r\\n500000000 500000004 999999996\\r\\n\", \"output\": [\"4\"]}, {\"input\": \"4 18 999999960\\r\\n24 36 999999920\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"0 799999998 800000000\\r\\n1 999999999 1000000000\\r\\n\", \"output\": [\"799999999\"]}, {\"input\": \"3 3 1000000000\\r\\n1 2 999999997\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"1 992993994 999999999\\r\\n553554555 998997996 999998997\\r\\n\", \"output\": [\"445443442\"]}, {\"input\": \"111111111 888888889 999999999\\r\\n998997996 999999999 1000000000\\r\\n\", \"output\": [\"1002004\"]}, {\"input\": \"14 16 20\\r\\n1 4 5\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"1 2 4\\r\\n0 0 6\\r\\n\", \"output\": [\"1\"]}]"
+    }
+}

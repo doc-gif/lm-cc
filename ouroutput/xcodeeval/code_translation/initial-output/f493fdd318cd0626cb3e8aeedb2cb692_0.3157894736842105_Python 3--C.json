@@ -1,0 +1,91 @@
+{
+    "oai_response": {
+        "prompt": "Here is code in Python 3 programming lanaguge. Translate the following code from Python 3 to C programming lanaguge. Do not output any extra description or tokens other than the translated code. \n\nfrom math import factorial\n\nn=int(input())\n\nans=factorial(n)//(factorial(n//2)**2)\nans*=factorial(n//2-1)**2\nans//=2\n\nprint(ans)||END-of-SRC||",
+        "response": {
+            "id": "multi-call-as-x82df8raux",
+            "model": "deepseek-v3",
+            "created": 1767068169,
+            "choices": [
+                {
+                    "index": 0,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <stdlib.h>\n\nlong long factorial(int n) {\n    long long result = 1;\n    for (int i = 2; i <= n; i++) {\n        result *= i;\n    }\n    return result;\n}\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    \n    long long ans = factorial(n) / (factorial(n / 2) * factorial(n / 2));\n    ans *= factorial(n / 2 - 1) * factorial(n / 2 - 1);\n    ans /= 2;\n    \n    printf(\"%lld\\n\", ans);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 1,
+                    "message": {
+                        "role": "assistant",
+                        "content": "Here's the equivalent C code:\n\n```c\n#include <stdio.h>\n\nlong long factorial(int n) {\n    long long result = 1;\n    for (int i = 2; i <= n; i++) {\n        result *= i;\n    }\n    return result;\n}\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    \n    long long ans = factorial(n) / (factorial(n/2) * factorial(n/2));\n    ans *= factorial(n/2 - 1) * factorial(n/2 - 1);\n    ans /= 2;\n    \n    printf(\"%lld\\n\", ans);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 2,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <stdlib.h>\n\nlong factorial(int n) {\n    long result = 1;\n    for (int i = 2; i <= n; i++) {\n        result *= i;\n    }\n    return result;\n}\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    \n    long ans = factorial(n) / (factorial(n / 2) * factorial(n / 2));\n    ans *= factorial(n / 2 - 1) * factorial(n / 2 - 1);\n    ans /= 2;\n    \n    printf(\"%ld\\n\", ans);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 3,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <stdlib.h>\n\nlong long factorial(int n) {\n    long long result = 1;\n    for (int i = 2; i <= n; i++) {\n        result *= i;\n    }\n    return result;\n}\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    \n    long long ans = factorial(n) / (factorial(n / 2) * factorial(n / 2));\n    ans *= factorial(n / 2 - 1) * factorial(n / 2 - 1);\n    ans /= 2;\n    \n    printf(\"%lld\\n\", ans);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 4,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <stdlib.h>\n\nlong long factorial(int n) {\n    long long result = 1;\n    for (int i = 2; i <= n; i++) {\n        result *= i;\n    }\n    return result;\n}\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    \n    long long ans = factorial(n) / (factorial(n / 2) * factorial(n / 2));\n    ans *= factorial(n / 2 - 1) * factorial(n / 2 - 1);\n    ans /= 2;\n    \n    printf(\"%lld\\n\", ans);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                }
+            ],
+            "usage": {
+                "prompt_tokens": 475,
+                "completion_tokens": 706,
+                "total_tokens": 1181
+            }
+        }
+    },
+    "source_data": {
+        "code_uid": "f493fdd318cd0626cb3e8aeedb2cb692",
+        "prob_desc_output_to": "standard output",
+        "prob_desc_notes": null,
+        "lang_cluster": "Python",
+        "prob_desc_time_limit": "1 second",
+        "prob_desc_input_spec": "The input contains one integer $$$n$$$ ($$$2 \\le n \\le 20$$$), $$$n$$$ is an even number.",
+        "source_code": "from math import factorial\n\nn=int(input())\n\nans=factorial(n)//(factorial(n//2)**2)\nans*=factorial(n//2-1)**2\nans//=2\n\nprint(ans)",
+        "prob_desc_sample_inputs": [
+            "2",
+            "4",
+            "8",
+            "20"
+        ],
+        "prob_desc_memory_limit": "256 megabytes",
+        "exec_outcome": "PASSED",
+        "prob_desc_output_spec": "Print one integer \u2014 the number of ways to make two round dances. It is guaranteed that the answer fits in the $$$64$$$-bit integer data type.",
+        "src_uid": "ad0985c56a207f76afa2ecd642f56728",
+        "prob_desc_input_from": "standard input",
+        "lang": "Python 3",
+        "prob_desc_sample_outputs": [
+            "1",
+            "3",
+            "1260",
+            "12164510040883200"
+        ],
+        "file_name": "d7021504500d5ca7c2b02df8100a574d159e6e67e20ec8071b75800b1267370a",
+        "prob_desc_description": "One day, $$$n$$$ people ($$$n$$$ is an even number) met on a plaza and made two round dances, each round dance consists of exactly $$$\\frac{n}{2}$$$ people. Your task is to find the number of ways $$$n$$$ people can make two round dances if each round dance consists of exactly $$$\\frac{n}{2}$$$ people. Each person should belong to exactly one of these two round dances.Round dance is a dance circle consisting of $$$1$$$ or more people. Two round dances are indistinguishable (equal) if one can be transformed to another by choosing the first participant. For example, round dances $$$[1, 3, 4, 2]$$$, $$$[4, 2, 1, 3]$$$ and $$$[2, 1, 3, 4]$$$ are indistinguishable.For example, if $$$n=2$$$ then the number of ways is $$$1$$$: one round dance consists of the first person and the second one of the second person.For example, if $$$n=4$$$ then the number of ways is $$$3$$$. Possible options:  one round dance \u2014 $$$[1,2]$$$, another \u2014 $$$[3,4]$$$;  one round dance \u2014 $$$[2,4]$$$, another \u2014 $$$[3,1]$$$;  one round dance \u2014 $$$[4,1]$$$, another \u2014 $$$[3,2]$$$. Your task is to find the number of ways $$$n$$$ people can make two round dances if each round dance consists of exactly $$$\\frac{n}{2}$$$ people.",
+        "prob_desc_created_at": "1603204500",
+        "difficulty": 1300.0,
+        "hidden_unit_tests": "[{\"input\": \"2\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"4\\r\\n\", \"output\": [\"3\"]}, {\"input\": \"8\\r\\n\", \"output\": [\"1260\"]}, {\"input\": \"20\\r\\n\", \"output\": [\"12164510040883200\"]}, {\"input\": \"6\\r\\n\", \"output\": [\"40\"]}, {\"input\": \"10\\r\\n\", \"output\": [\"72576\"]}, {\"input\": \"12\\r\\n\", \"output\": [\"6652800\"]}, {\"input\": \"14\\r\\n\", \"output\": [\"889574400\"]}, {\"input\": \"18\\r\\n\", \"output\": [\"39520825344000\"]}, {\"input\": \"16\\r\\n\", \"output\": [\"163459296000\"]}]",
+        "source_lang": "Python 3",
+        "target_lang": "C"
+    }
+}

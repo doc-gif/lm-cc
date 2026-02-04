@@ -1,0 +1,87 @@
+{
+    "oai_response": {
+        "prompt": "Here is code in Python 3 programming lanaguge. Translate the following code from Python 3 to C programming lanaguge. Do not output any extra description or tokens other than the translated code. \n\ndef main():\n    r1, c1, r2, c2 = map(int, input().split())\n    _1, _2, _3 = 2, 2, 0\n   \n    if r1 == r2 or c1 == c2:\n        _1 = 1\n    \n    if (r1+c1) % 2 != (r2+c2) % 2:\n        _2 = 0\n    elif r1 + c1 == r2 + c2 or r1 - c1 == r2 - c2:\n        _2 = 1\n\n    _3 = max(abs(r1-r2), abs(c1-c2))\n    print(_1, _2, _3)\n\n\nif __name__ == '__main__':\n    main()\n\n||END-of-SRC||",
+        "response": {
+            "id": "multi-call-as-sc6scumetn",
+            "model": "deepseek-v3",
+            "created": 1767067494,
+            "choices": [
+                {
+                    "index": 0,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <stdlib.h>\n\nint main() {\n    int r1, c1, r2, c2;\n    scanf(\"%d %d %d %d\", &r1, &c1, &r2, &c2);\n    int _1 = 2, _2 = 2, _3 = 0;\n   \n    if (r1 == r2 || c1 == c2) {\n        _1 = 1;\n    }\n    \n    if ((r1 + c1) % 2 != (r2 + c2) % 2) {\n        _2 = 0;\n    } else if (r1 + c1 == r2 + c2 || r1 - c1 == r2 - c2) {\n        _2 = 1;\n    }\n\n    _3 = abs(r1 - r2) > abs(c1 - c2) ? abs(r1 - r2) : abs(c1 - c2);\n    printf(\"%d %d %d\\n\", _1, _2, _3);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 1,
+                    "message": {
+                        "role": "assistant",
+                        "content": "Here's the translated code in C:\n\n```c\n#include <stdio.h>\n#include <stdlib.h>\n\nint main() {\n    int r1, c1, r2, c2;\n    scanf(\"%d %d %d %d\", &r1, &c1, &r2, &c2);\n    int _1 = 2, _2 = 2, _3 = 0;\n    \n    if (r1 == r2 || c1 == c2) {\n        _1 = 1;\n    }\n    \n    if ((r1 + c1) % 2 != (r2 + c2) % 2) {\n        _2 = 0;\n    } else if (r1 + c1 == r2 + c2 || r1 - c1 == r2 - c2) {\n        _2 = 1;\n    }\n    \n    int abs_r = abs(r1 - r2);\n    int abs_c = abs(c1 - c2);\n    _3 = abs_r > abs_c ? abs_r : abs_c;\n    printf(\"%d %d %d\\n\", _1, _2, _3);\n    \n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 2,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <stdlib.h>\n\nint main() {\n    int r1, c1, r2, c2;\n    scanf(\"%d %d %d %d\", &r1, &c1, &r2, &c2);\n    int _1 = 2, _2 = 2, _3 = 0;\n   \n    if (r1 == r2 || c1 == c2) {\n        _1 = 1;\n    }\n    \n    if ((r1 + c1) % 2 != (r2 + c2) % 2) {\n        _2 = 0;\n    } else if (r1 + c1 == r2 + c2 || r1 - c1 == r2 - c2) {\n        _2 = 1;\n    }\n\n    _3 = abs(r1 - r2) > abs(c1 - c2) ? abs(r1 - r2) : abs(c1 - c2);\n    printf(\"%d %d %d\\n\", _1, _2, _3);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 3,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <stdlib.h>\n\nint main() {\n    int r1, c1, r2, c2;\n    scanf(\"%d %d %d %d\", &r1, &c1, &r2, &c2);\n    int _1 = 2, _2 = 2, _3 = 0;\n   \n    if (r1 == r2 || c1 == c2) {\n        _1 = 1;\n    }\n    \n    if ((r1 + c1) % 2 != (r2 + c2) % 2) {\n        _2 = 0;\n    } else if (r1 + c1 == r2 + c2 || r1 - c1 == r2 - c2) {\n        _2 = 1;\n    }\n\n    int dr = abs(r1 - r2);\n    int dc = abs(c1 - c2);\n    _3 = dr > dc ? dr : dc;\n    printf(\"%d %d %d\\n\", _1, _2, _3);\n\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 4,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <stdlib.h>\n\nint main() {\n    int r1, c1, r2, c2;\n    scanf(\"%d %d %d %d\", &r1, &c1, &r2, &c2);\n    int _1 = 2, _2 = 2, _3 = 0;\n   \n    if (r1 == r2 || c1 == c2) {\n        _1 = 1;\n    }\n    \n    if ((r1 + c1) % 2 != (r2 + c2) % 2) {\n        _2 = 0;\n    } else if (r1 + c1 == r2 + c2 || r1 - c1 == r2 - c2) {\n        _2 = 1;\n    }\n\n    _3 = abs(r1 - r2) > abs(c1 - c2) ? abs(r1 - r2) : abs(c1 - c2);\n    printf(\"%d %d %d\\n\", _1, _2, _3);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                }
+            ],
+            "usage": {
+                "prompt_tokens": 1080,
+                "completion_tokens": 1200,
+                "total_tokens": 2280
+            }
+        }
+    },
+    "source_data": {
+        "code_uid": "296d30555934bd8078d947911b5cba69",
+        "prob_desc_output_to": "standard output",
+        "prob_desc_notes": null,
+        "lang_cluster": "Python",
+        "prob_desc_time_limit": "1 second",
+        "prob_desc_input_spec": "The input contains four integers r1,\u2009c1,\u2009r2,\u2009c2 (1\u2009\u2264\u2009r1,\u2009c1,\u2009r2,\u2009c2\u2009\u2264\u20098) \u2014 the coordinates of the starting and the final field. The starting field doesn't coincide with the final one. You can assume that the chessboard rows are numbered from top to bottom 1 through 8, and the columns are numbered from left to right 1 through 8.",
+        "source_code": "def main():\n    r1, c1, r2, c2 = map(int, input().split())\n    _1, _2, _3 = 2, 2, 0\n   \n    if r1 == r2 or c1 == c2:\n        _1 = 1\n    \n    if (r1+c1) % 2 != (r2+c2) % 2:\n        _2 = 0\n    elif r1 + c1 == r2 + c2 or r1 - c1 == r2 - c2:\n        _2 = 1\n\n    _3 = max(abs(r1-r2), abs(c1-c2))\n    print(_1, _2, _3)\n\n\nif __name__ == '__main__':\n    main()\n\n",
+        "prob_desc_sample_inputs": [
+            "4 3 1 6",
+            "5 5 5 6"
+        ],
+        "prob_desc_memory_limit": "256 megabytes",
+        "exec_outcome": "PASSED",
+        "prob_desc_output_spec": "Print three space-separated integers: the minimum number of moves the rook, the bishop and the king (in this order) is needed to move from field (r1,\u2009c1) to field (r2,\u2009c2). If a piece cannot make such a move, print a 0 instead of the corresponding number.",
+        "src_uid": "7dbf58806db185f0fe70c00b60973f4b",
+        "prob_desc_input_from": "standard input",
+        "lang": "Python 3",
+        "prob_desc_sample_outputs": [
+            "2 1 3",
+            "1 0 1"
+        ],
+        "file_name": "d7021504500d5ca7c2b02df8100a574d159e6e67e20ec8071b75800b1267370a",
+        "prob_desc_description": "Little Petya is learning to play chess. He has already learned how to move a king, a rook and a bishop. Let us remind you the rules of moving chess pieces. A chessboard is 64 square fields organized into an 8\u2009\u00d7\u20098 table. A field is represented by a pair of integers (r,\u2009c) \u2014 the number of the row and the number of the column (in a classical game the columns are traditionally indexed by letters). Each chess piece takes up exactly one field. To make a move is to move a chess piece, the pieces move by the following rules:  A rook moves any number of fields horizontally or vertically.  A bishop moves any number of fields diagonally.  A king moves one field in any direction \u2014 horizontally, vertically or diagonally.     The pieces move like that Petya is thinking about the following problem: what minimum number of moves is needed for each of these pieces to move from field (r1,\u2009c1) to field (r2,\u2009c2)? At that, we assume that there are no more pieces besides this one on the board. Help him solve this problem.",
+        "prob_desc_created_at": "1386399600",
+        "difficulty": 1100.0,
+        "hidden_unit_tests": "[{\"input\": \"4 3 1 6\\r\\n\", \"output\": [\"2 1 3\", \"2\\r\\n1\\r\\n3\"]}, {\"input\": \"5 5 5 6\\r\\n\", \"output\": [\"1\\r\\n0\\r\\n1\", \"1 0 1\"]}, {\"input\": \"1 1 8 8\\r\\n\", \"output\": [\"2 1 7\", \"2\\r\\n1\\r\\n7\"]}, {\"input\": \"1 1 8 1\\r\\n\", \"output\": [\"1 0 7\", \"1\\r\\n0\\r\\n7\"]}, {\"input\": \"1 1 1 8\\r\\n\", \"output\": [\"1 0 7\", \"1\\r\\n0\\r\\n7\"]}, {\"input\": \"8 1 1 1\\r\\n\", \"output\": [\"1 0 7\", \"1\\r\\n0\\r\\n7\"]}, {\"input\": \"8 1 1 8\\r\\n\", \"output\": [\"2 1 7\", \"2\\r\\n1\\r\\n7\"]}, {\"input\": \"7 7 6 6\\r\\n\", \"output\": [\"2 1 1\", \"2\\r\\n1\\r\\n1\"]}, {\"input\": \"8 1 8 8\\r\\n\", \"output\": [\"1 0 7\", \"1\\r\\n0\\r\\n7\"]}, {\"input\": \"1 8 1 1\\r\\n\", \"output\": [\"1 0 7\", \"1\\r\\n0\\r\\n7\"]}, {\"input\": \"1 8 8 1\\r\\n\", \"output\": [\"2 1 7\", \"2\\r\\n1\\r\\n7\"]}, {\"input\": \"1 8 8 8\\r\\n\", \"output\": [\"1 0 7\", \"1\\r\\n0\\r\\n7\"]}, {\"input\": \"8 8 1 1\\r\\n\", \"output\": [\"2 1 7\", \"2\\r\\n1\\r\\n7\"]}, {\"input\": \"8 8 1 8\\r\\n\", \"output\": [\"1 0 7\", \"1\\r\\n0\\r\\n7\"]}, {\"input\": \"8 8 8 1\\r\\n\", \"output\": [\"1 0 7\", \"1\\r\\n0\\r\\n7\"]}, {\"input\": \"1 3 1 6\\r\\n\", \"output\": [\"1\\r\\n0\\r\\n3\", \"1 0 3\"]}, {\"input\": \"1 3 1 4\\r\\n\", \"output\": [\"1\\r\\n0\\r\\n1\", \"1 0 1\"]}, {\"input\": \"1 3 1 5\\r\\n\", \"output\": [\"1 2 2\", \"1\\r\\n2\\r\\n2\"]}, {\"input\": \"3 3 2 4\\r\\n\", \"output\": [\"2 1 1\", \"2\\r\\n1\\r\\n1\"]}, {\"input\": \"3 3 1 5\\r\\n\", \"output\": [\"2\\r\\n1\\r\\n2\", \"2 1 2\"]}, {\"input\": \"1 6 2 1\\r\\n\", \"output\": [\"2\\r\\n2\\r\\n5\", \"2 2 5\"]}, {\"input\": \"1 5 6 4\\r\\n\", \"output\": [\"2\\r\\n2\\r\\n5\", \"2 2 5\"]}, {\"input\": \"1 3 3 7\\r\\n\", \"output\": [\"2 2 4\", \"2\\r\\n2\\r\\n4\"]}, {\"input\": \"1 1 8 1\\r\\n\", \"output\": [\"1 0 7\", \"1\\r\\n0\\r\\n7\"]}, {\"input\": \"1 7 5 4\\r\\n\", \"output\": [\"2\\r\\n0\\r\\n4\", \"2 0 4\"]}, {\"input\": \"1 5 2 7\\r\\n\", \"output\": [\"2 0 2\", \"2\\r\\n0\\r\\n2\"]}, {\"input\": \"1 4 6 2\\r\\n\", \"output\": [\"2\\r\\n0\\r\\n5\", \"2 0 5\"]}, {\"input\": \"1 2 3 5\\r\\n\", \"output\": [\"2\\r\\n0\\r\\n3\", \"2 0 3\"]}, {\"input\": \"1 8 8 7\\r\\n\", \"output\": [\"2 2 7\", \"2\\r\\n2\\r\\n7\"]}, {\"input\": \"6 5 6 2\\r\\n\", \"output\": [\"1\\r\\n0\\r\\n3\", \"1 0 3\"]}, {\"input\": \"6 3 3 5\\r\\n\", \"output\": [\"2\\r\\n0\\r\\n3\", \"2 0 3\"]}, {\"input\": \"6 1 7 8\\r\\n\", \"output\": [\"2 2 7\", \"2\\r\\n2\\r\\n7\"]}, {\"input\": \"1 2 3 2\\r\\n\", \"output\": [\"1 2 2\", \"1\\r\\n2\\r\\n2\"]}, {\"input\": \"3 8 7 2\\r\\n\", \"output\": [\"2 2 6\", \"2\\r\\n2\\r\\n6\"]}, {\"input\": \"4 2 6 4\\r\\n\", \"output\": [\"2\\r\\n1\\r\\n2\", \"2 1 2\"]}, {\"input\": \"1 1 1 3\\r\\n\", \"output\": [\"1 2 2\", \"1\\r\\n2\\r\\n2\"]}, {\"input\": \"6 8 8 6\\r\\n\", \"output\": [\"2\\r\\n1\\r\\n2\", \"2 1 2\"]}, {\"input\": \"6 7 4 1\\r\\n\", \"output\": [\"2 2 6\", \"2\\r\\n2\\r\\n6\"]}, {\"input\": \"6 5 1 4\\r\\n\", \"output\": [\"2\\r\\n2\\r\\n5\", \"2 2 5\"]}, {\"input\": \"3 2 7 6\\r\\n\", \"output\": [\"2 1 4\", \"2\\r\\n1\\r\\n4\"]}, {\"input\": \"3 8 4 1\\r\\n\", \"output\": [\"2 2 7\", \"2\\r\\n2\\r\\n7\"]}, {\"input\": \"3 6 1 4\\r\\n\", \"output\": [\"2\\r\\n1\\r\\n2\", \"2 1 2\"]}]",
+        "source_lang": "Python 3",
+        "target_lang": "C"
+    }
+}

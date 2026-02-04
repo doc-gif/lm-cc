@@ -1,0 +1,90 @@
+{
+    "oai_response": {
+        "prompt": "Here is code in Python 3 programming lanaguge. Translate the following code from Python 3 to C programming lanaguge. Do not output any extra description or tokens other than the translated code. \n\ndef watching_minute(n, a):\n    if a[0] > 15:\n        return 15\n    if len(a) == 1:\n        return a[0] + 15\n    for i in range(len(a) - 1):\n        if a[i + 1] - a[i] > 15:\n            return a[i] + 15\n        if a[i + 1] >= 75 or a[i] >= 75:\n            return 90\n        if i + 1 == len(a) - 1 and a[i + 1] < 75:\n            return a[i + 1] + 15\nn = int(input())\na = [int(i) for i in input().split()]\nprint(watching_minute(n, a))||END-of-SRC||",
+        "response": {
+            "id": "multi-call-as-znangr9quv",
+            "model": "deepseek-v3",
+            "created": 1769630987,
+            "choices": [
+                {
+                    "index": 0,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n\nint watching_minute(int n, int a[]) {\n    if (a[0] > 15) {\n        return 15;\n    }\n    if (n == 1) {\n        return a[0] + 15;\n    }\n    for (int i = 0; i < n - 1; i++) {\n        if (a[i + 1] - a[i] > 15) {\n            return a[i] + 15;\n        }\n        if (a[i + 1] >= 75 || a[i] >= 75) {\n            return 90;\n        }\n        if (i + 1 == n - 1 && a[i + 1] < 75) {\n            return a[i + 1] + 15;\n        }\n    }\n    return 0;\n}\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    int a[n];\n    for (int i = 0; i < n; i++) {\n        scanf(\"%d\", &a[i]);\n    }\n    printf(\"%d\\n\", watching_minute(n, a));\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 1,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <stdlib.h>\n\nint watching_minute(int n, int a[]) {\n    if (a[0] > 15) {\n        return 15;\n    }\n    if (n == 1) {\n        return a[0] + 15;\n    }\n    for (int i = 0; i < n - 1; i++) {\n        if (a[i + 1] - a[i] > 15) {\n            return a[i] + 15;\n        }\n        if (a[i + 1] >= 75 || a[i] >= 75) {\n            return 90;\n        }\n        if (i + 1 == n - 1 && a[i + 1] < 75) {\n            return a[i + 1] + 15;\n        }\n    }\n    return 0;\n}\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    int *a = (int*)malloc(n * sizeof(int));\n    for (int i = 0; i < n; i++) {\n        scanf(\"%d\", &a[i]);\n    }\n    printf(\"%d\\n\", watching_minute(n, a));\n    free(a);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 2,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <stdlib.h>\n\nint watching_minute(int n, int a[]) {\n    if (a[0] > 15) {\n        return 15;\n    }\n    if (n == 1) {\n        return a[0] + 15;\n    }\n    for (int i = 0; i < n - 1; i++) {\n        if (a[i + 1] - a[i] > 15) {\n            return a[i] + 15;\n        }\n        if (a[i + 1] >= 75 || a[i] >= 75) {\n            return 90;\n        }\n        if (i + 1 == n - 1 && a[i + 1] < 75) {\n            return a[i + 1] + 15;\n        }\n    }\n    return 0;\n}\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    int *a = malloc(n * sizeof(int));\n    for (int i = 0; i < n; i++) {\n        scanf(\"%d\", &a[i]);\n    }\n    printf(\"%d\\n\", watching_minute(n, a));\n    free(a);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 3,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <stdlib.h>\n\nint watching_minute(int n, int a[]) {\n    if (a[0] > 15) {\n        return 15;\n    }\n    if (n == 1) {\n        return a[0] + 15;\n    }\n    for (int i = 0; i < n - 1; i++) {\n        if (a[i + 1] - a[i] > 15) {\n            return a[i] + 15;\n        }\n        if (a[i + 1] >= 75 || a[i] >= 75) {\n            return 90;\n        }\n        if (i + 1 == n - 1 && a[i + 1] < 75) {\n            return a[i + 1] + 15;\n        }\n    }\n    return 0;\n}\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    int *a = (int *)malloc(n * sizeof(int));\n    for (int i = 0; i < n; i++) {\n        scanf(\"%d\", &a[i]);\n    }\n    printf(\"%d\\n\", watching_minute(n, a));\n    free(a);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 4,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n\nint watching_minute(int n, int a[]) {\n    if (a[0] > 15) {\n        return 15;\n    }\n    if (n == 1) {\n        return a[0] + 15;\n    }\n    for (int i = 0; i < n - 1; i++) {\n        if (a[i + 1] - a[i] > 15) {\n            return a[i] + 15;\n        }\n        if (a[i + 1] >= 75 || a[i] >= 75) {\n            return 90;\n        }\n        if (i + 1 == n - 1 && a[i + 1] < 75) {\n            return a[i + 1] + 15;\n        }\n    }\n}\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    int a[n];\n    for (int i = 0; i < n; i++) {\n        scanf(\"%d\", &a[i]);\n    }\n    printf(\"%d\", watching_minute(n, a));\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                }
+            ],
+            "usage": {
+                "prompt_tokens": 1085,
+                "completion_tokens": 1295,
+                "total_tokens": 2380
+            }
+        }
+    },
+    "source_data": {
+        "code_uid": "0410d92602dba1106c848f2859f6324b",
+        "prob_desc_output_to": "standard output",
+        "prob_desc_notes": "NoteIn the first sample, minutes 21,\u200922,\u2009...,\u200935 are all boring and thus Limak will turn TV off immediately after the 35-th minute. So, he would watch the game for 35 minutes.In the second sample, the first 15 minutes are boring.In the third sample, there are no consecutive 15 boring minutes. So, Limak will watch the whole game.",
+        "lang_cluster": "Python",
+        "prob_desc_time_limit": "2 seconds",
+        "prob_desc_input_spec": "The first line of the input contains one integer n (1\u2009\u2264\u2009n\u2009\u2264\u200990)\u00a0\u2014 the number of interesting minutes. The second line contains n integers t1,\u2009t2,\u2009...,\u2009tn (1\u2009\u2264\u2009t1\u2009&lt;\u2009t2\u2009&lt;\u2009... tn\u2009\u2264\u200990), given in the increasing order.",
+        "prob_desc_sample_inputs": [
+            "3\n7 20 88",
+            "9\n16 20 30 40 50 60 70 80 90",
+            "9\n15 20 30 40 50 60 70 80 90"
+        ],
+        "prob_desc_memory_limit": "256 megabytes",
+        "exec_outcome": "PASSED",
+        "prob_desc_output_spec": "Print the number of minutes Limak will watch the game.",
+        "src_uid": "5031b15e220f0ff6cc1dd3731ecdbf27",
+        "prob_desc_input_from": "standard input",
+        "lang": "Python 3",
+        "prob_desc_sample_outputs": [
+            "35",
+            "15",
+            "90"
+        ],
+        "file_name": "d7021504500d5ca7c2b02df8100a574d159e6e67e20ec8071b75800b1267370a",
+        "prob_desc_description": "Bear Limak likes watching sports on TV. He is going to watch a game today. The game lasts 90 minutes and there are no breaks.Each minute can be either interesting or boring. If 15 consecutive minutes are boring then Limak immediately turns TV off.You know that there will be n interesting minutes t1,\u2009t2,\u2009...,\u2009tn. Your task is to calculate for how many minutes Limak will watch the game.",
+        "prob_desc_created_at": "1462633500",
+        "difficulty": 800.0,
+        "hidden_unit_tests": "[{\"input\": \"3\\r\\n7 20 88\\r\\n\", \"output\": [\"35\"]}, {\"input\": \"9\\r\\n16 20 30 40 50 60 70 80 90\\r\\n\", \"output\": [\"15\"]}, {\"input\": \"9\\r\\n15 20 30 40 50 60 70 80 90\\r\\n\", \"output\": [\"90\"]}, {\"input\": \"30\\r\\n6 11 12 15 22 24 30 31 32 33 34 35 40 42 44 45 47 50 53 54 57 58 63 67 75 77 79 81 83 88\\r\\n\", \"output\": [\"90\"]}, {\"input\": \"60\\r\\n1 2 4 5 6 7 11 14 16 18 20 21 22 23 24 25 26 33 34 35 36 37 38 39 41 42 43 44 46 47 48 49 52 55 56 57 58 59 60 61 63 64 65 67 68 70 71 72 73 74 75 77 78 80 82 83 84 85 86 88\\r\\n\", \"output\": [\"90\"]}, {\"input\": \"90\\r\\n1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 80 81 82 83 84 85 86 87 88 89 90\\r\\n\", \"output\": [\"90\"]}, {\"input\": \"1\\r\\n1\\r\\n\", \"output\": [\"16\"]}, {\"input\": \"5\\r\\n15 30 45 60 75\\r\\n\", \"output\": [\"90\"]}, {\"input\": \"6\\r\\n14 29 43 59 70 74\\r\\n\", \"output\": [\"58\"]}, {\"input\": \"1\\r\\n15\\r\\n\", \"output\": [\"30\"]}, {\"input\": \"1\\r\\n16\\r\\n\", \"output\": [\"15\"]}, {\"input\": \"14\\r\\n14 22 27 31 35 44 46 61 62 69 74 79 88 89\\r\\n\", \"output\": [\"90\"]}, {\"input\": \"76\\r\\n1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 80 81 82 83 84 85 86 87 88 89 90\\r\\n\", \"output\": [\"90\"]}, {\"input\": \"1\\r\\n90\\r\\n\", \"output\": [\"15\"]}, {\"input\": \"6\\r\\n13 17 32 47 60 66\\r\\n\", \"output\": [\"81\"]}, {\"input\": \"84\\r\\n1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 80 81 82 83 84\\r\\n\", \"output\": [\"90\"]}, {\"input\": \"9\\r\\n6 20 27 28 40 53 59 70 85\\r\\n\", \"output\": [\"90\"]}, {\"input\": \"12\\r\\n14 22 27 31 35 44 62 69 74 79 88 89\\r\\n\", \"output\": [\"59\"]}, {\"input\": \"5\\r\\n15 30 45 60 74\\r\\n\", \"output\": [\"89\"]}, {\"input\": \"72\\r\\n3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 80 81 82 83 84 85 86 87 88 89\\r\\n\", \"output\": [\"54\"]}, {\"input\": \"8\\r\\n1 16 30 31 32 33 34 50\\r\\n\", \"output\": [\"49\"]}, {\"input\": \"12\\r\\n1 3 6 10 15 21 28 36 45 55 66 78\\r\\n\", \"output\": [\"90\"]}, {\"input\": \"25\\r\\n1 2 3 4 5 6 7 8 9 10 11 23 36 50 65 81 82 83 84 85 86 87 88 89 90\\r\\n\", \"output\": [\"80\"]}, {\"input\": \"8\\r\\n5 17 20 35 42 53 67 76\\r\\n\", \"output\": [\"90\"]}, {\"input\": \"9\\r\\n15 28 39 48 55 60 63 64 74\\r\\n\", \"output\": [\"89\"]}, {\"input\": \"10\\r\\n15 28 39 48 55 60 63 64 74 82\\r\\n\", \"output\": [\"90\"]}, {\"input\": \"2\\r\\n1 18\\r\\n\", \"output\": [\"16\"]}, {\"input\": \"9\\r\\n10 20 30 40 50 60 70 80 84\\r\\n\", \"output\": [\"90\"]}, {\"input\": \"2\\r\\n16 50\\r\\n\", \"output\": [\"15\"]}, {\"input\": \"6\\r\\n15 30 45 60 75 84\\r\\n\", \"output\": [\"90\"]}, {\"input\": \"8\\r\\n15 20 30 40 50 60 73 83\\r\\n\", \"output\": [\"90\"]}, {\"input\": \"8\\r\\n10 20 30 40 50 60 70 80\\r\\n\", \"output\": [\"90\"]}, {\"input\": \"3\\r\\n1 20 90\\r\\n\", \"output\": [\"16\"]}, {\"input\": \"6\\r\\n15 30 45 60 74 89\\r\\n\", \"output\": [\"90\"]}]",
+        "initial_source_code": "#!/usr/bin/python\n\n# http://codeforces.com/problemset/problem/673/A\n\n\n# define function\ndef watching_minute(n, a):\n    if a[0] > 15:\n        return 15\n    elif len(a) == 1:\n        return a[0] + 15\n    else:\n        for i in range(len(a) - 1):\n            if a[i+1] - a[i] > 15:\n                return a[i] + 15\n\n            if a[i+1] >= 75 or a[i] >= 75:\n                return 90\n\n            # check last number\n            if i + 1 == len(a) - 1 and a[i+1] < 75:\n                return a[i + 1] + 15\n\n# call function\nn = int(input())\na = [int(i) for i in input().split()]\nprint(watching_minute(n, a))\n",
+        "source_code": "def watching_minute(n, a):\n    if a[0] > 15:\n        return 15\n    if len(a) == 1:\n        return a[0] + 15\n    for i in range(len(a) - 1):\n        if a[i + 1] - a[i] > 15:\n            return a[i] + 15\n        if a[i + 1] >= 75 or a[i] >= 75:\n            return 90\n        if i + 1 == len(a) - 1 and a[i + 1] < 75:\n            return a[i + 1] + 15\nn = int(input())\na = [int(i) for i in input().split()]\nprint(watching_minute(n, a))",
+        "source_lang": "Python 3",
+        "target_lang": "C"
+    }
+}

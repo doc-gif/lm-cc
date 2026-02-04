@@ -1,0 +1,87 @@
+{
+    "oai_response": {
+        "prompt": "Here is code in Python 3 programming lanaguge. Translate the following code from Python 3 to C programming lanaguge. Do not output any extra description or tokens other than the translated code. \n\ndef main():\n    n=int(input())\n    dp=[]\n    dp.append(0)\n    dp.append(0)\n    dp.append(2)\n    for i in range(3,n+1):\n        dp.append(dp[i-2]*2)\n    print(dp[n])\nif __name__==\"__main__\":\n    main()||END-of-SRC||",
+        "response": {
+            "id": "multi-call-as-i5rcxjd5ej",
+            "model": "deepseek-v3",
+            "created": 1767067818,
+            "choices": [
+                {
+                    "index": 0,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <stdlib.h>\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    int *dp = (int *)malloc((n + 1) * sizeof(int));\n    dp[0] = 0;\n    dp[1] = 0;\n    dp[2] = 2;\n    for (int i = 3; i <= n; i++) {\n        dp[i] = dp[i - 2] * 2;\n    }\n    printf(\"%d\\n\", dp[n]);\n    free(dp);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 1,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <stdlib.h>\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    int* dp = (int*)malloc((n + 1) * sizeof(int));\n    dp[0] = 0;\n    dp[1] = 0;\n    dp[2] = 2;\n    for (int i = 3; i <= n; i++) {\n        dp[i] = dp[i - 2] * 2;\n    }\n    printf(\"%d\\n\", dp[n]);\n    free(dp);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 2,
+                    "message": {
+                        "role": "assistant",
+                        "content": "Here's the equivalent code in C:\n\n```c\n#include <stdio.h>\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    int dp[n+1];\n    dp[0] = 0;\n    dp[1] = 0;\n    dp[2] = 2;\n    for (int i = 3; i <= n; i++) {\n        dp[i] = dp[i-2] * 2;\n    }\n    printf(\"%d\", dp[n]);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 3,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <stdlib.h>\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    int* dp = (int*)malloc((n + 1) * sizeof(int));\n    dp[0] = 0;\n    dp[1] = 0;\n    dp[2] = 2;\n    for (int i = 3; i <= n; i++) {\n        dp[i] = dp[i - 2] * 2;\n    }\n    printf(\"%d\\n\", dp[n]);\n    free(dp);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 4,
+                    "message": {
+                        "role": "assistant",
+                        "content": "Here's the equivalent code in C:\n\n```c\n#include <stdio.h>\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    int dp[n+1];\n    dp[0] = 0;\n    dp[1] = 0;\n    dp[2] = 2;\n    for (int i = 3; i <= n; i++) {\n        dp[i] = dp[i-2] * 2;\n    }\n    printf(\"%d\", dp[n]);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                }
+            ],
+            "usage": {
+                "prompt_tokens": 585,
+                "completion_tokens": 610,
+                "total_tokens": 1195
+            }
+        }
+    },
+    "source_data": {
+        "code_uid": "dc1fd9c8636f5c8fdeeb0a2e1890485e",
+        "prob_desc_output_to": "standard output",
+        "prob_desc_notes": "NoteIn the first example, there are $$$4$$$ possible cases of filling.In the second example, you cannot fill the shapes in $$$3 \\times 1$$$ tiles.",
+        "lang_cluster": "Python",
+        "prob_desc_time_limit": "1 second",
+        "prob_desc_input_spec": "The only line contains one integer $$$n$$$ ($$$1 \\le n \\le 60$$$)\u00a0\u2014 the length.",
+        "source_code": "def main():\n    n=int(input())\n    dp=[]\n    dp.append(0)\n    dp.append(0)\n    dp.append(2)\n    for i in range(3,n+1):\n        dp.append(dp[i-2]*2)\n    print(dp[n])\nif __name__==\"__main__\":\n    main()",
+        "prob_desc_sample_inputs": [
+            "4",
+            "1"
+        ],
+        "prob_desc_memory_limit": "256 megabytes",
+        "exec_outcome": "PASSED",
+        "prob_desc_output_spec": "Print the number of ways to fill.",
+        "src_uid": "4b7ff467ed5907e32fd529fb39b708db",
+        "prob_desc_input_from": "standard input",
+        "lang": "Python 3",
+        "prob_desc_sample_outputs": [
+            "4",
+            "0"
+        ],
+        "file_name": "d7021504500d5ca7c2b02df8100a574d159e6e67e20ec8071b75800b1267370a",
+        "prob_desc_description": "You have a given integer $$$n$$$. Find the number of ways to fill all $$$3 \\times n$$$ tiles with the shape described in the picture below. Upon filling, no empty spaces are allowed. Shapes cannot overlap.  This picture describes when $$$n = 4$$$. The left one is the shape and the right one is $$$3 \\times n$$$ tiles. ",
+        "prob_desc_created_at": "1560258300",
+        "difficulty": 1000.0,
+        "hidden_unit_tests": "[{\"input\": \"4\\r\\n\", \"output\": [\"4\"]}, {\"input\": \"1\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"17\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"36\\r\\n\", \"output\": [\"262144\"]}, {\"input\": \"47\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"60\\r\\n\", \"output\": [\"1073741824\"]}, {\"input\": \"56\\r\\n\", \"output\": [\"268435456\"]}, {\"input\": \"27\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"11\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"12\\r\\n\", \"output\": [\"64\"]}, {\"input\": \"39\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"59\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"2\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"8\\r\\n\", \"output\": [\"16\"]}, {\"input\": \"5\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"7\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"44\\r\\n\", \"output\": [\"4194304\"]}, {\"input\": \"57\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"3\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"19\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"18\\r\\n\", \"output\": [\"512\"]}, {\"input\": \"6\\r\\n\", \"output\": [\"8\"]}]",
+        "source_lang": "Python 3",
+        "target_lang": "C"
+    }
+}

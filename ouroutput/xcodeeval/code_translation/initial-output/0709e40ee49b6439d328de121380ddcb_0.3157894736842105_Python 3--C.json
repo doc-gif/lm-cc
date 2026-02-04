@@ -1,0 +1,87 @@
+{
+    "oai_response": {
+        "prompt": "Here is code in Python 3 programming lanaguge. Translate the following code from Python 3 to C programming lanaguge. Do not output any extra description or tokens other than the translated code. \n\nna=int(input())#----->\na=list(input().lower())\na.sort()\nd=[]\nfor i in range(97,123):\n    d.append(chr(i))\nf=[]\nc=1\nfor i in a:\n    if i not in f:\n         f.append(i)\n         c+=1\n    if c==27:\n        break\n\nif f==d :\n    print(\"YES\")\nelse:\n    print(\"NO\")\n\n\n\n\n\n\n\n\n\n\n\n    \n\n\n\n\n\n    \n||END-of-SRC||",
+        "response": {
+            "id": "multi-call-as-cvgnnrg9ay",
+            "model": "deepseek-v3",
+            "created": 1767067469,
+            "choices": [
+                {
+                    "index": 0,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <ctype.h>\n#include <string.h>\n#include <stdlib.h>\n\nint compare_chars(const void *a, const void *b) {\n    return (*(char *)a - *(char *)b);\n}\n\nint main() {\n    int na;\n    scanf(\"%d\", &na);\n    getchar(); // consume newline\n    \n    char a[1000];\n    fgets(a, sizeof(a), stdin);\n    \n    // convert to lowercase and sort\n    for (int i = 0; a[i]; i++) {\n        a[i] = tolower(a[i]);\n    }\n    qsort(a, strlen(a), sizeof(char), compare_chars);\n    \n    char d[26];\n    for (int i = 0; i < 26; i++) {\n        d[i] = 'a' + i;\n    }\n    \n    char f[26] = {0};\n    int c = 0;\n    for (int i = 0; a[i] && c < 26; i++) {\n        if (a[i] >= 'a' && a[i] <= 'z') {\n            int found = 0;\n            for (int j = 0; j < c; j++) {\n                if (f[j] == a[i]) {\n                    found = 1;\n                    break;\n                }\n            }\n            if (!found) {\n                f[c++] = a[i];\n            }\n        }\n    }\n    \n    int is_pangram = 1;\n    for (int i = 0; i < 26; i++) {\n        if (f[i] != d[i]) {\n            is_pangram = 0;\n            break;\n        }\n    }\n    \n    if (is_pangram) {\n        printf(\"YES\\n\");\n    } else {\n        printf(\"NO\\n\");\n    }\n    \n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 1,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <ctype.h>\n#include <string.h>\n#include <stdlib.h>\n\nint compare_chars(const void *a, const void *b) {\n    return (*(char *)a - *(char *)b);\n}\n\nint main() {\n    int na;\n    scanf(\"%d\", &na);\n    getchar(); // consume newline\n    \n    char a[1000];\n    fgets(a, sizeof(a), stdin);\n    \n    // convert to lowercase and sort\n    for (int i = 0; a[i]; i++) {\n        a[i] = tolower(a[i]);\n    }\n    qsort(a, strlen(a), sizeof(char), compare_chars);\n    \n    char d[26];\n    for (int i = 0; i < 26; i++) {\n        d[i] = 'a' + i;\n    }\n    \n    char f[26] = {0};\n    int c = 0;\n    for (int i = 0; a[i] && c < 26; i++) {\n        if (a[i] >= 'a' && a[i] <= 'z') {\n            int found = 0;\n            for (int j = 0; j < c; j++) {\n                if (f[j] == a[i]) {\n                    found = 1;\n                    break;\n                }\n            }\n            if (!found) {\n                f[c++] = a[i];\n            }\n        }\n    }\n    \n    int is_pangram = 1;\n    for (int i = 0; i < 26; i++) {\n        if (f[i] != d[i]) {\n            is_pangram = 0;\n            break;\n        }\n    }\n    \n    if (is_pangram) {\n        printf(\"YES\\n\");\n    } else {\n        printf(\"NO\\n\");\n    }\n    \n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 2,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <ctype.h>\n#include <string.h>\n#include <stdlib.h>\n\nint compare_chars(const void *a, const void *b) {\n    return (*(char *)a - *(char *)b);\n}\n\nint main() {\n    int na;\n    scanf(\"%d\", &na);\n    getchar(); // consume newline\n    \n    char a[1000];\n    fgets(a, sizeof(a), stdin);\n    \n    // convert to lowercase and sort\n    for (int i = 0; a[i]; i++) {\n        a[i] = tolower(a[i]);\n    }\n    qsort(a, strlen(a), sizeof(char), compare_chars);\n    \n    char d[26];\n    for (int i = 0; i < 26; i++) {\n        d[i] = 'a' + i;\n    }\n    \n    char f[26] = {0};\n    int c = 0;\n    for (int i = 0; a[i] && c < 26; i++) {\n        if (a[i] >= 'a' && a[i] <= 'z') {\n            int found = 0;\n            for (int j = 0; j < c; j++) {\n                if (f[j] == a[i]) {\n                    found = 1;\n                    break;\n                }\n            }\n            if (!found) {\n                f[c++] = a[i];\n            }\n        }\n    }\n    \n    int is_pangram = 1;\n    for (int i = 0; i < 26; i++) {\n        if (f[i] != d[i]) {\n            is_pangram = 0;\n            break;\n        }\n    }\n    \n    printf(is_pangram ? \"YES\\n\" : \"NO\\n\");\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 3,
+                    "message": {
+                        "role": "assistant",
+                        "content": "Here's the equivalent code in C:\n\n```c\n#include <stdio.h>\n#include <ctype.h>\n#include <string.h>\n\nint main() {\n    int na;\n    scanf(\"%d\", &na);\n    char a[1000];\n    scanf(\" %[^\\n]s\", a);\n    \n    for (int i = 0; a[i]; i++) {\n        a[i] = tolower(a[i]);\n    }\n    \n    int n = strlen(a);\n    for (int i = 0; i < n-1; i++) {\n        for (int j = i+1; j < n; j++) {\n            if (a[i] > a[j]) {\n                char temp = a[i];\n                a[i] = a[j];\n                a[j] = temp;\n            }\n        }\n    }\n    \n    int d[26] = {0};\n    int c = 0;\n    for (int i = 0; i < n; i++) {\n        if (isalpha(a[i])) {\n            int index = a[i] - 'a';\n            if (d[index] == 0) {\n                d[index] = 1;\n                c++;\n            }\n        }\n        if (c == 26) {\n            break;\n        }\n    }\n    \n    if (c == 26) {\n        printf(\"YES\\n\");\n    } else {\n        printf(\"NO\\n\");\n    }\n    \n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 4,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <ctype.h>\n#include <string.h>\n#include <stdlib.h>\n\nint compare_chars(const void *a, const void *b) {\n    return (*(char *)a - *(char *)b);\n}\n\nint main() {\n    int na;\n    scanf(\"%d\", &na);\n    getchar(); // consume newline\n    \n    char a[1000];\n    fgets(a, sizeof(a), stdin);\n    \n    // convert to lowercase and sort\n    for (int i = 0; a[i]; i++) {\n        a[i] = tolower(a[i]);\n    }\n    qsort(a, strlen(a), sizeof(char), compare_chars);\n    \n    char d[26];\n    for (int i = 0; i < 26; i++) {\n        d[i] = 'a' + i;\n    }\n    \n    char f[26] = {0};\n    int c = 0;\n    for (int i = 0; a[i] && c < 26; i++) {\n        if (a[i] >= 'a' && a[i] <= 'z') {\n            int found = 0;\n            for (int j = 0; j < c; j++) {\n                if (f[j] == a[i]) {\n                    found = 1;\n                    break;\n                }\n            }\n            if (!found) {\n                f[c++] = a[i];\n            }\n        }\n    }\n    \n    int is_pangram = 1;\n    for (int i = 0; i < 26; i++) {\n        if (f[i] != d[i]) {\n            is_pangram = 0;\n            break;\n        }\n    }\n    \n    if (is_pangram) {\n        printf(\"YES\\n\");\n    } else {\n        printf(\"NO\\n\");\n    }\n    \n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                }
+            ],
+            "usage": {
+                "prompt_tokens": 720,
+                "completion_tokens": 1893,
+                "total_tokens": 2613
+            }
+        }
+    },
+    "source_data": {
+        "code_uid": "0709e40ee49b6439d328de121380ddcb",
+        "prob_desc_output_to": "standard output",
+        "prob_desc_notes": null,
+        "lang_cluster": "Python",
+        "prob_desc_time_limit": "2 seconds",
+        "prob_desc_input_spec": "The first line contains a single integer n (1\u2009\u2264\u2009n\u2009\u2264\u2009100)\u00a0\u2014 the number of characters in the string. The second line contains the string. The string consists only of uppercase and lowercase Latin letters.",
+        "source_code": "na=int(input())#----->\na=list(input().lower())\na.sort()\nd=[]\nfor i in range(97,123):\n    d.append(chr(i))\nf=[]\nc=1\nfor i in a:\n    if i not in f:\n         f.append(i)\n         c+=1\n    if c==27:\n        break\n\nif f==d :\n    print(\"YES\")\nelse:\n    print(\"NO\")\n\n\n\n\n\n\n\n\n\n\n\n    \n\n\n\n\n\n    \n",
+        "prob_desc_sample_inputs": [
+            "12\ntoosmallword",
+            "35\nTheQuickBrownFoxJumpsOverTheLazyDog"
+        ],
+        "prob_desc_memory_limit": "256 megabytes",
+        "exec_outcome": "PASSED",
+        "prob_desc_output_spec": "Output \"YES\", if the string is a pangram and \"NO\" otherwise.",
+        "src_uid": "f13eba0a0fb86e20495d218fc4ad532d",
+        "prob_desc_input_from": "standard input",
+        "lang": "Python 3",
+        "prob_desc_sample_outputs": [
+            "NO",
+            "YES"
+        ],
+        "file_name": "d7021504500d5ca7c2b02df8100a574d159e6e67e20ec8071b75800b1267370a",
+        "prob_desc_description": "A word or a sentence in some language is called a pangram if all the characters of the alphabet of this language appear in it at least once. Pangrams are often used to demonstrate fonts in printing or test the output devices.You are given a string consisting of lowercase and uppercase Latin letters. Check whether this string is a pangram. We say that the string contains a letter of the Latin alphabet if this letter occurs in the string in uppercase or lowercase.",
+        "prob_desc_created_at": "1425279600",
+        "difficulty": 800.0,
+        "hidden_unit_tests": "[{\"input\": \"12\\r\\ntoosmallword\\r\\n\", \"output\": [\"No\", \"NO\", \"no\"]}, {\"input\": \"35\\r\\nTheQuickBrownFoxJumpsOverTheLazyDog\\r\\n\", \"output\": [\"YES\", \"Yes\", \"yes\"]}, {\"input\": \"1\\r\\na\\r\\n\", \"output\": [\"No\", \"NO\", \"no\"]}, {\"input\": \"26\\r\\nqwertyuiopasdfghjklzxcvbnm\\r\\n\", \"output\": [\"YES\", \"Yes\", \"yes\"]}, {\"input\": \"26\\r\\nABCDEFGHIJKLMNOPQRSTUVWXYZ\\r\\n\", \"output\": [\"YES\", \"Yes\", \"yes\"]}, {\"input\": \"48\\r\\nthereisasyetinsufficientdataforameaningfulanswer\\r\\n\", \"output\": [\"No\", \"NO\", \"no\"]}, {\"input\": \"30\\r\\nToBeOrNotToBeThatIsTheQuestion\\r\\n\", \"output\": [\"No\", \"NO\", \"no\"]}, {\"input\": \"30\\r\\njackdawslovemybigsphinxofquarz\\r\\n\", \"output\": [\"No\", \"NO\", \"no\"]}, {\"input\": \"31\\r\\nTHEFIVEBOXINGWIZARDSJUMPQUICKLY\\r\\n\", \"output\": [\"YES\", \"Yes\", \"yes\"]}, {\"input\": \"26\\r\\naaaaaaaaaaaaaaaaaaaaaaaaaa\\r\\n\", \"output\": [\"No\", \"NO\", \"no\"]}, {\"input\": \"26\\r\\nMGJYIZDKsbhpVeNFlquRTcWoAx\\r\\n\", \"output\": [\"YES\", \"Yes\", \"yes\"]}, {\"input\": \"26\\r\\nfWMOhAPsbIVtyUEZrGNQXDklCJ\\r\\n\", \"output\": [\"YES\", \"Yes\", \"yes\"]}, {\"input\": \"26\\r\\nngPMVFSThiRCwLEuyOAbKxQzDJ\\r\\n\", \"output\": [\"YES\", \"Yes\", \"yes\"]}, {\"input\": \"25\\r\\nnxYTzLFwzNolAumjgcAboyxAj\\r\\n\", \"output\": [\"No\", \"NO\", \"no\"]}, {\"input\": \"26\\r\\npRWdodGdxUESvcScPGbUoooZsC\\r\\n\", \"output\": [\"No\", \"NO\", \"no\"]}, {\"input\": \"66\\r\\nBovdMlDzTaqKllZILFVfxbLGsRnzmtVVTmqiIDTYrossLEPlmsPrkUYtWEsGHVOnFj\\r\\n\", \"output\": [\"No\", \"NO\", \"no\"]}, {\"input\": \"100\\r\\nmKtsiDRJypUieHIkvJaMFkwaKxcCIbBszZQLIyPpCDCjhNpAnYFngLjRpnKWpKWtGnwoSteeZXuFHWQxxxOpFlNeYTwKocsXuCoa\\r\\n\", \"output\": [\"YES\", \"Yes\", \"yes\"]}, {\"input\": \"26\\r\\nEoqxUbsLjPytUHMiFnvcGWZdRK\\r\\n\", \"output\": [\"No\", \"NO\", \"no\"]}, {\"input\": \"26\\r\\nvCUFRKElZOnjmXGylWQaHDiPst\\r\\n\", \"output\": [\"No\", \"NO\", \"no\"]}, {\"input\": \"26\\r\\nWtrPuaHdXLKJMsnvQfgOiJZBEY\\r\\n\", \"output\": [\"No\", \"NO\", \"no\"]}, {\"input\": \"26\\r\\npGiFluRteQwkaVoPszJyNBChxM\\r\\n\", \"output\": [\"No\", \"NO\", \"no\"]}, {\"input\": \"26\\r\\ncTUpqjPmANrdbzSFhlWIoKxgVY\\r\\n\", \"output\": [\"No\", \"NO\", \"no\"]}, {\"input\": \"26\\r\\nLndjgvAEuICHKxPwqYztosrmBN\\r\\n\", \"output\": [\"No\", \"NO\", \"no\"]}, {\"input\": \"26\\r\\nMdaXJrCipnOZLykfqHWEStevbU\\r\\n\", \"output\": [\"No\", \"NO\", \"no\"]}, {\"input\": \"26\\r\\nEjDWsVxfKTqGXRnUMOLYcIzPba\\r\\n\", \"output\": [\"No\", \"NO\", \"no\"]}, {\"input\": \"26\\r\\nxKwzRMpunYaqsdfaBgJcVElTHo\\r\\n\", \"output\": [\"No\", \"NO\", \"no\"]}, {\"input\": \"26\\r\\nnRYUQsTwCPLZkgshfEXvBdoiMa\\r\\n\", \"output\": [\"No\", \"NO\", \"no\"]}, {\"input\": \"26\\r\\nHNCQPfJutyAlDGsvRxZWMEbIdO\\r\\n\", \"output\": [\"No\", \"NO\", \"no\"]}, {\"input\": \"26\\r\\nDaHJIpvKznQcmUyWsTGObXRFDe\\r\\n\", \"output\": [\"No\", \"NO\", \"no\"]}, {\"input\": \"26\\r\\nkqvAnFAiRhzlJbtyuWedXSPcOG\\r\\n\", \"output\": [\"No\", \"NO\", \"no\"]}, {\"input\": \"26\\r\\nhlrvgdwsIOyjcmUZXtAKEqoBpF\\r\\n\", \"output\": [\"No\", \"NO\", \"no\"]}, {\"input\": \"26\\r\\njLfXXiMhBTcAwQVReGnpKzdsYu\\r\\n\", \"output\": [\"No\", \"NO\", \"no\"]}, {\"input\": \"26\\r\\nlNMcVuwItjxRBGAekjhyDsQOzf\\r\\n\", \"output\": [\"No\", \"NO\", \"no\"]}, {\"input\": \"26\\r\\nRkSwbNoYldUGtAZvpFMcxhIJFE\\r\\n\", \"output\": [\"No\", \"NO\", \"no\"]}, {\"input\": \"26\\r\\nDqspXZJTuONYieKgaHLMBwfVSC\\r\\n\", \"output\": [\"No\", \"NO\", \"no\"]}, {\"input\": \"26\\r\\necOyUkqNljFHRVXtIpWabGMLDz\\r\\n\", \"output\": [\"No\", \"NO\", \"no\"]}, {\"input\": \"26\\r\\nEKAvqZhBnPmVCDRlgWJfOusxYI\\r\\n\", \"output\": [\"No\", \"NO\", \"no\"]}, {\"input\": \"26\\r\\naLbgqeYchKdMrsZxIPFvTOWNjA\\r\\n\", \"output\": [\"No\", \"NO\", \"no\"]}, {\"input\": \"26\\r\\nxfpBLsndiqtacOCHGmeWUjRkYz\\r\\n\", \"output\": [\"No\", \"NO\", \"no\"]}, {\"input\": \"26\\r\\nXsbRKtqleZPNIVCdfUhyagAomJ\\r\\n\", \"output\": [\"No\", \"NO\", \"no\"]}, {\"input\": \"26\\r\\nAmVtbrwquEthZcjKPLiyDgSoNF\\r\\n\", \"output\": [\"No\", \"NO\", \"no\"]}, {\"input\": \"26\\r\\nOhvXDcwqAUmSEPRZGnjFLiKtNB\\r\\n\", \"output\": [\"No\", \"NO\", \"no\"]}, {\"input\": \"26\\r\\nEKWJqCFLRmstxVBdYuinpbhaOg\\r\\n\", \"output\": [\"No\", \"NO\", \"no\"]}, {\"input\": \"26\\r\\nmnbvcxxlkjhgfdsapoiuytrewq\\r\\n\", \"output\": [\"No\", \"NO\", \"no\"]}, {\"input\": \"26\\r\\naAbcdefghijklmnopqrstuvwxy\\r\\n\", \"output\": [\"No\", \"NO\", \"no\"]}, {\"input\": \"30\\r\\nABCDEFGHTYRIOPLabcdefghtyriopl\\r\\n\", \"output\": [\"No\", \"NO\", \"no\"]}, {\"input\": \"25\\r\\nabcdefghijklmnopqrstuvwxy\\r\\n\", \"output\": [\"No\", \"NO\", \"no\"]}, {\"input\": \"26\\r\\nabcdefhijklmnopqrstVxyzABC\\r\\n\", \"output\": [\"No\", \"NO\", \"no\"]}, {\"input\": \"25\\r\\nqwertyuiopasdfghjklxcvbnm\\r\\n\", \"output\": [\"No\", \"NO\", \"no\"]}, {\"input\": \"34\\r\\nTheQuickBrownFoxJumpsOverTheLayDog\\r\\n\", \"output\": [\"No\", \"NO\", \"no\"]}, {\"input\": \"26\\r\\nabcdefghigklmnopqrstuvwxyz\\r\\n\", \"output\": [\"No\", \"NO\", \"no\"]}, {\"input\": \"26\\r\\nabcdefghijklmnopqrstuvwxyA\\r\\n\", \"output\": [\"No\", \"NO\", \"no\"]}, {\"input\": \"50\\r\\nqazwsxedcrfvtgbyhnujmikolQWERTYUIOASDFGHJKLZXCVBNM\\r\\n\", \"output\": [\"No\", \"NO\", \"no\"]}, {\"input\": \"35\\r\\nTheQuickBrownFoxJumpsOverTheLasyDog\\r\\n\", \"output\": [\"No\", \"NO\", \"no\"]}, {\"input\": \"25\\r\\nbcdefghijklmnopqrstuvwxyz\\r\\n\", \"output\": [\"No\", \"NO\", \"no\"]}, {\"input\": \"38\\r\\nAbCdEfGhIjKlMnOpQrStVwXyZzzzzzzaaaaaaa\\r\\n\", \"output\": [\"No\", \"NO\", \"no\"]}, {\"input\": \"26\\r\\nabcdefghiklmnopqrstvxyzABC\\r\\n\", \"output\": [\"No\", \"NO\", \"no\"]}, {\"input\": \"26\\r\\nabcdefghijklmnopqrstuvwxzZ\\r\\n\", \"output\": [\"No\", \"NO\", \"no\"]}, {\"input\": \"50\\r\\nabcdefghijklmnopqrstuvwxyABCDEFGHIJKLMNOPQRSTUVWXY\\r\\n\", \"output\": [\"No\", \"NO\", \"no\"]}]",
+        "source_lang": "Python 3",
+        "target_lang": "C"
+    }
+}

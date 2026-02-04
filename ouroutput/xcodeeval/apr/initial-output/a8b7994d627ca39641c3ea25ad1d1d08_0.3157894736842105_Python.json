@@ -1,0 +1,101 @@
+{
+    "oai_response": {
+        "prompt": "Fix a buggy program written in Python language to solve the following programming problem:\nDescription: Vasilisa the Wise from a far away kingdom got a present from her friend Helga the Wise from a farther away kingdom. The present is a surprise box, yet Vasilisa the Wise doesn't know yet what the surprise actually is because she cannot open the box. She hopes that you can help her in that.The box's lock is constructed like that. The box itself is represented by an absolutely perfect black cube with the identical deepening on each face (those are some foreign nanotechnologies that the far away kingdom scientists haven't dreamt of). The box is accompanied by six gems whose form matches the deepenings in the box's faces. The box can only be opened after it is correctly decorated by the gems, that is, when each deepening contains exactly one gem. Two ways of decorating the box are considered the same if they can be obtained one from the other one by arbitrarily rotating the box (note that the box is represented by a perfect nanotechnological cube)Now Vasilisa the Wise wants to know by the given set of colors the following: in how many ways would she decorate the box in the worst case to open it? To answer this question it is useful to know that two gems of one color are indistinguishable from each other. Help Vasilisa to solve this challenging problem.\nInput Specification: The first line contains exactly 6 characters without spaces from the set {R, O, Y, G, B, V} \u2014 they are the colors of gems with which the box should be decorated.\nOutput Specification: Print the required number of different ways to decorate the box.\n\nSample Input:\nYYYYYY\nSample Output:\n1\n\nSample Input:\nBOOOOB\nSample Output:\n2\n\nSample Input:\nROYGBV\nSample Output:\n30\n\nNotes: None\nTake input from standard input and output to standard output\n\nHere is the code with a bug of TIME_LIMIT_EXCEEDED:\n\nfrom functools import reduce\n\ndef factorial(n):\n    return reduce(lambda x, y: x*y, range(1,n+1))\n\ncolors = {\n    'R' : 0,\n    'O' : 0,\n    'Y' : 0,\n    'G' : 0,\n    'B' : 0,\n    'V' : 0\n}\n\nfor c in list(input()):\n    colors[c] += 1\n\namount = list(reversed(sorted([(colors[key], key) for key in colors])))\n\namount = [x[0] for x in amount]\n\nif amount[0] == 6 or amount[0] == 5:\n    print(\"1\")\nelif amount[0] == 4:\n    print(\"2\")\nelif amount[0] == 3:\n    if amount[1] == 3:\n        print(\"2\")\n    elif amount[1] == 2:\n        print(\"5\")\n    elif amount[1] == 1:\n        print(\"5\")\nelif amount[0] == 2:\n    if amount[1] == amount[2] == 2:\n        print(\"4\")\n    elif amount[1] == 2:\n        while True: pass\n    else:\n        print(factorial(6) // 48)\n\nelif amount[0] == 1:\n    print(factorial(6) // 24)\n\n\n\n\n\nProvide the fixed Python code without any description or extra tokens.\n\nFixed source code:\n ||END-of-SRC||",
+        "response": {
+            "id": "multi-call-as-4p72275fv4",
+            "model": "deepseek-v3",
+            "created": 1760422812,
+            "choices": [
+                {
+                    "index": 0,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```python\nfrom functools import reduce\nfrom math import factorial\n\ndef count_distinct_colorings(gem_counts):\n    # Count the number of distinct colorings considering cube rotations\n    # The counts are sorted in descending order for easier pattern matching\n    counts = sorted(gem_counts, reverse=True)\n    \n    if counts[0] == 6:\n        return 1\n    elif counts[0] == 5:\n        return 1\n    elif counts[0] == 4:\n        return 2\n    elif counts[0] == 3:\n        if counts[1] == 3:\n            return 2\n        elif counts[1] == 2:\n            return 3\n        elif counts[1] == 1:\n            return 5\n    elif counts[0] == 2:\n        if counts[1] == 2 and counts[2] == 2:\n            return 6\n        elif counts[1] == 2:\n            return 8\n        else:\n            return 15\n    elif counts[0] == 1:\n        return 30\n    return 0\n\ncolor_counts = [0] * 6\ncolor_map = {'R': 0, 'O': 1, 'Y': 2, 'G': 3, 'B': 4, 'V': 5}\n\ninput_colors = input().strip()\nfor c in input_colors:\n    color_counts[color_map[c]] += 1\n\nresult = count_distinct_colorings(color_counts)\nprint(result)\n``` ||END-of-SRC||"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 1,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```python\nfrom functools import reduce\nfrom math import factorial\n\ndef count_distinct_colorings():\n    color_counts = {\n        'R': 0,\n        'O': 0,\n        'Y': 0,\n        'G': 0,\n        'B': 0,\n        'V': 0\n    }\n    \n    input_colors = input().strip()\n    for c in input_colors:\n        color_counts[c] += 1\n    \n    counts = sorted(color_counts.values(), reverse=True)\n    \n    if counts[0] == 6:\n        return 1\n    elif counts[0] == 5:\n        return 1\n    elif counts[0] == 4:\n        return 2\n    elif counts[0] == 3:\n        if counts[1] == 3:\n            return 2\n        elif counts[1] == 2:\n            return 3\n        else:\n            return 5\n    elif counts[0] == 2:\n        if counts[1] == 2:\n            if counts[2] == 2:\n                return 6\n            else:\n                return 6\n        else:\n            return factorial(6) // (24 * factorial(2) * factorial(2))\n    else:\n        return factorial(6) // 24\n\nprint(count_distinct_colorings())\n``` ||END-of-SRC||"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 2,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```python\nfrom functools import reduce\nfrom collections import defaultdict\n\ndef factorial(n):\n    return reduce(lambda x, y: x*y, range(1, n+1), 1)\n\ndef count_distinct_colorings():\n    color_counts = defaultdict(int)\n    for c in input().strip():\n        color_counts[c] += 1\n    counts = sorted(color_counts.values(), reverse=True)\n    \n    if counts[0] == 6:\n        return 1\n    elif counts[0] == 5:\n        return 1\n    elif counts[0] == 4:\n        return 2\n    elif counts[0] == 3:\n        if counts[1] == 3:\n            return 2\n        elif counts[1] == 2:\n            return 3\n        elif counts[1] == 1:\n            return 5\n    elif counts[0] == 2:\n        if counts[1] == 2:\n            if counts[2] == 2:\n                return 6\n            else:\n                return 3\n        else:\n            return 15\n    else:\n        return 30\n\nprint(count_distinct_colorings())\n``` ||END-of-SRC||"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 3,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```python\nfrom functools import reduce\nfrom math import factorial\n\ndef count_distinct_colorings():\n    color_counts = {}\n    for c in input().strip():\n        color_counts[c] = color_counts.get(c, 0) + 1\n    counts = sorted(color_counts.values(), reverse=True)\n    \n    if counts[0] == 6:\n        return 1\n    elif counts[0] == 5:\n        return 1\n    elif counts[0] == 4:\n        return 2\n    elif counts[0] == 3:\n        if counts[1] == 3:\n            return 2\n        elif counts[1] == 2:\n            return 3\n        elif counts[1] == 1:\n            return 5\n    elif counts[0] == 2:\n        if len(counts) >= 3 and counts[1] == 2 and counts[2] == 2:\n            return 6\n        elif counts[1] == 2:\n            return 8\n        else:\n            return 15\n    else:\n        return 30\n\nprint(count_distinct_colorings())\n``` ||END-of-SRC||"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 4,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```python\nfrom functools import reduce\nfrom math import factorial\n\ndef count_distinct_colorings():\n    color_counts = {\n        'R': 0,\n        'O': 0,\n        'Y': 0,\n        'G': 0,\n        'B': 0,\n        'V': 0\n    }\n    \n    input_str = input().strip()\n    for c in input_str:\n        color_counts[c] += 1\n    \n    counts = sorted(color_counts.values(), reverse=True)\n    \n    if counts[0] == 6:\n        return 1\n    elif counts[0] == 5:\n        return 1\n    elif counts[0] == 4:\n        return 2\n    elif counts[0] == 3:\n        if counts[1] == 3:\n            return 2\n        elif counts[1] == 2:\n            return 3\n        elif counts[1] == 1:\n            return 5\n    elif counts[0] == 2:\n        if counts[1] == 2:\n            if counts[2] == 2:\n                return 6\n            else:\n                return 3\n        else:\n            return factorial(6) // (24 * factorial(2) * factorial(2))\n    else:\n        return factorial(6) // 24\n\nprint(count_distinct_colorings())\n``` ||END-of-SRC||"
+                    },
+                    "finish_reason": "stop"
+                }
+            ],
+            "usage": {
+                "prompt_tokens": 3640,
+                "completion_tokens": 1442,
+                "total_tokens": 5082
+            }
+        }
+    },
+    "source_data": {
+        "prob_desc_memory_limit": "256 megabytes",
+        "tags": [
+            "brute force"
+        ],
+        "prob_desc_created_at": "1311346800",
+        "fix_source_code": "",
+        "prob_desc_input_spec": "The first line contains exactly 6 characters without spaces from the set {R, O, Y, G, B, V} \u2014 they are the colors of gems with which the box should be decorated.",
+        "prob_desc_sample_outputs": [
+            "1",
+            "2",
+            "30"
+        ],
+        "src_uid": "8176c709c774fa87ca0e45a5a502a409",
+        "prob_desc_time_limit": "1 second",
+        "fix_exec_outcome": "",
+        "delete_cnt": 1,
+        "apr_id": "149c0d3c2b3fb01c274d99071dac9295",
+        "fix_code_uid": "",
+        "lang_cluster": "Python",
+        "prob_desc_sample_inputs": [
+            "YYYYYY",
+            "BOOOOB",
+            "ROYGBV"
+        ],
+        "prob_desc_output_to": "standard output",
+        "file_name": "Python.jsonl",
+        "equal_cnt": 5,
+        "lang": "Python 3",
+        "prob_desc_output_spec": "Print the required number of different ways to decorate the box.",
+        "bug_exec_outcome": "TIME_LIMIT_EXCEEDED",
+        "prob_desc_notes": null,
+        "difficulty": 1700.0,
+        "similarity_score": 0.9275904894,
+        "prob_desc_description": "Vasilisa the Wise from a far away kingdom got a present from her friend Helga the Wise from a farther away kingdom. The present is a surprise box, yet Vasilisa the Wise doesn't know yet what the surprise actually is because she cannot open the box. She hopes that you can help her in that.The box's lock is constructed like that. The box itself is represented by an absolutely perfect black cube with the identical deepening on each face (those are some foreign nanotechnologies that the far away kingdom scientists haven't dreamt of). The box is accompanied by six gems whose form matches the deepenings in the box's faces. The box can only be opened after it is correctly decorated by the gems, that is, when each deepening contains exactly one gem. Two ways of decorating the box are considered the same if they can be obtained one from the other one by arbitrarily rotating the box (note that the box is represented by a perfect nanotechnological cube)Now Vasilisa the Wise wants to know by the given set of colors the following: in how many ways would she decorate the box in the worst case to open it? To answer this question it is useful to know that two gems of one color are indistinguishable from each other. Help Vasilisa to solve this challenging problem.",
+        "potential_dominant_fix_op": "replace",
+        "bug_source_code": "from functools import reduce\n\ndef factorial(n):\n    return reduce(lambda x, y: x*y, range(1,n+1))\n\ncolors = {\n    'R' : 0,\n    'O' : 0,\n    'Y' : 0,\n    'G' : 0,\n    'B' : 0,\n    'V' : 0\n}\n\nfor c in list(input()):\n    colors[c] += 1\n\namount = list(reversed(sorted([(colors[key], key) for key in colors])))\n\namount = [x[0] for x in amount]\n\nif amount[0] == 6 or amount[0] == 5:\n    print(\"1\")\nelif amount[0] == 4:\n    print(\"2\")\nelif amount[0] == 3:\n    if amount[1] == 3:\n        print(\"2\")\n    elif amount[1] == 2:\n        print(\"5\")\n    elif amount[1] == 1:\n        print(\"5\")\nelif amount[0] == 2:\n    if amount[1] == amount[2] == 2:\n        print(\"4\")\n    elif amount[1] == 2:\n        while True: pass\n    else:\n        print(factorial(6) // 48)\n\nelif amount[0] == 1:\n    print(factorial(6) // 24)\n\n\n\n",
+        "replace_cnt": 2,
+        "prob_desc_input_from": "standard input",
+        "bug_code_uid": "a8b7994d627ca39641c3ea25ad1d1d08",
+        "insert_cnt": 1,
+        "fix_ops_cnt": 4,
+        "hidden_unit_tests": "[{\"input\": \"YYYYYY\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"BOOOOB\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"ROYGBV\\r\\n\", \"output\": [\"30\"]}, {\"input\": \"RRRRRR\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"BOOOOO\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"GOGGVG\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"GRBYVO\\r\\n\", \"output\": [\"30\"]}, {\"input\": \"BYOVRR\\r\\n\", \"output\": [\"15\"]}, {\"input\": \"VOVRBV\\r\\n\", \"output\": [\"5\"]}, {\"input\": \"GVGBVO\\r\\n\", \"output\": [\"8\"]}, {\"input\": \"BOBGBB\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"OOYYBY\\r\\n\", \"output\": [\"3\"]}, {\"input\": \"VVRVVV\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"YBBVVY\\r\\n\", \"output\": [\"6\"]}, {\"input\": \"GYYGGG\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"BRRBRB\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"OOOOOO\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"OVBRYG\\r\\n\", \"output\": [\"30\"]}, {\"input\": \"VOBYGO\\r\\n\", \"output\": [\"15\"]}, {\"input\": \"VRRYGR\\r\\n\", \"output\": [\"5\"]}, {\"input\": \"VOBVYB\\r\\n\", \"output\": [\"8\"]}, {\"input\": \"YYYYRB\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"RYYYVV\\r\\n\", \"output\": [\"3\"]}, {\"input\": \"YYYYYG\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"OBORBR\\r\\n\", \"output\": [\"6\"]}, {\"input\": \"RRRGRG\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"VYYYVV\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"YROVBG\\r\\n\", \"output\": [\"30\"]}, {\"input\": \"RYGOBG\\r\\n\", \"output\": [\"15\"]}, {\"input\": \"BGRGGV\\r\\n\", \"output\": [\"5\"]}, {\"input\": \"BVRYBV\\r\\n\", \"output\": [\"8\"]}, {\"input\": \"RRBYRR\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"GGGYYB\\r\\n\", \"output\": [\"3\"]}, {\"input\": \"BBBBBY\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"RRYYOO\\r\\n\", \"output\": [\"6\"]}, {\"input\": \"YYYRRY\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"OGGOOG\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"GYYBRO\\r\\n\", \"output\": [\"15\"]}, {\"input\": \"VORBOR\\r\\n\", \"output\": [\"8\"]}, {\"input\": \"RRRGGB\\r\\n\", \"output\": [\"3\"]}, {\"input\": \"BBOOYY\\r\\n\", \"output\": [\"6\"]}, {\"input\": \"YYBBOO\\r\\n\", \"output\": [\"6\"]}, {\"input\": \"OBRRYY\\r\\n\", \"output\": [\"8\"]}, {\"input\": \"ROYYGG\\r\\n\", \"output\": [\"8\"]}, {\"input\": \"RRGGYY\\r\\n\", \"output\": [\"6\"]}, {\"input\": \"RROOYY\\r\\n\", \"output\": [\"6\"]}, {\"input\": \"RRYOGB\\r\\n\", \"output\": [\"15\"]}]"
+    }
+}

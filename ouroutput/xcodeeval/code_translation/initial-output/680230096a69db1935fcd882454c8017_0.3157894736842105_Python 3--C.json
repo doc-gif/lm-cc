@@ -1,0 +1,87 @@
+{
+    "oai_response": {
+        "prompt": "Here is code in Python 3 programming lanaguge. Translate the following code from Python 3 to C programming lanaguge. Do not output any extra description or tokens other than the translated code. \n\nMOD = 998244353\nn, m, k = input().split()\n\nn = int(n)\nm = int(m)\nk = int(k)\n\n# Taken from https://www.geeksforgeeks.org/binomial-coefficient-dp-9/\ndef nCr(n , k):\n    C = [0 for i in range(k+1)]\n    C[0] = 1\n\n    for i in range(1,n+1):\n        j = min(i ,k)\n        while (j>0):\n            C[j] = C[j] + C[j-1]\n            j -= 1\n    return C[k]\n\nanswer = m * nCr(n-1, k) * (m-1)**k\nprint(answer%MOD)\n||END-of-SRC||",
+        "response": {
+            "id": "multi-call-as-f1a535ai0k",
+            "model": "deepseek-v3",
+            "created": 1767068393,
+            "choices": [
+                {
+                    "index": 0,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <stdlib.h>\n\n#define MOD 998244353\n\nlong long nCr(int n, int k) {\n    long long *C = (long long *)malloc((k + 1) * sizeof(long long));\n    for (int i = 0; i <= k; i++) {\n        C[i] = 0;\n    }\n    C[0] = 1;\n\n    for (int i = 1; i <= n; i++) {\n        int j = (i < k) ? i : k;\n        while (j > 0) {\n            C[j] = (C[j] + C[j - 1]) % MOD;\n            j--;\n        }\n    }\n    long long result = C[k];\n    free(C);\n    return result;\n}\n\nlong long power(long long base, int exp) {\n    long long result = 1;\n    while (exp > 0) {\n        if (exp % 2 == 1) {\n            result = (result * base) % MOD;\n        }\n        base = (base * base) % MOD;\n        exp /= 2;\n    }\n    return result;\n}\n\nint main() {\n    int n, m, k;\n    scanf(\"%d %d %d\", &n, &m, &k);\n    long long answer = (m * nCr(n - 1, k)) % MOD;\n    answer = (answer * power(m - 1, k)) % MOD;\n    printf(\"%lld\\n\", answer);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 1,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n\n#define MOD 998244353\n\nlong long nCr(int n, int k) {\n    long long C[k+1];\n    for (int i = 0; i <= k; i++) {\n        C[i] = 0;\n    }\n    C[0] = 1;\n\n    for (int i = 1; i <= n; i++) {\n        int j = (i < k) ? i : k;\n        while (j > 0) {\n            C[j] = (C[j] + C[j-1]) % MOD;\n            j--;\n        }\n    }\n    return C[k];\n}\n\nlong long power(long long base, int exp) {\n    long long result = 1;\n    while (exp > 0) {\n        if (exp % 2 == 1) {\n            result = (result * base) % MOD;\n        }\n        base = (base * base) % MOD;\n        exp /= 2;\n    }\n    return result;\n}\n\nint main() {\n    int n, m, k;\n    scanf(\"%d %d %d\", &n, &m, &k);\n    long long answer = (m * nCr(n-1, k)) % MOD;\n    answer = (answer * power(m-1, k)) % MOD;\n    printf(\"%lld\\n\", answer);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 2,
+                    "message": {
+                        "role": "assistant",
+                        "content": "Here's the translated code in C:\n\n```c\n#include <stdio.h>\n#include <stdlib.h>\n\n#define MOD 998244353\n\nint nCr(int n, int k) {\n    int* C = (int*)malloc((k + 1) * sizeof(int));\n    for (int i = 0; i <= k; i++) {\n        C[i] = 0;\n    }\n    C[0] = 1;\n\n    for (int i = 1; i <= n; i++) {\n        int j = (i < k) ? i : k;\n        while (j > 0) {\n            C[j] = (C[j] + C[j - 1]) % MOD;\n            j--;\n        }\n    }\n    int result = C[k];\n    free(C);\n    return result;\n}\n\nint main() {\n    int n, m, k;\n    scanf(\"%d %d %d\", &n, &m, &k);\n    \n    long long answer = (long long)m * nCr(n - 1, k) % MOD;\n    long long power = 1;\n    for (int i = 0; i < k; i++) {\n        power = (power * (m - 1)) % MOD;\n    }\n    answer = (answer * power) % MOD;\n    \n    printf(\"%lld\\n\", answer);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 3,
+                    "message": {
+                        "role": "assistant",
+                        "content": "Here's the translated code in C:\n\n```c\n#include <stdio.h>\n#include <stdlib.h>\n\n#define MOD 998244353\n\nlong long nCr(int n, int k) {\n    long long C[k+1];\n    for (int i = 0; i <= k; i++) {\n        C[i] = 0;\n    }\n    C[0] = 1;\n\n    for (int i = 1; i <= n; i++) {\n        int j = (i < k) ? i : k;\n        while (j > 0) {\n            C[j] = C[j] + C[j-1];\n            j--;\n        }\n    }\n    return C[k];\n}\n\nint main() {\n    int n, m, k;\n    scanf(\"%d %d %d\", &n, &m, &k);\n    \n    long long answer = m * nCr(n-1, k);\n    for (int i = 0; i < k; i++) {\n        answer = (answer * (m-1)) % MOD;\n    }\n    printf(\"%lld\\n\", answer % MOD);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 4,
+                    "message": {
+                        "role": "assistant",
+                        "content": "Here's the translated code in C:\n\n```c\n#include <stdio.h>\n#include <stdlib.h>\n\n#define MOD 998244353\n\nint nCr(int n, int k) {\n    int* C = (int*)malloc((k + 1) * sizeof(int));\n    for (int i = 0; i <= k; i++) {\n        C[i] = 0;\n    }\n    C[0] = 1;\n\n    for (int i = 1; i <= n; i++) {\n        int j = (i < k) ? i : k;\n        while (j > 0) {\n            C[j] = (C[j] + C[j - 1]) % MOD;\n            j--;\n        }\n    }\n    int result = C[k];\n    free(C);\n    return result;\n}\n\nint main() {\n    int n, m, k;\n    scanf(\"%d %d %d\", &n, &m, &k);\n    \n    long long answer = (long long)m * nCr(n - 1, k) % MOD;\n    long long power = 1;\n    for (int i = 0; i < k; i++) {\n        power = (power * (m - 1)) % MOD;\n    }\n    answer = (answer * power) % MOD;\n    \n    printf(\"%lld\\n\", answer);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                }
+            ],
+            "usage": {
+                "prompt_tokens": 1045,
+                "completion_tokens": 1463,
+                "total_tokens": 2508
+            }
+        }
+    },
+    "source_data": {
+        "code_uid": "680230096a69db1935fcd882454c8017",
+        "prob_desc_output_to": "standard output",
+        "prob_desc_notes": "NoteIn the first example, since $$$k=0$$$, the color of every brick should be the same, so there will be exactly $$$m=3$$$ ways to color the bricks.In the second example, suppose the two colors in the buckets are yellow and lime, the following image shows all $$$4$$$ possible colorings.  ",
+        "lang_cluster": "Python",
+        "prob_desc_time_limit": "2 seconds",
+        "prob_desc_input_spec": "The first and only line contains three integers $$$n$$$, $$$m$$$ and $$$k$$$ ($$$1 \\leq n,m \\leq 2000, 0 \\leq k \\leq n-1$$$)\u00a0\u2014 the number of bricks, the number of colors, and the number of bricks, such that its color differs from the color of brick to the left of it.",
+        "source_code": "MOD = 998244353\nn, m, k = input().split()\n\nn = int(n)\nm = int(m)\nk = int(k)\n\n# Taken from https://www.geeksforgeeks.org/binomial-coefficient-dp-9/\ndef nCr(n , k):\n    C = [0 for i in range(k+1)]\n    C[0] = 1\n\n    for i in range(1,n+1):\n        j = min(i ,k)\n        while (j>0):\n            C[j] = C[j] + C[j-1]\n            j -= 1\n    return C[k]\n\nanswer = m * nCr(n-1, k) * (m-1)**k\nprint(answer%MOD)\n",
+        "prob_desc_sample_inputs": [
+            "3 3 0",
+            "3 2 1"
+        ],
+        "prob_desc_memory_limit": "256 megabytes",
+        "exec_outcome": "PASSED",
+        "prob_desc_output_spec": "Print one integer\u00a0\u2014 the number of ways to color bricks modulo $$$998\\,244\\,353$$$.",
+        "src_uid": "b2b9bee53e425fab1aa4d5468b9e578b",
+        "prob_desc_input_from": "standard input",
+        "lang": "Python 3",
+        "prob_desc_sample_outputs": [
+            "3",
+            "4"
+        ],
+        "file_name": "d7021504500d5ca7c2b02df8100a574d159e6e67e20ec8071b75800b1267370a",
+        "prob_desc_description": "On his free time, Chouti likes doing some housework. He has got one new task, paint some bricks in the yard.There are $$$n$$$ bricks lined in a row on the ground. Chouti has got $$$m$$$ paint buckets of different colors at hand, so he painted each brick in one of those $$$m$$$ colors.Having finished painting all bricks, Chouti was satisfied. He stood back and decided to find something fun with these bricks. After some counting, he found there are $$$k$$$ bricks with a color different from the color of the brick on its left (the first brick is not counted, for sure).So as usual, he needs your help in counting how many ways could he paint the bricks. Two ways of painting bricks are different if there is at least one brick painted in different colors in these two ways. Because the answer might be quite big, you only need to output the number of ways modulo $$$998\\,244\\,353$$$.",
+        "prob_desc_created_at": "1544970900",
+        "difficulty": 1500.0,
+        "hidden_unit_tests": "[{\"input\": \"3 3 0\\r\\n\", \"output\": [\"3\"]}, {\"input\": \"3 2 1\\r\\n\", \"output\": [\"4\"]}, {\"input\": \"3 3 2\\r\\n\", \"output\": [\"12\"]}, {\"input\": \"123 45 67\\r\\n\", \"output\": [\"212505593\"]}, {\"input\": \"1234 567 890\\r\\n\", \"output\": [\"661457723\"]}, {\"input\": \"2000 23 45\\r\\n\", \"output\": [\"383618765\"]}, {\"input\": \"50 2000 40\\r\\n\", \"output\": [\"461299924\"]}, {\"input\": \"2000 2 1999\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"3 1 0\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"3 1 1\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"1 1 0\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"1 534 0\\r\\n\", \"output\": [\"534\"]}, {\"input\": \"1926 817 0\\r\\n\", \"output\": [\"817\"]}, {\"input\": \"1999 233 1998\\r\\n\", \"output\": [\"929315320\"]}, {\"input\": \"1139 1252 348\\r\\n\", \"output\": [\"933447185\"]}, {\"input\": \"1859 96 1471\\r\\n\", \"output\": [\"33410781\"]}, {\"input\": \"1987 237 1286\\r\\n\", \"output\": [\"609458581\"]}, {\"input\": \"1411 1081 1082\\r\\n\", \"output\": [\"238077838\"]}, {\"input\": \"1539 1221 351\\r\\n\", \"output\": [\"938987357\"]}, {\"input\": \"259 770 5\\r\\n\", \"output\": [\"711761505\"]}, {\"input\": \"387 1422 339\\r\\n\", \"output\": [\"383877548\"]}, {\"input\": \"515 1563 110\\r\\n\", \"output\": [\"971635624\"]}, {\"input\": \"1939 407 1072\\r\\n\", \"output\": [\"405465261\"]}, {\"input\": \"518 518 36\\r\\n\", \"output\": [\"600327272\"]}, {\"input\": \"646 1171 131\\r\\n\", \"output\": [\"200804462\"]}, {\"input\": \"70 1311 53\\r\\n\", \"output\": [\"697377585\"]}, {\"input\": \"1494 155 101\\r\\n\", \"output\": [\"97784646\"]}, {\"input\": \"918 1704 848\\r\\n\", \"output\": [\"229358995\"]}, {\"input\": \"1046 1844 18\\r\\n\", \"output\": [\"502244233\"]}, {\"input\": \"1174 688 472\\r\\n\", \"output\": [\"937340189\"]}, {\"input\": \"1894 637 1635\\r\\n\", \"output\": [\"189307651\"]}, {\"input\": \"22 1481 21\\r\\n\", \"output\": [\"870324282\"]}, {\"input\": \"1446 1030 111\\r\\n\", \"output\": [\"794075632\"]}, {\"input\": \"1440 704 520\\r\\n\", \"output\": [\"954730150\"]}, {\"input\": \"1569 1548 644\\r\\n\", \"output\": [\"925334150\"]}, {\"input\": \"289 393 19\\r\\n\", \"output\": [\"184294470\"]}, {\"input\": \"417 1045 383\\r\\n\", \"output\": [\"517114866\"]}, {\"input\": \"1841 1185 1765\\r\\n\", \"output\": [\"773828348\"]}, {\"input\": \"1969 30 744\\r\\n\", \"output\": [\"618963319\"]}, {\"input\": \"1393 874 432\\r\\n\", \"output\": [\"676801447\"]}, {\"input\": \"817 1719 588\\r\\n\", \"output\": [\"569385432\"]}, {\"input\": \"945 563 152\\r\\n\", \"output\": [\"386567314\"]}, {\"input\": \"369 511 235\\r\\n\", \"output\": [\"520296460\"]}, {\"input\": \"555 1594 412\\r\\n\", \"output\": [\"438918750\"]}, {\"input\": \"2000 1234 1800\\r\\n\", \"output\": [\"550745740\"]}, {\"input\": \"1999 333 1000\\r\\n\", \"output\": [\"101641915\"]}, {\"input\": \"2000 2000 1999\\r\\n\", \"output\": [\"694730459\"]}]",
+        "source_lang": "Python 3",
+        "target_lang": "C"
+    }
+}

@@ -1,0 +1,103 @@
+{
+    "oai_response": {
+        "prompt": "Fix a buggy program written in Python language to solve the following programming problem:\nDescription: There are well-known formulas: , , . Also mathematicians found similar formulas for higher degrees.Find the value of the sum  modulo 109\u2009+\u20097 (so you should find the remainder after dividing the answer by the value 109\u2009+\u20097).\nInput Specification: The only line contains two integers n,\u2009k (1\u2009\u2264\u2009n\u2009\u2264\u2009109,\u20090\u2009\u2264\u2009k\u2009\u2264\u2009106).\nOutput Specification: Print the only integer a \u2014 the remainder after dividing the value of the sum by the value 109\u2009+\u20097.\n\nSample Input:\n4 1\nSample Output:\n10\n\nSample Input:\n4 2\nSample Output:\n30\n\nSample Input:\n4 3\nSample Output:\n100\n\nSample Input:\n4 0\nSample Output:\n4\n\nNotes: None\nTake input from standard input and output to standard output\n\nHere is the code with a bug of MEMORY_LIMIT_EXCEEDED:\n\nimport sys\nrange = xrange\ninput = raw_input\nimport __pypy__\nmulmod = __pypy__.intop.int_mulmod\n\nMOD = 10**9+7\nn, k = [int(x) for x in input().split()]\n\ndef f(n):\n    s = 0\n    for i in range(n):\n        s += pow(i,k,MOD)\n        s %= MOD\n    return s\n\nprecalc = [0]\nfor i in range(k + 1):\n    precalc.append((precalc[-1] + pow(i,k,MOD)) % MOD)\n\ndef interpolate(samples, x):\n    x %= MOD\n    m = len(samples)\n    if x < m:\n        return samples[x]\n    \n    modinv = [1]*m\n    for i in range(2, m):\n        modinv[i] = mulmod(-(MOD//i), modinv[MOD%i], MOD)\n\n    invfac = [1]\n    for i in range(1, m):\n        invfac.append(mulmod(invfac[-1], modinv[i], MOD))\n    invneg_fac = [invfac[i] * (1 - 2 * (i & 1)) for i in range(m)]\n\n    xfac_down = [1]\n    for j in reversed(range(x - (m - 1), x + 1)):\n        xfac_down.append(xfac_down[-1] * j)\n    \n    xfac_up = [1]\n    for j in range(x - (m - 1), x + 1):\n        xfac_up.append(xfac_up[-1] * j)\n    \n    s = 0\n    for i in range(m):\n        pr = precalc[i]\n        #pr = mulmod(pr, pow(x - i, MOD - 2, MOD), MOD)\n        pr = mulmod(pr, xfac_down[i] * xfac_up[m - 1 - i] % MOD, MOD)\n        pr = mulmod(pr, mulmod(invneg_fac[m - i - 1], invfac[i], MOD), MOD)\n        s = (s + pr) % MOD\n    return s\nprint (interpolate(precalc, n + 1) - (k == 0)) % MOD\n\n\nProvide the fixed Python code without any description or extra tokens.\n\nFixed source code:\n ||END-of-SRC||",
+        "response": {
+            "id": "multi-call-as-fcxxzq0175",
+            "model": "deepseek-v3",
+            "created": 1760422918,
+            "choices": [
+                {
+                    "index": 0,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```python\nimport sys\nrange = xrange\ninput = raw_input\nimport __pypy__\nmulmod = __pypy__.intop.int_mulmod\n\nMOD = 10**9+7\nn, k = [int(x) for x in input().split()]\n\ndef f(n):\n    s = 0\n    for i in range(n):\n        s += pow(i,k,MOD)\n        s %= MOD\n    return s\n\nprecalc = [0]\nfor i in range(k + 2):\n    precalc.append((precalc[-1] + pow(i,k,MOD)) % MOD)\n\ndef interpolate(samples, x):\n    x %= MOD\n    m = len(samples)\n    if x < m:\n        return samples[x]\n    \n    modinv = [1]*m\n    for i in range(2, m):\n        modinv[i] = mulmod(-(MOD//i), modinv[MOD%i], MOD)\n\n    invfac = [1]\n    for i in range(1, m):\n        invfac.append(mulmod(invfac[-1], modinv[i], MOD))\n    invneg_fac = [mulmod(invfac[i], (1 - 2 * (i & 1)) % MOD, MOD) for i in range(m)]\n\n    xfac_down = [1] * m\n    for i in range(1, m):\n        xfac_down[i] = mulmod(xfac_down[i-1], (x - (i-1)) % MOD, MOD)\n    \n    xfac_up = [1] * m\n    for i in range(1, m):\n        xfac_up[i] = mulmod(xfac_up[i-1], (x - (m - 1) + (i-1)) % MOD, MOD)\n    \n    s = 0\n    for i in range(m):\n        pr = samples[i]\n        term1 = mulmod(xfac_down[i], xfac_up[m - 1 - i], MOD)\n        term2 = mulmod(invneg_fac[m - i - 1], invfac[i], MOD)\n        pr = mulmod(pr, mulmod(term1, term2, MOD), MOD)\n        s = (s + pr) % MOD\n    return s\nprint (interpolate(precalc, n + 1) - (k == 0)) % MOD\n``` ||END-of-SRC||"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 1,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```python\nimport sys\nrange = xrange\ninput = raw_input\nimport __pypy__\nmulmod = __pypy__.intop.int_mulmod\n\nMOD = 10**9+7\nn, k = [int(x) for x in input().split()]\n\ndef f(n):\n    s = 0\n    for i in range(n):\n        s += pow(i,k,MOD)\n        s %= MOD\n    return s\n\nprecalc = [0]\nfor i in range(k + 2):\n    precalc.append((precalc[-1] + pow(i,k,MOD)) % MOD)\n\ndef interpolate(samples, x):\n    x %= MOD\n    m = len(samples)\n    if x < m:\n        return samples[x]\n    \n    modinv = [1]*m\n    for i in range(2, m):\n        modinv[i] = mulmod(-(MOD//i), modinv[MOD%i], MOD)\n\n    invfac = [1]\n    for i in range(1, m):\n        invfac.append(mulmod(invfac[-1], modinv[i], MOD))\n    invneg_fac = [mulmod(invfac[i], (1 - 2 * (i & 1)) % MOD, MOD) for i in range(m)]\n\n    xfac_down = [1]\n    for j in reversed(range(x - (m - 1), x + 1)):\n        xfac_down.append(mulmod(xfac_down[-1], j % MOD, MOD))\n    \n    xfac_up = [1]\n    for j in range(x - (m - 1), x + 1):\n        xfac_up.append(mulmod(xfac_up[-1], j % MOD, MOD))\n    \n    s = 0\n    for i in range(m):\n        pr = samples[i]\n        term1 = mulmod(xfac_down[i], xfac_up[m - 1 - i], MOD)\n        term2 = mulmod(invneg_fac[m - i - 1], invfac[i], MOD)\n        pr = mulmod(pr, mulmod(term1, term2, MOD), MOD)\n        s = (s + pr) % MOD\n    return s\n\nprint (interpolate(precalc, n + 1) - (k == 0)) % MOD\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 2,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```python\nimport sys\nrange = xrange\ninput = raw_input\nimport __pypy__\nmulmod = __pypy__.intop.int_mulmod\n\nMOD = 10**9+7\nn, k = [int(x) for x in input().split()]\n\ndef f(n):\n    s = 0\n    for i in range(n):\n        s += pow(i,k,MOD)\n        s %= MOD\n    return s\n\nprecalc = [0]\nfor i in range(k + 2):\n    precalc.append((precalc[-1] + pow(i,k,MOD)) % MOD)\n\ndef interpolate(samples, x):\n    x %= MOD\n    m = len(samples)\n    if x < m:\n        return samples[x]\n    \n    modinv = [1]*(m)\n    for i in range(2, m):\n        modinv[i] = mulmod(-(MOD//i), modinv[MOD%i], MOD)\n\n    invfac = [1]\n    for i in range(1, m):\n        invfac.append(mulmod(invfac[-1], modinv[i], MOD))\n    invneg_fac = [mulmod(invfac[i], (1 - 2 * (i & 1)) % MOD, MOD) for i in range(m)]\n\n    xfac_down = [1]*(m)\n    for i in range(1, m):\n        xfac_down[i] = mulmod(xfac_down[i-1], (x - (i-1)) % MOD, MOD)\n    \n    xfac_up = [1]*(m)\n    for i in range(1, m):\n        xfac_up[i] = mulmod(xfac_up[i-1], (x - (m - 1 - i)) % MOD, MOD)\n    \n    s = 0\n    for i in range(m):\n        pr = samples[i]\n        term = mulmod(xfac_down[i], xfac_up[m - 1 - i], MOD)\n        term = mulmod(term, mulmod(invneg_fac[m - i - 1], invfac[i], MOD), MOD)\n        pr = mulmod(pr, term, MOD)\n        s = (s + pr) % MOD\n    return s\n\nprint (interpolate(precalc, n + 1) - (k == 0)) % MOD\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 3,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```python\nimport sys\nrange = xrange\ninput = raw_input\nimport __pypy__\nmulmod = __pypy__.intop.int_mulmod\n\nMOD = 10**9+7\nn, k = [int(x) for x in input().split()]\n\ndef f(n):\n    s = 0\n    for i in range(n):\n        s += pow(i,k,MOD)\n        s %= MOD\n    return s\n\nprecalc = [0]\nfor i in range(k + 2):\n    precalc.append((precalc[-1] + pow(i,k,MOD)) % MOD)\n\ndef interpolate(samples, x):\n    x %= MOD\n    m = len(samples)\n    if x < m:\n        return samples[x]\n    \n    modinv = [1]*m\n    for i in range(2, m):\n        modinv[i] = mulmod(-(MOD//i), modinv[MOD%i], MOD)\n\n    invfac = [1]\n    for i in range(1, m):\n        invfac.append(mulmod(invfac[-1], modinv[i], MOD))\n    invneg_fac = [mulmod(invfac[i], (1 - 2 * (i & 1)) % MOD, MOD) for i in range(m)]\n\n    xfac_down = [1] * m\n    for i in range(1, m):\n        xfac_down[i] = mulmod(xfac_down[i-1], (x - i + 1) % MOD, MOD)\n    \n    xfac_up = [1] * m\n    for i in range(1, m):\n        xfac_up[i] = mulmod(xfac_up[i-1], (x - (m - 1) + i - 1) % MOD, MOD)\n    \n    s = 0\n    for i in range(m):\n        pr = samples[i]\n        term = mulmod(xfac_down[i], xfac_up[m - 1 - i], MOD)\n        term = mulmod(term, mulmod(invneg_fac[m - i - 1], invfac[i], MOD), MOD)\n        s = (s + mulmod(pr, term, MOD)) % MOD\n    return s\n\nprint (interpolate(precalc, n + 1) - (k == 0)) % MOD\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 4,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```python\nimport sys\nrange = xrange\ninput = raw_input\nimport __pypy__\nmulmod = __pypy__.intop.int_mulmod\n\nMOD = 10**9+7\nn, k = [int(x) for x in input().split()]\n\ndef f(n):\n    s = 0\n    for i in range(n):\n        s += pow(i,k,MOD)\n        s %= MOD\n    return s\n\nprecalc = [0]\nfor i in range(k + 2):\n    precalc.append((precalc[-1] + pow(i,k,MOD)) % MOD)\n\ndef interpolate(samples, x):\n    x %= MOD\n    m = len(samples)\n    if x < m:\n        return samples[x]\n    \n    modinv = [1]*m\n    for i in range(2, m):\n        modinv[i] = mulmod(-(MOD//i), modinv[MOD%i], MOD)\n\n    invfac = [1]\n    for i in range(1, m):\n        invfac.append(mulmod(invfac[-1], modinv[i], MOD))\n    invneg_fac = [mulmod(invfac[i], (1 - 2 * (i & 1)) % MOD, MOD) for i in range(m)]\n\n    xfac_down = [1]\n    for j in reversed(range(x - (m - 1), x + 1)):\n        xfac_down.append(mulmod(xfac_down[-1], j % MOD, MOD))\n    \n    xfac_up = [1]\n    for j in range(x - (m - 1), x + 1):\n        xfac_up.append(mulmod(xfac_up[-1], j % MOD, MOD))\n    \n    s = 0\n    for i in range(m):\n        pr = samples[i]\n        term1 = mulmod(xfac_down[i], xfac_up[m - 1 - i], MOD)\n        term2 = mulmod(invneg_fac[m - i - 1], invfac[i], MOD)\n        pr = mulmod(pr, term1, MOD)\n        pr = mulmod(pr, term2, MOD)\n        s = (s + pr) % MOD\n    return s\n\nprint (interpolate(precalc, n + 1) - (k == 0)) % MOD\n```"
+                    },
+                    "finish_reason": "stop"
+                }
+            ],
+            "usage": {
+                "prompt_tokens": 3665,
+                "completion_tokens": 2547,
+                "total_tokens": 6212
+            }
+        }
+    },
+    "source_data": {
+        "prob_desc_memory_limit": "256 megabytes",
+        "tags": [
+            "math"
+        ],
+        "prob_desc_created_at": "1455116400",
+        "fix_source_code": "",
+        "prob_desc_input_spec": "The only line contains two integers n,\u2009k (1\u2009\u2264\u2009n\u2009\u2264\u2009109,\u20090\u2009\u2264\u2009k\u2009\u2264\u2009106).",
+        "prob_desc_sample_outputs": [
+            "10",
+            "30",
+            "100",
+            "4"
+        ],
+        "src_uid": "6f6fc42a367cdce60d76fd1914e73f0c",
+        "prob_desc_time_limit": "2 seconds",
+        "fix_exec_outcome": "",
+        "delete_cnt": 0,
+        "apr_id": "47c4a32681b552fdb10262539baf4265",
+        "fix_code_uid": "",
+        "lang_cluster": "Python",
+        "prob_desc_sample_inputs": [
+            "4 1",
+            "4 2",
+            "4 3",
+            "4 0"
+        ],
+        "prob_desc_output_to": "standard output",
+        "file_name": "Python.jsonl",
+        "equal_cnt": 7,
+        "lang": "PyPy 2",
+        "prob_desc_output_spec": "Print the only integer a \u2014 the remainder after dividing the value of the sum by the value 109\u2009+\u20097.",
+        "bug_exec_outcome": "MEMORY_LIMIT_EXCEEDED",
+        "prob_desc_notes": null,
+        "difficulty": 2600.0,
+        "similarity_score": 0.661993742,
+        "prob_desc_description": "There are well-known formulas: , , . Also mathematicians found similar formulas for higher degrees.Find the value of the sum  modulo 109\u2009+\u20097 (so you should find the remainder after dividing the answer by the value 109\u2009+\u20097).",
+        "potential_dominant_fix_op": "replace",
+        "bug_source_code": "import sys\nrange = xrange\ninput = raw_input\nimport __pypy__\nmulmod = __pypy__.intop.int_mulmod\n\nMOD = 10**9+7\nn, k = [int(x) for x in input().split()]\n\ndef f(n):\n    s = 0\n    for i in range(n):\n        s += pow(i,k,MOD)\n        s %= MOD\n    return s\n\nprecalc = [0]\nfor i in range(k + 1):\n    precalc.append((precalc[-1] + pow(i,k,MOD)) % MOD)\n\ndef interpolate(samples, x):\n    x %= MOD\n    m = len(samples)\n    if x < m:\n        return samples[x]\n    \n    modinv = [1]*m\n    for i in range(2, m):\n        modinv[i] = mulmod(-(MOD//i), modinv[MOD%i], MOD)\n\n    invfac = [1]\n    for i in range(1, m):\n        invfac.append(mulmod(invfac[-1], modinv[i], MOD))\n    invneg_fac = [invfac[i] * (1 - 2 * (i & 1)) for i in range(m)]\n\n    xfac_down = [1]\n    for j in reversed(range(x - (m - 1), x + 1)):\n        xfac_down.append(xfac_down[-1] * j)\n    \n    xfac_up = [1]\n    for j in range(x - (m - 1), x + 1):\n        xfac_up.append(xfac_up[-1] * j)\n    \n    s = 0\n    for i in range(m):\n        pr = precalc[i]\n        #pr = mulmod(pr, pow(x - i, MOD - 2, MOD), MOD)\n        pr = mulmod(pr, xfac_down[i] * xfac_up[m - 1 - i] % MOD, MOD)\n        pr = mulmod(pr, mulmod(invneg_fac[m - i - 1], invfac[i], MOD), MOD)\n        s = (s + pr) % MOD\n    return s\nprint (interpolate(precalc, n + 1) - (k == 0)) % MOD\n",
+        "replace_cnt": 5,
+        "prob_desc_input_from": "standard input",
+        "bug_code_uid": "420482792a94aecf98126700f79013b4",
+        "insert_cnt": 2,
+        "fix_ops_cnt": 7,
+        "hidden_unit_tests": "[{\"input\": \"4 1\\r\\n\", \"output\": [\"10\"]}, {\"input\": \"4 2\\r\\n\", \"output\": [\"30\"]}, {\"input\": \"4 3\\r\\n\", \"output\": [\"100\"]}, {\"input\": \"4 0\\r\\n\", \"output\": [\"4\"]}, {\"input\": \"10 0\\r\\n\", \"output\": [\"10\"]}, {\"input\": \"1 1\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"1 0\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"1 1000000\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"1000000000 0\\r\\n\", \"output\": [\"1000000000\"]}, {\"input\": \"100 100\\r\\n\", \"output\": [\"568830579\"]}, {\"input\": \"10000 100\\r\\n\", \"output\": [\"352711099\"]}, {\"input\": \"100 10000\\r\\n\", \"output\": [\"859998022\"]}, {\"input\": \"1000000000 1000000\\r\\n\", \"output\": [\"617381606\"]}, {\"input\": \"1000000 1000000\\r\\n\", \"output\": [\"997878755\"]}, {\"input\": \"999999 1000000\\r\\n\", \"output\": [\"504760730\"]}, {\"input\": \"77674473 447444\\r\\n\", \"output\": [\"838207299\"]}, {\"input\": \"333312494 795258\\r\\n\", \"output\": [\"393290476\"]}, {\"input\": \"761637147 673329\\r\\n\", \"output\": [\"223778667\"]}, {\"input\": \"335185991 514401\\r\\n\", \"output\": [\"412595240\"]}, {\"input\": \"203702132 355473\\r\\n\", \"output\": [\"229710810\"]}, {\"input\": \"1000000000 999935\\r\\n\", \"output\": [\"729344740\"]}]"
+    }
+}

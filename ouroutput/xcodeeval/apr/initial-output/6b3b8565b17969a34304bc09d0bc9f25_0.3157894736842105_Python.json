@@ -1,0 +1,99 @@
+{
+    "oai_response": {
+        "prompt": "Fix a buggy program written in Python language to solve the following programming problem:\nDescription: Prof. Vasechkin wants to represent positive integer n as a sum of addends, where each addends is an integer number containing only 1s. For example, he can represent 121 as 121=111+11+\u20131. Help him to find the least number of digits 1 in such sum.\nInput Specification: The first line of the input contains integer n (1\u2009\u2264\u2009n\u2009&lt;\u20091015).\nOutput Specification: Print expected minimal number of digits 1.\n\nSample Input:\n121\nSample Output:\n6\n\nNotes: None\nTake input from standard input and output to standard output\n\nHere is the code with a bug of WRONG_ANSWER:\n\ndef divi(n):\n    if n == 0:\n        return 0\n    elif n == 1:\n        return n\n    elif n == 11:\n        return 2\n    elif n % 11 <= 6:\n        k = n % 11\n        j = 0\n        cont_um = 0\n        while j < n:\n            j += 1\n            cont_um += 1\n        return cont_um\n    else:\n        k = n % 11\n        h = 11\n        contador_de_um = 2\n        while h > n:\n            h -= 1\n            contador_de_um += 1\n        return contador_de_um\n\n\ndef divide_maior(n):\n    divisao = n // 11\n    resto = n % 11\n    valor_menor_que_onze = divi(resto)\n    valor_maior_que_onze = divisao * 2\n    return valor_maior_que_onze + valor_menor_que_onze\n\n\ndef execute():\n    n = int(input())\n    m = divide_maior(n)\n    print(m)\n\n\nexecute()\n\n\nProvide the fixed Python code without any description or extra tokens.\n\nFixed source code:\n ||END-of-SRC||",
+        "response": {
+            "id": "multi-call-as-m3b49y8sei",
+            "model": "deepseek-v3",
+            "created": 1760424366,
+            "choices": [
+                {
+                    "index": 0,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```python\ndef min_ones(n):\n    if n == 0:\n        return 0\n    min_digits = float('inf')\n    for k in range(0, 17):\n        remaining = n - k\n        if remaining >= 0 and remaining % 11 == 0:\n            digits = k + (remaining // 11) * 2\n            if digits < min_digits:\n                min_digits = digits\n    return min_digits\n\nn = int(input())\nprint(min_ones(n))\n``` ||END-of-SRC||"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 1,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```python\ndef min_ones(n):\n    if n == 0:\n        return 0\n    count = float('inf')\n    for k in range(0, 17):\n        remaining = n - k\n        if remaining >= 0 and remaining % 11 == 0:\n            candidate = k + (remaining // 11) * 2\n            if candidate < count:\n                count = candidate\n    return count\n\nn = int(input())\nprint(min_ones(n))\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 2,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```python\ndef min_ones(n):\n    if n == 0:\n        return 0\n    count = float('inf')\n    for k in range(0, 17):\n        remaining = n - k\n        if remaining >= 0 and remaining % 11 == 0:\n            candidate = k + (remaining // 11) * 2\n            if candidate < count:\n                count = candidate\n    return count\n\nn = int(input())\nprint(min_ones(n))\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 3,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```python\ndef divi(n):\n    if n == 0:\n        return 0\n    elif n == 1:\n        return 1\n    elif n == 11:\n        return 2\n    elif n % 11 <= 6:\n        return n % 11\n    else:\n        return 11 - (n % 11) + 2\n\ndef divide_maior(n):\n    if n == 0:\n        return 0\n    divisao = n // 11\n    resto = n % 11\n    valor_menor_que_onze = divi(resto)\n    valor_maior_que_onze = divisao * 2\n    return valor_maior_que_onze + valor_menor_que_onze\n\ndef execute():\n    n = int(input())\n    m = divide_maior(n)\n    print(m)\n\nexecute()\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 4,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```python\ndef min_ones(n):\n    if n == 0:\n        return 0\n    min_digits = float('inf')\n    for k in range(0, 17):\n        remaining = n - k\n        if remaining >= 0 and remaining % 11 == 0:\n            digits = k + (remaining // 11) * 2\n            if digits < min_digits:\n                min_digits = digits\n    return min_digits\n\nn = int(input())\nprint(min_ones(n))\n```"
+                    },
+                    "finish_reason": "stop"
+                }
+            ],
+            "usage": {
+                "prompt_tokens": 2200,
+                "completion_tokens": 629,
+                "total_tokens": 2829
+            }
+        }
+    },
+    "source_data": {
+        "prob_desc_memory_limit": "256 megabytes",
+        "tags": [
+            "divide and conquer",
+            "dfs and similar",
+            "brute force"
+        ],
+        "prob_desc_created_at": "1567258500",
+        "fix_source_code": "",
+        "prob_desc_input_spec": "The first line of the input contains integer n (1\u2009\u2264\u2009n\u2009&lt;\u20091015).",
+        "prob_desc_sample_outputs": [
+            "6"
+        ],
+        "src_uid": "1b17a7b3b41077843ee1d6e0607720d6",
+        "prob_desc_time_limit": "0.5 seconds",
+        "fix_exec_outcome": "",
+        "delete_cnt": 0,
+        "apr_id": "ac32210293fd73341bff7632e195d6fd",
+        "fix_code_uid": "",
+        "lang_cluster": "Python",
+        "prob_desc_sample_inputs": [
+            "121"
+        ],
+        "prob_desc_output_to": "standard output",
+        "file_name": "Python.jsonl",
+        "equal_cnt": 9,
+        "lang": "Python 3",
+        "prob_desc_output_spec": "Print expected minimal number of digits 1.",
+        "bug_exec_outcome": "WRONG_ANSWER",
+        "prob_desc_notes": null,
+        "difficulty": 1800.0,
+        "similarity_score": 0.0670773461,
+        "prob_desc_description": "Prof. Vasechkin wants to represent positive integer n as a sum of addends, where each addends is an integer number containing only 1s. For example, he can represent 121 as 121=111+11+\u20131. Help him to find the least number of digits 1 in such sum.",
+        "potential_dominant_fix_op": "replace",
+        "bug_source_code": "def divi(n):\n    if n == 0:\n        return 0\n    elif n == 1:\n        return n\n    elif n == 11:\n        return 2\n    elif n % 11 <= 6:\n        k = n % 11\n        j = 0\n        cont_um = 0\n        while j < n:\n            j += 1\n            cont_um += 1\n        return cont_um\n    else:\n        k = n % 11\n        h = 11\n        contador_de_um = 2\n        while h > n:\n            h -= 1\n            contador_de_um += 1\n        return contador_de_um\n\n\ndef divide_maior(n):\n    divisao = n // 11\n    resto = n % 11\n    valor_menor_que_onze = divi(resto)\n    valor_maior_que_onze = divisao * 2\n    return valor_maior_que_onze + valor_menor_que_onze\n\n\ndef execute():\n    n = int(input())\n    m = divide_maior(n)\n    print(m)\n\n\nexecute()\n",
+        "replace_cnt": 7,
+        "prob_desc_input_from": "standard input",
+        "bug_code_uid": "6b3b8565b17969a34304bc09d0bc9f25",
+        "insert_cnt": 3,
+        "fix_ops_cnt": 10,
+        "hidden_unit_tests": "[{\"input\": \"121\\r\\n\", \"output\": [\"6\"]}, {\"input\": \"10\\r\\n\", \"output\": [\"3\"]}, {\"input\": \"72\\r\\n\", \"output\": [\"15\"]}, {\"input\": \"1\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"2\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"3\\r\\n\", \"output\": [\"3\"]}, {\"input\": \"4\\r\\n\", \"output\": [\"4\"]}, {\"input\": \"5\\r\\n\", \"output\": [\"5\"]}, {\"input\": \"6\\r\\n\", \"output\": [\"6\"]}, {\"input\": \"7\\r\\n\", \"output\": [\"6\"]}, {\"input\": \"11\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"12\\r\\n\", \"output\": [\"3\"]}, {\"input\": \"2038946593\\r\\n\", \"output\": [\"145\"]}, {\"input\": \"81924761239462\\r\\n\", \"output\": [\"321\"]}, {\"input\": \"973546235465729\\r\\n\", \"output\": [\"263\"]}, {\"input\": \"999999999999999\\r\\n\", \"output\": [\"32\"]}, {\"input\": \"21\\r\\n\", \"output\": [\"5\"]}, {\"input\": \"79\\r\\n\", \"output\": [\"10\"]}, {\"input\": \"33\\r\\n\", \"output\": [\"6\"]}, {\"input\": \"185\\r\\n\", \"output\": [\"16\"]}, {\"input\": \"513\\r\\n\", \"output\": [\"25\"]}, {\"input\": \"634\\r\\n\", \"output\": [\"22\"]}, {\"input\": \"5300\\r\\n\", \"output\": [\"32\"]}, {\"input\": \"3724\\r\\n\", \"output\": [\"34\"]}, {\"input\": \"2148\\r\\n\", \"output\": [\"21\"]}, {\"input\": \"82415\\r\\n\", \"output\": [\"53\"]}, {\"input\": \"35839\\r\\n\", \"output\": [\"45\"]}, {\"input\": \"79263\\r\\n\", \"output\": [\"45\"]}, {\"input\": \"274634\\r\\n\", \"output\": [\"62\"]}, {\"input\": \"690762\\r\\n\", \"output\": [\"65\"]}, {\"input\": \"374186\\r\\n\", \"output\": [\"65\"]}, {\"input\": \"2673749\\r\\n\", \"output\": [\"81\"]}, {\"input\": \"5789877\\r\\n\", \"output\": [\"61\"]}, {\"input\": \"1873301\\r\\n\", \"output\": [\"59\"]}, {\"input\": \"30272863\\r\\n\", \"output\": [\"118\"]}, {\"input\": \"33388991\\r\\n\", \"output\": [\"57\"]}, {\"input\": \"11472415\\r\\n\", \"output\": [\"72\"]}, {\"input\": \"345871978\\r\\n\", \"output\": [\"95\"]}, {\"input\": \"528988106\\r\\n\", \"output\": [\"118\"]}, {\"input\": \"302038826\\r\\n\", \"output\": [\"128\"]}, {\"input\": \"1460626450\\r\\n\", \"output\": [\"152\"]}, {\"input\": \"3933677170\\r\\n\", \"output\": [\"159\"]}, {\"input\": \"6816793298\\r\\n\", \"output\": [\"153\"]}, {\"input\": \"75551192860\\r\\n\", \"output\": [\"151\"]}, {\"input\": \"28729276284\\r\\n\", \"output\": [\"212\"]}, {\"input\": \"67612392412\\r\\n\", \"output\": [\"178\"]}, {\"input\": \"532346791975\\r\\n\", \"output\": [\"158\"]}, {\"input\": \"575524875399\\r\\n\", \"output\": [\"189\"]}, {\"input\": \"614407991527\\r\\n\", \"output\": [\"236\"]}, {\"input\": \"2835997166898\\r\\n\", \"output\": [\"275\"]}, {\"input\": \"1079175250322\\r\\n\", \"output\": [\"188\"]}, {\"input\": \"8322353333746\\r\\n\", \"output\": [\"169\"]}, {\"input\": \"26602792766013\\r\\n\", \"output\": [\"288\"]}, {\"input\": \"42845970849437\\r\\n\", \"output\": [\"325\"]}, {\"input\": \"59089148932861\\r\\n\", \"output\": [\"265\"]}, {\"input\": \"842369588365127\\r\\n\", \"output\": [\"330\"]}, {\"input\": \"768617061415848\\r\\n\", \"output\": [\"390\"]}, {\"input\": \"694855944531976\\r\\n\", \"output\": [\"348\"]}, {\"input\": \"898453513288965\\r\\n\", \"output\": [\"248\"]}, {\"input\": \"98596326741327\\r\\n\", \"output\": [\"260\"]}, {\"input\": \"59191919191919\\r\\n\", \"output\": [\"342\"]}]"
+    }
+}

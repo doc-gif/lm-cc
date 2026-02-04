@@ -1,0 +1,89 @@
+{
+    "oai_response": {
+        "prompt": "Here is code in Python 3 programming lanaguge. Translate the following code from Python 3 to C programming lanaguge. Do not output any extra description or tokens other than the translated code. \n\ndef Ordenar(cadena1,cadena2,size):\n    if(len(cadena1)==0):\n        return cadena2\n    else:\n        if size%2==0:\n            cadena2.append(cadena1.pop(int((len(cadena1)-1)/2)))\n            Ordenar(cadena1, cadena2,size)\n        else:\n            cadena2.append(cadena1.pop(int(len(cadena1)/2)))\n            Ordenar(cadena1, cadena2,size)\nS=input()\nSaux=[]\ncadena=[]\nfor letra in S:\n    Saux.append(letra)\nOrdenar(Saux, cadena,len(S))\nstr1=''.join(cadena)\nprint(str1)||END-of-SRC||",
+        "response": {
+            "id": "multi-call-as-yjzby5t38g",
+            "model": "deepseek-v3",
+            "created": 1767067072,
+            "choices": [
+                {
+                    "index": 0,
+                    "message": {
+                        "role": "assistant",
+                        "content": "Here's the translated code in C:\n\n```c\n#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\nvoid Ordenar(char* cadena1, char* cadena2, int size, int* index2) {\n    int len = strlen(cadena1);\n    if (len == 0) {\n        return;\n    } else {\n        if (size % 2 == 0) {\n            int pos = (len - 1) / 2;\n            cadena2[(*index2)++] = cadena1[pos];\n            memmove(&cadena1[pos], &cadena1[pos + 1], len - pos);\n            Ordenar(cadena1, cadena2, size, index2);\n        } else {\n            int pos = len / 2;\n            cadena2[(*index2)++] = cadena1[pos];\n            memmove(&cadena1[pos], &cadena1[pos + 1], len - pos);\n            Ordenar(cadena1, cadena2, size, index2);\n        }\n    }\n}\n\nint main() {\n    char S[1000];\n    scanf(\"%s\", S);\n    char cadena[1000] = {0};\n    int index2 = 0;\n    Ordenar(S, cadena, strlen(S), &index2);\n    printf(\"%s\\n\", cadena);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 1,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\nvoid Ordenar(char* cadena1, int len1, char* cadena2, int* len2, int size) {\n    if (len1 == 0) {\n        return;\n    } else {\n        int index;\n        if (size % 2 == 0) {\n            index = (len1 - 1) / 2;\n        } else {\n            index = len1 / 2;\n        }\n        cadena2[(*len2)++] = cadena1[index];\n        memmove(&cadena1[index], &cadena1[index + 1], len1 - index - 1);\n        Ordenar(cadena1, len1 - 1, cadena2, len2, size);\n    }\n}\n\nint main() {\n    char S[1000];\n    scanf(\"%s\", S);\n    char cadena[1000] = {0};\n    int len2 = 0;\n    Ordenar(S, strlen(S), cadena, &len2, strlen(S));\n    printf(\"%s\\n\", cadena);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 2,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\nvoid Ordenar(char* cadena1, int len1, char* cadena2, int* len2, int size) {\n    if (len1 == 0) {\n        return;\n    } else {\n        int index;\n        if (size % 2 == 0) {\n            index = (len1 - 1) / 2;\n        } else {\n            index = len1 / 2;\n        }\n        cadena2[(*len2)++] = cadena1[index];\n        memmove(&cadena1[index], &cadena1[index + 1], len1 - index - 1);\n        Ordenar(cadena1, len1 - 1, cadena2, len2, size);\n    }\n}\n\nint main() {\n    char S[1000];\n    scanf(\"%s\", S);\n    char cadena[1000] = {0};\n    int len2 = 0;\n    Ordenar(S, strlen(S), cadena, &len2, strlen(S));\n    printf(\"%s\\n\", cadena);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 3,
+                    "message": {
+                        "role": "assistant",
+                        "content": "Here's the translated code in C:\n\n```c\n#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\nvoid Ordenar(char* cadena1, char* cadena2, int size, int* cadena2_index) {\n    if (strlen(cadena1) == 0) {\n        return;\n    } else {\n        if (size % 2 == 0) {\n            int index = (strlen(cadena1) - 1) / 2;\n            cadena2[(*cadena2_index)++] = cadena1[index];\n            memmove(&cadena1[index], &cadena1[index + 1], strlen(cadena1) - index);\n            Ordenar(cadena1, cadena2, size, cadena2_index);\n        } else {\n            int index = strlen(cadena1) / 2;\n            cadena2[(*cadena2_index)++] = cadena1[index];\n            memmove(&cadena1[index], &cadena1[index + 1], strlen(cadena1) - index);\n            Ordenar(cadena1, cadena2, size, cadena2_index);\n        }\n    }\n}\n\nint main() {\n    char S[1000];\n    scanf(\"%s\", S);\n    char cadena[1000] = {0};\n    int cadena_index = 0;\n    Ordenar(S, cadena, strlen(S), &cadena_index);\n    printf(\"%s\\n\", cadena);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 4,
+                    "message": {
+                        "role": "assistant",
+                        "content": "Here's the translated code in C:\n\n```c\n#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\nvoid Ordenar(char* cadena1, char* cadena2, int size, int* cadena2_index) {\n    int len = strlen(cadena1);\n    if (len == 0) {\n        return;\n    } else {\n        if (size % 2 == 0) {\n            int index = (len - 1) / 2;\n            cadena2[(*cadena2_index)++] = cadena1[index];\n            memmove(&cadena1[index], &cadena1[index + 1], len - index);\n            Ordenar(cadena1, cadena2, size, cadena2_index);\n        } else {\n            int index = len / 2;\n            cadena2[(*cadena2_index)++] = cadena1[index];\n            memmove(&cadena1[index], &cadena1[index + 1], len - index);\n            Ordenar(cadena1, cadena2, size, cadena2_index);\n        }\n    }\n}\n\nint main() {\n    char S[1000];\n    scanf(\"%s\", S);\n    char cadena[1000] = {0};\n    int cadena_index = 0;\n    Ordenar(S, cadena, strlen(S), &cadena_index);\n    printf(\"%s\\n\", cadena);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                }
+            ],
+            "usage": {
+                "prompt_tokens": 1060,
+                "completion_tokens": 1453,
+                "total_tokens": 2513
+            }
+        }
+    },
+    "source_data": {
+        "code_uid": "58914aad81a3e497b69c35c3965a833e",
+        "prob_desc_output_to": "standard output",
+        "prob_desc_notes": null,
+        "lang_cluster": "Python",
+        "prob_desc_time_limit": "1 second",
+        "prob_desc_input_spec": "The only line of the input contains $$$t$$$ \u2014 the result of encryption of some string $$$s$$$. It contains only lowercase Latin letters. The length of $$$t$$$ is between $$$1$$$ and $$$50$$$, inclusive.",
+        "source_code": "def Ordenar(cadena1,cadena2,size):\n    if(len(cadena1)==0):\n        return cadena2\n    else:\n        if size%2==0:\n            cadena2.append(cadena1.pop(int((len(cadena1)-1)/2)))\n            Ordenar(cadena1, cadena2,size)\n        else:\n            cadena2.append(cadena1.pop(int(len(cadena1)/2)))\n            Ordenar(cadena1, cadena2,size)\nS=input()\nSaux=[]\ncadena=[]\nfor letra in S:\n    Saux.append(letra)\nOrdenar(Saux, cadena,len(S))\nstr1=''.join(cadena)\nprint(str1)",
+        "prob_desc_sample_inputs": [
+            "ncteho",
+            "erfdcoeocs",
+            "z"
+        ],
+        "prob_desc_memory_limit": "256 megabytes",
+        "exec_outcome": "PASSED",
+        "prob_desc_output_spec": "Print such string $$$s$$$ that after encryption it equals $$$t$$$.",
+        "src_uid": "992ae43e66f1808f19c86b1def1f6b41",
+        "prob_desc_input_from": "standard input",
+        "lang": "Python 3",
+        "prob_desc_sample_outputs": [
+            "techno",
+            "codeforces",
+            "z"
+        ],
+        "file_name": "d7021504500d5ca7c2b02df8100a574d159e6e67e20ec8071b75800b1267370a",
+        "prob_desc_description": "Polycarp loves ciphers. He has invented his own cipher called Right-Left.Right-Left cipher is used for strings. To encrypt the string $$$s=s_{1}s_{2} \\dots s_{n}$$$ Polycarp uses the following algorithm:  he writes down $$$s_1$$$,  he appends the current word with $$$s_2$$$ (i.e. writes down $$$s_2$$$ to the right of the current result),  he prepends the current word with $$$s_3$$$ (i.e. writes down $$$s_3$$$ to the left of the current result),  he appends the current word with $$$s_4$$$ (i.e. writes down $$$s_4$$$ to the right of the current result),  he prepends the current word with $$$s_5$$$ (i.e. writes down $$$s_5$$$ to the left of the current result),  and so on for each position until the end of $$$s$$$. For example, if $$$s$$$=\"techno\" the process is: \"t\" $$$\\to$$$ \"te\" $$$\\to$$$ \"cte\" $$$\\to$$$ \"cteh\" $$$\\to$$$ \"ncteh\" $$$\\to$$$ \"ncteho\". So the encrypted $$$s$$$=\"techno\" is \"ncteho\".Given string $$$t$$$ \u2014 the result of encryption of some string $$$s$$$. Your task is to decrypt it, i.e. find the string $$$s$$$.",
+        "prob_desc_created_at": "1545572100",
+        "difficulty": 800.0,
+        "hidden_unit_tests": "[{\"input\": \"ncteho\\r\\n\", \"output\": [\"techno\"]}, {\"input\": \"erfdcoeocs\\r\\n\", \"output\": [\"codeforces\"]}, {\"input\": \"z\\r\\n\", \"output\": [\"z\"]}, {\"input\": \"bz\\r\\n\", \"output\": [\"bz\"]}, {\"input\": \"tea\\r\\n\", \"output\": [\"eat\"]}, {\"input\": \"code\\r\\n\", \"output\": [\"odce\"]}, {\"input\": \"qwertyuioasdfghjklrtyuiodfghjklqwertyuioasdfssddxb\\r\\n\", \"output\": [\"dfogihujyktlrqlwkejrhtgyfudisoaaosidufystsrdedwxqb\"]}, {\"input\": \"qwertyuioasdfghjklrtyuiodfghjklqwertyuioasdfssd\\r\\n\", \"output\": [\"odifugyhtjrkllkqjwhegrftdysuaiooiausydtfrseswdq\"]}, {\"input\": \"testa\\r\\n\", \"output\": [\"steat\"]}, {\"input\": \"abcdef\\r\\n\", \"output\": [\"cdbeaf\"]}, {\"input\": \"abcdefg\\r\\n\", \"output\": [\"decfbga\"]}, {\"input\": \"qwertyuioasdfghjklrtyuiodfghjklqwertyuioasdfssdda\\r\\n\", \"output\": [\"dfogihujyktlrqlwkejrhtgyfudisoaaosidufystsrdedwaq\"]}, {\"input\": \"zqwertyuioasdfghjklrtyuiodfghjklqwertyuioasdfssd\\r\\n\", \"output\": [\"ioudyftgrhljkkjlhqgwfedrstayouiiuoyatsrdefwsqszd\"]}, {\"input\": \"gecabdfh\\r\\n\", \"output\": [\"abcdefgh\"]}, {\"input\": \"aechs\\r\\n\", \"output\": [\"chesa\"]}]",
+        "source_lang": "Python 3",
+        "target_lang": "C"
+    }
+}

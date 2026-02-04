@@ -1,0 +1,85 @@
+{
+    "oai_response": {
+        "prompt": "Here is code in Python 3 programming lanaguge. Translate the following code from Python 3 to C programming lanaguge. Do not output any extra description or tokens other than the translated code. \n\nq=int(input())\nprint(3*q*(q+1) + 1)\n||END-of-SRC||",
+        "response": {
+            "id": "multi-call-as-u2rbhjp8z5",
+            "model": "deepseek-v3",
+            "created": 1767066222,
+            "choices": [
+                {
+                    "index": 0,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n\nint main() {\n    int q;\n    scanf(\"%d\", &q);\n    printf(\"%d\\n\", 3 * q * (q + 1) + 1);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 1,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n\nint main() {\n    int q;\n    scanf(\"%d\", &q);\n    printf(\"%d\\n\", 3 * q * (q + 1) + 1);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 2,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n\nint main() {\n    int q;\n    scanf(\"%d\", &q);\n    printf(\"%d\\n\", 3 * q * (q + 1) + 1);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 3,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n\nint main() {\n    int q;\n    scanf(\"%d\", &q);\n    printf(\"%d\\n\", 3 * q * (q + 1) + 1);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 4,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n\nint main() {\n    int q;\n    scanf(\"%d\", &q);\n    printf(\"%d\\n\", 3 * q * (q + 1) + 1);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                }
+            ],
+            "usage": {
+                "prompt_tokens": 340,
+                "completion_tokens": 261,
+                "total_tokens": 601
+            }
+        }
+    },
+    "source_data": {
+        "code_uid": "e26542487de9a5d01d2729ace9cfd3d0",
+        "prob_desc_output_to": "standard output",
+        "prob_desc_notes": null,
+        "lang_cluster": "Python",
+        "prob_desc_time_limit": "0.5 seconds",
+        "prob_desc_input_spec": "The only line of the input contains one integer n (0\u2009\u2264\u2009n\u2009\u2264\u2009109).",
+        "source_code": "q=int(input())\nprint(3*q*(q+1) + 1)\n",
+        "prob_desc_sample_inputs": [
+            "2"
+        ],
+        "prob_desc_memory_limit": "64 megabytes",
+        "exec_outcome": "PASSED",
+        "prob_desc_output_spec": "Output one integer \u2014 the number of hexagons situated not farther than n cells away from a given cell.",
+        "src_uid": "c046895a90f2e1381a7c1867020453bd",
+        "prob_desc_input_from": "standard input",
+        "lang": "Python 3",
+        "prob_desc_sample_outputs": [
+            "19"
+        ],
+        "file_name": "d7021504500d5ca7c2b02df8100a574d159e6e67e20ec8071b75800b1267370a",
+        "prob_desc_description": "After a probationary period in the game development company of IT City Petya was included in a group of the programmers that develops a new turn-based strategy game resembling the well known \"Heroes of Might &amp; Magic\". A part of the game is turn-based fights of big squadrons of enemies on infinite fields where every cell is in form of a hexagon.Some of magic effects are able to affect several field cells at once, cells that are situated not farther than n cells away from the cell in which the effect was applied. The distance between cells is the minimum number of cell border crosses on a path from one cell to another.It is easy to see that the number of cells affected by a magic effect grows rapidly when n increases, so it can adversely affect the game performance. That's why Petya decided to write a program that can, given n, determine the number of cells that should be repainted after effect application, so that game designers can balance scale of the effects and the game performance. Help him to do it. Find the number of hexagons situated not farther than n cells away from a given cell.  ",
+        "prob_desc_created_at": "1455807600",
+        "difficulty": 1100.0,
+        "hidden_unit_tests": "[{\"input\": \"2\\r\\n\", \"output\": [\"19\"]}, {\"input\": \"0\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"1\\r\\n\", \"output\": [\"7\"]}, {\"input\": \"3\\r\\n\", \"output\": [\"37\"]}, {\"input\": \"749431\\r\\n\", \"output\": [\"1684942719577\"]}, {\"input\": \"748629743\\r\\n\", \"output\": [\"1681339478558627377\"]}, {\"input\": \"945234000\\r\\n\", \"output\": [\"2680401947103702001\"]}, {\"input\": \"900000000\\r\\n\", \"output\": [\"2430000002700000001\"]}, {\"input\": \"999999999\\r\\n\", \"output\": [\"2999999997000000001\"]}, {\"input\": \"1000000000\\r\\n\", \"output\": [\"3000000003000000001\"]}]",
+        "source_lang": "Python 3",
+        "target_lang": "C"
+    }
+}

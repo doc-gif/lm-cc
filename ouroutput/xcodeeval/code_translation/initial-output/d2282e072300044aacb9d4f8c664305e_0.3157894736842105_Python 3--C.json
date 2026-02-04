@@ -1,0 +1,89 @@
+{
+    "oai_response": {
+        "prompt": "Here is code in Python 3 programming lanaguge. Translate the following code from Python 3 to C programming lanaguge. Do not output any extra description or tokens other than the translated code. \n\nmercenes = [2, 3, 5, 7, 13, 17, 19, 31, 61, 89, 107, 127, 521, 607, 1279, 2203, 2281, 3217, 4253, 4423, 9689, 9941, 11213, 19937, 21701, 23209, 44497, 86243, 110503, 132049, 216091, 756839, 859433, 1257787, 1398269, 2976221, 3021377, 6972593, 13466917, 20996011, 24036583, 25964951, 30402457, 32582657, 37156667]\nprint((2**(mercenes[int(input())-1]-1)-1)%1000000007)||END-of-SRC||",
+        "response": {
+            "id": "multi-call-as-tadbnsqky1",
+            "model": "deepseek-v3",
+            "created": 1767069847,
+            "choices": [
+                {
+                    "index": 0,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <math.h>\n\nint main() {\n    int mercenes[] = {2, 3, 5, 7, 13, 17, 19, 31, 61, 89, 107, 127, 521, 607, 1279, 2203, 2281, 3217, 4253, 4423, 9689, 9941, 11213, 19937, 21701, 23209, 44497, 86243, 110503, 132049, 216091, 756839, 859433, 1257787, 1398269, 2976221, 3021377, 6972593, 13466917, 20996011, 24036583, 25964951, 30402457, 32582657, 37156667};\n    int index;\n    scanf(\"%d\", &index);\n    int exponent = mercenes[index - 1];\n    long long result = 1;\n    for (int i = 0; i < exponent - 1; i++) {\n        result = (result * 2) % 1000000007;\n    }\n    printf(\"%lld\\n\", (result - 1) % 1000000007);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 1,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <math.h>\n\nint main() {\n    int mercenes[] = {2, 3, 5, 7, 13, 17, 19, 31, 61, 89, 107, 127, 521, 607, 1279, 2203, 2281, 3217, 4253, 4423, 9689, 9941, 11213, 19937, 21701, 23209, 44497, 86243, 110503, 132049, 216091, 756839, 859433, 1257787, 1398269, 2976221, 3021377, 6972593, 13466917, 20996011, 24036583, 25964951, 30402457, 32582657, 37156667};\n    int n;\n    scanf(\"%d\", &n);\n    int exponent = mercenes[n-1] - 1;\n    long long result = 1;\n    long long base = 2;\n    long long mod = 1000000007;\n    while (exponent > 0) {\n        if (exponent % 2 == 1) {\n            result = (result * base) % mod;\n        }\n        base = (base * base) % mod;\n        exponent = exponent / 2;\n    }\n    printf(\"%lld\\n\", (result - 1) % mod);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 2,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <math.h>\n\nint main() {\n    int mercenes[] = {2, 3, 5, 7, 13, 17, 19, 31, 61, 89, 107, 127, 521, 607, 1279, 2203, 2281, 3217, 4253, 4423, 9689, 9941, 11213, 19937, 21701, 23209, 44497, 86243, 110503, 132049, 216091, 756839, 859433, 1257787, 1398269, 2976221, 3021377, 6972593, 13466917, 20996011, 24036583, 25964951, 30402457, 32582657, 37156667};\n    int index;\n    scanf(\"%d\", &index);\n    int exponent = mercenes[index - 1];\n    long long result = 1;\n    for (int i = 0; i < exponent - 1; i++) {\n        result = (result * 2) % 1000000007;\n    }\n    printf(\"%lld\\n\", (result - 1) % 1000000007);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 3,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <math.h>\n\nint main() {\n    int mercenes[] = {2, 3, 5, 7, 13, 17, 19, 31, 61, 89, 107, 127, 521, 607, 1279, 2203, 2281, 3217, 4253, 4423, 9689, 9941, 11213, 19937, 21701, 23209, 44497, 86243, 110503, 132049, 216091, 756839, 859433, 1257787, 1398269, 2976221, 3021377, 6972593, 13466917, 20996011, 24036583, 25964951, 30402457, 32582657, 37156667};\n    int n;\n    scanf(\"%d\", &n);\n    int exponent = mercenes[n-1] - 1;\n    long long result = 1;\n    long long base = 2;\n    long long mod = 1000000007;\n    while (exponent > 0) {\n        if (exponent % 2 == 1) {\n            result = (result * base) % mod;\n        }\n        base = (base * base) % mod;\n        exponent = exponent / 2;\n    }\n    printf(\"%lld\\n\", (result - 1) % mod);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 4,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <math.h>\n\nint main() {\n    int mercenes[] = {2, 3, 5, 7, 13, 17, 19, 31, 61, 89, 107, 127, 521, 607, 1279, 2203, 2281, 3217, 4253, 4423, 9689, 9941, 11213, 19937, 21701, 23209, 44497, 86243, 110503, 132049, 216091, 756839, 859433, 1257787, 1398269, 2976221, 3021377, 6972593, 13466917, 20996011, 24036583, 25964951, 30402457, 32582657, 37156667};\n    int n;\n    scanf(\"%d\", &n);\n    int exponent = mercenes[n-1] - 1;\n    long long result = 1;\n    long long base = 2;\n    long long mod = 1000000007;\n    while (exponent > 0) {\n        if (exponent % 2 == 1) {\n            result = (result * base) % mod;\n        }\n        base = (base * base) % mod;\n        exponent = exponent / 2;\n    }\n    printf(\"%lld\\n\", (result - 1) % mod);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                }
+            ],
+            "usage": {
+                "prompt_tokens": 1275,
+                "completion_tokens": 1594,
+                "total_tokens": 2869
+            }
+        }
+    },
+    "source_data": {
+        "code_uid": "d2282e072300044aacb9d4f8c664305e",
+        "prob_desc_output_to": "standard output",
+        "prob_desc_notes": null,
+        "lang_cluster": "Python",
+        "prob_desc_time_limit": "2 seconds",
+        "prob_desc_input_spec": "The first line contains a single integer n (1\u2009\u2264\u2009n\u2009\u2264\u200940).",
+        "source_code": "mercenes = [2, 3, 5, 7, 13, 17, 19, 31, 61, 89, 107, 127, 521, 607, 1279, 2203, 2281, 3217, 4253, 4423, 9689, 9941, 11213, 19937, 21701, 23209, 44497, 86243, 110503, 132049, 216091, 756839, 859433, 1257787, 1398269, 2976221, 3021377, 6972593, 13466917, 20996011, 24036583, 25964951, 30402457, 32582657, 37156667]\nprint((2**(mercenes[int(input())-1]-1)-1)%1000000007)",
+        "prob_desc_sample_inputs": [
+            "1",
+            "2",
+            "3"
+        ],
+        "prob_desc_memory_limit": "256 megabytes",
+        "exec_outcome": "PASSED",
+        "prob_desc_output_spec": "Print a single integer \u2014 the number zn modulo 1000000007 (109\u2009+\u20097). It is guaranteed that the answer exists.",
+        "src_uid": "c2cbc35012c6ff7ab0d6899e6015e4e7",
+        "prob_desc_input_from": "standard input",
+        "lang": "Python 3",
+        "prob_desc_sample_outputs": [
+            "1",
+            "3",
+            "15"
+        ],
+        "file_name": "d7021504500d5ca7c2b02df8100a574d159e6e67e20ec8071b75800b1267370a",
+        "prob_desc_description": "Consider the following equation:  where sign [a] represents the integer part of number a.Let's find all integer z (z\u2009&gt;\u20090), for which this equation is unsolvable in positive integers. The phrase \"unsolvable in positive integers\" means that there are no such positive integers x and y (x,\u2009y\u2009&gt;\u20090), for which the given above equation holds.Let's write out all such z in the increasing order: z1,\u2009z2,\u2009z3, and so on (zi\u2009&lt;\u2009zi\u2009+\u20091). Your task is: given the number n, find the number zn.",
+        "prob_desc_created_at": "1348069500",
+        "difficulty": 2100.0,
+        "hidden_unit_tests": "[{\"input\": \"1\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"2\\r\\n\", \"output\": [\"3\"]}, {\"input\": \"3\\r\\n\", \"output\": [\"15\"]}, {\"input\": \"4\\r\\n\", \"output\": [\"63\"]}, {\"input\": \"5\\r\\n\", \"output\": [\"4095\"]}, {\"input\": \"6\\r\\n\", \"output\": [\"65535\"]}, {\"input\": \"7\\r\\n\", \"output\": [\"262143\"]}, {\"input\": \"8\\r\\n\", \"output\": [\"73741816\"]}, {\"input\": \"9\\r\\n\", \"output\": [\"536396503\"]}, {\"input\": \"10\\r\\n\", \"output\": [\"140130950\"]}, {\"input\": \"11\\r\\n\", \"output\": [\"487761805\"]}, {\"input\": \"12\\r\\n\", \"output\": [\"319908070\"]}, {\"input\": \"13\\r\\n\", \"output\": [\"106681874\"]}, {\"input\": \"14\\r\\n\", \"output\": [\"373391776\"]}, {\"input\": \"15\\r\\n\", \"output\": [\"317758023\"]}, {\"input\": \"16\\r\\n\", \"output\": [\"191994803\"]}, {\"input\": \"17\\r\\n\", \"output\": [\"416292236\"]}, {\"input\": \"18\\r\\n\", \"output\": [\"110940209\"]}, {\"input\": \"19\\r\\n\", \"output\": [\"599412198\"]}, {\"input\": \"20\\r\\n\", \"output\": [\"383601260\"]}, {\"input\": \"21\\r\\n\", \"output\": [\"910358878\"]}, {\"input\": \"22\\r\\n\", \"output\": [\"532737550\"]}, {\"input\": \"23\\r\\n\", \"output\": [\"348927936\"]}, {\"input\": \"24\\r\\n\", \"output\": [\"923450985\"]}, {\"input\": \"25\\r\\n\", \"output\": [\"470083777\"]}, {\"input\": \"26\\r\\n\", \"output\": [\"642578561\"]}, {\"input\": \"27\\r\\n\", \"output\": [\"428308066\"]}, {\"input\": \"28\\r\\n\", \"output\": [\"485739298\"]}, {\"input\": \"29\\r\\n\", \"output\": [\"419990027\"]}, {\"input\": \"30\\r\\n\", \"output\": [\"287292016\"]}, {\"input\": \"31\\r\\n\", \"output\": [\"202484167\"]}, {\"input\": \"32\\r\\n\", \"output\": [\"389339971\"]}, {\"input\": \"33\\r\\n\", \"output\": [\"848994100\"]}, {\"input\": \"34\\r\\n\", \"output\": [\"273206869\"]}, {\"input\": \"35\\r\\n\", \"output\": [\"853092282\"]}, {\"input\": \"36\\r\\n\", \"output\": [\"411696552\"]}, {\"input\": \"37\\r\\n\", \"output\": [\"876153853\"]}, {\"input\": \"38\\r\\n\", \"output\": [\"90046024\"]}, {\"input\": \"39\\r\\n\", \"output\": [\"828945523\"]}, {\"input\": \"40\\r\\n\", \"output\": [\"697988359\"]}]",
+        "source_lang": "Python 3",
+        "target_lang": "C"
+    }
+}

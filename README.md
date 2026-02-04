@@ -51,13 +51,9 @@ cd scripts
 ```
 bash correlations.sh
 ```
-* Start with task execution:
-For the execution reasoning task, we adopt the code from the original paper for generation and evaluation.
+* Start with task execution(For the execution reasoning task, we adopt the code from the original paper for generation and evaluation):
 ```
 bash program_repair.sh
 bash code_translation.sh
 bash execution_reasoning.sh
 ```
-
-
-#### code rewriting

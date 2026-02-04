@@ -1,0 +1,89 @@
+{
+    "oai_response": {
+        "prompt": "Here is code in Python 3 programming lanaguge. Translate the following code from Python 3 to C programming lanaguge. Do not output any extra description or tokens other than the translated code. \n\nimport math\nn = int(input())\n\nif n%2==0:\n\tl=n/2\nelse:\n\tl=(n+1)/2\n\nmax_value=0\n\na1=0\nb1=0\n\nfor i in range(int(l)):\n\ta = i\n\tb = n-i\n\n\tif math.gcd(a,b)!=1:\n\t\tcontinue\n\n\telif a/b>max_value:\n\t\tmax_value=a/b\n\t\ta1=a\n\t\tb1=b\n\nprint (a1 , b1)\n||END-of-SRC||",
+        "response": {
+            "id": "multi-call-as-21mmicjaw3",
+            "model": "deepseek-v3",
+            "created": 1767066247,
+            "choices": [
+                {
+                    "index": 0,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <stdlib.h>\n#include <math.h>\n\nint gcd(int a, int b) {\n    while (b != 0) {\n        int temp = b;\n        b = a % b;\n        a = temp;\n    }\n    return a;\n}\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n\n    int l;\n    if (n % 2 == 0) {\n        l = n / 2;\n    } else {\n        l = (n + 1) / 2;\n    }\n\n    double max_value = 0;\n    int a1 = 0;\n    int b1 = 0;\n\n    for (int i = 0; i < l; i++) {\n        int a = i;\n        int b = n - i;\n\n        if (gcd(a, b) != 1) {\n            continue;\n        }\n\n        double ratio = (double)a / b;\n        if (ratio > max_value) {\n            max_value = ratio;\n            a1 = a;\n            b1 = b;\n        }\n    }\n\n    printf(\"%d %d\", a1, b1);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 1,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <stdlib.h>\n#include <math.h>\n\nint gcd(int a, int b) {\n    if (b == 0) return a;\n    return gcd(b, a % b);\n}\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n\n    int l;\n    if (n % 2 == 0) {\n        l = n / 2;\n    } else {\n        l = (n + 1) / 2;\n    }\n\n    double max_value = 0;\n    int a1 = 0;\n    int b1 = 0;\n\n    for (int i = 0; i < l; i++) {\n        int a = i;\n        int b = n - i;\n\n        if (gcd(a, b) != 1) {\n            continue;\n        }\n\n        double ratio = (double)a / b;\n        if (ratio > max_value) {\n            max_value = ratio;\n            a1 = a;\n            b1 = b;\n        }\n    }\n\n    printf(\"%d %d\", a1, b1);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 2,
+                    "message": {
+                        "role": "assistant",
+                        "content": "Here's the translated code in C:\n\n```c\n#include <stdio.h>\n#include <stdlib.h>\n#include <math.h>\n\nint gcd(int a, int b) {\n    if (b == 0)\n        return a;\n    return gcd(b, a % b);\n}\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n\n    int l;\n    if (n % 2 == 0) {\n        l = n / 2;\n    } else {\n        l = (n + 1) / 2;\n    }\n\n    double max_value = 0;\n    int a1 = 0;\n    int b1 = 0;\n\n    for (int i = 0; i < l; i++) {\n        int a = i;\n        int b = n - i;\n\n        if (gcd(a, b) != 1) {\n            continue;\n        }\n\n        double ratio = (double)a / b;\n        if (ratio > max_value) {\n            max_value = ratio;\n            a1 = a;\n            b1 = b;\n        }\n    }\n\n    printf(\"%d %d\", a1, b1);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 3,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <math.h>\n\nint gcd(int a, int b) {\n    if (b == 0) {\n        return a;\n    }\n    return gcd(b, a % b);\n}\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n\n    double l;\n    if (n % 2 == 0) {\n        l = n / 2;\n    } else {\n        l = (n + 1) / 2;\n    }\n\n    double max_value = 0;\n    int a1 = 0;\n    int b1 = 0;\n\n    for (int i = 0; i < l; i++) {\n        int a = i;\n        int b = n - i;\n\n        if (gcd(a, b) != 1) {\n            continue;\n        } else if ((double)a / b > max_value) {\n            max_value = (double)a / b;\n            a1 = a;\n            b1 = b;\n        }\n    }\n\n    printf(\"%d %d\", a1, b1);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 4,
+                    "message": {
+                        "role": "assistant",
+                        "content": "Here's the translated code in C:\n\n```c\n#include <stdio.h>\n#include <stdlib.h>\n#include <math.h>\n\nint gcd(int a, int b) {\n    if (b == 0)\n        return a;\n    return gcd(b, a % b);\n}\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    \n    double l;\n    if (n % 2 == 0) {\n        l = n / 2;\n    } else {\n        l = (n + 1) / 2;\n    }\n    \n    double max_value = 0;\n    int a1 = 0;\n    int b1 = 0;\n    \n    for (int i = 0; i < l; i++) {\n        int a = i;\n        int b = n - i;\n        \n        if (gcd(a, b) != 1) {\n            continue;\n        } else if ((double)a / b > max_value) {\n            max_value = (double)a / b;\n            a1 = a;\n            b1 = b;\n        }\n    }\n    \n    printf(\"%d %d\", a1, b1);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                }
+            ],
+            "usage": {
+                "prompt_tokens": 780,
+                "completion_tokens": 1234,
+                "total_tokens": 2014
+            }
+        }
+    },
+    "source_data": {
+        "code_uid": "7b9497ed93aac689da1b6d39f6d19147",
+        "prob_desc_output_to": "standard output",
+        "prob_desc_notes": null,
+        "lang_cluster": "Python",
+        "prob_desc_time_limit": "1 second",
+        "prob_desc_input_spec": "In the only line of input there is an integer n (3\u2009\u2264\u2009n\u2009\u2264\u20091000), the sum of numerator and denominator of the fraction.",
+        "source_code": "import math\nn = int(input())\n\nif n%2==0:\n\tl=n/2\nelse:\n\tl=(n+1)/2\n\nmax_value=0\n\na1=0\nb1=0\n\nfor i in range(int(l)):\n\ta = i\n\tb = n-i\n\n\tif math.gcd(a,b)!=1:\n\t\tcontinue\n\n\telif a/b>max_value:\n\t\tmax_value=a/b\n\t\ta1=a\n\t\tb1=b\n\nprint (a1 , b1)\n",
+        "prob_desc_sample_inputs": [
+            "3",
+            "4",
+            "12"
+        ],
+        "prob_desc_memory_limit": "512 megabytes",
+        "exec_outcome": "PASSED",
+        "prob_desc_output_spec": "Output two space-separated positive integers a and b, numerator and denominator of the maximum possible proper irreducible fraction satisfying the given sum.",
+        "src_uid": "0af3515ed98d9d01ce00546333e98e77",
+        "prob_desc_input_from": "standard input",
+        "lang": "Python 3",
+        "prob_desc_sample_outputs": [
+            "1 2",
+            "1 3",
+            "5 7"
+        ],
+        "file_name": "d7021504500d5ca7c2b02df8100a574d159e6e67e20ec8071b75800b1267370a",
+        "prob_desc_description": "Petya is a big fan of mathematics, especially its part related to fractions. Recently he learned that a fraction  is called proper iff its numerator is smaller than its denominator (a\u2009&lt;\u2009b) and that the fraction is called irreducible if its numerator and its denominator are coprime (they do not have positive common divisors except 1).During his free time, Petya thinks about proper irreducible fractions and converts them to decimals using the calculator. One day he mistakenly pressed addition button (\u2009+\u2009) instead of division button (\u00f7) and got sum of numerator and denominator that was equal to n instead of the expected decimal notation. Petya wanted to restore the original fraction, but soon he realized that it might not be done uniquely. That's why he decided to determine maximum possible proper irreducible fraction  such that sum of its numerator and denominator equals n. Help Petya deal with this problem. ",
+        "prob_desc_created_at": "1504702500",
+        "difficulty": 800.0,
+        "hidden_unit_tests": "[{\"input\": \"3\\r\\n\", \"output\": [\"1 2\", \"1\\r\\n2\"]}, {\"input\": \"4\\r\\n\", \"output\": [\"1 3\", \"1\\r\\n3\"]}, {\"input\": \"12\\r\\n\", \"output\": [\"5 7\", \"5\\r\\n7\"]}, {\"input\": \"34\\r\\n\", \"output\": [\"15 19\", \"15\\r\\n19\"]}, {\"input\": \"13\\r\\n\", \"output\": [\"6\\r\\n7\", \"6 7\"]}, {\"input\": \"11\\r\\n\", \"output\": [\"5\\r\\n6\", \"5 6\"]}, {\"input\": \"24\\r\\n\", \"output\": [\"11\\r\\n13\", \"11 13\"]}, {\"input\": \"17\\r\\n\", \"output\": [\"8 9\", \"8\\r\\n9\"]}, {\"input\": \"10\\r\\n\", \"output\": [\"3 7\", \"3\\r\\n7\"]}, {\"input\": \"69\\r\\n\", \"output\": [\"34\\r\\n35\", \"34 35\"]}, {\"input\": \"100\\r\\n\", \"output\": [\"49 51\", \"49\\r\\n51\"]}, {\"input\": \"57\\r\\n\", \"output\": [\"28 29\", \"28\\r\\n29\"]}, {\"input\": \"1000\\r\\n\", \"output\": [\"499\\r\\n501\", \"499 501\"]}, {\"input\": \"999\\r\\n\", \"output\": [\"499\\r\\n500\", \"499 500\"]}, {\"input\": \"998\\r\\n\", \"output\": [\"497\\r\\n501\", \"497 501\"]}, {\"input\": \"997\\r\\n\", \"output\": [\"498\\r\\n499\", \"498 499\"]}, {\"input\": \"996\\r\\n\", \"output\": [\"497 499\", \"497\\r\\n499\"]}, {\"input\": \"995\\r\\n\", \"output\": [\"497\\r\\n498\", \"497 498\"]}, {\"input\": \"994\\r\\n\", \"output\": [\"495 499\", \"495\\r\\n499\"]}, {\"input\": \"5\\r\\n\", \"output\": [\"2 3\", \"2\\r\\n3\"]}, {\"input\": \"6\\r\\n\", \"output\": [\"1\\r\\n5\", \"1 5\"]}, {\"input\": \"8\\r\\n\", \"output\": [\"3 5\", \"3\\r\\n5\"]}, {\"input\": \"9\\r\\n\", \"output\": [\"4\\r\\n5\", \"4 5\"]}, {\"input\": \"423\\r\\n\", \"output\": [\"211\\r\\n212\", \"211 212\"]}, {\"input\": \"876\\r\\n\", \"output\": [\"437\\r\\n439\", \"437 439\"]}, {\"input\": \"29\\r\\n\", \"output\": [\"14\\r\\n15\", \"14 15\"]}]",
+        "source_lang": "Python 3",
+        "target_lang": "C"
+    }
+}

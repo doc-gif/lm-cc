@@ -1,0 +1,102 @@
+{
+    "oai_response": {
+        "prompt": "Fix a buggy program written in Python language to solve the following programming problem:\nDescription: There are n shovels in Polycarp's shop. The i-th shovel costs i burles, that is, the first shovel costs 1 burle, the second shovel costs 2 burles, the third shovel costs 3 burles, and so on. Polycarps wants to sell shovels in pairs.Visitors are more likely to buy a pair of shovels if their total cost ends with several 9s. Because of this, Polycarp wants to choose a pair of shovels to sell in such a way that the sum of their costs ends with maximum possible number of nines. For example, if he chooses shovels with costs 12345 and 37454, their total cost is 49799, it ends with two nines.You are to compute the number of pairs of shovels such that their total cost ends with maximum possible number of nines. Two pairs are considered different if there is a shovel presented in one pair, but not in the other.\nInput Specification: The first line contains a single integer n (2\u2009\u2264\u2009n\u2009\u2264\u2009109) \u2014 the number of shovels in Polycarp's shop.\nOutput Specification: Print the number of pairs of shovels such that their total cost ends with maximum possible number of nines.  Note that it is possible that the largest number of 9s at the end is 0, then you should count all such ways. It is guaranteed that for every n\u2009\u2264\u2009109 the answer doesn't exceed 2\u00b7109.\n\nSample Input:\n7\nSample Output:\n3\n\nSample Input:\n14\nSample Output:\n9\n\nSample Input:\n50\nSample Output:\n1\n\nNotes: NoteIn the first example the maximum possible number of nines at the end is one. Polycarp cah choose the following pairs of shovels for that purpose:  2 and 7;  3 and 6;  4 and 5. In the second example the maximum number of nines at the end of total cost of two shovels is one. The following pairs of shovels suit Polycarp:  1 and 8;  2 and 7;  3 and 6;  4 and 5;  5 and 14;  6 and 13;  7 and 12;  8 and 11;  9 and 10. In the third example it is necessary to choose shovels 49 and 50, because the sum of their cost is 99, that means that the total number of nines is equal to two, which is maximum possible for n\u2009=\u200950.\nTake input from standard input and output to standard output\n\nHere is the code with a bug of TIME_LIMIT_EXCEEDED:\n\nimport sys\n\nlines = []\nfor line in sys.stdin:\n    lines.append(line)\n\nn = int(lines[0].rstrip(\"\\r\\n\\t \"))\n\nmax_price = n * 2 - 1\nnines = 0\nmp = max_price\nwhile mp >= 9:\n    nines += 1\n    mp = int(mp / 10)\nif nines < 1:\n    print(\"0\")\n    exit()\nprice_suffix = \"9\"*nines\n\npairs = set()\ndef add_pairs(max_x: int, price: int):\n    from_max = int(price / 2)\n    to_min = from_max + 1\n    to_max = price - 1\n    if to_max > max_x:\n        to_max = max_x\n    from_min = price - to_max\n    for x in range(from_min, from_max + 1):\n        pairs.add(str(x) + ':' + str(price - x))\n\n\ncnt = 0\nfor d in range(0, 10):\n    if d > 0:\n        price = int(str(d) + price_suffix)\n    else:\n        price = int(price_suffix)\n    if price <= max_price:\n        add_pairs(n, price)\n\nprint(len(pairs))\n\n\nProvide the fixed Python code without any description or extra tokens.\n\nFixed source code:\n ||END-of-SRC||",
+        "response": {
+            "id": "multi-call-as-b5xxtfkpjy",
+            "model": "deepseek-v3",
+            "created": 1760424468,
+            "choices": [
+                {
+                    "index": 0,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```python\nimport sys\n\nn = int(sys.stdin.readline())\n\nmax_price = n * 2 - 1\nnines = 0\nmp = max_price\nwhile mp >= 9:\n    nines += 1\n    mp = mp // 10\nif nines < 1:\n    print(n * (n - 1) // 2)\n    exit()\n\nprice_suffix = \"9\" * nines\ntotal_pairs = 0\n\nfor d in range(0, 10):\n    if d > 0:\n        price = int(str(d) + price_suffix)\n    else:\n        price = int(price_suffix)\n    if price > max_price:\n        continue\n    half = price // 2\n    if price % 2 == 0:\n        pairs = min(half - 1, n - half)\n        if pairs >= 0:\n            total_pairs += pairs + 1\n    else:\n        pairs = min(half, n - half)\n        if pairs >= 0:\n            total_pairs += pairs\n\nprint(total_pairs)\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 1,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```python\nimport sys\n\nn = int(sys.stdin.readline())\n\nmax_price = n * 2 - 1\nnines = 0\nmp = max_price\nwhile mp >= 9:\n    nines += 1\n    mp = mp // 10\nif nines < 1:\n    print(n * (n - 1) // 2)\n    exit()\n\nprice_suffix = \"9\" * nines\ntotal_pairs = 0\n\nfor d in range(0, 10):\n    if d > 0:\n        price = int(str(d) + price_suffix)\n    else:\n        price = int(price_suffix)\n    if price > max_price:\n        continue\n    half = price // 2\n    if price % 2 == 0:\n        pairs = min(half - 1, n - half)\n        if pairs >= 0:\n            total_pairs += pairs + 1\n    else:\n        pairs = min(half, n - half)\n        if pairs >= 0:\n            total_pairs += pairs\n\nprint(total_pairs)\n``` ||END-of-SRC||"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 2,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```python\nimport sys\n\nn = int(sys.stdin.readline())\n\nmax_price = n * 2 - 1\nnines = 0\nmp = max_price\nwhile mp >= 9:\n    nines += 1\n    mp = mp // 10\nif nines < 1:\n    print((n * (n - 1)) // 2)\n    exit()\n\nprice_suffix = int('9' * nines)\ntotal = 0\n\nfor d in range(0, 10):\n    if d > 0:\n        price = d * (10 ** nines) + price_suffix\n    else:\n        price = price_suffix\n    if price > max_price:\n        continue\n    max_x = min(n, price - 1)\n    min_x = max(1, price - n)\n    if min_x > max_x:\n        continue\n    count = (max_x - min_x + 1) // 2\n    if (max_x - min_x + 1) % 2 == 1 and (min_x + max_x) == price:\n        count += 1\n    total += count\n\nprint(total)\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 3,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```python\nimport sys\n\nn = int(sys.stdin.readline())\n\nmax_price = n * 2 - 1\nnines = 0\nmp = max_price\nwhile mp >= 9:\n    nines += 1\n    mp = mp // 10\nif nines < 1:\n    print((n * (n - 1)) // 2)\n    exit()\n\nprice_suffix = \"9\" * nines\ntotal_pairs = 0\n\nfor d in range(0, 10):\n    if d > 0:\n        price = int(str(d) + price_suffix)\n    else:\n        price = int(price_suffix)\n    if price > max_price:\n        continue\n    max_x = min(n, price - 1)\n    min_x = price - max_x\n    if min_x < 1:\n        min_x = 1\n    if min_x > max_x:\n        continue\n    count = max_x - min_x + 1\n    total_pairs += count // 2 if (min_x + max_x) == price else (count + 1) // 2\n\nprint(total_pairs)\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 4,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```python\nimport sys\n\nn = int(sys.stdin.readline())\n\nmax_price = n * 2 - 1\nnines = 0\nmp = max_price\nwhile mp >= 9:\n    nines += 1\n    mp = mp // 10\nif nines < 1:\n    print(n * (n - 1) // 2)\n    exit()\n\nprice_suffix = int('9' * nines)\ncnt = 0\n\nfor d in range(0, 10):\n    if d > 0:\n        price = d * (10 ** nines) + price_suffix\n    else:\n        price = price_suffix\n    if price > max_price:\n        continue\n    half = price // 2\n    x_min = max(1, price - n)\n    x_max = min(half, n)\n    if x_min <= x_max:\n        cnt += x_max - x_min + 1\n\nprint(cnt)\n```"
+                    },
+                    "finish_reason": "stop"
+                }
+            ],
+            "usage": {
+                "prompt_tokens": 4450,
+                "completion_tokens": 1175,
+                "total_tokens": 5625
+            }
+        }
+    },
+    "source_data": {
+        "prob_desc_memory_limit": "256 megabytes",
+        "tags": [
+            "math",
+            "constructive algorithms"
+        ],
+        "prob_desc_created_at": "1513492500",
+        "fix_source_code": "",
+        "prob_desc_input_spec": "The first line contains a single integer n (2\u2009\u2264\u2009n\u2009\u2264\u2009109) \u2014 the number of shovels in Polycarp's shop.",
+        "prob_desc_sample_outputs": [
+            "3",
+            "9",
+            "1"
+        ],
+        "src_uid": "c20744c44269ae0779c5f549afd2e3f2",
+        "prob_desc_time_limit": "1 second",
+        "fix_exec_outcome": "",
+        "delete_cnt": 0,
+        "apr_id": "83182aa16886e23ca5ad3d3fc8fb3bc0",
+        "fix_code_uid": "",
+        "lang_cluster": "Python",
+        "prob_desc_sample_inputs": [
+            "7",
+            "14",
+            "50"
+        ],
+        "prob_desc_output_to": "standard output",
+        "file_name": "Python.jsonl",
+        "equal_cnt": 10,
+        "lang": "Python 3",
+        "prob_desc_output_spec": "Print the number of pairs of shovels such that their total cost ends with maximum possible number of nines.  Note that it is possible that the largest number of 9s at the end is 0, then you should count all such ways. It is guaranteed that for every n\u2009\u2264\u2009109 the answer doesn't exceed 2\u00b7109.",
+        "bug_exec_outcome": "TIME_LIMIT_EXCEEDED",
+        "prob_desc_notes": "NoteIn the first example the maximum possible number of nines at the end is one. Polycarp cah choose the following pairs of shovels for that purpose:  2 and 7;  3 and 6;  4 and 5. In the second example the maximum number of nines at the end of total cost of two shovels is one. The following pairs of shovels suit Polycarp:  1 and 8;  2 and 7;  3 and 6;  4 and 5;  5 and 14;  6 and 13;  7 and 12;  8 and 11;  9 and 10. In the third example it is necessary to choose shovels 49 and 50, because the sum of their cost is 99, that means that the total number of nines is equal to two, which is maximum possible for n\u2009=\u200950.",
+        "difficulty": 1800.0,
+        "similarity_score": 0.5526137352,
+        "prob_desc_description": "There are n shovels in Polycarp's shop. The i-th shovel costs i burles, that is, the first shovel costs 1 burle, the second shovel costs 2 burles, the third shovel costs 3 burles, and so on. Polycarps wants to sell shovels in pairs.Visitors are more likely to buy a pair of shovels if their total cost ends with several 9s. Because of this, Polycarp wants to choose a pair of shovels to sell in such a way that the sum of their costs ends with maximum possible number of nines. For example, if he chooses shovels with costs 12345 and 37454, their total cost is 49799, it ends with two nines.You are to compute the number of pairs of shovels such that their total cost ends with maximum possible number of nines. Two pairs are considered different if there is a shovel presented in one pair, but not in the other.",
+        "potential_dominant_fix_op": "replace",
+        "bug_source_code": "import sys\n\nlines = []\nfor line in sys.stdin:\n    lines.append(line)\n\nn = int(lines[0].rstrip(\"\\r\\n\\t \"))\n\nmax_price = n * 2 - 1\nnines = 0\nmp = max_price\nwhile mp >= 9:\n    nines += 1\n    mp = int(mp / 10)\nif nines < 1:\n    print(\"0\")\n    exit()\nprice_suffix = \"9\"*nines\n\npairs = set()\ndef add_pairs(max_x: int, price: int):\n    from_max = int(price / 2)\n    to_min = from_max + 1\n    to_max = price - 1\n    if to_max > max_x:\n        to_max = max_x\n    from_min = price - to_max\n    for x in range(from_min, from_max + 1):\n        pairs.add(str(x) + ':' + str(price - x))\n\n\ncnt = 0\nfor d in range(0, 10):\n    if d > 0:\n        price = int(str(d) + price_suffix)\n    else:\n        price = int(price_suffix)\n    if price <= max_price:\n        add_pairs(n, price)\n\nprint(len(pairs))\n",
+        "replace_cnt": 9,
+        "prob_desc_input_from": "standard input",
+        "bug_code_uid": "c83171a525be8a43b6f852de621b5e71",
+        "insert_cnt": 1,
+        "fix_ops_cnt": 10,
+        "hidden_unit_tests": "[{\"input\": \"7\\r\\n\", \"output\": [\"3\"]}, {\"input\": \"14\\r\\n\", \"output\": [\"9\"]}, {\"input\": \"50\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"999999999\\r\\n\", \"output\": [\"499999999\"]}, {\"input\": \"15\\r\\n\", \"output\": [\"11\"]}, {\"input\": \"3\\r\\n\", \"output\": [\"3\"]}, {\"input\": \"6500\\r\\n\", \"output\": [\"1501\"]}, {\"input\": \"4\\r\\n\", \"output\": [\"6\"]}, {\"input\": \"13\\r\\n\", \"output\": [\"8\"]}, {\"input\": \"10\\r\\n\", \"output\": [\"5\"]}, {\"input\": \"499999\\r\\n\", \"output\": [\"1249995\"]}, {\"input\": \"6\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"8\\r\\n\", \"output\": [\"4\"]}, {\"input\": \"9\\r\\n\", \"output\": [\"4\"]}, {\"input\": \"11\\r\\n\", \"output\": [\"6\"]}, {\"input\": \"12\\r\\n\", \"output\": [\"7\"]}, {\"input\": \"5\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"16\\r\\n\", \"output\": [\"13\"]}, {\"input\": \"17\\r\\n\", \"output\": [\"15\"]}, {\"input\": \"18\\r\\n\", \"output\": [\"17\"]}, {\"input\": \"19\\r\\n\", \"output\": [\"18\"]}, {\"input\": \"20\\r\\n\", \"output\": [\"20\"]}, {\"input\": \"21\\r\\n\", \"output\": [\"22\"]}, {\"input\": \"22\\r\\n\", \"output\": [\"24\"]}, {\"input\": \"23\\r\\n\", \"output\": [\"26\"]}, {\"input\": \"24\\r\\n\", \"output\": [\"28\"]}, {\"input\": \"25\\r\\n\", \"output\": [\"31\"]}, {\"input\": \"26\\r\\n\", \"output\": [\"34\"]}, {\"input\": \"27\\r\\n\", \"output\": [\"37\"]}, {\"input\": \"28\\r\\n\", \"output\": [\"40\"]}, {\"input\": \"29\\r\\n\", \"output\": [\"42\"]}, {\"input\": \"30\\r\\n\", \"output\": [\"45\"]}, {\"input\": \"31\\r\\n\", \"output\": [\"48\"]}, {\"input\": \"32\\r\\n\", \"output\": [\"51\"]}, {\"input\": \"33\\r\\n\", \"output\": [\"54\"]}, {\"input\": \"34\\r\\n\", \"output\": [\"57\"]}, {\"input\": \"35\\r\\n\", \"output\": [\"61\"]}, {\"input\": \"36\\r\\n\", \"output\": [\"65\"]}, {\"input\": \"37\\r\\n\", \"output\": [\"69\"]}, {\"input\": \"38\\r\\n\", \"output\": [\"73\"]}, {\"input\": \"39\\r\\n\", \"output\": [\"76\"]}, {\"input\": \"40\\r\\n\", \"output\": [\"80\"]}, {\"input\": \"41\\r\\n\", \"output\": [\"84\"]}, {\"input\": \"42\\r\\n\", \"output\": [\"88\"]}, {\"input\": \"43\\r\\n\", \"output\": [\"92\"]}, {\"input\": \"44\\r\\n\", \"output\": [\"96\"]}, {\"input\": \"45\\r\\n\", \"output\": [\"101\"]}, {\"input\": \"46\\r\\n\", \"output\": [\"106\"]}, {\"input\": \"47\\r\\n\", \"output\": [\"111\"]}, {\"input\": \"48\\r\\n\", \"output\": [\"116\"]}, {\"input\": \"49\\r\\n\", \"output\": [\"120\"]}, {\"input\": \"51\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"100\\r\\n\", \"output\": [\"50\"]}, {\"input\": \"99\\r\\n\", \"output\": [\"49\"]}, {\"input\": \"101\\r\\n\", \"output\": [\"51\"]}, {\"input\": \"4999\\r\\n\", \"output\": [\"12495\"]}, {\"input\": \"4998\\r\\n\", \"output\": [\"12491\"]}, {\"input\": \"4992\\r\\n\", \"output\": [\"12461\"]}, {\"input\": \"5000\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"5001\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"10000\\r\\n\", \"output\": [\"5000\"]}, {\"input\": \"10001\\r\\n\", \"output\": [\"5001\"]}, {\"input\": \"49839\\r\\n\", \"output\": [\"124196\"]}, {\"input\": \"4999999\\r\\n\", \"output\": [\"12499995\"]}, {\"input\": \"49999999\\r\\n\", \"output\": [\"124999995\"]}, {\"input\": \"499999999\\r\\n\", \"output\": [\"1249999995\"]}, {\"input\": \"999\\r\\n\", \"output\": [\"499\"]}, {\"input\": \"9999\\r\\n\", \"output\": [\"4999\"]}, {\"input\": \"99999\\r\\n\", \"output\": [\"49999\"]}, {\"input\": \"999999\\r\\n\", \"output\": [\"499999\"]}, {\"input\": \"9999999\\r\\n\", \"output\": [\"4999999\"]}, {\"input\": \"99999999\\r\\n\", \"output\": [\"49999999\"]}, {\"input\": \"2\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"1000000000\\r\\n\", \"output\": [\"500000000\"]}, {\"input\": \"764675465\\r\\n\", \"output\": [\"264675466\"]}, {\"input\": \"499999998\\r\\n\", \"output\": [\"1249999991\"]}, {\"input\": \"167959139\\r\\n\", \"output\": [\"135918279\"]}, {\"input\": \"641009859\\r\\n\", \"output\": [\"141009860\"]}, {\"input\": \"524125987\\r\\n\", \"output\": [\"24125988\"]}, {\"input\": \"702209411\\r\\n\", \"output\": [\"202209412\"]}, {\"input\": \"585325539\\r\\n\", \"output\": [\"85325540\"]}, {\"input\": \"58376259\\r\\n\", \"output\": [\"8376260\"]}, {\"input\": \"941492387\\r\\n\", \"output\": [\"441492388\"]}, {\"input\": \"824608515\\r\\n\", \"output\": [\"324608516\"]}, {\"input\": \"2691939\\r\\n\", \"output\": [\"3575818\"]}, {\"input\": \"802030518\\r\\n\", \"output\": [\"302030519\"]}, {\"input\": \"685146646\\r\\n\", \"output\": [\"185146647\"]}, {\"input\": \"863230070\\r\\n\", \"output\": [\"363230071\"]}, {\"input\": \"41313494\\r\\n\", \"output\": [\"85253976\"]}, {\"input\": \"219396918\\r\\n\", \"output\": [\"238793836\"]}, {\"input\": \"102513046\\r\\n\", \"output\": [\"52513046\"]}, {\"input\": \"985629174\\r\\n\", \"output\": [\"485629175\"]}, {\"input\": \"458679894\\r\\n\", \"output\": [\"1043399471\"]}, {\"input\": \"341796022\\r\\n\", \"output\": [\"575388066\"]}, {\"input\": \"519879446\\r\\n\", \"output\": [\"19879447\"]}, {\"input\": \"452405440\\r\\n\", \"output\": [\"1012027201\"]}, {\"input\": \"335521569\\r\\n\", \"output\": [\"556564707\"]}, {\"input\": \"808572289\\r\\n\", \"output\": [\"308572290\"]}, {\"input\": \"691688417\\r\\n\", \"output\": [\"191688418\"]}, {\"input\": \"869771841\\r\\n\", \"output\": [\"369771842\"]}, {\"input\": \"752887969\\r\\n\", \"output\": [\"252887970\"]}, {\"input\": \"930971393\\r\\n\", \"output\": [\"430971394\"]}, {\"input\": \"109054817\\r\\n\", \"output\": [\"59054817\"]}, {\"input\": \"992170945\\r\\n\", \"output\": [\"492170946\"]}, {\"input\": \"170254369\\r\\n\", \"output\": [\"140508739\"]}, {\"input\": \"248004555\\r\\n\", \"output\": [\"296009110\"]}]"
+    }
+}

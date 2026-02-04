@@ -1,0 +1,106 @@
+{
+    "oai_response": {
+        "prompt": "Fix a buggy program written in Python language to solve the following programming problem:\nDescription: Natasha's favourite numbers are $$$n$$$ and $$$1$$$, and Sasha's favourite numbers are $$$m$$$ and $$$-1$$$. One day Natasha and Sasha met and wrote down every possible array of length $$$n+m$$$ such that some $$$n$$$ of its elements are equal to $$$1$$$ and another $$$m$$$ elements are equal to $$$-1$$$. For each such array they counted its maximal prefix sum, probably an empty one which is equal to $$$0$$$ (in another words, if every nonempty prefix sum is less to zero, then it is considered equal to zero). Formally, denote as $$$f(a)$$$ the maximal prefix sum of an array $$$a_{1, \\ldots ,l}$$$ of length $$$l \\geq 0$$$. Then: $$$$$$f(a) = \\max (0, \\smash{\\displaystyle\\max_{1 \\leq i \\leq l}} \\sum_{j=1}^{i} a_j )$$$$$$Now they want to count the sum of maximal prefix sums for each such an array and they are asking you to help. As this sum can be very large, output it modulo $$$998\\: 244\\: 853$$$.\nInput Specification: The only line contains two integers $$$n$$$ and $$$m$$$ ($$$0 \\le n,m \\le 2\\,000$$$).\nOutput Specification: Output the answer to the problem modulo $$$998\\: 244\\: 853$$$.\n\nSample Input:\n0 2\nSample Output:\n0\n\nSample Input:\n2 0\nSample Output:\n2\n\nSample Input:\n2 2\nSample Output:\n5\n\nSample Input:\n2000 2000\nSample Output:\n674532367\n\nNotes: NoteIn the first example the only possible array is [-1,-1], its maximal prefix sum is equal to $$$0$$$. In the second example the only possible array is [1,1], its maximal prefix sum is equal to $$$2$$$. There are $$$6$$$ possible arrays in the third example:[1,1,-1,-1], f([1,1,-1,-1]) = 2[1,-1,1,-1], f([1,-1,1,-1]) = 1[1,-1,-1,1], f([1,-1,-1,1]) = 1[-1,1,1,-1], f([-1,1,1,-1]) = 1[-1,1,-1,1], f([-1,1,-1,1]) = 0[-1,-1,1,1], f([-1,-1,1,1]) = 0So the answer for the third example is $$$2+1+1+1+0+0 = 5$$$.\nTake input from standard input and output to standard output\n\nHere is the code with a bug of MEMORY_LIMIT_EXCEEDED:\n\nn,m = map(int,input().split())\n\nmod = 998244853\ninv = [0] * 5000\nfac = [0] * 5000\ninvfac = [0] * 5000\ninvfac[0] = invfac[1] = 1\nfac[0] = fac[1] = 1\ninv[0] = inv[1] = 1\nfor i in range(2,4500):\n    inv[i] = (mod - mod//i) * inv[mod%i] % mod\n\nfor i in range(2,4500):\n    fac[i] = i*fac[i-1]%mod\n    invfac[i] = inv[i]*invfac[i-1]%mod\n\ndef c(x,y):\n    if(x<y):\n        return 0\n    return ((fac[x]*invfac[x-y])%mod)*invfac[y]%mod\n\n\ndp = [[0]*2005 for _i in range(2005)]\nans = [[0]*2005 for _i in range(2005)]\n\n\nfor i in range(m+1):\n    dp[0][i] = 1\n\nfor i in range(1,n+1):\n    for j in range(i,m+1):\n            dp[i][j] = dp[i-1][j]+dp[i][j-1]\n\n\npre = [0] * 2005\nnow = [0] * 2005\n\nfor i in range (1,n+1):\n    now[0] = i\n    for k in range(1,m+1):\n        pre[k] = now[k]\n\n    for j in range(1,m+1):\n        now[j] = pre[j] + c(i+j-1,j) + now[j-1] - c(i+j-1,i) + dp[i][j-1]\n        now[j] %= mod\n        \n\nprint(now[m])\n\n\nProvide the fixed Python code without any description or extra tokens.\n\nFixed source code:\n ||END-of-SRC||",
+        "response": {
+            "id": "multi-call-as-mggvpzm2ue",
+            "model": "deepseek-v3",
+            "created": 1760422868,
+            "choices": [
+                {
+                    "index": 0,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```python\nn, m = map(int, input().split())\n\nmod = 998244853\nmax_n = 4005\ninv = [0] * max_n\nfac = [0] * max_n\ninvfac = [0] * max_n\ninvfac[0] = invfac[1] = 1\nfac[0] = fac[1] = 1\ninv[0] = inv[1] = 1\nfor i in range(2, max_n):\n    inv[i] = (mod - mod // i) * inv[mod % i] % mod\n\nfor i in range(2, max_n):\n    fac[i] = i * fac[i - 1] % mod\n    invfac[i] = inv[i] * invfac[i - 1] % mod\n\ndef comb(x, y):\n    if x < y or y < 0:\n        return 0\n    return fac[x] * invfac[y] % mod * invfac[x - y] % mod\n\ndp = [[0] * (m + 2) for _ in range(n + 2)]\nans = [[0] * (m + 2) for _ in range(n + 2)]\n\nfor j in range(m + 1):\n    dp[0][j] = 1\n\nfor i in range(1, n + 1):\n    for j in range(i, m + 1):\n        dp[i][j] = (dp[i - 1][j] + dp[i][j - 1]) % mod\n\nfor i in range(n + 1):\n    for j in range(m + 1):\n        if i == 0:\n            ans[i][j] = 0\n        elif j == 0:\n            ans[i][j] = i\n        else:\n            ans[i][j] = (comb(i + j - 1, j) + ans[i - 1][j] + ans[i][j - 1] - comb(i + j - 1, i) + dp[i][j - 1]) % mod\n\nprint(ans[n][m] % mod)\n``` ||END-of-SRC||"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 1,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```python\nn, m = map(int, input().split())\n\nmod = 998244853\nmax_n = 4000\ninv = [0] * (max_n + 1)\nfac = [0] * (max_n + 1)\ninvfac = [0] * (max_n + 1)\ninvfac[0] = invfac[1] = 1\nfac[0] = fac[1] = 1\ninv[0] = inv[1] = 1\nfor i in range(2, max_n + 1):\n    inv[i] = (mod - mod // i) * inv[mod % i] % mod\n\nfor i in range(2, max_n + 1):\n    fac[i] = i * fac[i - 1] % mod\n    invfac[i] = inv[i] * invfac[i - 1] % mod\n\ndef comb(x, y):\n    if x < y or y < 0:\n        return 0\n    return fac[x] * invfac[y] % mod * invfac[x - y] % mod\n\nif n == 0:\n    print(0)\nelif m == 0:\n    print(n % mod)\nelse:\n    dp = [[0] * (m + 1) for _ in range(n + 1)]\n    for i in range(m + 1):\n        dp[0][i] = 1\n    for i in range(1, n + 1):\n        for j in range(i, m + 1):\n            dp[i][j] = (dp[i - 1][j] + dp[i][j - 1]) % mod\n\n    ans = 0\n    for k in range(1, n + 1):\n        if k <= n - m:\n            ans = (ans + comb(n + m, n)) % mod\n        else:\n            ans = (ans + comb(n + m, n - k)) % mod\n    print(ans)\n``` ||END-of-SRC||"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 2,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```python\nn, m = map(int, input().split())\n\nmod = 998244853\nmax_n = 4005\ninv = [0] * max_n\nfac = [0] * max_n\ninvfac = [0] * max_n\ninvfac[0] = invfac[1] = 1\nfac[0] = fac[1] = 1\ninv[0] = inv[1] = 1\nfor i in range(2, max_n):\n    inv[i] = (mod - mod // i) * inv[mod % i] % mod\n\nfor i in range(2, max_n):\n    fac[i] = i * fac[i - 1] % mod\n    invfac[i] = inv[i] * invfac[i - 1] % mod\n\ndef comb(x, y):\n    if x < 0 or y < 0 or x < y:\n        return 0\n    return fac[x] * invfac[y] % mod * invfac[x - y] % mod\n\nif n == 0:\n    print(0)\nelif m == 0:\n    print(n % mod)\nelse:\n    dp = [[0] * (m + 1) for _ in range(n + 1)]\n    for i in range(m + 1):\n        dp[0][i] = 1\n    for i in range(1, n + 1):\n        for j in range(i, m + 1):\n            dp[i][j] = (dp[i - 1][j] + dp[i][j - 1]) % mod\n\n    ans = 0\n    for k in range(1, n + 1):\n        if k <= n - m:\n            ans = (ans + comb(n + m, n)) % mod\n        else:\n            ans = (ans + comb(n + m, n - k)) % mod\n    print(ans)\n``` ||END-of-SRC||"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 3,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```python\nn, m = map(int, input().split())\n\nmod = 998244853\nmax_n = 4005\ninv = [0] * (max_n + 1)\nfac = [0] * (max_n + 1)\ninvfac = [0] * (max_n + 1)\ninvfac[0] = invfac[1] = 1\nfac[0] = fac[1] = 1\ninv[0] = inv[1] = 1\nfor i in range(2, max_n + 1):\n    inv[i] = (mod - mod // i) * inv[mod % i] % mod\n\nfor i in range(2, max_n + 1):\n    fac[i] = i * fac[i - 1] % mod\n    invfac[i] = inv[i] * invfac[i - 1] % mod\n\ndef comb(x, y):\n    if x < 0 or y < 0 or x < y:\n        return 0\n    return fac[x] * invfac[y] % mod * invfac[x - y] % mod\n\ndp = [[0] * (m + 2) for _ in range(n + 2)]\nans = [[0] * (m + 2) for _ in range(n + 2)]\n\nfor j in range(m + 1):\n    dp[0][j] = 1\n\nfor i in range(1, n + 1):\n    for j in range(i, m + 1):\n        dp[i][j] = (dp[i - 1][j] + dp[i][j - 1]) % mod\n\nfor i in range(n + 1):\n    for j in range(m + 1):\n        if i == 0:\n            ans[i][j] = 0\n        elif j == 0:\n            ans[i][j] = i\n        else:\n            ans[i][j] = (ans[i - 1][j] + comb(i + j - 1, j) + ans[i][j - 1] - comb(i + j - 1, i) + dp[i][j - 1]) % mod\n\nprint(ans[n][m] % mod)\n``` ||END-of-SRC||"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 4,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```python\nn, m = map(int, input().split())\n\nmod = 998244853\nmax_n = 4000\ninv = [0] * (max_n + 1)\nfac = [0] * (max_n + 1)\ninvfac = [0] * (max_n + 1)\ninvfac[0] = invfac[1] = 1\nfac[0] = fac[1] = 1\ninv[0] = inv[1] = 1\nfor i in range(2, max_n + 1):\n    inv[i] = (mod - mod // i) * inv[mod % i] % mod\n\nfor i in range(2, max_n + 1):\n    fac[i] = i * fac[i - 1] % mod\n    invfac[i] = inv[i] * invfac[i - 1] % mod\n\ndef comb(x, y):\n    if x < y or y < 0:\n        return 0\n    return fac[x] * invfac[y] % mod * invfac[x - y] % mod\n\ndp = [[0] * (m + 1) for _ in range(n + 1)]\nans = [[0] * (m + 1) for _ in range(n + 1)]\n\nfor j in range(m + 1):\n    dp[0][j] = 1\n\nfor i in range(1, n + 1):\n    for j in range(i, m + 1):\n        dp[i][j] = (dp[i - 1][j] + dp[i][j - 1]) % mod\n\nfor i in range(n + 1):\n    for j in range(m + 1):\n        if i == 0:\n            ans[i][j] = 0\n        elif j == 0:\n            ans[i][j] = i\n        else:\n            ans[i][j] = (ans[i - 1][j] + comb(i + j - 1, j) + ans[i][j - 1] - comb(i + j - 1, i) + dp[i][j - 1]) % mod\n\nprint(ans[n][m])\n``` ||END-of-SRC||"
+                    },
+                    "finish_reason": "stop"
+                }
+            ],
+            "usage": {
+                "prompt_tokens": 5405,
+                "completion_tokens": 2289,
+                "total_tokens": 7694
+            }
+        }
+    },
+    "source_data": {
+        "prob_desc_memory_limit": "256 megabytes",
+        "tags": [
+            "dp",
+            "math",
+            "combinatorics",
+            "number theory"
+        ],
+        "prob_desc_created_at": "1566311700",
+        "fix_source_code": "",
+        "prob_desc_input_spec": "The only line contains two integers $$$n$$$ and $$$m$$$ ($$$0 \\le n,m \\le 2\\,000$$$).",
+        "prob_desc_sample_outputs": [
+            "0",
+            "2",
+            "5",
+            "674532367"
+        ],
+        "src_uid": "a2fcad987e9b2bb3e6395654cd4fcfbb",
+        "prob_desc_time_limit": "2 seconds",
+        "fix_exec_outcome": "",
+        "delete_cnt": 1,
+        "apr_id": "d05f12588ec16d480b226af16b5ea01e",
+        "fix_code_uid": "",
+        "lang_cluster": "Python",
+        "prob_desc_sample_inputs": [
+            "0 2",
+            "2 0",
+            "2 2",
+            "2000 2000"
+        ],
+        "prob_desc_output_to": "standard output",
+        "file_name": "Python.jsonl",
+        "equal_cnt": 9,
+        "lang": "PyPy 3",
+        "prob_desc_output_spec": "Output the answer to the problem modulo $$$998\\: 244\\: 853$$$.",
+        "bug_exec_outcome": "MEMORY_LIMIT_EXCEEDED",
+        "prob_desc_notes": "NoteIn the first example the only possible array is [-1,-1], its maximal prefix sum is equal to $$$0$$$. In the second example the only possible array is [1,1], its maximal prefix sum is equal to $$$2$$$. There are $$$6$$$ possible arrays in the third example:[1,1,-1,-1], f([1,1,-1,-1]) = 2[1,-1,1,-1], f([1,-1,1,-1]) = 1[1,-1,-1,1], f([1,-1,-1,1]) = 1[-1,1,1,-1], f([-1,1,1,-1]) = 1[-1,1,-1,1], f([-1,1,-1,1]) = 0[-1,-1,1,1], f([-1,-1,1,1]) = 0So the answer for the third example is $$$2+1+1+1+0+0 = 5$$$.",
+        "difficulty": 2300.0,
+        "similarity_score": 0.867118299,
+        "prob_desc_description": "Natasha's favourite numbers are $$$n$$$ and $$$1$$$, and Sasha's favourite numbers are $$$m$$$ and $$$-1$$$. One day Natasha and Sasha met and wrote down every possible array of length $$$n+m$$$ such that some $$$n$$$ of its elements are equal to $$$1$$$ and another $$$m$$$ elements are equal to $$$-1$$$. For each such array they counted its maximal prefix sum, probably an empty one which is equal to $$$0$$$ (in another words, if every nonempty prefix sum is less to zero, then it is considered equal to zero). Formally, denote as $$$f(a)$$$ the maximal prefix sum of an array $$$a_{1, \\ldots ,l}$$$ of length $$$l \\geq 0$$$. Then: $$$$$$f(a) = \\max (0, \\smash{\\displaystyle\\max_{1 \\leq i \\leq l}} \\sum_{j=1}^{i} a_j )$$$$$$Now they want to count the sum of maximal prefix sums for each such an array and they are asking you to help. As this sum can be very large, output it modulo $$$998\\: 244\\: 853$$$.",
+        "potential_dominant_fix_op": "replace",
+        "bug_source_code": "n,m = map(int,input().split())\n\nmod = 998244853\ninv = [0] * 5000\nfac = [0] * 5000\ninvfac = [0] * 5000\ninvfac[0] = invfac[1] = 1\nfac[0] = fac[1] = 1\ninv[0] = inv[1] = 1\nfor i in range(2,4500):\n    inv[i] = (mod - mod//i) * inv[mod%i] % mod\n\nfor i in range(2,4500):\n    fac[i] = i*fac[i-1]%mod\n    invfac[i] = inv[i]*invfac[i-1]%mod\n\ndef c(x,y):\n    if(x<y):\n        return 0\n    return ((fac[x]*invfac[x-y])%mod)*invfac[y]%mod\n\n\ndp = [[0]*2005 for _i in range(2005)]\nans = [[0]*2005 for _i in range(2005)]\n\n\nfor i in range(m+1):\n    dp[0][i] = 1\n\nfor i in range(1,n+1):\n    for j in range(i,m+1):\n            dp[i][j] = dp[i-1][j]+dp[i][j-1]\n\n\npre = [0] * 2005\nnow = [0] * 2005\n\nfor i in range (1,n+1):\n    now[0] = i\n    for k in range(1,m+1):\n        pre[k] = now[k]\n\n    for j in range(1,m+1):\n        now[j] = pre[j] + c(i+j-1,j) + now[j-1] - c(i+j-1,i) + dp[i][j-1]\n        now[j] %= mod\n        \n\nprint(now[m])\n",
+        "replace_cnt": 5,
+        "prob_desc_input_from": "standard input",
+        "bug_code_uid": "e8897feace492d487838cc5ef1c18b5c",
+        "insert_cnt": 2,
+        "fix_ops_cnt": 8,
+        "hidden_unit_tests": "[{\"input\": \"0 2\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"2 0\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"2 2\\r\\n\", \"output\": [\"5\"]}, {\"input\": \"2000 2000\\r\\n\", \"output\": [\"674532367\"]}, {\"input\": \"0 0\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"11 2\\r\\n\", \"output\": [\"716\"]}, {\"input\": \"1 4\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"5 13\\r\\n\", \"output\": [\"4048\"]}, {\"input\": \"60 59\\r\\n\", \"output\": [\"271173738\"]}, {\"input\": \"27 16\\r\\n\", \"output\": [\"886006554\"]}, {\"input\": \"1134 1092\\r\\n\", \"output\": [\"134680101\"]}, {\"input\": \"756 1061\\r\\n\", \"output\": [\"72270489\"]}, {\"input\": \"953 1797\\r\\n\", \"output\": [\"557692333\"]}, {\"input\": \"76 850\\r\\n\", \"output\": [\"103566263\"]}, {\"input\": \"24 1508\\r\\n\", \"output\": [\"540543518\"]}, {\"input\": \"1087 1050\\r\\n\", \"output\": [\"973930225\"]}, {\"input\": \"149 821\\r\\n\", \"output\": [\"64450770\"]}, {\"input\": \"983 666\\r\\n\", \"output\": [\"917123830\"]}, {\"input\": \"45 1323\\r\\n\", \"output\": [\"357852234\"]}, {\"input\": \"1994 1981\\r\\n\", \"output\": [\"596939902\"]}, {\"input\": \"1942 1523\\r\\n\", \"output\": [\"89088577\"]}, {\"input\": \"1891 1294\\r\\n\", \"output\": [\"696966158\"]}, {\"input\": \"1132 1727\\r\\n\", \"output\": [\"878164775\"]}, {\"input\": \"1080 383\\r\\n\", \"output\": [\"161999131\"]}, {\"input\": \"1028 1040\\r\\n\", \"output\": [\"119840364\"]}, {\"input\": \"976 1698\\r\\n\", \"output\": [\"621383232\"]}, {\"input\": \"38 656\\r\\n\", \"output\": [\"814958661\"]}, {\"input\": \"872 1313\\r\\n\", \"output\": [\"261808476\"]}, {\"input\": \"1935 856\\r\\n\", \"output\": [\"707458926\"]}, {\"input\": \"1883 1513\\r\\n\", \"output\": [\"265215482\"]}, {\"input\": \"0 2000\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"2000 0\\r\\n\", \"output\": [\"2000\"]}, {\"input\": \"1991 1992\\r\\n\", \"output\": [\"518738831\"]}, {\"input\": \"1935 1977\\r\\n\", \"output\": [\"16604630\"]}, {\"input\": \"1990 2000\\r\\n\", \"output\": [\"516468539\"]}, {\"input\": \"1915 1915\\r\\n\", \"output\": [\"534527105\"]}]"
+    }
+}

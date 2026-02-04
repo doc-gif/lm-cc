@@ -1,0 +1,87 @@
+{
+    "oai_response": {
+        "prompt": "Here is code in Python 3 programming lanaguge. Translate the following code from Python 3 to C programming lanaguge. Do not output any extra description or tokens other than the translated code. \n\nMOD = 998244353\nn,m,l,r = map(int,input().split())\n# print(n,m,l,r)\nif n * m % 2 == 1:\n\tprint(pow(r - l + 1,n*m,MOD))\nelse:\n\te = r//2 - (l - 1)//2\n\to = (r - l + 1) - e\n\t# inv_2 = pow(2,MOD-2)\n\tprint(((pow(e+o,n*m,MOD) + pow(e - o,n*m,MOD))*((MOD + 1)//2))%MOD)||END-of-SRC||",
+        "response": {
+            "id": "multi-call-as-4j85db5krh",
+            "model": "deepseek-v3",
+            "created": 1767069219,
+            "choices": [
+                {
+                    "index": 0,
+                    "message": {
+                        "role": "assistant",
+                        "content": "Here's the translated code in C:\n\n```c\n#include <stdio.h>\n#include <math.h>\n\n#define MOD 998244353\n\nlong long pow_mod(long long base, long long exp, long long mod) {\n    long long result = 1;\n    while (exp > 0) {\n        if (exp % 2 == 1) {\n            result = (result * base) % mod;\n        }\n        base = (base * base) % mod;\n        exp /= 2;\n    }\n    return result;\n}\n\nint main() {\n    int n, m, l, r;\n    scanf(\"%d %d %d %d\", &n, &m, &l, &r);\n    if (n * m % 2 == 1) {\n        printf(\"%lld\\n\", pow_mod(r - l + 1, (long long)n * m, MOD));\n    } else {\n        long long e = r / 2 - (l - 1) / 2;\n        long long o = (r - l + 1) - e;\n        long long term1 = pow_mod(e + o, (long long)n * m, MOD);\n        long long term2 = pow_mod(e - o, (long long)n * m, MOD);\n        printf(\"%lld\\n\", ((term1 + term2) * ((MOD + 1) / 2)) % MOD);\n    }\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 1,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <math.h>\n\n#define MOD 998244353\n\nlong long pow_mod(long long base, long long exp, long long mod) {\n    long long result = 1;\n    while (exp > 0) {\n        if (exp % 2 == 1) {\n            result = (result * base) % mod;\n        }\n        base = (base * base) % mod;\n        exp /= 2;\n    }\n    return result;\n}\n\nint main() {\n    int n, m, l, r;\n    scanf(\"%d %d %d %d\", &n, &m, &l, &r);\n    if (n * m % 2 == 1) {\n        printf(\"%lld\\n\", pow_mod(r - l + 1, (long long)n * m, MOD));\n    } else {\n        long long e = r / 2 - (l - 1) / 2;\n        long long o = (r - l + 1) - e;\n        long long term1 = pow_mod(e + o, (long long)n * m, MOD);\n        long long term2 = pow_mod(e - o, (long long)n * m, MOD);\n        long long result = ((term1 + term2) * ((MOD + 1) / 2)) % MOD;\n        printf(\"%lld\\n\", result);\n    }\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 2,
+                    "message": {
+                        "role": "assistant",
+                        "content": "Here's the translated code in C:\n\n```c\n#include <stdio.h>\n#include <math.h>\n\n#define MOD 998244353\n\nlong long pow_mod(long long base, long long exp, long long mod) {\n    long long result = 1;\n    while (exp > 0) {\n        if (exp % 2 == 1) {\n            result = (result * base) % mod;\n        }\n        base = (base * base) % mod;\n        exp = exp / 2;\n    }\n    return result;\n}\n\nint main() {\n    int n, m, l, r;\n    scanf(\"%d %d %d %d\", &n, &m, &l, &r);\n    if ((n * m) % 2 == 1) {\n        printf(\"%lld\\n\", pow_mod(r - l + 1, (long long)n * m, MOD));\n    } else {\n        long long e = r / 2 - (l - 1) / 2;\n        long long o = (r - l + 1) - e;\n        long long term1 = pow_mod(e + o, (long long)n * m, MOD);\n        long long term2 = pow_mod(e - o, (long long)n * m, MOD);\n        printf(\"%lld\\n\", ((term1 + term2) * ((MOD + 1) / 2)) % MOD);\n    }\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 3,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <math.h>\n\n#define MOD 998244353\n\nlong long pow_mod(long long base, long long exp, long long mod) {\n    long long result = 1;\n    base = base % mod;\n    while (exp > 0) {\n        if (exp % 2 == 1) {\n            result = (result * base) % mod;\n        }\n        base = (base * base) % mod;\n        exp = exp / 2;\n    }\n    return result;\n}\n\nint main() {\n    int n, m, l, r;\n    scanf(\"%d %d %d %d\", &n, &m, &l, &r);\n    if (n * m % 2 == 1) {\n        printf(\"%lld\\n\", pow_mod(r - l + 1, (long long)n * m, MOD));\n    } else {\n        long long e = r / 2 - (l - 1) / 2;\n        long long o = (r - l + 1) - e;\n        long long term1 = pow_mod(e + o, (long long)n * m, MOD);\n        long long term2 = pow_mod(e - o, (long long)n * m, MOD);\n        long long inv_2 = (MOD + 1) / 2;\n        printf(\"%lld\\n\", ((term1 + term2) * inv_2) % MOD);\n    }\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 4,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <math.h>\n\n#define MOD 998244353\n\nlong long pow_mod(long long base, long long exp, long long mod) {\n    long long result = 1;\n    while (exp > 0) {\n        if (exp % 2 == 1) {\n            result = (result * base) % mod;\n        }\n        base = (base * base) % mod;\n        exp /= 2;\n    }\n    return result;\n}\n\nint main() {\n    int n, m, l, r;\n    scanf(\"%d %d %d %d\", &n, &m, &l, &r);\n    if (n * m % 2 == 1) {\n        printf(\"%lld\\n\", pow_mod(r - l + 1, (long long)n * m, MOD));\n    } else {\n        long long e = r / 2 - (l - 1) / 2;\n        long long o = (r - l + 1) - e;\n        long long term1 = pow_mod(e + o, (long long)n * m, MOD);\n        long long term2 = pow_mod(e - o, (long long)n * m, MOD);\n        long long inv_2 = (MOD + 1) / 2;\n        printf(\"%lld\\n\", ((term1 + term2) * inv_2) % MOD);\n    }\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                }
+            ],
+            "usage": {
+                "prompt_tokens": 885,
+                "completion_tokens": 1543,
+                "total_tokens": 2428
+            }
+        }
+    },
+    "source_data": {
+        "code_uid": "13c859eb5fa8570b1301b3552d234351",
+        "prob_desc_output_to": "standard output",
+        "prob_desc_notes": "NoteIn the first sample, the only initial grid that satisfies the requirements is $$$a_{1,1}=a_{2,1}=a_{1,2}=a_{2,2}=1$$$. Thus the answer should be $$$1$$$.In the second sample, initial grids that satisfy the requirements are $$$a_{1,1}=a_{1,2}=1$$$ and $$$a_{1,1}=a_{1,2}=2$$$. Thus the answer should be $$$2$$$.",
+        "lang_cluster": "Python",
+        "prob_desc_time_limit": "2 seconds",
+        "prob_desc_input_spec": "The only line contains four integers $$$n$$$, $$$m$$$, $$$L$$$ and $$$R$$$ ($$$1\\le n,m,L,R \\le 10^9$$$, $$$L \\le R$$$, $$$n \\cdot m \\ge 2$$$).",
+        "source_code": "MOD = 998244353\nn,m,l,r = map(int,input().split())\n# print(n,m,l,r)\nif n * m % 2 == 1:\n\tprint(pow(r - l + 1,n*m,MOD))\nelse:\n\te = r//2 - (l - 1)//2\n\to = (r - l + 1) - e\n\t# inv_2 = pow(2,MOD-2)\n\tprint(((pow(e+o,n*m,MOD) + pow(e - o,n*m,MOD))*((MOD + 1)//2))%MOD)",
+        "prob_desc_sample_inputs": [
+            "2 2 1 1",
+            "1 2 1 2"
+        ],
+        "prob_desc_memory_limit": "512 megabytes",
+        "exec_outcome": "PASSED",
+        "prob_desc_output_spec": "Output one integer, representing the desired answer modulo $$$998,244,353$$$.",
+        "src_uid": "ded299fa1cd010822c60f2389a3ba1a3",
+        "prob_desc_input_from": "standard input",
+        "lang": "Python 3",
+        "prob_desc_sample_outputs": [
+            "1",
+            "2"
+        ],
+        "file_name": "d7021504500d5ca7c2b02df8100a574d159e6e67e20ec8071b75800b1267370a",
+        "prob_desc_description": "Alice has got addicted to a game called Sirtet recently.In Sirtet, player is given an $$$n \\times m$$$ grid. Initially $$$a_{i,j}$$$ cubes are stacked up in the cell $$$(i,j)$$$. Two cells are called adjacent if they share a side. Player can perform the following operations:   stack up one cube in two adjacent cells;  stack up two cubes in one cell. Cubes mentioned above are identical in height.Here is an illustration of the game. States on the right are obtained by performing one of the above operations on the state on the left, and grey cubes are added due to the operation.  Player's goal is to make the height of all cells the same (i.e. so that each cell has the same number of cubes in it) using above operations. Alice, however, has found out that on some starting grids she may never reach the goal no matter what strategy she uses. Thus, she is wondering the number of initial grids such that   $$$L \\le a_{i,j} \\le R$$$ for all $$$1 \\le i \\le n$$$, $$$1 \\le j \\le m$$$;  player can reach the goal using above operations. Please help Alice with it. Notice that the answer might be large, please output the desired value modulo $$$998,244,353$$$.",
+        "prob_desc_created_at": "1585661700",
+        "difficulty": 2100.0,
+        "hidden_unit_tests": "[{\"input\": \"2 2 1 1\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"1 2 1 2\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"485 117 386829368 748204956\\r\\n\", \"output\": [\"735420370\"]}, {\"input\": \"564 558 305171115 960941497\\r\\n\", \"output\": [\"880111542\"]}, {\"input\": \"692 210 44175861 843331069\\r\\n\", \"output\": [\"714028205\"]}, {\"input\": \"741 806 424647372 965259389\\r\\n\", \"output\": [\"861647194\"]}, {\"input\": \"461 650 18427925 104278996\\r\\n\", \"output\": [\"936348652\"]}, {\"input\": \"589 790 462465375 766499149\\r\\n\", \"output\": [\"374887989\"]}, {\"input\": \"13 635 761278633 941090619\\r\\n\", \"output\": [\"893955177\"]}, {\"input\": \"140 713 711390561 727285861\\r\\n\", \"output\": [\"641355762\"]}, {\"input\": \"494587372 852064625 134519483 167992226\\r\\n\", \"output\": [\"552905694\"]}, {\"input\": \"672670796 425613469 728300037 940234946\\r\\n\", \"output\": [\"779704132\"]}, {\"input\": \"850754220 853938121 172337487 490664825\\r\\n\", \"output\": [\"237240423\"]}, {\"input\": \"28837644 722454262 471150744 905552093\\r\\n\", \"output\": [\"740846915\"]}, {\"input\": \"911953772 296003106 210155490 889555498\\r\\n\", \"output\": [\"225799480\"]}, {\"input\": \"795069900 869551950 803936044 964554424\\r\\n\", \"output\": [\"884379548\"]}, {\"input\": \"268120620 443100795 102749301 604856694\\r\\n\", \"output\": [\"834319192\"]}, {\"input\": \"151236748 16649639 841754047 855153000\\r\\n\", \"output\": [\"108988868\"]}, {\"input\": \"329320172 739941588 435534601 986184053\\r\\n\", \"output\": [\"425887732\"]}, {\"input\": \"1000000000 1 1000000000 1000000000\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"1 1000000000 1 1000000000\\r\\n\", \"output\": [\"285141888\"]}, {\"input\": \"407070359 971940670 264302148 270591105\\r\\n\", \"output\": [\"992759231\"]}, {\"input\": \"290186487 840456810 858082702 987072033\\r\\n\", \"output\": [\"366829057\"]}, {\"input\": \"763237207 414005655 302120151 421405724\\r\\n\", \"output\": [\"193545831\"]}, {\"input\": \"646353335 282521795 600933409 772270276\\r\\n\", \"output\": [\"13680108\"]}, {\"input\": \"824436759 415879151 194713963 293553316\\r\\n\", \"output\": [\"453443939\"]}, {\"input\": \"707552887 989427996 933718708 955125306\\r\\n\", \"output\": [\"355610620\"]}, {\"input\": \"885636311 857944136 232531966 493119835\\r\\n\", \"output\": [\"779245677\"]}, {\"input\": \"63719735 431492981 971536712 994663491\\r\\n\", \"output\": [\"97582142\"]}, {\"input\": \"946835863 300009121 565317265 947272048\\r\\n\", \"output\": [\"337235143\"]}, {\"input\": \"124919287 578590669 9354715 32571540\\r\\n\", \"output\": [\"263200129\"]}, {\"input\": \"202669473 255300152 987865366 994537507\\r\\n\", \"output\": [\"926661352\"]}, {\"input\": \"2 2 1 998244353\\r\\n\", \"output\": [\"499122177\"]}, {\"input\": \"2 3 1 998244353\\r\\n\", \"output\": [\"499122177\"]}, {\"input\": \"3 3 1 998244353\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"1000000000 1000000000 1 998244353\\r\\n\", \"output\": [\"499122177\"]}, {\"input\": \"999999999 999999999 1 998244353\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"999999999 1000000000 1755648 1000000000\\r\\n\", \"output\": [\"499122177\"]}, {\"input\": \"1 2 1 86583718\\r\\n\", \"output\": [\"499122176\"]}, {\"input\": \"1 2 1 911660635\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"2 2 2 4\\r\\n\", \"output\": [\"41\"]}, {\"input\": \"2 2 2 5\\r\\n\", \"output\": [\"128\"]}, {\"input\": \"2 2 3 4\\r\\n\", \"output\": [\"8\"]}, {\"input\": \"2 2 3 5\\r\\n\", \"output\": [\"41\"]}, {\"input\": \"2 3 2 4\\r\\n\", \"output\": [\"365\"]}, {\"input\": \"2 3 2 5\\r\\n\", \"output\": [\"2048\"]}, {\"input\": \"2 3 3 4\\r\\n\", \"output\": [\"32\"]}, {\"input\": \"2 3 3 5\\r\\n\", \"output\": [\"365\"]}, {\"input\": \"3 2 2 4\\r\\n\", \"output\": [\"365\"]}, {\"input\": \"3 2 2 5\\r\\n\", \"output\": [\"2048\"]}, {\"input\": \"3 2 3 4\\r\\n\", \"output\": [\"32\"]}, {\"input\": \"3 2 3 5\\r\\n\", \"output\": [\"365\"]}, {\"input\": \"3 3 2 4\\r\\n\", \"output\": [\"19683\"]}, {\"input\": \"3 3 2 5\\r\\n\", \"output\": [\"262144\"]}, {\"input\": \"3 3 3 4\\r\\n\", \"output\": [\"512\"]}, {\"input\": \"3 3 3 5\\r\\n\", \"output\": [\"19683\"]}, {\"input\": \"998244352 2 1 998244353\\r\\n\", \"output\": [\"499122177\"]}, {\"input\": \"3 3 1 1\\r\\n\", \"output\": [\"1\"]}]",
+        "source_lang": "Python 3",
+        "target_lang": "C"
+    }
+}

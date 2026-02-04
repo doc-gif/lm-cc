@@ -1,0 +1,106 @@
+{
+    "oai_response": {
+        "prompt": "Fix a buggy program written in Python language to solve the following programming problem:\nDescription: Consider an array $$$a$$$ of length $$$n$$$ with elements numbered from $$$1$$$ to $$$n$$$. It is possible to remove the $$$i$$$-th element of $$$a$$$ if $$$gcd(a_i, i) = 1$$$, where $$$gcd$$$ denotes the greatest common divisor. After an element is removed, the elements to the right are shifted to the left by one position.An array $$$b$$$ with $$$n$$$ integers such that $$$1 \\le b_i \\le n - i + 1$$$ is a removal sequence for the array $$$a$$$ if it is possible to remove all elements of $$$a$$$, if you remove the $$$b_1$$$-th element, then the $$$b_2$$$-th, ..., then the $$$b_n$$$-th element. For example, let $$$a = [42, 314]$$$:  $$$[1, 1]$$$ is a removal sequence: when you remove the $$$1$$$-st element of the array, the condition $$$gcd(42, 1) = 1$$$ holds, and the array becomes $$$[314]$$$; when you remove the $$$1$$$-st element again, the condition $$$gcd(314, 1) = 1$$$ holds, and the array becomes empty.  $$$[2, 1]$$$ is not a removal sequence: when you try to remove the $$$2$$$-nd element, the condition $$$gcd(314, 2) = 1$$$ is false. An array is ambiguous if it has at least two removal sequences. For example, the array $$$[1, 2, 5]$$$ is ambiguous: it has removal sequences $$$[3, 1, 1]$$$ and $$$[1, 2, 1]$$$. The array $$$[42, 314]$$$ is not ambiguous: the only removal sequence it has is $$$[1, 1]$$$.You are given two integers $$$n$$$ and $$$m$$$. You have to calculate the number of ambiguous arrays $$$a$$$ such that the length of $$$a$$$ is from $$$1$$$ to $$$n$$$ and each $$$a_i$$$ is an integer from $$$1$$$ to $$$m$$$.\nInput Specification: The only line of the input contains two integers $$$n$$$ and $$$m$$$ ($$$2 \\le n \\le 3 \\cdot 10^5$$$; $$$1 \\le m \\le 10^{12}$$$).\nOutput Specification: Print one integer \u2014 the number of ambiguous arrays $$$a$$$ such that the length of $$$a$$$ is from $$$1$$$ to $$$n$$$ and each $$$a_i$$$ is an integer from $$$1$$$ to $$$m$$$. Since the answer can be very large, print it modulo $$$998244353$$$.\n\nSample Input:\n2 3\nSample Output:\n6\n\nSample Input:\n4 2\nSample Output:\n26\n\nSample Input:\n4 6\nSample Output:\n1494\n\nSample Input:\n1337 424242424242\nSample Output:\n119112628\n\nNotes: None\nTake input from standard input and output to standard output\n\nHere is the code with a bug of TIME_LIMIT_EXCEEDED:\n\ndef prime(n):\r\n    i = 2\r\n    while i * i <= n:\r\n        if n % i == 0:\r\n            return 0\r\n    return 1\r\n\r\n\r\ndef binpow(x, y, mod):\r\n    if y == 0:\r\n        return 1\r\n    if y == -1:\r\n        return 1. / x\r\n    p = binpow(x, y // 2, mod)\r\n    p *= p\r\n    if y % 2:\r\n        p *= x\r\n    return p % mod\r\n\r\nmod = 998244353\r\nn, m = map(int, input().split())\r\nout = 0\r\nfor i in range(1, 1 + n):\r\n    out += pow(m, i, mod)\r\ncnt = 1\r\nminu = 1\r\nfor i in range(1, 1 + n):\r\n    if cnt > m:\r\n        break\r\n    if prime(i):\r\n        cnt *= i\r\n    minu *= (m // cnt)\r\n    minu %= mod\r\n    out -= minu\r\n\r\nprint(out)\r\n\n\nProvide the fixed Python code without any description or extra tokens.\n\nFixed source code:\n ||END-of-SRC||",
+        "response": {
+            "id": "multi-call-as-h7uz9c746n",
+            "model": "deepseek-v3",
+            "created": 1760424620,
+            "choices": [
+                {
+                    "index": 0,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```python\nimport sys\nimport math\n\nmod = 998244353\n\ndef solve():\n    n, m = map(int, sys.stdin.readline().split())\n    total = 0\n    for i in range(1, n + 1):\n        total = (total + pow(m, i, mod)) % mod\n    \n    res = 0\n    lcm = 1\n    minus = 1\n    for i in range(1, n + 1):\n        if math.gcd(lcm, i) == 1:\n            lcm *= i\n        if lcm > m:\n            break\n        minus = (minus * ((m // lcm) % mod)) % mod\n        res = (res + minus) % mod\n    \n    ans = (total - res) % mod\n    print(ans)\n\nsolve()\n``` ||END-of-SRC||"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 1,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```python\nimport sys\nimport math\n\nmod = 998244353\n\ndef solve():\n    n, m = map(int, sys.stdin.readline().split())\n    total = 0\n    for i in range(1, n + 1):\n        total = (total + pow(m, i, mod)) % mod\n    \n    cnt = 1\n    res = 0\n    product_primes = 1\n    for i in range(1, n + 1):\n        if math.gcd(product_primes, i) == 1:\n            if product_primes * i <= m:\n                product_primes *= i\n            else:\n                product_primes = m + 1  # To make m // product_primes zero\n        term = m // product_primes\n        res = (res * term + term) % mod\n    ans = (total - res) % mod\n    print(ans)\n\nsolve()\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 2,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```python\nimport sys\nimport math\n\nmod = 998244353\n\ndef solve():\n    n, m = map(int, sys.stdin.readline().split())\n    total = 0\n    for i in range(1, n + 1):\n        total = (total + pow(m, i, mod)) % mod\n    \n    cnt = 1\n    minu = 1\n    res = 0\n    for i in range(1, n + 1):\n        if math.gcd(cnt, i) == 1:\n            cnt *= i\n        if cnt > m:\n            break\n        minu = (minu * (m // cnt)) % mod\n        res = (res + minu) % mod\n    \n    ans = (total - res) % mod\n    print(ans)\n\nsolve()\n``` ||END-of-SRC||"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 3,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```python\nimport sys\nimport math\n\nmod = 998244353\n\ndef solve():\n    n, m = map(int, sys.stdin.readline().split())\n    total = 0\n    for i in range(1, n + 1):\n        total = (total + pow(m, i, mod)) % mod\n    \n    cnt = 1\n    res = 0\n    product = 1\n    is_prime = [True] * (n + 2)\n    is_prime[0] = is_prime[1] = False\n    for i in range(2, n + 1):\n        if is_prime[i]:\n            for j in range(i * 2, n + 1, i):\n                is_prime[j] = False\n    \n    current_product = 1\n    subtract = 1\n    for i in range(1, n + 1):\n        if is_prime[i]:\n            current_product *= i\n        if current_product > m:\n            subtract = 0\n        else:\n            subtract = (subtract * (m // current_product)) % mod\n        res = (res + subtract) % mod\n    \n    ans = (total - res) % mod\n    print(ans)\n\nsolve()\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 4,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```python\nimport sys\nimport math\n\nmod = 998244353\n\ndef solve():\n    n, m = map(int, sys.stdin.readline().split())\n    total = 0\n    for i in range(1, n + 1):\n        total = (total + pow(m, i, mod)) % mod\n    \n    cnt = 1\n    minu = 1\n    res = 0\n    for i in range(1, n + 1):\n        if math.gcd(cnt, i) == 1:\n            cnt *= i\n        if cnt > m:\n            break\n        minu = (minu * (m // cnt)) % mod\n        res = (res + minu) % mod\n    \n    ans = (total - res) % mod\n    print(ans)\n\nsolve()\n```"
+                    },
+                    "finish_reason": "stop"
+                }
+            ],
+            "usage": {
+                "prompt_tokens": 5125,
+                "completion_tokens": 994,
+                "total_tokens": 6119
+            }
+        }
+    },
+    "source_data": {
+        "prob_desc_memory_limit": "512 megabytes",
+        "tags": [
+            "dp",
+            "math",
+            "combinatorics",
+            "number theory"
+        ],
+        "prob_desc_created_at": "1666276500",
+        "fix_source_code": "",
+        "prob_desc_input_spec": "The only line of the input contains two integers $$$n$$$ and $$$m$$$ ($$$2 \\le n \\le 3 \\cdot 10^5$$$; $$$1 \\le m \\le 10^{12}$$$).",
+        "prob_desc_sample_outputs": [
+            "6",
+            "26",
+            "1494",
+            "119112628"
+        ],
+        "src_uid": "0fdd91ed33431848614075ebe9d2ee68",
+        "prob_desc_time_limit": "2 seconds",
+        "fix_exec_outcome": "",
+        "delete_cnt": 1,
+        "apr_id": "6e865eb94050dfa67ff60c28831bc4a6",
+        "fix_code_uid": "",
+        "lang_cluster": "Python",
+        "prob_desc_sample_inputs": [
+            "2 3",
+            "4 2",
+            "4 6",
+            "1337 424242424242"
+        ],
+        "prob_desc_output_to": "standard output",
+        "file_name": "Python.jsonl",
+        "equal_cnt": 9,
+        "lang": "PyPy 3",
+        "prob_desc_output_spec": "Print one integer \u2014 the number of ambiguous arrays $$$a$$$ such that the length of $$$a$$$ is from $$$1$$$ to $$$n$$$ and each $$$a_i$$$ is an integer from $$$1$$$ to $$$m$$$. Since the answer can be very large, print it modulo $$$998244353$$$.",
+        "bug_exec_outcome": "TIME_LIMIT_EXCEEDED",
+        "prob_desc_notes": null,
+        "difficulty": 1900.0,
+        "similarity_score": 0.8708133698,
+        "prob_desc_description": "Consider an array $$$a$$$ of length $$$n$$$ with elements numbered from $$$1$$$ to $$$n$$$. It is possible to remove the $$$i$$$-th element of $$$a$$$ if $$$gcd(a_i, i) = 1$$$, where $$$gcd$$$ denotes the greatest common divisor. After an element is removed, the elements to the right are shifted to the left by one position.An array $$$b$$$ with $$$n$$$ integers such that $$$1 \\le b_i \\le n - i + 1$$$ is a removal sequence for the array $$$a$$$ if it is possible to remove all elements of $$$a$$$, if you remove the $$$b_1$$$-th element, then the $$$b_2$$$-th, ..., then the $$$b_n$$$-th element. For example, let $$$a = [42, 314]$$$:  $$$[1, 1]$$$ is a removal sequence: when you remove the $$$1$$$-st element of the array, the condition $$$gcd(42, 1) = 1$$$ holds, and the array becomes $$$[314]$$$; when you remove the $$$1$$$-st element again, the condition $$$gcd(314, 1) = 1$$$ holds, and the array becomes empty.  $$$[2, 1]$$$ is not a removal sequence: when you try to remove the $$$2$$$-nd element, the condition $$$gcd(314, 2) = 1$$$ is false. An array is ambiguous if it has at least two removal sequences. For example, the array $$$[1, 2, 5]$$$ is ambiguous: it has removal sequences $$$[3, 1, 1]$$$ and $$$[1, 2, 1]$$$. The array $$$[42, 314]$$$ is not ambiguous: the only removal sequence it has is $$$[1, 1]$$$.You are given two integers $$$n$$$ and $$$m$$$. You have to calculate the number of ambiguous arrays $$$a$$$ such that the length of $$$a$$$ is from $$$1$$$ to $$$n$$$ and each $$$a_i$$$ is an integer from $$$1$$$ to $$$m$$$.",
+        "potential_dominant_fix_op": "insert",
+        "bug_source_code": "def prime(n):\r\n    i = 2\r\n    while i * i <= n:\r\n        if n % i == 0:\r\n            return 0\r\n    return 1\r\n\r\n\r\ndef binpow(x, y, mod):\r\n    if y == 0:\r\n        return 1\r\n    if y == -1:\r\n        return 1. / x\r\n    p = binpow(x, y // 2, mod)\r\n    p *= p\r\n    if y % 2:\r\n        p *= x\r\n    return p % mod\r\n\r\nmod = 998244353\r\nn, m = map(int, input().split())\r\nout = 0\r\nfor i in range(1, 1 + n):\r\n    out += pow(m, i, mod)\r\ncnt = 1\r\nminu = 1\r\nfor i in range(1, 1 + n):\r\n    if cnt > m:\r\n        break\r\n    if prime(i):\r\n        cnt *= i\r\n    minu *= (m // cnt)\r\n    minu %= mod\r\n    out -= minu\r\n\r\nprint(out)\r\n",
+        "replace_cnt": 3,
+        "prob_desc_input_from": "standard input",
+        "bug_code_uid": "a3ea2651ad122b6e1c2b1078ac425a2a",
+        "insert_cnt": 5,
+        "fix_ops_cnt": 9,
+        "hidden_unit_tests": "[{\"input\": \"2 3\\n\", \"output\": [\"6\\n\", \"\\n6\", \"6\", \"6\\n\", \"6 \\n\", \"6 \", \"6\\n\\n\", \"6\\n\\n\\n\", \"6\\n\\n\"]}, {\"input\": \"4 2\\n\", \"output\": [\"\\n26\", \"26 \\n\", \"26\\n\", \"26\", \"26\\n\\n\", \"26\\n\\n\\n\", \"26\\n\\n\", \"26\\n\", \"26 \"]}, {\"input\": \"4 6\\n\", \"output\": [\"1494\\n\", \"1494\\n\\n\", \"1494\", \"1494 \", \"1494\\n\\n\\n\", \"1494 \\n\", \"\\n1494\", \"1494\\n\", \"1494\\n\\n\"]}, {\"input\": \"1337 424242424242\\n\", \"output\": [\"119112628 \\n\", \"119112628\\n\\n\", \"119112628\\n\\n\", \"\\n119112628\", \"119112628\\n\", \"119112628 \", \"119112628\", \"119112628\\n\\n\\n\", \"119112628\\n\"]}, {\"input\": \"300000 1000000000\\n\", \"output\": [\"590856313 \\n\", \"590856313 \", \"590856313\", \"590856313\\n\", \"590856313\\n\\n\", \"590856313\\n\", \"590856313\\n\\n\\n\", \"\\n590856313\", \"590856313\\n\\n\"]}, {\"input\": \"300000 1\\n\", \"output\": [\"299999\\n\", \"299999 \\n\", \"299999 \", \"\\n299999\", \"299999\\n\\n\\n\", \"299999\\n\", \"299999\\n\\n\", \"299999\\n\\n\", \"299999\"]}, {\"input\": \"2 1\\n\", \"output\": [\"\\n1\", \"1\\n\\n\\n\", \"1\", \"1\\n\", \"1\\n\\n\", \"1 \\n\", \"1\\n\\n\", \"1 \", \"1\\n\"]}, {\"input\": \"2 1000000000000\\n\", \"output\": [\"\\n138131255\", \"138131255\", \"138131255\\n\", \"138131255\\n\", \"138131255\\n\\n\", \"138131255\\n\\n\", \"138131255\\n\\n\\n\", \"138131255 \\n\", \"138131255 \"]}, {\"input\": \"17957 2\\n\", \"output\": [\"653647969\", \"653647969\\n\", \"653647969 \\n\", \"653647969\\n\", \"653647969\\n\\n\", \"\\n653647969\", \"653647969\\n\\n\\n\", \"653647969 \", \"653647969\\n\\n\"]}]"
+    }
+}

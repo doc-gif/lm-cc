@@ -1,0 +1,87 @@
+{
+    "oai_response": {
+        "prompt": "Here is code in Python 3 programming lanaguge. Translate the following code from Python 3 to C programming lanaguge. Do not output any extra description or tokens other than the translated code. \n\nN = int(input())\n\n# \u521d\u59cb\u5316\nmatrix = [[0] * N] * N\nfor i in range(N):\n    matrix[0][i] = 1\n    matrix[i][0] = 1\n\nfor i in range(1, N):\n    for j in range(1, N):\n        matrix[i][j] = matrix[i-1][j] + matrix[i][j-1]\n\nprint(matrix[N-1][N-1])||END-of-SRC||",
+        "response": {
+            "id": "multi-call-as-82w1zwknyx",
+            "model": "deepseek-v3",
+            "created": 1767067084,
+            "choices": [
+                {
+                    "index": 0,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <stdlib.h>\n\nint main() {\n    int N;\n    scanf(\"%d\", &N);\n\n    int** matrix = (int**)malloc(N * sizeof(int*));\n    for (int i = 0; i < N; i++) {\n        matrix[i] = (int*)malloc(N * sizeof(int));\n    }\n\n    for (int i = 0; i < N; i++) {\n        matrix[0][i] = 1;\n        matrix[i][0] = 1;\n    }\n\n    for (int i = 1; i < N; i++) {\n        for (int j = 1; j < N; j++) {\n            matrix[i][j] = matrix[i-1][j] + matrix[i][j-1];\n        }\n    }\n\n    printf(\"%d\\n\", matrix[N-1][N-1]);\n\n    for (int i = 0; i < N; i++) {\n        free(matrix[i]);\n    }\n    free(matrix);\n\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 1,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <stdlib.h>\n\nint main() {\n    int N;\n    scanf(\"%d\", &N);\n\n    int** matrix = (int**)malloc(N * sizeof(int*));\n    for (int i = 0; i < N; i++) {\n        matrix[i] = (int*)malloc(N * sizeof(int));\n    }\n\n    for (int i = 0; i < N; i++) {\n        matrix[0][i] = 1;\n        matrix[i][0] = 1;\n    }\n\n    for (int i = 1; i < N; i++) {\n        for (int j = 1; j < N; j++) {\n            matrix[i][j] = matrix[i-1][j] + matrix[i][j-1];\n        }\n    }\n\n    printf(\"%d\\n\", matrix[N-1][N-1]);\n\n    for (int i = 0; i < N; i++) {\n        free(matrix[i]);\n    }\n    free(matrix);\n\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 2,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <stdlib.h>\n\nint main() {\n    int N;\n    scanf(\"%d\", &N);\n\n    int **matrix = (int **)malloc(N * sizeof(int *));\n    for (int i = 0; i < N; i++) {\n        matrix[i] = (int *)malloc(N * sizeof(int));\n    }\n\n    for (int i = 0; i < N; i++) {\n        matrix[0][i] = 1;\n        matrix[i][0] = 1;\n    }\n\n    for (int i = 1; i < N; i++) {\n        for (int j = 1; j < N; j++) {\n            matrix[i][j] = matrix[i-1][j] + matrix[i][j-1];\n        }\n    }\n\n    printf(\"%d\\n\", matrix[N-1][N-1]);\n\n    for (int i = 0; i < N; i++) {\n        free(matrix[i]);\n    }\n    free(matrix);\n\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 3,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <stdlib.h>\n\nint main() {\n    int N;\n    scanf(\"%d\", &N);\n    \n    int **matrix = (int **)malloc(N * sizeof(int *));\n    for (int i = 0; i < N; i++) {\n        matrix[i] = (int *)malloc(N * sizeof(int));\n    }\n    \n    for (int i = 0; i < N; i++) {\n        matrix[0][i] = 1;\n        matrix[i][0] = 1;\n    }\n    \n    for (int i = 1; i < N; i++) {\n        for (int j = 1; j < N; j++) {\n            matrix[i][j] = matrix[i-1][j] + matrix[i][j-1];\n        }\n    }\n    \n    printf(\"%d\\n\", matrix[N-1][N-1]);\n    \n    for (int i = 0; i < N; i++) {\n        free(matrix[i]);\n    }\n    free(matrix);\n    \n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 4,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <stdlib.h>\n\nint main() {\n    int N;\n    scanf(\"%d\", &N);\n\n    int **matrix = (int **)malloc(N * sizeof(int *));\n    for (int i = 0; i < N; i++) {\n        matrix[i] = (int *)malloc(N * sizeof(int));\n    }\n\n    for (int i = 0; i < N; i++) {\n        matrix[0][i] = 1;\n        matrix[i][0] = 1;\n    }\n\n    for (int i = 1; i < N; i++) {\n        for (int j = 1; j < N; j++) {\n            matrix[i][j] = matrix[i-1][j] + matrix[i][j-1];\n        }\n    }\n\n    printf(\"%d\\n\", matrix[N-1][N-1]);\n\n    for (int i = 0; i < N; i++) {\n        free(matrix[i]);\n    }\n    free(matrix);\n\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                }
+            ],
+            "usage": {
+                "prompt_tokens": 745,
+                "completion_tokens": 1120,
+                "total_tokens": 1865
+            }
+        }
+    },
+    "source_data": {
+        "code_uid": "524b08bf5bee939b96bb80c67b225aca",
+        "prob_desc_output_to": "standard output",
+        "prob_desc_notes": "NoteIn the second test the rows of the table look as follows: {1,\u20091,\u20091,\u20091,\u20091},\u2009 {1,\u20092,\u20093,\u20094,\u20095},\u2009 {1,\u20093,\u20096,\u200910,\u200915},\u2009 {1,\u20094,\u200910,\u200920,\u200935},\u2009 {1,\u20095,\u200915,\u200935,\u200970}.",
+        "lang_cluster": "Python",
+        "prob_desc_time_limit": "2 seconds",
+        "prob_desc_input_spec": "The only line of input contains a positive integer n (1\u2009\u2264\u2009n\u2009\u2264\u200910) \u2014 the number of rows and columns of the table.",
+        "source_code": "N = int(input())\n\n# \u521d\u59cb\u5316\nmatrix = [[0] * N] * N\nfor i in range(N):\n    matrix[0][i] = 1\n    matrix[i][0] = 1\n\nfor i in range(1, N):\n    for j in range(1, N):\n        matrix[i][j] = matrix[i-1][j] + matrix[i][j-1]\n\nprint(matrix[N-1][N-1])",
+        "prob_desc_sample_inputs": [
+            "1",
+            "5"
+        ],
+        "prob_desc_memory_limit": "256 megabytes",
+        "exec_outcome": "PASSED",
+        "prob_desc_output_spec": "Print a single line containing a positive integer m \u2014 the maximum value in the table.",
+        "src_uid": "2f650aae9dfeb02533149ced402b60dc",
+        "prob_desc_input_from": "standard input",
+        "lang": "Python 3",
+        "prob_desc_sample_outputs": [
+            "1",
+            "70"
+        ],
+        "file_name": "d7021504500d5ca7c2b02df8100a574d159e6e67e20ec8071b75800b1267370a",
+        "prob_desc_description": "An n\u2009\u00d7\u2009n table a is defined as follows:  The first row and the first column contain ones, that is: ai,\u20091\u2009=\u2009a1,\u2009i\u2009=\u20091 for all i\u2009=\u20091,\u20092,\u2009...,\u2009n.  Each of the remaining numbers in the table is equal to the sum of the number above it and the number to the left of it. In other words, the remaining elements are defined by the formula ai,\u2009j\u2009=\u2009ai\u2009-\u20091,\u2009j\u2009+\u2009ai,\u2009j\u2009-\u20091. These conditions define all the values in the table.You are given a number n. You need to determine the maximum value in the n\u2009\u00d7\u2009n table defined by the rules above.",
+        "prob_desc_created_at": "1422705600",
+        "difficulty": 800.0,
+        "hidden_unit_tests": "[{\"input\": \"1\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"5\\r\\n\", \"output\": [\"70\"]}, {\"input\": \"2\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"3\\r\\n\", \"output\": [\"6\"]}, {\"input\": \"4\\r\\n\", \"output\": [\"20\"]}, {\"input\": \"6\\r\\n\", \"output\": [\"252\"]}, {\"input\": \"7\\r\\n\", \"output\": [\"924\"]}, {\"input\": \"9\\r\\n\", \"output\": [\"12870\"]}, {\"input\": \"10\\r\\n\", \"output\": [\"48620\"]}, {\"input\": \"8\\r\\n\", \"output\": [\"3432\"]}]",
+        "source_lang": "Python 3",
+        "target_lang": "C"
+    }
+}

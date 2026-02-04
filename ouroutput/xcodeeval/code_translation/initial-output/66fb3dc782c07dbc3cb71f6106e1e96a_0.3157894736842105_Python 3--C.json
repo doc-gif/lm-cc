@@ -1,0 +1,87 @@
+{
+    "oai_response": {
+        "prompt": "Here is code in Python 3 programming lanaguge. Translate the following code from Python 3 to C programming lanaguge. Do not output any extra description or tokens other than the translated code. \n\nn,k=map(int,input().split())\na=[0]*k\nfor i in range(k):\n    if n%k==0:\n        exit(print('Yes'))\n    if a[n%k]!=1:\n        a[n%k]=1\n        n+=n%k\n    else:\n        exit(print('No'))\nprint('Yes')\n        ||END-of-SRC||",
+        "response": {
+            "id": "multi-call-as-hznmh1p0cm",
+            "model": "deepseek-v3",
+            "created": 1767066665,
+            "choices": [
+                {
+                    "index": 0,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n\nint main() {\n    int n, k;\n    scanf(\"%d %d\", &n, &k);\n    int a[k];\n    for (int i = 0; i < k; i++) {\n        a[i] = 0;\n    }\n    while (1) {\n        if (n % k == 0) {\n            printf(\"Yes\\n\");\n            return 0;\n        }\n        if (a[n % k] != 1) {\n            a[n % k] = 1;\n            n += n % k;\n        } else {\n            printf(\"No\\n\");\n            return 0;\n        }\n    }\n    printf(\"Yes\\n\");\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 1,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <stdlib.h>\n\nint main() {\n    int n, k;\n    scanf(\"%d %d\", &n, &k);\n    int *a = calloc(k, sizeof(int));\n    while (1) {\n        if (n % k == 0) {\n            printf(\"Yes\\n\");\n            exit(0);\n        }\n        if (a[n % k] != 1) {\n            a[n % k] = 1;\n            n += n % k;\n        } else {\n            printf(\"No\\n\");\n            exit(0);\n        }\n    }\n    printf(\"Yes\\n\");\n    free(a);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 2,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <stdlib.h>\n\nint main() {\n    int n, k;\n    scanf(\"%d %d\", &n, &k);\n    int *a = calloc(k, sizeof(int));\n    for (int i = 0; i < k; i++) {\n        if (n % k == 0) {\n            printf(\"Yes\\n\");\n            exit(0);\n        }\n        if (a[n % k] != 1) {\n            a[n % k] = 1;\n            n += n % k;\n        } else {\n            printf(\"No\\n\");\n            exit(0);\n        }\n    }\n    printf(\"Yes\\n\");\n    free(a);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 3,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <stdlib.h>\n\nint main() {\n    int n, k;\n    scanf(\"%d %d\", &n, &k);\n    int *a = calloc(k, sizeof(int));\n    while (1) {\n        if (n % k == 0) {\n            printf(\"Yes\\n\");\n            exit(0);\n        }\n        if (a[n % k] != 1) {\n            a[n % k] = 1;\n            n += n % k;\n        } else {\n            printf(\"No\\n\");\n            exit(0);\n        }\n    }\n    printf(\"Yes\\n\");\n    free(a);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 4,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <stdlib.h>\n\nint main() {\n    int n, k;\n    scanf(\"%d %d\", &n, &k);\n    int *a = calloc(k, sizeof(int));\n    while (1) {\n        if (n % k == 0) {\n            printf(\"Yes\\n\");\n            exit(0);\n        }\n        if (a[n % k] != 1) {\n            a[n % k] = 1;\n            n += n % k;\n        } else {\n            printf(\"No\\n\");\n            exit(0);\n        }\n    }\n    printf(\"Yes\\n\");\n    free(a);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                }
+            ],
+            "usage": {
+                "prompt_tokens": 630,
+                "completion_tokens": 745,
+                "total_tokens": 1375
+            }
+        }
+    },
+    "source_data": {
+        "code_uid": "66fb3dc782c07dbc3cb71f6106e1e96a",
+        "prob_desc_output_to": "standard output",
+        "prob_desc_notes": null,
+        "lang_cluster": "Python",
+        "prob_desc_time_limit": "1 second",
+        "prob_desc_input_spec": "The first line contains two integers a and m (1\u2009\u2264\u2009a,\u2009m\u2009\u2264\u2009105).",
+        "source_code": "n,k=map(int,input().split())\na=[0]*k\nfor i in range(k):\n    if n%k==0:\n        exit(print('Yes'))\n    if a[n%k]!=1:\n        a[n%k]=1\n        n+=n%k\n    else:\n        exit(print('No'))\nprint('Yes')\n        ",
+        "prob_desc_sample_inputs": [
+            "1 5",
+            "3 6"
+        ],
+        "prob_desc_memory_limit": "256 megabytes",
+        "exec_outcome": "PASSED",
+        "prob_desc_output_spec": "Print \"Yes\" (without quotes) if the production will eventually stop, otherwise print \"No\".",
+        "src_uid": "f726133018e2149ec57e113860ec498a",
+        "prob_desc_input_from": "standard input",
+        "lang": "Python 3",
+        "prob_desc_sample_outputs": [
+            "No",
+            "Yes"
+        ],
+        "file_name": "d7021504500d5ca7c2b02df8100a574d159e6e67e20ec8071b75800b1267370a",
+        "prob_desc_description": "One industrial factory is reforming working plan. The director suggested to set a mythical detail production norm. If at the beginning of the day there were x details in the factory storage, then by the end of the day the factory has to produce  (remainder after dividing x by m) more details. Unfortunately, no customer has ever bought any mythical detail, so all the details produced stay on the factory. The board of directors are worried that the production by the given plan may eventually stop (that means that there will be \u0430 moment when the current number of details on the factory is divisible by m). Given the number of details a on the first day and number m check if the production stops at some moment.",
+        "prob_desc_created_at": "1415205000",
+        "difficulty": 1400.0,
+        "hidden_unit_tests": "[{\"input\": \"1 5\\r\\n\", \"output\": [\"No\"]}, {\"input\": \"3 6\\r\\n\", \"output\": [\"Yes\"]}, {\"input\": \"1 8\\r\\n\", \"output\": [\"Yes\"]}, {\"input\": \"2 3\\r\\n\", \"output\": [\"No\"]}, {\"input\": \"3 24\\r\\n\", \"output\": [\"Yes\"]}, {\"input\": \"1 1\\r\\n\", \"output\": [\"Yes\"]}, {\"input\": \"100000 100000\\r\\n\", \"output\": [\"Yes\"]}, {\"input\": \"1 99989\\r\\n\", \"output\": [\"No\"]}, {\"input\": \"512 2\\r\\n\", \"output\": [\"Yes\"]}, {\"input\": \"100 24\\r\\n\", \"output\": [\"No\"]}, {\"input\": \"1 100000\\r\\n\", \"output\": [\"No\"]}, {\"input\": \"100000 1\\r\\n\", \"output\": [\"Yes\"]}, {\"input\": \"3 99929\\r\\n\", \"output\": [\"No\"]}, {\"input\": \"99961 99971\\r\\n\", \"output\": [\"No\"]}, {\"input\": \"1 65536\\r\\n\", \"output\": [\"Yes\"]}, {\"input\": \"4 65536\\r\\n\", \"output\": [\"Yes\"]}, {\"input\": \"3 65536\\r\\n\", \"output\": [\"Yes\"]}, {\"input\": \"32768 65536\\r\\n\", \"output\": [\"Yes\"]}, {\"input\": \"65535 65536\\r\\n\", \"output\": [\"Yes\"]}, {\"input\": \"1 65535\\r\\n\", \"output\": [\"No\"]}, {\"input\": \"98812 100000\\r\\n\", \"output\": [\"No\"]}, {\"input\": \"10 5\\r\\n\", \"output\": [\"Yes\"]}, {\"input\": \"6 8\\r\\n\", \"output\": [\"Yes\"]}]",
+        "source_lang": "Python 3",
+        "target_lang": "C"
+    }
+}

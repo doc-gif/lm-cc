@@ -1,0 +1,87 @@
+{
+    "oai_response": {
+        "prompt": "Here is code in Python 3 programming lanaguge. Translate the following code from Python 3 to C programming lanaguge. Do not output any extra description or tokens other than the translated code. \n\nn = int(input())\nans = 1\nmod = 10**9+7\ntemp = 0.5\nfor i in range(n):\n    ans = (ans*(i+1))%mod\n    temp = (temp*2)%mod\nprint((ans-int(temp))%mod)\n||END-of-SRC||",
+        "response": {
+            "id": "multi-call-as-edpr0pj7zs",
+            "model": "deepseek-v3",
+            "created": 1767066625,
+            "choices": [
+                {
+                    "index": 0,
+                    "message": {
+                        "role": "assistant",
+                        "content": "Here's the translated code in C:\n\n```c\n#include <stdio.h>\n#include <math.h>\n\n#define MOD 1000000007\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    long long ans = 1;\n    long long temp = 1;\n    for (int i = 0; i < n; i++) {\n        ans = (ans * (i + 1)) % MOD;\n        temp = (temp * 2) % MOD;\n    }\n    printf(\"%lld\\n\", (ans - temp + MOD) % MOD);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 1,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <math.h>\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    long long ans = 1;\n    const long long mod = 1000000007;\n    double temp = 0.5;\n    for (int i = 0; i < n; i++) {\n        ans = (ans * (i + 1)) % mod;\n        temp = fmod(temp * 2, mod);\n    }\n    printf(\"%lld\\n\", (ans - (long long)temp) % mod);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 2,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <math.h>\n\n#define MOD 1000000007\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    long long ans = 1;\n    double temp = 0.5;\n    for (int i = 0; i < n; i++) {\n        ans = (ans * (i + 1)) % MOD;\n        temp = fmod(temp * 2, MOD);\n    }\n    printf(\"%lld\\n\", (ans - (long long)temp + MOD) % MOD);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 3,
+                    "message": {
+                        "role": "assistant",
+                        "content": "Here's the translated code in C:\n\n```c\n#include <stdio.h>\n#include <math.h>\n\n#define MOD 1000000007\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    long long ans = 1;\n    long long temp = 1;\n    for (int i = 0; i < n; i++) {\n        ans = (ans * (i + 1)) % MOD;\n        temp = (temp * 2) % MOD;\n    }\n    printf(\"%lld\\n\", (ans - temp + MOD) % MOD);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 4,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <math.h>\n\n#define MOD 1000000007\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    long long ans = 1;\n    double temp = 0.5;\n    for (int i = 0; i < n; i++) {\n        ans = (ans * (i + 1)) % MOD;\n        temp = fmod(temp * 2, MOD);\n    }\n    printf(\"%lld\\n\", (ans - (int)temp + MOD) % MOD);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                }
+            ],
+            "usage": {
+                "prompt_tokens": 575,
+                "completion_tokens": 639,
+                "total_tokens": 1214
+            }
+        }
+    },
+    "source_data": {
+        "code_uid": "deb197856baeea47d90d7c3c1cf054b6",
+        "prob_desc_output_to": "standard output",
+        "prob_desc_notes": "NoteThere are $$$16$$$ cyclic permutations for $$$n = 4$$$. $$$[4,2,1,3]$$$ is one such permutation, having a cycle of length four: $$$4 \\rightarrow 3 \\rightarrow 2 \\rightarrow 1 \\rightarrow 4$$$.Nodes $$$v_1$$$, $$$v_2$$$, $$$\\ldots$$$, $$$v_k$$$ form a simple cycle if the following conditions hold:   $$$k \\geq 3$$$.  $$$v_i \\neq v_j$$$ for any pair of indices $$$i$$$ and $$$j$$$. ($$$1 \\leq i &lt; j \\leq k$$$)  $$$v_i$$$ and $$$v_{i+1}$$$ share an edge for all $$$i$$$ ($$$1 \\leq i &lt; k$$$), and $$$v_1$$$ and $$$v_k$$$ share an edge. ",
+        "lang_cluster": "Python",
+        "prob_desc_time_limit": "1 second",
+        "prob_desc_input_spec": "The first and only line contains a single integer $$$n$$$ ($$$3 \\le n \\le 10^6$$$).",
+        "source_code": "n = int(input())\nans = 1\nmod = 10**9+7\ntemp = 0.5\nfor i in range(n):\n    ans = (ans*(i+1))%mod\n    temp = (temp*2)%mod\nprint((ans-int(temp))%mod)\n",
+        "prob_desc_sample_inputs": [
+            "4",
+            "583291"
+        ],
+        "prob_desc_memory_limit": "256 megabytes",
+        "exec_outcome": "PASSED",
+        "prob_desc_output_spec": "Output a single integer $$$0 \\leq x &lt; 10^9+7$$$, the number of cyclic permutations of length $$$n$$$ modulo $$$10^9+7$$$.",
+        "src_uid": "3dc1ee09016a25421ae371fa8005fce1",
+        "prob_desc_input_from": "standard input",
+        "lang": "Python 3",
+        "prob_desc_sample_outputs": [
+            "16",
+            "135712853"
+        ],
+        "file_name": "d7021504500d5ca7c2b02df8100a574d159e6e67e20ec8071b75800b1267370a",
+        "prob_desc_description": "A permutation of length $$$n$$$ is an array consisting of $$$n$$$ distinct integers from $$$1$$$ to $$$n$$$ in arbitrary order. For example, $$$[2,3,1,5,4]$$$ is a permutation, but $$$[1,2,2]$$$ is not a permutation ($$$2$$$ appears twice in the array) and $$$[1,3,4]$$$ is also not a permutation ($$$n=3$$$ but there is $$$4$$$ in the array).Consider a permutation $$$p$$$ of length $$$n$$$, we build a graph of size $$$n$$$ using it as follows:   For every $$$1 \\leq i \\leq n$$$, find the largest $$$j$$$ such that $$$1 \\leq j &lt; i$$$ and $$$p_j &gt; p_i$$$, and add an undirected edge between node $$$i$$$ and node $$$j$$$  For every $$$1 \\leq i \\leq n$$$, find the smallest $$$j$$$ such that $$$i &lt; j \\leq n$$$ and $$$p_j &gt; p_i$$$, and add an undirected edge between node $$$i$$$ and node $$$j$$$ In cases where no such $$$j$$$ exists, we make no edges. Also, note that we make edges between the corresponding indices, not the values at those indices.For clarity, consider as an example $$$n = 4$$$, and $$$p = [3,1,4,2]$$$; here, the edges of the graph are $$$(1,3),(2,1),(2,3),(4,3)$$$.A permutation $$$p$$$ is cyclic if the graph built using $$$p$$$ has at least one simple cycle. Given $$$n$$$, find the number of cyclic permutations of length $$$n$$$. Since the number may be very large, output it modulo $$$10^9+7$$$.Please refer to the Notes section for the formal definition of a simple cycle",
+        "prob_desc_created_at": "1596983700",
+        "difficulty": 1500.0,
+        "hidden_unit_tests": "[{\"input\": \"4\\r\\n\", \"output\": [\"16\"]}, {\"input\": \"583291\\r\\n\", \"output\": [\"135712853\"]}, {\"input\": \"3\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"1000000\\r\\n\", \"output\": [\"23581336\"]}, {\"input\": \"66\\r\\n\", \"output\": [\"257415584\"]}, {\"input\": \"33\\r\\n\", \"output\": [\"762187807\"]}, {\"input\": \"336161\\r\\n\", \"output\": [\"234634596\"]}, {\"input\": \"885131\\r\\n\", \"output\": [\"329995454\"]}, {\"input\": \"482331\\r\\n\", \"output\": [\"722928541\"]}, {\"input\": \"79531\\r\\n\", \"output\": [\"162141608\"]}, {\"input\": \"652615\\r\\n\", \"output\": [\"960319213\"]}, {\"input\": \"768208\\r\\n\", \"output\": [\"635322133\"]}]",
+        "source_lang": "Python 3",
+        "target_lang": "C"
+    }
+}

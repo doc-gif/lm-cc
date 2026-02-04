@@ -1,0 +1,107 @@
+{
+    "oai_response": {
+        "prompt": "Fix a buggy program written in Python language to solve the following programming problem:\nDescription: We define $$$x \\bmod y$$$ as the remainder of division of $$$x$$$ by $$$y$$$ ($$$\\%$$$ operator in C++ or Java, mod operator in Pascal).Let's call an array of positive integers $$$[a_1, a_2, \\dots, a_k]$$$ stable if for every permutation $$$p$$$ of integers from $$$1$$$ to $$$k$$$, and for every non-negative integer $$$x$$$, the following condition is met: $$$ (((x \\bmod a_1) \\bmod a_2) \\dots \\bmod a_{k - 1}) \\bmod a_k = (((x \\bmod a_{p_1}) \\bmod a_{p_2}) \\dots \\bmod a_{p_{k - 1}}) \\bmod a_{p_k} $$$ That is, for each non-negative integer $$$x$$$, the value of $$$(((x \\bmod a_1) \\bmod a_2) \\dots \\bmod a_{k - 1}) \\bmod a_k$$$ does not change if we reorder the elements of the array $$$a$$$.For two given integers $$$n$$$ and $$$k$$$, calculate the number of stable arrays $$$[a_1, a_2, \\dots, a_k]$$$ such that $$$1 \\le a_1 &lt; a_2 &lt; \\dots &lt; a_k \\le n$$$.\nInput Specification: The only line contains two integers $$$n$$$ and $$$k$$$ ($$$1 \\le n, k \\le 5 \\cdot 10^5$$$).\nOutput Specification: Print one integer \u2014 the number of stable arrays $$$[a_1, a_2, \\dots, a_k]$$$ such that $$$1 \\le a_1 &lt; a_2 &lt; \\dots &lt; a_k \\le n$$$. Since the answer may be large, print it modulo $$$998244353$$$.\n\nSample Input:\n7 3\nSample Output:\n16\n\nSample Input:\n3 7\nSample Output:\n0\n\nSample Input:\n1337 42\nSample Output:\n95147305\n\nSample Input:\n1 1\nSample Output:\n1\n\nSample Input:\n500000 1\nSample Output:\n500000\n\nNotes: None\nTake input from standard input and output to standard output\n\nHere is the code with a bug of MEMORY_LIMIT_EXCEEDED:\n\nfrom sys import stdin, stdout\nimport sys\nsys.setrecursionlimit(1500)\n\n\n# 7 3\n# n % 2 % 3 % 4 = n % 3 % 2 % 4\n# 8 % 3 % 6 = 2 = 8 % 6 % 3 =\n# 8 % 5 % 10 = 3 = 8 % 10 % 5 = 3\n# 8 % 2 % 5, 8 % 5 % 2\n\n# 1 => (2 3) 4 5 6 =>\n# 1 => (2, 3) 4 => 3*2 / 2\n# 1 => any\n# 2 => 2*1, 2*2, 2*3, 2*4\n# 3 => 3*1, 3*2, 3*3, 3*4\n# 5 => 5*1, 5*2, 5*3, 5*4\ndef modular_stability(n, k):\n\n    if k > n:\n        return 0\n\n    if k == 1:\n        return n\n\n    res = 0\n    # 1\n    res += com(n-1, k-1)\n    res %= 998244353\n\n    # prime numbers\n    for i in range(2, n+1):\n        #if isprime(i):\n        cnt = n // i\n        if cnt == k:\n            res += 1\n        elif cnt > k:\n            res += com(cnt-1, k-1)\n            res %= 998244353\n\n    #print(faca)\n    return res\n\n\ndef isprime(n):\n\n    j = 2\n    while j*j <= n:\n        if n%j == 0:\n            return False\n        j += 1\n\n    return True\n\n\ndef com(p1, p2):\n    return fac(p1) // fac(p1-p2) // fac(p2)\n\n\nfaca = [0, 1]\ndef fac(n):\n    if len(faca) > n:\n        return faca[n]\n    r = n*fac(n-1)\n    faca.append(r)\n\n    return r\n\n\nif __name__ == '__main__':\n    (n,k) = list(map(int, stdin.readline().split()))\n    for i in range(1, n+1):\n        fac(i)\n\n    print(modular_stability(n, k))\n\n\nProvide the fixed Python code without any description or extra tokens.\n\nFixed source code:\n ||END-of-SRC||",
+        "response": {
+            "id": "multi-call-as-rsr8tun2tb",
+            "model": "deepseek-v3",
+            "created": 1760421049,
+            "choices": [
+                {
+                    "index": 0,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```python\nimport sys\nfrom sys import stdin\n\nMOD = 998244353\n\ndef main():\n    n, k = map(int, stdin.readline().split())\n    \n    if k > n:\n        print(0)\n        return\n    \n    if k == 1:\n        print(n % MOD)\n        return\n    \n    max_n = n\n    fact = [1] * (max_n + 1)\n    inv_fact = [1] * (max_n + 1)\n    \n    for i in range(1, max_n + 1):\n        fact[i] = fact[i-1] * i % MOD\n    \n    inv_fact[max_n] = pow(fact[max_n], MOD-2, MOD)\n    for i in range(max_n - 1, -1, -1):\n        inv_fact[i] = inv_fact[i + 1] * (i + 1) % MOD\n    \n    def comb(a, b):\n        if a < 0 or b < 0 or a < b:\n            return 0\n        return fact[a] * inv_fact[b] % MOD * inv_fact[a - b] % MOD\n    \n    res = 0\n    res += comb(n - 1, k - 1)\n    res %= MOD\n    \n    for i in range(2, n + 1):\n        cnt = n // i\n        if cnt < k:\n            continue\n        res += comb(cnt - 1, k - 1)\n        res %= MOD\n    \n    print(res % MOD)\n\nif __name__ == '__main__':\n    main()\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 1,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```python\nimport sys\nfrom sys import stdin\n\nMOD = 998244353\n\ndef main():\n    n, k = map(int, stdin.readline().split())\n    \n    if k > n:\n        print(0)\n        return\n    \n    if k == 1:\n        print(n % MOD)\n        return\n    \n    max_n = n\n    fact = [1] * (max_n + 1)\n    inv_fact = [1] * (max_n + 1)\n    \n    for i in range(1, max_n + 1):\n        fact[i] = fact[i-1] * i % MOD\n    \n    inv_fact[max_n] = pow(fact[max_n], MOD-2, MOD)\n    for i in range(max_n - 1, -1, -1):\n        inv_fact[i] = inv_fact[i + 1] * (i + 1) % MOD\n    \n    def comb(a, b):\n        if a < 0 or b < 0 or a < b:\n            return 0\n        return fact[a] * inv_fact[b] % MOD * inv_fact[a - b] % MOD\n    \n    res = 0\n    res += comb(n - 1, k - 1)\n    res %= MOD\n    \n    for i in range(2, n + 1):\n        cnt = n // i\n        if cnt >= k:\n            res += comb(cnt - 1, k - 1)\n            res %= MOD\n    \n    print(res)\n\nif __name__ == '__main__':\n    main()\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 2,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```python\nimport sys\nfrom sys import stdin\n\nMOD = 998244353\n\ndef main():\n    n, k = map(int, stdin.readline().split())\n    \n    if k > n:\n        print(0)\n        return\n    \n    if k == 1:\n        print(n % MOD)\n        return\n    \n    max_n = n\n    fact = [1] * (max_n + 1)\n    inv_fact = [1] * (max_n + 1)\n    \n    for i in range(1, max_n + 1):\n        fact[i] = fact[i-1] * i % MOD\n    \n    inv_fact[max_n] = pow(fact[max_n], MOD-2, MOD)\n    for i in range(max_n - 1, -1, -1):\n        inv_fact[i] = inv_fact[i + 1] * (i + 1) % MOD\n    \n    def comb(a, b):\n        if a < 0 or b < 0 or a < b:\n            return 0\n        return fact[a] * inv_fact[b] % MOD * inv_fact[a - b] % MOD\n    \n    res = 0\n    res += comb(n - 1, k - 1)\n    res %= MOD\n    \n    for i in range(2, n + 1):\n        cnt = n // i\n        if cnt >= k:\n            res += comb(cnt - 1, k - 1)\n            res %= MOD\n    \n    print(res % MOD)\n\nif __name__ == '__main__':\n    main()\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 3,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```python\nimport sys\nfrom sys import stdin\n\nMOD = 998244353\n\ndef main():\n    n, k = map(int, stdin.readline().split())\n    \n    if k > n:\n        print(0)\n        return\n    \n    if k == 1:\n        print(n % MOD)\n        return\n    \n    max_n = n\n    fact = [1] * (max_n + 1)\n    inv_fact = [1] * (max_n + 1)\n    \n    for i in range(1, max_n + 1):\n        fact[i] = fact[i-1] * i % MOD\n    \n    inv_fact[max_n] = pow(fact[max_n], MOD-2, MOD)\n    for i in range(max_n - 1, -1, -1):\n        inv_fact[i] = inv_fact[i + 1] * (i + 1) % MOD\n    \n    def comb(a, b):\n        if a < 0 or b < 0 or a < b:\n            return 0\n        return fact[a] * inv_fact[b] % MOD * inv_fact[a - b] % MOD\n    \n    res = 0\n    res += comb(n - 1, k - 1)\n    res %= MOD\n    \n    for i in range(2, n + 1):\n        cnt = n // i\n        if cnt >= k:\n            res += comb(cnt - 1, k - 1)\n            res %= MOD\n    \n    print(res % MOD)\n\nif __name__ == '__main__':\n    main()\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 4,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```python\nimport sys\nfrom sys import stdin\n\nMOD = 998244353\n\ndef main():\n    n, k = map(int, stdin.readline().split())\n    \n    if k > n:\n        print(0)\n        return\n    \n    if k == 1:\n        print(n % MOD)\n        return\n    \n    max_n = n\n    fact = [1] * (max_n + 1)\n    inv_fact = [1] * (max_n + 1)\n    \n    for i in range(1, max_n + 1):\n        fact[i] = fact[i-1] * i % MOD\n    \n    inv_fact[max_n] = pow(fact[max_n], MOD-2, MOD)\n    for i in range(max_n - 1, -1, -1):\n        inv_fact[i] = inv_fact[i + 1] * (i + 1) % MOD\n    \n    def comb(a, b):\n        if a < 0 or b < 0 or a < b:\n            return 0\n        return fact[a] * inv_fact[b] % MOD * inv_fact[a - b] % MOD\n    \n    res = 0\n    res += comb(n - 1, k - 1)\n    res %= MOD\n    \n    for i in range(2, n + 1):\n        cnt = n // i\n        if cnt < k:\n            continue\n        res += comb(cnt - 1, k - 1)\n        res %= MOD\n    \n    print(res)\n\nif __name__ == '__main__':\n    main()\n```"
+                    },
+                    "finish_reason": "stop"
+                }
+            ],
+            "usage": {
+                "prompt_tokens": 5550,
+                "completion_tokens": 1687,
+                "total_tokens": 7237
+            }
+        }
+    },
+    "source_data": {
+        "prob_desc_memory_limit": "512 megabytes",
+        "tags": [
+            "math",
+            "combinatorics",
+            "number theory"
+        ],
+        "prob_desc_created_at": "1590676500",
+        "fix_source_code": "",
+        "prob_desc_input_spec": "The only line contains two integers $$$n$$$ and $$$k$$$ ($$$1 \\le n, k \\le 5 \\cdot 10^5$$$).",
+        "prob_desc_sample_outputs": [
+            "16",
+            "0",
+            "95147305",
+            "1",
+            "500000"
+        ],
+        "src_uid": "8e8eb64a047cb970a549ee870c3d280d",
+        "prob_desc_time_limit": "2 seconds",
+        "fix_exec_outcome": "",
+        "delete_cnt": 1,
+        "apr_id": "1d97e1e71a2f8eea6d2084ca544610e4",
+        "fix_code_uid": "",
+        "lang_cluster": "Python",
+        "prob_desc_sample_inputs": [
+            "7 3",
+            "3 7",
+            "1337 42",
+            "1 1",
+            "500000 1"
+        ],
+        "prob_desc_output_to": "standard output",
+        "file_name": "Python.jsonl",
+        "equal_cnt": 31,
+        "lang": "PyPy 3",
+        "prob_desc_output_spec": "Print one integer \u2014 the number of stable arrays $$$[a_1, a_2, \\dots, a_k]$$$ such that $$$1 \\le a_1 &lt; a_2 &lt; \\dots &lt; a_k \\le n$$$. Since the answer may be large, print it modulo $$$998244353$$$.",
+        "bug_exec_outcome": "MEMORY_LIMIT_EXCEEDED",
+        "prob_desc_notes": null,
+        "difficulty": 2000.0,
+        "similarity_score": 0.5360972285,
+        "prob_desc_description": "We define $$$x \\bmod y$$$ as the remainder of division of $$$x$$$ by $$$y$$$ ($$$\\%$$$ operator in C++ or Java, mod operator in Pascal).Let's call an array of positive integers $$$[a_1, a_2, \\dots, a_k]$$$ stable if for every permutation $$$p$$$ of integers from $$$1$$$ to $$$k$$$, and for every non-negative integer $$$x$$$, the following condition is met: $$$ (((x \\bmod a_1) \\bmod a_2) \\dots \\bmod a_{k - 1}) \\bmod a_k = (((x \\bmod a_{p_1}) \\bmod a_{p_2}) \\dots \\bmod a_{p_{k - 1}}) \\bmod a_{p_k} $$$ That is, for each non-negative integer $$$x$$$, the value of $$$(((x \\bmod a_1) \\bmod a_2) \\dots \\bmod a_{k - 1}) \\bmod a_k$$$ does not change if we reorder the elements of the array $$$a$$$.For two given integers $$$n$$$ and $$$k$$$, calculate the number of stable arrays $$$[a_1, a_2, \\dots, a_k]$$$ such that $$$1 \\le a_1 &lt; a_2 &lt; \\dots &lt; a_k \\le n$$$.",
+        "potential_dominant_fix_op": "replace",
+        "bug_source_code": "from sys import stdin, stdout\nimport sys\nsys.setrecursionlimit(1500)\n\n\n# 7 3\n# n % 2 % 3 % 4 = n % 3 % 2 % 4\n# 8 % 3 % 6 = 2 = 8 % 6 % 3 =\n# 8 % 5 % 10 = 3 = 8 % 10 % 5 = 3\n# 8 % 2 % 5, 8 % 5 % 2\n\n# 1 => (2 3) 4 5 6 =>\n# 1 => (2, 3) 4 => 3*2 / 2\n# 1 => any\n# 2 => 2*1, 2*2, 2*3, 2*4\n# 3 => 3*1, 3*2, 3*3, 3*4\n# 5 => 5*1, 5*2, 5*3, 5*4\ndef modular_stability(n, k):\n\n    if k > n:\n        return 0\n\n    if k == 1:\n        return n\n\n    res = 0\n    # 1\n    res += com(n-1, k-1)\n    res %= 998244353\n\n    # prime numbers\n    for i in range(2, n+1):\n        #if isprime(i):\n        cnt = n // i\n        if cnt == k:\n            res += 1\n        elif cnt > k:\n            res += com(cnt-1, k-1)\n            res %= 998244353\n\n    #print(faca)\n    return res\n\n\ndef isprime(n):\n\n    j = 2\n    while j*j <= n:\n        if n%j == 0:\n            return False\n        j += 1\n\n    return True\n\n\ndef com(p1, p2):\n    return fac(p1) // fac(p1-p2) // fac(p2)\n\n\nfaca = [0, 1]\ndef fac(n):\n    if len(faca) > n:\n        return faca[n]\n    r = n*fac(n-1)\n    faca.append(r)\n\n    return r\n\n\nif __name__ == '__main__':\n    (n,k) = list(map(int, stdin.readline().split()))\n    for i in range(1, n+1):\n        fac(i)\n\n    print(modular_stability(n, k))\n",
+        "replace_cnt": 20,
+        "prob_desc_input_from": "standard input",
+        "bug_code_uid": "adc5641a4f7117e9e44e9714557ed852",
+        "insert_cnt": 9,
+        "fix_ops_cnt": 30,
+        "hidden_unit_tests": "[{\"input\": \"7 3\\r\\n\", \"output\": [\"16\"]}, {\"input\": \"3 7\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"1337 42\\r\\n\", \"output\": [\"95147305\"]}, {\"input\": \"1 1\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"500000 1\\r\\n\", \"output\": [\"500000\"]}, {\"input\": \"500000 500000\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"500000 250000\\r\\n\", \"output\": [\"803991687\"]}, {\"input\": \"250000 500000\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"500 100\\r\\n\", \"output\": [\"337564072\"]}, {\"input\": \"37 13\\r\\n\", \"output\": [\"253439535\"]}, {\"input\": \"1 500000\\r\\n\", \"output\": [\"0\"]}, {\"input\": \"500000 500\\r\\n\", \"output\": [\"882447093\"]}, {\"input\": \"500000 200\\r\\n\", \"output\": [\"123055441\"]}, {\"input\": \"123456 78901\\r\\n\", \"output\": [\"963821949\"]}, {\"input\": \"500000 50\\r\\n\", \"output\": [\"635965713\"]}]"
+    }
+}

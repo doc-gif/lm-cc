@@ -1,0 +1,87 @@
+{
+    "oai_response": {
+        "prompt": "Here is code in Python 3 programming lanaguge. Translate the following code from Python 3 to C programming lanaguge. Do not output any extra description or tokens other than the translated code. \n\ndef valid(n1, n2, p1, p2, mid):\n    x = mid - mid//p1\n    y = mid - mid//p2\n    rem = mid - mid//(p1*p2)\n    return x < n1 or y < n2 or rem < n1+n2\n    \ndef binary_search(n1, n2, p1, p2):\n    l, r = 0, 1<<61\n    while (l <= r):\n        mid = l+r >> 1\n        if (valid(n1, n2, p1, p2, mid)):\n            l = mid+1\n        else:\n            r = mid-1\n    return l\n\ndef main():\n    n1, n2, p1, p2 = map(int, input().split())\n    print(binary_search(n1, n2, p1, p2))\n\nmain()||END-of-SRC||",
+        "response": {
+            "id": "multi-call-as-ehvg85jzp1",
+            "model": "deepseek-v3",
+            "created": 1767067234,
+            "choices": [
+                {
+                    "index": 0,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n\nint valid(long long n1, long long n2, long long p1, long long p2, long long mid) {\n    long long x = mid - mid / p1;\n    long long y = mid - mid / p2;\n    long long rem = mid - mid / (p1 * p2);\n    return x < n1 || y < n2 || rem < n1 + n2;\n}\n\nlong long binary_search(long long n1, long long n2, long long p1, long long p2) {\n    long long l = 0, r = 1LL << 61;\n    while (l <= r) {\n        long long mid = (l + r) >> 1;\n        if (valid(n1, n2, p1, p2, mid)) {\n            l = mid + 1;\n        } else {\n            r = mid - 1;\n        }\n    }\n    return l;\n}\n\nint main() {\n    long long n1, n2, p1, p2;\n    scanf(\"%lld %lld %lld %lld\", &n1, &n2, &p1, &p2);\n    printf(\"%lld\\n\", binary_search(n1, n2, p1, p2));\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 1,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n\nint valid(long long n1, long long n2, long long p1, long long p2, long long mid) {\n    long long x = mid - mid / p1;\n    long long y = mid - mid / p2;\n    long long rem = mid - mid / (p1 * p2);\n    return x < n1 || y < n2 || rem < n1 + n2;\n}\n\nlong long binary_search(long long n1, long long n2, long long p1, long long p2) {\n    long long l = 0, r = 1LL << 61;\n    while (l <= r) {\n        long long mid = (l + r) >> 1;\n        if (valid(n1, n2, p1, p2, mid)) {\n            l = mid + 1;\n        } else {\n            r = mid - 1;\n        }\n    }\n    return l;\n}\n\nint main() {\n    long long n1, n2, p1, p2;\n    scanf(\"%lld %lld %lld %lld\", &n1, &n2, &p1, &p2);\n    printf(\"%lld\\n\", binary_search(n1, n2, p1, p2));\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 2,
+                    "message": {
+                        "role": "assistant",
+                        "content": "Here's the translated code in C:\n\n```c\n#include <stdio.h>\n\nint valid(long long n1, long long n2, long long p1, long long p2, long long mid) {\n    long long x = mid - mid/p1;\n    long long y = mid - mid/p2;\n    long long rem = mid - mid/(p1*p2);\n    return x < n1 || y < n2 || rem < n1+n2;\n}\n\nlong long binary_search(long long n1, long long n2, long long p1, long long p2) {\n    long long l = 0, r = 1LL << 61;\n    while (l <= r) {\n        long long mid = (l + r) >> 1;\n        if (valid(n1, n2, p1, p2, mid)) {\n            l = mid + 1;\n        } else {\n            r = mid - 1;\n        }\n    }\n    return l;\n}\n\nint main() {\n    long long n1, n2, p1, p2;\n    scanf(\"%lld %lld %lld %lld\", &n1, &n2, &p1, &p2);\n    printf(\"%lld\\n\", binary_search(n1, n2, p1, p2));\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 3,
+                    "message": {
+                        "role": "assistant",
+                        "content": "Here's the translated code in C:\n\n```c\n#include <stdio.h>\n\nint valid(long long n1, long long n2, long long p1, long long p2, long long mid) {\n    long long x = mid - mid/p1;\n    long long y = mid - mid/p2;\n    long long rem = mid - mid/(p1*p2);\n    return x < n1 || y < n2 || rem < n1+n2;\n}\n\nlong long binary_search(long long n1, long long n2, long long p1, long long p2) {\n    long long l = 0, r = 1LL << 61;\n    while (l <= r) {\n        long long mid = (l + r) >> 1;\n        if (valid(n1, n2, p1, p2, mid)) {\n            l = mid + 1;\n        } else {\n            r = mid - 1;\n        }\n    }\n    return l;\n}\n\nint main() {\n    long long n1, n2, p1, p2;\n    scanf(\"%lld %lld %lld %lld\", &n1, &n2, &p1, &p2);\n    printf(\"%lld\\n\", binary_search(n1, n2, p1, p2));\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 4,
+                    "message": {
+                        "role": "assistant",
+                        "content": "Here's the translated code in C:\n\n```c\n#include <stdio.h>\n\nint valid(long long n1, long long n2, long long p1, long long p2, long long mid) {\n    long long x = mid - mid/p1;\n    long long y = mid - mid/p2;\n    long long rem = mid - mid/(p1*p2);\n    return x < n1 || y < n2 || rem < n1+n2;\n}\n\nlong long binary_search(long long n1, long long n2, long long p1, long long p2) {\n    long long l = 0, r = 1LL << 61;\n    while (l <= r) {\n        long long mid = (l + r) >> 1;\n        if (valid(n1, n2, p1, p2, mid)) {\n            l = mid + 1;\n        } else {\n            r = mid - 1;\n        }\n    }\n    return l;\n}\n\nint main() {\n    long long n1, n2, p1, p2;\n    scanf(\"%lld %lld %lld %lld\", &n1, &n2, &p1, &p2);\n    printf(\"%lld\\n\", binary_search(n1, n2, p1, p2));\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                }
+            ],
+            "usage": {
+                "prompt_tokens": 1220,
+                "completion_tokens": 1416,
+                "total_tokens": 2636
+            }
+        }
+    },
+    "source_data": {
+        "code_uid": "0c251095942230be0e2cb0df61659829",
+        "prob_desc_output_to": "standard output",
+        "prob_desc_notes": "NoteIn the first sample you give the set of numbers {1,\u20093,\u20095} to the first friend and the set of numbers {2} to the second friend. Note that if you give set {1,\u20093,\u20095} to the first friend, then we cannot give any of the numbers 1, 3, 5 to the second friend. In the second sample you give the set of numbers {3} to the first friend, and the set of numbers {1,\u20092,\u20094} to the second friend. Thus, the answer to the problem is 4.",
+        "lang_cluster": "Python",
+        "prob_desc_time_limit": "1 second",
+        "prob_desc_input_spec": "The only line contains four positive integers cnt1, cnt2, x, y (1\u2009\u2264\u2009cnt1,\u2009cnt2\u2009&lt;\u2009109; cnt1\u2009+\u2009cnt2\u2009\u2264\u2009109; 2\u2009\u2264\u2009x\u2009&lt;\u2009y\u2009\u2264\u20093\u00b7104)\u00a0\u2014 the numbers that are described in the statement. It is guaranteed that numbers x, y are prime.",
+        "source_code": "def valid(n1, n2, p1, p2, mid):\n    x = mid - mid//p1\n    y = mid - mid//p2\n    rem = mid - mid//(p1*p2)\n    return x < n1 or y < n2 or rem < n1+n2\n    \ndef binary_search(n1, n2, p1, p2):\n    l, r = 0, 1<<61\n    while (l <= r):\n        mid = l+r >> 1\n        if (valid(n1, n2, p1, p2, mid)):\n            l = mid+1\n        else:\n            r = mid-1\n    return l\n\ndef main():\n    n1, n2, p1, p2 = map(int, input().split())\n    print(binary_search(n1, n2, p1, p2))\n\nmain()",
+        "prob_desc_sample_inputs": [
+            "3 1 2 3",
+            "1 3 2 3"
+        ],
+        "prob_desc_memory_limit": "256 megabytes",
+        "exec_outcome": "PASSED",
+        "prob_desc_output_spec": "Print a single integer \u2014 the answer to the problem.",
+        "src_uid": "ff3c39b759a049580a6e96c66c904fdc",
+        "prob_desc_input_from": "standard input",
+        "lang": "Python 3",
+        "prob_desc_sample_outputs": [
+            "5",
+            "4"
+        ],
+        "file_name": "d7021504500d5ca7c2b02df8100a574d159e6e67e20ec8071b75800b1267370a",
+        "prob_desc_description": "You have two friends. You want to present each of them several positive integers. You want to present cnt1 numbers to the first friend and cnt2 numbers to the second friend. Moreover, you want all presented numbers to be distinct, that also means that no number should be presented to both friends.In addition, the first friend does not like the numbers that are divisible without remainder by prime number x. The second one does not like the numbers that are divisible without remainder by prime number y. Of course, you're not going to present your friends numbers they don't like.Your task is to find such minimum number v, that you can form presents using numbers from a set 1,\u20092,\u2009...,\u2009v. Of course you may choose not to present some numbers at all.A positive integer number greater than 1 is called prime if it has no positive divisors other than 1 and itself.",
+        "prob_desc_created_at": "1414170000",
+        "difficulty": 1800.0,
+        "hidden_unit_tests": "[{\"input\": \"3 1 2 3\\r\\n\", \"output\": [\"5\"]}, {\"input\": \"1 3 2 3\\r\\n\", \"output\": [\"4\"]}, {\"input\": \"916200 69682 2 3\\r\\n\", \"output\": [\"1832399\"]}, {\"input\": \"808351 17767 433 509\\r\\n\", \"output\": [\"826121\"]}, {\"input\": \"8851 901 20897 26183\\r\\n\", \"output\": [\"9752\"]}, {\"input\": \"5099 2895 16273 29473\\r\\n\", \"output\": [\"7994\"]}, {\"input\": \"5099 2895 16273 29473\\r\\n\", \"output\": [\"7994\"]}, {\"input\": \"4969 694 293 2347\\r\\n\", \"output\": [\"5663\"]}, {\"input\": \"683651932 161878530 2 5\\r\\n\", \"output\": [\"1367303863\"]}, {\"input\": \"325832598 637961741 2 3\\r\\n\", \"output\": [\"1156553206\"]}, {\"input\": \"999999999 1 2 3\\r\\n\", \"output\": [\"1999999997\"]}, {\"input\": \"11006 976 6287 9007\\r\\n\", \"output\": [\"11982\"]}, {\"input\": \"150064728 173287472 439 503\\r\\n\", \"output\": [\"323353664\"]}, {\"input\": \"819712074 101394406 6173 7307\\r\\n\", \"output\": [\"921106500\"]}, {\"input\": \"67462086 313228052 15131 29027\\r\\n\", \"output\": [\"380690138\"]}, {\"input\": \"500000000 500000000 29983 29989\\r\\n\", \"output\": [\"1000000001\"]}, {\"input\": \"500000000 500000000 2 3\\r\\n\", \"output\": [\"1199999999\"]}, {\"input\": \"500000000 500000000 29959 29983\\r\\n\", \"output\": [\"1000000001\"]}, {\"input\": \"999999999 1 29983 29989\\r\\n\", \"output\": [\"1000033352\"]}, {\"input\": \"1 999999999 29983 29989\\r\\n\", \"output\": [\"1000033345\"]}, {\"input\": \"1 999999999 2 3\\r\\n\", \"output\": [\"1499999998\"]}, {\"input\": \"999999998 1 2 3\\r\\n\", \"output\": [\"1999999995\"]}, {\"input\": \"999999998 2 2 3\\r\\n\", \"output\": [\"1999999995\"]}, {\"input\": \"9999999 10000 29983 29989\\r\\n\", \"output\": [\"10009999\"]}, {\"input\": \"1000 9999999 29983 29989\\r\\n\", \"output\": [\"10000999\"]}, {\"input\": \"110 40 1567 7681\\r\\n\", \"output\": [\"150\"]}, {\"input\": \"197 2 6361 18223\\r\\n\", \"output\": [\"199\"]}, {\"input\": \"39 154 1033 18947\\r\\n\", \"output\": [\"193\"]}, {\"input\": \"126 51 26249 29443\\r\\n\", \"output\": [\"177\"]}, {\"input\": \"14 179 19699 29303\\r\\n\", \"output\": [\"193\"]}, {\"input\": \"14797 3593 13147 13933\\r\\n\", \"output\": [\"18390\"]}, {\"input\": \"782 5750 7079 23957\\r\\n\", \"output\": [\"6532\"]}, {\"input\": \"10876 8828 12487 16607\\r\\n\", \"output\": [\"19704\"]}, {\"input\": \"16860 2201 6427 23327\\r\\n\", \"output\": [\"19061\"]}, {\"input\": \"4901 563 1997 15053\\r\\n\", \"output\": [\"5464\"]}, {\"input\": \"1277613 596606 10427 29387\\r\\n\", \"output\": [\"1874219\"]}, {\"input\": \"1513389 40825 5641 10009\\r\\n\", \"output\": [\"1554214\"]}, {\"input\": \"1749165 72848 9743 20023\\r\\n\", \"output\": [\"1822013\"]}, {\"input\": \"954386 580262 4993 15629\\r\\n\", \"output\": [\"1534648\"]}, {\"input\": \"159606 875491 43 19121\\r\\n\", \"output\": [\"1035098\"]}, {\"input\": \"139694297 21147406 8819 28499\\r\\n\", \"output\": [\"160841703\"]}, {\"input\": \"26941620 135675892 4093 28979\\r\\n\", \"output\": [\"162617513\"]}, {\"input\": \"9156260 174697920 8171 29863\\r\\n\", \"output\": [\"183854180\"]}, {\"input\": \"191370899 1962652 3517 24023\\r\\n\", \"output\": [\"193333553\"]}, {\"input\": \"78618222 88031575 28289 29023\\r\\n\", \"output\": [\"166649797\"]}, {\"input\": \"1 1 2 3\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"1 2 2 3\\r\\n\", \"output\": [\"3\"]}, {\"input\": \"1 2 29983 29989\\r\\n\", \"output\": [\"3\"]}, {\"input\": \"1 1 29983 29989\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"2 1 2 3\\r\\n\", \"output\": [\"3\"]}]",
+        "source_lang": "Python 3",
+        "target_lang": "C"
+    }
+}

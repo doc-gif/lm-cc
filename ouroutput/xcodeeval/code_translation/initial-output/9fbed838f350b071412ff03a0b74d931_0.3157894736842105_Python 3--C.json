@@ -1,0 +1,85 @@
+{
+    "oai_response": {
+        "prompt": "Here is code in Python 3 programming lanaguge. Translate the following code from Python 3 to C programming lanaguge. Do not output any extra description or tokens other than the translated code. \n\nn, k = map(int, input().split())\nif n == k or k == 0:\n    print(0, 0)\nelse:\n    if n % 3 == 0:\n        t = n // 3\n        if k <= t:\n            print(1, k * 2)\n        else:\n            print(1, t * 3 - k)\n    elif n % 3 == 1:\n        t = n // 3\n        if k <= t:\n            print(1, k * 2)\n        else:\n            print(1, t * 3 - k + 1)\n    else:\n        t = n // 3\n        if k <= t:\n            print(1, k * 2)\n        else:\n            print(1, t * 3 - k + 2)\n||END-of-SRC||",
+        "response": {
+            "id": "multi-call-as-e6eqer96q5",
+            "model": "deepseek-v3",
+            "created": 1767067906,
+            "choices": [
+                {
+                    "index": 0,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n\nint main() {\n    int n, k;\n    scanf(\"%d %d\", &n, &k);\n    if (n == k || k == 0) {\n        printf(\"0 0\\n\");\n    } else {\n        if (n % 3 == 0) {\n            int t = n / 3;\n            if (k <= t) {\n                printf(\"1 %d\\n\", k * 2);\n            } else {\n                printf(\"1 %d\\n\", t * 3 - k);\n            }\n        } else if (n % 3 == 1) {\n            int t = n / 3;\n            if (k <= t) {\n                printf(\"1 %d\\n\", k * 2);\n            } else {\n                printf(\"1 %d\\n\", t * 3 - k + 1);\n            }\n        } else {\n            int t = n / 3;\n            if (k <= t) {\n                printf(\"1 %d\\n\", k * 2);\n            } else {\n                printf(\"1 %d\\n\", t * 3 - k + 2);\n            }\n        }\n    }\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 1,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n\nint main() {\n    int n, k;\n    scanf(\"%d %d\", &n, &k);\n    if (n == k || k == 0) {\n        printf(\"0 0\\n\");\n    } else {\n        if (n % 3 == 0) {\n            int t = n / 3;\n            if (k <= t) {\n                printf(\"1 %d\\n\", k * 2);\n            } else {\n                printf(\"1 %d\\n\", t * 3 - k);\n            }\n        } else if (n % 3 == 1) {\n            int t = n / 3;\n            if (k <= t) {\n                printf(\"1 %d\\n\", k * 2);\n            } else {\n                printf(\"1 %d\\n\", t * 3 - k + 1);\n            }\n        } else {\n            int t = n / 3;\n            if (k <= t) {\n                printf(\"1 %d\\n\", k * 2);\n            } else {\n                printf(\"1 %d\\n\", t * 3 - k + 2);\n            }\n        }\n    }\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 2,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n\nint main() {\n    int n, k;\n    scanf(\"%d %d\", &n, &k);\n    if (n == k || k == 0) {\n        printf(\"0 0\\n\");\n    } else {\n        if (n % 3 == 0) {\n            int t = n / 3;\n            if (k <= t) {\n                printf(\"1 %d\\n\", k * 2);\n            } else {\n                printf(\"1 %d\\n\", t * 3 - k);\n            }\n        } else if (n % 3 == 1) {\n            int t = n / 3;\n            if (k <= t) {\n                printf(\"1 %d\\n\", k * 2);\n            } else {\n                printf(\"1 %d\\n\", t * 3 - k + 1);\n            }\n        } else {\n            int t = n / 3;\n            if (k <= t) {\n                printf(\"1 %d\\n\", k * 2);\n            } else {\n                printf(\"1 %d\\n\", t * 3 - k + 2);\n            }\n        }\n    }\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 3,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n\nint main() {\n    int n, k;\n    scanf(\"%d %d\", &n, &k);\n    if (n == k || k == 0) {\n        printf(\"0 0\\n\");\n    } else {\n        if (n % 3 == 0) {\n            int t = n / 3;\n            if (k <= t) {\n                printf(\"1 %d\\n\", k * 2);\n            } else {\n                printf(\"1 %d\\n\", t * 3 - k);\n            }\n        } else if (n % 3 == 1) {\n            int t = n / 3;\n            if (k <= t) {\n                printf(\"1 %d\\n\", k * 2);\n            } else {\n                printf(\"1 %d\\n\", t * 3 - k + 1);\n            }\n        } else {\n            int t = n / 3;\n            if (k <= t) {\n                printf(\"1 %d\\n\", k * 2);\n            } else {\n                printf(\"1 %d\\n\", t * 3 - k + 2);\n            }\n        }\n    }\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 4,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n\nint main() {\n    int n, k;\n    scanf(\"%d %d\", &n, &k);\n    if (n == k || k == 0) {\n        printf(\"0 0\\n\");\n    } else {\n        if (n % 3 == 0) {\n            int t = n / 3;\n            if (k <= t) {\n                printf(\"1 %d\\n\", k * 2);\n            } else {\n                printf(\"1 %d\\n\", t * 3 - k);\n            }\n        } else if (n % 3 == 1) {\n            int t = n / 3;\n            if (k <= t) {\n                printf(\"1 %d\\n\", k * 2);\n            } else {\n                printf(\"1 %d\\n\", t * 3 - k + 1);\n            }\n        } else {\n            int t = n / 3;\n            if (k <= t) {\n                printf(\"1 %d\\n\", k * 2);\n            } else {\n                printf(\"1 %d\\n\", t * 3 - k + 2);\n            }\n        }\n    }\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                }
+            ],
+            "usage": {
+                "prompt_tokens": 1140,
+                "completion_tokens": 1285,
+                "total_tokens": 2425
+            }
+        }
+    },
+    "source_data": {
+        "code_uid": "9fbed838f350b071412ff03a0b74d931",
+        "prob_desc_output_to": "standard output",
+        "prob_desc_notes": "NoteIn the sample test, the number of good apartments could be minimum possible if, for example, apartments with indices 1, 2 and 3 were inhabited. In this case only apartment 4 is good. The maximum possible number could be, for example, if apartments with indices 1, 3 and 5 were inhabited. In this case all other apartments: 2, 4 and 6 are good.",
+        "lang_cluster": "Python",
+        "prob_desc_time_limit": "1 second",
+        "prob_desc_input_spec": "The only line of the input contains two integers: n and k (1\u2009\u2264\u2009n\u2009\u2264\u2009109, 0\u2009\u2264\u2009k\u2009\u2264\u2009n).",
+        "source_code": "n, k = map(int, input().split())\nif n == k or k == 0:\n    print(0, 0)\nelse:\n    if n % 3 == 0:\n        t = n // 3\n        if k <= t:\n            print(1, k * 2)\n        else:\n            print(1, t * 3 - k)\n    elif n % 3 == 1:\n        t = n // 3\n        if k <= t:\n            print(1, k * 2)\n        else:\n            print(1, t * 3 - k + 1)\n    else:\n        t = n // 3\n        if k <= t:\n            print(1, k * 2)\n        else:\n            print(1, t * 3 - k + 2)\n",
+        "prob_desc_sample_inputs": [
+            "6 3"
+        ],
+        "prob_desc_memory_limit": "512 megabytes",
+        "exec_outcome": "PASSED",
+        "prob_desc_output_spec": "Print the minimum possible and the maximum possible number of apartments good for Maxim.",
+        "src_uid": "bdccf34b5a5ae13238c89a60814b9f86",
+        "prob_desc_input_from": "standard input",
+        "lang": "Python 3",
+        "prob_desc_sample_outputs": [
+            "1 3"
+        ],
+        "file_name": "d7021504500d5ca7c2b02df8100a574d159e6e67e20ec8071b75800b1267370a",
+        "prob_desc_description": "Maxim wants to buy an apartment in a new house at Line Avenue of Metropolis. The house has n apartments that are numbered from 1 to n and are arranged in a row. Two apartments are adjacent if their indices differ by 1. Some of the apartments can already be inhabited, others are available for sale.Maxim often visits his neighbors, so apartment is good for him if it is available for sale and there is at least one already inhabited apartment adjacent to it. Maxim knows that there are exactly k already inhabited apartments, but he doesn't know their indices yet.Find out what could be the minimum possible and the maximum possible number of apartments that are good for Maxim.",
+        "prob_desc_created_at": "1504702500",
+        "difficulty": 1200.0,
+        "hidden_unit_tests": "[{\"input\": \"6 3\\r\\n\", \"output\": [\"1 3\"]}, {\"input\": \"10 1\\r\\n\", \"output\": [\"1 2\"]}, {\"input\": \"10 9\\r\\n\", \"output\": [\"1 1\"]}, {\"input\": \"8 0\\r\\n\", \"output\": [\"0 0\"]}, {\"input\": \"8 8\\r\\n\", \"output\": [\"0 0\"]}, {\"input\": \"966871928 890926970\\r\\n\", \"output\": [\"1 75944958\"]}, {\"input\": \"20 2\\r\\n\", \"output\": [\"1 4\"]}, {\"input\": \"1 0\\r\\n\", \"output\": [\"0 0\"]}, {\"input\": \"1 1\\r\\n\", \"output\": [\"0 0\"]}, {\"input\": \"2 0\\r\\n\", \"output\": [\"0 0\"]}, {\"input\": \"2 1\\r\\n\", \"output\": [\"1 1\"]}, {\"input\": \"2 2\\r\\n\", \"output\": [\"0 0\"]}, {\"input\": \"7 2\\r\\n\", \"output\": [\"1 4\"]}, {\"input\": \"8 3\\r\\n\", \"output\": [\"1 5\"]}, {\"input\": \"9 4\\r\\n\", \"output\": [\"1 5\"]}, {\"input\": \"10 3\\r\\n\", \"output\": [\"1 6\"]}, {\"input\": \"10 4\\r\\n\", \"output\": [\"1 6\"]}, {\"input\": \"10 5\\r\\n\", \"output\": [\"1 5\"]}, {\"input\": \"1000 1000\\r\\n\", \"output\": [\"0 0\"]}, {\"input\": \"1000 333\\r\\n\", \"output\": [\"1 666\"]}, {\"input\": \"1000 334\\r\\n\", \"output\": [\"1 666\"]}, {\"input\": \"999 333\\r\\n\", \"output\": [\"1 666\"]}, {\"input\": \"999 334\\r\\n\", \"output\": [\"1 665\"]}, {\"input\": \"998 332\\r\\n\", \"output\": [\"1 664\"]}, {\"input\": \"998 333\\r\\n\", \"output\": [\"1 665\"]}, {\"input\": \"89 4\\r\\n\", \"output\": [\"1 8\"]}, {\"input\": \"66 50\\r\\n\", \"output\": [\"1 16\"]}, {\"input\": \"88 15\\r\\n\", \"output\": [\"1 30\"]}, {\"input\": \"95 43\\r\\n\", \"output\": [\"1 52\"]}, {\"input\": \"900 344\\r\\n\", \"output\": [\"1 556\"]}, {\"input\": \"777 113\\r\\n\", \"output\": [\"1 226\"]}, {\"input\": \"964 42\\r\\n\", \"output\": [\"1 84\"]}, {\"input\": \"982 867\\r\\n\", \"output\": [\"1 115\"]}, {\"input\": \"1000000000 0\\r\\n\", \"output\": [\"0 0\"]}, {\"input\": \"1000000000 1000000000\\r\\n\", \"output\": [\"0 0\"]}, {\"input\": \"1000000000 333333333\\r\\n\", \"output\": [\"1 666666666\"]}, {\"input\": \"1000000000 333333334\\r\\n\", \"output\": [\"1 666666666\"]}, {\"input\": \"999999999 333333333\\r\\n\", \"output\": [\"1 666666666\"]}, {\"input\": \"999999999 333333334\\r\\n\", \"output\": [\"1 666666665\"]}, {\"input\": \"999999998 333333332\\r\\n\", \"output\": [\"1 666666664\"]}, {\"input\": \"999999998 333333333\\r\\n\", \"output\": [\"1 666666665\"]}, {\"input\": \"78602604 42160832\\r\\n\", \"output\": [\"1 36441772\"]}, {\"input\": \"35679021 9137902\\r\\n\", \"output\": [\"1 18275804\"]}, {\"input\": \"41949373 13173511\\r\\n\", \"output\": [\"1 26347022\"]}, {\"input\": \"77855558 49163875\\r\\n\", \"output\": [\"1 28691683\"]}, {\"input\": \"87187123 2851901\\r\\n\", \"output\": [\"1 5703802\"]}, {\"input\": \"66849627 25004217\\r\\n\", \"output\": [\"1 41845410\"]}, {\"input\": \"873046672 517064947\\r\\n\", \"output\": [\"1 355981725\"]}, {\"input\": \"639857373 1393427\\r\\n\", \"output\": [\"1 2786854\"]}, {\"input\": \"637563683 69636269\\r\\n\", \"output\": [\"1 139272538\"]}, {\"input\": \"911669737 141068293\\r\\n\", \"output\": [\"1 282136586\"]}, {\"input\": \"547575919 313272818\\r\\n\", \"output\": [\"1 234303101\"]}, {\"input\": \"955020006 297895809\\r\\n\", \"output\": [\"1 595791618\"]}, {\"input\": \"11 3\\r\\n\", \"output\": [\"1 6\"]}, {\"input\": \"4 1\\r\\n\", \"output\": [\"1 2\"]}, {\"input\": \"9 3\\r\\n\", \"output\": [\"1 6\"]}, {\"input\": \"7 3\\r\\n\", \"output\": [\"1 4\"]}, {\"input\": \"12 5\\r\\n\", \"output\": [\"1 7\"]}, {\"input\": \"1000 8\\r\\n\", \"output\": [\"1 16\"]}]",
+        "source_lang": "Python 3",
+        "target_lang": "C"
+    }
+}

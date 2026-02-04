@@ -1,0 +1,85 @@
+{
+    "oai_response": {
+        "prompt": "Here is code in Python 3 programming lanaguge. Translate the following code from Python 3 to C programming lanaguge. Do not output any extra description or tokens other than the translated code. \n\np=input()\ni=0\nr=\"\"\nc=0\nwhile (i<len(p)):\n  if(p[i]!=\"/\"):\n    r=r+p[i]\n    c=0\n  elif(p[i]==\"/\" and c==0):\n    r=r+\"/\"\n    c=1\n  i=i+1  \nif(r[len(r)-1]==\"/\" and len(r)>1):\n   r=r[0:(len(r)-1)]\nprint(r)    \n||END-of-SRC||",
+        "response": {
+            "id": "multi-call-as-dktkgd4j5n",
+            "model": "deepseek-v3",
+            "created": 1767067132,
+            "choices": [
+                {
+                    "index": 0,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <string.h>\n\nint main() {\n    char p[1000];\n    scanf(\"%s\", p);\n    int i = 0;\n    char r[1000] = \"\";\n    int c = 0;\n    while (i < strlen(p)) {\n        if (p[i] != '/') {\n            strncat(r, &p[i], 1);\n            c = 0;\n        } else if (p[i] == '/' && c == 0) {\n            strncat(r, &p[i], 1);\n            c = 1;\n        }\n        i++;\n    }\n    if (r[strlen(r) - 1] == '/' && strlen(r) > 1) {\n        r[strlen(r) - 1] = '\\0';\n    }\n    printf(\"%s\\n\", r);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 1,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <string.h>\n\nint main() {\n    char p[1000];\n    scanf(\"%s\", p);\n    int i = 0;\n    char r[1000] = \"\";\n    int c = 0;\n    while (i < strlen(p)) {\n        if (p[i] != '/') {\n            strncat(r, &p[i], 1);\n            c = 0;\n        } else if (p[i] == '/' && c == 0) {\n            strncat(r, &p[i], 1);\n            c = 1;\n        }\n        i++;\n    }\n    if (r[strlen(r) - 1] == '/' && strlen(r) > 1) {\n        r[strlen(r) - 1] = '\\0';\n    }\n    printf(\"%s\\n\", r);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 2,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <string.h>\n\nint main() {\n    char p[1000];\n    scanf(\"%s\", p);\n    int i = 0;\n    char r[1000] = \"\";\n    int c = 0;\n    while (i < strlen(p)) {\n        if (p[i] != '/') {\n            strncat(r, &p[i], 1);\n            c = 0;\n        } else if (p[i] == '/' && c == 0) {\n            strncat(r, &p[i], 1);\n            c = 1;\n        }\n        i++;\n    }\n    if (r[strlen(r) - 1] == '/' && strlen(r) > 1) {\n        r[strlen(r) - 1] = '\\0';\n    }\n    printf(\"%s\", r);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 3,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <string.h>\n\nint main() {\n    char p[1000];\n    scanf(\"%s\", p);\n    int i = 0;\n    char r[1000] = \"\";\n    int c = 0;\n    while (i < strlen(p)) {\n        if (p[i] != '/') {\n            strncat(r, &p[i], 1);\n            c = 0;\n        } else if (p[i] == '/' && c == 0) {\n            strncat(r, &p[i], 1);\n            c = 1;\n        }\n        i++;\n    }\n    if (r[strlen(r) - 1] == '/' && strlen(r) > 1) {\n        r[strlen(r) - 1] = '\\0';\n    }\n    printf(\"%s\\n\", r);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 4,
+                    "message": {
+                        "role": "assistant",
+                        "content": "Here's the translated code in C:\n\n```c\n#include <stdio.h>\n#include <string.h>\n\nint main() {\n    char p[1000];\n    scanf(\"%s\", p);\n    int i = 0;\n    char r[1000] = \"\";\n    int c = 0;\n    while (i < strlen(p)) {\n        if (p[i] != '/') {\n            strncat(r, &p[i], 1);\n            c = 0;\n        } else if (p[i] == '/' && c == 0) {\n            strncat(r, &p[i], 1);\n            c = 1;\n        }\n        i++;\n    }\n    if (r[strlen(r)-1] == '/' && strlen(r) > 1) {\n        r[strlen(r)-1] = '\\0';\n    }\n    printf(\"%s\", r);\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                }
+            ],
+            "usage": {
+                "prompt_tokens": 750,
+                "completion_tokens": 952,
+                "total_tokens": 1702
+            }
+        }
+    },
+    "source_data": {
+        "code_uid": "822882d52976b970750cca1390e7f4df",
+        "prob_desc_output_to": "standard output",
+        "prob_desc_notes": null,
+        "lang_cluster": "Python",
+        "prob_desc_time_limit": "2 seconds",
+        "prob_desc_input_spec": "The first line of the input contains only lowercase Latin letters and character '/'\u00a0\u2014 the path to some directory. All paths start with at least one character '/'. The length of the given line is no more than 100 characters, it is not empty.",
+        "source_code": "p=input()\ni=0\nr=\"\"\nc=0\nwhile (i<len(p)):\n  if(p[i]!=\"/\"):\n    r=r+p[i]\n    c=0\n  elif(p[i]==\"/\" and c==0):\n    r=r+\"/\"\n    c=1\n  i=i+1  \nif(r[len(r)-1]==\"/\" and len(r)>1):\n   r=r[0:(len(r)-1)]\nprint(r)    \n",
+        "prob_desc_sample_inputs": [
+            "//usr///local//nginx/sbin"
+        ],
+        "prob_desc_memory_limit": "64 megabytes",
+        "exec_outcome": "PASSED",
+        "prob_desc_output_spec": "The path in normalized form.",
+        "src_uid": "6c2e658ac3c3d6b0569dd373806fa031",
+        "prob_desc_input_from": "standard input",
+        "lang": "Python 3",
+        "prob_desc_sample_outputs": [
+            "/usr/local/nginx/sbin"
+        ],
+        "file_name": "d7021504500d5ca7c2b02df8100a574d159e6e67e20ec8071b75800b1267370a",
+        "prob_desc_description": "The new operating system BerOS has a nice feature. It is possible to use any number of characters '/' as a delimiter in path instead of one traditional '/'. For example, strings //usr///local//nginx/sbin// and /usr/local/nginx///sbin are equivalent. The character '/' (or some sequence of such characters) at the end of the path is required only in case of the path to the root directory, which can be represented as single character '/'.A path called normalized if it contains the smallest possible number of characters '/'.Your task is to transform a given path to the normalized form.",
+        "prob_desc_created_at": "1276875000",
+        "difficulty": 1700.0,
+        "hidden_unit_tests": "[{\"input\": \"//usr///local//nginx/sbin\\r\\n\", \"output\": [\"/usr/local/nginx/sbin\"]}, {\"input\": \"////a//b/////g\\r\\n\", \"output\": [\"/a/b/g\"]}, {\"input\": \"/a/b/c\\r\\n\", \"output\": [\"/a/b/c\"]}, {\"input\": \"/\\r\\n\", \"output\": [\"/\"]}, {\"input\": \"////\\r\\n\", \"output\": [\"/\"]}, {\"input\": \"/a//aa/a//\\r\\n\", \"output\": [\"/a/aa/a\"]}, {\"input\": \"/aa//b/aa\\r\\n\", \"output\": [\"/aa/b/aa\"]}, {\"input\": \"////////////////////////////////////////////////////////////////////////////////////////////////////\\r\\n\", \"output\": [\"/\"]}, {\"input\": \"/opt///pokerband///srvb/opt///pokerband///srvb////pokerband///srvb/\\r\\n\", \"output\": [\"/opt/pokerband/srvb/opt/pokerband/srvb/pokerband/srvb\"]}, {\"input\": \"/root/pokerband/trunk/server/game/code/src/main/java/com/uosipa/pokerband/gameserver/game/\\r\\n\", \"output\": [\"/root/pokerband/trunk/server/game/code/src/main/java/com/uosipa/pokerband/gameserver/game\"]}, {\"input\": \"/root//pokerband/trunk/server/game/code/src///main/java/com/uosipa/pokerband//gameserver/game//\\r\\n\", \"output\": [\"/root/pokerband/trunk/server/game/code/src/main/java/com/uosipa/pokerband/gameserver/game\"]}, {\"input\": \"/root//pokerband/trunk/server/game/code/src///main/java/com/uosipa/pokerband//gameserver/game//test/\\r\\n\", \"output\": [\"/root/pokerband/trunk/server/game/code/src/main/java/com/uosipa/pokerband/gameserver/game/test\"]}, {\"input\": \"/root//pokerband/trunk/server/game/code/src///main/java/com/uosipa/pokerband//gameserver/game//testt\\r\\n\", \"output\": [\"/root/pokerband/trunk/server/game/code/src/main/java/com/uosipa/pokerband/gameserver/game/testt\"]}, {\"input\": \"///a//a////a/a//a//a//a/////\\r\\n\", \"output\": [\"/a/a/a/a/a/a/a\"]}, {\"input\": \"/zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz\\r\\n\", \"output\": [\"/zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz\"]}, {\"input\": \"/zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz/\\r\\n\", \"output\": [\"/zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz\"]}, {\"input\": \"/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a\\r\\n\", \"output\": [\"/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a\"]}, {\"input\": \"///////////////////////////////////////////////////////////////////////////////////////////////////z\\r\\n\", \"output\": [\"/z\"]}, {\"input\": \"/z//////////////////////////////////////////////////////////////////////////////////////////////////\\r\\n\", \"output\": [\"/z\"]}]",
+        "source_lang": "Python 3",
+        "target_lang": "C"
+    }
+}

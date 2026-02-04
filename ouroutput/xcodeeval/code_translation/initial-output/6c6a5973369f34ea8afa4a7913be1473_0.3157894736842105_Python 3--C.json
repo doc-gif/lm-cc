@@ -1,0 +1,87 @@
+{
+    "oai_response": {
+        "prompt": "Here is code in Python 3 programming lanaguge. Translate the following code from Python 3 to C programming lanaguge. Do not output any extra description or tokens other than the translated code. \n\nn=int(input())\nif(n%2==1 and n!=1):\n    print (n*(n-1)*(n-2))\nelif(n==2):\n    print(2)\nelif(n==1):\n    print(1)\nelif(n%2==0 and n!=2):\n    if(n%3==0):\n        print (max(((n-3)*(n-1)*(n-2)),(n*(n-1)*(n-2)//2)))\n    else:\n        print (max((n*(n-1)*(n-3)),(n*(n-1)*(n-2)//2)))||END-of-SRC||",
+        "response": {
+            "id": "multi-call-as-wwu9t0q4ns",
+            "model": "deepseek-v3",
+            "created": 1767068433,
+            "choices": [
+                {
+                    "index": 0,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    if (n % 2 == 1 && n != 1) {\n        printf(\"%d\\n\", n * (n - 1) * (n - 2));\n    } else if (n == 2) {\n        printf(\"2\\n\");\n    } else if (n == 1) {\n        printf(\"1\\n\");\n    } else if (n % 2 == 0 && n != 2) {\n        if (n % 3 == 0) {\n            int a = (n - 3) * (n - 1) * (n - 2);\n            int b = (n * (n - 1) * (n - 2)) / 2;\n            printf(\"%d\\n\", a > b ? a : b);\n        } else {\n            int a = n * (n - 1) * (n - 3);\n            int b = (n * (n - 1) * (n - 2)) / 2;\n            printf(\"%d\\n\", a > b ? a : b);\n        }\n    }\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 1,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    if (n % 2 == 1 && n != 1) {\n        printf(\"%d\\n\", n * (n - 1) * (n - 2));\n    } else if (n == 2) {\n        printf(\"2\\n\");\n    } else if (n == 1) {\n        printf(\"1\\n\");\n    } else if (n % 2 == 0 && n != 2) {\n        if (n % 3 == 0) {\n            int a = (n - 3) * (n - 1) * (n - 2);\n            int b = (n * (n - 1) * (n - 2)) / 2;\n            printf(\"%d\\n\", a > b ? a : b);\n        } else {\n            int a = n * (n - 1) * (n - 3);\n            int b = (n * (n - 1) * (n - 2)) / 2;\n            printf(\"%d\\n\", a > b ? a : b);\n        }\n    }\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 2,
+                    "message": {
+                        "role": "assistant",
+                        "content": "Here's the translated code in C:\n\n```c\n#include <stdio.h>\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    if (n % 2 == 1 && n != 1) {\n        printf(\"%d\", n * (n - 1) * (n - 2));\n    } else if (n == 2) {\n        printf(\"2\");\n    } else if (n == 1) {\n        printf(\"1\");\n    } else if (n % 2 == 0 && n != 2) {\n        if (n % 3 == 0) {\n            printf(\"%d\", ((n - 3) * (n - 1) * (n - 2)) > ((n * (n - 1) * (n - 2)) / 2) ? ((n - 3) * (n - 1) * (n - 2)) : ((n * (n - 1) * (n - 2)) / 2));\n        } else {\n            printf(\"%d\", ((n * (n - 1) * (n - 3)) > ((n * (n - 1) * (n - 2)) / 2) ? (n * (n - 1) * (n - 3)) : ((n * (n - 1) * (n - 2)) / 2)));\n        }\n    }\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 3,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    if (n % 2 == 1 && n != 1) {\n        printf(\"%d\\n\", n * (n - 1) * (n - 2));\n    } else if (n == 2) {\n        printf(\"2\\n\");\n    } else if (n == 1) {\n        printf(\"1\\n\");\n    } else if (n % 2 == 0 && n != 2) {\n        if (n % 3 == 0) {\n            int a = (n - 3) * (n - 1) * (n - 2);\n            int b = (n * (n - 1) * (n - 2)) / 2;\n            printf(\"%d\\n\", a > b ? a : b);\n        } else {\n            int a = n * (n - 1) * (n - 3);\n            int b = (n * (n - 1) * (n - 2)) / 2;\n            printf(\"%d\\n\", a > b ? a : b);\n        }\n    }\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 4,
+                    "message": {
+                        "role": "assistant",
+                        "content": "Here's the translated code in C:\n\n```c\n#include <stdio.h>\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    if (n % 2 == 1 && n != 1) {\n        printf(\"%d\", n * (n - 1) * (n - 2));\n    } else if (n == 2) {\n        printf(\"2\");\n    } else if (n == 1) {\n        printf(\"1\");\n    } else if (n % 2 == 0 && n != 2) {\n        if (n % 3 == 0) {\n            printf(\"%d\", ((n - 3) * (n - 1) * (n - 2)) > ((n * (n - 1) * (n - 2)) / 2) ? ((n - 3) * (n - 1) * (n - 2)) : ((n * (n - 1) * (n - 2)) / 2));\n        } else {\n            printf(\"%d\", (n * (n - 1) * (n - 3)) > ((n * (n - 1) * (n - 2)) / 2) ? (n * (n - 1) * (n - 3)) : ((n * (n - 1) * (n - 2)) / 2));\n        }\n    }\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                }
+            ],
+            "usage": {
+                "prompt_tokens": 895,
+                "completion_tokens": 1415,
+                "total_tokens": 2310
+            }
+        }
+    },
+    "source_data": {
+        "code_uid": "6c6a5973369f34ea8afa4a7913be1473",
+        "prob_desc_output_to": "standard output",
+        "prob_desc_notes": "NoteThe least common multiple of some positive integers is the least positive integer which is multiple for each of them.The result may become very large, 32-bit integer won't be enough. So using 64-bit integers is recommended.For the last example, we can chose numbers 7, 6, 5 and the LCM of them is 7\u00b76\u00b75\u2009=\u2009210. It is the maximum value we can get.",
+        "lang_cluster": "Python",
+        "prob_desc_time_limit": "2 seconds",
+        "prob_desc_input_spec": "The first line contains an integer n (1\u2009\u2264\u2009n\u2009\u2264\u2009106) \u2014 the n mentioned in the statement.",
+        "source_code": "n=int(input())\nif(n%2==1 and n!=1):\n    print (n*(n-1)*(n-2))\nelif(n==2):\n    print(2)\nelif(n==1):\n    print(1)\nelif(n%2==0 and n!=2):\n    if(n%3==0):\n        print (max(((n-3)*(n-1)*(n-2)),(n*(n-1)*(n-2)//2)))\n    else:\n        print (max((n*(n-1)*(n-3)),(n*(n-1)*(n-2)//2)))",
+        "prob_desc_sample_inputs": [
+            "9",
+            "7"
+        ],
+        "prob_desc_memory_limit": "256 megabytes",
+        "exec_outcome": "PASSED",
+        "prob_desc_output_spec": "Print a single integer \u2014 the maximum possible LCM of three not necessarily distinct positive integers that are not greater than n.",
+        "src_uid": "25e5afcdf246ee35c9cef2fcbdd4566e",
+        "prob_desc_input_from": "standard input",
+        "lang": "Python 3",
+        "prob_desc_sample_outputs": [
+            "504",
+            "210"
+        ],
+        "file_name": "d7021504500d5ca7c2b02df8100a574d159e6e67e20ec8071b75800b1267370a",
+        "prob_desc_description": "Some days ago, I learned the concept of LCM (least common multiple). I've played with it for several times and I want to make a big number with it.But I also don't want to use many numbers, so I'll choose three positive integers (they don't have to be distinct) which are not greater than n. Can you help me to find the maximum possible least common multiple of these three integers?",
+        "prob_desc_created_at": "1350803400",
+        "difficulty": 1600.0,
+        "hidden_unit_tests": "[{\"input\": \"9\\r\\n\", \"output\": [\"504\"]}, {\"input\": \"7\\r\\n\", \"output\": [\"210\"]}, {\"input\": \"1\\r\\n\", \"output\": [\"1\"]}, {\"input\": \"5\\r\\n\", \"output\": [\"60\"]}, {\"input\": \"6\\r\\n\", \"output\": [\"60\"]}, {\"input\": \"33\\r\\n\", \"output\": [\"32736\"]}, {\"input\": \"21\\r\\n\", \"output\": [\"7980\"]}, {\"input\": \"2\\r\\n\", \"output\": [\"2\"]}, {\"input\": \"41\\r\\n\", \"output\": [\"63960\"]}, {\"input\": \"29\\r\\n\", \"output\": [\"21924\"]}, {\"input\": \"117\\r\\n\", \"output\": [\"1560780\"]}, {\"input\": \"149\\r\\n\", \"output\": [\"3241644\"]}, {\"input\": \"733\\r\\n\", \"output\": [\"392222436\"]}, {\"input\": \"925\\r\\n\", \"output\": [\"788888100\"]}, {\"input\": \"509\\r\\n\", \"output\": [\"131096004\"]}, {\"input\": \"829\\r\\n\", \"output\": [\"567662724\"]}, {\"input\": \"605\\r\\n\", \"output\": [\"220348260\"]}, {\"input\": \"245\\r\\n\", \"output\": [\"14526540\"]}, {\"input\": \"213\\r\\n\", \"output\": [\"9527916\"]}, {\"input\": \"53\\r\\n\", \"output\": [\"140556\"]}, {\"input\": \"341\\r\\n\", \"output\": [\"39303660\"]}, {\"input\": \"924\\r\\n\", \"output\": [\"783776526\"]}, {\"input\": \"508\\r\\n\", \"output\": [\"130065780\"]}, {\"input\": \"700\\r\\n\", \"output\": [\"341042100\"]}, {\"input\": \"636\\r\\n\", \"output\": [\"254839470\"]}, {\"input\": \"20\\r\\n\", \"output\": [\"6460\"]}, {\"input\": \"604\\r\\n\", \"output\": [\"218891412\"]}, {\"input\": \"796\\r\\n\", \"output\": [\"501826260\"]}, {\"input\": \"732\\r\\n\", \"output\": [\"389016270\"]}, {\"input\": \"412\\r\\n\", \"output\": [\"69256788\"]}, {\"input\": \"244\\r\\n\", \"output\": [\"14289372\"]}, {\"input\": \"828\\r\\n\", \"output\": [\"563559150\"]}, {\"input\": \"116\\r\\n\", \"output\": [\"1507420\"]}, {\"input\": \"148\\r\\n\", \"output\": [\"3154620\"]}, {\"input\": \"763116\\r\\n\", \"output\": [\"444394078546562430\"]}, {\"input\": \"756604\\r\\n\", \"output\": [\"433115377058855412\"]}, {\"input\": \"447244\\r\\n\", \"output\": [\"89460162932862372\"]}, {\"input\": \"372636\\r\\n\", \"output\": [\"51742503205363470\"]}, {\"input\": \"546924\\r\\n\", \"output\": [\"163597318076822526\"]}, {\"input\": \"540412\\r\\n\", \"output\": [\"157823524476316788\"]}, {\"input\": \"714700\\r\\n\", \"output\": [\"365063922340784100\"]}, {\"input\": \"520731\\r\\n\", \"output\": [\"141201007712496270\"]}, {\"input\": \"695019\\r\\n\", \"output\": [\"335728459024850814\"]}, {\"input\": \"688507\\r\\n\", \"output\": [\"326379736779169710\"]}, {\"input\": \"862795\\r\\n\", \"output\": [\"642275489615199390\"]}, {\"input\": \"668827\\r\\n\", \"output\": [\"299184742915995150\"]}, {\"input\": \"810411\\r\\n\", \"output\": [\"532248411551110590\"]}, {\"input\": \"836603\\r\\n\", \"output\": [\"585540171302562606\"]}, {\"input\": \"978187\\r\\n\", \"output\": [\"935975171582120670\"]}, {\"input\": \"816923\\r\\n\", \"output\": [\"545182335484592526\"]}, {\"input\": \"958507\\r\\n\", \"output\": [\"880611813728059710\"]}, {\"input\": \"984699\\r\\n\", \"output\": [\"954792870629291694\"]}, {\"input\": \"642635\\r\\n\", \"output\": [\"265393998349453470\"]}, {\"input\": \"296604\\r\\n\", \"output\": [\"26092892528622606\"]}, {\"input\": \"1000000\\r\\n\", \"output\": [\"999996000003000000\"]}, {\"input\": \"8\\r\\n\", \"output\": [\"280\"]}, {\"input\": \"3\\r\\n\", \"output\": [\"6\"]}, {\"input\": \"4\\r\\n\", \"output\": [\"12\"]}, {\"input\": \"30\\r\\n\", \"output\": [\"21924\"]}, {\"input\": \"18\\r\\n\", \"output\": [\"4080\"]}, {\"input\": \"12\\r\\n\", \"output\": [\"990\"]}]",
+        "source_lang": "Python 3",
+        "target_lang": "C"
+    }
+}

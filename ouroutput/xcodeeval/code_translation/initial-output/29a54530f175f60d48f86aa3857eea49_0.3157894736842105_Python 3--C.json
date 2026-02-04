@@ -1,0 +1,91 @@
+{
+    "oai_response": {
+        "prompt": "Here is code in Python 3 programming lanaguge. Translate the following code from Python 3 to C programming lanaguge. Do not output any extra description or tokens other than the translated code. \n\nS = 'CODEFORCES'\nn = len(S)\ns = str(input())\na = False\n\nfor i in range(n):\n    k = s.find(S[:n - i])\n    if k != -1:\n        p = k\n        while p != -1:\n            p = s.find(S[n - i:], p + 1)\n            v1 = (k, k + n - i)\n            v2 = (p, p + i)\n            #print('{} {}'.format(v1, v2))\n            if v1[0] == 0 and v2[1] == len(s):\n                a = True\n            elif (v1[0] == 0 or v2[1] == len(s)) and v2[1] - v1[0] == 10:\n                a = True\n    \nif a:\n    print('YES')\nelse:\n    print('NO')||END-of-SRC||",
+        "response": {
+            "id": "multi-call-as-z97hqi3eak",
+            "model": "deepseek-v3",
+            "created": 1767068136,
+            "choices": [
+                {
+                    "index": 0,
+                    "message": {
+                        "role": "assistant",
+                        "content": "```c\n#include <stdio.h>\n#include <string.h>\n\n#define MAX_LEN 1000\n\nint main() {\n    char S[] = \"CODEFORCES\";\n    int n = strlen(S);\n    char s[MAX_LEN];\n    scanf(\"%s\", s);\n    int a = 0;\n\n    for (int i = 0; i < n; i++) {\n        char temp[n - i + 1];\n        strncpy(temp, S, n - i);\n        temp[n - i] = '\\0';\n        char *k = strstr(s, temp);\n        if (k != NULL) {\n            int pos = k - s;\n            char *p = strstr(s + pos + 1, S + n - i);\n            while (p != NULL) {\n                int v1_start = pos;\n                int v1_end = pos + n - i;\n                int v2_start = p - s;\n                int v2_end = v2_start + i;\n                if (v1_start == 0 && v2_end == strlen(s)) {\n                    a = 1;\n                } else if ((v1_start == 0 || v2_end == strlen(s)) && v2_end - v1_start == 10) {\n                    a = 1;\n                }\n                p = strstr(p + 1, S + n - i);\n            }\n        }\n    }\n\n    if (a) {\n        printf(\"YES\\n\");\n    } else {\n        printf(\"NO\\n\");\n    }\n\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 1,
+                    "message": {
+                        "role": "assistant",
+                        "content": "Here's the translated code in C:\n\n```c\n#include <stdio.h>\n#include <string.h>\n\nint main() {\n    char S[] = \"CODEFORCES\";\n    int n = strlen(S);\n    char s[100];\n    scanf(\"%s\", s);\n    int a = 0;\n\n    for (int i = 0; i < n; i++) {\n        char temp[n - i + 1];\n        strncpy(temp, S, n - i);\n        temp[n - i] = '\\0';\n        char *k = strstr(s, temp);\n        if (k != NULL) {\n            int pos_k = k - s;\n            char *p = strstr(s, S + n - i);\n            while (p != NULL) {\n                int pos_p = p - s;\n                int v1_start = pos_k;\n                int v1_end = pos_k + n - i;\n                int v2_start = pos_p;\n                int v2_end = pos_p + i;\n                if (v1_start == 0 && v2_end == strlen(s)) {\n                    a = 1;\n                } else if ((v1_start == 0 || v2_end == strlen(s)) && v2_end - v1_start == 10) {\n                    a = 1;\n                }\n                p = strstr(p + 1, S + n - i);\n            }\n        }\n    }\n\n    if (a) {\n        printf(\"YES\\n\");\n    } else {\n        printf(\"NO\\n\");\n    }\n\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 2,
+                    "message": {
+                        "role": "assistant",
+                        "content": "Here's the translated code in C:\n\n```c\n#include <stdio.h>\n#include <string.h>\n\nint main() {\n    char S[] = \"CODEFORCES\";\n    int n = strlen(S);\n    char s[100];\n    scanf(\"%s\", s);\n    int a = 0;\n\n    for (int i = 0; i < n; i++) {\n        char temp[100];\n        strncpy(temp, S, n - i);\n        temp[n - i] = '\\0';\n        char *k = strstr(s, temp);\n        if (k != NULL) {\n            int pos_k = k - s;\n            char *p = strstr(s, S + n - i);\n            while (p != NULL) {\n                int pos_p = p - s;\n                int v1_start = pos_k;\n                int v1_end = pos_k + n - i;\n                int v2_start = pos_p;\n                int v2_end = pos_p + i;\n                if (v1_start == 0 && v2_end == strlen(s)) {\n                    a = 1;\n                } else if ((v1_start == 0 || v2_end == strlen(s)) && v2_end - v1_start == 10) {\n                    a = 1;\n                }\n                p = strstr(p + 1, S + n - i);\n            }\n        }\n    }\n\n    if (a) {\n        printf(\"YES\\n\");\n    } else {\n        printf(\"NO\\n\");\n    }\n\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 3,
+                    "message": {
+                        "role": "assistant",
+                        "content": "Here's the translated code in C:\n\n```c\n#include <stdio.h>\n#include <string.h>\n\nint main() {\n    char S[] = \"CODEFORCES\";\n    int n = strlen(S);\n    char s[100];\n    scanf(\"%s\", s);\n    int a = 0;\n\n    for (int i = 0; i < n; i++) {\n        char temp[n - i + 1];\n        strncpy(temp, S, n - i);\n        temp[n - i] = '\\0';\n        char *k = strstr(s, temp);\n        if (k != NULL) {\n            int pos_k = k - s;\n            char *p = strstr(s, S + n - i);\n            while (p != NULL) {\n                int pos_p = p - s;\n                int v1_start = pos_k;\n                int v1_end = pos_k + n - i;\n                int v2_start = pos_p;\n                int v2_end = pos_p + i;\n                if (v1_start == 0 && v2_end == strlen(s)) {\n                    a = 1;\n                } else if ((v1_start == 0 || v2_end == strlen(s)) && v2_end - v1_start == 10) {\n                    a = 1;\n                }\n                p = strstr(p + 1, S + n - i);\n            }\n        }\n    }\n\n    if (a) {\n        printf(\"YES\\n\");\n    } else {\n        printf(\"NO\\n\");\n    }\n\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                },
+                {
+                    "index": 4,
+                    "message": {
+                        "role": "assistant",
+                        "content": "Here's the translated code in C:\n\n```c\n#include <stdio.h>\n#include <string.h>\n\nint main() {\n    char S[] = \"CODEFORCES\";\n    int n = strlen(S);\n    char s[100];\n    scanf(\"%s\", s);\n    int a = 0;\n\n    for (int i = 0; i < n; i++) {\n        char temp[n - i + 1];\n        strncpy(temp, S, n - i);\n        temp[n - i] = '\\0';\n        char *k = strstr(s, temp);\n        if (k != NULL) {\n            int pos_k = k - s;\n            char *p = strstr(s + pos_k + 1, S + n - i);\n            while (p != NULL) {\n                int pos_p = p - s;\n                int v1_start = pos_k;\n                int v1_end = pos_k + n - i;\n                int v2_start = pos_p;\n                int v2_end = pos_p + i;\n                if (v1_start == 0 && v2_end == strlen(s)) {\n                    a = 1;\n                } else if ((v1_start == 0 || v2_end == strlen(s)) && v2_end - v1_start == 10) {\n                    a = 1;\n                }\n                p = strstr(s + pos_p + 1, S + n - i);\n            }\n        }\n    }\n\n    if (a) {\n        printf(\"YES\\n\");\n    } else {\n        printf(\"NO\\n\");\n    }\n\n    return 0;\n}\n```"
+                    },
+                    "finish_reason": "stop"
+                }
+            ],
+            "usage": {
+                "prompt_tokens": 1225,
+                "completion_tokens": 1653,
+                "total_tokens": 2878
+            }
+        }
+    },
+    "source_data": {
+        "code_uid": "29a54530f175f60d48f86aa3857eea49",
+        "prob_desc_output_to": "standard output",
+        "prob_desc_notes": null,
+        "lang_cluster": "Python",
+        "prob_desc_time_limit": "2 seconds",
+        "prob_desc_input_spec": "The single line of the input contains the word written on the banner. The word only consists of upper-case English letters. The word is non-empty and its length doesn't exceed 100 characters. It is guaranteed that the word isn't word CODEFORCES.",
+        "source_code": "S = 'CODEFORCES'\nn = len(S)\ns = str(input())\na = False\n\nfor i in range(n):\n    k = s.find(S[:n - i])\n    if k != -1:\n        p = k\n        while p != -1:\n            p = s.find(S[n - i:], p + 1)\n            v1 = (k, k + n - i)\n            v2 = (p, p + i)\n            #print('{} {}'.format(v1, v2))\n            if v1[0] == 0 and v2[1] == len(s):\n                a = True\n            elif (v1[0] == 0 or v2[1] == len(s)) and v2[1] - v1[0] == 10:\n                a = True\n    \nif a:\n    print('YES')\nelse:\n    print('NO')",
+        "prob_desc_sample_inputs": [
+            "CODEWAITFORITFORCES",
+            "BOTTOMCODER",
+            "DECODEFORCES",
+            "DOGEFORCES"
+        ],
+        "prob_desc_memory_limit": "256 megabytes",
+        "exec_outcome": "PASSED",
+        "prob_desc_output_spec": "Print 'YES', if there exists a way to cut out the substring, and 'NO' otherwise (without the quotes).",
+        "src_uid": "bda4b15827c94b526643dfefc4bc36e7",
+        "prob_desc_input_from": "standard input",
+        "lang": "Python 3",
+        "prob_desc_sample_outputs": [
+            "YES",
+            "NO",
+            "YES",
+            "NO"
+        ],
+        "file_name": "d7021504500d5ca7c2b02df8100a574d159e6e67e20ec8071b75800b1267370a",
+        "prob_desc_description": "A large banner with word CODEFORCES was ordered for the 1000-th onsite round of Codeforces\u03c9 that takes place on the Miami beach. Unfortunately, the company that made the banner mixed up two orders and delivered somebody else's banner that contains someone else's word. The word on the banner consists only of upper-case English letters.There is very little time to correct the mistake. All that we can manage to do is to cut out some substring from the banner, i.e. several consecutive letters. After that all the resulting parts of the banner will be glued into a single piece (if the beginning or the end of the original banner was cut out, only one part remains); it is not allowed change the relative order of parts of the banner (i.e. after a substring is cut, several first and last letters are left, it is allowed only to glue the last letters to the right of the first letters). Thus, for example, for example, you can cut a substring out from string 'TEMPLATE' and get string 'TEMPLE' (if you cut out string AT), 'PLATE' (if you cut out TEM), 'T' (if you cut out EMPLATE), etc.Help the organizers of the round determine whether it is possible to cut out of the banner some substring in such a way that the remaining parts formed word CODEFORCES.",
+        "prob_desc_created_at": "1430064000",
+        "difficulty": 1400.0,
+        "hidden_unit_tests": "[{\"input\": \"CODEWAITFORITFORCES\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"BOTTOMCODER\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"DECODEFORCES\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"DOGEFORCES\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"ABACABA\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"CODEFORCE\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"C\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"NQTSMZEBLY\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"CODEFZORCES\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"EDYKHVZCNTLJUUOQGHPTIOETQNFLLWEKZOHIUAXELGECABVSBIBGQODQXVYFKBYJWTGBYHVSSNTINKWSINWSMALUSIWNJMTCOOVF\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"OCECFDSRDE\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"MDBUWCZFFZKFMJTTJFXRHTGRPREORKDVUXOEMFYSOMSQGHUKGYCRCVJTNDLFDEWFS\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"CODEFYTORCHES\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"BCODEFORCES\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"CVODEFORCES\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"COAKDEFORCES\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"CODFMWEFORCES\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"CODEVCSYRFORCES\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"CODEFXHHPWCVQORCES\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"CODEFORQWUFJLOFFXTXRCES\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"CODEFORBWFURYIDURNRKRDLHCLXZCES\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"CODEFORCQSYSLYKCDFFUPSAZCJIAENCKZUFJZEINQIES\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"CODEFORCEVENMDBQLSVPQIIBGSHBVOPYZXNWVSTVWDRONUREYJJIJIPMEBPQDCPFS\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"CODEFORCESCFNNPAHNHDIPPBAUSPKJYAQDBVZNLSTSDCREZACVLMRFGVKGVHHZLXOHCTJDBQKIDWBUXDUJARLWGFGFCTTXUCAZB\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"CODJRDPDEFOROES\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"CODEFOGSIUZMZCMWAVQHNYFEKIEZQMAZOVEMDRMOEDBHAXPLBLDYYXCVTOOSJZVSQAKFXTBTZFWAYRZEMDEMVDJTDRXXAQBURCES\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"CODEMKUYHAZSGJBQLXTHUCZZRJJJXUSEBOCNZASOKDZHMSGWZSDFBGHXFLABVPDQBJYXSHHAZAKHSTRGOKJYHRVSSUGDCMFOGCES\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"CODEFORCESCODEFORCESCODEFORCESCODEFORCESCODEFORCESCODEFORCESCODEFORCESCODEFORCESCODEFORCES\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"CCODEFORCESODECODEFORCCODEFORCESODCODEFORCESEFCODEFORCESORCODEFORCESCESCESFORCODEFORCESCES\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"CCODEFORCESC\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"CODEAFORBCES\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"CODERRRRRFORCRRRRES\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"CODELFORCELS\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"CPOPDPEPFPOPRPCPEPS\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"COXDEXFORXCEXS\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"CODAAAAAFORCES\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"CAOADEFORCES\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"FORCESXCODE\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"FORCESACODE\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"ACAOADAEFORCES\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"CCODEFORCESS\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"ZCODEFORCEZ\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"CODXEFORXCES\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"CODEFORCEZ\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"CODEFORCEST\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"AXODEFORCES\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"RCODEFORCESR\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"CODECODEFORCESFORCES\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"TTTWWWCODEFORCES\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"CODEFORRCEST\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"UJYTYUCODEFORCES\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"CODEXXXXXXXXXXXXXXXXXXCODEFORCESXXXXXXXXXXXXXXXXXXXXXFORCES\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"COXEDYFORCES\\r\\n\", \"output\": [\"NO\"]}, {\"input\": \"UJYTYCODEFORCES\\r\\n\", \"output\": [\"YES\"]}, {\"input\": \"UJYTCODEFORCES\\r\\n\", \"output\": [\"YES\"]}]",
+        "source_lang": "Python 3",
+        "target_lang": "C"
+    }
+}
