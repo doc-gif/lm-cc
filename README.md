@@ -16,22 +16,16 @@ pip install ./dependency/promptsource
 ```
 
 ### Project Structure
+```
 ./
-
 ├── dataset/           Raw dataset and code-rewritten dataset
-
 ├── dependency/        
-
 ├── output/            Default output path for task execution
-
 ├── results/           Our task outputs
-
 └── scripts/           Scripts and source code
-
     ├── lm-cc/         Implementation of the lm-cc metric
-
     └── tasks/         Code for task execution and evaluation
-    
+```   
 
 ### Metric Usage
 Default: Download the model from Hugging Face and load it in full precision.
