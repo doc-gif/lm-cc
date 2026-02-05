@@ -62,7 +62,7 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
 
-    output_dir = "../ouroutput"
+    output_dir = "../results"
 
     THRESHOLD = 0.67
     model_name = "CodeLlama-7b-hf"
