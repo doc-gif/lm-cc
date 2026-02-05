@@ -1,9 +1,9 @@
 ## LM-CC
 
 A code complexity metric explicitly grounded in the perspective of large language models.
+LM-CC represents programs as semantic compositional hierarchies and quantifies semantic nonlinearity through a principled aggregation of compositional level and branching-induced divergence.
 
 ### Dependency
-
 <!--Deployment and use of CodeMind require specific dependencies.--> <!--Please check if all dependencies listed on ```requirements.txt``` are installed in your environment.-->
 
 To install all the dependencies, run the following command:
@@ -47,7 +47,7 @@ cd scripts
 ```
 
 #### correlations
-* To reproduce our results:
+* Reproduce our results:
 ```
 bash correlations.sh
 ```
@@ -56,4 +56,10 @@ bash correlations.sh
 bash program_repair.sh
 bash code_translation.sh
 bash execution_reasoning.sh
+```
+
+#### code rewriting
+* Reproduce our results:
+```
+bash evaluate_rewriting.sh
 ```
