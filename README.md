@@ -39,7 +39,8 @@ pip install ./dependency/promptsource
         └── code_translation-simplified/    Raw results of code_translation-simplified-top50           
 └── scripts/                                Scripts and source code
     ├── lm-cc/                              Implementation of the lm-cc metric
-    └── tasks/                              Code for task execution and evaluation
+    ├── tasks/                              Code for task execution and evaluation
+    └── utils/                              Utility code for metric calculation and other functions
 ```   
 
 ### Metric Usage
