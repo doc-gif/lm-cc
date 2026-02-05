@@ -21,13 +21,25 @@ pip install ./dependency/promptsource
 ### Project Structure
 ```
 ./
-├── dataset/           Raw dataset and code-rewritten dataset
+├── dataset/                                Raw dataset and code-rewritten dataset
+    ├── humaneval/                          Dataset for execution reasoning task
+    ├── humaneval-simplified/               Rewrited samples in humaneval datasset
+    ├── humaneval-simplified-top60/         Rewrited samples where the original LM-CC metric ranks in the top 60%
+    └── xcodeeval/
+        ├── apr/                            Dataset for program repair task
+        └── code_translation/               Dataset for code translation task
 ├── dependency/        
-├── output/            Default output path for task execution
-├── results/           Our task outputs
-└── scripts/           Scripts and source code
-    ├── lm-cc/         Implementation of the lm-cc metric
-    └── tasks/         Code for task execution and evaluation
+├── results/                                Our task outputs
+    ├── humaneval-ier/                      Raw results of execution reasoning task
+    ├── humaneval-ier-simplified/           Raw results of humaneval-simplified-top60
+    └── xcodeeval/
+        ├── apr/                            Raw results of program repair task
+        ├── apr-simplified/                 Raw results of apr-simplified-top50
+        ├── code_translation/               Raw results of code translation task
+        └── code_translation-simplified/    Raw results of code_translation-simplified-top50           
+└── scripts/                                Scripts and source code
+    ├── lm-cc/                              Implementation of the lm-cc metric
+    └── tasks/                              Code for task execution and evaluation
 ```   
 
 ### Metric Usage
