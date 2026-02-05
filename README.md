@@ -1,7 +1,10 @@
 ## LM-CC
 
 A code complexity metric explicitly grounded in the perspective of large language models.
+
 LM-CC represents programs as semantic compositional hierarchies and quantifies semantic nonlinearity through a principled aggregation of compositional level and branching-induced divergence.
+
+We demonstrate the effectiveness and practical utility of LM-CC through extensive experiments on diverse code tasks, showing significantly stronger alignment with LLM performance than existing metrics.
 
 ### Dependency
 <!--Deployment and use of CodeMind require specific dependencies.--> <!--Please check if all dependencies listed on ```requirements.txt``` are installed in your environment.-->
