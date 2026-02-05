@@ -17,13 +17,21 @@ pip install ./dependency/promptsource
 
 ### Project Structure
 ./
+
 ├── dataset/           Raw dataset and code-rewritten dataset
+
 ├── dependency/        
+
 ├── output/            Default output path for task execution
+
 ├── results/           Our task outputs
+
 └── scripts/           Scripts and source code
+
     ├── lm-cc/         Implementation of the lm-cc metric
+
     └── tasks/         Code for task execution and evaluation
+    
 
 ### Metric Usage
 Default: Download the model from Hugging Face and load it in full precision.
@@ -63,6 +71,7 @@ bash correlations.sh
 ##### Start with task execution
 
 For the execution reasoning task, we adopt the code from the original paper for generation and evaluation.
+
 Before starting, please set the environment variables `OPENAI_API_KEY`, `OPENAI_BASE_URL`, and `OPENAI_MODEL_NAME`.
 
 Then execute the corresponding task script:
