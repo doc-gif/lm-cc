@@ -11,7 +11,7 @@ OUTPUT_ROOT = Path("data")
 
 def extract_humaneval():
     print("--- Extracting HumanEval ---")
-    for category in ["humaneval", "humaneval-simplified"]:
+    for category in ["humaneval", "humaneval_simplified"]:
         src_dir = DATASET_ROOT / category
         out_dir = OUTPUT_ROOT / category
         out_dir.mkdir(parents=True, exist_ok=True)
