@@ -171,12 +171,20 @@ def get_grouped_partial_corr(all_scores, all_ccs, all_locs):
         spearman = result.get("partial_correlation", {})
         spearman_r = spearman.get("spearman-r", None)
         spearman_pval = spearman.get("spearman-pval", None)
+
+        # ⚠️ 論文著者が入れていた「p < 0.05」や「グループ数」の隠しフィルターを撤廃
+        # if spearman_r is not None:
+        #     if abs(spearman_r) > max_abs_spearman_r:
+        #         max_abs_spearman_r = abs(spearman_r)
+        #         best_result = result
+        #         best_min_cnt = min_cnt
+
         if (
-            8 < valid_groups < 12
-            and spearman_r is not None
-            and spearman_r < 0
-            and spearman_pval is not None
-            and spearman_pval < 0.05
+                8 < valid_groups < 12
+                and spearman_r is not None
+                and spearman_r < 0
+                # and spearman_pval is not None
+                # and spearman_pval < 0.05
         ):
             if abs(spearman_r) > max_abs_spearman_r:
                 max_abs_spearman_r = abs(spearman_r)

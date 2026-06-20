@@ -2,7 +2,7 @@ import numpy as np
 import argparse
 import os
 import json
-from .correlation import  get_grouped_partial_corr, read_loc, read_lmcc, print_metric_result
+from scripts.utils.correlation import  get_grouped_partial_corr, read_loc, read_lmcc, print_metric_result
 
 
 def print_metric_result(all_score, all_metric, all_loc, option="both"):

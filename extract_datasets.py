@@ -11,7 +11,7 @@ OUTPUT_ROOT = Path("data")
 
 def extract_humaneval():
     print("--- Extracting HumanEval ---")
-    for category in ["humaneval", "humaneval_simplified"]:
+    for category in ["humaneval", "humaneval_simplified", "humaneval_simplified-top60"]:
         src_dir = DATASET_ROOT / category
         out_dir = OUTPUT_ROOT / category
         out_dir.mkdir(parents=True, exist_ok=True)
@@ -46,13 +46,16 @@ def extract_xcodeeval_apr():
     # 出力先ディレクトリを分ける
     out_dir_original = OUTPUT_ROOT / "xcodeeval" / "apr"
     out_dir_simplified = OUTPUT_ROOT / "xcodeeval_simplified" / "apr"
+    out_dir_simplified_top50 = OUTPUT_ROOT / "xcodeeval_simplified-top50" / "apr"
     out_dir_original.mkdir(parents=True, exist_ok=True)
     out_dir_simplified.mkdir(parents=True, exist_ok=True)
+    out_dir_simplified_top50.mkdir(parents=True, exist_ok=True)
 
     # 読み込むファイルと、その出力先の対応付け
     file_mapping = [
         ("xcodeeval_apr_test_filtered.jsonl", out_dir_original),
-        ("xcodeeval_apr_test_filtered-simplified.jsonl", out_dir_simplified)
+        ("xcodeeval_apr_test_filtered-simplified.jsonl", out_dir_simplified),
+        ("xcodeeval_apr_test_filtered-simplified-top50.jsonl", out_dir_simplified_top50)
     ]
 
     for filename, out_dir in file_mapping:
@@ -82,13 +85,16 @@ def extract_xcodeeval_ct():
     # 出力先ディレクトリを分ける
     out_dir_original = OUTPUT_ROOT / "xcodeeval" / "code_translation"
     out_dir_simplified = OUTPUT_ROOT / "xcodeeval_simplified" / "code_translation"
+    out_dir_simplified_top50 = OUTPUT_ROOT / "xcodeeval_simplified-top50" / "code_translation"
     out_dir_original.mkdir(parents=True, exist_ok=True)
     out_dir_simplified.mkdir(parents=True, exist_ok=True)
+    out_dir_simplified_top50.mkdir(parents=True, exist_ok=True)
 
     # 読み込むファイルと、その出力先の対応付け
     file_mapping = [
         ("xcodeeval_codetranslation_test_filtered.jsonl", out_dir_original),
-        ("xcodeeval_codetranslation_test_filtered_simplified.jsonl", out_dir_simplified)
+        ("xcodeeval_codetranslation_test_filtered_simplified.jsonl", out_dir_simplified),
+        ("xcodeeval_codetranslation_test_filtered_simplified-top50.jsonl", out_dir_simplified_top50)
     ]
 
     for filename, out_dir in file_mapping:

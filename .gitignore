@@ -4,7 +4,6 @@ lm_cc.egg*
 build
 
 cc.json
-loc.json
 cog.json
 mi.json
 hc_difficulty.json

@@ -1,0 +1,650 @@
+[
+    {
+        "task_id": "HumanEval_66",
+        "lm_cc": 4.2
+    },
+    {
+        "task_id": "HumanEval_64",
+        "lm_cc": 8.6
+    },
+    {
+        "task_id": "HumanEval_105",
+        "lm_cc": 17.2
+    },
+    {
+        "task_id": "HumanEval_78",
+        "lm_cc": 10.399999999999999
+    },
+    {
+        "task_id": "HumanEval_114",
+        "lm_cc": 18.0
+    },
+    {
+        "task_id": "HumanEval_26",
+        "lm_cc": 5.6
+    },
+    {
+        "task_id": "HumanEval_161",
+        "lm_cc": 21.0
+    },
+    {
+        "task_id": "HumanEval_36",
+        "lm_cc": 14.799999999999999
+    },
+    {
+        "task_id": "HumanEval_13",
+        "lm_cc": 2.8
+    },
+    {
+        "task_id": "HumanEval_112",
+        "lm_cc": 4.2
+    },
+    {
+        "task_id": "HumanEval_81",
+        "lm_cc": 18.2
+    },
+    {
+        "task_id": "HumanEval_79",
+        "lm_cc": 2.8
+    },
+    {
+        "task_id": "HumanEval_24",
+        "lm_cc": 2.8
+    },
+    {
+        "task_id": "HumanEval_108",
+        "lm_cc": 12.2
+    },
+    {
+        "task_id": "HumanEval_31",
+        "lm_cc": 4.2
+    },
+    {
+        "task_id": "HumanEval_109",
+        "lm_cc": 15.799999999999999
+    },
+    {
+        "task_id": "HumanEval_145",
+        "lm_cc": 12.2
+    },
+    {
+        "task_id": "HumanEval_35",
+        "lm_cc": 5.8
+    },
+    {
+        "task_id": "HumanEval_8",
+        "lm_cc": 6.999999999999999
+    },
+    {
+        "task_id": "HumanEval_116",
+        "lm_cc": 2.8
+    },
+    {
+        "task_id": "HumanEval_162",
+        "lm_cc": 4.2
+    },
+    {
+        "task_id": "HumanEval_131",
+        "lm_cc": 18.799999999999997
+    },
+    {
+        "task_id": "HumanEval_132",
+        "lm_cc": 24.599999999999998
+    },
+    {
+        "task_id": "HumanEval_130",
+        "lm_cc": 12.399999999999999
+    },
+    {
+        "task_id": "HumanEval_73",
+        "lm_cc": 9.0
+    },
+    {
+        "task_id": "HumanEval_58",
+        "lm_cc": 9.0
+    },
+    {
+        "task_id": "HumanEval_23",
+        "lm_cc": 2.8
+    },
+    {
+        "task_id": "HumanEval_44",
+        "lm_cc": 7.3999999999999995
+    },
+    {
+        "task_id": "HumanEval_123",
+        "lm_cc": 19.4
+    },
+    {
+        "task_id": "HumanEval_25",
+        "lm_cc": 14.999999999999998
+    },
+    {
+        "task_id": "HumanEval_129",
+        "lm_cc": 28.599999999999998
+    },
+    {
+        "task_id": "HumanEval_43",
+        "lm_cc": 9.6
+    },
+    {
+        "task_id": "HumanEval_11",
+        "lm_cc": 9.399999999999999
+    },
+    {
+        "task_id": "HumanEval_52",
+        "lm_cc": 4.4
+    },
+    {
+        "task_id": "HumanEval_39",
+        "lm_cc": 18.6
+    },
+    {
+        "task_id": "HumanEval_68",
+        "lm_cc": 6.999999999999999
+    },
+    {
+        "task_id": "HumanEval_15",
+        "lm_cc": 2.8
+    },
+    {
+        "task_id": "HumanEval_22",
+        "lm_cc": 2.8
+    },
+    {
+        "task_id": "HumanEval_106",
+        "lm_cc": 18.4
+    },
+    {
+        "task_id": "HumanEval_65",
+        "lm_cc": 9.2
+    },
+    {
+        "task_id": "HumanEval_32",
+        "lm_cc": 17.2
+    },
+    {
+        "task_id": "HumanEval_20",
+        "lm_cc": 24.0
+    },
+    {
+        "task_id": "HumanEval_113",
+        "lm_cc": 8.8
+    },
+    {
+        "task_id": "HumanEval_140",
+        "lm_cc": 27.4
+    },
+    {
+        "task_id": "HumanEval_115",
+        "lm_cc": 4.0
+    },
+    {
+        "task_id": "HumanEval_19",
+        "lm_cc": 5.8
+    },
+    {
+        "task_id": "HumanEval_150",
+        "lm_cc": 14.799999999999997
+    },
+    {
+        "task_id": "HumanEval_86",
+        "lm_cc": 2.8
+    },
+    {
+        "task_id": "HumanEval_87",
+        "lm_cc": 4.2
+    },
+    {
+        "task_id": "HumanEval_28",
+        "lm_cc": 2.8
+    },
+    {
+        "task_id": "HumanEval_97",
+        "lm_cc": 2.8
+    },
+    {
+        "task_id": "HumanEval_3",
+        "lm_cc": 8.8
+    },
+    {
+        "task_id": "HumanEval_47",
+        "lm_cc": 9.2
+    },
+    {
+        "task_id": "HumanEval_29",
+        "lm_cc": 2.8
+    },
+    {
+        "task_id": "HumanEval_127",
+        "lm_cc": 16.599999999999998
+    },
+    {
+        "task_id": "HumanEval_2",
+        "lm_cc": 2.8
+    },
+    {
+        "task_id": "HumanEval_146",
+        "lm_cc": 12.599999999999998
+    },
+    {
+        "task_id": "HumanEval_83",
+        "lm_cc": 4.2
+    },
+    {
+        "task_id": "HumanEval_69",
+        "lm_cc": 11.799999999999999
+    },
+    {
+        "task_id": "HumanEval_61",
+        "lm_cc": 11.0
+    },
+    {
+        "task_id": "HumanEval_125",
+        "lm_cc": 11.2
+    },
+    {
+        "task_id": "HumanEval_45",
+        "lm_cc": 2.8
+    },
+    {
+        "task_id": "HumanEval_55",
+        "lm_cc": 5.6
+    },
+    {
+        "task_id": "HumanEval_147",
+        "lm_cc": 14.599999999999998
+    },
+    {
+        "task_id": "HumanEval_133",
+        "lm_cc": 7.199999999999999
+    },
+    {
+        "task_id": "HumanEval_121",
+        "lm_cc": 2.8
+    },
+    {
+        "task_id": "HumanEval_126",
+        "lm_cc": 10.2
+    },
+    {
+        "task_id": "HumanEval_158",
+        "lm_cc": 2.8
+    },
+    {
+        "task_id": "HumanEval_48",
+        "lm_cc": 4.4
+    },
+    {
+        "task_id": "HumanEval_128",
+        "lm_cc": 5.6
+    },
+    {
+        "task_id": "HumanEval_117",
+        "lm_cc": 12.2
+    },
+    {
+        "task_id": "HumanEval_141",
+        "lm_cc": 15.6
+    },
+    {
+        "task_id": "HumanEval_33",
+        "lm_cc": 5.6
+    },
+    {
+        "task_id": "HumanEval_4",
+        "lm_cc": 4.2
+    },
+    {
+        "task_id": "HumanEval_60",
+        "lm_cc": 2.8
+    },
+    {
+        "task_id": "HumanEval_59",
+        "lm_cc": 12.2
+    },
+    {
+        "task_id": "HumanEval_41",
+        "lm_cc": 2.8
+    },
+    {
+        "task_id": "HumanEval_157",
+        "lm_cc": 2.8
+    },
+    {
+        "task_id": "HumanEval_74",
+        "lm_cc": 11.799999999999999
+    },
+    {
+        "task_id": "HumanEval_96",
+        "lm_cc": 10.6
+    },
+    {
+        "task_id": "HumanEval_85",
+        "lm_cc": 2.8
+    },
+    {
+        "task_id": "HumanEval_144",
+        "lm_cc": 11.399999999999999
+    },
+    {
+        "task_id": "HumanEval_57",
+        "lm_cc": 4.2
+    },
+    {
+        "task_id": "HumanEval_67",
+        "lm_cc": 9.0
+    },
+    {
+        "task_id": "HumanEval_95",
+        "lm_cc": 38.4
+    },
+    {
+        "task_id": "HumanEval_143",
+        "lm_cc": 17.599999999999998
+    },
+    {
+        "task_id": "HumanEval_139",
+        "lm_cc": 10.2
+    },
+    {
+        "task_id": "HumanEval_101",
+        "lm_cc": 13.399999999999999
+    },
+    {
+        "task_id": "HumanEval_42",
+        "lm_cc": 2.8
+    },
+    {
+        "task_id": "HumanEval_51",
+        "lm_cc": 2.8
+    },
+    {
+        "task_id": "HumanEval_148",
+        "lm_cc": 13.599999999999998
+    },
+    {
+        "task_id": "HumanEval_30",
+        "lm_cc": 2.8
+    },
+    {
+        "task_id": "HumanEval_21",
+        "lm_cc": 5.6
+    },
+    {
+        "task_id": "HumanEval_136",
+        "lm_cc": 5.6
+    },
+    {
+        "task_id": "HumanEval_71",
+        "lm_cc": 8.6
+    },
+    {
+        "task_id": "HumanEval_149",
+        "lm_cc": 10.399999999999999
+    },
+    {
+        "task_id": "HumanEval_107",
+        "lm_cc": 15.399999999999999
+    },
+    {
+        "task_id": "HumanEval_16",
+        "lm_cc": 2.8
+    },
+    {
+        "task_id": "HumanEval_163",
+        "lm_cc": 5.6
+    },
+    {
+        "task_id": "HumanEval_80",
+        "lm_cc": 10.6
+    },
+    {
+        "task_id": "HumanEval_34",
+        "lm_cc": 2.8
+    },
+    {
+        "task_id": "HumanEval_93",
+        "lm_cc": 6.999999999999999
+    },
+    {
+        "task_id": "HumanEval_88",
+        "lm_cc": 2.8
+    },
+    {
+        "task_id": "HumanEval_75",
+        "lm_cc": 19.4
+    },
+    {
+        "task_id": "HumanEval_156",
+        "lm_cc": 17.799999999999997
+    },
+    {
+        "task_id": "HumanEval_94",
+        "lm_cc": 16.4
+    },
+    {
+        "task_id": "HumanEval_155",
+        "lm_cc": 9.0
+    },
+    {
+        "task_id": "HumanEval_5",
+        "lm_cc": 8.6
+    },
+    {
+        "task_id": "HumanEval_104",
+        "lm_cc": 9.0
+    },
+    {
+        "task_id": "HumanEval_142",
+        "lm_cc": 14.599999999999998
+    },
+    {
+        "task_id": "HumanEval_120",
+        "lm_cc": 8.6
+    },
+    {
+        "task_id": "HumanEval_63",
+        "lm_cc": 6.999999999999999
+    },
+    {
+        "task_id": "HumanEval_100",
+        "lm_cc": 2.8
+    },
+    {
+        "task_id": "HumanEval_27",
+        "lm_cc": 2.8
+    },
+    {
+        "task_id": "HumanEval_134",
+        "lm_cc": 4.2
+    },
+    {
+        "task_id": "HumanEval_137",
+        "lm_cc": 6.999999999999999
+    },
+    {
+        "task_id": "HumanEval_72",
+        "lm_cc": 13.599999999999998
+    },
+    {
+        "task_id": "HumanEval_102",
+        "lm_cc": 11.799999999999999
+    },
+    {
+        "task_id": "HumanEval_135",
+        "lm_cc": 12.0
+    },
+    {
+        "task_id": "HumanEval_111",
+        "lm_cc": 18.6
+    },
+    {
+        "task_id": "HumanEval_152",
+        "lm_cc": 2.8
+    },
+    {
+        "task_id": "HumanEval_110",
+        "lm_cc": 16.4
+    },
+    {
+        "task_id": "HumanEval_138",
+        "lm_cc": 2.8
+    },
+    {
+        "task_id": "HumanEval_9",
+        "lm_cc": 10.6
+    },
+    {
+        "task_id": "HumanEval_154",
+        "lm_cc": 12.399999999999999
+    },
+    {
+        "task_id": "HumanEval_160",
+        "lm_cc": 7.199999999999999
+    },
+    {
+        "task_id": "HumanEval_7",
+        "lm_cc": 2.8
+    },
+    {
+        "task_id": "HumanEval_76",
+        "lm_cc": 10.2
+    },
+    {
+        "task_id": "HumanEval_77",
+        "lm_cc": 4.2
+    },
+    {
+        "task_id": "HumanEval_18",
+        "lm_cc": 7.199999999999999
+    },
+    {
+        "task_id": "HumanEval_1",
+        "lm_cc": 19.0
+    },
+    {
+        "task_id": "HumanEval_159",
+        "lm_cc": 7.799999999999999
+    },
+    {
+        "task_id": "HumanEval_89",
+        "lm_cc": 9.0
+    },
+    {
+        "task_id": "HumanEval_119",
+        "lm_cc": 17.4
+    },
+    {
+        "task_id": "HumanEval_118",
+        "lm_cc": 14.0
+    },
+    {
+        "task_id": "HumanEval_153",
+        "lm_cc": 13.399999999999999
+    },
+    {
+        "task_id": "HumanEval_84",
+        "lm_cc": 2.8
+    },
+    {
+        "task_id": "HumanEval_37",
+        "lm_cc": 12.799999999999999
+    },
+    {
+        "task_id": "HumanEval_122",
+        "lm_cc": 2.8
+    },
+    {
+        "task_id": "HumanEval_14",
+        "lm_cc": 7.199999999999999
+    },
+    {
+        "task_id": "HumanEval_82",
+        "lm_cc": 10.6
+    },
+    {
+        "task_id": "HumanEval_99",
+        "lm_cc": 20.199999999999996
+    },
+    {
+        "task_id": "HumanEval_10",
+        "lm_cc": 10.2
+    },
+    {
+        "task_id": "HumanEval_6",
+        "lm_cc": 14.399999999999999
+    },
+    {
+        "task_id": "HumanEval_46",
+        "lm_cc": 10.2
+    },
+    {
+        "task_id": "HumanEval_91",
+        "lm_cc": 5.6
+    },
+    {
+        "task_id": "HumanEval_124",
+        "lm_cc": 18.799999999999997
+    },
+    {
+        "task_id": "HumanEval_56",
+        "lm_cc": 11.0
+    },
+    {
+        "task_id": "HumanEval_53",
+        "lm_cc": 2.8
+    },
+    {
+        "task_id": "HumanEval_90",
+        "lm_cc": 4.2
+    },
+    {
+        "task_id": "HumanEval_12",
+        "lm_cc": 5.6
+    },
+    {
+        "task_id": "HumanEval_54",
+        "lm_cc": 2.8
+    },
+    {
+        "task_id": "HumanEval_98",
+        "lm_cc": 7.6
+    },
+    {
+        "task_id": "HumanEval_40",
+        "lm_cc": 11.799999999999999
+    },
+    {
+        "task_id": "HumanEval_62",
+        "lm_cc": 2.8
+    },
+    {
+        "task_id": "HumanEval_0",
+        "lm_cc": 11.599999999999998
+    },
+    {
+        "task_id": "HumanEval_17",
+        "lm_cc": 4.2
+    },
+    {
+        "task_id": "HumanEval_49",
+        "lm_cc": 5.8
+    },
+    {
+        "task_id": "HumanEval_70",
+        "lm_cc": 7.3999999999999995
+    },
+    {
+        "task_id": "HumanEval_103",
+        "lm_cc": 8.6
+    },
+    {
+        "task_id": "HumanEval_151",
+        "lm_cc": 2.8
+    },
+    {
+        "task_id": "HumanEval_92",
+        "lm_cc": 9.2
+    }
+]
