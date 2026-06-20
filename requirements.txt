@@ -19,3 +19,6 @@ tree-sitter-python>=0.23.0
 litellm==1.81.6
 google-generativeai==0.8.6
 vllm
+
+matplotlib
+seaborn
